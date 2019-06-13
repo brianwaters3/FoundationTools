@@ -1,0 +1,7 @@
+ft/*.o
+ft/*.a
+ft/.deps
+autom4te.cache
+*.swp
+ft/*.swp
+include/ft/*.swp

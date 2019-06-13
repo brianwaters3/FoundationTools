@@ -1,0 +1,5 @@
+#########################################################################
+## (c) 2009 Brian Waters (bdwaters@sbcglobal.net) All rights reserved. ##
+#########################################################################
+
+g++ test.cpp -o fttest -lft -lrt -lpthread -g -std=c++11
