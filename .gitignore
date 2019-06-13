@@ -5,3 +5,8 @@ autom4te.cache
 *.swp
 ft/*.swp
 include/ft/*.swp
+config.*
+.vscode
+Makefile
+ft/Makefile
+include/Makefile
