@@ -123,19 +123,19 @@ Void FTSynchObjects::init(FTGetOpt& options)
 {
     //FTLOGFUNC("FTSynchObjects::init");
 
-    if (options("FoundationTools/Debug","false") == "true")
+    options.setPrefix(SECTION_TOOLS);
+    if (options.get(MEMBER_DEBUG,false))
         options.print();
+    options.setPrefix("");
 
-    Int nSemaphores = options("SynchronizationObjects/NumberSemaphores", 100);
-    Int nMutexes = options("SynchronizationObjects/NumberMutexes", 100);
+    options.setPrefix(SECTION_TOOLS "/" SECTION_SYNCH_OBJS);
+    Int nSemaphores = options.get(MEMBER_NUMBER_SEMAPHORES, 0);
+    Int nMutexes = options.get(MEMBER_NUMBER_MUTEXES, 0);
+    options.setPrefix("");
 
-    STRING_VECTOR sn;
-
-    options.set_prefix("PublicQueue");
-    sn = options.unidentified_sections(1,"/");
-    options.set_prefix("");
-
-    Int nPublicQueues = (Int)sn.size();
+    options.setPrefix(SECTION_TOOLS);
+    UInt nPublicQueues = options.getCount(SECTION_PUBLIC_QUEUE);
+    options.setPrefix("");
 
     m_sharedmem.init("FTSynchObjectPublicStorage", 'A',
             sizeof(Bool) + // initialization flag
@@ -199,18 +199,18 @@ Void FTSynchObjects::init(FTGetOpt& options)
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
 
-    Int idx;
-    STRING_VECTOR::const_iterator it;
-
-    for (idx=0, it=sn.begin(); it != sn.end(); it++,idx++)
+    FTString s;
+    options.setPrefix(SECTION_TOOLS);
+    for (UInt idx=0; idx<nPublicQueues; idx++)
     {
-        Int queueid = options(((*it + "QueueID").c_str()), -1);
-        Int msgsize = options(((*it + "MessageSize").c_str()), -1);
-        Int queuesize = options(((*it + "QueueSize").c_str()), -1);
-        Bool bR = options(((*it + "AllowMultipleReaders").c_str()), "false") == "true" ? True : False;
-        Bool bW = options(((*it + "AllowMultipleWriters").c_str()), "false") == "true" ? True : False;
+        Int queueid = options.get(idx, SECTION_PUBLIC_QUEUE, MEMBER_QUEUE_ID, -1);
+        Int msgsize = options.get(idx, SECTION_PUBLIC_QUEUE, MEMBER_MESSAGE_SIZE, -1);
+        Int queuesize = options.get(idx, SECTION_PUBLIC_QUEUE, MEMBER_QUEUE_SIZE, -1);
+        Bool bR = options.get(idx, SECTION_PUBLIC_QUEUE, MEMBER_ALLOW_MULTIPLE_READERS, false);
+        Bool bW = options.get(idx, SECTION_PUBLIC_QUEUE, MEMBER_ALLOW_MULTIPLE_WRITERS, false);
 
-        setPublicQueue(idx, (*it).c_str(),
+        s.format(SECTION_PUBLIC_QUEUE"%u", idx);
+        setPublicQueue(idx, s.c_str(),
             queueid, msgsize, queuesize, bR, bW);
 
         //cout << (*it + "QueueID = ") << o((*it + "QueueID").c_str(), "Unknown QueueID") << endl;
@@ -219,6 +219,7 @@ Void FTSynchObjects::init(FTGetOpt& options)
         //cout << (*it + "AllowMultipleReaders = ") << o((*it + "AllowMultipleReaders").c_str(), "Unknown AllowMultipleReaders") << endl;
         //cout << (*it + "AllowMultipleWriters = ") << o((*it + "AllowMultipleWriters").c_str(), "Unknown AllowMultipleWriters") << endl;
     }
+    options.setPrefix("");
 }
 
 Void FTSynchObjects::uninit()

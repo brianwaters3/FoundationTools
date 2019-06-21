@@ -63,3 +63,21 @@ Int FTUtility::lastIndexOfAny(cpStr path, cpStr search)
 
 	return p < path ? -1 : (Int)(p - path);
 }
+
+std::vector<FTString> FTUtility::split(cpStr s, cpStr delims)
+{
+	std::vector<FTString> strings;
+	pStr ss = strdup(s);
+	FTString token;
+	
+	pStr p = strtok(ss, delims);
+	while (p)
+	{
+		token = p;
+		strings.push_back(token);
+		p = strtok(NULL, delims);
+	}
+
+	free(ss);
+	return strings;
+}

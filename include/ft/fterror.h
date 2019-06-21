@@ -17,6 +17,8 @@
 #ifndef __fterror_h_included
 #define __fterror_h_included
 
+#include "ftstring.h"
+
 struct FTErrorMapEntry
 {
     Long m_nError;
@@ -34,7 +36,7 @@ struct FTErrorMapEntry
 #define DECLARE_ERROR_ADVANCED3(e) class e : public FTError { public: e(Int err, cpChar msg); virtual cpStr Name() { return #e; } }
 #define DECLARE_ERROR_ADVANCED4(e) class e : public FTError { public: e(cpChar msg); virtual cpStr Name() { return #e; } }
 
-class FTError : public stringstream
+class FTError : public FTString
 {
 protected:
     static cpStr m_pszSeverity[];
@@ -72,10 +74,10 @@ public:
     {
         return copy(val);
     }
-    operator cpStr() { return str().c_str(); }
+    operator cpStr() { return c_str(); }
     FTError &copy(const FTError &val)
     {
-        str(val.str());
+        assign(val);
         m_dwError = val.m_dwError;
         m_eSeverity = val.m_eSeverity;
         return  *this;
@@ -87,7 +89,7 @@ public:
     }
     Void clear()
     {
-        str("");
+        clear();
     }
     cpStr getText()
     {
@@ -95,13 +97,12 @@ public:
     }
     Void setText(cpStr pszText)
     {
-        clear();
-        *this << pszText;
+        assign(pszText);
     }
     Void setTextf(cpStr pszFormat, ...);
     Void appendText(cpStr pszText)
     {
-        *this << pszText;
+        append(pszText);
     }
     Void appendTextf(cpStr pszText, ...);
 

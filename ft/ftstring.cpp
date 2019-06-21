@@ -14,6 +14,8 @@
 * limitations under the License.
 */
 
+#include <algorithm>
+
 #include "ftbase.h"
 #include "ftstring.h"
 
@@ -39,5 +41,17 @@ FTString& FTString::format(cpChar pszFormat, ...)
 
     assign(szBuff);
 
+    return *this;
+}
+
+FTString& FTString::tolower()
+{
+    std::transform(this->begin(), this->end(), this->begin(), ::tolower);
+    return *this;
+}
+
+FTString& FTString::toupper()
+{
+    std::transform(this->begin(), this->end(), this->begin(), ::toupper);
     return *this;
 }

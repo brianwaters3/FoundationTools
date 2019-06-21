@@ -17,10 +17,16 @@
 #ifndef __ftstring_h_included
 #define __ftstring_h_included
 
+#include <algorithm>
+
 class FTString : public std::string
 {
 public:
+    FTString() {}
+    FTString(cpStr s) : std::string(s) {}
     FTString& format(cpChar pszFormat, ...);
+    FTString& tolower();
+    FTString& toupper();
 
     operator cpChar() { return c_str(); }
     FTString& operator = (cpChar s) { *(std::string*)this = s; return *this; }
@@ -34,6 +40,29 @@ public:
         size_t len = strlen(str);
         return ft_strnicmp(c_str(), str, length() > len ? length() : len);
     }
+
+    Void ltrim()
+    {
+        erase(begin(), std::find_if(begin(), end(), [](Char ch)
+            {
+                return !std::isspace(ch);
+            }));
+    }
+
+    Void rtrim()
+    {
+        erase(std::find_if(rbegin(), rend(), [](Char ch)
+            {
+                return !std::isspace(ch);
+            }).base(), end());
+    }
+
+    Void trim()
+    {
+        ltrim();
+        rtrim();
+    }
+
 };
 
 #endif // #define __ftstring_h_included

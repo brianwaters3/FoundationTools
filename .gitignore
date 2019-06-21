@@ -10,3 +10,5 @@ config.*
 Makefile
 ft/Makefile
 include/Makefile
+.DS_Store
+modules/.DS_Store

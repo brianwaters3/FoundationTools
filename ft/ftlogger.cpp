@@ -14,6 +14,9 @@
 * limitations under the License.
 */
 
+#include <vector>
+#include <stdarg.h>
+
 #include "ftlogger.h"
 #include "ftatomic.h"
 #include "ftsynch.h"
@@ -61,7 +64,31 @@ FTLoggerError_UnableToOpenLogFile::FTLoggerError_UnableToOpenLogFile(Int err, cp
 
 cpStr FTLogger::m_pszSeverity[] = { "Undefined", "Error", "Warning", "Info", "Debug" };
 
-FTLogger _logCtrl;
+class FTLoggerControl : public FTStatic
+{
+public:
+    FTLoggerControl() {}
+
+    ~FTLoggerControl() {}
+
+    virtual Void init(FTGetOpt &opt)
+    {
+        m_logCtrl = new FTLogger();
+        m_logCtrl->init(opt);
+    }
+
+    virtual Void uninit()
+    {
+        m_logCtrl->uninit();
+        delete m_logCtrl;
+    }
+
+    virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
+private:
+    FTLogger *m_logCtrl;
+};
+
+FTLoggerControl _logCtrl;
 FTLogger* FTLogger::m_pThis = NULL;
 
 Void FTLogger::setLoggerPtr(FTLogger* pThis)
@@ -95,19 +122,23 @@ FTLogger::~FTLogger()
 
 Void FTLogger::init(FTGetOpt& options)
 {
-    Bool bWriteToFile = (options("FTLoggerOptions/WriteToFile","false") == "true") ? True : False;
-    Int nQueueID = options("FTLoggerOptions/QueueID", 0);
+    options.setPrefix(SECTION_TOOLS "/" SECTION_LOGGER_OPTIONS);
+    Bool bWriteToFile = options.get(MEMBER_WRITE_TO_FILE,false);
+    Int nQueueID = options.get(MEMBER_QUEUE_ID, 0);
 	FTString s;
 	FTQueueBase::Mode mode;
 
-	s = options("FTLoggerOptions/QueueMode", "WriteOnly");
+	s = options.get(MEMBER_QUEUE_MODE, "WriteOnly");
+    s.tolower();
 
-	if (s == "ReadOnly")
+	if (s == "readonly")
 		mode = FTQueueBase::ReadOnly;
-	else if (s == "WriteOnly")
+	else if (s == "writeonly")
 		mode = FTQueueBase::WriteOnly;
 	else
 		mode = FTQueueBase::ReadWrite;
+    
+    options.setPrefix("");
 
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
@@ -138,43 +169,41 @@ Void FTLogger::init(FTGetOpt& options)
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
 
-    STRING_VECTOR sn;
-    STRING_VECTOR::const_iterator it;
-    Int idx;
+    UInt cnt;
 
-    options.set_prefix("FTLogger/");
-    sn = options.unidentified_sections(1,"/");
-    options.set_prefix("");
+    options.setPrefix(SECTION_TOOLS);
+    cnt = options.getCount(SECTION_LOGGER);
 
-    for (idx=0, it=sn.begin(); it != sn.end(); it++,idx++)
+    for (UInt idx=0; idx < cnt; idx++)
     {
         Int logid;
         ULongLong defaultmask;
         Int maxsegments;
         Int linespersegment;
         FTString filenamemask;
-        FTString lt;
+        FTString s;
         LogType logtype = FTLogger::ltFile;
 
-        logid = options(((*it + "LogID").c_str()), -1);
-        maxsegments = options(((*it + "Segments").c_str()), -1);
-        linespersegment = options(((*it + "LinesPerSegment").c_str()), -1);
-        filenamemask = options(((*it + "FileNameMask").c_str()), "./ftlog_%A_%S.log");
-        lt = options(((*it + "LogType").c_str()), "File");
-        logtype = (lt.icompare("SysLog") == 0) ? ltSysLog : ltFile;
+        logid = options.get(idx, SECTION_LOGGER, MEMBER_LOG_ID, -1);
+        maxsegments = options.get(idx, SECTION_LOGGER, MEMBER_SEGMENTS, -1);
+        linespersegment = options.get(idx, SECTION_LOGGER, MEMBER_LINESPERSEGMENT, -1);
+        filenamemask = options.get(idx, SECTION_LOGGER, MEMBER_FILENAMEMASK, "./ftlog_%A_%S.log");
+        s = options.get(idx, SECTION_LOGGER, MEMBER_LOGTYPE, "File");
+        logtype = (s.tolower() == "syslog") ? ltSysLog : ltFile;
+        s = options.get(idx, SECTION_LOGGER, MEMBER_DEFAULTLOGMASK, "0x0000000000000000");
 #if defined(FT_WINDOWS)
-        defaultmask = _strtoui64(options(((*it + "DefaultGroupMask").c_str()), "0x0000000000000000").c_str(), NULL, 0);
+        defaultmask = _strtoui64(s.c_str(), NULL, 0);
 #elif defined(FT_GCC)
-        defaultmask = strtoull(options(((*it + "DefaultGroupMask").c_str()), "0x0000000000000000").c_str(), NULL, 0);
+        defaultmask = strtoull(s.c_str(), NULL, 0);
 #elif defined(FT_SOLARIS)
-        defaultmask = strtoull(options(((*it + "DefaultGroupMask").c_str()), "0x0000000000000000").c_str(), NULL, 0);
+        defaultmask = strtoull(s.c_str(), NULL, 0);
 #else
 #error "Unrecoginzed platform"
 #endif
 
         addLog(logid, defaultmask, maxsegments, linespersegment, filenamemask, logtype);
 
-        if ((*it) == "FTLogger/FTInternalLog/")
+        if (options.get(idx, SECTION_LOGGER, MEMBER_FTINTERNALLOG, false))
             FoundationTools::setInternalLogId(logid);
     }
 }
@@ -532,7 +561,10 @@ Void FTLogger::writeFile(ftloggerentry_t* pLog, Int logofs, Int logid,
 #if defined(FT_WINDOWS)
     _write(m_handles[logofs].s_fh, m_handles[logofs].s_buffer, (UInt)strlen(m_handles[logofs].s_buffer));
 #elif defined(FT_GCC)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-result"
     write(m_handles[logofs].s_fh, m_handles[logofs].s_buffer, (UInt)strlen(m_handles[logofs].s_buffer));
+#pragma GCC diagnostic pop
 #elif defined(FT_SOLARIS)
     write(m_handles[logofs].s_fh, m_handles[logofs].s_buffer, (UInt)strlen(m_handles[logofs].s_buffer));
 #else
@@ -559,7 +591,8 @@ Void FTLogger::writeSysLog(ftloggerentry_t* pLog, Int logofs, Int logid,
     );
 
     openlog(pLog->s_filenamemask, LOG_NDELAY|LOG_PID|LOG_CONS, LOG_USER);
-    syslog(priority, m_handles[logofs].s_buffer);
+    //syslog(priority, m_handles[logofs].s_buffer);
+    syslog(priority, "<%s> [%s] %s", getSeverityText(sev), pszFunc, msg);
 #elif defined(FT_SOLARIS)
 #else
 #error "Unrecoginzed platform"

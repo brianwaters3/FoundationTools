@@ -396,7 +396,10 @@ pVoid FTThreadBasic::_threadProc(pVoid arg)
 #if defined(FT_WINDOWS)
     return ret;
 #elif defined(FT_GCC)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wint-to-pointer-cast"
     return (pVoid)ret;
+#pragma GCC diagnostic pop
 #elif defined(FT_SOLARIS)
     return (pVoid)ret;
 #else

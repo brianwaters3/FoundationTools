@@ -44,7 +44,8 @@ namespace Velocity { class BasicApplication; class LogicModuleInstance; };
 
 #define FTLOG_RECORDID          1
 
-class FTLogger : public FTStatic
+//class FTLogger : public FTStatic
+class FTLogger
 {
     friend class FoundationTools;
     friend class Velocity::BasicApplication;
@@ -75,6 +76,7 @@ protected:
     {
     public:
         ftloggerloghandle_t() : s_mutex(false) {}
+        ~ftloggerloghandle_t() {}
 
         FTMutex s_mutex;
         Int s_fh;
@@ -192,7 +194,7 @@ public:
     FTLogger();
     ~FTLogger();
 
-    virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
+    //virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
     Void init(FTGetOpt& options);
     Void uninit();
 

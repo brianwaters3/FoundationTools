@@ -97,9 +97,9 @@ Void FTError::appendLastOsError(Dword dwError)
     m_dwError = (dwError ==  (Dword)-1) ? errno : dwError;
     cpStr pMsg = strerror(m_dwError);
     if (pMsg)
-        *this << ", error [" << m_dwError << "], [\"" << pMsg << "\"]";
+        appendTextf(", error [%ld], [\"%s\"]", m_dwError, pMsg);
     else
-        *this << ", error [" << m_dwError << "], [" << "Error " << m_dwError << "]";
+        appendTextf(", error [%ld], [Error %ld]", m_dwError, m_dwError);
 #elif defined(FT_SOLARIS)
     m_dwError = (dwError ==  - 1) ? errno : dwError;
     cpStr pMsg = strerror(errno);

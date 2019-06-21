@@ -68,4 +68,28 @@ private:
 #error "Unrecoginzed platform"
 #endif
 
+#define SECTION_TOOLS "FoundationTools"
+#define SECTION_SYNCH_OBJS "SynchronizationObjects"
+#define SECTION_PUBLIC_QUEUE "PublicQueue"
+#define SECTION_LOGGER "FTLogger"
+#define SECTION_LOGGER_OPTIONS "FTLoggerOptions"
+
+#define MEMBER_NUMBER_SEMAPHORES "NumberSemaphores"
+#define MEMBER_NUMBER_MUTEXES "NumberMutexes"
+#define MEMBER_QUEUE_ID "QueueID"
+#define MEMBER_MESSAGE_SIZE "MessageSize"
+#define MEMBER_QUEUE_SIZE "QueueSize"
+#define MEMBER_ALLOW_MULTIPLE_READERS "AllowMultipleReaders"
+#define MEMBER_ALLOW_MULTIPLE_WRITERS "AllowMultipleWriters"
+#define MEMBER_DEBUG "Debug"
+#define MEMBER_WRITE_TO_FILE "WriteToFile"
+#define MEMBER_QUEUE_MODE "QueueMode"
+#define MEMBER_LOG_ID "LogID"
+#define MEMBER_SEGMENTS "Segments"
+#define MEMBER_LINESPERSEGMENT "LinesPerSegment"
+#define MEMBER_FILENAMEMASK "FileNameMask"
+#define MEMBER_LOGTYPE "LogType"
+#define MEMBER_DEFAULTLOGMASK "DefaultLogMask"
+#define MEMBER_FTINTERNALLOG "FTInternalLog"
+
 #endif // #define __FTINTERNAL_H_INCLUDED

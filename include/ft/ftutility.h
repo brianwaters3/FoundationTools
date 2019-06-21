@@ -17,7 +17,9 @@
 #ifndef __ftutility_h_included
 #define __ftutility_h_included
 
+#include <vector>
 #include "ftbase.h"
+#include "ftstring.h"
 
 class FTUtility
 {
@@ -25,6 +27,7 @@ public:
 	static Int indexOf(cpStr path, Char search, Int start = 0);
 	static Int indexOfAny(cpStr path, cpStr search);
 	static Int lastIndexOfAny(cpStr path, cpStr search);
+	static std::vector<FTString> split(cpStr s, cpStr delims);
 };
 
 #endif // #define __ftutility_h_included
