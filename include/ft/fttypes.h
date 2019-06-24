@@ -18,25 +18,6 @@
 #define __fttypes_h_included
 
 // basic data types
-#if defined(FT_WINDOWS)
-#include <stdint.h>
-typedef void Void;
-typedef bool Bool;
-typedef char Char;
-typedef unsigned char UChar;
-typedef UChar Byte;
-typedef short Short;
-typedef unsigned short UShort;
-typedef int Int;
-typedef unsigned int UInt;
-typedef long Long;
-typedef unsigned long ULong;
-typedef DWORD Dword;
-typedef long long LongLong;
-typedef unsigned long long ULongLong;
-typedef float Float;
-typedef double Double;
-#elif defined(FT_GCC)
 #include <stdint.h>
 typedef void Void;
 typedef bool Bool;
@@ -54,11 +35,6 @@ typedef int64_t LongLong;
 typedef uint64_t ULongLong;
 typedef float Float;
 typedef double Double;
-#elif defined(FT_SOLARIS)
-#error "Need to define"
-#else
-#error "Unrecognized platform"
-#endif
 
 // constants
 typedef const Bool cBool;
@@ -112,24 +88,22 @@ typedef const pULongLong cpUlongLong;
 typedef const pFloat cpFloat;
 typedef const pDouble cpDouble;
 
-typedef union
-{
-    struct
-    {
-        Dword lowPart;
-        Long highPart;
-    } li;
-    LongLong quadPart;
+typedef union {
+   struct
+   {
+      Dword lowPart;
+      Long highPart;
+   } li;
+   LongLong quadPart;
 } longinteger_t;
 
-typedef union
-{
-    struct
-    {
-        Dword lowPart;
-        Dword highPart;
-    } uli;
-    ULongLong quadPart;
+typedef union {
+   struct
+   {
+      Dword lowPart;
+      Dword highPart;
+   } uli;
+   ULongLong quadPart;
 } ulonginteger_t;
 
 #endif // #define __fttypes_h_included

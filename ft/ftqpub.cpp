@@ -19,8 +19,8 @@
 
 FTQueuePublicError_QueueNotFound::FTQueuePublicError_QueueNotFound(Int queueid)
 {
-    setSevere();
-    setTextf("Unable to find queueid %d ", queueid);
+   setSevere();
+   setTextf("Unable to find queueid %d ", queueid);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,79 +28,79 @@ FTQueuePublicError_QueueNotFound::FTQueuePublicError_QueueNotFound(Int queueid)
 
 FTQueuePublic::FTQueuePublic()
 {
-    m_pCtrl = NULL;
-    m_pData = NULL;
+   m_pCtrl = NULL;
+   m_pData = NULL;
 }
 
 FTQueuePublic::~FTQueuePublic()
 {
-    destroy();
+   destroy();
 }
 
 Void FTQueuePublic::init(Int queueid, FTQueueBase::Mode mode)
 {
-    FTSynchObjects::ftpublicqueuedef_t* pQueue = FTSynchObjects::getSynchObjCtrlPtr()->getPublicQueue(queueid);
+   FTSynchObjects::ftpublicqueuedef_t *pQueue = FTSynchObjects::getSynchObjCtrlPtr()->getPublicQueue(queueid);
 
-    if (!pQueue)
-        throw new FTQueuePublicError_QueueNotFound(queueid);
+   if (!pQueue)
+      throw new FTQueuePublicError_QueueNotFound(queueid);
 
-    init(pQueue->m_msgSize, pQueue->m_msgCnt, pQueue->m_queueid,
+   init(pQueue->m_msgSize, pQueue->m_msgCnt, pQueue->m_queueid,
         pQueue->m_multipleReaders, pQueue->m_multipleWriters, mode);
 }
 
-ULong& FTQueuePublic::msgSize()
+ULong &FTQueuePublic::msgSize()
 {
-    return m_pCtrl->m_msgSize;
+   return m_pCtrl->m_msgSize;
 }
 
-Int& FTQueuePublic::msgCnt()
+Int &FTQueuePublic::msgCnt()
 {
-    return m_pCtrl->m_msgCnt;
+   return m_pCtrl->m_msgCnt;
 }
 
-Long& FTQueuePublic::msgHead()
+Long &FTQueuePublic::msgHead()
 {
-    return m_pCtrl->m_head;
+   return m_pCtrl->m_head;
 }
 
-Long& FTQueuePublic::msgTail()
+Long &FTQueuePublic::msgTail()
 {
-    return m_pCtrl->m_tail;
+   return m_pCtrl->m_tail;
 }
 
-Bool& FTQueuePublic::multipleReaders()
+Bool &FTQueuePublic::multipleReaders()
 {
-    return m_pCtrl->m_multipleReaders;
+   return m_pCtrl->m_multipleReaders;
 }
 
-Bool& FTQueuePublic::multipleWriters()
+Bool &FTQueuePublic::multipleWriters()
 {
-    return m_pCtrl->m_multipleWriters;
+   return m_pCtrl->m_multipleWriters;
 }
 
-Int& FTQueuePublic::numReaders()
+Int &FTQueuePublic::numReaders()
 {
-    return m_pCtrl->m_numReaders;
+   return m_pCtrl->m_numReaders;
 }
 
-Int& FTQueuePublic::numWriters()
+Int &FTQueuePublic::numWriters()
 {
-    return m_pCtrl->m_numWriters;
+   return m_pCtrl->m_numWriters;
 }
 
-Int& FTQueuePublic::refCnt()
+Int &FTQueuePublic::refCnt()
 {
-    return m_pCtrl->m_refCnt;
+   return m_pCtrl->m_refCnt;
 }
 
 pChar FTQueuePublic::data()
 {
-    return m_pData;
+   return m_pData;
 }
 
 Void FTQueuePublic::allocDataSpace(cpStr sFile, Char cId, Int nSize)
 {
-    m_sharedmem.init(sFile, cId, nSize +  sizeof(ftsharedqueue_ctrl_t));
-    m_pCtrl = (ftsharedqueue_ctrl_t*)m_sharedmem.getDataPtr();
-    m_pData = ((pChar)m_sharedmem.getDataPtr()) + sizeof(ftsharedqueue_ctrl_t);
+   m_sharedmem.init(sFile, cId, nSize + sizeof(ftsharedqueue_ctrl_t));
+   m_pCtrl = (ftsharedqueue_ctrl_t *)m_sharedmem.getDataPtr();
+   m_pData = ((pChar)m_sharedmem.getDataPtr()) + sizeof(ftsharedqueue_ctrl_t);
 }

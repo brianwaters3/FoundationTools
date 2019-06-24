@@ -18,20 +18,18 @@
 #include "fttbase.h"
 #include "ftsynch2.h"
 
-//extern FTLogger _logCtrl;
-
-Void FoundationTools::Initialize(FTGetOpt& options)
+Void FoundationTools::Initialize(FTGetOpt &options)
 {
-    FTStatic::Initialize(options);
-    FTThreadBasic::Initialize();
+   FTStatic::Initialize(options);
+   FTThreadBasic::Initialize();
 }
 
 Void FoundationTools::UnInitialize()
 {
-    FTSynchObjects::getSynchObjCtrlPtr()->logObjectUsage();
+   FTSynchObjects::getSynchObjCtrlPtr()->logObjectUsage();
 
-    FTThreadBasic::UnInitialize();
-    FTStatic::UnInitialize();
+   FTThreadBasic::UnInitialize();
+   FTStatic::UnInitialize();
 }
 
 Int FoundationTools::m_internalLogId = -1;

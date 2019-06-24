@@ -14,44 +14,33 @@
 * limitations under the License.
 */
 
+#include <stdarg.h>
 #include <algorithm>
 
 #include "ftbase.h"
 #include "ftstring.h"
 
-#ifdef FT_GCC
-#include <stdarg.h>
-#endif
-
-FTString& FTString::format(cpChar pszFormat, ...)
+FTString &FTString::format(cpChar pszFormat, ...)
 {
-    Char szBuff[2048];
-    va_list pArgs;
-    va_start(pArgs, pszFormat);
-#if defined(FT_WINDOWS)
-    _vsnprintf_s(szBuff, sizeof(szBuff), pszFormat, pArgs);
-#elif defined(FT_GCC)
-    vsnprintf(szBuff, sizeof(szBuff), pszFormat, pArgs);
-#elif defined(FT_SOLARIS)
-    vsnprintf(szBuff, sizeof(szBuff), pszFormat, pArgs);
-#else
-#error "Unrecoginzed platform"
-#endif
-    va_end(pArgs);
+   Char szBuff[2048];
+   va_list pArgs;
+   va_start(pArgs, pszFormat);
+   vsnprintf(szBuff, sizeof(szBuff), pszFormat, pArgs);
+   va_end(pArgs);
 
-    assign(szBuff);
+   assign(szBuff);
 
-    return *this;
+   return *this;
 }
 
-FTString& FTString::tolower()
+FTString &FTString::tolower()
 {
-    std::transform(this->begin(), this->end(), this->begin(), ::tolower);
-    return *this;
+   std::transform(this->begin(), this->end(), this->begin(), ::tolower);
+   return *this;
 }
 
-FTString& FTString::toupper()
+FTString &FTString::toupper()
 {
-    std::transform(this->begin(), this->end(), this->begin(), ::toupper);
-    return *this;
+   std::transform(this->begin(), this->end(), this->begin(), ::toupper);
+   return *this;
 }

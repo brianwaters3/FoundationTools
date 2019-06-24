@@ -25,48 +25,31 @@
 class FoundationTools
 {
 public:
-    static Void Initialize(FTGetOpt& options);
-    static Void UnInitialize();
+   static Void Initialize(FTGetOpt &options);
+   static Void UnInitialize();
 
-    static Int getInternalLogId() { return m_internalLogId; }
-    static Void setInternalLogId(Int logid) { m_internalLogId = logid; }
+   static Int getInternalLogId() { return m_internalLogId; }
+   static Void setInternalLogId(Int logid) { m_internalLogId = logid; }
 
-    static Int getApplicationId() { return m_appid; }
-    static Void setApplicationId(Int appid) { m_appid = appid; }
+   static Int getApplicationId() { return m_appid; }
+   static Void setApplicationId(Int appid) { m_appid = appid; }
 
 private:
-    static Int m_internalLogId;
-    static Int m_appid;
+   static Int m_internalLogId;
+   static Int m_appid;
 };
 
-#define FTLOG_MUTEX         ((ULongLong)0x0000000000000001)
-#define FTLOG_SEMAPHORE     ((ULongLong)0x0000000000000002)
-#define FTLOG_SEMNOTICE     ((ULongLong)0x0000000000000004)
-#define FTLOG_SHAREDMEMORY  ((ULongLong)0x0000000000000008)
-#define FTLOG_SYNCHOBJECTS  ((ULongLong)0x0000000000000010)
+#define FTLOG_MUTEX ((ULongLong)0x0000000000000001)
+#define FTLOG_SEMAPHORE ((ULongLong)0x0000000000000002)
+#define FTLOG_SEMNOTICE ((ULongLong)0x0000000000000004)
+#define FTLOG_SHAREDMEMORY ((ULongLong)0x0000000000000008)
+#define FTLOG_SYNCHOBJECTS ((ULongLong)0x0000000000000010)
 
-
-#if defined(FT_WINDOWS)
-#define FTLOGFUNC(f) static cpStr __funcname__ = ##f
-#define FTLOG(groupid,severity,format,...) FTLogger::log(FoundationTools::getInternalLogId(),groupid,severity,__funcname__,format,__VA_ARGS__)
-#define FTLOGINFO(groupid,format,...) FTLogger::logInfo(FoundationTools::getInternalLogId(),groupid,__funcname__,format,__VA_ARGS__)
-#define FTLOGWARN(groupid,format,...) FTLogger::logWarning(FoundationTools::getInternalLogId(),groupid,__funcname__,format,__VA_ARGS__)
-#define FTLOGERROR(groupid,format,...) FTLogger::logError(FoundationTools::getInternalLogId(),groupid,__funcname__,format,__VA_ARGS__)
-#elif defined(FT_GCC)
 #define FTLOGFUNC(f) static cpStr __funcname__ = #f
-#define FTLOG(groupid,severity,format...) FTLogger::log(FoundationTools::getInternalLogId(),groupid,severity,__funcname__,format)
-#define FTLOGINFO(groupid,format...) FTLogger::logInfo(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#define FTLOGWARN(groupid,format...) FTLogger::logWarning(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#define FTLOGERROR(groupid,format...) FTLogger::logError(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#elif defined(FT_SOLARIS)
-#define FTLOGFUNC(f) static cpStr __funcname__ = ##f
-#define FTLOG(groupid,severity,format...) FTLogger::log(FoundationTools::getInternalLogId(),groupid,severity,__funcname__,format)
-#define FTLOGINFO(groupid,format...) FTLogger::logInfo(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#define FTLOGWARN(groupid,format...) FTLogger::logWarning(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#define FTLOGERROR(groupid,format...) FTLogger::logError(FoundationTools::getInternalLogId(),groupid,__funcname__,format)
-#else
-#error "Unrecoginzed platform"
-#endif
+#define FTLOG(groupid, severity, format...) FTLogger::log(FoundationTools::getInternalLogId(), groupid, severity, __funcname__, format)
+#define FTLOGINFO(groupid, format...) FTLogger::logInfo(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
+#define FTLOGWARN(groupid, format...) FTLogger::logWarning(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
+#define FTLOGERROR(groupid, format...) FTLogger::logError(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
 
 #define SECTION_TOOLS "FoundationTools"
 #define SECTION_SYNCH_OBJS "SynchronizationObjects"

@@ -17,14 +17,7 @@
 #ifndef __ftdir_h_included
 #define __ftdir_h_included
 
-#if defined(FT_WINDOWS)
-#elif defined(FT_GCC)
 #include <dirent.h>
-#elif defined(FT_SOLARIS)
-#error "Unsupported platform"
-#else
-#error "Unrecoginzed platform"
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -33,15 +26,7 @@ DECLARE_ERROR_ADVANCED(FTDirectoryError_GetFirstEntry);
 DECLARE_ERROR_ADVANCED(FTDirectoryError_OutOfSequence);
 DECLARE_ERROR_ADVANCED(FTDirectoryError_CurrentDirectory);
 
-#if defined(FT_WINDOWS)
-DECLARE_ERROR_ADVANCED(FTDirectoryError_GetNextEntry);
-#elif defined(FT_GCC)
 DECLARE_ERROR_ADVANCED2(FTDirectoryError_GetNextEntry);
-#elif defined(FT_SOLARIS)
-#error "Unsupported platform"
-#else
-#error "Unrecoginzed platform"
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -64,20 +49,11 @@ private:
 	FTString mFileMask;
 	FTString mFileName;
 
-#if defined(FT_WINDOWS)
-#define PATH_SEPERATOR '\\'
-	HANDLE mHandle;
-#elif defined(FT_GCC)
 #define PATH_SEPERATOR '/'
 	static pStr mTable;
 	static Void buildTable();
 	static Bool match(cpStr str, cpStr mask, Bool ignoreCase = False);
 	DIR* mHandle;
-#elif defined(FT_SOLARIS)
-#error "Unsupported platform"
-#else
-#error "Unrecoginzed platform"
-#endif
 };
 
 #endif // #define __ftdir_h_included

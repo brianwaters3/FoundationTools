@@ -21,9 +21,9 @@ END_MESSAGE_MAP()
 
 FTThreadPublic::FTThreadPublic()
 {
-    m_appId = 1;
-    m_threadId = 1;
-    m_queueSize = 16384;
+   m_appId = 1;
+   m_threadId = 1;
+   m_queueSize = 16384;
 }
 
 FTThreadPublic::~FTThreadPublic()
@@ -32,70 +32,70 @@ FTThreadPublic::~FTThreadPublic()
 
 Bool FTThreadPublic::sendMessage(UInt message, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, wait);
+   return FTThreadBase::sendMessage(message, wait);
 }
 
 Bool FTThreadPublic::sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, lowPart, highPart, wait);
+   return FTThreadBase::sendMessage(message, lowPart, highPart, wait);
 }
 
 Bool FTThreadPublic::sendMessage(UInt message, pVoid voidPtr, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, voidPtr, wait);
+   return FTThreadBase::sendMessage(message, voidPtr, wait);
 }
 
 Bool FTThreadPublic::sendMessage(UInt message, LongLong quadPart, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, quadPart, wait);
+   return FTThreadBase::sendMessage(message, quadPart, wait);
 }
 
 Void FTThreadPublic::init(Short appId, UShort threadId, pVoid arg, Int queueSize, Bool suspended, Dword stackSize)
 {
-    m_appId = appId;
-    m_threadId = threadId;
-    m_queueSize = queueSize;
+   m_appId = appId;
+   m_threadId = threadId;
+   m_queueSize = queueSize;
 
-    long id = m_appId * 10000 + m_threadId;
+   long id = m_appId * 10000 + m_threadId;
 
-    m_queue.init(m_queueSize, id, True, FTThreadQueueBase::ReadWrite);
+   m_queue.init(m_queueSize, id, True, FTThreadQueueBase::ReadWrite);
 
-    FTThreadBase::init(arg, suspended, stackSize);
+   FTThreadBase::init(arg, suspended, stackSize);
 }
 
 Void FTThreadPublic::quit()
 {
-    FTThreadBase::quit();
+   FTThreadBase::quit();
 }
 
 Void FTThreadPublic::suspend()
 {
-    FTThreadBase::suspend();
+   FTThreadBase::suspend();
 }
 
 Void FTThreadPublic::onInit()
 {
-    FTThreadBase::onInit();
+   FTThreadBase::onInit();
 }
 
 Void FTThreadPublic::onQuit()
 {
-    FTThreadBase::onQuit();
+   FTThreadBase::onQuit();
 }
 
 Void FTThreadPublic::onSuspend()
 {
-    FTThreadBase::onSuspend();
+   FTThreadBase::onSuspend();
 }
 
 Void FTThreadPublic::pumpMessages()
 {
-    FTThreadBase::pumpMessages();
+   FTThreadBase::pumpMessages();
 }
 
 Void FTThreadPublic::defMessageHandler(FTThreadMessage &msg)
 {
-    FTThreadBase::defMessageHandler(msg);
+   FTThreadBase::defMessageHandler(msg);
 }
 
 Void FTThreadPublic::messageQueued()
@@ -110,9 +110,9 @@ END_MESSAGE_MAP()
 
 FTThreadPrivate::FTThreadPrivate()
 {
-    m_appId = 1;
-    m_threadId = 1;
-    m_queueSize = 16384;
+   m_appId = 1;
+   m_threadId = 1;
+   m_queueSize = 16384;
 }
 
 FTThreadPrivate::~FTThreadPrivate()
@@ -121,70 +121,70 @@ FTThreadPrivate::~FTThreadPrivate()
 
 Bool FTThreadPrivate::sendMessage(UInt message, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, wait);
+   return FTThreadBase::sendMessage(message, wait);
 }
 
 Bool FTThreadPrivate::sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, lowPart, highPart, wait);
+   return FTThreadBase::sendMessage(message, lowPart, highPart, wait);
 }
 
 Bool FTThreadPrivate::sendMessage(UInt message, pVoid voidPtr, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, voidPtr, wait);
+   return FTThreadBase::sendMessage(message, voidPtr, wait);
 }
 
 Bool FTThreadPrivate::sendMessage(UInt message, LongLong quadPart, Bool wait)
 {
-    return FTThreadBase::sendMessage(message, quadPart, wait);
+   return FTThreadBase::sendMessage(message, quadPart, wait);
 }
 
 Void FTThreadPrivate::init(Short appId, UShort threadId, pVoid arg, Int queueSize, Bool suspended, Dword stackSize)
 {
-    m_appId = appId;
-    m_threadId = threadId;
-    m_queueSize = queueSize;
+   m_appId = appId;
+   m_threadId = threadId;
+   m_queueSize = queueSize;
 
-    long id = m_appId * 10000 + m_threadId;
+   long id = m_appId * 10000 + m_threadId;
 
-    m_queue.init(m_queueSize, id, True, FTThreadQueueBase::ReadWrite);
+   m_queue.init(m_queueSize, id, True, FTThreadQueueBase::ReadWrite);
 
-    FTThreadBase::init(arg, suspended, stackSize);
+   FTThreadBase::init(arg, suspended, stackSize);
 }
 
 Void FTThreadPrivate::quit()
 {
-    FTThreadBase::quit();
+   FTThreadBase::quit();
 }
 
 Void FTThreadPrivate::suspend()
 {
-    FTThreadBase::suspend();
+   FTThreadBase::suspend();
 }
 
 Void FTThreadPrivate::onInit()
 {
-    FTThreadBase::onInit();
+   FTThreadBase::onInit();
 }
 
 Void FTThreadPrivate::onQuit()
 {
-    FTThreadBase::onQuit();
+   FTThreadBase::onQuit();
 }
 
 Void FTThreadPrivate::onSuspend()
 {
-    FTThreadBase::onSuspend();
+   FTThreadBase::onSuspend();
 }
 
 Void FTThreadPrivate::pumpMessages()
 {
-    FTThreadBase::pumpMessages();
+   FTThreadBase::pumpMessages();
 }
 
 Void FTThreadPrivate::defMessageHandler(FTThreadMessage &msg)
 {
-    FTThreadBase::defMessageHandler(msg);
+   FTThreadBase::defMessageHandler(msg);
 }
 
 Void FTThreadPrivate::messageQueued()

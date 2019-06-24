@@ -14,70 +14,73 @@
 * limitations under the License.
 */
 
-#include "../include/ft/ftutility.h"
+#include "ftutility.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 Int FTUtility::indexOf(cpStr path, Char search, Int start)
 {
-	if (start > (Int)strlen(path))
-		return -1;
+   if (start > (Int)strlen(path))
+      return -1;
 
-	path = &path[start];
-	int ofs = start;
-	for (; *path && *path != search; ofs++, path++);
+   path = &path[start];
+   int ofs = start;
+   for (; *path && *path != search; ofs++, path++)
+      ;
 
-	return *path ? -1 : ofs;
+   return *path ? -1 : ofs;
 }
 
 Int FTUtility::indexOfAny(cpStr path, cpStr search)
 {
-	Int ofs = 0;
+   Int ofs = 0;
 
-	for (cpStr p = path; *p; ofs++, p++)
-	{
-		cpStr sp = search;
-		for (; *sp && *p != *sp; ++sp);
-		if (*sp)
-			break;
-	}
+   for (cpStr p = path; *p; ofs++, p++)
+   {
+      cpStr sp = search;
+      for (; *sp && *p != *sp; ++sp)
+         ;
+      if (*sp)
+         break;
+   }
 
-	return path[ofs] ? ofs : -1;
+   return path[ofs] ? ofs : -1;
 }
 
 Int FTUtility::lastIndexOfAny(cpStr path, cpStr search)
 {
-	if (!*path)
-		return -1;
+   if (!*path)
+      return -1;
 
-	cpStr p = &path[strlen(path)-1];
+   cpStr p = &path[strlen(path) - 1];
 
-	for (; p >= path; p--)
-	{
-		cpStr sp = search;
-		for (; *sp && *p != *sp; ++sp);
-		if (*sp)
-			break;
-	}
+   for (; p >= path; p--)
+   {
+      cpStr sp = search;
+      for (; *sp && *p != *sp; ++sp)
+         ;
+      if (*sp)
+         break;
+   }
 
-	return p < path ? -1 : (Int)(p - path);
+   return p < path ? -1 : (Int)(p - path);
 }
 
 std::vector<FTString> FTUtility::split(cpStr s, cpStr delims)
 {
-	std::vector<FTString> strings;
-	pStr ss = strdup(s);
-	FTString token;
-	
-	pStr p = strtok(ss, delims);
-	while (p)
-	{
-		token = p;
-		strings.push_back(token);
-		p = strtok(NULL, delims);
-	}
+   std::vector<FTString> strings;
+   pStr ss = strdup(s);
+   FTString token;
 
-	free(ss);
-	return strings;
+   pStr p = strtok(ss, delims);
+   while (p)
+   {
+      token = p;
+      strings.push_back(token);
+      p = strtok(NULL, delims);
+   }
+
+   free(ss);
+   return strings;
 }

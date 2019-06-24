@@ -23,12 +23,13 @@
 class FTHash
 {
 public:
-	static ULong getHash(FTString& str);
-	static ULong getHash(cpChar val, ULong len);
-	static ULong getHash(cpUChar val, ULong len);
+   static ULong getHash(FTString &str);
+   static ULong getHash(cpChar val, ULong len);
+   static ULong getHash(cpUChar val, ULong len);
+
 protected:
 private:
-	static ULong m_crcTable[256];
+   static ULong m_crcTable[256];
 };
 
 #endif // #define __fthash_h_included

@@ -38,41 +38,41 @@ DECLARE_ERROR(FTCircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuf
 class FTCircularBuffer
 {
 public:
-    FTCircularBuffer(Int capacity);
-    ~FTCircularBuffer();
+   FTCircularBuffer(Int capacity);
+   ~FTCircularBuffer();
 
-    Void initialize();
+   Void initialize();
 
-    Bool isEmpty()  { return m_used == 0; }
-    Int capacity()  { return m_capacity; }
-    Int used()      { return m_used; }
-    Int free()      { return m_capacity - m_used; }
+   Bool isEmpty() { return m_used == 0; }
+   Int capacity() { return m_capacity; }
+   Int used() { return m_used; }
+   Int free() { return m_capacity - m_used; }
 
-    Int peekData(pUChar dest, Int offset, Int length)
-    {
-        return readData(dest, offset, length, true);
-    }
+   Int peekData(pUChar dest, Int offset, Int length)
+   {
+      return readData(dest, offset, length, true);
+   }
 
-    Int readData(pUChar dest, Int offset, Int length)
-    {
-        return readData(dest, offset, length, false);
-    }
+   Int readData(pUChar dest, Int offset, Int length)
+   {
+      return readData(dest, offset, length, false);
+   }
 
-    void writeData(pUChar src, Int offset, Int length);
-    void modifyData(pUChar src, Int offset, Int length);
+   void writeData(pUChar src, Int offset, Int length);
+   void modifyData(pUChar src, Int offset, Int length);
 
 private:
-    Int readData(pUChar dest, Int offset, Int length, Bool peek);
+   Int readData(pUChar dest, Int offset, Int length, Bool peek);
 
-    FTCircularBuffer() {}
+   FTCircularBuffer() {}
 
-    pUChar m_data;
-    Int m_capacity;
-    Int m_head;
-    Int m_tail;
-    Int m_used;
+   pUChar m_data;
+   Int m_capacity;
+   Int m_head;
+   Int m_tail;
+   Int m_used;
 
-    FTMutex m_mutex;
+   FTMutex m_mutex;
 };
 
 #endif // __ftcbuf_h_included
