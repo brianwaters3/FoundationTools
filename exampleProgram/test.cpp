@@ -275,8 +275,8 @@ Void FTThread_cancel_wait()
    FTThreadBasicCancelWaitTest t;
 
    t.init((Void *)"this is the thread argument\n", true);
-   cout << "before resume" << endl;
-   t.resume();
+   //cout << "before resume" << endl;
+   //t.resume();
    cout << "waiting for test thread to start" << endl;
    t.runningSemaphore.Decrement();
    Int x = 10000;
@@ -369,8 +369,8 @@ Void FTThreadBasic_test()
    FTThreadBasicTest t;
 
    t.init((Void *)"this is the thread argument\n", true);
-   cout << "before resume" << endl;
-   t.resume();
+   //cout << "before resume" << endl;
+   //t.resume();
    cout << "before 5 second sleep sleep" << endl;
    t.sleep(5000);
    cout << "before setTimeToQuit()" << endl;
@@ -1229,6 +1229,97 @@ Void FTThreadTimerOneShot_test()
    t.join();
 }
 
+class FTThreadTestSuspendResume : public FTThreadPrivate
+{
+public:
+   FTThreadTestSuspendResume()
+   {
+      m_timer.Start();
+   }
+
+   Void userFunc1(FTThreadMessage &msg)
+   {
+      cout << "received FTM_USER1 - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      m_timer.Start();
+   }
+
+   Void onInit()
+   {
+      cout << "received FTM_INIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      m_timer.Start();
+   }
+
+   Void onSuspend()
+   {
+      cout << "received FTM_SUSPEND - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      m_timer.Start();
+   }
+
+   Void onQuit()
+   {
+      FTThreadPrivate::onQuit();
+      cout << "received FTM_QUIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      m_timer.Start();
+   }
+
+   DECLARE_MESSAGE_MAP()
+
+private:
+   FTTimerElapsed m_timer;
+};
+
+BEGIN_MESSAGE_MAP(FTThreadTestSuspendResume, FTThreadPrivate)
+   ON_MESSAGE(FTM_USER1, FTThreadTestSuspendResume::userFunc1)
+END_MESSAGE_MAP()
+
+Void FTThreadSuspendResume_test()
+{
+   cout << "FTThreadSuspendResume_test - start" << endl;
+
+   FTThreadTestSuspendResume t;
+
+   t.init(1, 1, NULL, 2000);
+   FTThreadBasic::sleep(1000);
+
+   cout << "start sending FTM_USER1 messages" << endl;
+   for (Int i=0; i<5; i++)
+   {
+      t.sendMessage(FTM_USER1);
+      FTThreadBasic::sleep(1000);
+   }
+
+   for (Int i=0; i<5; i++)
+   {
+      Int ms = 3000;
+      if (!i)
+      {
+         cout << "suspending the thread for " << ms/1000 << "seconds" << endl;
+         t.suspend();
+         cout << "sending FTM_USER1 while thread is suspended " << endl;
+      }
+
+      t.sendMessage(FTM_USER1);
+
+      if (!i)
+      {
+         FTThreadBasic::sleep(ms);
+         cout << "resuming the thread" << endl;
+         t.resume();
+      }
+
+      FTThreadBasic::sleep(1000);
+   }
+
+   t.quit();
+   t.join();
+   cout << "FTThreadSuspendResume_test - complete" << endl;
+}
+
+
+
+
+
+
 //Void OpenDBX_test()
 //{
 //    try
@@ -1477,7 +1568,7 @@ Void printMenu()
        "                          Foundation Tools Test Menu                           \n"
        "\n"
        "1.  Semaphore/thread cancellation              14. Basic thread test            \n"
-       "2.  DateTime object tests                      15. *** UNUSED ***               \n"
+       "2.  DateTime object tests                      15. Thread suspend/resume        \n"
        "3.  Public thread test (1 writer, 1 reader)    16. Thread periodic timer test   \n"
        "4.  Public thread test (1 writer, 4 readers)   17. Thread one shot timer test   \n"
        "5.  Private thread test (1 writer, 4 readers)  18. Circular buffer test         \n"
@@ -1555,7 +1646,9 @@ Void run()
          case 14:
             FTThreadBasic_test();
             break;
-         //case 15:  FTLogger_test();                  break;
+         case 15:
+            FTThreadSuspendResume_test();
+            break;
          case 16:
             FTThreadTimerPeriodic_test();
             break;

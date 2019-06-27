@@ -851,7 +851,7 @@ Bool FTSocketThread::pumpMessagesInternal()
 
    try
    {
-      while (keepGoing())
+      while (True)
       {
          if (!pumpMessage(msg, false) || msg.getMsgId() == FTM_QUIT)
             break;
@@ -865,7 +865,8 @@ Bool FTSocketThread::pumpMessagesInternal()
    ////////////////////////////////////////////////////////////////////
    // get out if the thread has been told to stop
    ////////////////////////////////////////////////////////////////////
-   return (keepGoing() && msg.getMsgId() != FTM_QUIT);
+   //return (keepGoing() && msg.getMsgId() != FTM_QUIT);
+   return msg.getMsgId() != FTM_QUIT;
 }
 
 Void FTSocketThread::pumpMessages()

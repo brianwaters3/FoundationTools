@@ -96,14 +96,10 @@ Void FTThreadBasic::UnInitialize()
 }
 
 FTThreadBasic::FTThreadBasic()
-    : m_suspended(0, 1000), m_suspendSem(0, 1)
 {
    m_state = FTThreadBasic::rsWaitingToRun;
-   m_suspendCnt = 1;
    m_arg = NULL;
    m_exitCode = 0;
-   m_keepgoing = True;
-   m_updatestatemanually = False;
    m_initialized = False;
 
    FTMutexLock lc(m_thrdCtlMutex);
@@ -145,14 +141,10 @@ Void FTThreadBasic::_shutdown()
    FTMutexLock l(m_mutex);
 
    if (isRunning())
-   {
-      //suspend();
-      shutdown();
-      //resume();
-   }
+      cancelWait();
 }
 
-Void FTThreadBasic::init(pVoid arg, Bool suspended, Dword stackSize)
+Void FTThreadBasic::init(pVoid arg, Dword stackSize)
 {
    {
       FTMutexLock l(m_mutex);
@@ -171,14 +163,9 @@ Void FTThreadBasic::init(pVoid arg, Bool suspended, Dword stackSize)
          throw FTThreadError_UnableToInitialize();
 
       m_initialized = True;
-
-      if (suspended)
-         m_suspendCnt++;
-
-      resume();
    }
 
-   while (m_suspendCnt == 0 && isWaitingToRun())
+   while (isWaitingToRun())
       yield();
 }
 
@@ -187,37 +174,11 @@ Bool FTThreadBasic::isInitialized()
    return m_initialized;
 }
 
-Void FTThreadBasic::resume()
-{
-   if (!isInitialized())
-      throw FTThreadError_NotInitialized();
-
-   if (m_suspendCnt > 0)
-   {
-      if (atomic_dec(m_suspendCnt) == 0)
-         m_suspendSem.Increment();
-   }
-
-   yield();
-}
-
-Void FTThreadBasic::suspend()
-{
-   if (atomic_inc(m_suspendCnt))
-      m_suspended.Decrement();
-}
-
-Void FTThreadBasic::_suspend()
-{
-   m_suspended.Increment();
-   m_suspendSem.Decrement();
-}
-
 Void FTThreadBasic::join()
 {
    {
       FTMutexLock l(m_mutex);
-      if (!isRunning() && !isSuspended())
+      if (!isRunning())
          return;
    }
    pVoid value;
@@ -242,14 +203,10 @@ pVoid FTThreadBasic::_threadProc(pVoid arg)
 {
    FTThreadBasic *ths = (FTThreadBasic *)arg;
 
-   // do not continue until resumed
-   ths->m_suspendSem.Decrement();
-
    // set to running state
    {
       FTMutexLock l(ths->m_mutex);
-      if (!ths->getUpdateStateManually())
-         ths->m_state = FTThreadBasic::rsRunning;
+      ths->m_state = FTThreadBasic::rsRunning;
    }
 
    Dword ret = ths->threadProc(ths->m_arg);
@@ -257,8 +214,7 @@ pVoid FTThreadBasic::_threadProc(pVoid arg)
    // set to not running state
    {
       FTMutexLock l(ths->m_mutex);
-      if (!ths->getUpdateStateManually())
-         ths->m_state = FTThreadBasic::rsDoneRunning;
+      ths->m_state = FTThreadBasic::rsDoneRunning;
    }
 
 #pragma GCC diagnostic push
@@ -273,7 +229,6 @@ extern "C" Void _UserSignal1Handler(int)
 
 Int FTThreadBasic::cancelWait()
 {
-   m_keepgoing = False;
    return pthread_cancel(m_thread);
 }
 
@@ -288,7 +243,11 @@ ON_FTM_TIMER()
 END_MESSAGE_MAP()
 
 FTThreadBase::FTThreadBase()
-    : FTThreadBasic() // , m_queue(queueSize)
+    : FTThreadBasic(),
+      m_arg(NULL),
+      m_stacksize(0),
+      m_suspendCnt(0),
+      m_suspendSem(0)
 {
 }
 
@@ -326,8 +285,20 @@ Bool FTThreadBase::sendMessage(UInt message, LongLong quadPart, Bool wait_for_sl
 
 Void FTThreadBase::init(pVoid arg, Bool suspended, Dword stackSize)
 {
-   FTThreadBasic::init(arg, suspended, stackSize);
-   sendMessage(FTM_INIT);
+   m_arg = arg;
+   m_stacksize = stackSize;
+
+   if (!suspended)
+      start();
+}
+
+Void FTThreadBase::start()
+{
+   if (!isInitialized())
+   {
+      FTThreadBasic::init(m_arg, m_stacksize);
+      sendMessage(FTM_INIT);
+   }
 }
 
 Void FTThreadBase::quit()
@@ -337,8 +308,14 @@ Void FTThreadBase::quit()
 
 Void FTThreadBase::suspend()
 {
-   sendMessage(FTM_SUSPEND);
-   FTThreadBasic::suspend();
+   if (atomic_inc(m_suspendCnt) == 1)
+      sendMessage(FTM_SUSPEND);
+}
+
+Void FTThreadBase::resume()
+{
+   if (atomic_dec(m_suspendCnt) == 0)
+      m_suspendSem.Increment();
 }
 
 Void FTThreadBase::onInit()
@@ -351,7 +328,6 @@ Void FTThreadBase::onQuit()
 
 Void FTThreadBase::onSuspend()
 {
-   _suspend();
 }
 
 Void FTThreadBase::onTimer(FTThreadBase::Timer *ptimer)
@@ -394,9 +370,9 @@ Void FTThreadBase::pumpMessages()
          {
             if (msg.getMsgId() == FTM_QUIT)
                break;
+            if (msg.getMsgId() == FTM_SUSPEND)
+               m_suspendSem.Decrement();
          }
-         if (!keepGoing())
-            break;
       }
    }
    catch (FTError &e)

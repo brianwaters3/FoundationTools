@@ -80,19 +80,13 @@ public:
    static Void Initialize();
    static Void UnInitialize();
 
-   Void init(pVoid arg, Bool suspended = False, Dword stackSize = 0);
-   Void resume();
+   Void init(pVoid arg, Dword stackSize = 0);
    Void join();
 
    static Void sleep(Int milliseconds);
    static Void yield();
 
    Bool isInitialized();
-
-   Bool isSuspended()
-   {
-      return m_suspendCnt == 0 ? False : True;
-   }
 
    Void setRunState(RunState state) { m_state = state; }
    RunState getRunState() { return m_state; }
@@ -101,24 +95,7 @@ public:
    Bool isRunning() { return m_state == FTThreadBasic::rsRunning; }
    Bool isDoneRunning() { return m_state == FTThreadBasic::rsDoneRunning; }
 
-   Void setUpdateStateManually(Bool val) { m_updatestatemanually = val; }
-   Bool getUpdateStateManually() { return m_updatestatemanually; }
-
-   Bool keepGoing() { return m_keepgoing; }
-
-   virtual Void shutdown()
-   {
-      // This method is called in the event of the object being destroyed
-      // while the thread is running.  This is intended for use for threads
-      // that do not support a message queue (FTTM_QUIT will be issued) to
-      // inform the thread that it needs to exit.
-   }
-
    Int cancelWait();
-
-protected:
-   virtual Void suspend();
-   Void _suspend();
 
 private:
    Bool m_initialized;
@@ -132,11 +109,6 @@ private:
 
    FTMutexPrivate m_mutex;
    RunState m_state;
-   Bool m_keepgoing;
-   Bool m_updatestatemanually;
-   FTSemaphorePrivate m_suspended;
-   FTSemaphorePrivate m_suspendSem;
-   Int m_suspendCnt;
    pVoid m_arg;
    Dword m_exitCode;
 };
@@ -227,7 +199,9 @@ public:
 
    Void init(pVoid arg, Bool suspended = False, Dword stackSize = 0);
    Void quit();
+   Void start();
    Void suspend();
+   Void resume();
    Bool pumpMessage(FTThreadMessage &msg, Bool wait = true);
 
    FTSemaphoreData &getMsgSemaphore()
@@ -257,6 +231,11 @@ protected:
 private:
    Dword threadProc(pVoid arg);
    Bool dispatch(FTThreadMessage &msg);
+
+   pVoid m_arg;
+   Dword m_stacksize;
+   Int m_suspendCnt;
+   FTSemaphorePrivate m_suspendSem;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
