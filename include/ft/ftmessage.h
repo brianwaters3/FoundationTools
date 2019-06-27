@@ -63,14 +63,6 @@ public:
    {
       length += sizeof(UShort);
    }
-   //    Void elementLength(Int val, ULong &length)
-   //    {
-   //        length += sizeof(Int);
-   //    }
-   //    Void elementLength(UInt val, ULong &length)
-   //    {
-   //        length += sizeof(UInt);
-   //    }
    Void elementLength(Long val, ULong &length)
    {
       length += sizeof(Long);

@@ -33,6 +33,8 @@ DECLARE_ERROR_ADVANCED2(FTMutexError_UnableToInitialize);
 DECLARE_ERROR_ADVANCED2(FTMutexError_UnableToLock);
 DECLARE_ERROR_ADVANCED2(FTMutexError_UnableToUnLock);
 DECLARE_ERROR(FTMutexError_UnableToAllocateMutex);
+DECLARE_ERROR(FTMutexError_AlreadyInitialized);
+DECLARE_ERROR(FTMutexError_MutexUninitialized);
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -48,39 +50,50 @@ DECLARE_ERROR(FTSemaphoreError_AlreadyInitialized);
 DECLARE_ERROR(FTSemaphoreError_MaxNotifyIdsExceeded);
 
 ////////////////////////////////////////////////////////////////////////////////
+// Common Mutex Classes
 ////////////////////////////////////////////////////////////////////////////////
 
-class FTSynchObjects;
-class FTMutex;
-class FTSharedMemory;
-class _FTMutexLock;
-class _FTSemaphore;
-class FTThreadBasic;
-class FTQueueBase;
+class FTMutexLock;
 
-class _FTMutex
+class FTMutexData
 {
-public:
-   _FTMutex(Bool bInit = True);
-   ~_FTMutex();
+   friend FTMutexLock;
 
-   Void init(cpStr pName);
+public:
+   FTMutexData()
+   {
+      m_initialized = False;
+   }
+   ~FTMutexData()
+   {
+   }
+
+   Void init(Bool shared);
    Void destroy();
 
+   Bool initialized()
+   {
+      return m_initialized;
+   }
+
+#if defined(NATIVE_IPC)
+   pthread_mutex_t &mutex()
+   {
+      return m_mutex;
+   }
+#else
+   Long &mutex()
+   {
+      return m_lock;
+   }
+#endif
+
+protected:
    Bool enter(Bool wait = True);
    Void leave();
 
-   Int getNextIndex() { return m_nextIndex; }
-   Void setNextIndex(Int val) { m_nextIndex = val; }
-
-   Int getMutexId() { return m_mutexid; }
-   Void setMutexId(Int mutexid) { m_mutexid = mutexid; }
-
 private:
-   Int m_nextIndex;
-
    Bool m_initialized;
-   Int m_mutexid;
 #if defined(NATIVE_IPC)
    pthread_mutex_t m_mutex;
 #else
@@ -88,57 +101,47 @@ private:
 #endif
 };
 
-class FTMutex
+#if 0
+class FTMutexBase
 {
-public:
-   FTMutex(Bool bInit = True);
-   ~FTMutex();
+   friend FTMutexLock;
 
-   Void init(cpStr pName);
-   Void destroy();
+public:
+   FTMutexBase()
+   {
+   }
+   ~FTMutexBase()
+   {
+   }
+
+   virtual Void init() = 0;
+
+   Void destroy()
+   {
+      FTMutexData &data = getData();
+      data.destroy();
+   }
+
+
+protected:
+   virtual FTMutexData &getData() = 0;
+
+   Void init(Bool isPublic)
+   {
+      FTMutexData &data = getData();
+      data.init(isPublic);
+   }
 
    Bool enter(Bool wait = True);
    Void leave();
-
-protected:
-   _FTMutex &getHandle();
-
-private:
-   Int m_mutexid;
 };
-
-class _FTMutexLock
-{
-public:
-   _FTMutexLock(_FTMutex &mtx, Bool acquire = true)
-       : m_acquire(acquire), m_mtx(mtx)
-   {
-      if (m_acquire)
-         m_mtx.enter();
-   }
-
-   ~_FTMutexLock()
-   {
-      if (m_acquire)
-         m_mtx.leave();
-   }
-
-private:
-   Bool m_acquire;
-   _FTMutex &m_mtx;
-
-   // make these private to disallow them:
-   _FTMutexLock &operator=(const _FTMutexLock &other)
-   {
-      return *this;
-   }
-};
+#endif
 
 class FTMutexLock
 {
 public:
-   FTMutexLock(FTMutex &mtx, Bool acquire = True)
-       : m_acquire(acquire), m_mtx(mtx)
+   FTMutexLock(FTMutexData &mtx, Bool acquire = True)
+      : m_acquire(acquire), m_mtx(mtx)
    {
       if (m_acquire)
          m_mtx.enter();
@@ -158,19 +161,240 @@ public:
    }
 
 private:
+   FTMutexData &m_mtx;
    Bool m_acquire;
-   FTMutex &m_mtx;
 
-   // make these private to disallow them:
-   FTMutexLock &operator=(const FTMutexLock &other)
-   {
-      return *this;
-   }
+   FTMutexLock();
+   FTMutexLock &operator=(const FTMutexLock &other);
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+// Private Mutex Classes
 ////////////////////////////////////////////////////////////////////////////////
 
+class FTMutexPrivate : public FTMutexData
+{
+public:
+   FTMutexPrivate(Bool bInit = True)
+       : FTMutexData()
+   {
+      if (bInit)
+         init();
+   }
+
+   ~FTMutexPrivate() { destroy(); }
+
+   Void *operator new(size_t, void *where) { return where; }
+
+   Void init() { FTMutexData::init(False); }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Public Mutex Classes
+////////////////////////////////////////////////////////////////////////////////
+
+class FTMutexDataPublic : public FTMutexData
+{
+public:
+   FTMutexDataPublic() {}
+   ~FTMutexDataPublic() {}
+
+   Int &nextIndex() { return m_nextIndex; }
+   Int &mutexId() { return m_mutexId; }
+
+private:
+   Int m_nextIndex;
+   Int m_mutexId;
+};
+
+class FTMutexPublic
+{
+public:
+   FTMutexPublic(Bool bInit = True)
+   {
+      m_mutexid = 0;
+      if (bInit)
+         init();
+   }
+
+   ~FTMutexPublic()
+   {
+      destroy();
+   }
+
+   Void init();
+   Void destroy();
+
+   Void attach(Int mutexid);
+   Void detach();
+
+   Int mutexId() { return m_mutexid; }
+
+   operator FTMutexDataPublic &();
+
+private:
+   Int m_mutexid;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Common Semaphore Classes
+////////////////////////////////////////////////////////////////////////////////
+
+class FTSemaphoreData
+{
+public:
+   FTSemaphoreData()
+      : m_initialized(False),
+        m_shared(False),
+        m_initCount(0),
+        m_currCount(0)
+   {
+   }
+
+   FTSemaphoreData(Long initcnt, Bool shared)
+      : m_initialized(False),
+        m_shared(shared),
+        m_initCount(initcnt),
+        m_currCount(0)
+   {
+   }
+
+   ~FTSemaphoreData()
+   {
+      destroy();
+   }
+
+   Void init();
+   Void destroy();
+
+   Bool Decrement(Bool wait = True);
+   Bool Increment();
+
+   Bool initialized() { return m_initialized; }
+   Bool &shared() { return m_shared; }
+   Long &initialCount() { return m_initCount; }
+   Long currCount() { return m_currCount; }
+
+private:
+   Bool m_initialized;
+   Bool m_shared;
+   Long m_initCount;
+   Long m_currCount;
+   sem_t m_sem;
+};
+
+class FTSemaphoreBase
+{
+public:
+   FTSemaphoreBase() {}
+   ~FTSemaphoreBase() {}
+
+   virtual Void init(Long initcnt) = 0;
+   virtual Void destroy() = 0;
+
+   Bool Decrement(Bool wait = True) { return getData().Decrement(wait); }
+   Bool Increment() { return getData().Increment(); }
+
+   Bool initialized() { return getData().initialized(); }
+   Bool &shared() { return getData().shared(); }
+   Long &initialCount() { return getData().initialCount(); }
+   Long currCount() { return getData().currCount(); }
+
+   operator FTSemaphoreData&() { return getData(); }
+
+protected:
+   virtual FTSemaphoreData &getData() = 0;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Private Semaphore Classes
+////////////////////////////////////////////////////////////////////////////////
+
+class FTSemaphorePrivate : public FTSemaphoreBase
+{
+public:
+   FTSemaphorePrivate(Long initcnt=0, Bool bInit = True)
+      : m_data(initcnt, False)
+   {
+      if (bInit)
+         init(initcnt);
+   }
+
+   ~FTSemaphorePrivate()
+   {
+      destroy();
+   }
+
+   Void init(Long initcnt) { m_data.initialCount() = initcnt; m_data.init(); }
+   Void destroy() { m_data.destroy(); }
+
+protected:
+   FTSemaphoreData &getData() { return m_data; }
+
+private:
+   FTSemaphoreData m_data;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// Public Semaphore Classes
+////////////////////////////////////////////////////////////////////////////////
+
+class FTSemaphoreDataPublic : public FTSemaphoreData
+{
+public:
+   FTSemaphoreDataPublic(Long initcnt=0)
+      : FTSemaphoreData(initcnt, True)
+   {
+   }
+
+   ~FTSemaphoreDataPublic()
+   {
+   }
+
+   Int &nextIndex() { return m_nextIndex; }
+   Int &semIndex() { return m_semIndex; }
+
+private:
+   Int m_nextIndex;
+   Int m_semIndex;
+};
+
+class FTSemaphorePublic : public FTSemaphoreBase
+{
+public:
+   FTSemaphorePublic()
+      : m_semid(0)
+   {
+   }
+   FTSemaphorePublic(Long initcnt, Bool bInit = True)
+      : m_semid(0)
+   {
+      if (bInit)
+         init(initcnt);
+   }
+
+   ~FTSemaphorePublic()
+   {
+      destroy();
+   }
+
+   Void init(Long initialCount);
+   Void destroy();
+
+   Int &nextIndex();
+   Int &semIndex();
+
+   Void attach(Int semid);
+   Void detach();
+
+protected:
+   FTSemaphoreData &getData();
+
+private:
+   Int m_semid;
+};
+
+#if 0
 class FTSemaphore;
 
 class _FTSemaphore
@@ -243,6 +467,7 @@ protected:
 private:
    Int m_semid;
 };
+#endif
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////

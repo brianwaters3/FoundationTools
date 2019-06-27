@@ -39,17 +39,17 @@ private:
    static Int m_appid;
 };
 
-#define FTLOG_MUTEX ((ULongLong)0x0000000000000001)
-#define FTLOG_SEMAPHORE ((ULongLong)0x0000000000000002)
-#define FTLOG_SEMNOTICE ((ULongLong)0x0000000000000004)
-#define FTLOG_SHAREDMEMORY ((ULongLong)0x0000000000000008)
-#define FTLOG_SYNCHOBJECTS ((ULongLong)0x0000000000000010)
+// #define FTLOG_MUTEX ((ULongLong)0x0000000000000001)
+// #define FTLOG_SEMAPHORE ((ULongLong)0x0000000000000002)
+// #define FTLOG_SEMNOTICE ((ULongLong)0x0000000000000004)
+// #define FTLOG_SHAREDMEMORY ((ULongLong)0x0000000000000008)
+// #define FTLOG_SYNCHOBJECTS ((ULongLong)0x0000000000000010)
 
-#define FTLOGFUNC(f) static cpStr __funcname__ = #f
-#define FTLOG(groupid, severity, format...) FTLogger::log(FoundationTools::getInternalLogId(), groupid, severity, __funcname__, format)
-#define FTLOGINFO(groupid, format...) FTLogger::logInfo(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
-#define FTLOGWARN(groupid, format...) FTLogger::logWarning(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
-#define FTLOGERROR(groupid, format...) FTLogger::logError(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
+// #define FTLOGFUNC(f) static cpStr __funcname__ = #f
+// #define FTLOG(groupid, severity, format...) FTLogger::log(FoundationTools::getInternalLogId(), groupid, severity, __funcname__, format)
+// #define FTLOGINFO(groupid, format...) FTLogger::logInfo(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
+// #define FTLOGWARN(groupid, format...) FTLogger::logWarning(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
+// #define FTLOGERROR(groupid, format...) FTLogger::logError(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
 
 #define SECTION_TOOLS "FoundationTools"
 #define SECTION_SYNCH_OBJS "SynchronizationObjects"
@@ -57,6 +57,7 @@ private:
 #define SECTION_LOGGER "FTLogger"
 #define SECTION_LOGGER_OPTIONS "FTLoggerOptions"
 
+#define MEMBER_ENABLE_PUBLIC_OBJECTS "EnablePublicObjects"
 #define MEMBER_NUMBER_SEMAPHORES "NumberSemaphores"
 #define MEMBER_NUMBER_MUTEXES "NumberMutexes"
 #define MEMBER_QUEUE_ID "QueueID"

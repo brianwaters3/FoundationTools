@@ -126,16 +126,16 @@ private:
    static pVoid _threadProc(pVoid arg);
    static FTThreadBasic *findCurrentThread();
    static FTThreadPtrList m_thrdCtl;
-   static FTMutex m_thrdCtlMutex;
+   static FTMutexPrivate m_thrdCtlMutex;
 
    Void _shutdown();
 
-   FTMutex m_mutex;
+   FTMutexPrivate m_mutex;
    RunState m_state;
    Bool m_keepgoing;
    Bool m_updatestatemanually;
-   FTSemaphore m_suspended;
-   FTSemaphore m_suspendSem;
+   FTSemaphorePrivate m_suspended;
+   FTSemaphorePrivate m_suspendSem;
    Int m_suspendCnt;
    pVoid m_arg;
    Dword m_exitCode;
@@ -230,7 +230,7 @@ public:
    Void suspend();
    Bool pumpMessage(FTThreadMessage &msg, Bool wait = true);
 
-   FTSemaphore &getMsgSemaphore()
+   FTSemaphoreData &getMsgSemaphore()
    {
       return queue().semMsgs();
    }

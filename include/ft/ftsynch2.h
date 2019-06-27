@@ -25,22 +25,21 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+DECLARE_ERROR(FTSynchObjectsError_PublicObjectsNotEnabled);
 DECLARE_ERROR_ADVANCED2(FTSynchObjectsError_UnableToAllocateSynchObject);
+DECLARE_ERROR(FTSynchObjectsError_InvalidOffset);
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 class FTSharedMemory;
-class _FTSemaphore;
-class _FTMutex;
-class _FTSemaphoreNotice;
 
 class FTSynchObjects : public FTStatic
 {
 public:
    typedef struct
    {
-      _FTMutex m_mutex;
+      FTMutexPrivate m_mutex;
       Int m_max;
       Int m_head;
       Long m_currused;
@@ -53,7 +52,6 @@ public:
       Long m_sequence;
       _ftsynchcontrol_t m_semaphoreCtrl;
       _ftsynchcontrol_t m_mutexCtrl;
-      _ftsynchcontrol_t m_noticeCtrl;
    } ftsynchcontrol_t;
 
    typedef struct
@@ -75,30 +73,13 @@ public:
 
    Void logObjectUsage();
 
-   Int nextSemaphore();
-   Int nextMutex();
-   Int nextNotice();
+   static Int nextSemaphore();
+   static Int nextMutex();
 
-   Void freeSemaphore(Int nSemId);
-   Void freeMutex(Int nMutexId);
-   Void freeNotice(Int nCondVarId);
+   static Void freeSemaphore(Int nSemId);
+   static Void freeMutex(Int nMutexId);
 
    Long incSequence() { return atomic_inc(m_pCtrl->m_sequence); }
-
-   _FTSemaphore &getSemaphore(Int ofs)
-   {
-      return m_pSemaphores[ofs - 1];
-   }
-
-   _FTMutex &getMutex(Int ofs)
-   {
-      return m_pMutexes[ofs - 1];
-   }
-
-   //_FTSemaphoreNotice& getNotice(Int ofs)
-   //{
-   //    return m_pNotices[ofs - 1];
-   //}
 
    ftpublicqueuedef_t *getPublicQueue(Int queueid)
    {
@@ -122,8 +103,26 @@ public:
       m_pPubQueues[idx].m_multipleWriters = multipleWriters;
    }
 
-   static Void setSynchObjCtrlPtr(FTSynchObjects *pThis) { m_pThis = pThis; }
-   static FTSynchObjects *getSynchObjCtrlPtr() { return m_pThis; }
+   static FTSynchObjects *getSynchObjCtrlPtr()
+   {
+      if (!m_pThis)
+         throw FTSynchObjectsError_PublicObjectsNotEnabled();
+      return m_pThis;
+   }
+
+   static FTSemaphoreDataPublic &getSemaphore(Int ofs)
+   {
+      if (ofs < 0)
+         throw FTSynchObjectsError_InvalidOffset();
+      return getSynchObjCtrlPtr()->m_pSemaphores[ofs - 1];
+   }
+
+   static FTMutexDataPublic &getMutex(Int ofs)
+   {
+      if (ofs < 0)
+         throw FTSynchObjectsError_InvalidOffset();
+      return getSynchObjCtrlPtr()->m_pMutexes[ofs - 1];
+   }
 
 private:
    class FTSynchObjectsSharedMemory : public FTSharedMemory
@@ -140,9 +139,8 @@ private:
 
    FTSynchObjectsSharedMemory m_sharedmem;
    ftsynchcontrol_t *m_pCtrl;
-   _FTSemaphore *m_pSemaphores;
-   _FTMutex *m_pMutexes;
-   _FTSemaphoreNotice *m_pNotices;
+   FTSemaphoreDataPublic *m_pSemaphores;
+   FTMutexDataPublic *m_pMutexes;
    ftpublicqueuedef_t *m_pPubQueues;
 
    static FTSynchObjects *m_pThis;

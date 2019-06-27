@@ -181,7 +181,7 @@ Void FTSocket::createSocket(Int family, Int type, Int protocol)
 {
    m_handle = socket(getFamily(), getType(), getProtocol());
    if (m_handle == FT_INVALID_SOCKET)
-      throw new FTSocketError_UnableToCreateSocket();
+      throw FTSocketError_UnableToCreateSocket();
 
    setOptions();
 }
@@ -322,14 +322,14 @@ Void FTSocket::assignAddress(cpStr ipaddr, UShort port, Int family, Int socktype
          break;
       }
 
-      throw new FTSocketError_GetAddressInfo(errStr);
+      throw FTSocketError_GetAddressInfo(errStr);
    }
 
    if (!*paddrs)
    {
       FTString msg;
       msg.format("%s:%u", ipaddr ? ipaddr : "", port);
-      throw new FTSocketError_NoAddressesFound(msg.c_str());
+      throw FTSocketError_NoAddressesFound(msg.c_str());
    }
 }
 
@@ -445,7 +445,7 @@ Int FTSocketConverse::recv()
          setError();
          if (getError() == FT_EWOULDBLOCK)
             break;
-         throw new FTSocketConverseError_UnableToRecvData();
+         throw FTSocketConverseError_UnableToRecvData();
       }
    }
 
@@ -460,7 +460,7 @@ Int FTSocketConverse::send(pUChar pData, Int length)
    {
       setError();
       if (getError() != FT_EWOULDBLOCK)
-         throw new FTSocketConverseError_SendingPacket();
+         throw FTSocketConverseError_SendingPacket();
    }
 
    return result;
@@ -484,7 +484,7 @@ Void FTSocketConverse::send(Bool override)
    }
 
    if (getState() != CONNECTED)
-      throw new FTSocketConverseError_InvalidSendState(getStateDescription(getState()));
+      throw FTSocketConverseError_InvalidSendState(getStateDescription(getState()));
 
    m_sending = true;
    while (true)
@@ -501,7 +501,7 @@ Void FTSocketConverse::send(Bool override)
       {
          FTString msg;
          msg.format("expected %d bytes, read %d bytes", sizeof(packetLength), amtRead);
-         throw new FTSocketConverseError_ReadingWritePacketLength(msg.c_str());
+         throw FTSocketConverseError_ReadingWritePacketLength(msg.c_str());
       }
 
       Int sentLength = 0;
@@ -517,7 +517,7 @@ Void FTSocketConverse::send(Bool override)
          {
             FTString msg;
             msg.format("expected %d bytes, read %d bytes", sendLength, amtRead);
-            throw new FTSocketConverseError_ReadingWritePacketLength(msg.c_str());
+            throw FTSocketConverseError_ReadingWritePacketLength(msg.c_str());
          }
 
          // write the data to the socket
@@ -613,7 +613,7 @@ Void FTSocketListen::listen()
 {
    bind();
    if (::listen(getHandle(), getDepth()) == FT_SOCKET_ERROR)
-      throw new FTSocketListenError_UnableToListen();
+      throw FTSocketListenError_UnableToListen();
 }
 
 Void FTSocketListen::listen(UShort port, Int depth)
@@ -651,7 +651,7 @@ FTSocketThread::FTSocketThread()
 
    int result = pipe(m_pipefd);
    if (result == -1)
-      throw new FTSocketThreadError_UnableToOpenPipe();
+      throw FTSocketThreadError_UnableToOpenPipe();
    fcntl(m_pipefd[0], F_SETFL, O_NONBLOCK);
 
    FD_ZERO(&m_master);
@@ -716,7 +716,7 @@ Void FTSocketThread::processSelectAccept(FTSocket *psocket)
                Int err = FT_LASTERROR;
                if (err == FT_EWOULDBLOCK)
                   break;
-               throw new FTSocketError_UnableToAcceptSocket();
+               throw FTSocketError_UnableToAcceptSocket();
             }
 
             FTSocketConverse *pnewsocket = ((FTSocketListen *)psocket)->createSocket(this);
@@ -733,9 +733,9 @@ Void FTSocketThread::processSelectAccept(FTSocket *psocket)
                ft_closesocket(handle);
             }
          }
-         catch (FTError *err)
+         catch (FTError &err)
          {
-            if (err->getLastOsError() != FT_EWOULDBLOCK)
+            if (err.getLastOsError() != FT_EWOULDBLOCK)
             {
                //printf("errorHandler() 1 %d\n", err->getLastOsError());
                errorHandler(err, NULL);
@@ -762,7 +762,7 @@ Void FTSocketThread::processSelectRead(FTSocket *psocket)
             if (amtRead <= 0)
                break;
          }
-         catch (FTError *err)
+         catch (FTError &err)
          {
             //printf("errorHandler() 2\n");
             errorHandler(err, psocket);
@@ -791,7 +791,7 @@ Void FTSocketThread::processSelectWrite(FTSocket *psocket)
          {
             ((FTSocketConverse *)psocket)->send(True);
          }
-         catch (FTError *err)
+         catch (FTError &err)
          {
             //printf("errorHandler() 3\n");
             errorHandler(err, psocket);
@@ -828,7 +828,7 @@ int FTSocketThread::getMaxFileDescriptor()
 Void FTSocketThread::bump()
 {
    if (write(m_pipefd[1], "~", 1) == -1)
-      throw new FTSocketThreadError_UnableToWritePipe();
+      throw FTSocketThreadError_UnableToWritePipe();
 }
 
 Void FTSocketThread::clearBump()
@@ -840,7 +840,7 @@ Void FTSocketThread::clearBump()
       {
          if (errno == EWOULDBLOCK)
             break;
-         throw new FTSocketThreadError_UnableToReadPipe();
+         throw FTSocketThreadError_UnableToReadPipe();
       }
    }
 }
@@ -857,7 +857,7 @@ Bool FTSocketThread::pumpMessagesInternal()
             break;
       }
    }
-   catch (...) //catch (FTError *e)
+   catch (...)
    {
       throw;
    }

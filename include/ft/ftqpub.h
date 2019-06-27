@@ -19,6 +19,7 @@
 
 #include "ftqbase.h"
 #include "ftshmem.h"
+#include "ftsynch2.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +38,7 @@ public:
    Void init(Int queuid, FTQueueBase::Mode mode);
 
 protected:
+   Bool isPublic() { return True; }
    ULong &msgSize();
    Int &msgCnt();
    Long &msgHead();
@@ -46,11 +48,18 @@ protected:
    Int &numReaders();
    Int &numWriters();
    Int &refCnt();
-   Int &semFreeId() { return m_pCtrl->m_semfreeid; }
-   Int &semMsgsId() { return m_pCtrl->m_semmsgsid; }
    pChar data();
    Int ctrlSize();
    Void allocDataSpace(cpStr sFile, Char cId, Int nSize);
+   Void initReadMutex();
+   Void initWriteMutex();
+   Void initSemFree(UInt initialCount);
+   Void initSemMsgs(UInt initialCount);
+
+   FTMutexData &readMutex() { return FTSynchObjects::getMutex(readMutexId()); }
+   FTMutexData &writeMutex() { return FTSynchObjects::getMutex(writeMutexId()); }
+   FTSemaphoreData &semFree() { return FTSynchObjects::getSemaphore(semFreeId()); }
+   FTSemaphoreData &semMsgs() { return FTSynchObjects::getSemaphore(semMsgsId()); }
 
    virtual FTQueueMessage *allocMessage(Long msgType) = 0;
 
@@ -73,22 +82,17 @@ private:
       Int m_msgCnt;
       Long m_head; // next location to write
       Long m_tail; // next location to read
-      FTMutex m_rmutex;
-      FTMutex m_wmutex;
+      Int m_rmutexid;
+      Int m_wmutexid;
       Int m_semfreeid;
       Int m_semmsgsid;
-      FTSemaphore m_semFree;
-      FTSemaphore m_semMsgs;
    } ftsharedqueue_ctrl_t;
 
-   Int &getSemMsgsId() { return m_pCtrl->m_semmsgsid; }
-   Int &getSemFreeId() { return m_pCtrl->m_semfreeid; }
+   Int &readMutexId() { return m_pCtrl->m_rmutexid; }
+   Int &writeMutexId() { return m_pCtrl->m_wmutexid; }
 
-   FTSemaphore &semFree() { return m_pCtrl->m_semFree; }
-   FTSemaphore &semMsgs() { return m_pCtrl->m_semMsgs; }
-
-   FTMutex &writeMutex() { return m_pCtrl->m_rmutex; }
-   FTMutex &readMutex() { return m_pCtrl->m_wmutex; }
+   Int &semFreeId() { return m_pCtrl->m_semfreeid; }
+   Int &semMsgsId() { return m_pCtrl->m_semmsgsid; }
 
    FTSharedMemory m_sharedmem;
    ftsharedqueue_ctrl_t *m_pCtrl;

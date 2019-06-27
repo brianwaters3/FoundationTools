@@ -75,16 +75,18 @@ FTSharedMemory::~FTSharedMemory()
 
    if (m_pCtrl)
    {
-      _FTMutexLock l(getMutex());
+      FTMutexLock l(getMutex());
       m_pCtrl->s_usageCnt--;
 
       if (m_pCtrl->s_usageCnt == 0)
       {
          onDestroy();
-         getMutex().destroy();
          bDestroy = True;
       }
    }
+
+   if (bDestroy)
+      getMutex().destroy();
 
    if (m_pShMem)
    {
@@ -101,8 +103,6 @@ FTSharedMemory::~FTSharedMemory()
 
 Void FTSharedMemory::init(cpStr file, Int id, Int size)
 {
-   FTLOGFUNC("FTSharedMemory::init");
-
    longinteger_t liSize;
 
    liSize.quadPart = sizeof(ftshmemctrl_t) + size;
@@ -121,14 +121,14 @@ Void FTSharedMemory::init(cpStr file, Int id, Int size)
       // the file does not exist, so create it
       int fp = open(szFile, O_CREAT | O_RDONLY, S_IRUSR);
       if (fp == -1)
-         throw new FTSharedMemoryError_UnableToCreateKeyFile(szFile);
+         throw FTSharedMemoryError_UnableToCreateKeyFile(szFile);
       close(fp);
    }
 
    // create the key
    m_key = ftok(szFile, id);
 
-   FTLOGINFO(FTLOG_SHAREDMEMORY, "File [%s], Key %0x%x, Size %d", szFile, m_key, size);
+   //FTLOGINFO(FTLOG_SHAREDMEMORY, "File [%s], Key %0x%x, Size %d", szFile, m_key, size);
 
    // get the shared memory handle
    m_shmid = shmget(m_key, liSize.li.lowPart, 0666 | IPC_CREAT);
@@ -136,7 +136,7 @@ Void FTSharedMemory::init(cpStr file, Int id, Int size)
    {
       FTString s;
       s.format("%s - %ld", szFile, (long)m_key);
-      throw new FTSharedMemoryError_UnableToCreate(s);
+      throw FTSharedMemoryError_UnableToCreate(s);
    }
 
    // attach
@@ -144,7 +144,7 @@ Void FTSharedMemory::init(cpStr file, Int id, Int size)
    if (m_pShMem == (pVoid)(-1))
    {
       m_pShMem = NULL;
-      throw new FTSharedMemoryError_UnableToMap();
+      throw FTSharedMemoryError_UnableToMap();
    }
 
    // assign the control block and data pointers
@@ -152,10 +152,10 @@ Void FTSharedMemory::init(cpStr file, Int id, Int size)
    m_pData = (pVoid)((pChar)m_pShMem + sizeof(ftshmemctrl_t));
 
    // initialize the control structure
-   m_pCtrl->s_mutex.init(m_szMutex);
+   new(&m_pCtrl->s_mutex) FTMutexPrivate();
 
    // lock the control mutex
-   _FTMutexLock l(getMutex());
+   FTMutexLock l(getMutex());
 
    // increment the usage counter
    m_pCtrl->s_usageCnt++;
@@ -164,6 +164,6 @@ Void FTSharedMemory::init(cpStr file, Int id, Int size)
 Int FTSharedMemory::getUsageCount()
 {
    if (m_pCtrl == NULL)
-      throw new FTSharedMemoryError_NotInitialized();
+      throw FTSharedMemoryError_NotInitialized();
    return m_pCtrl->s_usageCnt;
 }

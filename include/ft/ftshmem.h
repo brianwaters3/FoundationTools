@@ -57,10 +57,10 @@ private:
    typedef struct
    {
       Int s_usageCnt;
-      _FTMutex s_mutex;
+      FTMutexPrivate s_mutex;
    } ftshmemctrl_t;
 
-   _FTMutex &getMutex()
+   FTMutexPrivate &getMutex()
    {
       return m_pCtrl->s_mutex;
    }

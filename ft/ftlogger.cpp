@@ -30,6 +30,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#if 0
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -136,9 +137,19 @@ Void FTLogger::init(FTGetOpt &options)
    if (!m_writetofile)
       m_queue.init(nQueueID, mode);
 
-   m_sharedmem.init("FTLoggerControlBlock", 1, sizeof(ftloggerctrl_t));
+   if (options.get(SECTION_TOOLS "/" MEMBER_ENABLE_PUBLIC_OBJECTS, false))
+   {
+      m_sharedmem.init("FTLoggerControlBlock", 1, sizeof(ftloggerctrl_t));
 
-   m_pCtrl = (ftloggerctrl_t *)m_sharedmem.getDataPtr();
+      m_pCtrl = (ftloggerctrl_t *)m_sharedmem.getDataPtr();
+      m_pCtrl->s_sharedmem = True;
+   }
+   else
+   {
+      m_pCtrl = new ftloggerctrl_t();
+      memset(m_pCtrl, 0, sizeof(*m_pCtrl));
+      m_pCtrl->s_sharedmem = False;
+   }
 
    if (!m_pCtrl->s_initialized)
    {
@@ -190,16 +201,25 @@ Void FTLogger::init(FTGetOpt &options)
 
 Void FTLogger::uninit()
 {
-   for (Int ofs = 0; ofs < FTLOGGER_MAX_LOGS; ofs++)
+   if (m_pCtrl && m_pCtrl->s_initialized)
    {
-      if (m_handles[ofs].s_fh != -1)
+      for (Int ofs = 0; ofs < FTLOGGER_MAX_LOGS; ofs++)
       {
-         close(m_handles[ofs].s_fh);
-         m_handles[ofs].s_fh = -1;
-         m_handles[ofs].s_linecnt = 0;
-         m_handles[ofs].s_currseg = -1;
-         m_handles[ofs].s_mutex.destroy();
+         if (m_handles[ofs].s_fh != -1)
+         {
+            close(m_handles[ofs].s_fh);
+            m_handles[ofs].s_fh = -1;
+            m_handles[ofs].s_linecnt = 0;
+            m_handles[ofs].s_currseg = -1;
+            m_handles[ofs].s_mutex.destroy();
+         }
       }
+
+      if (!m_pCtrl->s_sharedmem)
+      {
+         delete m_pCtrl;
+         m_pCtrl = NULL;
+      }      
    }
 
    m_queue.destroy();
@@ -215,7 +235,7 @@ Void FTLogger::addLog(Int logid, ULongLong defaultmask, Int maxsegments, Int lin
       ;
 
    if (ofs == FTLOGGER_MAX_LOGS)
-      throw new FTLoggerError_MaximumNumberOfLogsDefined();
+      throw FTLoggerError_MaximumNumberOfLogsDefined();
 
    ftloggerentry_t *pLog = &m_pCtrl->s_logs[ofs];
 
@@ -227,14 +247,14 @@ Void FTLogger::addLog(Int logid, ULongLong defaultmask, Int maxsegments, Int lin
    pLog->s_logtype = logtype;
 
    m_handles[ofs].s_currseg = 0;
-   m_handles[ofs].s_mutex.init(NULL);
+   m_handles[ofs].s_mutex.init();
 }
 
 Bool FTLogger::isGroupMaskEnabled(Int logid, ULongLong groupMask)
 {
    ftloggerentry_t *pLog = m_pThis->findLog(logid);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    return groupEnabled(pLog, groupMask);
 }
@@ -243,7 +263,7 @@ Void FTLogger::enableGroupMask(Int logid, ULongLong groupMask)
 {
    ftloggerentry_t *pLog = m_pThis->findLog(logid);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    longinteger_t gm;
    gm.quadPart = (LongLong)groupMask;
@@ -256,7 +276,7 @@ Void FTLogger::disableGroupMask(Int logid, ULongLong groupMask)
 {
    ftloggerentry_t *pLog = m_pThis->findLog(logid);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    longinteger_t gm;
    gm.quadPart = (LongLong)groupMask;
@@ -269,7 +289,7 @@ Void FTLogger::setGroupMask(Int logid, ULongLong groupMask)
 {
    ftloggerentry_t *pLog = m_pThis->findLog(logid);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    pLog->s_mask.quadPart = (LongLong)groupMask;
 }
@@ -278,7 +298,7 @@ ULongLong FTLogger::getGroupMask(Int logid)
 {
    ftloggerentry_t *pLog = m_pThis->findLog(logid);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    return (ULongLong)pLog->s_mask.quadPart;
 }
@@ -346,7 +366,7 @@ Void FTLogger::log(Int logid, ULongLong groupid, Severity esev, cpStr pszFunc, c
    Int logofs = -1;
    ftloggerentry_t *pLog = m_pThis->findLog(logid, &logofs);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(logid);
+      throw FTLoggerError_LogNotFound(logid);
 
    if (groupEnabled(pLog, groupid) || esev == FTLogger::Error)
    {
@@ -467,7 +487,7 @@ Void FTLogger::verifyHandle(ftloggerentry_t *pLog, ftloggerloghandle_t &h)
       pmode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
       h.s_fh = open(s, oflag, pmode);
       if (h.s_fh == -1)
-         throw new FTLoggerError_UnableToOpenLogFile(errno, s);
+         throw FTLoggerError_UnableToOpenLogFile(errno, s);
    }
 }
 
@@ -550,8 +570,10 @@ Void FTLogger::log(FTLogger::FTLoggerQueueMessage &msg)
    int logofs = -1;
    ftloggerentry_t *pLog = m_pThis->findLog(msg.getLogId(), &logofs);
    if (pLog == NULL)
-      throw new FTLoggerError_LogNotFound(msg.getLogId());
+      throw FTLoggerError_LogNotFound(msg.getLogId());
 
    m_pThis->writeFile(pLog, logofs, msg.getLogId(), msg.getGroupId(), msg.getSeverity(),
                       msg.getTime(), msg.getSequence(), msg.getFunction(), msg.getMessage());
 }
+
+#endif

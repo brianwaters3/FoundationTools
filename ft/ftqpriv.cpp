@@ -17,7 +17,7 @@
 #include "ftqpriv.h"
 
 FTQueuePrivate::FTQueuePrivate()
-    : m_rmutex(False), m_wmutex(False)
+    : m_rmutex(False), m_wmutex(False), m_semFree(0,False), m_semMsgs(0,False)
 {
    m_refCnt = 0;
    m_numReaders = 0;
@@ -82,6 +82,26 @@ Int &FTQueuePrivate::refCnt()
 pChar FTQueuePrivate::data()
 {
    return m_pData;
+}
+
+Void FTQueuePrivate::initReadMutex()
+{
+   m_rmutex.init();
+}
+
+Void FTQueuePrivate::initWriteMutex()
+{
+   m_wmutex.init();
+}
+
+Void FTQueuePrivate::initSemFree(UInt initialCount)
+{
+   m_semFree.init(initialCount);
+}
+
+Void FTQueuePrivate::initSemMsgs(UInt initialCount)
+{
+   m_semMsgs.init(initialCount);
 }
 
 Void FTQueuePrivate::allocDataSpace(cpStr sFile, Char cId, Int nSize)

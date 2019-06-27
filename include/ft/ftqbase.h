@@ -26,6 +26,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+DECLARE_ERROR(FTQueueBaseError_UnInitialized);
 DECLARE_ERROR(FTQueueBaseError_NotOpenForWriting);
 DECLARE_ERROR(FTQueueBaseError_NotOpenForReading);
 DECLARE_ERROR(FTQueueBaseError_MultipleReadersNotAllowed);
@@ -94,11 +95,12 @@ public:
    Bool push(FTQueueMessage &msg, Bool wait = True);
    FTQueueMessage *pop(Bool wait = True);
 
-   FTSemaphore &getMsgSemaphore() { return semMsgs(); }
+   //FTSemaphoreBase &getMsgSemaphore() { return semMsgs(); }
 
    Void destroy();
 
 protected:
+   virtual Bool isPublic() = 0;
    virtual ULong &msgSize() = 0;
    virtual Int &msgCnt() = 0;
    virtual Long &msgHead() = 0;
@@ -110,13 +112,15 @@ protected:
    virtual Int &refCnt() = 0;
    virtual pChar data() = 0;
    virtual Void allocDataSpace(cpStr sFile, Char cId, Int nSize) = 0;
+   virtual Void initReadMutex() = 0;
+   virtual Void initWriteMutex() = 0;
+   virtual Void initSemFree(UInt initialCount) = 0;
+   virtual Void initSemMsgs(UInt initialCount) = 0;
 
-   virtual FTMutex &writeMutex() = 0;
-   virtual FTMutex &readMutex() = 0;
-   virtual FTSemaphore &semMsgs() = 0;
-   virtual FTSemaphore &semFree() = 0;
-   virtual Int &semMsgsId() = 0;
-   virtual Int &semFreeId() = 0;
+   virtual FTMutexData &readMutex() = 0;
+   virtual FTMutexData &writeMutex() = 0;
+   virtual FTSemaphoreData &semMsgs() = 0;
+   virtual FTSemaphoreData &semFree() = 0;
 
    virtual FTQueueMessage *allocMessage(Long msgType) = 0;
 

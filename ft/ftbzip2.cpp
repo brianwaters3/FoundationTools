@@ -83,13 +83,13 @@ Void FTBzip2::readOpen(cpStr filename)
    m_fh = fopen(filename, "rb");
 
    if (!m_fh)
-      throw new FTBZip2Error_ReadOpen(filename);
+      throw FTBZip2Error_ReadOpen(filename);
 
    m_bfh = BZ2_bzReadOpen(&m_bzerror, m_fh, 0, 0, NULL, 0);
    if (m_bzerror != BZ_OK)
    {
       close();
-      throw new FTBZip2Error_Bzip2ReadInit(m_bzerror);
+      throw FTBZip2Error_Bzip2ReadInit(m_bzerror);
    }
 
    m_len = sizeof(m_buf);
@@ -100,7 +100,7 @@ Void FTBzip2::readOpen(cpStr filename)
 
 Void FTBzip2::writeOpen(cpStr filename)
 {
-   throw new FTError(FTError::Error, "FTBzip2::writeOpen() is not implemented");
+   throw FTError(FTError::Error, "FTBzip2::writeOpen() is not implemented");
 }
 
 void FTBzip2::close()
@@ -156,7 +156,7 @@ Int FTBzip2::read(pUChar pbuf, Int length)
 
          m_len = BZ2_bzRead(&m_bzerror, m_bfh, m_buf, sizeof(m_buf));
          if (m_bzerror != BZ_OK && m_bzerror != BZ_STREAM_END)
-            throw new FTBZip2Error_Bzip2Read(m_bzerror);
+            throw FTBZip2Error_Bzip2Read(m_bzerror);
 
          m_ofs = 0;
       }
@@ -185,7 +185,7 @@ Int FTBzip2::readLine(pStr pbuf, Int length)
 
          m_len = BZ2_bzRead(&m_bzerror, m_bfh, m_buf, sizeof(m_buf));
          if (m_bzerror != BZ_OK && m_bzerror != BZ_STREAM_END)
-            throw new FTBZip2Error_Bzip2Read(m_bzerror);
+            throw FTBZip2Error_Bzip2Read(m_bzerror);
 
          m_ofs = 0;
 
@@ -212,7 +212,7 @@ Int FTBzip2::readLine(pStr pbuf, Int length)
 
 Int FTBzip2::write(pUChar pbuf, Int length)
 {
-   throw new FTError(FTError::Error, "FTBzip2::write() is not implemented");
+   throw FTError(FTError::Error, "FTBzip2::write() is not implemented");
 }
 
 cpStr FTBzip2::getErrorDesc(Int e)

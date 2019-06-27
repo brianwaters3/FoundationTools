@@ -83,11 +83,11 @@ FTThreadTimerError_UnableToStop::FTThreadTimerError_UnableToStop()
 ///////////////////////////////////////////////////////////////////////////////
 
 FTThreadPtrList FTThreadBasic::m_thrdCtl;
-FTMutex FTThreadBasic::m_thrdCtlMutex(False);
+FTMutexPrivate FTThreadBasic::m_thrdCtlMutex(False);
 
 Void FTThreadBasic::Initialize()
 {
-   m_thrdCtlMutex.init(NULL);
+   m_thrdCtlMutex.init();
 }
 
 Void FTThreadBasic::UnInitialize()
@@ -146,9 +146,9 @@ Void FTThreadBasic::_shutdown()
 
    if (isRunning())
    {
-      suspend();
+      //suspend();
       shutdown();
-      resume();
+      //resume();
    }
 }
 
@@ -158,7 +158,7 @@ Void FTThreadBasic::init(pVoid arg, Bool suspended, Dword stackSize)
       FTMutexLock l(m_mutex);
 
       if (isInitialized())
-         throw new FTThreadError_AlreadyInitialized();
+         throw FTThreadError_AlreadyInitialized();
 
       m_arg = arg;
       pthread_attr_t attr;
@@ -168,7 +168,7 @@ Void FTThreadBasic::init(pVoid arg, Bool suspended, Dword stackSize)
       pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
       if (pthread_create(&m_thread, &attr, _threadProc, (pVoid)this) != 0)
-         throw new FTThreadError_UnableToInitialize();
+         throw FTThreadError_UnableToInitialize();
 
       m_initialized = True;
 
@@ -190,19 +190,12 @@ Bool FTThreadBasic::isInitialized()
 Void FTThreadBasic::resume()
 {
    if (!isInitialized())
-      throw new FTThreadError_NotInitialized();
+      throw FTThreadError_NotInitialized();
 
+   if (m_suspendCnt > 0)
    {
-      //        FTMutexLock l(m_mutex);
-
-      if (m_suspendCnt > 0)
-      {
-         m_suspendCnt--;
-         if (m_suspendCnt == 0)
-         {
-            m_suspendSem.Increment();
-         }
-      }
+      if (atomic_dec(m_suspendCnt) == 0)
+         m_suspendSem.Increment();
    }
 
    yield();
@@ -210,15 +203,7 @@ Void FTThreadBasic::resume()
 
 Void FTThreadBasic::suspend()
 {
-   int suspendCnt;
-
-   {
-      FTMutexLock l(m_mutex);
-      m_suspendCnt++;
-      suspendCnt = m_suspendCnt;
-   }
-
-   if (suspendCnt == 1)
+   if (atomic_inc(m_suspendCnt))
       m_suspended.Decrement();
 }
 
@@ -414,9 +399,9 @@ Void FTThreadBase::pumpMessages()
             break;
       }
    }
-   catch (FTError *e)
+   catch (FTError &e)
    {
-      printf("t1 - %s\n", e->Name());
+      printf("t1 - %s\n", e.Name());
       throw;
    }
 }
@@ -509,7 +494,7 @@ Void FTThreadBase::Timer::init(FTThreadBase *pThread)
    sev.sigev_signo = SIGRTMIN;
    sev.sigev_value.sival_ptr = this;
    if (timer_create(CLOCK_REALTIME, &sev, &m_timer) == -1)
-      throw new FTThreadTimerError_UnableToInitialize();
+      throw FTThreadTimerError_UnableToInitialize();
 }
 
 Void FTThreadBase::Timer::destroy()
@@ -525,7 +510,7 @@ Void FTThreadBase::Timer::destroy()
 Void FTThreadBase::Timer::start()
 {
    if (m_timer == NULL)
-      throw new FTThreadTimerError_NotInitialized();
+      throw FTThreadTimerError_NotInitialized();
 
    struct itimerspec its;
    its.it_value.tv_sec = m_interval / 1000;              // seconds
@@ -533,7 +518,7 @@ Void FTThreadBase::Timer::start()
    its.it_interval.tv_sec = m_oneshot ? 0 : its.it_value.tv_sec;
    its.it_interval.tv_nsec = m_oneshot ? 0 : its.it_value.tv_nsec;
    if (timer_settime(m_timer, 0, &its, NULL) == -1)
-      throw new FTThreadTimerError_UnableToStart();
+      throw FTThreadTimerError_UnableToStart();
 }
 
 Void FTThreadBase::Timer::stop()
@@ -566,7 +551,7 @@ Void FTThreadBase::TimerHandler::init(FTGetOpt &options)
    sigemptyset(&sa.sa_mask);
    int signo = SIGRTMIN;
    if (sigaction(signo, &sa, NULL) == -1)
-      throw new FTThreadTimerError_UnableToRegisterTimerHandler();
+      throw FTThreadTimerError_UnableToRegisterTimerHandler();
 }
 
 Void FTThreadBase::TimerHandler::uninit()

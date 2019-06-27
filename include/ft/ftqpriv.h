@@ -32,6 +32,7 @@ public:
    }
 
 protected:
+   Bool isPublic() { return False; }
    ULong &msgSize();
    Int &msgCnt();
    Long &msgHead();
@@ -41,11 +42,18 @@ protected:
    Int &numReaders();
    Int &numWriters();
    Int &refCnt();
-   Int &semFreeId() { return m_semFree.getSemid(); }
-   Int &semMsgsId() { return m_semMsgs.getSemid(); }
    pChar data();
    Int ctrlSize();
    Void allocDataSpace(cpStr sFile, Char cId, Int nSize);
+   Void initReadMutex();
+   Void initWriteMutex();
+   Void initSemFree(UInt initialCount);
+   Void initSemMsgs(UInt initialCount);
+
+   FTMutexData &readMutex() { return m_rmutex; }
+   FTMutexData &writeMutex() { return m_wmutex; }
+   FTSemaphoreData &semFree() { return m_semFree; }
+   FTSemaphoreData &semMsgs() { return m_semMsgs; }
 
    virtual FTQueueMessage *allocMessage(Long msgType) = 0;
 
@@ -61,15 +69,10 @@ private:
    Long m_head; // next location to write
    Long m_tail; // next location to read
 
-   FTMutex m_rmutex;
-   FTMutex m_wmutex;
-   FTSemaphore m_semFree;
-   FTSemaphore m_semMsgs;
-
-   FTMutex &readMutex() { return m_rmutex; }
-   FTMutex &writeMutex() { return m_wmutex; }
-   FTSemaphore &semFree() { return m_semFree; }
-   FTSemaphore &semMsgs() { return m_semMsgs; }
+   FTMutexPrivate m_rmutex;
+   FTMutexPrivate m_wmutex;
+   FTSemaphorePrivate m_semFree;
+   FTSemaphorePrivate m_semMsgs;
 
    pChar m_pData;
 };

@@ -64,7 +64,7 @@ public:
 private:
    Int readData(pUChar dest, Int offset, Int length, Bool peek);
 
-   FTCircularBuffer() {}
+   FTCircularBuffer();
 
    pUChar m_data;
    Int m_capacity;
@@ -72,7 +72,7 @@ private:
    Int m_tail;
    Int m_used;
 
-   FTMutex m_mutex;
+   FTMutexPrivate m_mutex;
 };
 
 #endif // __ftcbuf_h_included

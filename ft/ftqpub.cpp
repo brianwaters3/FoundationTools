@@ -42,7 +42,7 @@ Void FTQueuePublic::init(Int queueid, FTQueueBase::Mode mode)
    FTSynchObjects::ftpublicqueuedef_t *pQueue = FTSynchObjects::getSynchObjCtrlPtr()->getPublicQueue(queueid);
 
    if (!pQueue)
-      throw new FTQueuePublicError_QueueNotFound(queueid);
+      throw FTQueuePublicError_QueueNotFound(queueid);
 
    init(pQueue->m_msgSize, pQueue->m_msgCnt, pQueue->m_queueid,
         pQueue->m_multipleReaders, pQueue->m_multipleWriters, mode);
@@ -96,6 +96,34 @@ Int &FTQueuePublic::refCnt()
 pChar FTQueuePublic::data()
 {
    return m_pData;
+}
+
+Void FTQueuePublic::initReadMutex()
+{
+   FTMutexPublic m;
+   m_pCtrl->m_rmutexid = m.mutexId();
+   m.detach();
+}
+
+Void FTQueuePublic::initWriteMutex()
+{
+   FTMutexPublic m;
+   m_pCtrl->m_wmutexid = m.mutexId();
+   m.detach();
+}
+
+Void FTQueuePublic::initSemFree(UInt initialCount)
+{
+   FTSemaphorePublic s(initialCount);
+   semFreeId() = s.semIndex();
+   s.detach();
+}
+
+Void FTQueuePublic::initSemMsgs(UInt initialCount)
+{
+   FTSemaphorePublic s(initialCount);
+   semMsgsId() = s.semIndex();
+   s.detach();
 }
 
 Void FTQueuePublic::allocDataSpace(cpStr sFile, Char cId, Int nSize)

@@ -86,23 +86,10 @@ Void FTQueueBase::init(ULong nMsgSize,
       msgTail() = 0;
 
       // initialize the control mutex and semaphores
-      Char szReadMutex[FT_FILENAME_MAX];
-      Char szWriteMutex[FT_FILENAME_MAX];
-      Char szSemFreeName[FT_FILENAME_MAX];
-      Char szSemMsgsName[FT_FILENAME_MAX];
-
-      ft_sprintf_s(szReadMutex, sizeof(szReadMutex), "QueueReadMutex_%s", szName);
-      ft_sprintf_s(szWriteMutex, sizeof(szWriteMutex), "QueueWriteMutex_%s", szName);
-      ft_sprintf_s(szSemFreeName, sizeof(szSemFreeName), "QueueSemFree_%s", szName);
-      ft_sprintf_s(szSemMsgsName, sizeof(szSemMsgsName), "QueueSemMsgs_%s", szName);
-
-      readMutex().init(szReadMutex);
-      writeMutex().init(szWriteMutex);
-      semFree().init(msgCnt(), msgCnt(), szSemFreeName);
-      semMsgs().init(0, msgCnt(), szSemMsgsName);
-
-      semFreeId() = semFree().getSemid();
-      semMsgsId() = semMsgs().getSemid();
+      initReadMutex();
+      initWriteMutex();
+      initSemFree(msgCnt());
+      initSemMsgs(0);
    }
 
    try
@@ -111,7 +98,7 @@ Void FTQueueBase::init(ULong nMsgSize,
 
       if (!multipleReaders() && (eMode == ReadOnly || eMode == ReadWrite) && numReaders() > 0)
       {
-         throw new FTQueueBaseError_MultipleReadersNotAllowed();
+         throw FTQueueBaseError_MultipleReadersNotAllowed();
       }
 
       refCnt()++;
@@ -120,9 +107,9 @@ Void FTQueueBase::init(ULong nMsgSize,
 
       m_initialized = True;
    }
-   catch (FTError *e)
+   catch (FTError &e)
    {
-      throw e;
+      throw;
    }
 }
 
@@ -130,30 +117,30 @@ Void FTQueueBase::destroy()
 {
    if (m_initialized)
    {
-      writeMutex().enter();
+      bool destroyWriteMutex = false;
 
-      numReaders() -= (m_mode == ReadOnly || m_mode == ReadWrite) ? 1 : 0;
-      numWriters() -= (m_mode == WriteOnly || m_mode == ReadWrite) ? 1 : 0;
-
-      if (refCnt() == 1)
       {
-         semFree().destroy();
-         semMsgs().destroy();
+         FTMutexLock l(writeMutex());
 
-         readMutex().destroy();
+         numReaders() -= (m_mode == ReadOnly || m_mode == ReadWrite) ? 1 : 0;
+         numWriters() -= (m_mode == WriteOnly || m_mode == ReadWrite) ? 1 : 0;
 
-         writeMutex().leave();
+         if (refCnt() == 1)
+         {
+            semFree().destroy();
+            semMsgs().destroy();
+
+            readMutex().destroy();
+            destroyWriteMutex = True;
+         }
+         else
+         {
+            refCnt()--;
+         }
+      }
+
+      if (destroyWriteMutex)
          writeMutex().destroy();
-      }
-      else
-      {
-         refCnt()--;
-
-         semFree().cleanup();
-         semMsgs().cleanup();
-
-         writeMutex().leave();
-      }
 
       m_initialized = False;
    }
@@ -165,7 +152,7 @@ Bool FTQueueBase::push(FTQueueMessage &msg, Bool wait)
    Int i;
 
    if (m_mode == ReadOnly)
-      throw new class FTQueueBaseError_NotOpenForWriting();
+      throw FTQueueBaseError_NotOpenForWriting();
 
    // get the message length
    length = sizeof(ULong);
@@ -235,7 +222,7 @@ FTQueueMessage *FTQueueBase::pop(Bool wait)
    ULong offset;
 
    if (m_mode == WriteOnly)
-      throw new class FTQueueBaseError_NotOpenForReading();
+      throw FTQueueBaseError_NotOpenForReading();
 
    if (!semMsgs().Decrement(wait))
       return NULL;

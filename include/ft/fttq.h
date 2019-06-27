@@ -21,6 +21,7 @@
 #include "fterror.h"
 #include "fttimer.h"
 #include "ftsynch.h"
+#include "ftsynch2.h"
 #include "ftshmem.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +30,8 @@
 DECLARE_ERROR(FTThreadQueueBaseError_NotOpenForWriting);
 DECLARE_ERROR(FTThreadQueueBaseError_NotOpenForReading);
 DECLARE_ERROR(FTThreadQueueBaseError_MultipleReadersNotAllowed);
+
+DECLARE_ERROR(FTThreadQueuePublicError_UnInitialized);
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -180,6 +183,7 @@ public:
 protected:
    Bool push(UInt msgid, FTThreadMessage::fttmessage_data_t &d, Bool wait = True);
 
+   virtual Bool isPublic() = 0;
    virtual Int &msgCnt() = 0;
    virtual Int &msgHead() = 0;
    virtual Int &msgTail() = 0;
@@ -189,12 +193,13 @@ protected:
    virtual Int &refCnt() = 0;
    virtual FTThreadMessage *data() = 0;
    virtual Void allocDataSpace(cpStr sFile, Char cId, Int nSize) = 0;
+   virtual Void initMutex() = 0;
+   virtual Void initSemFree(UInt initialCount) = 0;
+   virtual Void initSemMsgs(UInt initialCount) = 0;
 
-   virtual FTMutex &mutex() = 0;
-   virtual FTSemaphore &semMsgs() = 0;
-   virtual FTSemaphore &semFree() = 0;
-   virtual Int &semFreeId() = 0;
-   virtual Int &semMsgsId() = 0;
+   virtual FTMutexData &mutex() = 0;
+   virtual FTSemaphoreData &semMsgs() = 0;
+   virtual FTSemaphoreData &semFree() = 0;
 
    FTThreadQueueBase();
    ~FTThreadQueueBase();
@@ -225,48 +230,23 @@ public:
    }
 
 protected:
-   Int &msgCnt()
-   {
-      return m_pCtrl->m_msgCnt;
-   }
-   Int &msgHead()
-   {
-      return m_pCtrl->m_head;
-   }
-   Int &msgTail()
-   {
-      return m_pCtrl->m_tail;
-   }
-   Bool &multipleWriters()
-   {
-      return m_pCtrl->m_multipleWriters;
-   }
-   Int &numReaders()
-   {
-      return m_pCtrl->m_numReaders;
-   }
-   Int &numWriters()
-   {
-      return m_pCtrl->m_numWriters;
-   }
-   Int &refCnt()
-   {
-      return m_pCtrl->m_refCnt;
-   }
-   FTThreadMessage *data()
-   {
-      return m_pData;
-   }
-   Int &semFreeId()
-   {
-      return m_pCtrl->m_semFree.getSemid();
-   }
-   Int &semMsgsId()
-   {
-      return m_pCtrl->m_semMsgs.getSemid();
-   }
-
+   Bool isPublic() { return True; }
+   Int &msgCnt() { return m_pCtrl->m_msgCnt; }
+   Int &msgHead() { return m_pCtrl->m_head; }
+   Int &msgTail() { return m_pCtrl->m_tail; }
+   Bool &multipleWriters() { return m_pCtrl->m_multipleWriters; }
+   Int &numReaders() { return m_pCtrl->m_numReaders; }
+   Int &numWriters() { return m_pCtrl->m_numWriters; }
+   Int &refCnt() { return m_pCtrl->m_refCnt; }
+   FTThreadMessage *data() { return m_pData; }
    Void allocDataSpace(cpStr sFile, Char cId, Int nSize);
+   Void initMutex();
+   Void initSemFree(UInt initialCount);
+   Void initSemMsgs(UInt initialCount);
+
+   FTMutexData &mutex() { return FTSynchObjects::getMutex(m_pCtrl->m_mutexid); }
+   FTSemaphoreData &semFree() { return FTSynchObjects::getSemaphore(m_pCtrl->m_freeSemId); }
+   FTSemaphoreData &semMsgs() { return FTSynchObjects::getSemaphore(m_pCtrl->m_msgsSemId); }
 
 private:
    typedef struct
@@ -280,15 +260,10 @@ private:
       Int m_head; // next location to write
       Int m_tail; // next location to read
 
-      FTMutex m_mutex;
-      FTSemaphore m_semFree;
-      FTSemaphore m_semMsgs;
+      Int m_mutexid;
+      Int m_freeSemId;
+      Int m_msgsSemId;
    } ftthreadmessagequeue_ctrl_t;
-
-   FTSemaphore &semFree() { return m_pCtrl->m_semFree; }
-   FTSemaphore &semMsgs() { return m_pCtrl->m_semMsgs; }
-
-   FTMutex &mutex() { return m_pCtrl->m_mutex; }
 
    FTSharedMemory m_sharedmem;
    ftthreadmessagequeue_ctrl_t *m_pCtrl;
@@ -310,53 +285,24 @@ public:
       FTThreadQueueBase::init(nMsgCnt, threadId, bMultipleWriters, eMode);
    }
 
-private:
-   Int &msgCnt()
-   {
-      return m_msgCnt;
-   }
-   Int &msgHead()
-   {
-      return m_head;
-   }
-   Int &msgTail()
-   {
-      return m_tail;
-   }
-   Bool &multipleWriters()
-   {
-      return m_multipleWriters;
-   }
-   Int &numReaders()
-   {
-      return m_numReaders;
-   }
-   Int &numWriters()
-   {
-      return m_numWriters;
-   }
-   Int &refCnt()
-   {
-      return m_refCnt;
-   }
-   FTThreadMessage *data()
-   {
-      return m_pData;
-   }
-   Int &semFreeId()
-   {
-      return m_semFree.getSemid();
-   }
-   Int &semMsgsId()
-   {
-      return m_semMsgs.getSemid();
-   }
-
-   FTMutex &mutex() { return m_mutex; }
-   FTSemaphore &semFree() { return m_semFree; }
-   FTSemaphore &semMsgs() { return m_semMsgs; }
-
+protected:
+   Bool isPublic() { return False; }
+   Int &msgCnt() { return m_msgCnt; }
+   Int &msgHead() { return m_head; }
+   Int &msgTail() { return m_tail; }
+   Bool &multipleWriters() { return m_multipleWriters; }
+   Int &numReaders() { return m_numReaders; }
+   Int &numWriters() { return m_numWriters; }
+   Int &refCnt() { return m_refCnt; }
+   FTThreadMessage *data() { return m_pData; }
    Void allocDataSpace(cpStr sFile, Char cId, Int nSize);
+   Void initMutex();
+   Void initSemFree(UInt initialCount);
+   Void initSemMsgs(UInt initialCount);
+
+   FTMutexData &mutex() { return m_mutex; }
+   FTSemaphoreData &semFree() { return m_semFree; }
+   FTSemaphoreData &semMsgs() { return m_semMsgs; }
 
 private:
    Int m_refCnt;
@@ -368,9 +314,9 @@ private:
    Int m_head; // next location to write
    Int m_tail; // next location to read
 
-   FTMutex m_mutex;
-   FTSemaphore m_semFree;
-   FTSemaphore m_semMsgs;
+   FTMutexPrivate m_mutex;
+   FTSemaphorePrivate m_semFree;
+   FTSemaphorePrivate m_semMsgs;
 
    FTThreadMessage *m_pData;
 };

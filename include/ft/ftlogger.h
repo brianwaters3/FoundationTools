@@ -17,6 +17,7 @@
 #ifndef __ftlogger_h_included
 #define __ftlogger_h_included
 
+#if 0
 #include "ftbase.h"
 #include "ftstring.h"
 #include "fttime.h"
@@ -82,6 +83,7 @@ protected:
 
    typedef struct
    {
+      Bool s_sharedmem;
       Bool s_initialized;
       ftloggerentry_t s_logs[FTLOGGER_MAX_LOGS];
    } ftloggerctrl_t;
@@ -92,7 +94,7 @@ protected:
       ftloggerloghandle_t() : s_mutex(false) {}
       ~ftloggerloghandle_t() {}
 
-      FTMutex s_mutex;
+      FTMutexPrivate s_mutex;
       Int s_fh;
       Int s_currseg;
       Int s_linecnt;
@@ -264,5 +266,6 @@ private:
    FTSharedMemory m_sharedmem;
    ftloggerctrl_t *m_pCtrl;
 };
+#endif
 
 #endif // #define __ftlogger_h_included

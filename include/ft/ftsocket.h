@@ -195,7 +195,7 @@ private:
 
    Int send(pUChar pData, Int length);
 
-   FTMutex m_sendmtx;
+   FTMutexPrivate m_sendmtx;
    Bool m_sending;
    FTCircularBuffer m_rbuf;
    FTCircularBuffer m_wbuf;
@@ -270,7 +270,7 @@ public:
 
 protected:
    virtual Void pumpMessages();
-   virtual Void errorHandler(FTError *err, FTSocket *psocket) = 0;
+   virtual Void errorHandler(FTError &err, FTSocket *psocket) = 0;
 
    virtual Void onInit();
    virtual Void onQuit();

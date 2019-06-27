@@ -91,20 +91,18 @@ cpStr FTDirectory::getFirstEntry(cpStr pDirectory, cpStr pFileMask)
    closeHandle();
    mHandle = opendir(mDirectory.c_str());
    if (!mHandle)
-      throw new FTDirectoryError_GetFirstEntry();
+      throw FTDirectoryError_GetFirstEntry();
    try
    {
       getNextEntry();
    }
-   catch (FTDirectoryError_GetNextEntry *e)
+   catch (FTDirectoryError_GetNextEntry &e)
    {
-      FTDirectoryError_GetFirstEntry *ee = new FTDirectoryError_GetFirstEntry();
-      delete e;
-      throw ee;
+      throw FTDirectoryError_GetFirstEntry();
    }
    catch (...)
    {
-      throw new FTDirectoryError_GetFirstEntry();
+      throw FTDirectoryError_GetFirstEntry();
    }
 
    return mFileName.length() == 0 ? NULL : mFileName.c_str();
@@ -120,7 +118,7 @@ cpStr FTDirectory::getNextEntry()
    {
       Int result = readdir_r(mHandle, &de, &pde);
       if (result)
-         throw new FTDirectoryError_GetNextEntry(result);
+         throw FTDirectoryError_GetNextEntry(result);
       if (!pde)
       {
          mFileName = "";
@@ -140,7 +138,7 @@ Void FTDirectory::getCurrentDirectory(FTString &dir)
    Char cwd[FILENAME_MAX];
 
    if (!GetCurrentDir(cwd, sizeof(cwd)))
-      throw new FTDirectoryError_CurrentDirectory();
+      throw FTDirectoryError_CurrentDirectory();
 
    dir = cwd;
 }

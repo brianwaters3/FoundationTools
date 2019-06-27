@@ -39,7 +39,7 @@ Void FTPath::changeExtension(cpStr path, cpStr extension, FTString &newPath)
    }
 
    if (FTUtility::indexOfAny(path, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Illegal characters in path.");
+      throw FTPathError_ArgumentException("Illegal characters in path.");
 
    Int iExt = findExtension(path);
 
@@ -71,17 +71,17 @@ Void FTPath::changeExtension(cpStr path, cpStr extension, FTString &newPath)
 Void FTPath::combine(cpStr path1, cpStr path2, FTString &path)
 {
    if (!path1)
-      throw new FTPathError_ArgumentException("path1");
+      throw FTPathError_ArgumentException("path1");
    else if (!path2)
-      throw new FTPathError_ArgumentException("path2");
+      throw FTPathError_ArgumentException("path2");
    if (*path1 == '\0')
       path = path2;
    else if (*path2 == '\0')
       path = path1;
    else if (FTUtility::indexOfAny(path1, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Illegal characters in path1.");
+      throw FTPathError_ArgumentException("Illegal characters in path1.");
    else if (FTUtility::indexOfAny(path2, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Illegal characters in path2.");
+      throw FTPathError_ArgumentException("Illegal characters in path2.");
 
    if (isPathRooted(path2))
    {
@@ -111,10 +111,10 @@ Void FTPath::combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4, FTStrin
 Void FTPath::getDirectoryName(cpStr path, FTString &dirName)
 {
    if (!path || !*path)
-      throw new FTPathError_ArgumentException("Invalid path");
+      throw FTPathError_ArgumentException("Invalid path");
 
    if (FTUtility::indexOfAny(path, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Path contains invalid characters");
+      throw FTPathError_ArgumentException("Path contains invalid characters");
 
    Int nLast = FTUtility::lastIndexOfAny(path, getPathSeparatorChars());
    if (nLast == 0)
@@ -141,7 +141,7 @@ Void FTPath::getExtension(cpStr path, FTString &ext)
    else
    {
       if (FTUtility::indexOfAny(path, getInvalidPathChars()) != -1)
-         throw new FTPathError_ArgumentException("Illegal characters in path.");
+         throw FTPathError_ArgumentException("Illegal characters in path.");
 
       Int iExt = findExtension(path);
 
@@ -168,7 +168,7 @@ Void FTPath::getFileName(cpStr path, FTString &fileName)
    }
 
    if (FTUtility::indexOfAny(path, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Illegal characters in path.");
+      throw FTPathError_ArgumentException("Illegal characters in path.");
 
    Int nLast = FTUtility::lastIndexOfAny(path, getPathSeparatorChars());
    if (nLast >= 0)
@@ -186,7 +186,7 @@ Void FTPath::getFileNameWithoutExtension(cpStr path, FTString &fileName)
 Void FTPath::getPathRoot(cpStr path, FTString &root)
 {
    if (!*path || !*path)
-      throw new FTPathError_ArgumentException("The specified path is not of a legal form.");
+      throw FTPathError_ArgumentException("The specified path is not of a legal form.");
 
    if (isPathRooted(path))
    {
@@ -281,7 +281,7 @@ Bool FTPath::isPathRooted(cpStr path)
       return False;
 
    if (FTUtility::indexOfAny(path, getInvalidPathChars()) != -1)
-      throw new FTPathError_ArgumentException("Illegal characters in path.");
+      throw FTPathError_ArgumentException("Illegal characters in path.");
 
    Int len = (Int)strlen(path);
    Char c = *path;

@@ -114,7 +114,7 @@ class FTAllocator_ElemAllocator : public FTStatic
    static std::vector<Data_t> blocksWithFree;
 
 #ifdef FTALLOCATOR_THREAD_SAFE
-   static FTMutex mutex;
+   static FTMutexPrivate mutex;
 #endif
 
 public:
@@ -122,7 +122,7 @@ public:
    Void init(FTGetOpt &options)
    {
 #ifdef FTALLOCATOR_THREAD_SAFE
-      mutex.init(NULL);
+      mutex.init();
 #endif
    }
    Void uninit()
@@ -183,7 +183,7 @@ std::vector<typename FTAllocator_ElemAllocator<ElemSize>::Data_t>
 
 #ifdef FTALLOCATOR_THREAD_SAFE
 template <unsigned ElemSize>
-FTMutex FTAllocator_ElemAllocator<ElemSize>::mutex(False);
+FTMutexPrivate FTAllocator_ElemAllocator<ElemSize>::mutex(False);
 #endif
 
 template <typename Ty>

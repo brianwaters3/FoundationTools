@@ -15,6 +15,7 @@
 */
 
 #include "fttq.h"
+#include "ftsynch2.h"
 
 Bool FTThreadQueueBase::m_debug = False;
 
@@ -56,20 +57,9 @@ Void FTThreadQueueBase::init(Int nMsgCnt,
       msgTail() = 0;
 
       // initialize the control mutex and semaphores
-      Char szMutexName[FT_FILENAME_MAX];
-      Char szSemFreeName[FT_FILENAME_MAX];
-      Char szSemMsgsName[FT_FILENAME_MAX];
-
-      ft_sprintf_s(szMutexName, sizeof(szMutexName), "ThreadQueueMutex_%s", szName);
-      ft_sprintf_s(szSemFreeName, sizeof(szSemFreeName), "ThreadQueueSemFree_%s", szName);
-      ft_sprintf_s(szSemMsgsName, sizeof(szSemMsgsName), "ThreadQueueSemMsgs_%s", szName);
-
-      mutex().init(szMutexName);
-      semFree().init(msgCnt(), msgCnt(), szSemFreeName);
-      semMsgs().init(0, msgCnt(), szSemMsgsName);
-
-      semFreeId() = semFree().getSemid();
-      semMsgsId() = semMsgs().getSemid();
+      initMutex();
+      initSemFree(msgCnt());
+      initSemMsgs(0);
    }
    else
    {
@@ -79,7 +69,7 @@ Void FTThreadQueueBase::init(Int nMsgCnt,
 
    if ((eMode == ReadOnly || eMode == ReadWrite) && numReaders() > 0)
    {
-      throw new FTThreadQueueBaseError_MultipleReadersNotAllowed();
+      throw FTThreadQueueBaseError_MultipleReadersNotAllowed();
    }
 
    refCnt()++;
@@ -91,26 +81,29 @@ Void FTThreadQueueBase::init(Int nMsgCnt,
 
 Void FTThreadQueueBase::destroy()
 {
+   Bool destroyMutex = False;
+
    if (m_initialized)
    {
-      mutex().enter();
+      FTMutexLock l(mutex());
 
       if (refCnt() == 1)
       {
          semFree().destroy();
          semMsgs().destroy();
 
-         mutex().leave();
-         mutex().destroy();
+         destroyMutex = True;
       }
       else
       {
          refCnt()--;
          numReaders() -= (m_mode == ReadOnly || m_mode == ReadWrite) ? 1 : 0;
          numWriters() -= (m_mode == WriteOnly || m_mode == ReadWrite) ? 1 : 0;
-         mutex().leave();
       }
    }
+
+   if (destroyMutex)
+      mutex().destroy();
 }
 
 Bool FTThreadQueueBase::push(UInt msgid, Bool wait)
@@ -145,7 +138,7 @@ Bool FTThreadQueueBase::push(UInt msgid, LongLong quadPart, Bool wait)
 Bool FTThreadQueueBase::push(UInt msgid, FTThreadMessage::fttmessage_data_t &d, Bool wait)
 {
    if (m_mode == ReadOnly)
-      throw new class FTThreadQueueBaseError_NotOpenForWriting();
+      throw FTThreadQueueBaseError_NotOpenForWriting();
 
    if (semFree().Decrement(wait) < 0)
       return False;
@@ -172,7 +165,7 @@ Bool FTThreadQueueBase::push(UInt msgid, FTThreadMessage::fttmessage_data_t &d, 
 Bool FTThreadQueueBase::pop(FTThreadMessage &msg, Bool wait)
 {
    if (m_mode == WriteOnly)
-      throw new FTThreadQueueBaseError_NotOpenForReading();
+      throw FTThreadQueueBaseError_NotOpenForReading();
 
    if (!semMsgs().Decrement(wait))
       return False;
@@ -190,7 +183,7 @@ Bool FTThreadQueueBase::pop(FTThreadMessage &msg, Bool wait)
 Bool FTThreadQueueBase::peek(FTThreadMessage &msg, Bool wait)
 {
    if (m_mode == WriteOnly)
-      throw new FTThreadQueueBaseError_NotOpenForReading();
+      throw FTThreadQueueBaseError_NotOpenForReading();
 
    if (!semMsgs().Decrement(wait))
       return False;
@@ -224,11 +217,32 @@ Void FTThreadQueuePublic::allocDataSpace(cpStr sFile, Char cId, Int nSize)
    m_pData = (FTThreadMessage *)(((pChar)m_sharedmem.getDataPtr()) + sizeof(ftthreadmessagequeue_ctrl_t));
 }
 
+Void FTThreadQueuePublic::initMutex()
+{
+   FTMutexPublic m;
+   m_pCtrl->m_mutexid = m.mutexId();
+   m.detach();
+}
+
+Void FTThreadQueuePublic::initSemFree(UInt initialCount)
+{
+   FTSemaphorePublic s(initialCount);
+   m_pCtrl->m_freeSemId = s.semIndex();
+   s.detach();
+}
+
+Void FTThreadQueuePublic::initSemMsgs(UInt initialCount)
+{
+   FTSemaphorePublic s(initialCount);
+   m_pCtrl->m_msgsSemId = s.semIndex();
+   s.detach();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 FTThreadQueuePrivate::FTThreadQueuePrivate()
-    : m_mutex(False)
+    : m_mutex(False), m_semFree(0, False), m_semMsgs(0, False)
 {
    m_refCnt = 0;
    m_numReaders = 0;
@@ -254,4 +268,19 @@ Void FTThreadQueuePrivate::allocDataSpace(cpStr sFile, Char cId, Int nSize)
 {
    m_pData = (FTThreadMessage *)new Char[nSize];
    memset((pChar)m_pData, 0, nSize);
+}
+
+Void FTThreadQueuePrivate::initMutex()
+{
+   m_mutex.init();
+}
+
+Void FTThreadQueuePrivate::initSemFree(UInt initialCount)
+{
+   m_semFree.init(initialCount);
+}
+
+Void FTThreadQueuePrivate::initSemMsgs(UInt initialCount)
+{
+   m_semMsgs.init(initialCount);
 }

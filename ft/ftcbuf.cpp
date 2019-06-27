@@ -53,7 +53,7 @@ Int FTCircularBuffer::readData(pUChar dest, Int offset, Int length, Bool peek)
     if (m_used == 0)
     {
         if (m_head != m_tail)
-            throw new FTCircularBufferError_HeadAndTailOutOfSync();
+            throw FTCircularBufferError_HeadAndTailOutOfSync();
         return 0;
     }
 
@@ -80,13 +80,13 @@ Int FTCircularBuffer::readData(pUChar dest, Int offset, Int length, Bool peek)
         amtRead += readLen;
         newUsed -= readLen;
         if (newUsed < 0)
-            throw new FTCircularBufferError_UsedLessThanZero();
+            throw FTCircularBufferError_UsedLessThanZero();
 
         newTail += readLen;
         if (newTail == m_capacity)
             newTail = 0;
         else if (newTail > m_capacity)
-            throw new FTCircularBufferError_TailExceededCapacity();
+            throw FTCircularBufferError_TailExceededCapacity();
     }
 
     if (!peek)
@@ -103,7 +103,7 @@ void FTCircularBuffer::writeData(pUChar src, Int offset, int length)
     FTMutexLock lockMutex(m_mutex);
 
     if (m_used + length > m_capacity)
-        throw new FTCircularBufferError_AttemptToExceedCapacity();
+        throw FTCircularBufferError_AttemptToExceedCapacity();
 
     Int amtWritten = 0;
 
@@ -118,13 +118,13 @@ void FTCircularBuffer::writeData(pUChar src, Int offset, int length)
         amtWritten += writeLen;
         m_used += writeLen;
         if (m_used > m_capacity)
-            throw new FTCircularBufferError_BufferSizeHasBeenExceeded();
+            throw FTCircularBufferError_BufferSizeHasBeenExceeded();
 
         m_head += writeLen;
         if (m_head == m_capacity)
             m_head = 0;
         else if (m_head > m_capacity)
-            throw new FTCircularBufferError_HeadHasExceededCapacity();
+            throw FTCircularBufferError_HeadHasExceededCapacity();
     }
 }
 
