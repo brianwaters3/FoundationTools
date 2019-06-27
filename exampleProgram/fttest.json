@@ -1,0 +1,65 @@
+{
+    "FoundationTools": {
+        "EnablePublicObjects": true,
+        "Debug": false,
+        "SynchronizationObjects": {
+            "NumberSemaphores": 100,
+            "NumberMutexes": 100
+        },
+        "FTLoggerOptions": {
+            "WriteToFile": true,
+            "QueueID": 9999,
+            "QueueMode": "WriteOnly"
+        },
+        "FTLogger": [
+            {
+                "LogID": 1,
+                "Segments": 1,
+                "LinesPerSegment": 10,
+                "FileNameMask": "./testlog1_%A_%S.log",
+                "LogType": "File",
+                "DefaultLogMask": "0x0000000000000000",
+                "FTInternalLog": false
+            },
+            {
+                "LogID": 2,
+                "Segments": 2,
+                "LinesPerSegment": 10,
+                "FileNameMask": "./testlog2_%A_%S.log",
+                "LogType": "File",
+                "DefaultLogMask": "0x0000000000000000",
+                "FTInternalLog": false
+            }
+        ],
+        "PublicQueue": [
+            {
+                "QueueID": 1,
+                "MessageSize": 50,
+                "QueueSize": 16384,
+                "AllowMultipleReaders": true,
+                "AllowMultipleWriters": true
+            },
+            {
+                "QueueID": 2,
+                "MessageSize": 100,
+                "QueueSize": 16384,
+                "AllowMultipleReaders": true,
+                "AllowMultipleWriters": false
+            },
+            {
+                "QueueID": 3,
+                "MessageSize": 200,
+                "QueueSize": 16384,
+                "AllowMultipleReaders": false,
+                "AllowMultipleWriters": false
+            },
+            {
+                "QueueID": 4,
+                "MessageSize": 1024,
+                "QueueSize": 16384,
+                "AllowMultipleReaders": false,
+                "AllowMultipleWriters": true
+            }
+        ]
+    }
+}
