@@ -466,6 +466,8 @@ Int FTSocketConverse::send(pUChar pData, Int length)
    return result;
 }
 
+#include <csignal>
+
 Void FTSocketConverse::send(Bool override)
 {
    UChar buf[2048];
@@ -484,7 +486,10 @@ Void FTSocketConverse::send(Bool override)
    }
 
    if (getState() != CONNECTED)
+   {
+      std::raise(SIGINT);
       throw FTSocketConverseError_InvalidSendState(getStateDescription(getState()));
+   }
 
    m_sending = true;
    while (true)
@@ -754,6 +759,9 @@ Void FTSocketThread::processSelectRead(FTSocket *psocket)
    }
    else if (psocket->getStyle() == FTSocket::CONVERSE)
    {
+      if (psocket->getState() == FTSocket::CONNECTING)
+         ((FTSocketConverse *)psocket)->onConnect();
+
       while (true)
       {
          try

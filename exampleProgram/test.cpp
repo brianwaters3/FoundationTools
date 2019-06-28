@@ -3,13 +3,15 @@
 /////////////////////////////////////////////////////////////////////////
 #include "stdio.h"
 #include <iostream>
+#include <locale>
 #include <memory.h>
 #include "ft/ft.h"
 #include "ft/ftinternal.h"
 #include "ft/ftbzip2.h"
-#include <locale>
-//#include "odbx.h"
-//#include "opendbx/api"
+#include "ft/ftsocket.h"
+
+std::locale defaultLocale;
+std::locale mylocale;
 
 Void FTCircularBuffer_test()
 {
@@ -1315,53 +1317,6 @@ Void FTThreadSuspendResume_test()
    cout << "FTThreadSuspendResume_test - complete" << endl;
 }
 
-
-
-
-
-
-//Void OpenDBX_test()
-//{
-//    try
-//    {
-//        OpenDBX::Conn db("mssql", "sqlstandby", "1433");
-//        db.bind("gy_dev", "sagetelecom_net\\bwaters", "Liefje15", ODBX_BIND_SIMPLE);
-////        cpStr sql = "sp_who";
-//        cpStr sql = "EXEC P_TEST @CATEGORY='FinalUnitAction'";
-//        OpenDBX::Result r = db.create(sql).execute();
-//
-//        odbxres stat;
-//
-//        while ((stat = r.getResult()) != ODBX_RES_DONE)
-//        {
-//            switch(stat)
-//            {
-//            case ODBX_RES_TIMEOUT:
-//                continue;
-//            case ODBX_RES_NOROWS:
-//                continue;
-//            }
-//
-//            Int spid;
-//            FTString sCategory;
-//            Int nReferenceId;
-//            FTString sDescription;
-//
-//            while (r.getRow() != ODBX_ROW_DONE)
-//            {
-//                sCategory = r.fieldValue(0);
-//                nReferenceId = (Int)strtol(r.fieldValue(1), NULL, 0);
-//                sDescription = r.fieldValue(2);
-//                cout << sCategory << "|" << nReferenceId << "|" << sDescription << endl;
-//            }
-//        }
-//    }
-//    catch (OpenDBX::Exception ex)
-//    {
-//        cout << "EXCEPTION: "<< ex.what() << endl;
-//    }
-//}
-
 Void FTHash_test()
 {
    cout << "FThash_test start" << endl;
@@ -1553,6 +1508,219 @@ Void deadlock()
    t2.join();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+class Listener;
+class Talker;
+
+class Worker : public FTSocketThread
+{
+public:
+	Worker() { m_listen = False; m_port = 0; m_cnt = 0; m_talker = NULL; }
+
+	Void onInit();
+	Void onQuit();
+	Void onClose();
+
+	Void errorHandler(FTError &err, FTSocket* psocket);
+
+	Talker* createTalker();
+
+	Void setListen(Bool v) { m_listen = v; }
+	Bool getListen() { return m_listen; }
+
+   Void setCount(Int cnt) { m_cnt = cnt; }
+   Int getCnt() { return m_cnt; }
+
+   Void setPort(UShort port) { m_port = port; }
+   UShort getPort() { return m_port; }
+
+private:
+	Bool		   m_listen;
+   UShort      m_port;
+   Int         m_cnt;
+	Listener*	m_listener;
+	Talker*		m_talker;
+
+};
+
+class Listener : public FTSocketListen
+{
+public:
+	Listener(Worker* pthread) : FTSocketListen(pthread, 1048576) {}
+	~Listener() {}
+
+    FTSocketConverse* createSocket(FTSocketThread* pthread);
+
+    Void onClose();
+    Void onError();
+};
+
+class Talker : public FTSocketConverse
+{
+public:
+	Talker(Worker* pthread) : FTSocketConverse(pthread, 1048576) {}
+	~Talker() {}
+
+	Void onConnect();
+	Bool onReceive();
+	Void onClose();
+
+private:
+	Talker();
+};
+
+///////////////////////////////////////////////////////////////////////////////////
+
+FTSocketConverse* Listener::createSocket(FTSocketThread* pthread)
+{
+
+	return ((Worker*)pthread)->createTalker();
+}
+
+Void Listener::onClose()
+{
+   std::cout << "listening socket closed" << std::endl << std::flush;
+}
+
+Void Listener::onError()
+{
+   std::cout << "socket error " << getError() << " occurred on listening socket during select" << std::endl << std::flush;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Void Talker::onConnect()
+{
+	FTSocketConverse::onConnect();
+
+   std::cout << "socket connected" << std::endl << std::flush;
+
+	Int val = 1;
+	write((pUChar)&val, sizeof(val));
+}
+
+Bool Talker::onReceive()
+{
+	UChar buffer[1024];
+   Int *pval = (Int*)buffer;
+
+	while (true)
+	{
+		if (bytesPending() < 4 || read(buffer,4) != 4)
+			break;
+		if ((*pval) % 10000 == 0)
+         std::cout << "\r" << *pval << std::flush;
+
+      if (*pval != -1)
+      {
+         *pval = (((Worker*)getThread())->getCnt() > 0 && *pval >= ((Worker*)getThread())->getCnt()) ? -1 : (*pval + 1);
+         write(buffer, 4);
+      }
+
+      if (*pval == -1)
+      {
+         if (((Worker*)getThread())->getListen())
+            disconnect();
+         break;
+      }
+	}
+
+   return True;
+}
+
+Void Talker::onClose()
+{
+   std::cout << std::endl << "socket closed" << std::endl << std::flush;
+	((Worker*)getThread())->onClose();
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Talker* Worker::createTalker()
+{
+	return m_talker = new Talker(this);
+}
+
+Void Worker::onInit()
+{
+   UShort port = 12345;
+	if (getListen())
+	{
+		m_listener = new Listener(this);
+		m_listener->listen(port, 10);
+      std::cout.imbue(defaultLocale);
+      std::cout << "waiting for client to attach on port " << port << std::endl << std::flush;
+      std::cout.imbue(mylocale);
+	}
+	else
+	{
+      std::cout.imbue(defaultLocale);
+      std::cout << "connecting to server on port " << port << std::endl << std::flush;
+      std::cout.imbue(mylocale);
+		createTalker()->connect("127.0.0.1", 12345);
+	}
+
+   std::cout << std::endl << std::flush;
+}
+
+Void Worker::onQuit()
+{
+}
+
+Void Worker::onClose()
+{
+	if (m_talker)
+	{
+		Talker* t = m_talker;
+		m_talker = NULL;
+
+		//t->close();
+		delete t;
+		quit();
+	}
+}
+
+Void Worker::errorHandler(FTError &err, FTSocket* psocket)
+{
+   //std::cout << "Socket exception - " << err << std::endl << std::flush;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Void sockettest(Bool server)
+{
+   static Int messages = 1000000;
+   static UShort port = 12345;
+   Worker* pWorker = new Worker();
+   Char buffer[128];
+
+   cout.imbue(defaultLocale);
+   cout << "Enter the port number for the connection [" << port << "]: ";
+   cout.imbue(mylocale);
+   cin.getline(buffer, sizeof(buffer));
+   port = buffer[0] ? (UShort)std::stoi(buffer) : port;
+   pWorker->setPort(port);
+
+   if (server)
+   {
+      cout << "Enter number of messages to exchange with the client [" << messages << "]: ";
+      cin.getline(buffer, sizeof(buffer));
+      messages = buffer[0] ? std::stoi(buffer) : messages;
+      pWorker->setCount(messages);
+   }
+
+   pWorker->setListen(server);
+
+   pWorker->init(1, 1, NULL);
+   pWorker->join();
+   delete pWorker;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -1578,8 +1746,8 @@ Void printMenu()
        "9.  Error handling                             22. Deadlock                     \n"
        "10. Private Mutex text                         23. Thread Test (4 writers)      \n"
        "11. Public Mutex text                          24. Mutex performance test       \n"
-       "12. Private Semaphore test                                                      \n"
-       "13. Public Semaphore test                                                       \n"
+       "12. Private Semaphore test                     25. Socket server                \n"
+       "13. Public Semaphore test                      26. Socket client                \n"
        "\n");
 }
 
@@ -1676,6 +1844,12 @@ Void run()
             break;
          case 24:
             FTMutex_test2();
+            break;
+         case 25:
+            sockettest(True);
+            break;
+         case 26:
+            sockettest(False);
             break;
          default:
             cout << "Invalid Selection" << endl
@@ -1779,7 +1953,10 @@ int main(int argc, char *argv[])
    if (!optFile.empty())
       opt.loadFile(optFile.c_str());
 
-   cout.imbue(std::locale(""));
+   defaultLocale = std::cout.getloc();
+   mylocale = std::locale("");
+   
+   std::cout.imbue(mylocale);
 
    try
    {
