@@ -30,7 +30,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#if 0
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -575,5 +574,3 @@ Void FTLogger::log(FTLogger::FTLoggerQueueMessage &msg)
    m_pThis->writeFile(pLog, logofs, msg.getLogId(), msg.getGroupId(), msg.getSeverity(),
                       msg.getTime(), msg.getSequence(), msg.getFunction(), msg.getMessage());
 }
-
-#endif

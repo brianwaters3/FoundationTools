@@ -17,7 +17,6 @@
 #ifndef __ftlogger_h_included
 #define __ftlogger_h_included
 
-#if 0
 #include "ftbase.h"
 #include "ftstring.h"
 #include "fttime.h"
@@ -266,6 +265,5 @@ private:
    FTSharedMemory m_sharedmem;
    ftloggerctrl_t *m_pCtrl;
 };
-#endif
 
 #endif // #define __ftlogger_h_included

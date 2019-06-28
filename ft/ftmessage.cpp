@@ -160,18 +160,6 @@ Void FTMessage::unpack(UShort &val, pVoid pBuffer, ULong &nOffset)
    nOffset += sizeof(val);
 }
 
-//Void FTMessage::unpack(Int &val, pVoid pBuffer, ULong &nOffset)
-//{
-//    val = *((Int*)(&((pStr)pBuffer)[nOffset]));
-//    nOffset += sizeof(val);
-//}
-//
-//Void FTMessage::unpack(UInt &val, pVoid pBuffer, ULong &nOffset)
-//{
-//    val = *((UInt*)(&((pStr)pBuffer)[nOffset]));
-//    nOffset += sizeof(val);
-//}
-
 Void FTMessage::unpack(Long &val, pVoid pBuffer, ULong &nOffset)
 {
    val = *((Long *)(&((pStr)pBuffer)[nOffset]));

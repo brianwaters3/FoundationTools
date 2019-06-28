@@ -101,42 +101,6 @@ private:
 #endif
 };
 
-#if 0
-class FTMutexBase
-{
-   friend FTMutexLock;
-
-public:
-   FTMutexBase()
-   {
-   }
-   ~FTMutexBase()
-   {
-   }
-
-   virtual Void init() = 0;
-
-   Void destroy()
-   {
-      FTMutexData &data = getData();
-      data.destroy();
-   }
-
-
-protected:
-   virtual FTMutexData &getData() = 0;
-
-   Void init(Bool isPublic)
-   {
-      FTMutexData &data = getData();
-      data.init(isPublic);
-   }
-
-   Bool enter(Bool wait = True);
-   Void leave();
-};
-#endif
-
 class FTMutexLock
 {
 public:
@@ -393,81 +357,6 @@ protected:
 private:
    Int m_semid;
 };
-
-#if 0
-class FTSemaphore;
-
-class _FTSemaphore
-{
-   friend class FTSemaphore;
-   friend class FTSynchObjects;
-
-public:
-   _FTSemaphore();
-   _FTSemaphore(Long lInitialCount, Long lMaxCount, cpStr szName = NULL, Bool bInit = True);
-   ~_FTSemaphore();
-
-   Void init(Long lInitialCount, Long lMaxCount, cpStr szName = NULL);
-   Void destroy(int semid);
-
-   Long Decrement(Bool wait = True);
-   Long Increment();
-
-   Long getInitialCount() { return m_initialCount; }
-   Long getMaxCount() { return m_maxCount; }
-   Long getCurrCount() { return m_currCount; }
-   cpStr getName() { return m_szName; }
-
-   Int getSemId() { return m_semid; }
-   Void setSemId(Int semid) { m_semid = semid; }
-
-protected:
-   Int getNextIndex() { return m_nextIndex; }
-   Void setNextIndex(Int val) { m_nextIndex = val; }
-
-private:
-   Int m_nextIndex;
-
-   Int m_semid;
-   Bool m_initialized;
-   Long m_currCount;
-
-   Long m_initialCount;
-   Long m_maxCount;
-   Char m_szName[FT_FILENAME_MAX];
-
-   sem_t m_sem;
-};
-
-class FTQueueBase;
-
-class FTSemaphore
-{
-   friend class FTQueueBase;
-
-public:
-   FTSemaphore();
-   FTSemaphore(Long lInitialCount, Long lMaxCount, cpStr szName = NULL, Bool bInit = True);
-   ~FTSemaphore();
-
-   Void init(Int semid);
-   Void init(Long lInitialCount, Long lMaxCount, cpStr szName = NULL);
-   Void destroy();
-
-   Bool Decrement(Bool wait = True);
-   Void Increment();
-
-   Int &getSemid() { return m_semid; }
-
-   Long getCurrCount();
-
-protected:
-   Void cleanup();
-
-private:
-   Int m_semid;
-};
-#endif
 
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
