@@ -1,21 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
-
-AC_ARG_ENABLE(debug,
-AS_HELP_STRING([--enable-debug],
-               [enable debugging, default: no]),
-[case "${enableval}" in
-             yes) debug=true ;;
-             no)  debug=false ;;
-             *)   AC_MSG_ERROR([bad value ${enableval} for --enable-debug]) ;;
-esac],
-[debug=false])
-
-AM_CONDITIONAL(DEBUG, test x"$debug" = x"true")
-
-
 AC_PREREQ(2.59)
-AC_INIT(libft, 1.0)
+AC_INIT(libepc, 1.0)
 dnl AC_PROG_CC
 AC_PROG_CXX
 
@@ -37,6 +23,6 @@ dnl AC_PROG_LIBTOOL
 AC_PROG_RANLIB
 
 AC_CONFIG_FILES(Makefile
-                ft/Makefile
+                src/Makefile
                 include/Makefile)
 AC_OUTPUT

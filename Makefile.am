@@ -14,4 +14,4 @@
 # limitations under the License.
 ############################################################################
 
-SUBDIRS=ft include
+SUBDIRS=src include

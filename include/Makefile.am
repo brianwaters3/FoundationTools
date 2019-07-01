@@ -16,4 +16,4 @@
 
 # These files will end up in the install include directory
 # For example, /usr/include
-nobase_include_HEADERS = ft/ft.h ft/ftalloc.h ft/ftatomic.h ft/ftautohandle.h ft/ftbase.h ft/ftbzip2.h ft/ftcbuf.h ft/ftdir.h ft/fterror.h ft/ftgetopt.h ft/fthash.h ft/ftinternal.h ft/ftlogger.h ft/ftmessage.h ft/ftpath.h ft/ftqbase.h ft/ftqpriv.h ft/ftqpub.h ft/ftshmem.h ft/ftsocket.h ft/ftstatic.h ft/ftstring.h ft/ftsynch.h ft/ftsynch2.h ft/ftsyslog.h ft/fttbase.h ft/ftthread.h ft/fttime.h ft/fttimer.h ft/fttq.h ft/fttypes.h ft/ftutility.h
+nobase_include_HEADERS = epc/epc.h epc/eatomic.h epc/ebase.h epc/ebzip2.h epc/ecbuf.h epc/edir.h epc/eerror.h epc/egetopt.h epc/ehash.h epc/einternal.h epc/elogger.h epc/emsg.h epc/epath.h epc/eqbase.h epc/eqpriv.h epc/eqpub.h epc/eshmem.h epc/esocket.h epc/estatic.h epc/estring.h epc/esynch.h epc/esynch2.h epc/esyslog.h epc/etbase.h epc/ethread.h epc/etime.h epc/etimer.h epc/etq.h epc/etypes.h epc/eutil.h

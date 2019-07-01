@@ -5,24 +5,24 @@
 #include <iostream>
 #include <locale>
 #include <memory.h>
-#include "ft/ft.h"
-#include "ft/ftinternal.h"
-#include "ft/ftbzip2.h"
-#include "ft/ftsocket.h"
+#include "epc/epc.h"
+#include "epc/einternal.h"
+#include "epc/ebzip2.h"
+#include "epc/esocket.h"
 
 std::locale defaultLocale;
 std::locale mylocale;
 
-Void FTCircularBuffer_test()
+Void ECircularBuffer_test()
 {
    pUChar pData = (pUChar) "[1234567890123456789012345678]";
    UChar buf[256];
 
    memset(buf, 0, sizeof(buf));
 
-   cout << "FTCircularBuffer_test() Start" << endl;
+   cout << "ECircularBuffer_test() Start" << endl;
 
-   FTCircularBuffer cb(50);
+   ECircularBuffer cb(50);
 
    for (int i = 0; i < 20; i++)
    {
@@ -33,14 +33,14 @@ Void FTCircularBuffer_test()
       cout << buf << endl;
    }
 
-   cout << "FTCircularBuffer_test() Complete" << endl;
+   cout << "ECircularBuffer_test() Complete" << endl;
 }
 
-Void FTTimer_test()
+Void ETimer_test()
 {
-   cout << "FTTimer_test() Start" << endl;
+   cout << "ETimer_test() Start" << endl;
 
-   FTTimerElapsed t;
+   ETimer t;
 
    t.Start();
 
@@ -49,40 +49,40 @@ Void FTTimer_test()
 
    //t.Stop();
 
-   fttime_t a = t.MicroSeconds();
-   fttime_t b = t.MilliSeconds();
+   epctime_t a = t.MicroSeconds();
+   epctime_t b = t.MilliSeconds();
 
    cout << "MicroSeconds() = " << a << endl;
    cout << "MilliSeconds() = " << b << endl;
 
-   cout << "FTTimer_test() Complete" << endl;
+   cout << "ETimer_test() Complete" << endl;
 }
 
-Void FTMutexPrivate_test()
+Void EMutexPrivate_test()
 {
-   cout << "FTMutexPrivate_test() Start" << endl;
+   cout << "EMutexPrivate_test() Start" << endl;
    cout << "Creating private mutex" << endl;
-   FTMutexPrivate m;
+   EMutexPrivate m;
    {
-      FTMutexLock l(m);
+      EMutexLock l(m);
       cout << "Mutex locked.  Press [Enter] to continue ...";
       getc(stdin);
       cout << endl
            << "Destroying private mutex" << endl;
    }
 
-   cout << "FTMutex_test() Complete" << endl;
+   cout << "EMutex_test() Complete" << endl;
 }
 
-Void FTMutexPublic_test()
+Void EMutexPublic_test()
 {
-   cout << "FTMutexPublic_test() Start" << endl;
+   cout << "EMutexPublic_test() Start" << endl;
    {
       cout << "Creating 1st public mutex" << endl;
-      FTMutexPublic m;
+      EMutexPublic m;
       {
          cout << "1st Mutex ID = " << m.mutexId() << endl;
-         FTMutexLock l(m);
+         EMutexLock l(m);
          cout << "1st Mutex locked.  Press [Enter] to continue ...";
          getc(stdin);
          cout << endl
@@ -92,10 +92,10 @@ Void FTMutexPublic_test()
 
    {
       cout << "Creating 2nd public mutex" << endl;
-      FTMutexPublic m;
+      EMutexPublic m;
       {
          cout << "2nd Mutex ID = " << m.mutexId() << endl;
-         FTMutexLock l(m);
+         EMutexLock l(m);
          cout << "2nd Mutex locked.  Press [Enter] to continue ...";
          getc(stdin);
          cout << endl
@@ -103,16 +103,16 @@ Void FTMutexPublic_test()
       }
    }
 
-   cout << "FTMutex_test() Complete" << endl;
+   cout << "EMutex_test() Complete" << endl;
 }
 
-Void FTSemaphorePrivate_test()
+Void ESemaphorePrivate_test()
 {
-   cout << "FTSemaphorePrivate_test() Start" << endl;
+   cout << "ESemaphorePrivate_test() Start" << endl;
 
    {
       cout << "Creating semaphore initial/max count of 5" << endl;
-      FTSemaphorePrivate s1(5);
+      ESemaphorePrivate s1(5);
       cout << "Decrementing";
       for (int i = 1; i <= 5; i++)
       {
@@ -127,16 +127,16 @@ Void FTSemaphorePrivate_test()
          cout << "success" << endl;
    }
 
-   cout << "FTSemaphorePrivate_test() Complete" << endl;
+   cout << "ESemaphorePrivate_test() Complete" << endl;
 }
 
-Void FTSemaphorePublic_test()
+Void ESemaphorePublic_test()
 {
-   cout << "FTSemaphorePublic_test() Start" << endl;
+   cout << "ESemaphorePublic_test() Start" << endl;
 
    {
       cout << "Creating semaphore initial/max count of 5" << endl;
-      FTSemaphorePublic s1(5);
+      ESemaphorePublic s1(5);
       cout << "Decrementing";
       for (int i = 1; i <= 5; i++)
       {
@@ -151,18 +151,18 @@ Void FTSemaphorePublic_test()
          cout << "success" << endl;
    }
 
-   cout << "FTSemaphorePublic_test() Complete" << endl;
+   cout << "ESemaphorePublic_test() Complete" << endl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-#define FTM_MUTEXTEST (FTM_USER + 1)
+#define EM_MUTEXTEST (EM_USER + 1)
 
-class FTThreadMutexTest2 : public FTThreadPrivate
+class EThreadMutexTest2 : public EThreadPrivate
 {
 public:
-   FTThreadMutexTest2(FTMutexData &m1, int loop)
+   EThreadMutexTest2(EMutexData &m1, int loop)
        : m_mutex1(m1),
          m_loop(loop)
    {
@@ -174,7 +174,7 @@ public:
 
       for (int i = 0; i < m_loop; i++)
       {
-         FTMutexLock l1(m_mutex1);
+         EMutexLock l1(m_mutex1);
       }
 
       m_timer.Stop();
@@ -184,41 +184,41 @@ public:
 
    virtual Void onQuit()
    {
-      FTThreadPrivate::onQuit();
-      cout << "FTThreadMutexTest2 elapsed time " << m_timer.MicroSeconds() - 1000000 << " microseconds" << endl;
+      EThreadPrivate::onQuit();
+      cout << "EThreadMutexTest2 elapsed time " << m_timer.MicroSeconds() - 1000000 << " microseconds" << endl;
    }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTThreadMutexTest2();
+   EThreadMutexTest2();
 
-   FTTimerElapsed m_timer;
-   FTMutexData &m_mutex1;
+   ETimer m_timer;
+   EMutexData &m_mutex1;
    int m_loop;
 };
 
-BEGIN_MESSAGE_MAP(FTThreadMutexTest2, FTThreadPrivate)
+BEGIN_MESSAGE_MAP(EThreadMutexTest2, EThreadPrivate)
 END_MESSAGE_MAP()
 
-Void FTMutex_test2()
+Void EMutex_test2()
 {
-   cout << "FTMutex_test2() Start" << endl;
+   cout << "EMutex_test2() Start" << endl;
 
    int loop = 1000000;
-   FTMutexPrivate m1;
+   EMutexPrivate m1;
 
-   FTThreadMutexTest2 t1(m1, loop);
-   FTThreadMutexTest2 t2(m1, loop);
+   EThreadMutexTest2 t1(m1, loop);
+   EThreadMutexTest2 t2(m1, loop);
 
    {
-      FTMutexLock l1(m1);
+      EMutexLock l1(m1);
 
       t1.init(1, 1, NULL, 200000);
       t2.init(1, 2, NULL, 200000);
 
       cout << "Sleeping for 1 sercond ... ";
-      FTThreadBasic::sleep(1000);
+      EThreadBasic::sleep(1000);
    }
 
    cout << "test started" << endl;
@@ -226,19 +226,19 @@ Void FTMutex_test2()
    t1.join();
    t2.join();
 
-   cout << "FTMutex_test2() Complete" << endl;
+   cout << "EMutex_test2() Complete" << endl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-class FTThreadBasicCancelWaitTest : public FTThreadBasic
+class EThreadBasicCancelWaitTest : public EThreadBasic
 {
 public:
    Bool decrementResult;
-   FTSemaphorePrivate runningSemaphore;
+   ESemaphorePrivate runningSemaphore;
 
-   FTThreadBasicCancelWaitTest()
+   EThreadBasicCancelWaitTest()
    {
       decrementResult = False;
    }
@@ -250,14 +250,14 @@ public:
       //		cout << "PTHREAD_CANCEL_ENABLE=" << PTHREAD_CANCEL_ENABLE << " PTHREAD_CANCEL_DISABLE=" << PTHREAD_CANCEL_DISABLE << " old cancel state [" << oldstate << "]" << endl;
       //		pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &oldstate);
       //		cout << ((oldstate==PTHREAD_CANCEL_DEFERRED) ? "cancellation was deferred" : "cancellation was NOT deferred") << endl;
-      FTSemaphorePrivate s;
+      ESemaphorePrivate s;
       runningSemaphore.Increment();
       try
       {
          decrementResult = s.Decrement();
          cout << "after the decrement in the test thread" << endl;
       }
-      catch (FTError &e)
+      catch (EError &e)
       {
          cout << e.c_str() << endl;
       }
@@ -270,11 +270,11 @@ public:
    }
 };
 
-Void FTThread_cancel_wait()
+Void EThread_cancel_wait()
 {
-   cout << "FTThread_cancel_wait() Start" << endl;
+   cout << "EThread_cancel_wait() Start" << endl;
 
-   FTThreadBasicCancelWaitTest t;
+   EThreadBasicCancelWaitTest t;
 
    t.init((Void *)"this is the thread argument\n", true);
    //cout << "before resume" << endl;
@@ -294,19 +294,19 @@ Void FTThread_cancel_wait()
    else
       cout << "The cancel wait test semaphore decrement returned False (success)" << endl;
 
-   cout << "FTThread_cancel_wait() Complete" << endl;
+   cout << "EThread_cancel_wait() Complete" << endl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-Void FTSemaphore_test_cancel_wait()
+Void ESemaphore_test_cancel_wait()
 {
-   cout << "FTSemaphore_test() Start" << endl;
+   cout << "ESemaphore_test() Start" << endl;
 
    {
       cout << "Creating semaphore initial/max count of 5" << endl;
-      FTSemaphorePrivate s1(5);
+      ESemaphorePrivate s1(5);
       cout << "Decrementing";
       for (int i = 1; i <= 5; i++)
       {
@@ -321,25 +321,25 @@ Void FTSemaphore_test_cancel_wait()
          cout << "success" << endl;
    }
 
-   cout << "FTSemaphore_test() Complete" << endl;
+   cout << "ESemaphore_test() Complete" << endl;
 }
 
-Void FTError_test()
+Void EError_test()
 {
-   cout << "FTError_test() Start" << endl;
+   cout << "EError_test() Start" << endl;
 
    cout << "Creating error object" << endl;
-   FTError e1;
+   EError e1;
    e1.appendTextf("error object #%d", 1);
    cout << e1.c_str() << endl;
 
-   cout << "FTError_test() Complete" << endl;
+   cout << "EError_test() Complete" << endl;
 }
 
-class FTThreadBasicTest : public FTThreadBasic
+class EThreadBasicTest : public EThreadBasic
 {
 public:
-   FTThreadBasicTest()
+   EThreadBasicTest()
    {
       m_timetoquit = false;
    }
@@ -351,7 +351,7 @@ public:
          cout << "Inside the thread " << (cpStr)arg << endl;
          sleep(1000);
       }
-      cout << "Exiting FTThreadTest::threadProc()" << endl;
+      cout << "Exiting EThreadTest::threadProc()" << endl;
       return 0;
    }
 
@@ -364,11 +364,11 @@ private:
    bool m_timetoquit;
 };
 
-Void FTThreadBasic_test()
+Void EThreadBasic_test()
 {
-   cout << "FTThread_test() Start" << endl;
+   cout << "EThread_test() Start" << endl;
 
-   FTThreadBasicTest t;
+   EThreadBasicTest t;
 
    t.init((Void *)"this is the thread argument\n", true);
    //cout << "before resume" << endl;
@@ -382,34 +382,34 @@ Void FTThreadBasic_test()
    cout << "before join" << endl;
    t.join();
 
-   cout << "FTThread_test() Complete" << endl;
+   cout << "EThread_test() Complete" << endl;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-#define FTM_USER1 (FTM_USER + 1)
-#define FTM_USER2 (FTM_USER + 2)
-#define FTM_USER3 (FTM_USER + 3)
-#define FTM_USER4 (FTM_USER + 4)
+#define EM_USER1 (EM_USER + 1)
+#define EM_USER2 (EM_USER + 2)
+#define EM_USER3 (EM_USER + 3)
+#define EM_USER4 (EM_USER + 4)
 
-class FTThreadTest4 : public FTThreadPrivate
+class EThreadTest4 : public EThreadPrivate
 {
 public:
-   FTThreadTest4(int mm)
+   EThreadTest4(int mm)
    {
       msg1snt = 0;
       msg1rcv = 0;
       msgmax = mm;
    }
 
-   Void userFunc1(FTThreadMessage &msg)
+   Void userFunc1(EThreadMessage &msg)
    {
       msg1rcv++;
       if (msg1rcv == msgmax)
          quit();
       else if (msg1snt < msgmax)
-         sendMessage(FTM_USER1, 0, (Long)msg1snt++);
+         sendMessage(EM_USER1, 0, (Long)msg1snt++);
    }
 
    Void onInit()
@@ -418,54 +418,54 @@ public:
 
       te.Start();
 
-      //sendMessage(FTM_USER1, 0, (Long)msg1snt++);
-      sendMessage(FTM_USER1, 0, (Long)msg1snt++);
+      //sendMessage(EM_USER1, 0, (Long)msg1snt++);
+      sendMessage(EM_USER1, 0, (Long)msg1snt++);
    }
 
    virtual Void onQuit()
    {
       te.Stop();
 
-      FTThreadPrivate::onQuit();
-      cout << "FTThreadTest4 sent     " << msg1snt << " FTM_USER1 messages" << endl;
-      cout << "FTThreadTest4 received " << msg1rcv << " FTM_USER1 messages" << endl;
+      EThreadPrivate::onQuit();
+      cout << "EThreadTest4 sent     " << msg1snt << " EM_USER1 messages" << endl;
+      cout << "EThreadTest4 received " << msg1rcv << " EM_USER1 messages" << endl;
    }
 
    Void onSuspend()
    {
       cout << "Inside onSuspend()" << endl;
-      FTThreadPrivate::onSuspend();
+      EThreadPrivate::onSuspend();
    }
 
-   FTTimerElapsed &getTimer() { return te; }
+   ETimer &getTimer() { return te; }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTThreadTest4();
+   EThreadTest4();
 
    int msg1snt;
    int msg1rcv;
    int msgmax;
-   FTTimerElapsed te;
+   ETimer te;
 };
 
-class FTThreadTest : public FTThreadPublic
+class EThreadTest : public EThreadPublic
 {
 public:
-   FTThreadTest(FTMutexPublic &mutex)
+   EThreadTest(EMutexPublic &mutex)
       : mtx(mutex)
    {
       msg1cnt = 0;
       msg2cnt = 0;
    }
 
-   Void userFunc1(FTThreadMessage &msg)
+   Void userFunc1(EThreadMessage &msg)
    {
       msg1cnt++;
    }
 
-   Void userFunc2(FTThreadMessage &msg)
+   Void userFunc2(EThreadMessage &msg)
    {
       msg2cnt++;
    }
@@ -477,70 +477,70 @@ public:
 
    virtual Void onQuit()
    {
-      FTThreadPublic::onQuit();
-      FTMutexLock l(mtx);
-      cout << "FTThreadTest received " << msg1cnt << " FTM_USER1 messages" << endl;
-      cout << "FTThreadTest received " << msg2cnt << " FTM_USER2 messages" << endl;
+      EThreadPublic::onQuit();
+      EMutexLock l(mtx);
+      cout << "EThreadTest received " << msg1cnt << " EM_USER1 messages" << endl;
+      cout << "EThreadTest received " << msg2cnt << " EM_USER2 messages" << endl;
    }
 
    Void onSuspend()
    {
       cout << "Inside onSuspend()" << endl;
-      FTThreadPublic::onSuspend();
+      EThreadPublic::onSuspend();
    }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTMutexPublic &mtx;
+   EMutexPublic &mtx;
    int msg1cnt;
    int msg2cnt;
 
-   FTThreadTest();
+   EThreadTest();
 };
 
-class FTThreadTest2 : public FTThreadTest
+class EThreadTest2 : public EThreadTest
 {
 public:
-   FTThreadTest2(FTMutexPublic &mutex)
-       : FTThreadTest(mutex), mtx(mutex)
+   EThreadTest2(EMutexPublic &mutex)
+       : EThreadTest(mutex), mtx(mutex)
    {
       msg3cnt = 0;
       msg4cnt = 0;
    }
 
-   Void userFunc3(FTThreadMessage &msg)
+   Void userFunc3(EThreadMessage &msg)
    {
       msg3cnt++;
    }
 
-   Void userFunc4(FTThreadMessage &msg)
+   Void userFunc4(EThreadMessage &msg)
    {
       msg4cnt++;
    }
 
    virtual Void onQuit()
    {
-      FTThreadTest::onQuit();
-      FTMutexLock l(mtx);
-      cout << "FTThreadTest2 received " << msg3cnt << " FTM_USER3 messages" << endl;
-      cout << "FTThreadTest2 received " << msg4cnt << " FTM_USER4 messages" << endl;
+      EThreadTest::onQuit();
+      EMutexLock l(mtx);
+      cout << "EThreadTest2 received " << msg3cnt << " EM_USER3 messages" << endl;
+      cout << "EThreadTest2 received " << msg4cnt << " EM_USER4 messages" << endl;
    }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTMutexPublic &mtx;
+   EMutexPublic &mtx;
    int msg3cnt;
    int msg4cnt;
 
-   FTThreadTest2();
+   EThreadTest2();
 };
 
-class FTThreadTest3 : public FTThreadPrivate
+class EThreadTest3 : public EThreadPrivate
 {
 public:
-   FTThreadTest3()
+   EThreadTest3()
    {
       msg1cnt = 0;
       msg2cnt = 0;
@@ -548,33 +548,33 @@ public:
       msg4cnt = 0;
    }
 
-   Void userFunc1(FTThreadMessage &msg)
+   Void userFunc1(EThreadMessage &msg)
    {
       msg1cnt++;
    }
 
-   Void userFunc2(FTThreadMessage &msg)
+   Void userFunc2(EThreadMessage &msg)
    {
       msg2cnt++;
    }
 
-   Void userFunc3(FTThreadMessage &msg)
+   Void userFunc3(EThreadMessage &msg)
    {
       msg3cnt++;
    }
 
-   Void userFunc4(FTThreadMessage &msg)
+   Void userFunc4(EThreadMessage &msg)
    {
       msg4cnt++;
    }
 
    virtual Void onQuit()
    {
-      FTThreadPrivate::onQuit();
-      cout << "FTThreadTest3 received " << msg1cnt << " FTM_USER1 messages" << endl;
-      cout << "FTThreadTest3 received " << msg2cnt << " FTM_USER2 messages" << endl;
-      cout << "FTThreadTest3 received " << msg3cnt << " FTM_USER3 messages" << endl;
-      cout << "FTThreadTest3 received " << msg4cnt << " FTM_USER4 messages" << endl;
+      EThreadPrivate::onQuit();
+      cout << "EThreadTest3 received " << msg1cnt << " EM_USER1 messages" << endl;
+      cout << "EThreadTest3 received " << msg2cnt << " EM_USER2 messages" << endl;
+      cout << "EThreadTest3 received " << msg3cnt << " EM_USER3 messages" << endl;
+      cout << "EThreadTest3 received " << msg4cnt << " EM_USER4 messages" << endl;
    }
 
    DECLARE_MESSAGE_MAP()
@@ -586,25 +586,25 @@ private:
    int msg4cnt;
 };
 
-BEGIN_MESSAGE_MAP(FTThreadTest, FTThreadPublic)
-ON_MESSAGE(FTM_USER1, FTThreadTest::userFunc1)
-ON_MESSAGE(FTM_USER2, FTThreadTest::userFunc2)
+BEGIN_MESSAGE_MAP(EThreadTest, EThreadPublic)
+   ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
+   ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
 END_MESSAGE_MAP()
 
-BEGIN_MESSAGE_MAP(FTThreadTest2, FTThreadTest)
-ON_MESSAGE(FTM_USER3, FTThreadTest2::userFunc3)
-ON_MESSAGE(FTM_USER4, FTThreadTest2::userFunc4)
+BEGIN_MESSAGE_MAP(EThreadTest2, EThreadTest)
+   ON_MESSAGE(EM_USER3, EThreadTest2::userFunc3)
+   ON_MESSAGE(EM_USER4, EThreadTest2::userFunc4)
 END_MESSAGE_MAP()
 
-BEGIN_MESSAGE_MAP(FTThreadTest3, FTThreadPrivate)
-ON_MESSAGE(FTM_USER1, FTThreadTest3::userFunc1)
-ON_MESSAGE(FTM_USER2, FTThreadTest3::userFunc2)
-ON_MESSAGE(FTM_USER3, FTThreadTest3::userFunc3)
-ON_MESSAGE(FTM_USER4, FTThreadTest3::userFunc4)
+BEGIN_MESSAGE_MAP(EThreadTest3, EThreadPrivate)
+   ON_MESSAGE(EM_USER1, EThreadTest3::userFunc1)
+   ON_MESSAGE(EM_USER2, EThreadTest3::userFunc2)
+   ON_MESSAGE(EM_USER3, EThreadTest3::userFunc3)
+   ON_MESSAGE(EM_USER4, EThreadTest3::userFunc4)
 END_MESSAGE_MAP()
 
-BEGIN_MESSAGE_MAP(FTThreadTest4, FTThreadPrivate)
-ON_MESSAGE(FTM_USER1, FTThreadTest4::userFunc1)
+BEGIN_MESSAGE_MAP(EThreadTest4, EThreadPrivate)
+   ON_MESSAGE(EM_USER1, EThreadTest4::userFunc1)
 END_MESSAGE_MAP()
 
 template <class T>
@@ -622,15 +622,15 @@ std::string numberFormatWithCommas(T value, int precision = 6)
    return ss.str();
 }
 
-Void FTThread_test4()
+Void EThread_test4()
 {
    int maxmsg = 100000000;
 
-   FTThreadTest4 t1(maxmsg);
+   EThreadTest4 t1(maxmsg);
 
    t1.init(1, 1, NULL, 200000);
 
-   FTThreadBasic::yield();
+   EThreadBasic::yield();
 
    t1.join();
 
@@ -640,10 +640,10 @@ Void FTThread_test4()
    //" seconds (" << (((double)maxmsg) / (((double)te.MicroSeconds())/1000000)) << " per second)" << endl;
 }
 
-class FTThreadTest5rcv : public FTThreadPrivate
+class EThreadTest5rcv : public EThreadPrivate
 {
 public:
-   FTThreadTest5rcv(int senders)
+   EThreadTest5rcv(int senders)
    {
       msg1rcv = 0;
       msg2rcv = 0;
@@ -652,7 +652,7 @@ public:
       maxpending = 0;
    }
 
-   Void rcv1(FTThreadMessage &msg)
+   Void rcv1(EThreadMessage &msg)
    {
       msg1rcv++;
 
@@ -660,7 +660,7 @@ public:
          te.Start();
    }
 
-   Void rcv2(FTThreadMessage &msg)
+   Void rcv2(EThreadMessage &msg)
    {
       UInt pending = getMsgSemaphore().currCount();
       if (pending > maxpending)
@@ -669,10 +669,10 @@ public:
       msg2rcv++;
 
       if (msg2rcv % 1000000 == 0)
-         cout << "\rFTThreadTest5 received " << msg2rcv << " max pending " << maxpending << flush;
+         cout << "\rEThreadTest5 received " << msg2rcv << " max pending " << maxpending << flush;
    }
 
-   Void rcv3(FTThreadMessage &msg)
+   Void rcv3(EThreadMessage &msg)
    {
       msg3rcv++;
 
@@ -685,36 +685,36 @@ public:
 
    virtual Void onQuit()
    {
-      FTThreadPrivate::onQuit();
-      cout << "\rFTThreadTest5rcv received " << msg2rcv << " FTM_USER2 messages with max pending of " << maxpending << endl
+      EThreadPrivate::onQuit();
+      cout << "\rEThreadTest5rcv received " << msg2rcv << " EM_USER2 messages with max pending of " << maxpending << endl
            << flush;
    }
 
-   FTTimerElapsed &getTimer() { return te; }
+   ETimer &getTimer() { return te; }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTThreadTest5rcv();
+   EThreadTest5rcv();
 
    int msg1rcv;
    int msg2rcv;
    int msg3rcv;
    int msgsenders;
    Long maxpending;
-   FTTimerElapsed te;
+   ETimer te;
 };
 
-BEGIN_MESSAGE_MAP(FTThreadTest5rcv, FTThreadPrivate)
-ON_MESSAGE(FTM_USER1, FTThreadTest5rcv::rcv1)
-ON_MESSAGE(FTM_USER2, FTThreadTest5rcv::rcv2)
-ON_MESSAGE(FTM_USER3, FTThreadTest5rcv::rcv3)
+BEGIN_MESSAGE_MAP(EThreadTest5rcv, EThreadPrivate)
+   ON_MESSAGE(EM_USER1, EThreadTest5rcv::rcv1)
+   ON_MESSAGE(EM_USER2, EThreadTest5rcv::rcv2)
+   ON_MESSAGE(EM_USER3, EThreadTest5rcv::rcv3)
 END_MESSAGE_MAP()
 
-class FTThreadTest5snd : public FTThreadBasic
+class EThreadTest5snd : public EThreadBasic
 {
 public:
-   FTThreadTest5snd(FTThreadTest5rcv *receiver, int cnt)
+   EThreadTest5snd(EThreadTest5rcv *receiver, int cnt)
    {
       msgreceiver = receiver;
       msgcnt = cnt;
@@ -723,17 +723,17 @@ public:
 
    Dword threadProc(Void *arg)
    {
-      msgreceiver->sendMessage(FTM_USER1);
+      msgreceiver->sendMessage(EM_USER1);
 
       for (msgsnt = 0; msgsnt < msgcnt; msgsnt++)
       {
-         if (!msgreceiver->sendMessage(FTM_USER2))
+         if (!msgreceiver->sendMessage(EM_USER2))
             cout << endl
                  << "sendMessage returned FALSE for message # " << msgsnt << endl
                  << flush;
       }
 
-      msgreceiver->sendMessage(FTM_USER3);
+      msgreceiver->sendMessage(EM_USER3);
 
       return 0;
    }
@@ -741,17 +741,17 @@ public:
    int getMessagesSent() { return msgsnt; }
 
 private:
-   FTThreadTest5rcv *msgreceiver;
+   EThreadTest5rcv *msgreceiver;
    int msgcnt;
    int msgsnt;
 };
 
-Void FTThread_test5()
+Void EThread_test5()
 {
    static Int nSenders = 1;
    static Int nMessages = 1000000;
    Char buffer[128];
-   FTThreadTest5snd **sendthrds = NULL;
+   EThreadTest5snd **sendthrds = NULL;
 
    cout << "Enter number of sending threads [" << nSenders << "]: ";
    cin.getline(buffer, sizeof(buffer));
@@ -761,19 +761,19 @@ Void FTThread_test5()
    cin.getline(buffer, sizeof(buffer));
    nMessages = buffer[0] ? atoi(buffer) : nMessages;
 
-   FTThreadTest5rcv t1(nSenders);
+   EThreadTest5rcv t1(nSenders);
 
    t1.init(1, 1, NULL, 200000);
 
-   sendthrds = new FTThreadTest5snd *[nSenders];
+   sendthrds = new EThreadTest5snd *[nSenders];
 
    for (int i = 0; i < nSenders; i++)
    {
-      sendthrds[i] = new FTThreadTest5snd(&t1, nMessages);
+      sendthrds[i] = new EThreadTest5snd(&t1, nMessages);
       sendthrds[i]->init(NULL);
    }
 
-   FTThreadBasic::yield();
+   EThreadBasic::yield();
 
    t1.join();
    for (int i = 0; i < nSenders; i++)
@@ -788,26 +788,26 @@ Void FTThread_test5()
    cout << "Processed " << (nSenders * nMessages) << " messages in " << ((double)t1.getTimer().MicroSeconds()) / 1000000 << " seconds (" << s << " per second)" << endl;
 }
 
-Void FTThread_test()
+Void EThread_test()
 {
-   FTMutexPublic mtx;
-   FTThreadTest2 t1(mtx);
+   EMutexPublic mtx;
+   EThreadTest2 t1(mtx);
 
    t1.init(1, 1, NULL, 200000);
-   FTThreadBasic::yield();
+   EThreadBasic::yield();
 
-   FTTimerElapsed te;
+   ETimer te;
 
    te.Start();
    int i;
 
    for (i = 0; i < 4000000; i++)
    {
-      t1.sendMessage(FTM_USER1, 0, (Long)i);
-      t1.sendMessage(FTM_USER2, 0, (Long)i);
-      t1.sendMessage(FTM_USER3, 0, (Long)i);
-      t1.sendMessage(FTM_USER4, 0, (Long)i);
-      //        FTThreadBasic::yield();
+      t1.sendMessage(EM_USER1, 0, (Long)i);
+      t1.sendMessage(EM_USER2, 0, (Long)i);
+      t1.sendMessage(EM_USER3, 0, (Long)i);
+      t1.sendMessage(EM_USER4, 0, (Long)i);
+      //        EThreadBasic::yield();
    }
 
    t1.quit();
@@ -817,13 +817,13 @@ Void FTThread_test()
    cout << "Processed " << i << " messages in " << ((double)te.MicroSeconds()) / 1000000 << " seconds (" << ((double)i) / (((double)te.MicroSeconds()) / 1000000) << " per second)" << endl;
 }
 
-Void FTThread_test2()
+Void EThread_test2()
 {
-   FTMutexPublic mtx;
-   FTThreadTest2 t1(mtx);
-   FTThreadTest2 t2(mtx);
-   FTThreadTest2 t3(mtx);
-   FTThreadTest2 t4(mtx);
+   EMutexPublic mtx;
+   EThreadTest2 t1(mtx);
+   EThreadTest2 t2(mtx);
+   EThreadTest2 t3(mtx);
+   EThreadTest2 t4(mtx);
 
    t1.init(1, 1, NULL, 200000);
    t2.init(1, 2, NULL, 200000);
@@ -831,7 +831,7 @@ Void FTThread_test2()
    t4.init(1, 4, NULL, 200000);
    t1.yield();
 
-   FTTimerElapsed te;
+   ETimer te;
 
    te.Start();
    int i;
@@ -845,38 +845,38 @@ Void FTThread_test2()
             switch (i)
             {
             case 0:
-               t1.sendMessage(FTM_USER1, 0, (Long)i);
-               t2.sendMessage(FTM_USER1, 0, (Long)i);
-               t3.sendMessage(FTM_USER1, 0, (Long)i);
-               t4.sendMessage(FTM_USER1, 0, (Long)i);
+               t1.sendMessage(EM_USER1, 0, (Long)i);
+               t2.sendMessage(EM_USER1, 0, (Long)i);
+               t3.sendMessage(EM_USER1, 0, (Long)i);
+               t4.sendMessage(EM_USER1, 0, (Long)i);
                break;
             case 1:
-               t1.sendMessage(FTM_USER2, 0, (Long)i);
-               t2.sendMessage(FTM_USER2, 0, (Long)i);
-               t3.sendMessage(FTM_USER2, 0, (Long)i);
-               t4.sendMessage(FTM_USER2, 0, (Long)i);
+               t1.sendMessage(EM_USER2, 0, (Long)i);
+               t2.sendMessage(EM_USER2, 0, (Long)i);
+               t3.sendMessage(EM_USER2, 0, (Long)i);
+               t4.sendMessage(EM_USER2, 0, (Long)i);
                break;
             case 2:
-               t1.sendMessage(FTM_USER3, 0, (Long)i);
-               t2.sendMessage(FTM_USER3, 0, (Long)i);
-               t3.sendMessage(FTM_USER3, 0, (Long)i);
-               t4.sendMessage(FTM_USER3, 0, (Long)i);
+               t1.sendMessage(EM_USER3, 0, (Long)i);
+               t2.sendMessage(EM_USER3, 0, (Long)i);
+               t3.sendMessage(EM_USER3, 0, (Long)i);
+               t4.sendMessage(EM_USER3, 0, (Long)i);
                break;
             case 3:
-               t1.sendMessage(FTM_USER4, 0, (Long)i);
-               t2.sendMessage(FTM_USER4, 0, (Long)i);
-               t3.sendMessage(FTM_USER4, 0, (Long)i);
-               t4.sendMessage(FTM_USER4, 0, (Long)i);
+               t1.sendMessage(EM_USER4, 0, (Long)i);
+               t2.sendMessage(EM_USER4, 0, (Long)i);
+               t3.sendMessage(EM_USER4, 0, (Long)i);
+               t4.sendMessage(EM_USER4, 0, (Long)i);
                break;
             }
          }
-         catch (FTError &e)
+         catch (EError &e)
          {
             cout << "Processing exception " << e.Name() << " - " << e << endl;
             throw;
          }
       }
-      //        FTThreadBasic::yield();
+      //        EThreadBasic::yield();
    }
 
    t1.quit();
@@ -892,12 +892,12 @@ Void FTThread_test2()
    cout << "Processed " << i << " messages in " << ((double)te.MicroSeconds()) / 1000000 << " seconds (" << ((double)i) / (((double)te.MicroSeconds()) / 1000000) << " per second)" << endl;
 }
 
-Void FTThread_test3()
+Void EThread_test3()
 {
-   FTThreadTest3 t1;
-   FTThreadTest3 t2;
-   FTThreadTest3 t3;
-   FTThreadTest3 t4;
+   EThreadTest3 t1;
+   EThreadTest3 t2;
+   EThreadTest3 t3;
+   EThreadTest3 t4;
 
    t1.init(1, 1, NULL, 200000);
    t2.init(1, 2, NULL, 200000);
@@ -905,7 +905,7 @@ Void FTThread_test3()
    t4.init(1, 4, NULL, 200000);
    t1.yield();
 
-   FTTimerElapsed te;
+   ETimer te;
 
    te.Start();
    int i;
@@ -919,38 +919,38 @@ Void FTThread_test3()
             switch (i)
             {
             case 0:
-               t1.sendMessage(FTM_USER1, 0, (Long)i);
-               t2.sendMessage(FTM_USER1, 0, (Long)i);
-               t3.sendMessage(FTM_USER1, 0, (Long)i);
-               t4.sendMessage(FTM_USER1, 0, (Long)i);
+               t1.sendMessage(EM_USER1, 0, (Long)i);
+               t2.sendMessage(EM_USER1, 0, (Long)i);
+               t3.sendMessage(EM_USER1, 0, (Long)i);
+               t4.sendMessage(EM_USER1, 0, (Long)i);
                break;
             case 1:
-               t1.sendMessage(FTM_USER2, 0, (Long)i);
-               t2.sendMessage(FTM_USER2, 0, (Long)i);
-               t3.sendMessage(FTM_USER2, 0, (Long)i);
-               t4.sendMessage(FTM_USER2, 0, (Long)i);
+               t1.sendMessage(EM_USER2, 0, (Long)i);
+               t2.sendMessage(EM_USER2, 0, (Long)i);
+               t3.sendMessage(EM_USER2, 0, (Long)i);
+               t4.sendMessage(EM_USER2, 0, (Long)i);
                break;
             case 2:
-               t1.sendMessage(FTM_USER3, 0, (Long)i);
-               t2.sendMessage(FTM_USER3, 0, (Long)i);
-               t3.sendMessage(FTM_USER3, 0, (Long)i);
-               t4.sendMessage(FTM_USER3, 0, (Long)i);
+               t1.sendMessage(EM_USER3, 0, (Long)i);
+               t2.sendMessage(EM_USER3, 0, (Long)i);
+               t3.sendMessage(EM_USER3, 0, (Long)i);
+               t4.sendMessage(EM_USER3, 0, (Long)i);
                break;
             case 3:
-               t1.sendMessage(FTM_USER4, 0, (Long)i);
-               t2.sendMessage(FTM_USER4, 0, (Long)i);
-               t3.sendMessage(FTM_USER4, 0, (Long)i);
-               t4.sendMessage(FTM_USER4, 0, (Long)i);
+               t1.sendMessage(EM_USER4, 0, (Long)i);
+               t2.sendMessage(EM_USER4, 0, (Long)i);
+               t3.sendMessage(EM_USER4, 0, (Long)i);
+               t4.sendMessage(EM_USER4, 0, (Long)i);
                break;
             }
          }
-         catch (FTError &e)
+         catch (EError &e)
          {
             cout << "Processing exception " << e.Name() << " - " << e << endl;
             throw;
          }
       }
-      //        FTThreadBasic::yield();
+      //        EThreadBasic::yield();
    }
 
    t1.quit();
@@ -966,17 +966,17 @@ Void FTThread_test3()
    cout << "Processed " << i << " messages in " << ((double)te.MicroSeconds()) / 1000000 << " seconds (" << ((double)i) / (((double)te.MicroSeconds()) / 1000000) << " per second)" << endl;
 }
 
-void FTSharedMemory_test()
+void ESharedMemory_test()
 {
-   FTSharedMemory m("test", 1, 1024 * 1024);
+   ESharedMemory m("test", 1, 1024 * 1024);
 }
 
-class testmessage : public FTQueueMessage
+class testmessage : public EQueueMessage
 {
 public:
    testmessage()
    {
-      ft_strcpy_s(m_data, sizeof(m_data),
+      epc_strcpy_s(m_data, sizeof(m_data),
                   "This is a shared queue test. Four score and 7 years ago, our fathers");
    }
 
@@ -984,27 +984,27 @@ public:
 
    virtual Void getLength(ULong &length)
    {
-      FTQueueMessage::getLength(length);
+      EQueueMessage::getLength(length);
       elementLength(m_data, length);
    }
    virtual Void serialize(pVoid pBuffer, ULong &nOffset)
    {
-      FTQueueMessage::serialize(pBuffer, nOffset);
+      EQueueMessage::serialize(pBuffer, nOffset);
       pack(m_data, pBuffer, nOffset);
    }
    virtual Void unserialize(pVoid pBuffer, ULong &nOffset)
    {
-      FTQueueMessage::unserialize(pBuffer, nOffset);
+      EQueueMessage::unserialize(pBuffer, nOffset);
       unpack(m_data, pBuffer, nOffset);
    }
 
    Char m_data[128];
 };
 
-class TestPublicQueue : public FTQueuePublic
+class TestPublicQueue : public EQueuePublic
 {
 public:
-   FTQueueMessage *allocMessage(Long msgType)
+   EQueueMessage *allocMessage(Long msgType)
    {
       return &msg;
    }
@@ -1018,7 +1018,7 @@ private:
    testmessage msg;
 };
 
-void FTQueuePublic_test(Bool bWriter)
+void EQueuePublic_test(Bool bWriter)
 {
    static Int nQueueId = 1;
    static Int nMsgCnt = 100000;
@@ -1035,16 +1035,16 @@ void FTQueuePublic_test(Bool bWriter)
 
    try
    {
-      q.init(nQueueId, bWriter ? FTQueueBase::WriteOnly : FTQueueBase::ReadOnly);
+      q.init(nQueueId, bWriter ? EQueueBase::WriteOnly : EQueueBase::ReadOnly);
    }
-   catch (FTError &e)
+   catch (EError &e)
    {
       cout << e.Name() << " - " << e << endl;
       return;
    }
 
    testmessage msg;
-   FTTimerElapsed te;
+   ETimer te;
 
    Int cnt = 0;
 
@@ -1074,51 +1074,51 @@ void FTQueuePublic_test(Bool bWriter)
 #define LOG_MASK_3 0x0000000000000004
 #define LOG_MASK_4 0x0000000000000008
 
-Void FTLogger_test()
+Void ELogger_test()
 {
-    cout << "FTLogger_test start" << endl;
+    cout << "ELogger_test start" << endl;
 
-    FTLogger::setGroupMask(1, 0);
-    FTLogger::setGroupMask(2, 0);
+    ELogger::setGroupMask(1, 0);
+    ELogger::setGroupMask(2, 0);
 
-    FTLogger::logError(1, LOG_MASK_1, "FTLogger_test", "This line should not be logged, because it is not enabled.");
-    FTLogger::enableGroupMask(1, LOG_MASK_1);
-    FTLogger::logError(1, LOG_MASK_1, "FTLogger_test", "This line should be logged.");
+    ELogger::logError(1, LOG_MASK_1, "ELogger_test", "This line should not be logged, because it is not enabled.");
+    ELogger::enableGroupMask(1, LOG_MASK_1);
+    ELogger::logError(1, LOG_MASK_1, "ELogger_test", "This line should be logged.");
 
     cout << "Testing single file log rollover." << endl;
-    FTString s;
+    EString s;
     Int i;
     for (i = 0; i<19; i++)
-        FTLogger::logInfo(1, LOG_MASK_1, "FTLogger_test", "LOG_MASK_1 Line %d", i + 1);
+        ELogger::logInfo(1, LOG_MASK_1, "ELogger_test", "LOG_MASK_1 Line %d", i + 1);
     cout << "  Review log file 1.  There should be 10 lines in the log file, numbers 10-19." << endl;
 
-    FTLogger::disableGroupMask(1, LOG_MASK_1);
-    FTLogger::logInfo(1, LOG_MASK_1, "FTLogger_test", "This line should not be logged because it has been disabled.");
+    ELogger::disableGroupMask(1, LOG_MASK_1);
+    ELogger::logInfo(1, LOG_MASK_1, "ELogger_test", "This line should not be logged because it has been disabled.");
 
     cout << "Testing log rollover with 2 files." << endl;
-    FTLogger::enableGroupMask(2, LOG_MASK_2);
+    ELogger::enableGroupMask(2, LOG_MASK_2);
     for (i = 0; i<20; i++)
-        FTLogger::logInfo(2, LOG_MASK_2, "FTLogger_test", "LOG_MASK_2 Line %d", i + 1);
+        ELogger::logInfo(2, LOG_MASK_2, "ELogger_test", "LOG_MASK_2 Line %d", i + 1);
     cout << "  Review log file 2.  There should be 2 segments with 10 lines each." << endl;
 
     cout << "Testing syslog." << endl;
-    FTLogger::enableGroupMask(3, LOG_MASK_2);
-    FTLogger::logInfo(3, LOG_MASK_2, "FTLogger_test", "Info message");
-    FTLogger::logWarning(3, LOG_MASK_2, "FTLogger_test", "Warning message");
-    FTLogger::logError(3, LOG_MASK_2, "FTLogger_test", "Error message");
+    ELogger::enableGroupMask(3, LOG_MASK_2);
+    ELogger::logInfo(3, LOG_MASK_2, "ELogger_test", "Info message");
+    ELogger::logWarning(3, LOG_MASK_2, "ELogger_test", "Warning message");
+    ELogger::logError(3, LOG_MASK_2, "ELogger_test", "Error message");
     cout << "  Review log file 3.  There should be 2 segments with 10 lines each." << endl;
 
-    cout << "FTLogger_test complete" << endl;
+    cout << "ELogger_test complete" << endl;
 }
 #endif
 
-Void FTDateTime_test()
+Void EDateTime_test()
 {
-   FTTime t;
+   ETime t;
 
    t.Now();
 
-   FTString s;
+   EString s;
    t.Format(s, "%Y-%m-%d %H:%M:%S.%0", False);
    cout << s << endl;
    t.Format(s, "%Y-%m-%d %H:%M:%S.%0", True);
@@ -1137,10 +1137,10 @@ Void FTDateTime_test()
    cout << " Is [" << pszDate << "] equal to [" << s << "]" << endl;
 }
 
-class FTThreadTimerTest : public FTThreadPrivate
+class EThreadTimerTest : public EThreadPrivate
 {
 public:
-   FTThreadTimerTest()
+   EThreadTimerTest()
    {
    }
 
@@ -1169,7 +1169,7 @@ public:
       else
       {
          m_cnt = 0;
-         m_timer1.setInterval(15000);
+         m_timer1.setInterval(5000);
          m_timer1.setOneShot(m_oneshot);
          initTimer(m_timer1);
          m_elapsed.Start();
@@ -1177,13 +1177,13 @@ public:
       }
    }
 
-   Void onTimer(FTThreadBase::Timer *pTimer)
+   Void onTimer(EThreadBase::Timer *pTimer)
    {
       cout << m_elapsed.MilliSeconds(True) << " milliseconds has elapsed." << endl;
       if (pTimer->getId() == m_timer1.getId())
       {
          m_cnt++;
-         if (m_cnt == 10)
+         if (m_cnt == 5)
             quit();
       }
       else if (pTimer->getId() == m_timer2.getId())
@@ -1206,88 +1206,88 @@ public:
 private:
    Int m_cnt;
    Bool m_oneshot;
-   FTThreadBase::Timer m_timer1;
-   FTThreadBase::Timer m_timer2;
-   FTThreadBase::Timer m_timer3;
-   FTTimerElapsed m_elapsed;
+   EThreadBase::Timer m_timer1;
+   EThreadBase::Timer m_timer2;
+   EThreadBase::Timer m_timer3;
+   ETimer m_elapsed;
 };
 
-BEGIN_MESSAGE_MAP(FTThreadTimerTest, FTThreadPrivate)
+BEGIN_MESSAGE_MAP(EThreadTimerTest, EThreadPrivate)
 END_MESSAGE_MAP()
 
-Void FTThreadTimerPeriodic_test()
+Void EThreadTimerPeriodic_test()
 {
-   FTThreadTimerTest t;
+   EThreadTimerTest t;
    t.setOneShot(False);
    t.init(1, 1, NULL, 2000);
    t.join();
 }
 
-Void FTThreadTimerOneShot_test()
+Void EThreadTimerOneShot_test()
 {
-   FTThreadTimerTest t;
+   EThreadTimerTest t;
    t.setOneShot(True);
    t.init(1, 1, NULL, 2000);
    t.join();
 }
 
-class FTThreadTestSuspendResume : public FTThreadPrivate
+class EThreadTestSuspendResume : public EThreadPrivate
 {
 public:
-   FTThreadTestSuspendResume()
+   EThreadTestSuspendResume()
    {
       m_timer.Start();
    }
 
-   Void userFunc1(FTThreadMessage &msg)
+   Void userFunc1(EThreadMessage &msg)
    {
-      cout << "received FTM_USER1 - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      cout << "received EM_USER1 - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
       m_timer.Start();
    }
 
    Void onInit()
    {
-      cout << "received FTM_INIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      cout << "received EM_INIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
       m_timer.Start();
    }
 
    Void onSuspend()
    {
-      cout << "received FTM_SUSPEND - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      cout << "received EM_SUSPEND - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
       m_timer.Start();
    }
 
    Void onQuit()
    {
-      FTThreadPrivate::onQuit();
-      cout << "received FTM_QUIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
+      EThreadPrivate::onQuit();
+      cout << "received EM_QUIT - elapsed time " << m_timer.MicroSeconds() << "us" << endl;
       m_timer.Start();
    }
 
    DECLARE_MESSAGE_MAP()
 
 private:
-   FTTimerElapsed m_timer;
+   ETimer m_timer;
 };
 
-BEGIN_MESSAGE_MAP(FTThreadTestSuspendResume, FTThreadPrivate)
-   ON_MESSAGE(FTM_USER1, FTThreadTestSuspendResume::userFunc1)
+BEGIN_MESSAGE_MAP(EThreadTestSuspendResume, EThreadPrivate)
+   ON_MESSAGE(EM_USER1, EThreadTestSuspendResume::userFunc1)
 END_MESSAGE_MAP()
 
-Void FTThreadSuspendResume_test()
+Void EThreadSuspendResume_test()
 {
-   cout << "FTThreadSuspendResume_test - start" << endl;
+   cout << "EThreadSuspendResume_test - start" << endl;
 
-   FTThreadTestSuspendResume t;
+   EThreadTestSuspendResume t;
 
    t.init(1, 1, NULL, 2000);
-   FTThreadBasic::sleep(1000);
+   EThreadBasic::sleep(1000);
 
-   cout << "start sending FTM_USER1 messages" << endl;
+   cout << "start sending EM_USER1 messages" << endl;
    for (Int i=0; i<5; i++)
    {
-      t.sendMessage(FTM_USER1);
-      FTThreadBasic::sleep(1000);
+      t.sendMessage(EM_USER1);
+      EThreadBasic::sleep(1000);
    }
 
    for (Int i=0; i<5; i++)
@@ -1297,61 +1297,61 @@ Void FTThreadSuspendResume_test()
       {
          cout << "suspending the thread for " << ms/1000 << "seconds" << endl;
          t.suspend();
-         cout << "sending FTM_USER1 while thread is suspended " << endl;
+         cout << "sending EM_USER1 while thread is suspended " << endl;
       }
 
-      t.sendMessage(FTM_USER1);
+      t.sendMessage(EM_USER1);
 
       if (!i)
       {
-         FTThreadBasic::sleep(ms);
+         EThreadBasic::sleep(ms);
          cout << "resuming the thread" << endl;
          t.resume();
       }
 
-      FTThreadBasic::sleep(1000);
+      EThreadBasic::sleep(1000);
    }
 
    t.quit();
    t.join();
-   cout << "FTThreadSuspendResume_test - complete" << endl;
+   cout << "EThreadSuspendResume_test - complete" << endl;
 }
 
-Void FTHash_test()
+Void EHash_test()
 {
-   cout << "FThash_test start" << endl;
+   cout << "Ehash_test start" << endl;
 
    ULong hash;
-   FTString s;
+   EString s;
 
-   // FTString short
+   // EString short
    {
-      FTString s;
+      EString s;
       s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456";
-      hash = FTHash::getHash(s);
-      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for FTString [" << s << "]" << endl;
+      hash = EHash::getHash(s);
+      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for EString [" << s << "]" << endl;
    }
 
    {
-      FTString s;
+      EString s;
       s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123457";
-      hash = FTHash::getHash(s);
-      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for FTString [" << s << "]" << endl;
+      hash = EHash::getHash(s);
+      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for EString [" << s << "]" << endl;
    }
 
-   // FTString long
+   // EString long
    {
-      FTString s;
+      EString s;
       s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      hash = FTHash::getHash(s);
-      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for FTString [" << s << "]" << endl;
+      hash = EHash::getHash(s);
+      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for EString [" << s << "]" << endl;
    }
 
    {
-      FTString s;
+      EString s;
       s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456780";
-      hash = FTHash::getHash(s);
-      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for FTString [" << s << "]" << endl;
+      hash = EHash::getHash(s);
+      cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for EString [" << s << "]" << endl;
    }
 
    ////////////////////////////////////////////////////////////////////////////
@@ -1359,25 +1359,25 @@ Void FTHash_test()
 
    {
       cpChar s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456";
-      hash = FTHash::getHash(s, strlen(s));
+      hash = EHash::getHash(s, strlen(s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpChar [" << s << "]" << endl;
    }
 
    {
       cpChar s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123457";
-      hash = FTHash::getHash(s, strlen(s));
+      hash = EHash::getHash(s, strlen(s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpChar [" << s << "]" << endl;
    }
 
    {
       cpChar s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      hash = FTHash::getHash(s, strlen(s));
+      hash = EHash::getHash(s, strlen(s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpChar [" << s << "]" << endl;
    }
 
    {
       cpChar s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456780";
-      hash = FTHash::getHash(s, strlen(s));
+      hash = EHash::getHash(s, strlen(s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpChar [" << s << "]" << endl;
    }
 
@@ -1386,32 +1386,32 @@ Void FTHash_test()
 
    {
       cpUChar s = (cpUChar) "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456";
-      hash = FTHash::getHash(s, strlen((cpChar)s));
+      hash = EHash::getHash(s, strlen((cpChar)s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpUChar [" << s << "]" << endl;
    }
 
    {
       cpUChar s = (cpUChar) "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123457";
-      hash = FTHash::getHash(s, strlen((cpChar)s));
+      hash = EHash::getHash(s, strlen((cpChar)s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpUChar [" << s << "]" << endl;
    }
 
    {
       cpUChar s = (cpUChar) "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      hash = FTHash::getHash(s, strlen((cpChar)s));
+      hash = EHash::getHash(s, strlen((cpChar)s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpUChar [" << s << "]" << endl;
    }
 
    {
       cpUChar s = (cpUChar) "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456780";
-      hash = FTHash::getHash(s, strlen((cpChar)s));
+      hash = EHash::getHash(s, strlen((cpChar)s));
       cout << std::hex << std::uppercase << hash << std::nouppercase << std::dec << " for cpUChar [" << s << "]" << endl;
    }
 
-   cout << "FThash_test complete" << endl;
+   cout << "Ehash_test complete" << endl;
 }
 
-Void FTDirectory_test()
+Void EDirectory_test()
 {
    Char path[512];
    Char mask[512];
@@ -1429,7 +1429,7 @@ Void FTDirectory_test()
 
    try
    {
-      FTDirectory d;
+      EDirectory d;
       cpStr fn = d.getFirstEntry(path, mask);
       while (fn)
       {
@@ -1437,16 +1437,16 @@ Void FTDirectory_test()
          fn = d.getNextEntry();
       }
    }
-   catch (FTError &e)
+   catch (EError &e)
    {
       cout << e.getText() << endl;
    }
 }
 
-class FTThreadDeadlock : public FTThreadBasic
+class EThreadDeadlock : public EThreadBasic
 {
 public:
-   FTThreadDeadlock(const char *name, FTMutexData &m1, const char *m1name, FTMutexData &m2, const char *m2name)
+   EThreadDeadlock(const char *name, EMutexData &m1, const char *m1name, EMutexData &m2, const char *m2name)
        : m_m1(m1),
          m_m2(m2)
    {
@@ -1458,7 +1458,7 @@ public:
    Dword threadProc(Void *arg)
    {
       cout << "Thread " << m_name << " is attempting to lock " << m_m1_name << endl;
-      FTMutexLock l1(m_m1, false);
+      EMutexLock l1(m_m1, false);
       if (l1.acquire(false))
       {
          cout << "Thread " << m_name << " has locked " << m_m1_name << ", sleeping for 1 second" << endl;
@@ -1472,7 +1472,7 @@ public:
       sleep(1000);
 
       cout << "Thread " << m_name << " is attempting to lock " << m_m2_name << endl;
-      FTMutexLock l2(m_m2, false);
+      EMutexLock l2(m_m2, false);
       if (l2.acquire(false))
       {
          cout << "Thread " << m_name << " has locked " << m_m2_name << endl;
@@ -1487,19 +1487,19 @@ public:
    }
 
 private:
-   FTString m_name;
-   FTString m_m1_name;
-   FTString m_m2_name;
-   FTMutexData &m_m1;
-   FTMutexData &m_m2;
+   EString m_name;
+   EString m_m1_name;
+   EString m_m2_name;
+   EMutexData &m_m1;
+   EMutexData &m_m2;
 };
 
 Void deadlock()
 {
-   FTMutexPrivate m1;
-   FTMutexPrivate m2;
-   FTThreadDeadlock t1("THREAD_1", m1, "MUTEX_1", m2, "MUTEX_2");
-   FTThreadDeadlock t2("THREAD_2", m2, "MUTEX_2", m1, "MUTEX_1");
+   EMutexPrivate m1;
+   EMutexPrivate m2;
+   EThreadDeadlock t1("THREAD_1", m1, "MUTEX_1", m2, "MUTEX_2");
+   EThreadDeadlock t2("THREAD_2", m2, "MUTEX_2", m1, "MUTEX_1");
 
    t1.init(NULL);
    t2.init(NULL);
@@ -1514,7 +1514,7 @@ Void deadlock()
 class Listener;
 class Talker;
 
-class Worker : public FTSocketThread
+class Worker : public ESocketThread
 {
 public:
 	Worker() { m_listen = False; m_port = 0; m_cnt = 0; m_talker = NULL; }
@@ -1523,7 +1523,7 @@ public:
 	Void onQuit();
 	Void onClose();
 
-	Void errorHandler(FTError &err, FTSocket* psocket);
+	Void errorHandler(EError &err, ESocket* psocket);
 
 	Talker* createTalker();
 
@@ -1545,22 +1545,22 @@ private:
 
 };
 
-class Listener : public FTSocketListen
+class Listener : public ESocketListen
 {
 public:
-	Listener(Worker* pthread) : FTSocketListen(pthread, 1048576) {}
+	Listener(Worker* pthread) : ESocketListen(pthread, 1048576) {}
 	~Listener() {}
 
-    FTSocketConverse* createSocket(FTSocketThread* pthread);
+    ESocketConverse* createSocket(ESocketThread* pthread);
 
     Void onClose();
     Void onError();
 };
 
-class Talker : public FTSocketConverse
+class Talker : public ESocketConverse
 {
 public:
-	Talker(Worker* pthread) : FTSocketConverse(pthread, 1048576) {}
+	Talker(Worker* pthread) : ESocketConverse(pthread, 1048576) {}
 	~Talker() {}
 
 	Void onConnect();
@@ -1573,7 +1573,7 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-FTSocketConverse* Listener::createSocket(FTSocketThread* pthread)
+ESocketConverse* Listener::createSocket(ESocketThread* pthread)
 {
 
 	return ((Worker*)pthread)->createTalker();
@@ -1593,7 +1593,7 @@ Void Listener::onError()
 
 Void Talker::onConnect()
 {
-	FTSocketConverse::onConnect();
+	ESocketConverse::onConnect();
 
    std::cout << "socket connected" << std::endl << std::flush;
 
@@ -1682,7 +1682,7 @@ Void Worker::onClose()
 	}
 }
 
-Void Worker::errorHandler(FTError &err, FTSocket* psocket)
+Void Worker::errorHandler(EError &err, ESocket* psocket)
 {
    //std::cout << "Socket exception - " << err << std::endl << std::flush;
 }
@@ -1724,7 +1724,7 @@ Void sockettest(Bool server)
 Void usage()
 {
    const char *msg =
-       "USAGE:  fttest [--help] [--file optionfile]\n";
+       "USAGE:  epctest [--help] [--file optionfile]\n";
 
    cout << msg;
 }
@@ -1733,7 +1733,7 @@ Void printMenu()
 {
    printf(
        "\n"
-       "                          Foundation Tools Test Menu                           \n"
+       "                       Enhanced Packet Core Tools Test Menu                     \n"
        "\n"
        "1.  Semaphore/thread cancellation              14. Basic thread test            \n"
        "2.  DateTime object tests                      15. Thread suspend/resume        \n"
@@ -1773,77 +1773,77 @@ Void run()
          switch (opt)
          {
          case 1:
-            FTThread_cancel_wait();
+            EThread_cancel_wait();
             break;
          case 2:
-            FTDateTime_test();
+            EDateTime_test();
             break;
          case 3:
-            FTThread_test();
+            EThread_test();
             break;
          case 4:
-            FTThread_test2();
+            EThread_test2();
             break;
          case 5:
-            FTThread_test3();
+            EThread_test3();
             break;
          case 6:
-            FTQueuePublic_test(False);
+            EQueuePublic_test(False);
             break;
          case 7:
-            FTQueuePublic_test(True);
+            EQueuePublic_test(True);
             break;
          case 8:
-            FTTimer_test();
+            ETimer_test();
             break;
          case 9:
-            FTError_test();
+            EError_test();
             break;
          case 10:
-            FTMutexPrivate_test();
+            EMutexPrivate_test();
             break;
          case 11:
-            FTMutexPublic_test();
+            EMutexPublic_test();
             break;
          case 12:
-            FTSemaphorePrivate_test();
+            ESemaphorePrivate_test();
             break;
          case 13:
-            FTSemaphorePublic_test();
+            ESemaphorePublic_test();
             break;
          case 14:
-            FTThreadBasic_test();
+            EThreadBasic_test();
             break;
          case 15:
-            FTThreadSuspendResume_test();
+            EThreadSuspendResume_test();
             break;
          case 16:
-            FTThreadTimerPeriodic_test();
+            EThreadTimerPeriodic_test();
             break;
          case 17:
-            FTThreadTimerOneShot_test();
+            EThreadTimerOneShot_test();
             break;
          case 18:
-            FTCircularBuffer_test();
+            ECircularBuffer_test();
             break;
             //                case 17:  OpenDBX_test();                   break;
          case 19:
-            FTDirectory_test();
+            EDirectory_test();
             break;
          case 20:
-            FTHash_test();
+            EHash_test();
             break;
          case 21:
-            FTThread_test4();
+            EThread_test4();
             break;
          case 22:
             deadlock();
             break;
          case 23:
-            FTThread_test5();
+            EThread_test5();
             break;
          case 24:
-            FTMutex_test2();
+            EMutex_test2();
             break;
          case 25:
             sockettest(True);
@@ -1857,7 +1857,7 @@ Void run()
             break;
          }
       }
-      catch (FTError &e)
+      catch (EError &e)
       {
          cout << e.Name() << " - " << e << endl;
       }
@@ -1867,8 +1867,8 @@ Void run()
 #define BUFFER_SIZE 262144
 int main(int argc, char *argv[])
 {
-   //FTString s;
-   //FTTime t1, t2;
+   //EString s;
+   //ETime t1, t2;
    //t1.Format(s, "%i", True);	cout << s << endl;
    //t2 = t1.add(1,0,0,0,0);
    //t1.Format(s, "%i", True);	cout << s << endl;
@@ -1879,7 +1879,7 @@ int main(int argc, char *argv[])
 
    //try
    //{
-   //	FTBzip2 bz;
+   //	EBzip2 bz;
 
    //	Int block = 0;
    //	ULongLong tamt = 0;
@@ -1910,34 +1910,34 @@ int main(int argc, char *argv[])
    //	cout << "\r" << block++ << ":" << amt << endl;
    //	bz.close();
    //}
-   //catch (FTError  e)
+   //catch (EError  e)
    //{
    //	cout << e->getText() << endl;
    //}
 
    //{
-   //   FTMutexData d;
-   //   FTMutexDataPublic dp;
+   //   EMutexData d;
+   //   EMutexDataPublic dp;
    //
-   //   cout << "sizeof FTMutexPrivate = " << sizeof(FTMutexPrivate) << endl;
-   //   cout << "sizeof FTMutexPublic = " << sizeof(FTMutexPublic) << endl;
-   //   cout << "sizeof FTMutexData = " << sizeof(FTMutexData) << endl;
-   //   cout << "sizeof FTMutexData.m_initialized = " << sizeof(d.initialized()) << endl;
-   //   cout << "sizeof FTMutexData.m_mutex = " << sizeof(d.mutex()) << endl;
-   //   cout << "sizeof FTMutexDataPublic = " << sizeof(dp) << endl;
-   //   cout << "sizeof FTMutexDataPublic.m_initialized = " << sizeof(dp.initialized()) << endl;
-   //   cout << "sizeof FTMutexDataPublic.m_mutex = " << sizeof(dp.mutex()) << endl;
-   //   cout << "sizeof FTMutexDataPublic.m_nextIndex = " << sizeof(dp.nextIndex()) << endl;
-   //   cout << "sizeof FTMutexDataPublic.m_mutexId = " << sizeof(dp.mutexId()) << endl;
+   //   cout << "sizeof EMutexPrivate = " << sizeof(EMutexPrivate) << endl;
+   //   cout << "sizeof EMutexPublic = " << sizeof(EMutexPublic) << endl;
+   //   cout << "sizeof EMutexData = " << sizeof(EMutexData) << endl;
+   //   cout << "sizeof EMutexData.m_initialized = " << sizeof(d.initialized()) << endl;
+   //   cout << "sizeof EMutexData.m_mutex = " << sizeof(d.mutex()) << endl;
+   //   cout << "sizeof EMutexDataPublic = " << sizeof(dp) << endl;
+   //   cout << "sizeof EMutexDataPublic.m_initialized = " << sizeof(dp.initialized()) << endl;
+   //   cout << "sizeof EMutexDataPublic.m_mutex = " << sizeof(dp.mutex()) << endl;
+   //   cout << "sizeof EMutexDataPublic.m_nextIndex = " << sizeof(dp.nextIndex()) << endl;
+   //   cout << "sizeof EMutexDataPublic.m_mutexId = " << sizeof(dp.mutexId()) << endl;
    //}
 
-   FTGetOpt::Option options[] = {
-       {"-h", "--help", FTGetOpt::no_argument, FTGetOpt::dtNone},
-       {"-f", "--file", FTGetOpt::required_argument, FTGetOpt::dtString},
-       {"", "", FTGetOpt::no_argument, FTGetOpt::dtNone},
+   EGetOpt::Option options[] = {
+       {"-h", "--help", EGetOpt::no_argument, EGetOpt::dtNone},
+       {"-f", "--file", EGetOpt::required_argument, EGetOpt::dtString},
+       {"", "", EGetOpt::no_argument, EGetOpt::dtNone},
    };
 
-   FTGetOpt opt;
+   EGetOpt opt;
    opt.loadCmdLine(argc, argv, options);
    if (opt.getCmdLine("-h,--help", false))
    {
@@ -1945,7 +1945,7 @@ int main(int argc, char *argv[])
       exit(0);
    }
 
-   FTString optFile;
+   EString optFile;
    optFile.format("%s.json", argv[0]);
    opt.loadFile(optFile.c_str());
 
@@ -1960,13 +1960,13 @@ int main(int argc, char *argv[])
 
    try
    {
-      FoundationTools::Initialize(opt);
+      EpcTools::Initialize(opt);
 
       run();
 
-      FoundationTools::UnInitialize();
+      EpcTools::UnInitialize();
    }
-   catch (FTError &e)
+   catch (EError &e)
    {
       cout << (cpStr)e << endl;
    }

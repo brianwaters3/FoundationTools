@@ -2,4 +2,4 @@
 ## (c) 2009 Brian Waters (bdwaters@sbcglobal.net) All rights reserved. ##
 #########################################################################
 
-g++ test.cpp -o fttest -lft -lrt -lpthread -g -std=c++11
+g++ test.cpp -o epctest -lepc -lrt -lpthread -g -std=c++11
