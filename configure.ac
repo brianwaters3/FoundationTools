@@ -25,4 +25,7 @@ AC_PROG_RANLIB
 AC_CONFIG_FILES(Makefile
                 src/Makefile
                 include/Makefile)
+
+AC_CONFIG_COMMANDS([rapidjson],[git submodule update --init --recursive])
+
 AC_OUTPUT
