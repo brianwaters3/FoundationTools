@@ -17,6 +17,8 @@
 #ifndef __eerror_h_included
 #define __eerror_h_included
 
+#include <exception>
+
 #include "estring.h"
 
 struct EErrorMapEntry
@@ -40,40 +42,37 @@ struct EErrorMapEntry
    {                                      \
       virtual cpStr Name() { return #e; } \
    }
-#define DECLARE_ERROR_ADVANCED(e)         \
-   class e : public EError               \
+#define DECLARE_ERROR_ADVANCED(__e__)         \
+   class __e__ : public EError               \
    {                                      \
    public:                                \
-      e();                                \
-      virtual cpStr Name() { return #e; } \
+      __e__();                                \
+      virtual cpStr Name() { return #__e__; } \
    }
-#define DECLARE_ERROR_ADVANCED2(e)        \
-   class e : public EError               \
+#define DECLARE_ERROR_ADVANCED2(__e__)        \
+   class __e__ : public EError               \
    {                                      \
    public:                                \
-      e(Int err);                         \
-      virtual cpStr Name() { return #e; } \
+      __e__(Int err);                         \
+      virtual cpStr Name() { return #__e__; } \
    }
-#define DECLARE_ERROR_ADVANCED3(e)        \
-   class e : public EError               \
+#define DECLARE_ERROR_ADVANCED3(__e__)        \
+   class __e__ : public EError               \
    {                                      \
    public:                                \
-      e(Int err, cpChar msg);             \
-      virtual cpStr Name() { return #e; } \
+      __e__(Int err, cpChar msg);             \
+      virtual cpStr Name() { return #__e__; } \
    }
-#define DECLARE_ERROR_ADVANCED4(e)        \
-   class e : public EError               \
+#define DECLARE_ERROR_ADVANCED4(__e__)        \
+   class __e__ : public EError               \
    {                                      \
    public:                                \
-      e(cpChar msg);                      \
-      virtual cpStr Name() { return #e; } \
+      __e__(cpChar msg);                      \
+      virtual cpStr Name() { return #__e__; } \
    }
 
-class EError : public EString
+class EError : public std::exception
 {
-protected:
-   static cpStr m_pszSeverity[];
-
 public:
    enum Severity
    {
@@ -109,10 +108,10 @@ public:
    {
       return copy(val);
    }
-   operator cpStr() { return c_str(); }
+   operator cpStr() { return m_str.c_str(); }
    EError &copy(const EError &val)
    {
-      assign(val);
+      m_str.assign(val.m_str);
       m_dwError = val.m_dwError;
       m_eSeverity = val.m_eSeverity;
       return *this;
@@ -132,12 +131,12 @@ public:
    }
    Void setText(cpStr pszText)
    {
-      assign(pszText);
+      m_str.assign(pszText);
    }
    Void setTextf(cpStr pszFormat, ...);
    Void appendText(cpStr pszText)
    {
-      append(pszText);
+      m_str.append(pszText);
    }
    Void appendTextf(cpStr pszText, ...);
 
@@ -198,6 +197,17 @@ public:
    Void appendLastOsError(Dword dwError = -1);
 
    static cpStr getError(Int nError, EErrorMapEntry *pErrors);
+
+   virtual const char* what() const throw ()
+   {
+      return m_str.c_str();
+   }
+
+protected:
+   static cpStr m_pszSeverity[];
+
+private:
+   EString m_str;
 };
 
 #endif // #define __eerror_h_included

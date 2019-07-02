@@ -259,7 +259,7 @@ public:
       }
       catch (EError &e)
       {
-         cout << e.c_str() << endl;
+         cout << e << endl;
       }
       catch (...)
       {
@@ -331,7 +331,7 @@ Void EError_test()
    cout << "Creating error object" << endl;
    EError e1;
    e1.appendTextf("error object #%d", 1);
-   cout << e1.c_str() << endl;
+   cout << e1 << endl;
 
    cout << "EError_test() Complete" << endl;
 }
