@@ -12,5 +12,6 @@ src/Makefile
 include/Makefile
 .DS_Store
 modules/.DS_Store
-exampleProgram/fttest
+exampleProgram/*.o
 exampleProgram/epctest
+exampleProgram/.deps

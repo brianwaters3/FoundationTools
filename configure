@@ -3974,7 +3974,7 @@ else
 fi
 
 
-ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile exampleProgram/Makefile"
 
 
 ac_config_commands="$ac_config_commands rapidjson"
@@ -4729,6 +4729,7 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "include/Makefile") CONFIG_FILES="$CONFIG_FILES include/Makefile" ;;
+    "exampleProgram/Makefile") CONFIG_FILES="$CONFIG_FILES exampleProgram/Makefile" ;;
     "rapidjson") CONFIG_COMMANDS="$CONFIG_COMMANDS rapidjson" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;

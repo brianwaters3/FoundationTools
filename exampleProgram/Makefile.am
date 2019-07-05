@@ -14,4 +14,22 @@
 # limitations under the License.
 ############################################################################
 
-SUBDIRS=src include exampleProgram
+#######################################
+# The list of libraries we are building seperated by spaces.
+# The 'lib_' indicates that these build products will be installed
+# in the $(libdir) directory. For example #usr#lib
+bin_PROGRAMS = epctest
+
+#######################################
+# Build information for each library
+
+# Sources for epc
+epctest_SOURCES = test.cpp
+
+# Linker options libTestProgram
+#libepc_a_LDFLAGS = 
+
+# Compiler options. Here we are adding the include directory
+# to be searched for headers included in the source code.
+epctest_CPPFLAGS = -g -std=c++11
+epctest_LDADD = -L../src -lepc -lpthread -lrt
