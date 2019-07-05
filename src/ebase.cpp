@@ -21,6 +21,11 @@
 
 Void EpcTools::Initialize(EGetOpt &options)
 {
+   options.setPrefix(SECTION_TOOLS);
+   m_debug = options.get(MEMBER_DEBUG, false);
+   m_public = options.get(MEMBER_ENABLE_PUBLIC_OBJECTS, false);
+   options.setPrefix("");
+
    EStatic::Initialize(options);
    EThreadBasic::Initialize();
 }
@@ -35,3 +40,5 @@ Void EpcTools::UnInitialize()
 
 Int EpcTools::m_internalLogId = -1;
 Int EpcTools::m_appid = 0;
+Bool EpcTools::m_public = False;
+Bool EpcTools::m_debug = False;

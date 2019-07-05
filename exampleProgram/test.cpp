@@ -1748,6 +1748,7 @@ Void printMenu()
    printf(
        "\n"
        "                       Enhanced Packet Core Tools Test Menu                     \n"
+       "                         Public features are %senabled                          \n"
        "\n"
        "1.  Semaphore/thread cancellation              14. Basic thread test            \n"
        "2.  DateTime object tests                      15. Thread suspend/resume        \n"
@@ -1762,7 +1763,8 @@ Void printMenu()
        "11. Public Mutex text                          24. Mutex performance test       \n"
        "12. Private Semaphore test                     25. Socket server                \n"
        "13. Public Semaphore test                      26. Socket client                \n"
-       "\n");
+       "\n",
+       EpcTools::isPublicEnabled() ? "" : "NOT ");
 }
 
 Void run()
@@ -1952,20 +1954,34 @@ int main(int argc, char *argv[])
    };
 
    EGetOpt opt;
-   opt.loadCmdLine(argc, argv, options);
-   if (opt.getCmdLine("-h,--help", false))
+   EString optFile;
+
+   try
    {
-      usage();
+      opt.loadCmdLine(argc, argv, options);
+      if (opt.getCmdLine("-h,--help", false))
+      {
+         usage();
+         exit(0);
+      }
+
+      optFile.format("%s.json", argv[0]);
+      opt.loadFile(optFile.c_str());
+
+      optFile = opt.getCmdLine("-f,--file", "");
+      if (!optFile.empty())
+         opt.loadFile(optFile.c_str());
+   }
+   catch(const EGetOptError_FileParsing& e)
+   {
+      std::cerr << e.Name() << " - " << e.what() << '\n';
       exit(0);
    }
-
-   EString optFile;
-   optFile.format("%s.json", argv[0]);
-   opt.loadFile(optFile.c_str());
-
-   optFile = opt.getCmdLine("-f,--file", "");
-   if (!optFile.empty())
-      opt.loadFile(optFile.c_str());
+   catch(const std::exception& e)
+   {
+      std::cerr << e.what() << '\n';
+      exit(0);
+   }
 
    defaultLocale = std::cout.getloc();
    mylocale = std::locale("");

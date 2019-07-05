@@ -104,35 +104,35 @@ class EGetOptError_MissingRequiredArgument : public EError
 {
 public:
    EGetOptError_MissingRequiredArgument(cpStr pszFile);
-   virtual cpStr Name() { return "EGetOptError_MissingRequiredArgument"; }
+   virtual const cpStr Name() const { return "EGetOptError_MissingRequiredArgument"; }
 };
 
 class EGetOptError_UnsupportedArgType : public EError
 {
 public:
    EGetOptError_UnsupportedArgType(EGetOpt::ArgType argType);
-   virtual cpStr Name() { return "EGetOptError_UnsupportedArgType"; }
+   virtual const cpStr Name() const { return "EGetOptError_UnsupportedArgType"; }
 };
 
 class EGetOptError_UnsupportedDataType : public EError
 {
 public:
    EGetOptError_UnsupportedDataType(EGetOpt::DataType argType);
-   virtual cpStr Name() { return "EGetOptError_UnsupportedDataType"; }
+   virtual const cpStr Name() const { return "EGetOptError_UnsupportedDataType"; }
 };
 
 class EGetOptError_UnsupportedBooleanValue : public EError
 {
 public:
    EGetOptError_UnsupportedBooleanValue(cpStr val);
-   virtual cpStr Name() { return "EGetOptError_UnsupportedBooleanValue"; }
+   virtual const cpStr Name() const { return "EGetOptError_UnsupportedBooleanValue"; }
 };
 
 class EGetOptError_FileParsing : public EError
 {
 public:
    EGetOptError_FileParsing(cpStr val);
-   virtual cpStr Name() { return "EGetOptError_FileParsing"; }
+   virtual const cpStr Name() const { return "EGetOptError_FileParsing"; }
 };
 
 #endif // #define __egetopt_h_included

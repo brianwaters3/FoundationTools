@@ -41,35 +41,35 @@ struct EErrorMapEntry
 #define DECLARE_ERROR(e)                  \
    class e : public EError               \
    {                                      \
-      virtual cpStr Name() { return #e; } \
+      virtual const cpStr Name() const { return #e; } \
    }
 #define DECLARE_ERROR_ADVANCED(__e__)         \
    class __e__ : public EError               \
    {                                      \
    public:                                \
       __e__();                                \
-      virtual cpStr Name() { return #__e__; } \
+      virtual const cpStr Name() const { return #__e__; } \
    }
 #define DECLARE_ERROR_ADVANCED2(__e__)        \
    class __e__ : public EError               \
    {                                      \
    public:                                \
       __e__(Int err);                         \
-      virtual cpStr Name() { return #__e__; } \
+      virtual const cpStr Name() const { return #__e__; } \
    }
 #define DECLARE_ERROR_ADVANCED3(__e__)        \
    class __e__ : public EError               \
    {                                      \
    public:                                \
       __e__(Int err, cpChar msg);             \
-      virtual cpStr Name() { return #__e__; } \
+      virtual const cpStr Name() const { return #__e__; } \
    }
 #define DECLARE_ERROR_ADVANCED4(__e__)        \
    class __e__ : public EError               \
    {                                      \
    public:                                \
       __e__(cpChar msg);                      \
-      virtual cpStr Name() { return #__e__; } \
+      virtual const cpStr Name() const { return #__e__; } \
    }
 
 class EError : public std::exception
@@ -118,7 +118,7 @@ public:
       return *this;
    }
 
-   virtual cpStr Name()
+   virtual const cpStr Name() const
    {
       return "EError";
    }

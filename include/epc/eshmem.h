@@ -28,7 +28,7 @@ class ESharedMemoryError_UnableToCreateKeyFile : public EError
 {
 public:
    ESharedMemoryError_UnableToCreateKeyFile(cpStr pszFile);
-   virtual cpStr Name() { return "ESharedMemoryError_UnableToCreateKeyFile"; }
+   virtual const cpStr Name() const { return "ESharedMemoryError_UnableToCreateKeyFile"; }
 };
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -35,9 +35,14 @@ public:
    static Int getApplicationId() { return m_appid; }
    static Void setApplicationId(Int appid) { m_appid = appid; }
 
+   static Bool isPublicEnabled() { return m_public; }
+   static Bool isDebug() { return m_debug; }
+
 private:
    static Int m_internalLogId;
    static Int m_appid;
+   static Bool m_public;
+   static Bool m_debug;
 };
 
 // #define ELOG_MUTEX ((ULongLong)0x0000000000000001)
