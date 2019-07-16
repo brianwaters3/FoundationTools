@@ -44,6 +44,6 @@ AC_CONFIG_FILES(Makefile
                 include/Makefile
 		exampleProgram/Makefile)
 
-AC_CONFIG_COMMANDS([rapidjson],[git submodule update --init --recursive])
+AC_CONFIG_COMMANDS([submodules],[git submodule update --init --recursive])
 
 AC_OUTPUT

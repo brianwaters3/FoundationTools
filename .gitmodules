@@ -2,3 +2,7 @@
 	path = modules/rapidjson
 	url = https://github.com/Tencent/rapidjson.git
 	branch = master
+[submodule "modules/spdlog"]
+	path = modules/spdlog
+	url = https://github.com/gabime/spdlog.git
+	branch = master
