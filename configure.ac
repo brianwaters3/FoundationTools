@@ -45,5 +45,24 @@ AC_CONFIG_FILES(Makefile
 		exampleProgram/Makefile)
 
 AC_CONFIG_COMMANDS([submodules],[git submodule update --init --recursive])
+AC_CONFIG_COMMANDS([rapidjson],[
+	mkdir -p modules/rapidjson/build
+	pushd modules/rapidjson/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+])
+AC_CONFIG_COMMANDS([spdlog],[
+	mkdir -p modules/spdlog/build
+	pushd modules/spdlog/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+])
+
 
 AC_OUTPUT

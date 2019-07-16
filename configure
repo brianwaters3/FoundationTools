@@ -3979,6 +3979,11 @@ ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile example
 
 ac_config_commands="$ac_config_commands submodules"
 
+ac_config_commands="$ac_config_commands rapidjson"
+
+ac_config_commands="$ac_config_commands spdlog"
+
+
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -4731,6 +4736,8 @@ do
     "include/Makefile") CONFIG_FILES="$CONFIG_FILES include/Makefile" ;;
     "exampleProgram/Makefile") CONFIG_FILES="$CONFIG_FILES exampleProgram/Makefile" ;;
     "submodules") CONFIG_COMMANDS="$CONFIG_COMMANDS submodules" ;;
+    "rapidjson") CONFIG_COMMANDS="$CONFIG_COMMANDS rapidjson" ;;
+    "spdlog") CONFIG_COMMANDS="$CONFIG_COMMANDS spdlog" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -5254,6 +5261,24 @@ $as_echo X"$file" |
 }
  ;;
     "submodules":C) git submodule update --init --recursive ;;
+    "rapidjson":C)
+	mkdir -p modules/rapidjson/build
+	pushd modules/rapidjson/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+ ;;
+    "spdlog":C)
+	mkdir -p modules/spdlog/build
+	pushd modules/spdlog/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+ ;;
 
   esac
 done # for ac_tag
