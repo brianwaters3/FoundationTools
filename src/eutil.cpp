@@ -85,3 +85,17 @@ std::vector<EString> EUtility::split(cpStr s, cpStr delims)
    free(ss);
    return strings;
 }
+
+EString &EUtility::replaceAll(EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   size_t pos = 0;
+   while ((pos=str.find(srch,0,srchlen)) != std::string::npos)
+      str.replace(pos, srchlen, rplc, rplclen);
+   return str;
+}
+
+EString EUtility::replaceAllCopy(const EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   EString newstr = str;
+   return replaceAll(newstr, srch, srchlen, rplc, rplclen);
+}

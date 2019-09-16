@@ -41,6 +41,10 @@ public:
    static Void combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4, EString &path);
    static Void combine(cpStr path1, cpStr path2, cpStr path3, EString &path);
    static Void combine(cpStr path1, cpStr path2, EString &path);
+   static EString combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4);
+   static EString combine(cpStr path1, cpStr path2, cpStr path3);
+   static EString combine(cpStr path1, cpStr path2);
+
 
    static Void getDirectoryName(cpStr path, EString &dirName);
    static Void getExtension(cpStr path, EString &ext);

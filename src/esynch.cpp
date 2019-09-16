@@ -546,3 +546,88 @@ Void ESemaphorePublic::detach()
       throw ESemaphoreError_NotInitialized();
    m_semid = 0;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Private Read/Write Lock Classes
+////////////////////////////////////////////////////////////////////////////////
+
+ERWLockError_LockAttrInitFailed::ERWLockError_LockAttrInitFailed(Int err)
+{
+   setSevere();
+   setText("Unable to initialize read/write lock attribute ");
+   appendLastOsError(err);
+}
+
+ERWLockError_LockInitFailed::ERWLockError_LockInitFailed(Int err)
+{
+   setSevere();
+   setText("Unable to initialize read/write lock ");
+   appendLastOsError(err);
+}
+
+ERWLock::ERWLock()
+{
+   int status;
+   pthread_rwlockattr_t attr;
+
+   status = pthread_rwlockattr_init(&attr);
+   if (status != 0)
+      throw ERWLockError_LockAttrInitFailed(status);
+
+   // set any applicable attributes
+
+   status = pthread_rwlock_init( &m_rwlock, &attr );
+
+   pthread_rwlockattr_destroy( &attr );
+
+   if (status != 0)
+      throw ERWLockError_LockInitFailed(status);
+}
+
+ERWLock::~ERWLock()
+{
+   pthread_rwlock_destroy( &m_rwlock );
+}
+
+bool ERWLock::enter( ReadWrite rw, bool wait )
+{
+   int status;
+
+   if ( wait )
+   {
+      if (rw == ERWLock::Read)
+         status = pthread_rwlock_rdlock( &m_rwlock );
+      else
+         status = pthread_rwlock_wrlock( &m_rwlock );
+   }
+   else
+   {
+      if (rw == ERWLock::Read)
+         status = pthread_rwlock_tryrdlock( &m_rwlock );
+      else
+         status = pthread_rwlock_trywrlock( &m_rwlock );
+   }
+
+   return status == 0;
+}
+
+//bool ERWLock::enter( ReadWrite rw, long ms )
+//{
+//   int status;
+//
+//   struct timespec ts;
+//   ts.tv_sec = ms / 1000;
+//   ts.tv_nsec = (ms % 1000) * 1000000;
+//
+//   if (rw == ERWLock::Read)
+//      status = pthread_rwlock_timedrdlock( &m_rwlock, &ts );
+//   else
+//      status = pthread_rwlock_timedwrlock( &m_rwlock, &ts );
+//
+//   return status == 0;
+//}
+
+void ERWLock::leave()
+{
+   pthread_rwlock_unlock( &m_rwlock );
+}

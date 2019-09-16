@@ -72,6 +72,9 @@ public:
       ltrim();
       rtrim();
    }
+
+   EString &replaceAll(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
+   EString replaceAllCopy(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
 };
 
 #endif // #define __estring_h_included

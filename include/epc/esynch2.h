@@ -68,7 +68,7 @@ public:
    ESynchObjects();
    ~ESynchObjects();
 
-   virtual Int getInitType() { return STATIC_INIT_TYPE_SHARED_OBJECT_MANAGER; }
+   virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
    Void init(EGetOpt &options);
    Void uninit();
 

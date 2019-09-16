@@ -149,9 +149,8 @@ void ECircularBuffer::modifyData(pUChar src, Int offset, int length)
     {
         EString s;
         s.format("offset=%d length=%d used=%d", offset, length, used());
-        ECircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuffer *e =
-            new ECircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuffer();
-        e->appendText(s.c_str());
+        ECircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuffer e;
+        e.appendText(s.c_str());
         throw e;
     }
 

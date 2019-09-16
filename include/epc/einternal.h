@@ -23,19 +23,49 @@
 #include "estatic.h"
 #include "elogger.h"
 
+/// @brief The primary class used to initialize/uninitialize EpcTools
 class EpcTools
 {
 public:
+   /// @brief Initialize the EpcTools runtime environment
+   ///
+   /// @param options The configuration options used to initalize EpcTools
+   ///
    static Void Initialize(EGetOpt &options);
+   /// @brief Uninitialize the EpcTools runtime environment
    static Void UnInitialize();
 
+   /// @brief Gets the log ID associated with internal log messages
+   ///
+   /// @return the log ID
+   ///
    static Int getInternalLogId() { return m_internalLogId; }
+   /// @brief Sets the log ID associated with internal log messages
+   ///
+   /// @param logid The new log ID.
+   ///
    static Void setInternalLogId(Int logid) { m_internalLogId = logid; }
 
+   /// @brief Gets the application ID for this application
+   ///
+   /// @return the application ID
+   ///
    static Int getApplicationId() { return m_appid; }
+   /// @brief Sets the application ID
+   ///
+   /// @param appid The new application ID
+   ///
    static Void setApplicationId(Int appid) { m_appid = appid; }
 
+   /// @brief Indicates that public features are enabled.
+   ///
+   /// @return True - public features are enabled, False - public features are not enabled
+   ///
    static Bool isPublicEnabled() { return m_public; }
+   /// @brief Indicates that public features are enabled.
+   ///
+   /// @return True - debug is enabled, False - debug is not enabled
+   ///
    static Bool isDebug() { return m_debug; }
 
 private:
@@ -57,29 +87,51 @@ private:
 // #define ELOGWARN(groupid, format...) ELogger::logWarning(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
 // #define ELOGERROR(groupid, format...) ELogger::logError(FoundationTools::getInternalLogId(), groupid, __funcname__, format)
 
+/// @cond DOXYGEN_EXCLUDE
 #define SECTION_TOOLS "EpcTools"
 #define SECTION_SYNCH_OBJS "SynchronizationObjects"
 #define SECTION_PUBLIC_QUEUE "PublicQueue"
+
 #define SECTION_LOGGER "Logger"
-#define SECTION_LOGGER_OPTIONS "LoggerOptions"
+#define MEMBER_LOGGER_APPLICATION_NAME "ApplicationName"
+#define MEMBER_LOGGER_QUEUE_SIZE "QueueSize"
+#define MEMBER_LOGGER_NUMBER_THREADS "NumberThreads"
+#define MEMBER_LOGGER_SINK_SETS "SinkSets"
+#define MEMBER_LOGGER_SINK_ID "SinkID"
+#define MEMBER_LOGGER_SINKS "Sinks"
+#define MEMBER_LOGGER_SINK_TYPE "SinkType"
+#define MEMBER_LOGGER_LOG_LEVEL "LogLevel"
+#define MEMBER_LOGGER_PATTERN "Pattern"
+#define MEMBER_LOGGER_FILE_NAME "FileName"
+#define MEMBER_LOGGER_FILE_TRUNCATE "Truncate"
+#define MEMBER_LOGGER_FILE_ROTATE_ON_OPEN "RotateOnOpen"
+#define MEMBER_LOGGER_MAX_SIZE "MaxSizeMB"
+#define MEMBER_LOGGER_MAX_FILES "MaxNumberFiles"
+#define MEMBER_LOGGER_ROLLOVER_HOUR "RolloverHour"
+#define MEMBER_LOGGER_ROLLOVER_MINUTE "RolloverMinute"
+#define MEMBER_LOGGER_LOGS "Logs"
+#define MEMBER_LOGGER_LOG_ID "LogID"
+#define MEMBER_LOGGER_CATEGORY "Category"
 
 #define MEMBER_ENABLE_PUBLIC_OBJECTS "EnablePublicObjects"
 #define MEMBER_NUMBER_SEMAPHORES "NumberSemaphores"
 #define MEMBER_NUMBER_MUTEXES "NumberMutexes"
 #define MEMBER_QUEUE_ID "QueueID"
-#define MEMBER_MESSAGE_SIZE "MessageSize"
 #define MEMBER_QUEUE_SIZE "QueueSize"
+#define MEMBER_MESSAGE_SIZE "MessageSize"
 #define MEMBER_ALLOW_MULTIPLE_READERS "AllowMultipleReaders"
 #define MEMBER_ALLOW_MULTIPLE_WRITERS "AllowMultipleWriters"
 #define MEMBER_DEBUG "Debug"
-#define MEMBER_WRITE_TO_FILE "WriteToFile"
-#define MEMBER_QUEUE_MODE "QueueMode"
-#define MEMBER_LOG_ID "LogID"
-#define MEMBER_SEGMENTS "Segments"
-#define MEMBER_LINESPERSEGMENT "LinesPerSegment"
-#define MEMBER_FILENAMEMASK "FileNameMask"
-#define MEMBER_LOGTYPE "LogType"
-#define MEMBER_DEFAULTLOGMASK "DefaultLogMask"
-#define MEMBER_INTERNALLOG "InternalLog"
+// #define MEMBER_WRITE_TO_FILE "WriteToFile"
+// #define MEMBER_QUEUE_MODE "QueueMode"
+// #define MEMBER_LOGGER_ID "LogID"
+// #define MEMBER_SEGMENTS "Segments"
+// #define MEMBER_LINESPERSEGMENT "LinesPerSegment"
+// #define MEMBER_FILENAMEMASK "FileNameMask"
+// #define MEMBER_LOGTYPE "LogType"
+// #define MEMBER_DEFAULTLOGMASK "DefaultLogMask"
+// #define MEMBER_INTERNALLOG "InternalLog"
+
+/// @endcond
 
 #endif // #define __einternal_h_included

@@ -18,6 +18,7 @@
 #ifndef __elogger_h_included
 #define __elogger_h_included
 
+#if 0
 #include "ebase.h"
 #include "estring.h"
 #include "etime.h"
@@ -25,246 +26,279 @@
 #include "eqpub.h"
 #include "egetopt.h"
 #include "estatic.h"
+#endif
+
+#include <vector>
+#include <unordered_map>
+
+#ifndef SPDLOG_LEVEL_NAMES
+//#define SPDLOG_LEVEL_NAMES { "trace", "debug", "info",  "warning", "error", "critical", "off" };
+#define SPDLOG_LEVEL_NAMES { "debug", "info", "startup", "minor", "major", "critical", "off" };
+#endif
+
+#define SPDLOG_ENABLE_SYSLOG
+#include "spdlog/spdlog.h"
+#include "spdlog/async.h"
+
+#include "ebase.h"
+#include "eerror.h"
+#include "estring.h"
+#include "eutil.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-DECLARE_ERROR(ELoggerError_MaximumNumberOfLogsDefined);
-DECLARE_ERROR_ADVANCED2(ELoggerError_AlreadyExists);
 DECLARE_ERROR_ADVANCED2(ELoggerError_LogNotFound);
-DECLARE_ERROR_ADVANCED3(ELoggerError_UnableToOpenLogFile);
+DECLARE_ERROR_ADVANCED2(ELoggerError_LogExists);
+DECLARE_ERROR_ADVANCED2(ELoggerError_SinkSetNotFound);
+DECLARE_ERROR_ADVANCED2(ELoggerError_SinkSetExists);
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
+DECLARE_ERROR(ELoggerError_SinkSetLogIdNotSpecified);
+DECLARE_ERROR(ELoggerError_SinkSetSinkIdNotSpecified);
+DECLARE_ERROR(ELoggerError_SinkSetCategoryNotSpecified);
+DECLARE_ERROR(ELoggerError_SinkSetSinkTypeNotSpecified);
 
-class FoundationTools;
-namespace Velocity
-{
-class BasicApplication;
-class LogicModuleInstance;
-}; // namespace Velocity
+DECLARE_ERROR_ADVANCED3(ELoggerError_SinkSetCreatePath);
+DECLARE_ERROR_ADVANCED4(ELoggerError_SinkSetNotDirectory);
+DECLARE_ERROR_ADVANCED4(ELoggerError_SinkSetUnrecognizedSinkType);
 
-#define ELOGGER_BUFFER_SIZE 8192
-#define ELOGGER_MAX_LOGS 128
+class ELoggerSinkSet;
 
-#define ELOG_RECORDID 1
-
-//class ELogger : public EStatic
 class ELogger
 {
-   friend class FoundationTools;
-   friend class Velocity::BasicApplication;
-   friend class Velocity::LogicModuleInstance;
+   friend class ELoggerInit;
 
 public:
-   enum Severity
+   enum LogLevel
    {
-      Error = 1,
-      Warning = 2,
-      Info = 3,
-      Debug = 4
-   };
-   enum LogType
-   {
-      ltFile = 1,
-      ltSysLog = 2
+      eDebug      = spdlog::level::trace,
+      eInfo       = spdlog::level::debug,
+      eStartup    = spdlog::level::info,
+      eMinor      = spdlog::level::warn,
+      eMajor      = spdlog::level::err,
+      eCritical   = spdlog::level::critical,
+      eOff        = spdlog::level::off
    };
 
-protected:
-   typedef struct
+   ELogger(Int logid, cpStr category, Int sinkid);
+   ~ELogger() {}
+
+   static EString &applicationName() { return m_appname; }
+   static EString &applicationName(cpStr app) { return m_appname = app; }
+
+   static ELogger &createLog(Int logid, cpStr category, Int sinkid);
+   static ELoggerSinkSet &createSinkSet(Int sinkid);
+
+   static ELogger &log(Int logid)
    {
-      Int s_logid;
-      longinteger_t s_mask;
-      Int s_maxsegs;
-      Int s_linesperseg;
-      Char s_filenamemask[EPC_FILENAME_MAX];
-      LogType s_logtype;
-   } eloggerentry_t;
-
-   typedef struct
-   {
-      Bool s_sharedmem;
-      Bool s_initialized;
-      eloggerentry_t s_logs[ELOGGER_MAX_LOGS];
-   } eloggerctrl_t;
-
-   class eloggerloghandle_t
-   {
-   public:
-      eloggerloghandle_t() : s_mutex(false) {}
-      ~eloggerloghandle_t() {}
-
-      EMutexPrivate s_mutex;
-      Int s_fh;
-      Int s_currseg;
-      Int s_linecnt;
-      Char s_buffer[ELOGGER_BUFFER_SIZE];
-   };
-
-public:
-   class ELoggerQueueMessage : public EQueueMessage
-   {
-   public:
-      ELoggerQueueMessage()
-      {
-         setMsgType(ELOG_RECORDID);
-
-         m_logid = 0;
-         m_groupid = 0;
-         m_severity = Info;
-         m_sequence = 0;
-         memset(m_func, 0, sizeof(m_func));
-         memset(m_msg, 0, sizeof(m_msg));
-      }
-
-      ~ELoggerQueueMessage()
-      {
-      }
-
-      virtual Void getLength(ULong &length)
-      {
-         EQueueMessage::getLength(length);
-         elementLength(m_time, length);
-         elementLength(m_logid, length);
-         elementLength(m_groupid, length);
-         elementLength((Long)m_severity, length);
-         elementLength(m_sequence, length);
-         elementLength(m_func, length);
-         elementLength(m_msg, length);
-      }
-      virtual Void serialize(pVoid pBuffer, ULong &nOffset)
-      {
-         EQueueMessage::serialize(pBuffer, nOffset);
-         pack(m_time, pBuffer, nOffset);
-         pack(m_logid, pBuffer, nOffset);
-         pack(m_groupid, pBuffer, nOffset);
-         pack((Long)m_severity, pBuffer, nOffset);
-         pack(m_sequence, pBuffer, nOffset);
-         pack(m_func, pBuffer, nOffset);
-         pack(m_msg, pBuffer, nOffset);
-      }
-      virtual Void unserialize(pVoid pBuffer, ULong &nOffset)
-      {
-         Long severity;
-
-         EQueueMessage::unserialize(pBuffer, nOffset);
-         unpack(m_time, pBuffer, nOffset);
-         unpack(m_logid, pBuffer, nOffset);
-         unpack(m_groupid, pBuffer, nOffset);
-         unpack(severity, pBuffer, nOffset);
-         m_severity = (ELogger::Severity)severity;
-         unpack(m_sequence, pBuffer, nOffset);
-         unpack(m_func, pBuffer, nOffset);
-         unpack(m_msg, pBuffer, nOffset);
-      }
-
-      Void set(Int logid, ULongLong groupid, ELogger::Severity esev,
-               ETime &t, Long seq, cpStr func, cpStr msg)
-      {
-         m_time = t;
-         m_logid = logid;
-         m_groupid = groupid;
-         m_severity = esev;
-         m_sequence = seq;
-         epc_strcpy_s(m_func, sizeof(m_func), func);
-         epc_strcpy_s(m_msg, sizeof(m_msg), msg);
-      }
-
-      ETime &getTime() { return m_time; }
-      Int getLogId() { return m_logid; }
-      ULongLong getGroupId() { return m_groupid; }
-      ELogger::Severity getSeverity() { return m_severity; }
-      Long getSequence() { return m_sequence; }
-      cpStr getFunction() { return m_func; }
-      cpStr getMessage() { return m_msg; }
-
-   private:
-      ETime m_time;
-      Long m_logid;
-      ULongLong m_groupid;
-      ELogger::Severity m_severity;
-      Long m_sequence;
-      Char m_func[EPC_FILENAME_MAX];
-      Char m_msg[2048];
-   };
-
-   static Bool isGroupMaskEnabled(Int logid, ULongLong groupMask);
-   static Void enableGroupMask(Int logid, ULongLong groupMask);
-   static Void disableGroupMask(Int logid, ULongLong groupMask);
-
-   static Void setGroupMask(Int logid, ULongLong newGroupMask);
-   static ULongLong getGroupMask(Int logid);
-
-   static Void log(ELoggerQueueMessage &msg);
-   static Void logInfo(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...);
-   static Void logError(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...);
-   static Void logWarning(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...);
-   static Void logDebug(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...);
-   static Void log(Int logid, ULongLong groupid, Severity esev, cpStr pszFunc, cpStr pszText, ...);
-
-   static Bool isLogIdValid(Int logid);
-
-   static Void setLoggerPtr(ELogger *pThis);
-   ELogger *getLoggerPtr() { return m_pThis; }
-
-   ELogger();
-   ~ELogger();
-
-   //virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
-   Void init(EGetOpt &options);
-   Void uninit();
-
-   cpStr getSeverityText(Severity eSeverity) { return m_pszSeverity[eSeverity]; }
-
-   class ELoggerQueue : public EQueuePublic
-   {
-   public:
-      ELoggerQueueMessage &getMsg()
-      {
-         return m_msg;
-      }
-
-   protected:
-      EQueueMessage *allocMessage(Long msgType)
-      {
-         if (msgType == 1)
-            return &m_msg;
-         return NULL;
-      }
-
-   private:
-      ELoggerQueueMessage m_msg;
-   };
-
-protected:
-   static cpStr m_pszSeverity[];
-   static ELogger *m_pThis;
-
-   Void addLog(Int logid, ULongLong defaultmask, Int maxsegments, Int linespersegment, cpChar filename, LogType logtype);
-   eloggerentry_t *findLog(Int logid, Int *plogofs = NULL);
-
-   static Void log(Int logid, ULongLong groupid, Severity esev, cpStr pszFunc, cpStr pszText, va_list &args);
-   static Bool groupEnabled(eloggerentry_t *pLog, ULongLong group)
-   {
-      return ((pLog->s_mask.quadPart & group) == 0) ? False : True;
+      auto srch = m_logs.find(logid);
+      if (srch == m_logs.end())
+         throw ELoggerError_LogNotFound(logid);
+      return *srch->second;
    }
 
-private:
-   Void setNextSegment(eloggerentry_t *pLog, eloggerloghandle_t &h);
-   Void buildFileName(eloggerentry_t *pLog, eloggerloghandle_t &h, EString &s);
-   Void verifyHandle(eloggerentry_t *pLog, eloggerloghandle_t &h);
-   Void writeFile(eloggerentry_t *pLog, Int logofs, Int logid, ULongLong groupid,
-                  Severity esev, ETime &t, Long seq, cpStr pszFunc, cpChar msg);
-   Void writeSysLog(eloggerentry_t *pLog, Int logofs, Int logid, ULongLong groupid,
-                    Severity esev, ETime &t, Long seq, cpStr pszFunc, cpChar msg);
-   Void writeQueue(eloggerentry_t *pLog, Int logofs, Int logid, ULongLong groupid,
-                   Severity esev, ETime &t, Long seq, cpStr pszFunc, cpChar msg);
+   static ELoggerSinkSet &sinkSet(Int sinkid)
+   {
+      if (m_sinksets.find(sinkid) == m_sinksets.end())
+         throw ELoggerError_SinkSetNotFound(sinkid);
+      
+      return *m_sinksets[sinkid];
+   }
 
-   Bool m_writetofile;
-   eloggerloghandle_t m_handles[ELOGGER_MAX_LOGS];
-   ELoggerQueue m_queue;
-   ESharedMemory m_sharedmem;
-   eloggerctrl_t *m_pCtrl;
+   template<typename Arg1, typename... Args>
+   Void trace( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->trace(format, arg1, args...); }
+   template<typename Arg1, typename... Args>
+   Void debug( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->debug(format, arg1, args...); }
+   template<typename Arg1, typename... Args>
+   Void info( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->info(format, arg1, args...); }
+   template<typename Arg1, typename... Args>
+   Void startup( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->warn(format, arg1, args...); }
+   template<typename Arg1, typename... Args>
+   Void warn( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->error(format, arg1, args...); }
+   template<typename Arg1, typename... Args>
+   Void error( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->critical(format, arg1, args...); }
+
+   Void flush() { m_log->flush(); }
+
+   Void setLogLevel( LogLevel lvl ) { m_log->set_level((spdlog::level::level_enum)lvl); }
+   LogLevel getLogLevel() { return (LogLevel)m_log->level(); }
+
+   const std::string & get_name();
+
+protected:
+   static Void init(EGetOpt &opt);
+   static Void uninit();
+
+private:
+   static EString m_appname;
+   static std::unordered_map<Int,std::shared_ptr<ELoggerSinkSet>> m_sinksets;
+   static std::unordered_map<Int,std::shared_ptr<ELogger>> m_logs;
+
+   static Void verifyPath(cpStr filename);
+
+   Int m_logid;
+   Int m_sinkid;
+   EString m_category;
+   std::shared_ptr<spdlog::async_logger> m_log;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+class ELoggerSink
+{
+public:
+   enum SinkType
+   {
+      eSyslog,
+      eStdout,
+      eStderr,
+      eBasicFile,
+      eRotatingFile,
+      eDailyFile
+   };
+
+   virtual ~ELoggerSink() {}
+
+   SinkType getSinkType() { return m_sinktype; }
+   ELogger::LogLevel getLogLevel() { return (ELogger::LogLevel)m_sinkptr->level(); }
+   EString &getPattern() { return m_pattern; }
+
+   ELogger::LogLevel setLogLevel( ELogger::LogLevel loglevel )
+      { m_sinkptr->set_level( (spdlog::level::level_enum)loglevel ); m_loglevel = loglevel; return getLogLevel(); }
+   EString &setPattern( cpStr pattern )
+      { m_pattern = pattern; m_sinkptr->set_pattern( m_pattern ); return getPattern(); }
+
+   spdlog::sink_ptr getSinkPtr() { return m_sinkptr; }
+
+   static EString &getDefaultPattern() { return m_defaultpattern; }
+
+protected:
+   ELoggerSink( SinkType sinktype, ELogger::LogLevel loglevel, cpStr pattern )
+      : m_sinktype( sinktype ),
+        m_loglevel( loglevel ),
+        m_pattern( pattern )
+   {
+   }
+
+   spdlog::sink_ptr setSinkPtr( spdlog::sink_ptr &sinkptr ) { return m_sinkptr = sinkptr; }
+
+private:
+   ELoggerSink();
+   static EString m_defaultpattern;
+
+   SinkType m_sinktype;
+   ELogger::LogLevel m_loglevel;
+   EString m_pattern;
+   spdlog::sink_ptr m_sinkptr;
+};
+
+class ELoggerSinkSyslog : public ELoggerSink
+{
+public:
+   ELoggerSinkSyslog( ELogger::LogLevel loglevel, cpStr pattern );
+   virtual ~ELoggerSinkSyslog() {}
+private:
+   ELoggerSinkSyslog();
+};
+
+class ELoggerSinkStdout : public ELoggerSink
+{
+public:
+   ELoggerSinkStdout( ELogger::LogLevel loglevel, cpStr pattern );
+   virtual ~ELoggerSinkStdout() {}
+private:
+   ELoggerSinkStdout();
+};
+
+class ELoggerSinkStderr : public ELoggerSink
+{
+public:
+   ELoggerSinkStderr( ELogger::LogLevel loglevel, cpStr pattern );
+   virtual ~ELoggerSinkStderr() {}
+private:
+   ELoggerSinkStderr();
+};
+
+class ELoggerSinkBasicFile : public ELoggerSink
+{
+public:
+   ELoggerSinkBasicFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, Bool truncate );
+   virtual ~ELoggerSinkBasicFile() {}
+
+   EString &getFilename() { return m_filename; }
+   Bool getTruncate() { return m_truncate; }
+
+private:
+   EString m_filename;
+   Bool m_truncate;
+};
+
+class ELoggerSinkRotatingFile : public ELoggerSink
+{
+public:
+   ELoggerSinkRotatingFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, size_t maxsizemb, size_t maxfiles, Bool rotateonopen );
+   virtual ~ELoggerSinkRotatingFile() {}
+
+   EString &getFilename() { return m_filename; }
+   size_t getMaxSizeMB() { return m_maxsizemb; }
+   size_t getMaxFiles() { return m_maxfiles; }
+   Bool getRotateOnOpen() { return m_rotateonopen; }
+
+private:
+   EString m_filename;
+   size_t m_maxsizemb;
+   size_t m_maxfiles;
+   Bool m_rotateonopen;
+};
+
+class ELoggerSinkDailyFile : public ELoggerSink
+{
+public:
+   ELoggerSinkDailyFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, Bool truncate, Int rolloverhour, Int rolloverminute );
+   virtual ~ELoggerSinkDailyFile() {}
+
+   EString &getFilename() { return m_filename; }
+   Bool getTruncate() { return m_truncate; }
+   Int getRolloverHour() { return m_rolloverhour; }
+   Int getRolloverMinute() { return m_rolloverminute; }
+
+private:
+   EString m_filename;
+   Bool m_truncate;
+   Int m_rolloverhour;
+   Int m_rolloverminute;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+class ELoggerSinkSet
+{
+   friend ELogger;
+public:
+   ELoggerSinkSet(Int id=-1) : m_id(id) {}
+   ~ELoggerSinkSet() {}
+
+   Void addSink(std::shared_ptr<ELoggerSink> &sink)
+   {
+      m_sinks.push_back( sink );
+      m_spdlog_sinks.push_back( sink->getSinkPtr() );
+   }
+
+   std::vector<std::shared_ptr<ELoggerSink>> &getVector() { return m_sinks; }
+   std::vector<spdlog::sink_ptr> &getSpdlogVector() { return m_spdlog_sinks; }
+
+   Int setId(Int id) { return m_id = id; }
+   Int getId() { return m_id; }
+
+private:
+   Int m_id;
+   std::vector<std::shared_ptr<ELoggerSink>> m_sinks;
+   std::vector<spdlog::sink_ptr> m_spdlog_sinks;
 };
 
 #endif // #define __elogger_h_included

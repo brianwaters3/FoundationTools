@@ -1,17 +1,102 @@
 {
-    "FoundationTools": {
+    "EpcTools": {
         "EnablePublicObjects": true,
         "Debug": false,
         "SynchronizationObjects": {
             "NumberSemaphores": 100,
             "NumberMutexes": 100
         },
-        "FTLoggerOptions": {
+        "Logger": {
+            "ApplicationName": "epctest",
+            "QueueSize": 8192,
+            "NumberThreads": 1,
+            "SinkSets": [
+               {
+                  "SinkID": 1,
+                  "Sinks": [
+                     {
+                        "SinkType": "syslog",
+                        "LogLevel": "startup",
+                        "Pattern": "[__APPNAME__] [%n] [%l] %v"
+                     },
+                     {
+                        "SinkType": "stdout",
+                        "LogLevel": "debug",
+                        "Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [stdout] [%^__APPNAME__%$] [%n] [%^%l%$] %v"
+                     },
+                     {
+                        "SinkType": "stderr",
+                        "LogLevel": "minor",
+                        "Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [stderr] [%^__APPNAME__%$] [%n] [%^%l%$] %v"
+                     },
+                     {
+                        "SinkType": "basic_file",
+                        "LogLevel": "debug",
+                        "Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+                        "FileName": "./logs/epctest.basic.log",
+                        "Truncate": false
+                     },
+                     {
+                        "SinkType": "rotating_file",
+                        "LogLevel": "debug",
+                        "Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+                        "FileName": "./logs/epctest.rotating.log",
+                        "MaxSizeMB": 1,
+                        "MaxNumberFiles": 2,
+                        "RotateOnOpen": false
+                     },
+                     {
+                        "SinkType": "daily_file",
+                        "LogLevel": "debug",
+                        "Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+                        "FileName": "./logs/epctest.daily.log",
+                        "Truncate": false,
+                        "RolloverHour": 14,
+                        "RolloverMinute": 55
+                     }
+                  ]
+               },
+               {
+                  "SinkID": 2,
+                  "Sinks": [
+                     {
+                        "SinkType": "rotating_file",
+                        "LogLevel": "debug",
+                        "Pattern": "%v",
+                        "FileName": "./logs/epctest.stats.rotating.log",
+                        "MaxSizeMB": 1,
+                        "MaxNumberFiles": 2
+                     }
+                  ]
+               }
+            ],
+            "Logs": [
+               {
+                  "LogID": 1,
+                  "Category": "system",
+                  "SinkID": 1,
+                  "LogLevel": "debug"
+               },
+               {
+                  "LogID": 2,
+                  "Category": "test1",
+                  "SinkID": 1,
+                  "LogLevel": "debug"
+               },
+               {
+                  "LogID": 3,
+                  "Category": "stats",
+                  "SinkID": 2,
+                  "LogLevel": "debug"
+               }
+            ]
+        },
+        "LoggerOptions": {
             "WriteToFile": true,
             "QueueID": 9999,
             "QueueMode": "WriteOnly"
         },
-        "FTLogger": [
+        "Logger": [
             {
                 "LogID": 1,
                 "Segments": 1,

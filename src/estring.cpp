@@ -20,6 +20,7 @@
 
 #include "ebase.h"
 #include "estring.h"
+#include "eutil.h"
 
 EString &EString::format(cpChar pszFormat, ...)
 {
@@ -44,4 +45,14 @@ EString &EString::toupper()
 {
    std::transform(this->begin(), this->end(), this->begin(), ::toupper);
    return *this;
+}
+
+EString &EString::replaceAll(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   return EUtility::replaceAll(*this, srch, srchlen, rplc, rplclen);
+}
+
+EString EString::replaceAllCopy(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   return EUtility::replaceAllCopy(*this, srch, srchlen, rplc, rplclen);
 }

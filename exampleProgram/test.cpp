@@ -21,8 +21,11 @@
 #include <memory.h>
 #include "epc/epc.h"
 #include "epc/einternal.h"
+#include "epc/elogger.h"
 #include "epc/ebzip2.h"
 #include "epc/esocket.h"
+
+#include "spdlog/sinks/basic_file_sink.h"
 
 std::locale defaultLocale;
 std::locale mylocale;
@@ -353,24 +356,18 @@ Void EError_test()
 class EThreadBasicTest : public EThreadBasic
 {
 public:
-   EThreadBasicTest()
-   {
-      m_timetoquit = false;
-   }
+   EThreadBasicTest() : m_timetoquit(false) {}
 
-   Dword threadProc(Void *arg)
-   {
-      while (!m_timetoquit)
-      {
-         cout << "Inside the thread " << (cpStr)arg << endl;
+   Dword threadProc(Void *arg) {
+      while (!m_timetoquit) {
+         cout << "Inside the thread [" << (cpStr)arg << "]" << endl;
          sleep(1000);
       }
-      cout << "Exiting EThreadTest::threadProc()" << endl;
+      cout << "Exiting EThreadBasicTest::threadProc()" << endl;
       return 0;
    }
 
-   Void setTimeToQuit()
-   {
+   Void setTimeToQuit() {
       m_timetoquit = true;
    }
 
@@ -378,22 +375,18 @@ private:
    bool m_timetoquit;
 };
 
-Void EThreadBasic_test()
-{
+Void EThreadBasic_test() {
    cout << "EThread_test() Start" << endl;
 
    EThreadBasicTest t;
 
-   t.init((Void *)"this is the thread argument\n", true);
-   //cout << "before resume" << endl;
-   //t.resume();
-   cout << "before 5 second sleep sleep" << endl;
+   cout << "initialize and start the thread" << endl;
+   t.init((Void *)"this is the thread argument");
+   cout << "sleep for 5 seconds" << endl;
    t.sleep(5000);
-   cout << "before setTimeToQuit()" << endl;
+   cout << "call setTimeToQuit()" << endl;
    t.setTimeToQuit();
-   cout << "before 2nd 5 second sleep" << endl;
-   t.sleep(5000);
-   cout << "before join" << endl;
+   cout << "wait for thread to exit (join)" << endl;
    t.join();
 
    cout << "EThread_test() Complete" << endl;
@@ -1735,6 +1728,256 @@ Void sockettest(Bool server)
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define EM_RWLOCKTEST (EM_USER + 1)
+
+class ERWLockTestThread : public EThreadPrivate
+{
+public:
+   ERWLockTestThread(ERWLock &rwl, Bool reader, cpStr name)
+       : m_rwlock(rwl),
+         m_reader(reader),
+         m_name(name)
+   {
+   }
+
+   Void handleRequest(EThreadMessage &msg)
+   {
+      Int delay = (Int)msg.getLowPart();
+      Int hold = (Int)msg.getHighPart();
+      ETimer tmr;
+
+      EThreadBasic::sleep(delay);
+      cout << "thread [" << m_name << "] starting after " << delay << "ms (" << tmr.MilliSeconds() << ")" << endl << flush;
+
+      if (m_reader)
+      {
+         {
+            cout << "thread [" << m_name << "] waiting for read lock" << endl << flush;
+            ERDLock rdlck(m_rwlock);
+            epctime_t elapsed = tmr.MilliSeconds();
+            cout << "thread [" << m_name << "] read lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl << flush;
+            EThreadBasic::sleep(hold);
+         }
+         cout << "thread [" << m_name << "] read lock released" << endl << flush;
+      }
+      else
+      {
+         {
+            cout << "thread [" << m_name << "] waiting for write lock" << endl << flush;
+            EWRLock wrlck(m_rwlock);
+            epctime_t elapsed = tmr.MilliSeconds();
+            cout << "thread [" << m_name << "] write lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl << flush;
+            EThreadBasic::sleep(hold);
+         }
+         cout << "thread [" << m_name << "] write lock released" << endl << flush;
+      }
+   }
+
+   DECLARE_MESSAGE_MAP()
+
+private:
+   ERWLockTestThread();
+
+   ERWLock &m_rwlock;
+   Bool m_reader;
+   cpStr m_name;
+};
+
+BEGIN_MESSAGE_MAP(ERWLockTestThread, EThreadPrivate)
+   ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
+END_MESSAGE_MAP()
+
+Void ERWLock_test()
+{
+   cout << "ERWLock_test() Start" << endl;
+
+   ERWLock rwl;
+
+   ERWLockTestThread read1(rwl, True, "READ1");
+   ERWLockTestThread read2(rwl, True, "READ2");
+   ERWLockTestThread write1(rwl, False, "WRITE1");
+
+   cout << "ERWLock_test - initializing threads" << endl << flush;
+   read1.init(1, 1, NULL, 20000);
+   read2.init(1, 2, NULL, 20000);
+   write1.init(1, 3, NULL, 20000);
+
+   cout << "ERWLock_test - starting 1st test" << endl << flush;
+   read1.sendMessage(EM_RWLOCKTEST, 0, 4000);
+   read2.sendMessage(EM_RWLOCKTEST, 50, 4000);
+   write1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
+   EThreadBasic::sleep(10000);
+   cout << "ERWLock_test - 1st test complete" << endl << flush;
+
+   cout << "ERWLock_test - starting 2nd test" << endl << flush;
+   read1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
+   read2.sendMessage(EM_RWLOCKTEST, 1050, 4000);
+   write1.sendMessage(EM_RWLOCKTEST, 0, 4000);
+   EThreadBasic::sleep(10000);
+   cout << "ERWLock_test - 2nd test complete" << endl << flush;
+
+   read1.quit();
+   read2.quit();
+   write1.quit();
+
+   read1.join();
+   read2.join();
+   write1.join();
+
+   cout << "ERWLock_test() Complete" << endl;
+}
+
+Void EGetOpt_test(EGetOpt &opt)
+{
+   opt.print();
+
+   {
+      Long qs1 = opt.get("/Logger/QueueSize", -1);
+      Long qs2 = opt.get("/Logger/QueueSize/", -1);
+      Long qs3 = opt.get("Logger/QueueSize", -1);
+      Long qs4 = opt.get("Logger/QueueSize/", -1);
+      std::cout << "No prefix qs1=" << qs1 << " qs2=" << qs2 << " qs3=" << qs3 << " qs4=" << qs4 << std::endl;
+   }
+
+   {
+      opt.setPrefix("/EpcTools");
+      Long qs1 = opt.get("/Logger/QueueSize", -1);
+      Long qs2 = opt.get("/Logger/QueueSize/", -1);
+      Long qs3 = opt.get("Logger/QueueSize", -1);
+      Long qs4 = opt.get("Logger/QueueSize/", -1);
+      std::cout << "prefix=\"/EpcTools\" qs1=" << qs1 << " qs2=" << qs2 << " qs3=" << qs3 << " qs4=" << qs4 << std::endl;
+   }
+
+   {
+      opt.setPrefix("/EpcTools/");
+      Long qs1 = opt.get("/Logger/QueueSize", -1);
+      Long qs2 = opt.get("/Logger/QueueSize/", -1);
+      Long qs3 = opt.get("Logger/QueueSize", -1);
+      Long qs4 = opt.get("Logger/QueueSize/", -1);
+      std::cout << "prefix=\"/EpcTools/\" qs1=" << qs1 << " qs2=" << qs2 << " qs3=" << qs3 << " qs4=" << qs4 << std::endl;
+   }
+
+   {
+      opt.setPrefix("EpcTools");
+      Long qs1 = opt.get("/Logger/QueueSize", -1);
+      Long qs2 = opt.get("/Logger/QueueSize/", -1);
+      Long qs3 = opt.get("Logger/QueueSize", -1);
+      Long qs4 = opt.get("Logger/QueueSize/", -1);
+      std::cout << "prefix=\"EpcTools\" qs1=" << qs1 << " qs2=" << qs2 << " qs3=" << qs3 << " qs4=" << qs4 << std::endl;
+   }
+
+   {
+      opt.setPrefix("EpcTools/");
+      Long qs1 = opt.get("/Logger/QueueSize", -1);
+      Long qs2 = opt.get("/Logger/QueueSize/", -1);
+      Long qs3 = opt.get("Logger/QueueSize", -1);
+      Long qs4 = opt.get("Logger/QueueSize/", -1);
+      std::cout << "prefix=\"EpcTools/\" qs1=" << qs1 << " qs2=" << qs2 << " qs3=" << qs3 << " qs4=" << qs4 << std::endl;
+   }
+
+   opt.setPrefix("");
+   std::cout << "/EpcTools/EnablePublicObjects=" << (opt.get("/EpcTools/EnablePublicObjects",false)?"true":"false") << std::endl;
+   std::cout << "/EpcTools/Logger/ApplicationName=" << opt.get("/EpcTools/Logger/ApplicationName","undefined") << std::endl;
+   std::cout << "/EpcTools/Logger/QueueSize=" << opt.get("/EpcTools/Logger/QueueSize",-1) << std::endl;
+   std::cout << "/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles=" << opt.get("/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles",-1) << std::endl;
+
+   {
+      UInt cnt = opt.getCount("EpcTools/Logger/SinkSets");
+      std::cout << "EpcTools/Logger/SinkSets count=" << cnt << std::endl;
+      for (int i=0; i<cnt; i++)
+      {
+         Long sinkid = opt.get(i, "EpcTools/Logger/SinkSets", "SinkID", -1);
+         std::cout << "EpcTools/Logger/SinkSets/" << i << "/SinkID=" << sinkid << std::endl;
+
+         EString path;
+         path.format("/EpcTools/Logger/SinkSets/%d/Sinks", i);
+         UInt cnt2 = opt.getCount(path.c_str());
+         std::cout << path << " count=" << cnt2 << std::endl;
+         for (int j=0; j<cnt2; j++)
+            std::cout << path << "/" << j << "/SinkType = " << opt.get(j, path, "SinkType", "unknown") << std::endl;
+      }
+   }
+}
+
+#define LOG_SYSTEM 1
+#define LOG_TEST1 2
+#define LOG_TEST2 3
+#define LOG_TEST3 4
+
+#define LOG_TEST3_SINKSET 3
+
+Void ELogger_test()
+{
+   // spdlog::init_thread_pool(8192, 1);
+   // ELogger::applicationName("testapp");
+
+   // spdlog::sink_ptr s1 = std::make_shared<spdlog::sinks::syslog_sink_mt>("",LOG_USER,0,true);
+   // spdlog::sink_ptr s2 = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+   // spdlog::sink_ptr s3 = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("mylog",10*1024*1024,2);
+
+   // ELogger::createSinkSet( STANDARD_SINKSET );
+
+   // ELogger::sinkSet(STANDARD_SINKSET).addSink( s1, ELogger::eWarn, "[__APPNAME__] [%n] [%l] %v" );
+   // ELogger::sinkSet(STANDARD_SINKSET).addSink( s2, ELogger::eTrace );
+   // ELogger::sinkSet(STANDARD_SINKSET).addSink( s3, ELogger::eTrace );
+
+
+   // ELogger::createLog( LOG_SYSTEM, "system", STANDARD_SINKSET );
+   // ELogger::createLog( LOG_TEST1, "test1", STANDARD_SINKSET );
+   // ELogger::createLog( LOG_TEST2, "test2", STANDARD_SINKSET );
+
+   // ELogger::log(LOG_SYSTEM).set_level( ELogger::eTrace );
+   // ELogger::log(LOG_TEST1).set_level( ELogger::eTrace );
+   // ELogger::log(LOG_TEST2).set_level( ELogger::eTrace );
+
+   ELogger::log(LOG_SYSTEM).trace("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).debug("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).info("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).startup("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).warn("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).error("Hello {} from the system log!!", "World");
+
+   ELogger::log(LOG_TEST1).trace("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).debug("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).info("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).startup("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).warn("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).error("Hello {} from the test1 log!!", "World");
+
+   ELogger::log(LOG_TEST2).trace("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).debug("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).info("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).startup("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).warn("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).error("Hello {} from the test2 log!!", "World");
+
+   ELogger::log(LOG_SYSTEM).flush();
+   ELogger::log(LOG_TEST1).flush();
+   ELogger::log(LOG_TEST2).flush();
+
+   /////////////////////////////////////////////////////////////////////////////
+   /////////////////////////////////////////////////////////////////////////////
+
+   ELogger::createSinkSet( LOG_TEST3_SINKSET );
+   std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkBasicFile>(
+      ELogger::eDebug, ELoggerSink::getDefaultPattern(), "mylog", true );
+   ELogger::sinkSet(LOG_TEST3_SINKSET).addSink( sp );
+
+   ELogger::createLog( LOG_TEST3, "test3", LOG_TEST3_SINKSET );
+
+   ELogger::log(LOG_TEST3).setLogLevel( ELogger::eInfo );
+
+   ELogger::log(LOG_TEST3).trace("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).debug("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).info("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).startup("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).warn("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).error("Hello {} from the test3 log!!", "World");
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -1750,24 +1993,26 @@ Void printMenu()
        "                       Enhanced Packet Core Tools Test Menu                     \n"
        "                         Public features are %senabled                          \n"
        "\n"
-       "1.  Semaphore/thread cancellation              14. Basic thread test            \n"
-       "2.  DateTime object tests                      15. Thread suspend/resume        \n"
-       "3.  Public thread test (1 writer, 1 reader)    16. Thread periodic timer test   \n"
-       "4.  Public thread test (1 writer, 4 readers)   17. Thread one shot timer test   \n"
-       "5.  Private thread test (1 writer, 4 readers)  18. Circular buffer test         \n"
-       "6.  Public queue test (reader)                 19. Directory test               \n"
-       "7.  Public queue test (writer)                 20. Hash test                    \n"
-       "8.  Elapsed timer                              21. Thread test (1 reader/writer)\n"
-       "9.  Error handling                             22. Deadlock                     \n"
-       "10. Private Mutex text                         23. Thread Test (4 writers)      \n"
-       "11. Public Mutex text                          24. Mutex performance test       \n"
-       "12. Private Semaphore test                     25. Socket server                \n"
-       "13. Public Semaphore test                      26. Socket client                \n"
+       "1.  Semaphore/thread cancellation              16. Thread periodic timer test   \n"
+       "2.  DateTime object tests                      17. Thread one shot timer test   \n"
+       "3.  Public thread test (1 writer, 1 reader)    18. Circular buffer test         \n"
+       "4.  Public thread test (1 writer, 4 readers)   19. Directory test               \n"
+       "5.  Private thread test (1 writer, 4 readers)  20. Hash test                    \n"
+       "6.  Public queue test (reader)                 21. Thread test (1 reader/writer)\n"
+       "7.  Public queue test (writer)                 22. Deadlock                     \n"
+       "8.  Elapsed timer                              23. Thread Test (4 writers)      \n"
+       "9.  Error handling                             24. Mutex performance test       \n"
+       "10. Private Mutex test                         25. Socket server                \n"
+       "11. Public Mutex test                          26. Socket client                \n"
+       "12. Private Semaphore test                     27. Read/Write Lock test         \n"
+       "13. Public Semaphore test                      28. Options test                 \n"
+       "14. Basic thread test                          29. Logger test                  \n"
+       "15. Thread suspend/resume                                                       \n"
        "\n",
        EpcTools::isPublicEnabled() ? "" : "NOT ");
 }
 
-Void run()
+Void run(EGetOpt &options)
 {
    Int opt;
    Char selection[128];
@@ -1867,6 +2112,14 @@ Void run()
          case 26:
             sockettest(False);
             break;
+         case 27:
+            ERWLock_test();
+            break;
+         case 28:
+            EGetOpt_test(options);
+            break;
+         case 29:
+            ELogger_test();
          default:
             cout << "Invalid Selection" << endl
                  << endl;
@@ -1992,7 +2245,7 @@ int main(int argc, char *argv[])
    {
       EpcTools::Initialize(opt);
 
-      run();
+      run(opt);
 
       EpcTools::UnInitialize();
    }
@@ -2003,3 +2256,49 @@ int main(int argc, char *argv[])
 
    return 0;
 }
+
+
+typedef enum {
+   itS11,
+   itS5S8,
+   itSxa,
+   itSxb,
+   itSxaSxb,
+   itGx
+} EInterfaceType;
+
+#define SENT 0
+#define RCVD 1
+
+typedef struct {
+   int cnt;
+   time_t ts;
+} Statistic;
+
+typedef struct {
+   struct in_addr ipaddr;
+   EInterfaceType intfctype;
+   int hcsent[2];
+   int hcrcvd[2];
+   union {
+      Statistic s11[51];
+      Statistic s5s8[37];
+      Statistic sxa[21];
+      Statistic sxb[21];
+      Statistic sxasxb[23];
+   } stats;
+} SPeer;
+
+int s11MessageTypes [] = {
+   -1, -1, -1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 3, 4, 7, 8, 5, 6, 11, 12, 9, 10, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25, 26, 27, 28, 29, 30, 31, 
+   32, 33, 34, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 37, 38, 
+   35, 36, 13, 14, 39, 40, 41, 42, 43, 44, -1, -1, -1, -1, 45, 46, -1, 47, 48, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, -1, -1, -1, -1, -1, -1, -1, 49, 50, };
+

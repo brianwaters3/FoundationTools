@@ -76,19 +76,24 @@ Void EPath::combine(cpStr path1, cpStr path2, EString &path)
    else if (!path2)
       throw EPathError_ArgumentException("path2");
    if (*path1 == '\0')
-      path = path2;
-   else if (*path2 == '\0')
-      path = path1;
-   else if (EUtility::indexOfAny(path1, getInvalidPathChars()) != -1)
-      throw EPathError_ArgumentException("Illegal characters in path1.");
-   else if (EUtility::indexOfAny(path2, getInvalidPathChars()) != -1)
-      throw EPathError_ArgumentException("Illegal characters in path2.");
-
-   if (isPathRooted(path2))
    {
       path = path2;
       return;
    }
+   else if (*path2 == '\0')
+   {
+      path = path1;
+      return;
+   }
+   else if (isPathRooted(path2))
+   {
+      path = path2;
+      return;
+   }
+   else if (EUtility::indexOfAny(path1, getInvalidPathChars()) != -1)
+      throw EPathError_ArgumentException("Illegal characters in path1.");
+   else if (EUtility::indexOfAny(path2, getInvalidPathChars()) != -1)
+      throw EPathError_ArgumentException("Illegal characters in path2.");
 
    Char p1end = path1[strlen(path1) - 1];
    path = path1;
@@ -108,6 +113,28 @@ Void EPath::combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4, EString 
    combine(path1, path2, path3, path);
    combine(path, path4, path);
 }
+
+EString EPath::combine(cpStr path1, cpStr path2)
+{
+   EString path;
+   combine(path1, path2, path);
+   return path;
+}
+
+EString EPath::combine(cpStr path1, cpStr path2, cpStr path3)
+{
+   EString path;
+   combine(path1, path2, path3, path);
+   return path;
+}
+
+EString EPath::combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4)
+{
+   EString path;
+   combine(path1, path2, path3, path4, path);
+   return path;
+}
+
 
 Void EPath::getDirectoryName(cpStr path, EString &dirName)
 {

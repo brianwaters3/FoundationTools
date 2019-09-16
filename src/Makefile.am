@@ -32,4 +32,4 @@ libepc_a_SOURCES = ebase.cpp ebzip2.cpp ecbuf.cpp edir.cpp eerror.cpp egetopt.cp
 
 # Compiler options. Here we are adding the include directory
 # to be searched for headers included in the source code.
-libepc_a_CPPFLAGS = -Og -std=c++11 -I$(top_srcdir)/include/epc -I$(top_srcdir)/modules/rapidjson/include
+libepc_a_CPPFLAGS = -Og -std=c++11 -I$(top_srcdir)/include/epc -I$(top_srcdir)/modules/rapidjson/include -I$(top_srcdir)/modules/spdlog/include

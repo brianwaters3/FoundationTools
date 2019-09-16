@@ -30,6 +30,8 @@ public:
    static Int indexOfAny(cpStr path, cpStr search);
    static Int lastIndexOfAny(cpStr path, cpStr search);
    static std::vector<EString> split(cpStr s, cpStr delims);
+   static EString &replaceAll(EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
+   static EString replaceAllCopy(const EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
 };
 
 #endif // #define __eutil_h_included

@@ -3,7 +3,7 @@
 * Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
+* you may not use this file except in com:e pliance with the License.
 * You may obtain a copy of the License at
 *
 *    http://www.apache.org/licenses/LICENSE-2.0
@@ -16,562 +16,369 @@
 */
 
 #include <vector>
-#include <stdarg.h>
-
-#include "elogger.h"
-#include "eatomic.h"
-#include "esynch.h"
-#include "esynch2.h"
-#include "einternal.h"
-
-#include <errno.h>
-#include <syslog.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
+#include <unordered_map>
 #include <sys/stat.h>
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
+#include "einternal.h"
+#include "elogger.h"
+#include "epath.h"
+#include "estatic.h"
+#include "eutil.h"
 
-ELoggerError_AlreadyExists::ELoggerError_AlreadyExists(Int err)
-{
-   setSevere();
-   setTextf("Log entry already exists for log [%d].", err);
-}
+#include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/daily_file_sink.h"
+#include "spdlog/sinks/rotating_file_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/syslog_sink.h"
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 ELoggerError_LogNotFound::ELoggerError_LogNotFound(Int err)
 {
-   setSevere();
-   setTextf("Log [%d] not found.", err);
+   setTextf("Log ID [%d] not found", err);
 }
 
-ELoggerError_UnableToOpenLogFile::ELoggerError_UnableToOpenLogFile(Int err, cpStr msg)
+ELoggerError_LogExists::ELoggerError_LogExists(Int err)
 {
-   setSevere();
-   setTextf("Error opening [%s] - ", msg);
-   appendLastOsError(err);
+   setTextf("Log ID [%d] already exists", err);
+}
+
+ELoggerError_SinkSetNotFound::ELoggerError_SinkSetNotFound(Int err)
+{
+   setTextf("Sink set ID [%d] not found", err);
+}
+
+ELoggerError_SinkSetExists::ELoggerError_SinkSetExists(Int err)
+{
+   setTextf("Sink set ID [%d] already exists", err);
+}
+
+ELoggerError_SinkSetCreatePath::ELoggerError_SinkSetCreatePath(Int err, cpStr msg)
+{
+   setTextf( "Error creating directory [%s]", msg );
+   appendLastOsError( err );
+}
+
+ELoggerError_SinkSetNotDirectory::ELoggerError_SinkSetNotDirectory(cpStr msg)
+{
+   setText( msg );
+}
+
+ELoggerError_SinkSetUnrecognizedSinkType::ELoggerError_SinkSetUnrecognizedSinkType(cpStr msg)
+{
+   setText( msg );
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-cpStr ELogger::m_pszSeverity[] = {"Undefined", "Error", "Warning", "Info", "Debug"};
-
-class ELoggerControl : public EStatic
+class ELoggerInit : public EStatic
 {
 public:
-   ELoggerControl() {}
-
-   ~ELoggerControl() {}
-
-   virtual Void init(EGetOpt &opt)
+   virtual Int getInitType() { return STATIC_INIT_TYPE_SHARED_OBJECT_MANAGER; }
+   Void init(EGetOpt &options)
    {
-      m_logCtrl = new ELogger();
-      m_logCtrl->init(opt);
+      ELogger::init(options);
    }
-
-   virtual Void uninit()
+   Void uninit()
    {
-      m_logCtrl->uninit();
-      delete m_logCtrl;
+      ELogger::uninit();
    }
-
-   virtual Int getInitType() { return STATIC_INIT_TYPE_PRIORITY; }
-
-private:
-   ELogger *m_logCtrl;
 };
 
-ELoggerControl _logCtrl;
-ELogger *ELogger::m_pThis = NULL;
+static ELoggerInit _loggerInitializetion;
 
-Void ELogger::setLoggerPtr(ELogger *pThis)
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EString ELoggerSink::m_defaultpattern = "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v";
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EString ELogger::m_appname = "ELogger";
+std::unordered_map<Int, std::shared_ptr<ELoggerSinkSet>> ELogger::m_sinksets;
+std::unordered_map<Int, std::shared_ptr<ELogger>> ELogger::m_logs;
+
+ELogger::ELogger(Int logid, cpStr category, Int sinkid)
+   : m_logid(logid),
+     m_sinkid(sinkid),
+     m_category(category),
+     m_log(std::make_shared<spdlog::async_logger>(
+        m_category.c_str(),
+        ELogger::sinkSet(m_sinkid).getSpdlogVector().begin(),
+        ELogger::sinkSet(m_sinkid).getSpdlogVector().end(),
+        spdlog::thread_pool(),
+        spdlog::async_overflow_policy::overrun_oldest))
 {
-   //_logCtrl.m_pThis = pThis;
 }
 
-ELogger::ELogger()
+Void ELogger::init(EGetOpt &opt)
 {
-   m_pThis = this;
-
-   m_writetofile = False;
-   for (Int ofs = 0; ofs < ELOGGER_MAX_LOGS; ofs++)
+   try
    {
-      m_handles[ofs].s_fh = -1;
-      m_handles[ofs].s_currseg = -1;
-      m_handles[ofs].s_linecnt = 0;
-   }
-}
+      //
+      // set the application name
+      //
+      cpStr appname = opt.get( SECTION_TOOLS "/" SECTION_LOGGER "/" MEMBER_LOGGER_APPLICATION_NAME, "epctools" );
+      ELogger::applicationName( appname );
 
-ELogger::~ELogger()
-{
-   closelog(); // close syslog
-}
+      //
+      // initialize the spdlog global thread pool
+      //
+      size_t queuesize = opt.get( SECTION_TOOLS "/" SECTION_LOGGER "/" MEMBER_LOGGER_QUEUE_SIZE, 8192 );
+      size_t nbrthreads = opt.get( SECTION_TOOLS "/" SECTION_LOGGER "/" MEMBER_LOGGER_NUMBER_THREADS, 1 );
 
-Void ELogger::init(EGetOpt &options)
-{
-   options.setPrefix(SECTION_TOOLS "/" SECTION_LOGGER_OPTIONS);
-   Bool bWriteToFile = options.get(MEMBER_WRITE_TO_FILE, false);
-   Int nQueueID = options.get(MEMBER_QUEUE_ID, 0);
-   EString s;
-   EQueueBase::Mode mode;
+      spdlog::init_thread_pool(queuesize, nbrthreads);
 
-   s = options.get(MEMBER_QUEUE_MODE, "WriteOnly");
-   s.tolower();
-
-   if (s == "readonly")
-      mode = EQueueBase::ReadOnly;
-   else if (s == "writeonly")
-      mode = EQueueBase::WriteOnly;
-   else
-      mode = EQueueBase::ReadWrite;
-
-   options.setPrefix("");
-
-   ////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////
-
-   m_writetofile = bWriteToFile;
-
-   if (!m_writetofile)
-      m_queue.init(nQueueID, mode);
-
-   if (options.get(SECTION_TOOLS "/" MEMBER_ENABLE_PUBLIC_OBJECTS, false))
-   {
-      m_sharedmem.init("ELoggerControlBlock", 1, sizeof(eloggerctrl_t));
-
-      m_pCtrl = (eloggerctrl_t *)m_sharedmem.getDataPtr();
-      m_pCtrl->s_sharedmem = True;
-   }
-   else
-   {
-      m_pCtrl = new eloggerctrl_t();
-      memset(m_pCtrl, 0, sizeof(*m_pCtrl));
-      m_pCtrl->s_sharedmem = False;
-   }
-
-   if (!m_pCtrl->s_initialized)
-   {
-      for (int ofs = 0; ofs < ELOGGER_MAX_LOGS; ofs++)
+      //
+      // create the sink sets
+      //
+      EString pth;
+      opt.setPrefix( SECTION_TOOLS "/" SECTION_LOGGER "/" MEMBER_LOGGER_SINK_SETS );
+      Int sscnt = opt.getCount( "" );
+      for (int i=0; i<sscnt; i++)
       {
-         m_pCtrl->s_logs[ofs].s_logid = -1;
-         m_pCtrl->s_logs[ofs].s_mask.quadPart = 0;
-         m_pCtrl->s_logs[ofs].s_maxsegs = 1;
-         m_pCtrl->s_logs[ofs].s_linesperseg = 100000;
-         m_pCtrl->s_logs[ofs].s_filenamemask[0] = '\0';
+         Int sinkid = opt.get( i, "", MEMBER_LOGGER_SINK_ID, -1 );
+         if (sinkid == -1)
+            throw ELoggerError_SinkSetSinkIdNotSpecified();
+
+         ELogger::createSinkSet( sinkid );
+
+         pth.format( "%d/" MEMBER_LOGGER_SINKS, i );
+         Int scnt = opt.getCount( pth );
+         for (Int j=0; j<scnt; j++)
+         {
+            EString sinktype = opt.get( j, pth, MEMBER_LOGGER_SINK_TYPE, "" );
+            EString pattern = opt.get( j, pth, MEMBER_LOGGER_PATTERN, ELoggerSink::getDefaultPattern().c_str() );
+            LogLevel loglevel =
+               (LogLevel)spdlog::level::from_str( opt.get( j, pth, MEMBER_LOGGER_LOG_LEVEL, "trace" ) );
+            
+            pattern.replaceAll( "__APPNAME__", 11, ELogger::applicationName(), ELogger::applicationName().size());
+
+            if ( !*sinktype )
+               throw ELoggerError_SinkSetSinkTypeNotSpecified();
+
+            if ( sinktype == "basic_file" )
+            {
+               EString filename = opt.get( j, pth, MEMBER_LOGGER_FILE_NAME, "" );
+               Bool truncate = opt.get( j, pth, MEMBER_LOGGER_FILE_TRUNCATE, false );
+
+               verifyPath( filename );
+
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkBasicFile>(
+                  loglevel, pattern, filename, truncate );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else if ( sinktype == "rotating_file" )
+            {
+               EString filename = opt.get( j, pth, MEMBER_LOGGER_FILE_NAME, "" );
+               size_t maxsizemb = opt.get( j, pth, MEMBER_LOGGER_MAX_SIZE, (size_t)100 );
+               size_t maxfiles = opt.get( j, pth, MEMBER_LOGGER_MAX_FILES, 2 );
+               Bool rotateonopen = opt.get( j, pth, MEMBER_LOGGER_FILE_ROTATE_ON_OPEN, false );
+
+               verifyPath( filename );
+
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkRotatingFile>(
+                  loglevel, pattern, filename, maxsizemb, maxfiles, rotateonopen );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else if ( sinktype == "daily_file" )
+            {
+               EString filename = opt.get( j, pth, MEMBER_LOGGER_FILE_NAME, "" );
+               Bool truncate = opt.get( j, pth, MEMBER_LOGGER_FILE_TRUNCATE, false );
+               Int hr = opt.get( j, pth, MEMBER_LOGGER_ROLLOVER_HOUR, 0 );
+               Int mi = opt.get( j, pth, MEMBER_LOGGER_ROLLOVER_MINUTE, 0 );
+
+               verifyPath( filename );
+
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkDailyFile>(
+                  loglevel, pattern, filename, truncate, hr, mi );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else if ( sinktype == "stdout" )
+            {
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkStdout>(
+                  loglevel, pattern );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else if ( sinktype == "stderr" )
+            {
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkStderr>(
+                  loglevel, pattern );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else if ( sinktype == "syslog" )
+            {
+               std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkSyslog>(
+                  loglevel, pattern );
+
+               ELogger::sinkSet(sinkid).addSink( sp );
+            }
+            else
+            {
+               throw ELoggerError_SinkSetUnrecognizedSinkType( sinktype );
+            }
+         }
       }
+      opt.setPrefix( "" );
 
-      m_pCtrl->s_initialized = True;
+      //
+      // create the logs
+      //
+      opt.setPrefix( SECTION_TOOLS "/" SECTION_LOGGER "/" MEMBER_LOGGER_LOGS );
+      Int logcnt = opt.getCount( "" );
+      for (int i=0; i<logcnt; i++)
+      {
+         Int logid = opt.get( i, "", MEMBER_LOGGER_LOG_ID, -1 );
+         Int sinkid = opt.get( i, "", MEMBER_LOGGER_SINK_ID, -1 );
+         cpStr category = opt.get( i, "", MEMBER_LOGGER_CATEGORY, "" );
+         LogLevel loglevel =
+            (LogLevel)spdlog::level::from_str( opt.get( i, "", MEMBER_LOGGER_LOG_LEVEL, "trace" ) );
+
+         if (logid == -1)
+            throw ELoggerError_SinkSetLogIdNotSpecified();
+         if (sinkid == -1)
+            throw ELoggerError_SinkSetSinkIdNotSpecified();
+         if (!*category)
+            throw ELoggerError_SinkSetCategoryNotSpecified();
+
+         ELogger::createLog( logid, category, sinkid );
+         ELogger::log(logid).setLogLevel( loglevel );
+      }
    }
-
-   ////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////
-
-   UInt cnt;
-
-   options.setPrefix(SECTION_TOOLS);
-   cnt = options.getCount(SECTION_LOGGER);
-
-   for (UInt idx = 0; idx < cnt; idx++)
+   catch(...)
    {
-      Int logid;
-      ULongLong defaultmask;
-      Int maxsegments;
-      Int linespersegment;
-      EString filenamemask;
-      EString s;
-      LogType logtype = ELogger::ltFile;
-
-      logid = options.get(idx, SECTION_LOGGER, MEMBER_LOG_ID, -1);
-      maxsegments = options.get(idx, SECTION_LOGGER, MEMBER_SEGMENTS, -1);
-      linespersegment = options.get(idx, SECTION_LOGGER, MEMBER_LINESPERSEGMENT, -1);
-      filenamemask = options.get(idx, SECTION_LOGGER, MEMBER_FILENAMEMASK, "./elog_%A_%S.log");
-      s = options.get(idx, SECTION_LOGGER, MEMBER_LOGTYPE, "File");
-      logtype = (s.tolower() == "syslog") ? ltSysLog : ltFile;
-      s = options.get(idx, SECTION_LOGGER, MEMBER_DEFAULTLOGMASK, "0x0000000000000000");
-      defaultmask = strtoull(s.c_str(), NULL, 0);
-
-      addLog(logid, defaultmask, maxsegments, linespersegment, filenamemask, logtype);
-
-      if (options.get(idx, SECTION_LOGGER, MEMBER_INTERNALLOG, false))
-         EpcTools::setInternalLogId(logid);
-   }
+      opt.setPrefix( "" );
+      throw;
+   }   
 }
 
 Void ELogger::uninit()
 {
-   if (m_pCtrl && m_pCtrl->s_initialized)
-   {
-      for (Int ofs = 0; ofs < ELOGGER_MAX_LOGS; ofs++)
-      {
-         if (m_handles[ofs].s_fh != -1)
-         {
-            close(m_handles[ofs].s_fh);
-            m_handles[ofs].s_fh = -1;
-            m_handles[ofs].s_linecnt = 0;
-            m_handles[ofs].s_currseg = -1;
-            m_handles[ofs].s_mutex.destroy();
-         }
-      }
-
-      if (!m_pCtrl->s_sharedmem)
-      {
-         delete m_pCtrl;
-         m_pCtrl = NULL;
-      }      
-   }
-
-   m_queue.destroy();
+   spdlog::shutdown();
 }
 
-Void ELogger::addLog(Int logid, ULongLong defaultmask, Int maxsegments, Int linespersegment, cpChar filenamemask, LogType logtype)
+ELogger &ELogger::createLog(Int logid, cpStr category, Int sinkid)
 {
-   if (findLog(logid) != NULL)
-      return;
+   if (m_logs.find(logid) != m_logs.end())
+      throw ELoggerError_LogExists(logid);
+   
+   if (m_sinksets.find(sinkid) == m_sinksets.end())
+      throw ELoggerError_SinkSetNotFound(sinkid);
+   
+   auto lsp = std::make_shared<ELogger>(logid, category, sinkid);
 
-   Int ofs;
-   for (ofs = 0; ofs < ELOGGER_MAX_LOGS && m_pCtrl->s_logs[ofs].s_logid != -1; ofs++)
-      ;
+   m_logs[logid] = lsp;
 
-   if (ofs == ELOGGER_MAX_LOGS)
-      throw ELoggerError_MaximumNumberOfLogsDefined();
-
-   eloggerentry_t *pLog = &m_pCtrl->s_logs[ofs];
-
-   pLog->s_logid = logid;
-   pLog->s_mask.quadPart = (LongLong)defaultmask;
-   pLog->s_maxsegs = maxsegments;
-   pLog->s_linesperseg = linespersegment;
-   epc_strcpy_s(pLog->s_filenamemask, sizeof(pLog->s_filenamemask), filenamemask);
-   pLog->s_logtype = logtype;
-
-   m_handles[ofs].s_currseg = 0;
-   m_handles[ofs].s_mutex.init();
+   return log(logid);
 }
 
-Bool ELogger::isGroupMaskEnabled(Int logid, ULongLong groupMask)
+ELoggerSinkSet &ELogger::createSinkSet(Int sinkid)
 {
-   eloggerentry_t *pLog = m_pThis->findLog(logid);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
+   if (m_sinksets.find(sinkid) != m_sinksets.end())
+      throw ELoggerError_SinkSetExists(sinkid);
 
-   return groupEnabled(pLog, groupMask);
+   auto sssp = std::make_shared<ELoggerSinkSet>(sinkid);
+
+   m_sinksets[sinkid] = sssp;
+
+   return sinkSet(sinkid);
 }
 
-Void ELogger::enableGroupMask(Int logid, ULongLong groupMask)
+Void ELogger::verifyPath(cpStr filename)
 {
-   eloggerentry_t *pLog = m_pThis->findLog(logid);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
-
-   longinteger_t gm;
-   gm.quadPart = (LongLong)groupMask;
-
-   atomic_or(pLog->s_mask.li.lowPart, gm.li.lowPart);
-   atomic_or(pLog->s_mask.li.highPart, gm.li.highPart);
-}
-
-Void ELogger::disableGroupMask(Int logid, ULongLong groupMask)
-{
-   eloggerentry_t *pLog = m_pThis->findLog(logid);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
-
-   longinteger_t gm;
-   gm.quadPart = (LongLong)groupMask;
-
-   atomic_and(pLog->s_mask.li.lowPart, ~gm.li.lowPart);
-   atomic_and(pLog->s_mask.li.highPart, ~gm.li.highPart);
-}
-
-Void ELogger::setGroupMask(Int logid, ULongLong groupMask)
-{
-   eloggerentry_t *pLog = m_pThis->findLog(logid);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
-
-   pLog->s_mask.quadPart = (LongLong)groupMask;
-}
-
-ULongLong ELogger::getGroupMask(Int logid)
-{
-   eloggerentry_t *pLog = m_pThis->findLog(logid);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
-
-   return (ULongLong)pLog->s_mask.quadPart;
-}
-
-Void ELogger::logDebug(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...)
-{
-   if (logid == -1)
-      return;
-
-   va_list args;
-   va_start(args, pszText);
-   log(logid, groupid, ELogger::Debug, pszFunc, pszText, args);
-   va_end(args);
-}
-
-Void ELogger::logInfo(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...)
-{
-   if (logid == -1)
-      return;
-
-   va_list args;
-   va_start(args, pszText);
-   log(logid, groupid, ELogger::Info, pszFunc, pszText, args);
-   va_end(args);
-}
-
-Void ELogger::logWarning(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...)
-{
-   if (logid == -1)
-      return;
-
-   va_list args;
-   va_start(args, pszText);
-   log(logid, groupid, ELogger::Warning, pszFunc, pszText, args);
-   va_end(args);
-}
-
-Void ELogger::logError(Int logid, ULongLong groupid, cpStr pszFunc, cpStr pszText, ...)
-{
-   if (logid == -1)
-      return;
-
-   va_list args;
-   va_start(args, pszText);
-   log(logid, groupid, ELogger::Error, pszFunc, pszText, args);
-   va_end(args);
-}
-
-Void ELogger::log(Int logid, ULongLong groupid, Severity esev, cpStr pszFunc, cpStr pszText, ...)
-{
-   if (logid == -1)
-      return;
-
-   va_list args;
-   va_start(args, pszText);
-   log(logid, groupid, esev, pszFunc, pszText, args);
-   va_end(args);
-}
-
-Void ELogger::log(Int logid, ULongLong groupid, Severity esev, cpStr pszFunc, cpStr pszText, va_list &args)
-{
-   if (logid == -1)
-      return;
-
-   Int logofs = -1;
-   eloggerentry_t *pLog = m_pThis->findLog(logid, &logofs);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(logid);
-
-   if (groupEnabled(pLog, groupid) || esev == ELogger::Error)
-   {
-      Char szBuff[ELOGGER_BUFFER_SIZE];
-      epc_vsnprintf_s(szBuff, sizeof(szBuff), pszText, args);
-      ETime t;
-
-      if (m_pThis->m_writetofile)
-      {
-         if (pLog->s_logtype == ltSysLog)
-            m_pThis->writeSysLog(pLog, logofs, logid, groupid, esev, t,
-                                 ESynchObjects::getSynchObjCtrlPtr()->incSequence(), pszFunc, szBuff);
-         else
-            m_pThis->writeFile(pLog, logofs, logid, groupid, esev, t,
-                               ESynchObjects::getSynchObjCtrlPtr()->incSequence(), pszFunc, szBuff);
-      }
-      else
-         m_pThis->writeQueue(pLog, logofs, logid, groupid, esev, t,
-                             ESynchObjects::getSynchObjCtrlPtr()->incSequence(), pszFunc, szBuff);
-   }
-}
-
-Bool ELogger::isLogIdValid(Int logid)
-{
-   return m_pThis->findLog(logid) == NULL ? False : True;
-}
-
-Void ELogger::buildFileName(eloggerentry_t *pLog, eloggerloghandle_t &h, EString &s)
-{
-   Char mask[EPC_FILENAME_MAX];
-   Bool inPercent = False;
-   Int val[2] = {0, 0};
-   Long valofs = 0;
-   Int mOfs = 0;
-   Int fOfs = 0;
-
-   for (; pLog->s_filenamemask[fOfs]; fOfs++, mOfs++)
-   {
-      if (inPercent)
-      {
-         if (isdigit(pLog->s_filenamemask[fOfs]))
-            mask[mOfs] = pLog->s_filenamemask[fOfs];
-         else if (pLog->s_filenamemask[fOfs] == 'A')
-         {
-            mask[mOfs++] = 'l';
-            mask[mOfs] = 'd';
-            val[valofs++] = EpcTools::getApplicationId();
-            inPercent = False;
-         }
-         else if (pLog->s_filenamemask[fOfs] == 'S')
-         {
-            mask[mOfs++] = 'l';
-            mask[mOfs] = 'd';
-            val[valofs++] = h.s_currseg + 1;
-            inPercent = False;
-         }
-      }
-      else
-      {
-         if (pLog->s_filenamemask[fOfs] == '%')
-            inPercent = True;
-         mask[mOfs] = pLog->s_filenamemask[fOfs];
-      }
-   }
-   mask[mOfs] = '\0';
-
-   s.format(mask, val[0], val[1]);
-}
-
-Void ELogger::setNextSegment(eloggerentry_t *pLog, eloggerloghandle_t &h)
-{
-   Int lastSeg = 0;
-   time_t lastTime = 0;
-   EString s;
    struct stat st;
-   for (h.s_currseg = 0; h.s_currseg < pLog->s_maxsegs; h.s_currseg++)
+   EString dir;
+   EPath::getDirectoryName( filename, dir );
+   std::vector<EString> dirs = EUtility::split( dir, "/" );
+
+   dir = "";
+   for (auto d : dirs)
    {
-      buildFileName(pLog, h, s);
-      if (stat(s, &st) == 0 && st.st_mtime >= lastTime)
+      dir = EPath::combine( dir, d );
+      if ( stat(dir, &st) != 0 )
       {
-         lastSeg = h.s_currseg;
-         lastTime = st.st_mtime;
+         if ( mkdir(dir,0777) && errno != EEXIST )
+            throw ELoggerError_SinkSetCreatePath( errno, dir );
+      }
+      else if ( !S_ISDIR(st.st_mode) )
+      {
+         throw ELoggerError_SinkSetNotDirectory( dir );
       }
    }
-
-   if (++lastSeg >= pLog->s_maxsegs)
-      lastSeg = 0;
-
-   h.s_currseg = lastSeg;
 }
 
-Void ELogger::verifyHandle(eloggerentry_t *pLog, eloggerloghandle_t &h)
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+ELoggerSinkSyslog::ELoggerSinkSyslog( ELogger::LogLevel loglevel, cpStr pattern )
+   : ELoggerSink( ELoggerSink::eSyslog, loglevel, pattern )
 {
-   if (h.s_fh == -1) // need to initialize
-      setNextSegment(pLog, h);
-
-   if (h.s_linecnt >= pLog->s_linesperseg && pLog->s_linesperseg != -1)
-   {
-      if (h.s_fh != -1)
-      {
-         close(h.s_fh);
-         h.s_fh = -1;
-      }
-      h.s_linecnt = 0;
-      h.s_currseg++;
-      if (h.s_currseg >= pLog->s_maxsegs)
-         h.s_currseg = 0;
-   }
-
-   if (h.s_fh == -1)
-   {
-      Int oflag, pmode;
-      EString s;
-
-      buildFileName(pLog, h, s);
-
-      oflag = O_CREAT | O_TRUNC | O_RDWR;
-      pmode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
-      h.s_fh = open(s, oflag, pmode);
-      if (h.s_fh == -1)
-         throw ELoggerError_UnableToOpenLogFile(errno, s);
-   }
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::syslog_sink_mt>(
+      "", LOG_USER, 0, true );
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }
 
-Void ELogger::writeQueue(eloggerentry_t *pLog, Int logofs, Int logid,
-                          ULongLong groupid, Severity esev, ETime &t, Long seq, cpStr pszFunc, cpChar msg)
+ELoggerSinkStdout::ELoggerSinkStdout( ELogger::LogLevel loglevel, cpStr pattern )
+   : ELoggerSink( ELoggerSink::eStdout, loglevel, pattern )
 {
-   ELoggerQueueMessage qmsg;
-
-   qmsg.setMsgType(1);
-   qmsg.set(logid, groupid, esev, t, seq, pszFunc, msg);
-
-   m_queue.push(qmsg);
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }
 
-Void ELogger::writeFile(eloggerentry_t *pLog, Int logofs, Int logid,
-                         ULongLong groupid, Severity sev, ETime &t, Long seq, cpStr pszFunc, cpChar msg)
+ELoggerSinkStderr::ELoggerSinkStderr( ELogger::LogLevel loglevel, cpStr pattern )
+   : ELoggerSink( ELoggerSink::eStderr, loglevel, pattern )
 {
-   longinteger_t gm;
-   //Char buffer[4096];
-
-   EMutexLock l(m_handles[logofs].s_mutex);
-
-   verifyHandle(pLog, m_handles[logofs]);
-
-   t.Format(m_handles[logofs].s_buffer, sizeof(m_handles[logofs].s_buffer), "%F %H:%M:%S.%0", True);
-   gm.quadPart = (LongLong)groupid;
-
-   epc_sprintf_s(&m_handles[logofs].s_buffer[strlen(m_handles[logofs].s_buffer)],
-                sizeof(m_handles[logofs].s_buffer) - strlen(m_handles[logofs].s_buffer),
-                "\t"
-                "%d\t"
-                "0x%08X%08X\t"
-                "%s\t"
-                "%s\t"
-                "%s\n",
-                seq, (ULong)gm.li.highPart, gm.li.lowPart, getSeverityText(sev), pszFunc, msg);
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-result"
-   write(m_handles[logofs].s_fh, m_handles[logofs].s_buffer, (UInt)strlen(m_handles[logofs].s_buffer));
-#pragma GCC diagnostic pop
-
-   m_handles[logofs].s_linecnt++;
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::stderr_color_sink_mt>();
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }
 
-Void ELogger::writeSysLog(eloggerentry_t *pLog, Int logofs, Int logid,
-                           ULongLong groupid, Severity sev, ETime &t, Long seq, cpStr pszFunc, cpChar msg)
+ELoggerSinkBasicFile::ELoggerSinkBasicFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, Bool truncate )
+   : ELoggerSink( ELoggerSink::eBasicFile, loglevel, pattern ),
+     m_filename( filename ),
+     m_truncate( truncate )
 {
-   EMutexLock l(m_handles[logofs].s_mutex);
-
-   epc_sprintf_s(m_handles[logofs].s_buffer, sizeof(m_handles[logofs].s_buffer),
-                "<%s> [%s] %s", getSeverityText(sev), pszFunc, msg);
-
-   Int priority = LOG_USER | (sev == Error ? LOG_ERR : sev == Warning ? LOG_WARNING : LOG_INFO);
-
-   openlog(pLog->s_filenamemask, LOG_NDELAY | LOG_PID | LOG_CONS, LOG_USER);
-   //syslog(priority, m_handles[logofs].s_buffer);
-   syslog(priority, "<%s> [%s] %s", getSeverityText(sev), pszFunc, msg);
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
+      m_filename, m_truncate );
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }
 
-ELogger::eloggerentry_t *ELogger::findLog(Int logid, Int *plogofs)
+ELoggerSinkDailyFile::ELoggerSinkDailyFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, Bool truncate, Int rolloverhour, Int rolloverminute )
+   : ELoggerSink( ELoggerSink::eDailyFile, loglevel, pattern ),
+     m_filename( filename ),
+     m_truncate( truncate ),
+     m_rolloverhour( rolloverhour ),
+     m_rolloverminute( rolloverminute )
 {
-   Int ofs;
-
-   for (ofs = 0; ofs < ELOGGER_MAX_LOGS && m_pCtrl->s_logs[ofs].s_logid != -1; ofs++)
-   {
-      if (logid == m_pCtrl->s_logs[ofs].s_logid)
-      {
-         if (plogofs)
-            *plogofs = ofs;
-         return &m_pCtrl->s_logs[ofs];
-      }
-   }
-
-   return NULL;
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::daily_file_sink_mt>(
+      m_filename, m_rolloverhour, m_rolloverminute, m_truncate );
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }
 
-Void ELogger::log(ELogger::ELoggerQueueMessage &msg)
+ELoggerSinkRotatingFile::ELoggerSinkRotatingFile( ELogger::LogLevel loglevel, cpStr pattern,
+      cpStr filename, size_t maxsizemb, size_t maxfiles, Bool rotateonopen )
+   : ELoggerSink( ELoggerSink::eRotatingFile, loglevel, pattern ),
+     m_filename( filename ),
+     m_maxsizemb( maxsizemb ),
+     m_maxfiles( maxfiles ),
+     m_rotateonopen( rotateonopen )
 {
-   int logofs = -1;
-   eloggerentry_t *pLog = m_pThis->findLog(msg.getLogId(), &logofs);
-   if (pLog == NULL)
-      throw ELoggerError_LogNotFound(msg.getLogId());
-
-   m_pThis->writeFile(pLog, logofs, msg.getLogId(), msg.getGroupId(), msg.getSeverity(),
-                      msg.getTime(), msg.getSequence(), msg.getFunction(), msg.getMessage());
+   spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(
+      m_filename, m_maxsizemb * 1048576, m_maxfiles, m_rotateonopen );
+   sp->set_level( (spdlog::level::level_enum)loglevel );
+   setSinkPtr( sp );
 }

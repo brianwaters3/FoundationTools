@@ -29,46 +29,77 @@ DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2WriteInit);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2Read);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2Write);
 
+///
+/// @brief Wrapper around bzip2 library.
+///
+/// @details
+/// EBzip2 provides the ability to compress or decompress a file utilizing
+/// the Burrows-Wheeler compression algorithm.  The library is compatible
+/// with the standard bzip2 program.  This library compresses/decompresses
+/// between memory (decompressed) and a file (compressed).  The decompressed
+/// data can be read on a buffer by buffer and does not require for the entire
+/// file to be decompressed. See https://www.sourceware.org/bzip2/ for more
+/// information.
+/// 
 class EBzip2
 {
 public:
+   /// @cond DOXYGEN_EXCLUDE
    enum Operation
    {
       bz2opNone,
       bz2opRead,
       bz2opWrite
    };
+   /// @endcond
 
+   /// @brief Class constructor.
    EBzip2();
+   /// @brief Class destructor.
    ~EBzip2();
 
+   /// @brief Sets the file name that to be operated on.
    EString &setFileName(cpStr filename)
    {
       m_filename = filename;
       return m_filename;
    }
+   /// @brief Gets the file name that to be operated on.
    EString &getFileName() { return m_filename; }
 
+   /// @brief Sets the line terminator used by readLine().
    cChar setTerminator(cChar c)
    {
       m_term = c;
       return getTerminator();
    }
+   /// @brief Gets the line terminator used by readLine().
    cChar getTerminator() { return m_term; }
 
+   /// @brief Gets the last error value that occurred.
    Int getLastError() { return m_bzerror; }
+   /// @brief Gets the description of the specified error value.
    static cpStr getErrorDesc(Int e);
 
+   /// @brief The number of uncompressed bytes associated with the file written.
    ULongLong getBytesIn() { return m_bytesin; }
+   /// @brief The number of compressed bytes associated with the file written.
    ULongLong getBytesOut() { return m_bytesout; }
 
+   /// @brief True - the file is open, False - the file is closed
    Bool isOpen() { return m_fh ? True : False; }
 
+   /// @brief Open the file for reading.
    Void readOpen(cpStr filename);
+   /// @brief Open the file for writing.
    Void writeOpen(cpStr filename);
+   /// @brief Close the file.
    Void close();
+   /// @brief Read a specified number of decompressed bytes.
    Int read(pUChar pbuf, Int length);
+   /// @brief Read a decompressed line terminated by the supplied terminator.
    Int readLine(pStr pbuf, Int length);
+   /// @brief Write the specified number of decompressed bytes.
    Int write(pUChar pbuf, Int length);
 
 private:

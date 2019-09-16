@@ -25,6 +25,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 DECLARE_ERROR(ECircularBufferError_HeadAndTailOutOfSync);
 DECLARE_ERROR(ECircularBufferError_UsedLessThanZero);
 DECLARE_ERROR(ECircularBufferError_TailExceededCapacity);
@@ -32,34 +33,85 @@ DECLARE_ERROR(ECircularBufferError_AttemptToExceedCapacity);
 DECLARE_ERROR(ECircularBufferError_BufferSizeHasBeenExceeded);
 DECLARE_ERROR(ECircularBufferError_HeadHasExceededCapacity);
 DECLARE_ERROR(ECircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuffer);
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @brief Implements a circular buffer.
 class ECircularBuffer
 {
 public:
+   /// @brief Class constructor.
+   ///
+   /// @param capacity The maximum number of bytes in the buffer.
    ECircularBuffer(Int capacity);
+   /// @brief Class destructor.
    ~ECircularBuffer();
 
+   /// @brief Initializes the circular buffer.
    Void initialize();
 
+   /// @brief True - the buffer is empty, False - there is data in the buffer
    Bool isEmpty() { return m_used == 0; }
+   /// @brief Returns the maximum capacity of the circular buffer.
    Int capacity() { return m_capacity; }
+   /// @brief Returns the number of bytes in use in the buffer.
    Int used() { return m_used; }
+   /// @brief Returns the number of bytes that are free in the buffer.
    Int free() { return m_capacity - m_used; }
 
+   /// @brief Reads data from the buffer without removing it from the buffer.
+   ///
+   /// @param dest A pointer to a buffer where the data will be written.
+   /// @param offset The offset in the buffer where to start reading from.
+   /// @param length The number of bytes to read.
+   ///
+   /// @throws ECircularBufferError_HeadAndTailOutOfSync
+   /// @throws ECircularBufferError_UsedLessThanZero
+   /// @throws ECircularBufferError_TailExceededCapacity
+   ///
    Int peekData(pUChar dest, Int offset, Int length)
    {
       return readData(dest, offset, length, true);
    }
 
+   /// @brief Reads and removes data from the buffer.
+   ///
+   /// @param dest A pointer to a buffer where the data will be written.
+   /// @param offset The offset in the buffer where to start reading from.
+   /// @param length The number of bytes to read.
    Int readData(pUChar dest, Int offset, Int length)
    {
       return readData(dest, offset, length, false);
    }
 
+   /// @brief Writes data to the circular buffer.
+   ///
+   /// @param src A pointer to the data that will be written to the buffer.
+   /// @param offset *** NOT USED ***
+   /// @param length The number of bytes to write to the buffer.
+   ///
+   /// @throws ECircularBufferError_AttemptToExceedCapacity
+   /// @throws ECircularBufferError_BufferSizeHasBeenExceeded
+   /// @throws ECircularBufferError_HeadHasExceededCapacity
+   ///
    void writeData(pUChar src, Int offset, Int length);
+   /// @brief Modifies data within the buffer.
+   ///
+   /// @param src A pointer to the data that will be written to the buffer.
+   /// @param offset The offset within the buffer to start writing.
+   /// @param length The number of bytes to write to the buffer.
+   ///
+   /// @throws ECircularBufferError_AttemptToModifyDataOutsideBoundsOfCurrentBuffer
+   ///
+   /// @details
+   /// Generally speaking, data is written to the head and read from the
+   /// tail.  modifyData updates data starting at the tail, the next data
+   /// to read.  This method was added to support partial socket writes
+   /// where the message length, the first 4 bytes, needed to updated to
+   /// reflect the remaining bytes to be written.
+   /// **** USE WITH EXTREME CAUTION ***
    void modifyData(pUChar src, Int offset, Int length);
 
 private:

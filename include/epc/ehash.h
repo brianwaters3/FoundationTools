@@ -21,11 +21,32 @@
 #include "ebase.h"
 #include "estring.h"
 
+/// @brief Calcuates a 32-bit hash value for the specified string or array of characters.
 class EHash
 {
 public:
+   /// @brief Returns the 32-bit has value for the specified string.
+   ///
+   /// @param str The string to calculate the hash for.
+   ///
+   /// @return 32-bit hash value
+   ///
    static ULong getHash(EString &str);
+   /// @brief Returns the 32-bit has value for the array of characters.
+   ///
+   /// @param val The array of characters to calculate the hash for.
+   /// @param len The length of the array of characters.
+   ///
+   /// @return 32-bit hash value
+   ///
    static ULong getHash(cpChar val, ULong len);
+   /// @brief Returns the 32-bit has value for the array of unsigned characters.
+   ///
+   /// @param val The array of unsigned characters to calculate the hash for.
+   /// @param len The length of the array of unsigned characters.
+   ///
+   /// @return 32-bit hash value
+   ///
    static ULong getHash(cpUChar val, ULong len);
 
 protected:
