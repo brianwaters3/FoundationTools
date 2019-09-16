@@ -2,13 +2,10 @@
 
 EpcTools is an event based, multi-threaded C++ development framework designed for any Linux implementation that supports g++ and pthreads.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
-
 # Dependencies
 
 * [RapidJSON](http://rapidjson.org) - a JSON parser and generator for C++
+* [spdlog](https://github.com/gabime/spdlog) - Very fast, header-only/compiled, C++ logging library
 
 # Installation
 
