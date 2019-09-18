@@ -15,3 +15,7 @@ modules/.DS_Store
 exampleProgram/*.o
 exampleProgram/epctest
 exampleProgram/.deps
+exampleProgram/myfile
+exampleProgram/mylog
+exampleProgram/logs
+../doc/Doxyfile.bak

@@ -2257,7 +2257,7 @@ int main(int argc, char *argv[])
    return 0;
 }
 
-
+#if 0
 typedef enum {
    itS11,
    itS5S8,
@@ -2267,13 +2267,26 @@ typedef enum {
    itGx
 } EInterfaceType;
 
-#define SENT 0
-#define RCVD 1
+typedef enum {
+   dIn,
+   dOut,
+   dBoth,
+   dNone
+} EDirection;
+
+typedef struct {
+   int msgtype;
+   const char *msgname;
+   EDirection dir;
+} MessageType;
 
 typedef struct {
    int cnt;
    time_t ts;
 } Statistic;
+
+#define SENT 0
+#define RCVD 1
 
 typedef struct {
    struct in_addr ipaddr;
@@ -2281,13 +2294,18 @@ typedef struct {
    int hcsent[2];
    int hcrcvd[2];
    union {
-      Statistic s11[51];
+      Statistic s11[51][2];
       Statistic s5s8[37];
       Statistic sxa[21];
       Statistic sxb[21];
       Statistic sxasxb[23];
    } stats;
 } SPeer;
+
+MessageType s11MessageDefs[] = {
+   { 3, "Version Not Supported Indication", dBoth },
+   { 1, NULL, dNone }
+};
 
 int s11MessageTypes [] = {
    -1, -1, -1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
@@ -2302,3 +2320,10 @@ int s11MessageTypes [] = {
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, 49, 50, };
 
+loop through peers
+{
+   csAddPeer();
+   csAddPeerStats( SPeer*, Statistic*, MessageType*, msgcnt );
+}
+csAddPeer()
+#endif
