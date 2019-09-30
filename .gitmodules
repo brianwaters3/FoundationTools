@@ -6,3 +6,12 @@
 	path = modules/spdlog
 	url = https://github.com/gabime/spdlog.git
 	branch = master
+[submodule "modules/c-ares"]
+	path = modules/c-ares
+	url = https://github.com/c-ares/c-ares.git
+[submodule "modules/pistache"]
+	path = modules/pistache
+	url = https://github.com/oktal/pistache.git
+[submodule "modules/freeDiameter"]
+	path = modules/freeDiameter
+	url = https://gerrit.opencord.org/freeDiameter-old

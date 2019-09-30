@@ -63,6 +63,33 @@ AC_CONFIG_COMMANDS([spdlog],[
 	sudo make install
 	popd
 ])
+AC_CONFIG_COMMANDS([c-ares],[
+	pushd modules/c-ares
+   ./buildconf
+   ./configure
+	make
+	sudo make install
+	popd
+])
+AC_CONFIG_COMMANDS([pistache],[
+	mkdir -p modules/pistache/build
+	pushd modules/pistache/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+])
+AC_CONFIG_COMMANDS([freeDiameter],[
+	mkdir -p modules/freeDiameter/build
+	pushd modules/freeDiameter/build
+	rm -rf *
+	cmake ..
+   awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
+	make
+	sudo make install
+	popd
+])
 
 
 AC_OUTPUT

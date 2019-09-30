@@ -152,6 +152,7 @@ libepc_a_LIBADD =
 am_libepc_a_OBJECTS = libepc_a-ebase.$(OBJEXT) \
 	libepc_a-ebzip2.$(OBJEXT) libepc_a-ecbuf.$(OBJEXT) \
 	libepc_a-edir.$(OBJEXT) libepc_a-eerror.$(OBJEXT) \
+	libepc_a-efd.$(OBJEXT) libepc_a-efdjson.$(OBJEXT) \
 	libepc_a-egetopt.$(OBJEXT) libepc_a-ehash.$(OBJEXT) \
 	libepc_a-elogger.$(OBJEXT) libepc_a-emsg.$(OBJEXT) \
 	libepc_a-epath.$(OBJEXT) libepc_a-eqbase.$(OBJEXT) \
@@ -325,7 +326,7 @@ lib_LIBRARIES = libepc.a
 # Build information for each library
 
 # Sources for epc
-libepc_a_SOURCES = ebase.cpp ebzip2.cpp ecbuf.cpp edir.cpp eerror.cpp egetopt.cpp ehash.cpp elogger.cpp emsg.cpp epath.cpp eqbase.cpp eqpriv.cpp eqpub.cpp eshmem.cpp esocket.cpp estatic.cpp estring.cpp esynch.cpp etbase.cpp ethread.cpp etime.cpp etimer.cpp etq.cpp eutil.cpp
+libepc_a_SOURCES = ebase.cpp ebzip2.cpp ecbuf.cpp edir.cpp eerror.cpp efd.cpp efdjson.cpp egetopt.cpp ehash.cpp elogger.cpp emsg.cpp epath.cpp eqbase.cpp eqpriv.cpp eqpub.cpp eshmem.cpp esocket.cpp estatic.cpp estring.cpp esynch.cpp etbase.cpp ethread.cpp etime.cpp etimer.cpp etq.cpp eutil.cpp
 
 # Linker options libTestProgram
 #libepc_a_LDFLAGS = 
@@ -414,6 +415,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ecbuf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-edir.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-eerror.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-efd.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-efdjson.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-egetopt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ehash.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-elogger.Po@am__quote@
@@ -517,6 +520,34 @@ libepc_a-eerror.obj: eerror.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='eerror.cpp' object='libepc_a-eerror.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-eerror.obj `if test -f 'eerror.cpp'; then $(CYGPATH_W) 'eerror.cpp'; else $(CYGPATH_W) '$(srcdir)/eerror.cpp'; fi`
+
+libepc_a-efd.o: efd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-efd.o -MD -MP -MF $(DEPDIR)/libepc_a-efd.Tpo -c -o libepc_a-efd.o `test -f 'efd.cpp' || echo '$(srcdir)/'`efd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-efd.Tpo $(DEPDIR)/libepc_a-efd.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='efd.cpp' object='libepc_a-efd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-efd.o `test -f 'efd.cpp' || echo '$(srcdir)/'`efd.cpp
+
+libepc_a-efd.obj: efd.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-efd.obj -MD -MP -MF $(DEPDIR)/libepc_a-efd.Tpo -c -o libepc_a-efd.obj `if test -f 'efd.cpp'; then $(CYGPATH_W) 'efd.cpp'; else $(CYGPATH_W) '$(srcdir)/efd.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-efd.Tpo $(DEPDIR)/libepc_a-efd.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='efd.cpp' object='libepc_a-efd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-efd.obj `if test -f 'efd.cpp'; then $(CYGPATH_W) 'efd.cpp'; else $(CYGPATH_W) '$(srcdir)/efd.cpp'; fi`
+
+libepc_a-efdjson.o: efdjson.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-efdjson.o -MD -MP -MF $(DEPDIR)/libepc_a-efdjson.Tpo -c -o libepc_a-efdjson.o `test -f 'efdjson.cpp' || echo '$(srcdir)/'`efdjson.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-efdjson.Tpo $(DEPDIR)/libepc_a-efdjson.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='efdjson.cpp' object='libepc_a-efdjson.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-efdjson.o `test -f 'efdjson.cpp' || echo '$(srcdir)/'`efdjson.cpp
+
+libepc_a-efdjson.obj: efdjson.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-efdjson.obj -MD -MP -MF $(DEPDIR)/libepc_a-efdjson.Tpo -c -o libepc_a-efdjson.obj `if test -f 'efdjson.cpp'; then $(CYGPATH_W) 'efdjson.cpp'; else $(CYGPATH_W) '$(srcdir)/efdjson.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-efdjson.Tpo $(DEPDIR)/libepc_a-efdjson.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='efdjson.cpp' object='libepc_a-efdjson.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-efdjson.obj `if test -f 'efdjson.cpp'; then $(CYGPATH_W) 'efdjson.cpp'; else $(CYGPATH_W) '$(srcdir)/efdjson.cpp'; fi`
 
 libepc_a-egetopt.o: egetopt.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-egetopt.o -MD -MP -MF $(DEPDIR)/libepc_a-egetopt.Tpo -c -o libepc_a-egetopt.o `test -f 'egetopt.cpp' || echo '$(srcdir)/'`egetopt.cpp

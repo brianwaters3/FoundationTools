@@ -3983,6 +3983,12 @@ ac_config_commands="$ac_config_commands rapidjson"
 
 ac_config_commands="$ac_config_commands spdlog"
 
+ac_config_commands="$ac_config_commands c-ares"
+
+ac_config_commands="$ac_config_commands pistache"
+
+ac_config_commands="$ac_config_commands freeDiameter"
+
 
 
 cat >confcache <<\_ACEOF
@@ -4738,6 +4744,9 @@ do
     "submodules") CONFIG_COMMANDS="$CONFIG_COMMANDS submodules" ;;
     "rapidjson") CONFIG_COMMANDS="$CONFIG_COMMANDS rapidjson" ;;
     "spdlog") CONFIG_COMMANDS="$CONFIG_COMMANDS spdlog" ;;
+    "c-ares") CONFIG_COMMANDS="$CONFIG_COMMANDS c-ares" ;;
+    "pistache") CONFIG_COMMANDS="$CONFIG_COMMANDS pistache" ;;
+    "freeDiameter") CONFIG_COMMANDS="$CONFIG_COMMANDS freeDiameter" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -5275,6 +5284,33 @@ $as_echo X"$file" |
 	pushd modules/spdlog/build
 	rm -rf *
 	cmake ..
+	make
+	sudo make install
+	popd
+ ;;
+    "c-ares":C)
+	pushd modules/c-ares
+   ./buildconf
+   ./configure
+	make
+	sudo make install
+	popd
+ ;;
+    "pistache":C)
+	mkdir -p modules/pistache/build
+	pushd modules/pistache/build
+	rm -rf *
+	cmake ..
+	make
+	sudo make install
+	popd
+ ;;
+    "freeDiameter":C)
+	mkdir -p modules/freeDiameter/build
+	pushd modules/freeDiameter/build
+	rm -rf *
+	cmake ..
+   awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
 	make
 	sudo make install
 	popd
