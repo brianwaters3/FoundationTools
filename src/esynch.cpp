@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,6 +15,7 @@
 * limitations under the License.
 */
 
+#include <poll.h>
 #include <errno.h>
 
 #include "einternal.h"
@@ -545,3 +547,167 @@ Void ESemaphorePublic::detach()
       throw ESemaphoreError_NotInitialized();
    m_semid = 0;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Private Read/Write Lock Classes
+////////////////////////////////////////////////////////////////////////////////
+
+ERWLockError_LockAttrInitFailed::ERWLockError_LockAttrInitFailed(Int err)
+{
+   setSevere();
+   setText("Unable to initialize read/write lock attribute ");
+   appendLastOsError(err);
+}
+
+ERWLockError_LockInitFailed::ERWLockError_LockInitFailed(Int err)
+{
+   setSevere();
+   setText("Unable to initialize read/write lock ");
+   appendLastOsError(err);
+}
+
+ERWLock::ERWLock()
+{
+   int status;
+   pthread_rwlockattr_t attr;
+
+   status = pthread_rwlockattr_init(&attr);
+   if (status != 0)
+      throw ERWLockError_LockAttrInitFailed(status);
+
+   // set any applicable attributes
+
+   status = pthread_rwlock_init( &m_rwlock, &attr );
+
+   pthread_rwlockattr_destroy( &attr );
+
+   if (status != 0)
+      throw ERWLockError_LockInitFailed(status);
+}
+
+ERWLock::~ERWLock()
+{
+   pthread_rwlock_destroy( &m_rwlock );
+}
+
+bool ERWLock::enter( ReadWrite rw, bool wait )
+{
+   int status;
+
+   if ( wait )
+   {
+      if (rw == ERWLock::Read)
+         status = pthread_rwlock_rdlock( &m_rwlock );
+      else
+         status = pthread_rwlock_wrlock( &m_rwlock );
+   }
+   else
+   {
+      if (rw == ERWLock::Read)
+         status = pthread_rwlock_tryrdlock( &m_rwlock );
+      else
+         status = pthread_rwlock_trywrlock( &m_rwlock );
+   }
+
+   return status == 0;
+}
+
+//bool ERWLock::enter( ReadWrite rw, long ms )
+//{
+//   int status;
+//
+//   struct timespec ts;
+//   ts.tv_sec = ms / 1000;
+//   ts.tv_nsec = (ms % 1000) * 1000000;
+//
+//   if (rw == ERWLock::Read)
+//      status = pthread_rwlock_timedrdlock( &m_rwlock, &ts );
+//   else
+//      status = pthread_rwlock_timedwrlock( &m_rwlock, &ts );
+//
+//   return status == 0;
+//}
+
+void ERWLock::leave()
+{
+   pthread_rwlock_unlock( &m_rwlock );
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EEvent::EEvent( bool state )
+   : m_buf()
+{
+   m_pipefd[0] = -1;
+   m_pipefd[1] = -1;
+
+   int result = pipe2( m_pipefd, O_NONBLOCK );
+   if ( result == -1 )
+      throw EError( EError::Warning, "Error createing pipe (EEvent)" );
+
+   if ( state )
+      set();
+}
+
+EEvent::~EEvent()
+{
+   closepipe();
+}
+
+void EEvent::set()
+{
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-result"
+   write( m_pipefd[1], &m_buf, 1 );
+#pragma GCC diagnostic pop
+}
+
+void EEvent::reset()
+{
+   while ( read(m_pipefd[0], &m_buf, sizeof(m_buf)) > 0 );
+}
+
+bool EEvent::wait( int ms )
+{
+   bool rval = false;
+   struct pollfd fds[] = { { .fd = m_pipefd[0], .events = POLLRDNORM } };
+
+   while (true)
+   {
+      int result = poll( fds, 1, ms );
+      if ( result > 0 ) // event set
+      {
+         rval = true;
+      }
+      else if ( result == 0 )
+      {
+         // timeout
+      }
+      else
+      {
+         if (errno == EINTR)
+            continue;
+      }
+      break;
+   }
+
+   return rval;
+}
+
+void EEvent::closepipe()
+{
+   if ( m_pipefd[0] != -1 )
+   {
+      close( m_pipefd[0] );
+      m_pipefd[0] = -1;
+   }
+   if ( m_pipefd[1] != -1 )
+   {
+      close( m_pipefd[1] );
+      m_pipefd[1] = -1;
+   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////

@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -13,6 +14,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
+#include <cstdarg>
 
 #include "eutil.h"
 
@@ -83,4 +86,75 @@ std::vector<EString> EUtility::split(cpStr s, cpStr delims)
 
    free(ss);
    return strings;
+}
+
+EString &EUtility::replaceAll(EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   size_t pos = 0;
+   while ((pos=str.find(srch,0,srchlen)) != std::string::npos)
+      str.replace(pos, srchlen, rplc, rplclen);
+   return str;
+}
+
+EString EUtility::replaceAllCopy(const EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)
+{
+   EString newstr = str;
+   return replaceAll(newstr, srch, srchlen, rplc, rplclen);
+}
+
+void EUtility::copyfile( const char *dst, const char *src )
+{
+   std::ofstream fdst( dst, std::ios::binary);
+   std::ifstream fsrc( src, std::ios::binary);
+
+   fdst << fsrc.rdbuf();
+}
+
+void EUtility::deletefile( const char *fn )
+{
+   remove( fn );
+}
+
+void EUtility::_string_format( std::string &dest, const char *format, va_list &args )
+{
+   char buf[2048];
+   int len = vsnprintf( buf, sizeof(buf), format, args  );
+   dest.assign( buf, len < sizeof(buf) ? len : sizeof(buf) );
+}
+
+std::string EUtility::string_format( const char *format, ... )
+{
+   va_list args;
+   std::string str;
+
+   va_start( args, format );
+   _string_format( str, format, args );
+   va_end( args );
+
+   return str;
+}
+
+void EUtility::string_format( std::string &dest, const char *format, ... )
+{
+   va_list args;
+
+   va_start( args, format );
+   _string_format( dest, format, args );
+   va_end( args );
+}
+
+std::string EUtility::currentTime()
+{
+   time_t t = time( NULL );
+   struct tm *now = localtime( &t );
+   std::stringstream ss;
+
+   ss << (now->tm_year + 1900) << '-'
+      << (now->tm_mon + 1) << '-'
+      << (now->tm_mday) << ' '
+      <<  now->tm_hour << ':'
+      <<  now->tm_min << ':'
+      <<  now->tm_sec;
+
+   return ss.str();
 }

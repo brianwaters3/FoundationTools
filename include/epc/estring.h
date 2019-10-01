@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -20,11 +21,14 @@
 #include <string>
 #include <algorithm>
 
+#include "ebase.h"
+
 class EString : public std::string
 {
 public:
    EString() {}
    EString(cpStr s) : std::string(s) {}
+   EString(const std::string s) : std::string(s) {}
    EString &format(cpChar pszFormat, ...);
    EString &tolower();
    EString &toupper();
@@ -71,6 +75,9 @@ public:
       ltrim();
       rtrim();
    }
+
+   EString &replaceAll(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
+   EString replaceAllCopy(cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
 };
 
 #endif // #define __estring_h_included

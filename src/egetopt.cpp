@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,13 +17,14 @@
 
 #include <iostream>
 
-#include "epc.h"
+#include "epctools.h"
 #include "egetopt.h"
 
 #define RAPIDJSON_NAMESPACE egetoptrapidjson
 #include "rapidjson/filereadstream.h"
 #include "rapidjson/document.h"
 #include "rapidjson/prettywriter.h"
+#include "rapidjson/pointer.h"
 
 #define CMDLINE "cmdline"
 #define PROGRAM "program"
@@ -147,51 +149,45 @@ static Void _print(RAPIDJSON_NAMESPACE::Value &node)
    std::cout << sb.GetString() << std::endl;
 }
 
-static bool resolvePath(const RAPIDJSON_NAMESPACE::Value &root, RAPIDJSON_NAMESPACE::Value::ConstMemberIterator &node, cpStr path)
+static EString _combinePath(cpStr root, cpStr path)
 {
-   auto strings = EUtility::split(path, "/");
-   RAPIDJSON_NAMESPACE::Value name;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator n;
-   Bool first = true;
+   EString result = "/";
 
-   for (EString &s : strings)
+   if (root && *root)
+      result += (*root == '/' ? &root[1] : root);
+
+   if (result[result.size()-1] == '/')
+      result = result.substr(0, result.size()-1);
+
+   if (path && *path)
    {
-      s.trim();
-      name = RAPIDJSON_NAMESPACE::StringRef(s.c_str());
-      if (first)
-      {
-         n = root.FindMember(name);
-         if (n == root.MemberEnd())
-            return false;
-         first = false;
-      }
-      else
-      {
-         n = node->value.FindMember(name);
-         if (n == node->value.MemberEnd())
-            return false;
-      }
+      result += "/";
+      result += (*path == '/' ? &path[1] : path);
 
-      node = n;
+      if (result[result.size()-1] == '/')
+         result = result.substr(0, result.size()-1);
    }
 
-   return true;
+   return result;
 }
 
-static bool findOneOf(const RAPIDJSON_NAMESPACE::Value &root, RAPIDJSON_NAMESPACE::Value::ConstMemberIterator &node, cpStr list)
+static Bool _findOneOf(RAPIDJSON_NAMESPACE::Document &doc, const char *root, const char *path, RAPIDJSON_NAMESPACE::Value* &value)
 {
-   auto paths = EUtility::split(list, ",");
+   auto paths = EUtility::split(path, ",");
 
-   for (EString &path : paths)
+   for (EString &pth : paths)
    {
-      if (resolvePath(root, node, path))
+      EString s = _combinePath(root, pth);
+      RAPIDJSON_NAMESPACE::Pointer ptr(s.c_str());
+      value = RAPIDJSON_NAMESPACE::GetValueByPointer(doc, ptr);
+      if (value != nullptr)
          return true;
    }
 
    return false;
 }
 
-static bool merge(RAPIDJSON_NAMESPACE::Value &dst, RAPIDJSON_NAMESPACE::Value &src, RAPIDJSON_NAMESPACE::Document::AllocatorType &allocator)
+static Bool _merge(RAPIDJSON_NAMESPACE::Value &dst, RAPIDJSON_NAMESPACE::Value &src, RAPIDJSON_NAMESPACE::Document::AllocatorType &allocator)
 {
    for (auto srcIt = src.MemberBegin(); srcIt != src.MemberEnd(); ++srcIt)
    {
@@ -228,7 +224,7 @@ static bool merge(RAPIDJSON_NAMESPACE::Value &dst, RAPIDJSON_NAMESPACE::Value &s
          }
          else if (srcIt->value.IsObject())
          {
-            if (!merge(dstIt->value, srcIt->value, allocator))
+            if (!_merge(dstIt->value, srcIt->value, allocator))
                return false;
          }
          else
@@ -244,10 +240,12 @@ static bool merge(RAPIDJSON_NAMESPACE::Value &dst, RAPIDJSON_NAMESPACE::Value &s
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 struct _EGetOpt
 {
    RAPIDJSON_NAMESPACE::Document s_json;
 };
+/// @endcond
 
 #define ADDRAW(__node__, __arg__, __allocator__)                                                 \
    {                                                                                             \
@@ -286,6 +284,11 @@ EGetOpt::~EGetOpt()
    }
 }
 
+EString EGetOpt::combinePath(cpStr path1, cpStr path2) const
+{
+   return _combinePath(path1, path2);
+}
+
 Void EGetOpt::print() const
 {
    _print(((_EGetOpt *)m_json)->s_json);
@@ -293,19 +296,16 @@ Void EGetOpt::print() const
 
 Long EGetOpt::getCmdLine(cpStr path, Long def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return std::stol(node->value.GetString());
+      if (value->IsString())
+         return std::stol(value->GetString());
 
-      if (node->value.IsInt())
-         return node->value.GetInt();
+      if (value->IsInt())
+         return value->GetInt();
    }
 
    return def;
@@ -313,19 +313,16 @@ Long EGetOpt::getCmdLine(cpStr path, Long def) const
 
 LongLong EGetOpt::getCmdLine(cpStr path, LongLong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return std::stoll(node->value.GetString());
+      if (value->IsString())
+         return std::stoll(value->GetString());
 
-      if (node->value.IsInt64())
-         return node->value.GetInt64();
+      if (value->IsInt64())
+         return value->GetInt64();
    }
 
    return def;
@@ -333,19 +330,16 @@ LongLong EGetOpt::getCmdLine(cpStr path, LongLong def) const
 
 ULong EGetOpt::getCmdLine(cpStr path, ULong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return std::stoul(node->value.GetString());
+      if (value->IsString())
+         return std::stoul(value->GetString());
 
-      if (node->value.IsUint())
-         return node->value.GetUint();
+      if (value->IsInt())
+         return value->GetUint();
    }
 
    return def;
@@ -353,19 +347,16 @@ ULong EGetOpt::getCmdLine(cpStr path, ULong def) const
 
 ULongLong EGetOpt::getCmdLine(cpStr path, ULongLong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return std::stoull(node->value.GetString());
+      if (value->IsString())
+         return std::stoull(value->GetString());
 
-      if (node->value.IsUint64())
-         return node->value.GetUint64();
+      if (value->IsUint64())
+         return value->GetUint64();
    }
 
    return def;
@@ -373,19 +364,16 @@ ULongLong EGetOpt::getCmdLine(cpStr path, ULongLong def) const
 
 Double EGetOpt::getCmdLine(cpStr path, Double def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return std::stod(node->value.GetString());
+      if (value->IsString())
+         return std::stod(value->GetString());
 
-      if (node->value.IsDouble())
-         return node->value.GetDouble();
+      if (value->IsDouble())
+         return value->GetDouble();
    }
 
    return def;
@@ -393,16 +381,13 @@ Double EGetOpt::getCmdLine(cpStr path, Double def) const
 
 cpStr EGetOpt::getCmdLine(cpStr path, cpStr def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      if (node->value.IsString())
-         return node->value.GetString();
+      if (value->IsString())
+         return value->GetString();
    }
 
    return def;
@@ -410,17 +395,13 @@ cpStr EGetOpt::getCmdLine(cpStr path, cpStr def) const
 
 Bool EGetOpt::getCmdLine(cpStr path, Bool def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Value *value = nullptr;
 
-   if (!resolvePath(root, node, CMDLINE))
-      return def;
-
-   if (findOneOf(node->value, node, path))
+   if (_findOneOf(doc, CMDLINE, path, value))
    {
-      auto t = node->value.GetType();
-      if (node->value.IsBool())
-         return node->value.GetBool();
+      if (value->IsBool())
+         return value->GetBool();
    }
 
    return def;
@@ -428,20 +409,18 @@ Bool EGetOpt::getCmdLine(cpStr path, Bool def) const
 
 std::vector<EString> EGetOpt::getCmdLineArgs() const
 {
-   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr("/" CMDLINEARGS);
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(doc, ptr);
    std::vector<EString> v;
    EString s;
 
-   if (resolvePath(root, node, CMDLINEARGS))
+   if (value != nullptr && value->IsArray())
    {
-      if (node->value.IsArray())
+      for (auto it = value->Begin(); it != value->End(); it++)
       {
-         for (auto it = node->value.Begin(); it != node->value.End(); it++)
-         {
-            s = it->GetString();
-            v.push_back(s);
-         }
+         s = it->GetString();
+         v.push_back(s);
       }
    }
 
@@ -450,19 +429,17 @@ std::vector<EString> EGetOpt::getCmdLineArgs() const
 
 Long EGetOpt::get(cpStr path, Long def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return std::stol(node->value.GetString());
-
-      if (node->value.IsInt())
-         return node->value.GetInt();
+      if (value->IsString())
+         return std::stol(value->GetString());
+      if (value->IsInt())
+         return value->GetInt();
    }
 
    return def;
@@ -470,19 +447,17 @@ Long EGetOpt::get(cpStr path, Long def) const
 
 LongLong EGetOpt::get(cpStr path, LongLong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return std::stoll(node->value.GetString());
-
-      if (node->value.IsInt64())
-         return node->value.GetInt64();
+      if (value->IsString())
+         return std::stoll(value->GetString());
+      if (value->IsInt64())
+         return value->GetInt64();
    }
 
    return def;
@@ -490,19 +465,17 @@ LongLong EGetOpt::get(cpStr path, LongLong def) const
 
 ULong EGetOpt::get(cpStr path, ULong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return std::stoul(node->value.GetString());
-
-      if (node->value.IsUint())
-         return node->value.GetUint();
+      if (value->IsString())
+         return std::stoul(value->GetString());
+      if (value->IsUint())
+         return value->GetUint();
    }
 
    return def;
@@ -510,19 +483,17 @@ ULong EGetOpt::get(cpStr path, ULong def) const
 
 ULongLong EGetOpt::get(cpStr path, ULongLong def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return std::stoull(node->value.GetString());
-
-      if (node->value.IsUint64())
-         return node->value.GetUint64();
+      if (value->IsString())
+         return std::stoull(value->GetString());
+      if (value->IsUint64())
+         return value->GetUint64();
    }
 
    return def;
@@ -530,19 +501,17 @@ ULongLong EGetOpt::get(cpStr path, ULongLong def) const
 
 Double EGetOpt::get(cpStr path, Double def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return std::stod(node->value.GetString());
-
-      if (node->value.IsDouble())
-         return node->value.GetDouble();
+      if (value->IsString())
+         return std::stod(value->GetString());
+      if (value->IsDouble())
+         return value->GetDouble();
    }
 
    return def;
@@ -550,16 +519,15 @@ Double EGetOpt::get(cpStr path, Double def) const
 
 cpStr EGetOpt::get(cpStr path, cpStr def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsString())
-         return node->value.GetString();
+      if (value->IsString())
+         return value->GetString();
    }
 
    return def;
@@ -567,16 +535,15 @@ cpStr EGetOpt::get(cpStr path, cpStr def) const
 
 Bool EGetOpt::get(cpStr path, Bool def) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
+   if (value != nullptr)
    {
-      if (node->value.IsBool())
-         return node->value.GetBool();
+      if (value->IsBool())
+         return value->GetBool();
    }
 
    return def;
@@ -584,196 +551,17 @@ Bool EGetOpt::get(cpStr path, Bool def) const
 
 UInt EGetOpt::getCount(cpStr path) const
 {
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
    UInt cnt = 0;
+   EString pth = _combinePath(m_prefix.c_str(), path);
+   RAPIDJSON_NAMESPACE::Document &root = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr(pth.c_str());
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(root, ptr);
 
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return cnt;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-         cnt = node->value.Capacity();
-   }
+   if (value != nullptr)
+      if (value->IsArray())
+         cnt = value->Capacity();
 
    return cnt;
-}
-
-Long EGetOpt::get(UInt idx, cpStr path, cpStr member, Long def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return std::stol(node->value.GetString());
-
-            if (node->value.IsInt())
-               return node->value.GetInt();
-         }
-      }
-   }
-
-   return def;
-}
-
-LongLong EGetOpt::get(UInt idx, cpStr path, cpStr member, LongLong def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return std::stoll(node->value.GetString());
-
-            if (node->value.IsInt64())
-               return node->value.GetInt64();
-         }
-      }
-   }
-
-   return def;
-}
-
-ULong EGetOpt::get(UInt idx, cpStr path, cpStr member, ULong def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return std::stoul(node->value.GetString());
-
-            if (node->value.IsUint())
-               return node->value.GetUint();
-         }
-      }
-   }
-
-   return def;
-}
-
-ULongLong EGetOpt::get(UInt idx, cpStr path, cpStr member, ULongLong def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return std::stoull(node->value.GetString());
-
-            if (node->value.IsUint64())
-               return node->value.GetUint64();
-         }
-      }
-   }
-
-   return def;
-}
-
-Double EGetOpt::get(UInt idx, cpStr path, cpStr member, Double def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return std::stod(node->value.GetString());
-
-            if (node->value.IsDouble())
-               return node->value.GetDouble();
-         }
-      }
-   }
-
-   return def;
-}
-
-cpStr EGetOpt::get(UInt idx, cpStr path, cpStr member, cpStr def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsString())
-               return node->value.GetString();
-         }
-      }
-   }
-
-   return def;
-}
-
-Bool EGetOpt::get(UInt idx, cpStr path, cpStr member, Bool def) const
-{
-   RAPIDJSON_NAMESPACE::Value &root = ((_EGetOpt *)m_json)->s_json;
-   RAPIDJSON_NAMESPACE::Value::ConstMemberIterator node;
-
-   if (!m_prefix.empty() && !resolvePath(root, node, m_prefix.c_str()))
-      return def;
-
-   if (resolvePath(m_prefix.empty() ? root : node->value, node, path))
-   {
-      if (node->value.IsArray())
-      {
-         if (resolvePath(node->value[idx], node, member))
-         {
-            if (node->value.IsBool())
-               return node->value.GetBool();
-         }
-      }
-   }
-
-   return def;
 }
 
 const EGetOpt::Option *EGetOpt::findOption(cpStr name, const EGetOpt::Option *options)
@@ -947,5 +735,5 @@ Void EGetOpt::loadFile(cpStr filename)
    src.ParseStream(is);
    fclose(fp);
 
-   merge(dst, src, dst.GetAllocator());
+   _merge(dst, src, dst.GetAllocator());
 }

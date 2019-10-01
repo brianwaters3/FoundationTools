@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -144,7 +145,7 @@ Void EThreadBasic::_shutdown()
       cancelWait();
 }
 
-Void EThreadBasic::init(pVoid arg, Dword stackSize)
+Void EThreadBasic::init(pVoid arg, size_t stackSize)
 {
    {
       EMutexLock l(m_mutex);
@@ -158,6 +159,8 @@ Void EThreadBasic::init(pVoid arg, Dword stackSize)
       pthread_attr_init(&attr);
       pthread_attr_setscope(&attr, PTHREAD_SCOPE_SYSTEM);
       pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+      if (stackSize != 0)
+         pthread_attr_setstacksize(&attr, stackSize);
 
       if (pthread_create(&m_thread, &attr, _threadProc, (pVoid)this) != 0)
          throw EThreadError_UnableToInitialize();
@@ -236,10 +239,10 @@ Int EThreadBasic::cancelWait()
 ///////////////////////////////////////////////////////////////////////////////
 
 BEGIN_MESSAGE_MAP(EThreadBase, _EThreadBase)
-ON_EM_INIT()
-ON_EM_QUIT()
-ON_EM_SUSPEND()
-ON_EM_TIMER()
+   ON_EM_INIT()
+   ON_EM_QUIT()
+   ON_EM_SUSPEND()
+   ON_EM_TIMER()
 END_MESSAGE_MAP()
 
 EThreadBase::EThreadBase()
@@ -283,7 +286,7 @@ Bool EThreadBase::sendMessage(UInt message, LongLong quadPart, Bool wait_for_slo
    return result;
 }
 
-Void EThreadBase::init(pVoid arg, Bool suspended, Dword stackSize)
+Void EThreadBase::init(pVoid arg, Bool suspended, size_t stackSize)
 {
    m_arg = arg;
    m_stacksize = stackSize;
@@ -332,7 +335,7 @@ Void EThreadBase::onSuspend()
 
 Void EThreadBase::onTimer(EThreadBase::Timer *ptimer)
 {
-   printf("EThreadBase::onTimer (%p)\n", ptimer);
+   std::cout << "EThreadBase::onTimer (" << static_cast<void*>(ptimer) << ")" << std::endl;
 }
 
 Void EThreadBase::defMessageHandler(EThreadMessage &msg)
@@ -377,7 +380,11 @@ Void EThreadBase::pumpMessages()
    }
    catch (EError &e)
    {
-      printf("t1 - %s\n", e.Name());
+      //std::cout << "t1 - " << e.Name() << std::endl;
+      throw;
+   }
+   catch (...)
+   {
       throw;
    }
 }

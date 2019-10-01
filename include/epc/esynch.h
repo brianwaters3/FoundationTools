@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -148,7 +149,7 @@ public:
 
    ~EMutexPrivate() { destroy(); }
 
-   Void *operator new(size_t, void *where) { return where; }
+   Void *operator new(size_t, Void *where) { return where; }
 
    Void init() { EMutexData::init(False); }
 };
@@ -358,6 +359,124 @@ private:
    Int m_semid;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+// Private Read/Write Lock Classes
+////////////////////////////////////////////////////////////////////////////////
+
+DECLARE_ERROR_ADVANCED2(ERWLockError_LockAttrInitFailed);
+DECLARE_ERROR_ADVANCED2(ERWLockError_LockInitFailed);
+
+class ERDLock;
+class EWRLock;
+
+class ERWLock
+{
+   friend ERDLock;
+   friend EWRLock;
+
+public:
+   ERWLock();
+   ~ERWLock();
+
+protected:
+   enum ReadWrite
+   {
+      Read,
+      Write
+   };
+
+   Bool enter( ReadWrite rw, Bool wait );
+   Void leave();
+
+private:
+   pthread_rwlock_t m_rwlock;
+};
+
+class ERDLock
+{
+public:
+   ERDLock( ERWLock & rwlock, Bool acq = true )
+      : m_rwlock( rwlock ),
+        m_locked( false )
+   {
+      if (acq)
+         acquire();
+   }
+
+   ~ERDLock()
+   {
+      if (m_locked)
+         m_rwlock.leave();
+   }
+
+   Bool acquire( Bool wait = true )
+   {
+      return m_locked = m_rwlock.enter( ERWLock::Read, wait );
+   }
+
+   Bool isLocked() { return m_locked; }
+
+private:
+   ERDLock();
+
+   ERWLock &m_rwlock;
+   Bool m_locked;
+};
+
+class EWRLock
+{
+public:
+   EWRLock( ERWLock & rwlock, Bool acq = true )
+      : m_rwlock( rwlock ),
+        m_locked( false )
+   {
+      if (acq)
+         acquire();
+   }
+
+   ~EWRLock()
+   {
+      if (m_locked)
+         m_rwlock.leave();
+   }
+
+   Bool acquire( Bool wait = true )
+   {
+      return m_locked = m_rwlock.enter( ERWLock::Write, wait );
+   }
+
+   Bool isLocked() { return m_locked; }
+
+private:
+   EWRLock();
+
+   ERWLock &m_rwlock;
+   Bool m_locked;
+};
+
 //////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
+
+class EEvent
+{
+public:
+   EEvent( bool state = false );
+   ~EEvent();
+
+   void reset();
+   void set();
+   bool wait( int ms = -1 );
+
+   bool isSet() { return wait(0); }
+
+private:
+   void closepipe();
+
+   int m_pipefd[2];
+   char m_buf[1];
+};
+
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
 #endif // #define __esynch_h_included

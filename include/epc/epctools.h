@@ -1,5 +1,6 @@
 /*
 * Copyright (c) 2009-2019 Brian Waters
+* Copyright (c) 2019 Sprint
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,8 +15,8 @@
 * limitations under the License.
 */
 
-#ifndef __epc_h_included
-#define __epc_h_included
+#ifndef __epctools_h_included
+#define __epctools_h_included
 
 #include "ebase.h"
 #include "eutil.h"
@@ -36,4 +37,4 @@
 #include "edir.h"
 #include "epath.h"
 
-#endif // #define __epc_h_included
+#endif // #define __epctools_h_included

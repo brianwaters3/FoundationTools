@@ -1,5 +1,6 @@
 ############################################################################
 # Copyright (c) 2009-2019 Brian Waters
+# Copyright (c) 2019 Sprint
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,4 +17,4 @@
 
 # These files will end up in the install include directory
 # For example, /usr/include
-nobase_include_HEADERS = epc/epc.h epc/eatomic.h epc/ebase.h epc/ebzip2.h epc/ecbuf.h epc/edir.h epc/eerror.h epc/egetopt.h epc/ehash.h epc/einternal.h epc/elogger.h epc/emsg.h epc/epath.h epc/eqbase.h epc/eqpriv.h epc/eqpub.h epc/eshmem.h epc/esocket.h epc/estatic.h epc/estring.h epc/esynch.h epc/esynch2.h epc/esyslog.h epc/etbase.h epc/ethread.h epc/etime.h epc/etimer.h epc/etq.h epc/etypes.h epc/eutil.h
+nobase_include_HEADERS = epc/epctools.h epc/eatomic.h epc/ebase.h epc/ebzip2.h epc/ecbuf.h epc/edir.h epc/eerror.h epc/egetopt.h epc/ehash.h epc/einternal.h epc/elogger.h epc/emsg.h epc/epath.h epc/eqbase.h epc/eqpriv.h epc/eqpub.h epc/eshmem.h epc/esocket.h epc/estatic.h epc/estring.h epc/esynch.h epc/esynch2.h epc/esyslog.h epc/etbase.h epc/ethread.h epc/etime.h epc/etimer.h epc/etq.h epc/etypes.h epc/eutil.h epc/dnscache.h epc/dnsparser.h epc/dnsquery.h epc/dnsrecord.h epc/epcdns.h
