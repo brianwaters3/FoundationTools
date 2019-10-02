@@ -3977,6 +3977,7 @@ fi
 ac_config_files="$ac_config_files Makefile src/Makefile include/Makefile exampleProgram/Makefile"
 
 
+#AC_CONFIG_COMMANDS([submodules],[git submodule update --init --recursive])
 ac_config_commands="$ac_config_commands submodules"
 
 ac_config_commands="$ac_config_commands rapidjson"
@@ -5269,7 +5270,7 @@ $as_echo X"$file" |
   done
 }
  ;;
-    "submodules":C) git submodule update --init --recursive ;;
+    "submodules":C) git submodule update --init ;;
     "rapidjson":C)
 	mkdir -p modules/rapidjson/build
 	pushd modules/rapidjson/build
