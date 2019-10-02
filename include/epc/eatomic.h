@@ -27,6 +27,14 @@
 #define atomic_dec(a) __sync_sub_and_fetch(&a, 1)
 /// atomic increment - increments a by 1
 #define atomic_inc(a) __sync_add_and_fetch(&a, 1)
+/// atomic decrement - decrements a by 1
+#define atomic_dec_fetch(a) __sync_sub_and_fetch(&a, 1)
+/// atomic increment - increments a by 1
+#define atomic_inc_fetch(a) __sync_add_and_fetch(&a, 1)
+/// atomic decrement - decrements a by 1
+#define atomic_fetch_dec(a) __sync_fetch_and_sub(&a, 1)
+/// atomic increment - increments a by 1
+#define atomic_fetch_inc(a) __sync_fetch_and_add(&a, 1)
 /// atomic compare and swap - if a equals b then a is replaced with c
 #define atomic_cas(a, b, c) __sync_val_compare_and_swap(&a, b, c)
 /// atomic swap - replaces a with b

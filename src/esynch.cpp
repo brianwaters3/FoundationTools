@@ -15,6 +15,7 @@
 * limitations under the License.
 */
 
+#include <poll.h>
 #include <errno.h>
 
 #include "einternal.h"
@@ -631,3 +632,82 @@ void ERWLock::leave()
 {
    pthread_rwlock_unlock( &m_rwlock );
 }
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EEvent::EEvent( bool state )
+   : m_buf()
+{
+   m_pipefd[0] = -1;
+   m_pipefd[1] = -1;
+
+   int result = pipe2( m_pipefd, O_NONBLOCK );
+   if ( result == -1 )
+      throw EError( EError::Warning, "Error createing pipe (EEvent)" );
+
+   if ( state )
+      set();
+}
+
+EEvent::~EEvent()
+{
+   closepipe();
+}
+
+void EEvent::set()
+{
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-result"
+   write( m_pipefd[1], &m_buf, 1 );
+#pragma GCC diagnostic pop
+}
+
+void EEvent::reset()
+{
+   while ( read(m_pipefd[0], &m_buf, sizeof(m_buf)) > 0 );
+}
+
+bool EEvent::wait( int ms )
+{
+   bool rval = false;
+   struct pollfd fds[] = { { .fd = m_pipefd[0], .events = POLLRDNORM } };
+
+   while (true)
+   {
+      int result = poll( fds, 1, ms );
+      if ( result > 0 ) // event set
+      {
+         rval = true;
+      }
+      else if ( result == 0 )
+      {
+         // timeout
+      }
+      else
+      {
+         if (errno == EINTR)
+            continue;
+      }
+      break;
+   }
+
+   return rval;
+}
+
+void EEvent::closepipe()
+{
+   if ( m_pipefd[0] != -1 )
+   {
+      close( m_pipefd[0] );
+      m_pipefd[0] = -1;
+   }
+   if ( m_pipefd[1] != -1 )
+   {
+      close( m_pipefd[1] );
+      m_pipefd[1] = -1;
+   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////

@@ -335,7 +335,7 @@ Void EThreadBase::onSuspend()
 
 Void EThreadBase::onTimer(EThreadBase::Timer *ptimer)
 {
-   std::cout << "EThreadBase::onTimer (" << static_case<void*>(ptimer) << ")" << std::endl;
+   std::cout << "EThreadBase::onTimer (" << static_cast<void*>(ptimer) << ")" << std::endl;
 }
 
 Void EThreadBase::defMessageHandler(EThreadMessage &msg)

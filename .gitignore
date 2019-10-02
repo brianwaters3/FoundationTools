@@ -18,4 +18,4 @@ exampleProgram/.deps
 exampleProgram/myfile
 exampleProgram/mylog
 exampleProgram/logs
-../doc/Doxyfile.bak
+doc/Doxyfile.bak

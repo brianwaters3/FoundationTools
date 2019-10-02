@@ -128,6 +128,42 @@ public:
       if (pszText)
          setText(pszText);
    }
+   /// @brief Additonal constructor.
+   ///
+   /// @param eSeverity the severity level for this error.
+   /// @param err numeric error code.
+   /// @param pszText this optional parameter is the text associated with this error.
+   ///
+   EError(Severity eSeverity, Dword err, cpStr pszText=NULL)
+   {
+      m_eSeverity = eSeverity;
+      m_dwError = err;
+      if (pszText)
+         setText(pszText);
+   }
+   /// @brief Additonal constructor.
+   ///
+   /// @param eSeverity the severity level for this error.
+   /// @param txt this optional parameter is the text associated with this error.
+   ///
+   EError(Severity eSeverity, const std::string &txt)
+   {
+      m_eSeverity = eSeverity;
+      m_dwError = 0;
+      setText(txt.c_str());
+   }
+   /// @brief Additonal constructor.
+   ///
+   /// @param eSeverity the severity level for this error.
+   /// @param err numeric error code.
+   /// @param txt this optional parameter is the text associated with this error.
+   ///
+   EError(Severity eSeverity, Dword err, const std::string &txt)
+   {
+      m_eSeverity = eSeverity;
+      m_dwError = err;
+      setText(txt.c_str());
+   }
    /// @brief Copy constructor.
    EError(const EError &val)
    {

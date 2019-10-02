@@ -21,11 +21,14 @@
 #include <string>
 #include <algorithm>
 
+#include "ebase.h"
+
 class EString : public std::string
 {
 public:
    EString() {}
    EString(cpStr s) : std::string(s) {}
+   EString(const std::string s) : std::string(s) {}
    EString &format(cpChar pszFormat, ...);
    EString &tolower();
    EString &toupper();

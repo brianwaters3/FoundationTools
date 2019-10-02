@@ -329,6 +329,13 @@ public:
       /// instantiated.
       ///
       Long getId() { return m_id; }
+      /// @brief Indicates if this timer object has been initialized.
+      ///
+      /// @details
+      /// The timer ID is created internally when the timer object is
+      /// instantiated.
+      ///
+      Bool isInitialized() { return m_timer != NULL; }
 
    private:
       static Long m_nextid;

@@ -3991,7 +3991,6 @@ ac_config_commands="$ac_config_commands pistache"
 ac_config_commands="$ac_config_commands freeDiameter"
 
 
-
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -5291,8 +5290,8 @@ $as_echo X"$file" |
  ;;
     "c-ares":C)
 	pushd modules/c-ares
-   ./buildconf
-   ./configure
+	./buildconf
+	./configure
 	make
 	sudo make install
 	popd
@@ -5311,7 +5310,7 @@ $as_echo X"$file" |
 	pushd modules/freeDiameter/build
 	rm -rf *
 	cmake ..
-   awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
+	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
 	make
 	sudo make install
 	popd

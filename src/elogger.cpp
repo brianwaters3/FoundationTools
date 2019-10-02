@@ -100,6 +100,8 @@ EString ELoggerSink::m_defaultpattern = "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$
 EString ELogger::m_appname = "ELogger";
 std::unordered_map<Int, std::shared_ptr<ELoggerSinkSet>> ELogger::m_sinksets;
 std::unordered_map<Int, std::shared_ptr<ELogger>> ELogger::m_logs;
+std::map<std::string,std::shared_ptr<ELogger>> ELogger::m_logs_by_name;
+
 
 ELogger::ELogger(Int logid, cpStr category, Int sinkid)
    : m_logid(logid),
@@ -276,6 +278,7 @@ ELogger &ELogger::createLog(Int logid, cpStr category, Int sinkid)
    auto lsp = std::make_shared<ELogger>(logid, category, sinkid);
 
    m_logs[logid] = lsp;
+   m_logs_by_name[lsp->name()] = lsp;
 
    return log(logid);
 }

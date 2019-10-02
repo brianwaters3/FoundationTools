@@ -17,7 +17,7 @@
 
 #include <iostream>
 
-#include "epc.h"
+#include "epctools.h"
 #include "egetopt.h"
 
 #define RAPIDJSON_NAMESPACE egetoptrapidjson

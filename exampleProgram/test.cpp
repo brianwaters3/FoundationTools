@@ -19,13 +19,20 @@
 #include <iostream>
 #include <locale>
 #include <memory.h>
-#include "epc/epc.h"
-#include "epc/einternal.h"
-#include "epc/elogger.h"
-#include "epc/ebzip2.h"
-#include "epc/esocket.h"
 
-#include "spdlog/sinks/basic_file_sink.h"
+#include "epc/epctools.h"
+#include "epc/ethread.h"
+#include "epc/esocket.h"
+#include "epc/einternal.h"
+
+// #include "epc/epctools.h"
+// #include "epc/einternal.h"
+// #include "epc/elogger.h"
+// #include "epc/ebzip2.h"
+// #include "epc/esocket.h"
+// #include "epc/esynch.h"
+
+// #include "spdlog/sinks/basic_file_sink.h"
 
 std::locale defaultLocale;
 std::locale mylocale;

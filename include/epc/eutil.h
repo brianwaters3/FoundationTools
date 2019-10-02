@@ -32,6 +32,22 @@ public:
    static std::vector<EString> split(cpStr s, cpStr delims);
    static EString &replaceAll(EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
    static EString replaceAllCopy(const EString &str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen);
+
+   static std::string string_format( const char *format, ... );
+   static void string_format( std::string &dest, const char *format, ... );
+
+   static void copyfile( const std::string &dst, const std::string &src ) { copyfile( dst.c_str(), src.c_str() ); }
+   static void copyfile( const char *dst, const std::string &src )        { copyfile( dst,         src.c_str() ); }
+   static void copyfile( const std::string &dst, const char *src )        { copyfile( dst.c_str(), src ); }
+   static void copyfile( const char *dst, const char *src );
+
+   static void deletefile( const std::string &fn ) { deletefile( fn.c_str() ); }
+   static void deletefile( const char *fn );
+
+   static std::string currentTime();
+
+private:
+   static void _string_format( std::string &dest, const char *format, va_list &args );
 };
 
 #endif // #define __eutil_h_included

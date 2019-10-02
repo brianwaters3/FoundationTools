@@ -29,6 +29,7 @@
 #endif
 
 #include <vector>
+#include <map>
 #include <unordered_map>
 
 #ifndef SPDLOG_LEVEL_NAMES
@@ -123,7 +124,8 @@ public:
    Void setLogLevel( LogLevel lvl ) { m_log->set_level((spdlog::level::level_enum)lvl); }
    LogLevel getLogLevel() { return (LogLevel)m_log->level(); }
 
-   const std::string & get_name();
+   const std::string & get_name() { return m_log->name(); }
+   const std::map<std::string,std::shared_ptr<ELogger>> get_loggers() { return m_logs_by_name; }
 
 protected:
    static Void init(EGetOpt &opt);
@@ -133,6 +135,7 @@ private:
    static EString m_appname;
    static std::unordered_map<Int,std::shared_ptr<ELoggerSinkSet>> m_sinksets;
    static std::unordered_map<Int,std::shared_ptr<ELogger>> m_logs;
+   static std::map<std::string,std::shared_ptr<ELogger>> m_logs_by_name;
 
    static Void verifyPath(cpStr filename);
 
