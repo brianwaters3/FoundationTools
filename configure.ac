@@ -68,7 +68,7 @@ AC_CONFIG_COMMANDS([c-ares],[
 	pushd modules/c-ares
 	./buildconf
 	./configure
-	#make
+	make
 	sudo make install
 	popd
 ])
@@ -88,6 +88,12 @@ AC_CONFIG_COMMANDS([freeDiameter],[
 	cmake ..
 	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
 	#make
+	sudo make install
+	popd
+])
+AC_CONFIG_COMMANDS([bzip2],[
+	pushd modules/bzip2
+	sudo make clean
 	sudo make install
 	popd
 ])

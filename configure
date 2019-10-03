@@ -3990,6 +3990,8 @@ ac_config_commands="$ac_config_commands pistache"
 
 ac_config_commands="$ac_config_commands freeDiameter"
 
+ac_config_commands="$ac_config_commands bzip2"
+
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -4747,6 +4749,7 @@ do
     "c-ares") CONFIG_COMMANDS="$CONFIG_COMMANDS c-ares" ;;
     "pistache") CONFIG_COMMANDS="$CONFIG_COMMANDS pistache" ;;
     "freeDiameter") CONFIG_COMMANDS="$CONFIG_COMMANDS freeDiameter" ;;
+    "bzip2") CONFIG_COMMANDS="$CONFIG_COMMANDS bzip2" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
@@ -5312,6 +5315,12 @@ $as_echo X"$file" |
 	cmake ..
 	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
 	#make
+	sudo make install
+	popd
+ ;;
+    "bzip2":C)
+	pushd modules/bzip2
+	sudo make clean
 	sudo make install
 	popd
  ;;
