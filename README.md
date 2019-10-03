@@ -12,6 +12,7 @@ EpcTools is an event based, multi-threaded C++ development framework designed fo
 Clone the project, install the dependencies (via configure), build the static library and install.
 
 ```sh
+$ sudo apt-get update
 $ sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake
 $ git clone https://github.com/brianwaters3/FoundationTools.git epctools
 $ cd epctools
