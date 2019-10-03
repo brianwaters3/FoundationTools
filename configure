@@ -5295,7 +5295,7 @@ $as_echo X"$file" |
 	pushd modules/c-ares
 	./buildconf
 	./configure
-	#make
+	make
 	sudo make install
 	popd
  ;;
