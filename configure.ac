@@ -52,7 +52,7 @@ AC_CONFIG_COMMANDS([rapidjson],[
 	rm -rf *
 	cmake ..
 	#make
-	#sudo make install
+	sudo make install
 	popd
 ])
 AC_CONFIG_COMMANDS([spdlog],[
@@ -61,7 +61,7 @@ AC_CONFIG_COMMANDS([spdlog],[
 	rm -rf *
 	cmake ..
 	#make
-	#sudo make install
+	sudo make install
 	popd
 ])
 AC_CONFIG_COMMANDS([c-ares],[
@@ -69,7 +69,7 @@ AC_CONFIG_COMMANDS([c-ares],[
 	./buildconf
 	./configure
 	#make
-	#sudo make install
+	sudo make install
 	popd
 ])
 AC_CONFIG_COMMANDS([pistache],[
@@ -78,7 +78,7 @@ AC_CONFIG_COMMANDS([pistache],[
 	rm -rf *
 	cmake ..
 	#make
-	#sudo make install
+	sudo make install
 	popd
 ])
 AC_CONFIG_COMMANDS([freeDiameter],[
@@ -88,7 +88,7 @@ AC_CONFIG_COMMANDS([freeDiameter],[
 	cmake ..
 	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
 	#make
-	#sudo make install
+	sudo make install
 	popd
 ])
 
