@@ -5275,8 +5275,8 @@ $as_echo X"$file" |
 	pushd modules/rapidjson/build
 	rm -rf *
 	cmake ..
-	make
-	sudo make install
+	#make
+	#sudo make install
 	popd
  ;;
     "spdlog":C)
@@ -5284,16 +5284,16 @@ $as_echo X"$file" |
 	pushd modules/spdlog/build
 	rm -rf *
 	cmake ..
-	make
-	sudo make install
+	#make
+	#sudo make install
 	popd
  ;;
     "c-ares":C)
 	pushd modules/c-ares
 	./buildconf
 	./configure
-	make
-	sudo make install
+	#make
+	#sudo make install
 	popd
  ;;
     "pistache":C)
@@ -5301,8 +5301,8 @@ $as_echo X"$file" |
 	pushd modules/pistache/build
 	rm -rf *
 	cmake ..
-	make
-	sudo make install
+	#make
+	#sudo make install
 	popd
  ;;
     "freeDiameter":C)
@@ -5311,8 +5311,8 @@ $as_echo X"$file" |
 	rm -rf *
 	cmake ..
 	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
-	make
-	sudo make install
+	#make
+	#sudo make install
 	popd
  ;;
 

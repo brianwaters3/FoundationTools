@@ -278,7 +278,7 @@ ELogger &ELogger::createLog(Int logid, cpStr category, Int sinkid)
    auto lsp = std::make_shared<ELogger>(logid, category, sinkid);
 
    m_logs[logid] = lsp;
-   m_logs_by_name[lsp->name()] = lsp;
+   m_logs_by_name[lsp->get_name()] = lsp;
 
    return log(logid);
 }
