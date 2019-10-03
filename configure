@@ -5274,55 +5274,64 @@ $as_echo X"$file" |
  ;;
     "submodules":C) git submodule update --init ;;
     "rapidjson":C)
-	mkdir -p modules/rapidjson/build
-	pushd modules/rapidjson/build
-	rm -rf *
-	cmake ..
-	#make
-	sudo make install
-	popd
+    if [ ! -d modules/rapidjson/build ]; then
+        mkdir -p modules/rapidjson/build
+        pushd modules/rapidjson/build
+        cmake ..
+        make
+        sudo make install
+        popd
+    fi
  ;;
     "spdlog":C)
+    if [ ! -d modules/spdlog/build ]; then
 	mkdir -p modules/spdlog/build
 	pushd modules/spdlog/build
-	rm -rf *
 	cmake ..
-	#make
+        make
 	sudo make install
 	popd
+    fi
  ;;
     "c-ares":C)
-	pushd modules/c-ares
-	./buildconf
-	./configure
-	make
-	sudo make install
-	popd
+    if [ ! -f modules/c-ares/configure ]; then
+        pushd modules/c-ares
+        ./buildconf
+        ./configure
+        make
+        sudo make install
+        popd
+    fi
  ;;
     "pistache":C)
-	mkdir -p modules/pistache/build
-	pushd modules/pistache/build
-	rm -rf *
-	cmake ..
-	#make
-	sudo make install
-	popd
+    if [ ! -d modules/pistache/build ]; then
+        mkdir -p modules/pistache/build
+        pushd modules/pistache/build
+        rm -rf *
+        cmake ..
+        make
+        sudo make install
+        popd
+    fi
  ;;
     "freeDiameter":C)
-	mkdir -p modules/freeDiameter/build
-	pushd modules/freeDiameter/build
-	rm -rf *
-	cmake ..
-	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
-	#make
-	sudo make install
-	popd
+    if [ ! -d modules/freeDiameter/build ]; then
+        mkdir -p modules/freeDiameter/build
+        pushd modules/freeDiameter/build
+        cmake ..
+        awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
+        make
+        sudo make install
+        popd
+    fi
  ;;
     "bzip2":C)
-	pushd modules/bzip2
-	sudo make clean
-	sudo make install
-	popd
+    if [ ! -f modules/bzip2/libbz2.a ]; then
+        pushd modules/bzip2
+        make
+        sudo make install
+        popd
+    fi
  ;;
 
   esac

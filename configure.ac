@@ -47,55 +47,64 @@ AC_CONFIG_FILES(Makefile
 #AC_CONFIG_COMMANDS([submodules],[git submodule update --init --recursive])
 AC_CONFIG_COMMANDS([submodules],[git submodule update --init])
 AC_CONFIG_COMMANDS([rapidjson],[
-	mkdir -p modules/rapidjson/build
-	pushd modules/rapidjson/build
-	rm -rf *
-	cmake ..
-	#make
-	sudo make install
-	popd
+    if [[ ! -d modules/rapidjson/build ]]; then
+        mkdir -p modules/rapidjson/build
+        pushd modules/rapidjson/build
+        cmake ..
+        make
+        sudo make install
+        popd
+    fi
 ])
 AC_CONFIG_COMMANDS([spdlog],[
+    if [[ ! -d modules/spdlog/build ]]; then
 	mkdir -p modules/spdlog/build
 	pushd modules/spdlog/build
-	rm -rf *
 	cmake ..
-	#make
+        make
 	sudo make install
 	popd
+    fi
 ])
 AC_CONFIG_COMMANDS([c-ares],[
-	pushd modules/c-ares
-	./buildconf
-	./configure
-	make
-	sudo make install
-	popd
+    if [[ ! -f modules/c-ares/configure ]]; then
+        pushd modules/c-ares
+        ./buildconf
+        ./configure
+        make
+        sudo make install
+        popd
+    fi
 ])
 AC_CONFIG_COMMANDS([pistache],[
-	mkdir -p modules/pistache/build
-	pushd modules/pistache/build
-	rm -rf *
-	cmake ..
-	#make
-	sudo make install
-	popd
+    if [[ ! -d modules/pistache/build ]]; then
+        mkdir -p modules/pistache/build
+        pushd modules/pistache/build
+        rm -rf *
+        cmake ..
+        make
+        sudo make install
+        popd
+    fi
 ])
 AC_CONFIG_COMMANDS([freeDiameter],[
-	mkdir -p modules/freeDiameter/build
-	pushd modules/freeDiameter/build
-	rm -rf *
-	cmake ..
-	awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
-	#make
-	sudo make install
-	popd
+    if [[ ! -d modules/freeDiameter/build ]]; then
+        mkdir -p modules/freeDiameter/build
+        pushd modules/freeDiameter/build
+        cmake ..
+        awk '{if (/^DISABLE_SCTP/) gsub(/OFF/, "ON"); print}' CMakeCache.txt > tmp && mv tmp CMakeCache.txt
+        make
+        sudo make install
+        popd
+    fi
 ])
 AC_CONFIG_COMMANDS([bzip2],[
-	pushd modules/bzip2
-	sudo make clean
-	sudo make install
-	popd
+    if [[ ! -f modules/bzip2/libbz2.a ]]; then
+        pushd modules/bzip2
+        make
+        sudo make install
+        popd
+    fi
 ])
 
 AC_OUTPUT
