@@ -112,9 +112,10 @@ Void ESynchObjects::init(EGetOpt &options)
    options.setPrefix(SECTION_TOOLS);
    if (options.get(MEMBER_DEBUG, false))
       options.print();
-   if (!options.get(MEMBER_ENABLE_PUBLIC_OBJECTS, false))
-      return;
+   bool enabled = options.get(MEMBER_ENABLE_PUBLIC_OBJECTS, false);
    options.setPrefix("");
+   if (!enabled)
+      return;
 
    options.setPrefix(SECTION_TOOLS "/" SECTION_SYNCH_OBJS);
    Int nSemaphores = options.get(MEMBER_NUMBER_SEMAPHORES, 0);

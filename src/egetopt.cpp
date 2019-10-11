@@ -30,7 +30,8 @@
 #define PROGRAM "program"
 #define RAW "raw"
 #define ARGS "args"
-#define CMDLINEARGS "cmdline/args"
+#define CMDLINEARGS CMDLINE "/" ARGS
+#define CMDLINERAW CMDLINE "/" RAW
 
 #define FILEBUFFER 512
 
@@ -411,6 +412,26 @@ std::vector<EString> EGetOpt::getCmdLineArgs() const
 {
    RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
    RAPIDJSON_NAMESPACE::Pointer ptr("/" CMDLINEARGS);
+   RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(doc, ptr);
+   std::vector<EString> v;
+   EString s;
+
+   if (value != nullptr && value->IsArray())
+   {
+      for (auto it = value->Begin(); it != value->End(); it++)
+      {
+         s = it->GetString();
+         v.push_back(s);
+      }
+   }
+
+   return v;
+}
+
+std::vector<EString> EGetOpt::getCmdLineRaw() const
+{
+   RAPIDJSON_NAMESPACE::Document &doc = ((_EGetOpt *)m_json)->s_json;
+   RAPIDJSON_NAMESPACE::Pointer ptr("/" CMDLINERAW);
    RAPIDJSON_NAMESPACE::Value *value = RAPIDJSON_NAMESPACE::GetValueByPointer(doc, ptr);
    std::vector<EString> v;
    EString s;

@@ -18,24 +18,24 @@
 #ifndef __elogger_h_included
 #define __elogger_h_included
 
-#if 0
-#include "ebase.h"
-#include "estring.h"
-#include "etime.h"
-#include "eshmem.h"
-#include "eqpub.h"
-#include "egetopt.h"
-#include "estatic.h"
-#endif
-
 #include <vector>
 #include <map>
 #include <unordered_map>
 
-#ifndef SPDLOG_LEVEL_NAMES
+#ifdef minor
+#undef minor
+#endif
+
+#ifdef major
+#undef major
+#endif
+
+#ifdef SPDLOG_LEVEL_NAMES
+#undef SPDLOG_LEVEL_NAMES
+#endif
+
 //#define SPDLOG_LEVEL_NAMES { "trace", "debug", "info",  "warning", "error", "critical", "off" };
 #define SPDLOG_LEVEL_NAMES { "debug", "info", "startup", "minor", "major", "critical", "off" };
-#endif
 
 #define SPDLOG_ENABLE_SYSLOG
 #include "spdlog/spdlog.h"
@@ -43,6 +43,7 @@
 
 #include "ebase.h"
 #include "eerror.h"
+#include "egetopt.h"
 #include "estring.h"
 #include "eutil.h"
 
@@ -106,18 +107,31 @@ public:
       return *m_sinksets[sinkid];
    }
 
-   template<typename Arg1, typename... Args>
-   Void trace( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->trace(format, arg1, args...); }
-   template<typename Arg1, typename... Args>
-   Void debug( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->debug(format, arg1, args...); }
-   template<typename Arg1, typename... Args>
-   Void info( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->info(format, arg1, args...); }
-   template<typename Arg1, typename... Args>
-   Void startup( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->warn(format, arg1, args...); }
-   template<typename Arg1, typename... Args>
-   Void warn( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->error(format, arg1, args...); }
-   template<typename Arg1, typename... Args>
-   Void error( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->critical(format, arg1, args...); }
+   template<typename... Args>
+   Void debug( cpStr format, const Args &... args) { m_log->trace(format, args...); }
+   template<typename... Args>
+   Void info( cpStr format, const Args &... args) { m_log->debug(format, args...); }
+   template<typename... Args>
+   Void startup( cpStr format, const Args &... args) { m_log->info(format, args...); }
+   template<typename... Args>
+   Void minor( cpStr format, const Args &... args) { m_log->warn(format, args...); }
+   template<typename... Args>
+   Void major( cpStr format, const Args &... args) { m_log->error(format, args...); }
+   template<typename... Args>
+   Void critical( cpStr format, const Args &... args) { m_log->critical(format, args...); }
+
+   // template<typename Arg1, typename... Args>
+   // Void trace( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->trace(format, arg1, args...); }
+   // template<typename Arg1, typename... Args>
+   // Void debug( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->debug(format, arg1, args...); }
+   // template<typename Arg1, typename... Args>
+   // Void info( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->info(format, arg1, args...); }
+   // template<typename Arg1, typename... Args>
+   // Void startup( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->warn(format, arg1, args...); }
+   // template<typename Arg1, typename... Args>
+   // Void warn( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->error(format, arg1, args...); }
+   // template<typename Arg1, typename... Args>
+   // Void error( cpStr format, const Arg1 &arg1, const Args &... args) { m_log->critical(format, arg1, args...); }
 
    Void flush() { m_log->flush(); }
 
@@ -125,6 +139,10 @@ public:
    LogLevel getLogLevel() { return (LogLevel)m_log->level(); }
 
    const std::string & get_name() { return m_log->name(); }
+
+   spdlog::level::level_enum get_level() { return m_log->level(); }
+   Void set_level(spdlog::level::level_enum lvl) { m_log->set_level(lvl); }
+
    const std::map<std::string,std::shared_ptr<ELogger>> get_loggers() { return m_logs_by_name; }
 
 protected:

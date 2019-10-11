@@ -153,8 +153,11 @@ public:
    ///
    Bool getCmdLine(cpStr path, Bool def) const;
 
-   /// @brief Returns a std::vector containing the "raw" string command line arguments.
+   /// @brief Returns a std::vector containing positional command line arguments.
    std::vector<EString> getCmdLineArgs() const;
+
+   /// @brief Returns a std::vector containing the "raw" string command line arguments.
+   std::vector<EString> getCmdLineRaw() const;
 
    /// @brief Returns the value of the specified configuration value as a 32-bit integer.
    ///

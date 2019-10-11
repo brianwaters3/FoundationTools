@@ -28,12 +28,14 @@ class EString : public std::string
 public:
    EString() {}
    EString(cpStr s) : std::string(s) {}
-   EString(const std::string s) : std::string(s) {}
+   EString(const std::string &s) : std::string(s) {}
+   EString(const EString &s) : std::string(s) {}
    EString &format(cpChar pszFormat, ...);
    EString &tolower();
    EString &toupper();
 
    operator cpChar() { return c_str(); }
+
    EString &operator=(cpChar s)
    {
       *(std::string *)this = s;

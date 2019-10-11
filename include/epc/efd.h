@@ -193,16 +193,16 @@ public:
 
    bool init();
    bool start();
-   void uninit( bool wait = true );
+   Void uninit( bool wait = true );
 
-   void waitForShutdown();
+   Void waitForShutdown();
 
    const EString &getConfigFile() { return m_cfgfile; }
    const EString &setConfigFile( const char *cf ) { return m_cfgfile = cf; }
    const EString &setConfigFile( const std::string &cf ) { return setConfigFile( cf.c_str() ); }
 
-   void advertiseSupport( FDDictionaryEntryApplication &app, int auth = 0, int acct = 0 );
-   void advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, int auth=0, int acct=0 );
+   Void advertiseSupport( FDDictionaryEntryApplication &app, int auth = 0, int acct = 0 );
+   Void advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, int auth=0, int acct=0 );
 private:
    EString m_cfgfile;
 };
@@ -219,10 +219,10 @@ public:
 
 protected:
    FDDictionaryEntry();
-   FDDictionaryEntry( const void *what, enum dict_object_type type, int criteria, struct dictionary *dict = NULL );
+   FDDictionaryEntry( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict = NULL );
 
-   void init( const void *what, enum dict_object_type type, int criteria, struct dictionary *dict = NULL );
-   void init( struct dict_object *de, struct dictionary *dict = NULL );
+   Void init( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict = NULL );
+   Void init( struct dict_object *de, struct dictionary *dict = NULL );
 
    virtual ~FDDictionaryEntry();
 
@@ -305,7 +305,7 @@ public:
    DiameterDataType getDataType() const { return m_datatype; }
 
 private:
-   void getTypeInfo();
+   Void getTypeInfo();
    
    std::string m_name;
    vendor_id_t m_vendorid;
@@ -331,6 +331,7 @@ public:
    bool isAnswer() const { return ( m_data.cmd_flag_val & CMD_FLAG_REQUEST ) ? false : true; } 
 
    command_code_t getCommandCode() { return m_data.cmd_code; }
+   const char *getName() { return m_data.cmd_name; }
 
 private:
    struct dict_cmd_data m_data;
@@ -421,16 +422,16 @@ public:
    FDAvp &addJson( const std::string &json ) { return addJson( json.c_str() ); }
    bool getJson( std::string &json );
 
-   void dump();
+   Void dump();
 
    FDDictionaryEntryAVP &getDictionaryEntry() { return *m_de; }
 
 protected:
-   void addTo( msg_or_avp *reference );
+   Void addTo( msg_or_avp *reference );
 
 private:
-   void init();
-   void assignValue();
+   Void init();
+   Void assignValue();
 
    FDDictionaryEntryAVP *m_de;
    struct avp *m_avp;
@@ -481,14 +482,14 @@ public:
    FDAvp findAVP( FDDictionaryEntryAVP &de );
    FDAvp getFirstAVP( bool &found );
 
-   void dump();
+   Void dump();
 
    bool isRequest() { return m_de->isRequest(); }
    bool isAnswer() { return m_de->isAnswer(); }
 
    struct msg *getMsg() { return m_msg; }
 
-   void addOrigin();
+   Void addOrigin();
 
    FDMessage &addJson( const char *json );
    FDMessage &addJson( const std::string &json ) { return addJson( json.c_str() ); }
@@ -500,10 +501,10 @@ protected:
    FDMessage( FDDictionaryEntryApplication *ade, FDDictionaryEntryCommand *cde, struct msg *pmsg = NULL, bool dedel = false );
    ~FDMessage();
 
-   FDMessage &sendRequest( void (*anscb)(void*,struct msg**), FDMessageRequest &req );
+   FDMessage &sendRequest( Void (*anscb)(Void*,struct msg**), FDMessageRequest &req );
    FDMessage &sendAnswer();
    
-   void setMsgDelete( bool v ) { m_msgdel = v; }
+   Void setMsgDelete( bool v ) { m_msgdel = v; }
 
 private:
    FDMessage();
@@ -520,10 +521,14 @@ class FDMessageAnswer : public FDMessage
    friend FDMessageRequest;
 
 public:
-   FDMessageAnswer( FDDictionaryEntryCommand *cmd, struct msg *pmsg ); // used to encapsulate a FD answer message
+   FDMessageAnswer( FDMessageRequest *req, struct msg *pmsg ); // used to encapsulate a FD answer message
    FDMessageAnswer( FDMessageRequest *req ); // used to create and encapsulate a FD answer from a request
+   ~FDMessageAnswer();
 
    FDMessageAnswer &send();
+
+private:
+   FDMessageRequest *m_request;
 };
 
 class FDMessageRequest : public FDMessage
@@ -538,14 +543,18 @@ public:
 
    FDMessageRequest &send();
 
-   virtual void processAnswer( FDMessageAnswer &ans );
+   virtual Void processAnswer( FDMessageAnswer &ans );
+
+   Bool setPreserveAnswer(Bool preserve) { return m_preserve_answer = preserve; }
+   Bool getPreserveAnswer() { return m_preserve_answer; }
 
 protected:
    ETimer m_timer;
 
 private:
-   static void anscb( void * data, struct msg ** pmsg );
+   static Void anscb( Void * data, struct msg ** pmsg );
 
+   Bool m_preserve_answer;
 };
 
 class FDCommand
@@ -594,7 +603,7 @@ protected:
 
 private:
 
-   static int commandcb( struct msg **m, struct avp *avp, struct session *session, void *data, enum disp_action *action );
+   static int commandcb( struct msg **m, struct avp *avp, struct session *session, Void *data, enum disp_action *action );
 
    FDDictionaryEntryApplication *m_de;
    std::list<FDCommandRequest*> m_cmds;
@@ -610,10 +619,10 @@ public:
    ~FDSession();
 
    const EString &getSessionId();
-   void addSessionId( FDMessage &msg, FDDictionaryEntryAVP &deSessionId );
+   Void addSessionId( FDMessage &msg, FDDictionaryEntryAVP &deSessionId );
 
 private:
-   void init();
+   Void init();
 
    struct session *m_session;
    EString m_sid;
@@ -664,11 +673,11 @@ public:
 
    bool isOpen() { return getState() == PSOpen; }
 
-   void add();
+   Void add();
 
 private:
-   void init();
-   static void peercb( struct peer_info *pi, void *data );
+   Void init();
+   static Void peercb( struct peer_info *pi, Void *data );
 
    EString m_diamid;
    EString m_destrealm;
@@ -791,23 +800,23 @@ public:
 
    eFDExtractorType getExtractorType() { return etExtractor; }
 
-   void setReference( FDMessage &msg ) { m_reference = msg.getMsg(); }
-   void setReference( FDAvp &avp )     { m_reference = avp.getAvp(); }
-   void setReference( msg_or_avp *m )  { m_reference = m; }
+   Void setReference( FDMessage &msg ) { m_reference = msg.getMsg(); }
+   Void setReference( FDAvp &avp )     { m_reference = avp.getAvp(); }
+   Void setReference( msg_or_avp *m )  { m_reference = m; }
 
    FDExtractor *getParent() { return m_parent; }
    msg_or_avp *getReference();
 
-   void add( FDExtractorBase &base );
+   Void add( FDExtractorBase &base );
 
    bool exists( bool skipResolve = false );
 
-   void dump();
+   Void dump();
 
    bool getJson( std::string &json );
 
 protected:
-   void resolve();
+   Void resolve();
 
 private:
    FDExtractor *m_parent;
@@ -832,11 +841,11 @@ public:
 
    virtual FDExtractor *createExtractor() = 0;
 
-   void addExtractor( FDExtractor *e );
+   Void addExtractor( FDExtractor *e );
 
    bool exists();
 
-   void dump();
+   Void dump();
 
 protected:
    std::list<FDExtractor*> &getList();
@@ -856,7 +865,7 @@ public:
 
    eFDExtractorType getExtractorType() { return etAvp; }
 
-   void setAvp( struct avp *a ) { m_avp.setAvp( a ); }
+   Void setAvp( struct avp *a ) { m_avp.setAvp( a ); }
    struct avp *getAvp() { return m_avp.getAvp(); }
    union avp_value *getAvpValue() { return m_avp.getAvpValue(); }
 
@@ -874,7 +883,7 @@ public:
    bool get( sSS &ss )                       { if ( !exists() ) return false; return m_avp.get( ss ); }
    bool get( ETime &t )                      { if ( !exists() ) return false; return m_avp.get( t ); }
 
-   void dump();
+   Void dump();
 
    bool getJson( std::string &json );
 
@@ -895,7 +904,7 @@ public:
 
    bool exists();
 
-   void dump();
+   Void dump();
 
 private:
    FDExtractorAvpList();
@@ -907,11 +916,36 @@ private:
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+class FDHook
+{
+public:
+   FDHook();
+
+   virtual Void process(enum fd_hook_type type, struct msg * msg, struct peer_hdr * peer,
+      Void * other, struct fd_hook_permsgdata *pmd) = 0;
+   
+   Bool registerHook(UInt hookmask);
+
+   struct fd_hook_hdl *getHandle() { return m_hdl; }
+
+   UInt getHookMask() { return m_hookmask; }
+
+private:
+   static Void hook_cb(enum fd_hook_type type, struct msg * msg, struct peer_hdr * peer,
+      Void * other, struct fd_hook_permsgdata *pmd, Void * regdata);
+   
+   UInt m_hookmask;
+   struct fd_hook_hdl *m_hdl;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 class FDUtility
 {
 public:
-   static void splitDiameterFQDN( std::string &fqdn, std::string &host, std::string &realm );
-   static void splitDiameterFQDN( const char *fqdn, std::string &host, std::string &realm ) { std::string sfqdn( fqdn ); splitDiameterFQDN( sfqdn, host, realm ); }
+   static Void splitDiameterFQDN( std::string &fqdn, std::string &host, std::string &realm );
+   static Void splitDiameterFQDN( const char *fqdn, std::string &host, std::string &realm ) { std::string sfqdn( fqdn ); splitDiameterFQDN( sfqdn, host, realm ); }
 
    static size_t str2tbcd( const char *src, size_t srclen, uint8_t *dst, size_t dstlen );
    static size_t str2tbcd( const char *src, uint8_t *dst, size_t dstlen );

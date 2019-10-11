@@ -275,7 +275,47 @@ top_srcdir = @top_srcdir@
 
 # These files will end up in the install include directory
 # For example, /usr/include
-nobase_include_HEADERS = epc/epctools.h epc/eatomic.h epc/ebase.h epc/ebzip2.h epc/ecbuf.h epc/edir.h epc/eerror.h epc/egetopt.h epc/ehash.h epc/einternal.h epc/elogger.h epc/emsg.h epc/epath.h epc/eqbase.h epc/eqpriv.h epc/eqpub.h epc/eshmem.h epc/esocket.h epc/estatic.h epc/estring.h epc/esynch.h epc/esynch2.h epc/esyslog.h epc/etbase.h epc/ethread.h epc/etime.h epc/etimer.h epc/etq.h epc/etypes.h epc/eutil.h epc/dnscache.h epc/dnsparser.h epc/dnsquery.h epc/dnsrecord.h epc/epcdns.h
+nobase_include_HEADERS = \
+   epc/dnscache.h          \
+   epc/dnsparser.h         \
+   epc/dnsquery.h          \
+   epc/dnsrecord.h         \
+   epc/eatomic.h           \
+   epc/ebase.h             \
+   epc/ebzip2.h            \
+   epc/ecbuf.h             \
+   epc/ecli.h              \
+   epc/edir.h              \
+   epc/eerror.h            \
+   epc/efd.h               \
+   epc/efdjson.h           \
+   epc/egetopt.h           \
+   epc/ehash.h             \
+   epc/einternal.h         \
+   epc/elogger.h           \
+   epc/emsg.h              \
+   epc/epath.h             \
+   epc/epcdns.h            \
+   epc/epctools.h          \
+   epc/eqbase.h            \
+   epc/eqpriv.h            \
+   epc/eqpub.h             \
+   epc/eshmem.h            \
+   epc/esocket.h           \
+   epc/estatic.h           \
+   epc/estats.h            \
+   epc/estring.h           \
+   epc/esynch.h            \
+   epc/esynch2.h           \
+   epc/esyslog.h           \
+   epc/etbase.h            \
+   epc/ethread.h           \
+   epc/etime.h             \
+   epc/etimer.h            \
+   epc/etq.h               \
+   epc/etypes.h            \
+   epc/eutil.h
+
 all: all-am
 
 .SUFFIXES:

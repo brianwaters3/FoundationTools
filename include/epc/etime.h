@@ -350,6 +350,7 @@ public:
    static ETime Now();
    void Format(EString &dest, cpStr fmt, Bool local);
    void Format(pStr dest, Int maxsize, cpStr fmt, Bool local);
+   EString Format(cpStr fmt, Bool local) { EString s; Format(s,fmt,local); return s; }
    Bool ParseDateTime(cpStr pszDate, Bool isLocal = true);
 
 private:

@@ -18,6 +18,7 @@
 #ifndef __eutil_h_included
 #define __eutil_h_included
 
+#include <unistd.h>
 #include <vector>
 
 #include "ebase.h"
@@ -36,13 +37,15 @@ public:
    static std::string string_format( const char *format, ... );
    static void string_format( std::string &dest, const char *format, ... );
 
-   static void copyfile( const std::string &dst, const std::string &src ) { copyfile( dst.c_str(), src.c_str() ); }
-   static void copyfile( const char *dst, const std::string &src )        { copyfile( dst,         src.c_str() ); }
-   static void copyfile( const std::string &dst, const char *src )        { copyfile( dst.c_str(), src ); }
-   static void copyfile( const char *dst, const char *src );
+   static void copy_file( const std::string &dst, const std::string &src ) { copy_file( dst.c_str(), src.c_str() ); }
+   static void copy_file( const char *dst, const std::string &src )        { copy_file( dst,         src.c_str() ); }
+   static void copy_file( const std::string &dst, const char *src )        { copy_file( dst.c_str(), src ); }
+   static void copy_file( const char *dst, const char *src );
 
-   static void deletefile( const std::string &fn ) { deletefile( fn.c_str() ); }
-   static void deletefile( const char *fn );
+   static void delete_file( const std::string &fn ) { delete_file( fn.c_str() ); }
+   static void delete_file( const char *fn );
+
+   static Bool file_exists( cpStr fn ) { return (access(fn,F_OK)!=-1); }
 
    static std::string currentTime();
 

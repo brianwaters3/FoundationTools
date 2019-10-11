@@ -52,6 +52,12 @@ public:
    static Void getFileNameWithoutExtension(cpStr path, EString &fileName);
    static Void getPathRoot(cpStr path, EString &root);
 
+   static EString getDirectoryName(cpStr path) { EString s; getDirectoryName(path, s); return s; }
+   static EString getExtension(cpStr path) { EString s; getExtension(path, s); return s; }
+   static EString getFileName(cpStr path) { EString s; getFileName(path, s); return s; }
+   static EString getFileNameWithoutExtension(cpStr path) { EString s; getFileNameWithoutExtension(path, s); return s; }
+   static EString getPathRoot(cpStr path) { EString s; getPathRoot(path, s); return s; }
+
 private:
    static Bool m_dirEqualsVolume;
 

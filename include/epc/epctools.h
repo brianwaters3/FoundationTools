@@ -37,4 +37,6 @@
 #include "edir.h"
 #include "epath.h"
 
+#include "einternal.h"
+
 #endif // #define __epctools_h_included

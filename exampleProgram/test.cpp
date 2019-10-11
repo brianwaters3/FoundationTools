@@ -25,6 +25,8 @@
 #include "epc/esocket.h"
 #include "epc/einternal.h"
 
+#include "epc/ecli.h"
+
 // #include "epc/epctools.h"
 // #include "epc/einternal.h"
 // #include "epc/elogger.h"
@@ -1937,26 +1939,28 @@ Void ELogger_test()
    // ELogger::log(LOG_TEST1).set_level( ELogger::eTrace );
    // ELogger::log(LOG_TEST2).set_level( ELogger::eTrace );
 
-   ELogger::log(LOG_SYSTEM).trace("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).debug("Hello Wonderful World from the system log!!");
+
    ELogger::log(LOG_SYSTEM).debug("Hello {} from the system log!!", "World");
    ELogger::log(LOG_SYSTEM).info("Hello {} from the system log!!", "World");
    ELogger::log(LOG_SYSTEM).startup("Hello {} from the system log!!", "World");
-   ELogger::log(LOG_SYSTEM).warn("Hello {} from the system log!!", "World");
-   ELogger::log(LOG_SYSTEM).error("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).minor("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).major("Hello {} from the system log!!", "World");
+   ELogger::log(LOG_SYSTEM).critical("Hello {} from the system log!!", "World");
 
-   ELogger::log(LOG_TEST1).trace("Hello {} from the test1 log!!", "World");
    ELogger::log(LOG_TEST1).debug("Hello {} from the test1 log!!", "World");
    ELogger::log(LOG_TEST1).info("Hello {} from the test1 log!!", "World");
    ELogger::log(LOG_TEST1).startup("Hello {} from the test1 log!!", "World");
-   ELogger::log(LOG_TEST1).warn("Hello {} from the test1 log!!", "World");
-   ELogger::log(LOG_TEST1).error("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).minor("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).major("Hello {} from the test1 log!!", "World");
+   ELogger::log(LOG_TEST1).critical("Hello {} from the test1 log!!", "World");
 
-   ELogger::log(LOG_TEST2).trace("Hello {} from the test2 log!!", "World");
    ELogger::log(LOG_TEST2).debug("Hello {} from the test2 log!!", "World");
    ELogger::log(LOG_TEST2).info("Hello {} from the test2 log!!", "World");
    ELogger::log(LOG_TEST2).startup("Hello {} from the test2 log!!", "World");
-   ELogger::log(LOG_TEST2).warn("Hello {} from the test2 log!!", "World");
-   ELogger::log(LOG_TEST2).error("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).minor("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).major("Hello {} from the test2 log!!", "World");
+   ELogger::log(LOG_TEST2).critical("Hello {} from the test2 log!!", "World");
 
    ELogger::log(LOG_SYSTEM).flush();
    ELogger::log(LOG_TEST1).flush();
@@ -1974,12 +1978,12 @@ Void ELogger_test()
 
    ELogger::log(LOG_TEST3).setLogLevel( ELogger::eInfo );
 
-   ELogger::log(LOG_TEST3).trace("Hello {} from the test3 log!!", "World");
    ELogger::log(LOG_TEST3).debug("Hello {} from the test3 log!!", "World");
    ELogger::log(LOG_TEST3).info("Hello {} from the test3 log!!", "World");
    ELogger::log(LOG_TEST3).startup("Hello {} from the test3 log!!", "World");
-   ELogger::log(LOG_TEST3).warn("Hello {} from the test3 log!!", "World");
-   ELogger::log(LOG_TEST3).error("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).minor("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).major("Hello {} from the test3 log!!", "World");
+   ELogger::log(LOG_TEST3).critical("Hello {} from the test3 log!!", "World");
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

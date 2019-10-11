@@ -155,15 +155,16 @@ am_libepc_a_OBJECTS = libepc_a-ebase.$(OBJEXT) \
 	libepc_a-efd.$(OBJEXT) libepc_a-efdjson.$(OBJEXT) \
 	libepc_a-egetopt.$(OBJEXT) libepc_a-ehash.$(OBJEXT) \
 	libepc_a-elogger.$(OBJEXT) libepc_a-emsg.$(OBJEXT) \
-	libepc_a-epath.$(OBJEXT) libepc_a-eqbase.$(OBJEXT) \
-	libepc_a-eqpriv.$(OBJEXT) libepc_a-eqpub.$(OBJEXT) \
-	libepc_a-eshmem.$(OBJEXT) libepc_a-esocket.$(OBJEXT) \
-	libepc_a-estatic.$(OBJEXT) libepc_a-estring.$(OBJEXT) \
+	libepc_a-epath.$(OBJEXT) libepc_a-epcdns.$(OBJEXT) \
+	libepc_a-eqbase.$(OBJEXT) libepc_a-eqpriv.$(OBJEXT) \
+	libepc_a-eqpub.$(OBJEXT) libepc_a-eshmem.$(OBJEXT) \
+	libepc_a-esocket.$(OBJEXT) libepc_a-estatic.$(OBJEXT) \
+	libepc_a-estats.$(OBJEXT) libepc_a-estring.$(OBJEXT) \
 	libepc_a-esynch.$(OBJEXT) libepc_a-etbase.$(OBJEXT) \
 	libepc_a-ethread.$(OBJEXT) libepc_a-etime.$(OBJEXT) \
 	libepc_a-etimer.$(OBJEXT) libepc_a-etq.$(OBJEXT) \
 	libepc_a-eutil.$(OBJEXT) libepc_a-dnscache.$(OBJEXT) \
-	libepc_a-dnsparser.$(OBJEXT) libepc_a-epcdns.$(OBJEXT)
+	libepc_a-dnsparser.$(OBJEXT)
 libepc_a_OBJECTS = $(am_libepc_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -327,7 +328,38 @@ lib_LIBRARIES = libepc.a
 # Build information for each library
 
 # Sources for epc
-libepc_a_SOURCES = ebase.cpp ebzip2.cpp ecbuf.cpp edir.cpp eerror.cpp efd.cpp efdjson.cpp egetopt.cpp ehash.cpp elogger.cpp emsg.cpp epath.cpp eqbase.cpp eqpriv.cpp eqpub.cpp eshmem.cpp esocket.cpp estatic.cpp estring.cpp esynch.cpp etbase.cpp ethread.cpp etime.cpp etimer.cpp etq.cpp eutil.cpp dnscache.cpp dnsparser.cpp epcdns.cpp
+libepc_a_SOURCES = \
+   ebase.cpp         \
+   ebzip2.cpp        \
+   ecbuf.cpp         \
+   edir.cpp          \
+   eerror.cpp        \
+   efd.cpp           \
+   efdjson.cpp       \
+   egetopt.cpp       \
+   ehash.cpp         \
+   elogger.cpp       \
+   emsg.cpp          \
+   epath.cpp         \
+   epcdns.cpp        \
+   eqbase.cpp        \
+   eqpriv.cpp        \
+   eqpub.cpp         \
+   eshmem.cpp        \
+   esocket.cpp       \
+   estatic.cpp       \
+   estats.cpp        \
+   estring.cpp       \
+   esynch.cpp        \
+   etbase.cpp        \
+   ethread.cpp       \
+   etime.cpp         \
+   etimer.cpp        \
+   etq.cpp           \
+   eutil.cpp         \
+   dnscache.cpp      \
+   dnsparser.cpp 
+
 
 # Linker options libTestProgram
 #libepc_a_LDFLAGS = 
@@ -432,6 +464,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-eshmem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-esocket.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-estatic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-estats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-estring.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-esynch.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etbase.Po@am__quote@
@@ -623,6 +656,20 @@ libepc_a-epath.obj: epath.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-epath.obj `if test -f 'epath.cpp'; then $(CYGPATH_W) 'epath.cpp'; else $(CYGPATH_W) '$(srcdir)/epath.cpp'; fi`
 
+libepc_a-epcdns.o: epcdns.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-epcdns.o -MD -MP -MF $(DEPDIR)/libepc_a-epcdns.Tpo -c -o libepc_a-epcdns.o `test -f 'epcdns.cpp' || echo '$(srcdir)/'`epcdns.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-epcdns.Tpo $(DEPDIR)/libepc_a-epcdns.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='epcdns.cpp' object='libepc_a-epcdns.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-epcdns.o `test -f 'epcdns.cpp' || echo '$(srcdir)/'`epcdns.cpp
+
+libepc_a-epcdns.obj: epcdns.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-epcdns.obj -MD -MP -MF $(DEPDIR)/libepc_a-epcdns.Tpo -c -o libepc_a-epcdns.obj `if test -f 'epcdns.cpp'; then $(CYGPATH_W) 'epcdns.cpp'; else $(CYGPATH_W) '$(srcdir)/epcdns.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-epcdns.Tpo $(DEPDIR)/libepc_a-epcdns.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='epcdns.cpp' object='libepc_a-epcdns.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-epcdns.obj `if test -f 'epcdns.cpp'; then $(CYGPATH_W) 'epcdns.cpp'; else $(CYGPATH_W) '$(srcdir)/epcdns.cpp'; fi`
+
 libepc_a-eqbase.o: eqbase.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-eqbase.o -MD -MP -MF $(DEPDIR)/libepc_a-eqbase.Tpo -c -o libepc_a-eqbase.o `test -f 'eqbase.cpp' || echo '$(srcdir)/'`eqbase.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-eqbase.Tpo $(DEPDIR)/libepc_a-eqbase.Po
@@ -706,6 +753,20 @@ libepc_a-estatic.obj: estatic.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='estatic.cpp' object='libepc_a-estatic.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-estatic.obj `if test -f 'estatic.cpp'; then $(CYGPATH_W) 'estatic.cpp'; else $(CYGPATH_W) '$(srcdir)/estatic.cpp'; fi`
+
+libepc_a-estats.o: estats.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-estats.o -MD -MP -MF $(DEPDIR)/libepc_a-estats.Tpo -c -o libepc_a-estats.o `test -f 'estats.cpp' || echo '$(srcdir)/'`estats.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-estats.Tpo $(DEPDIR)/libepc_a-estats.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='estats.cpp' object='libepc_a-estats.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-estats.o `test -f 'estats.cpp' || echo '$(srcdir)/'`estats.cpp
+
+libepc_a-estats.obj: estats.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-estats.obj -MD -MP -MF $(DEPDIR)/libepc_a-estats.Tpo -c -o libepc_a-estats.obj `if test -f 'estats.cpp'; then $(CYGPATH_W) 'estats.cpp'; else $(CYGPATH_W) '$(srcdir)/estats.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-estats.Tpo $(DEPDIR)/libepc_a-estats.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='estats.cpp' object='libepc_a-estats.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-estats.obj `if test -f 'estats.cpp'; then $(CYGPATH_W) 'estats.cpp'; else $(CYGPATH_W) '$(srcdir)/estats.cpp'; fi`
 
 libepc_a-estring.o: estring.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-estring.o -MD -MP -MF $(DEPDIR)/libepc_a-estring.Tpo -c -o libepc_a-estring.o `test -f 'estring.cpp' || echo '$(srcdir)/'`estring.cpp
@@ -846,20 +907,6 @@ libepc_a-dnsparser.obj: dnsparser.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='dnsparser.cpp' object='libepc_a-dnsparser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-dnsparser.obj `if test -f 'dnsparser.cpp'; then $(CYGPATH_W) 'dnsparser.cpp'; else $(CYGPATH_W) '$(srcdir)/dnsparser.cpp'; fi`
-
-libepc_a-epcdns.o: epcdns.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-epcdns.o -MD -MP -MF $(DEPDIR)/libepc_a-epcdns.Tpo -c -o libepc_a-epcdns.o `test -f 'epcdns.cpp' || echo '$(srcdir)/'`epcdns.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-epcdns.Tpo $(DEPDIR)/libepc_a-epcdns.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='epcdns.cpp' object='libepc_a-epcdns.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-epcdns.o `test -f 'epcdns.cpp' || echo '$(srcdir)/'`epcdns.cpp
-
-libepc_a-epcdns.obj: epcdns.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-epcdns.obj -MD -MP -MF $(DEPDIR)/libepc_a-epcdns.Tpo -c -o libepc_a-epcdns.obj `if test -f 'epcdns.cpp'; then $(CYGPATH_W) 'epcdns.cpp'; else $(CYGPATH_W) '$(srcdir)/epcdns.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-epcdns.Tpo $(DEPDIR)/libepc_a-epcdns.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='epcdns.cpp' object='libepc_a-epcdns.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-epcdns.obj `if test -f 'epcdns.cpp'; then $(CYGPATH_W) 'epcdns.cpp'; else $(CYGPATH_W) '$(srcdir)/epcdns.cpp'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique

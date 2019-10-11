@@ -102,7 +102,7 @@ EString EUtility::replaceAllCopy(const EString &str, cpStr srch, size_t srchlen,
    return replaceAll(newstr, srch, srchlen, rplc, rplclen);
 }
 
-void EUtility::copyfile( const char *dst, const char *src )
+void EUtility::copy_file( const char *dst, const char *src )
 {
    std::ofstream fdst( dst, std::ios::binary);
    std::ifstream fsrc( src, std::ios::binary);
@@ -110,7 +110,7 @@ void EUtility::copyfile( const char *dst, const char *src )
    fdst << fsrc.rdbuf();
 }
 
-void EUtility::deletefile( const char *fn )
+void EUtility::delete_file( const char *fn )
 {
    remove( fn );
 }

@@ -254,6 +254,7 @@ Void ELogger::init(EGetOpt &opt)
          ELogger::createLog( logid, category, sinkid );
          ELogger::log(logid).setLogLevel( loglevel );
       }
+      opt.setPrefix( "" );
    }
    catch(...)
    {
@@ -328,6 +329,7 @@ ELoggerSinkSyslog::ELoggerSinkSyslog( ELogger::LogLevel loglevel, cpStr pattern 
       "", LOG_USER, 0, true );
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }
 
 ELoggerSinkStdout::ELoggerSinkStdout( ELogger::LogLevel loglevel, cpStr pattern )
@@ -336,6 +338,7 @@ ELoggerSinkStdout::ELoggerSinkStdout( ELogger::LogLevel loglevel, cpStr pattern 
    spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }
 
 ELoggerSinkStderr::ELoggerSinkStderr( ELogger::LogLevel loglevel, cpStr pattern )
@@ -344,6 +347,7 @@ ELoggerSinkStderr::ELoggerSinkStderr( ELogger::LogLevel loglevel, cpStr pattern 
    spdlog::sink_ptr sp = std::make_shared<spdlog::sinks::stderr_color_sink_mt>();
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }
 
 ELoggerSinkBasicFile::ELoggerSinkBasicFile( ELogger::LogLevel loglevel, cpStr pattern,
@@ -356,6 +360,7 @@ ELoggerSinkBasicFile::ELoggerSinkBasicFile( ELogger::LogLevel loglevel, cpStr pa
       m_filename, m_truncate );
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }
 
 ELoggerSinkDailyFile::ELoggerSinkDailyFile( ELogger::LogLevel loglevel, cpStr pattern,
@@ -370,6 +375,7 @@ ELoggerSinkDailyFile::ELoggerSinkDailyFile( ELogger::LogLevel loglevel, cpStr pa
       m_filename, m_rolloverhour, m_rolloverminute, m_truncate );
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }
 
 ELoggerSinkRotatingFile::ELoggerSinkRotatingFile( ELogger::LogLevel loglevel, cpStr pattern,
@@ -384,4 +390,5 @@ ELoggerSinkRotatingFile::ELoggerSinkRotatingFile( ELogger::LogLevel loglevel, cp
       m_filename, m_maxsizemb * 1048576, m_maxfiles, m_rotateonopen );
    sp->set_level( (spdlog::level::level_enum)loglevel );
    setSinkPtr( sp );
+   sp->set_pattern( getPattern() );
 }

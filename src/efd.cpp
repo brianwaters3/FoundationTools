@@ -25,9 +25,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-static void copyall( msg_or_avp *from, msg_or_avp *to );
+static Void copyall( msg_or_avp *from, msg_or_avp *to );
 
-static void copy( struct avp *from, msg_or_avp *to )
+static Void copy( struct avp *from, msg_or_avp *to )
 {
    int ret;
    struct dict_object *model;
@@ -92,7 +92,7 @@ static void copy( struct avp *from, msg_or_avp *to )
       );
 }
 
-static void copyall( msg_or_avp *from, msg_or_avp *to )
+static Void copyall( msg_or_avp *from, msg_or_avp *to )
 {
    int ret;
 
@@ -177,7 +177,7 @@ bool FDEngine::start()
    return true;
 }
 
-void FDEngine::uninit( bool wait )
+Void FDEngine::uninit( bool wait )
 {
    fd_core_shutdown();
    if ( wait )
@@ -187,12 +187,12 @@ void FDEngine::uninit( bool wait )
    }
 }
 
-void FDEngine::waitForShutdown()
+Void FDEngine::waitForShutdown()
 {
    fd_core_wait_shutdown_complete();
 }
 
-void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, int auth, int acct )
+Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, int auth, int acct )
 {
    int ret;
 
@@ -204,7 +204,7 @@ void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, int auth, in
       );
 }
 
-void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, int auth, int acct )
+Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, int auth, int acct )
 {
    int ret;
 
@@ -229,13 +229,13 @@ FDDictionaryEntry::FDDictionaryEntry()
    m_de = NULL;
 }
 
-FDDictionaryEntry::FDDictionaryEntry( const void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
+FDDictionaryEntry::FDDictionaryEntry( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
 {
    m_destroy = false;
    init( what, type, criteria, dict );
 }
 
-void FDDictionaryEntry::init( const void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
+Void FDDictionaryEntry::init( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
 {
    // assign the dictionary
    m_dict = dict ? dict : fd_g_config->cnf_dict;
@@ -245,7 +245,7 @@ void FDDictionaryEntry::init( const void *what, enum dict_object_type type, int 
       m_de = NULL;
 }
 
-void FDDictionaryEntry::init( struct dict_object *de, struct dictionary *dict )
+Void FDDictionaryEntry::init( struct dict_object *de, struct dictionary *dict )
 {
    if ( !de )
       return;
@@ -416,7 +416,7 @@ FDDictionaryEntryAVP::FDDictionaryEntryAVP( struct dict_object *de )
       );
 }
 
-void FDDictionaryEntryAVP::getTypeInfo()
+Void FDDictionaryEntryAVP::getTypeInfo()
 {
    int ret = fd_dict_getval( getEntry(), &m_basedata );
    if ( ret == 0 )
@@ -481,7 +481,7 @@ FDDictionaryEntryCommand::FDDictionaryEntryCommand( const char *name, struct dic
 }
 
 FDDictionaryEntryCommand::FDDictionaryEntryCommand( command_code_t cmdid, struct dictionary *dict )
-   : FDDictionaryEntry( (const void *)&cmdid, DICT_COMMAND, CMD_BY_CODE_R, dict )
+   : FDDictionaryEntry( (const Void *)&cmdid, DICT_COMMAND, CMD_BY_CODE_R, dict )
 {
    if ( !isValid() )
       throw FDException(
@@ -961,7 +961,7 @@ FDAvp FDAvp::getChild( bool &found )
    return FDAvp( *de, a );
 }
 
-void FDAvp::addTo( msg_or_avp *reference )
+Void FDAvp::addTo( msg_or_avp *reference )
 {
    int ret;
 
@@ -974,7 +974,7 @@ void FDAvp::addTo( msg_or_avp *reference )
    m_assigned = true;
 }
 
-void FDAvp::init()
+Void FDAvp::init()
 {
    int ret;
 
@@ -987,7 +987,7 @@ void FDAvp::init()
    memset( &m_value, 0, sizeof( m_value ) );
 }
 
-void FDAvp::assignValue()
+Void FDAvp::assignValue()
 {
    try
    {
@@ -1089,7 +1089,7 @@ bool FDAvp::getJson( std::string &json )
    return true;
 }
 
-void FDAvp::dump()
+Void FDAvp::dump()
 {
    struct dictionary *dict;
    char * buf = NULL;
@@ -1244,7 +1244,7 @@ FDAvp FDMessage::getFirstAVP( bool &found )
    return FDAvp( *de, child, true );
 }
 
-void FDMessage::dump()
+Void FDMessage::dump()
 {
    struct dictionary *dict;
    char * buf = NULL;
@@ -1262,7 +1262,7 @@ void FDMessage::dump()
    free(buf);
 }
 
-FDMessage &FDMessage::sendRequest( void (*anscb)(void*,struct msg**), FDMessageRequest &req )
+FDMessage &FDMessage::sendRequest( Void (*anscb)(Void*,struct msg**), FDMessageRequest &req )
 {
    int ret;
 
@@ -1292,7 +1292,7 @@ FDMessage &FDMessage::sendAnswer()
    return *this;
 }
 
-void FDMessage::addOrigin()
+Void FDMessage::addOrigin()
 {
    int ret = fd_msg_add_origin( m_msg, 0 );
    if ( ret != 0 )
@@ -1364,13 +1364,26 @@ bool FDMessage::getJson( std::string &json )
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-FDMessageAnswer::FDMessageAnswer( FDDictionaryEntryCommand *cmd, struct msg *pmsg )
-   : FDMessage( cmd, pmsg )
+FDMessageAnswer::~FDMessageAnswer()
+{
+   if (m_request)
+   {
+      delete m_request;
+      m_request = NULL;
+   }
+}
+
+// constructs and answer received in response to a request
+FDMessageAnswer::FDMessageAnswer( FDMessageRequest *req, struct msg *pmsg )
+   : FDMessage( req->getCommand(), pmsg ),
+     m_request( req )
 {
 }
 
+// constructs an answer that needs to be sent in response to a request
 FDMessageAnswer::FDMessageAnswer( FDMessageRequest *req )
-   : FDMessage( true, req->getCommand(), req->getMsg(), false, false )
+   : FDMessage( true, req->getCommand(), req->getMsg(), false, false ),
+     m_request( NULL )
 {
    req->setMsgDelete( false );
 }
@@ -1425,27 +1438,37 @@ FDMessageRequest &FDMessageRequest::send()
    return *this;
 }
 
-void FDMessageRequest::processAnswer( FDMessageAnswer &ans )
+Void FDMessageRequest::processAnswer( FDMessageAnswer &ans )
 {
 }
 
-void FDMessageRequest::anscb( void * data, struct msg ** pmsg )
+Void FDMessageRequest::anscb( Void * data, struct msg ** pmsg )
 {
    // set the "this" pointer
    FDMessageRequest *pthis = (FDMessageRequest*)data;
 
    // construct the FDMessageAnswer object
-   FDDictionaryEntryCommand anscmd( *pthis->getCommand() );
-   FDMessageAnswer ans( &anscmd, *pmsg );
-
-   // process the answer
-   pthis->processAnswer( ans );
-
+   //FDDictionaryEntryCommand anscmd( *pthis->getCommand() );
+   if (pthis->getPreserveAnswer())
+   {
+      FDMessageAnswer *ans = new FDMessageAnswer( pthis, *pmsg );
+      // process the answer
+      pthis->processAnswer( *ans );
+      // clear the pmsg pointer, it will be freed by the FDMessageAnswer destructor
+      *pmsg = NULL;
+   }
+   else
+   {
+      FDMessageAnswer ans( pthis, *pmsg );
+      // process the answer
+      pthis->processAnswer( ans );
+      // clear the pmsg pointer, it will be freed by the FDMessageAnswer destructor
+      *pmsg = NULL;
+   }
+   
    // free the request now that the answer has been processed
-   delete pthis;
-
-   // clear the pmsg pointer, it will be freed by the FDMessageAnswer destructor
-   *pmsg = NULL;
+   //delete pthis;
+   // this no longer needs to be done since it will be released by the FDMessageAnswer destructor
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1505,7 +1528,7 @@ FDApplication &FDApplication::registerHandler( FDCommandRequest &cmd )
    return *this;
 }
 
-int FDApplication::commandcb( struct msg **m, struct avp *avp, struct session *session, void *data, enum disp_action *action )
+int FDApplication::commandcb( struct msg **m, struct avp *avp, struct session *session, Void *data, enum disp_action *action )
 {
    FDCommandRequest *cmd = (FDCommandRequest*)data;
    struct msg_hdr *hdr = NULL;
@@ -1584,7 +1607,7 @@ FDSession::~FDSession()
    }
 }
 
-void FDSession::addSessionId( FDMessage &msg, FDDictionaryEntryAVP &deSessionId )
+Void FDSession::addSessionId( FDMessage &msg, FDDictionaryEntryAVP &deSessionId )
 {
    if ( !m_session )
       init();
@@ -1606,7 +1629,7 @@ const EString &FDSession::getSessionId()
    return m_sid;
 }
 
-void FDSession::init()
+Void FDSession::init()
 {
    if ( m_session )
       return;
@@ -1691,7 +1714,7 @@ FDPeerState FDPeer::getState()
    return ps;
 }
 
-void FDPeer::add()
+Void FDPeer::add()
 {
    if ( m_diamid.empty() )
       throw FDException(
@@ -1771,13 +1794,13 @@ void FDPeer::add()
       );
 }
 
-void FDPeer::init()
+Void FDPeer::init()
 {
    m_port = 3868;
    m_peer = NULL;
 }
 
-void FDPeer::peercb( struct peer_info *pi, void *data )
+Void FDPeer::peercb( struct peer_info *pi, Void *data )
 {
    FDPeer *ths = (FDPeer*)data;
 //std::cout << "**** peercb [" << ths->getDiameterId() << "] state=" << ths->getState() << std::endl;
@@ -1859,7 +1882,7 @@ FDExtractor::~FDExtractor()
 {
 }
 
-void FDExtractor::add( FDExtractorBase &base )
+Void FDExtractor::add( FDExtractorBase &base )
 {
    FDExtractorKey k( base.getDictionaryEntry()->getVendorId(), base.getDictionaryEntry()->getAvpCode() );
    m_entries[k] = &base;
@@ -1881,7 +1904,7 @@ msg_or_avp *FDExtractor::getReference()
    return m_reference;
 }
 
-void FDExtractor::resolve()
+Void FDExtractor::resolve()
 {
    if ( getResolved() )
       return;
@@ -2007,7 +2030,7 @@ void FDExtractor::resolve()
 //   setResolved();
 }
 
-void FDExtractor::dump()
+Void FDExtractor::dump()
 {
    if ( !getResolved() )
       resolve();
@@ -2061,7 +2084,7 @@ FDExtractorList::~FDExtractorList()
    }
 }
 
-void FDExtractorList::addExtractor( FDExtractor *e )
+Void FDExtractorList::addExtractor( FDExtractor *e )
 {
    m_list.push_back( e );
 }
@@ -2100,7 +2123,7 @@ bool FDExtractorAvp::exists()
    return FDExtractorBase::exists();
 }
 
-void FDExtractorAvp::dump()
+Void FDExtractorAvp::dump()
 {
    if ( m_extractor.getResolved() )
       m_extractor.resolve();
@@ -2148,7 +2171,7 @@ std::list<FDExtractorAvp*> &FDExtractorAvpList::getList()
    return m_list;
 }
 
-void FDExtractorAvpList::dump()
+Void FDExtractorAvpList::dump()
 {
    if ( !m_parent )
       return;
@@ -2163,7 +2186,34 @@ void FDExtractorAvpList::dump()
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-void FDUtility::splitDiameterFQDN( std::string &fqdn, std::string &host, std::string &realm )
+FDHook::FDHook()
+   : m_hookmask(0),
+     m_hdl( NULL )
+{
+}
+
+Bool FDHook::registerHook(UInt hookmask)
+{
+   m_hookmask = hookmask;
+
+   return fd_hook_register( m_hookmask, FDHook::hook_cb, this, NULL, &m_hdl ) == 0;
+}
+
+Void FDHook::hook_cb(enum fd_hook_type type, struct msg * msg, struct peer_hdr * peer,
+   Void * other, struct fd_hook_permsgdata *pmd, Void * regdata)
+{
+   FDHook *hookptr = (FDHook*)regdata;
+
+   if (!hookptr)
+      return;
+   
+   hookptr->process(type, msg, peer, other, pmd);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+Void FDUtility::splitDiameterFQDN( std::string &fqdn, std::string &host, std::string &realm )
 {
    size_t pos = fqdn.find( '.' );
    if ( pos != std::string::npos )

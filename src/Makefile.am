@@ -25,7 +25,37 @@ lib_LIBRARIES = libepc.a
 # Build information for each library
 
 # Sources for epc
-libepc_a_SOURCES = ebase.cpp ebzip2.cpp ecbuf.cpp edir.cpp eerror.cpp efd.cpp efdjson.cpp egetopt.cpp ehash.cpp elogger.cpp emsg.cpp epath.cpp eqbase.cpp eqpriv.cpp eqpub.cpp eshmem.cpp esocket.cpp estatic.cpp estring.cpp esynch.cpp etbase.cpp ethread.cpp etime.cpp etimer.cpp etq.cpp eutil.cpp dnscache.cpp dnsparser.cpp epcdns.cpp
+libepc_a_SOURCES =   \
+   ebase.cpp         \
+   ebzip2.cpp        \
+   ecbuf.cpp         \
+   edir.cpp          \
+   eerror.cpp        \
+   efd.cpp           \
+   efdjson.cpp       \
+   egetopt.cpp       \
+   ehash.cpp         \
+   elogger.cpp       \
+   emsg.cpp          \
+   epath.cpp         \
+   epcdns.cpp        \
+   eqbase.cpp        \
+   eqpriv.cpp        \
+   eqpub.cpp         \
+   eshmem.cpp        \
+   esocket.cpp       \
+   estatic.cpp       \
+   estats.cpp        \
+   estring.cpp       \
+   esynch.cpp        \
+   etbase.cpp        \
+   ethread.cpp       \
+   etime.cpp         \
+   etimer.cpp        \
+   etq.cpp           \
+   eutil.cpp         \
+   dnscache.cpp      \
+   dnsparser.cpp 
 
 # Linker options libTestProgram
 #libepc_a_LDFLAGS = 
