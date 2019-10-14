@@ -25,6 +25,7 @@
 #include "efd.h"
 #include "elogger.h"
 #include "estring.h"
+#include "etime.h"
 #include "esynch.h"
 
 //
@@ -89,53 +90,13 @@ public:
    class MessageStats
    {
    public:
-      MessageStats(MessageId id, cpStr name)
-         : m_id( id ),
-           m_name( name )
-      {
-         reset();
-      }
+      MessageStats(EStatistics::MessageId id, cpStr name);
+      MessageStats(EStatistics::MessageId id, const EString &name);
+      MessageStats(const MessageStats &m);
 
-      MessageStats(MessageId id, const EString &name)
-         : m_id( id ),
-           m_name( name )
-      {
-         reset();
-      }
+      Void reset();
 
-      MessageStats(const MessageStats &m)
-         : m_id( m.m_id ),
-           m_name( m_name ),
-           m_rqst_sent_err( m.m_rqst_sent_err.load() ),
-           m_rqst_rcvd_err( m.m_rqst_rcvd_err.load() ),
-           m_rqst_sent_ok( m.m_rqst_sent_ok.load() ),
-           m_rqst_rcvd_ok( m.m_rqst_rcvd_ok.load() ),
-
-           m_resp_sent_err( m.m_resp_sent_err.load() ),
-           m_resp_rcvd_err( m.m_resp_rcvd_err.load() ),
-           m_resp_sent_accept( m.m_resp_sent_accept.load() ),
-           m_resp_sent_reject( m.m_resp_sent_reject.load() ),
-           m_resp_rcvd_accept( m.m_resp_rcvd_accept.load() ),
-           m_resp_rcvd_reject( m.m_resp_rcvd_reject.load() )
-      {
-      }
-
-      Void reset()
-      {
-         m_rqst_sent_err = 0;
-         m_rqst_rcvd_err = 0;
-         m_rqst_sent_ok = 0;
-         m_rqst_rcvd_ok = 0;
-
-         m_resp_sent_err = 0;
-         m_resp_rcvd_err = 0;
-         m_resp_sent_accept = 0;
-         m_resp_sent_reject = 0;
-         m_resp_rcvd_accept = 0;
-         m_resp_rcvd_reject = 0;
-      }
-
-      MessageId getId() { return m_id; }
+      EStatistics::MessageId getId() { return m_id; }
       const EString &getName() { return m_name; }
 
       UInt getRequestSentErrors() { return m_rqst_sent_err; }
@@ -165,7 +126,7 @@ public:
    private:
       MessageStats();
 
-      MessageId m_id;
+      EStatistics::MessageId m_id;
       EString m_name;
 
       std::atomic<UInt> m_rqst_sent_err;
@@ -181,64 +142,29 @@ public:
       std::atomic<UInt> m_resp_rcvd_reject;
    };
 
-   typedef std::unordered_map<UInt,MessageStats> MessageStatsMap;
+   typedef std::unordered_map<EStatistics::MessageId,EStatistics::MessageStats> MessageStatsMap;
 
    class Peer
    {
    public:
-      Peer(cpStr name, std::unordered_map<UInt,MessageStats> &tmplt)
-         : m_name( name ),
-           m_msgstats( tmplt )
-      {         
-      }
+      Peer(cpStr name, const EStatistics::MessageStatsMap &tmplt);
+      Peer(const EString &name, const EStatistics::MessageStatsMap &tmplt);
+      Peer(const Peer &p);
 
-      Peer(const EString &name, std::unordered_map<UInt,MessageStats> &tmplt)
-         : m_name( name ),
-           m_msgstats( tmplt )
-      {         
-      }
+      EStatistics::MessageStats &getMessageStats(UInt msgid);
 
-      Peer(const Peer &p)
-         : m_name( p.m_name ),
-           m_msgstats( p.m_msgstats )
-      {
-      }
-
-      std::unordered_map<UInt,MessageStats> getMessageStats() { return m_msgstats; }
-
-      MessageStats &getMessageStats(UInt msgid)
-      {
-         ERDLock l(m_lock);
-         auto srch = m_msgstats.find(msgid);
-         if (srch == m_msgstats.end())
-         {
-            EString s;
-            s.format("Unknown message ID [%u]", msgid);
-            throw EError(EError::Warning, s);
-         }
-         return srch->second;
-      }
-
-      // MessageStats &addMessageStats(UInt msgid, const EString &name)
-      // {
-      //    EWRLock l(m_lock);
-      //    auto p = m_msgstats.emplace(msgid, name);
-      //    return p.first->second;
-      // }
-
-      // Void removeMessageStats(UInt msgid)
-      // {
-      //    EWRLock l(m_lock);
-      //    auto srch = m_msgstats.find(msgid);
-      //    if (srch != m_msgstats.end())
-      //       m_msgstats.erase( srch );
-      // }
+      EString &getName() { return m_name; }
+      ETime &getLastActivity() { return m_lastactivity; }
+      ETime &setLastActivity() { return m_lastactivity = ETime::Now(); }
+      EStatistics::MessageStatsMap &getMessageStats() { return m_msgstats; }
+      Void reset();
 
       #define INCREMENT_MESSAGE_STAT(__id,__func)  \
       {                                            \
          auto srch = m_msgstats.find(__id);        \
          if (srch == m_msgstats.end() )            \
             return 0;                              \
+         setLastActivity();                        \
          return srch->second.__func();             \
       }
 
@@ -257,86 +183,37 @@ public:
 
    private:
       EString m_name;
+      ETime m_lastactivity;
       ERWLock m_lock;
-      std::unordered_map<MessageId,MessageStats> m_msgstats;
+      EStatistics::MessageStatsMap m_msgstats;
    };
 
-   typedef std::unordered_map<std::string,Peer> PeerMap;
+   typedef std::unordered_map<std::string,EStatistics::Peer> PeerMap;
 
    class Interface
    {
    public:
-      Interface(InterfaceId id, ProtocolType protocol, cpStr name)
-         : m_id( id ),
-           m_protocol( protocol ),
-           m_name( name )
-         {
-         }
-      Interface(InterfaceId id, ProtocolType protocol, const EString &name)
-         : m_id( id ),
-           m_protocol( protocol ),
-           m_name( name )
-         {
-         }
-      
-      Interface(const Interface &i)
-         : m_id( i.m_id ),
-           m_protocol( i.m_protocol ),
-           m_name( i.m_name ),
-           m_peers( i.m_peers )
-      {
-      }
+      Interface(EStatistics::InterfaceId id, EStatistics::ProtocolType protocol, cpStr name);
+      Interface(EStatistics::InterfaceId id, EStatistics::ProtocolType protocol, const EString &name);
+      Interface(const Interface &i);
 
-      InterfaceId getId() { return m_id; }
+      EStatistics::InterfaceId getId() { return m_id; }
+      EString &getName() { return m_name; }
+      ProtocolType getProtocol() { return m_protocol; }
       PeerMap &getPeers() { return m_peers; }
 
-      Peer &getPeer(const EString &peer, Bool addFlag = True)
-      {
-         ERDLock l(m_lock);
-         auto srch = m_peers.find(peer);
-         if (srch == m_peers.end())
-         {
-            if (addFlag)
-            {
-               return addPeer(peer);
-            }
-            else
-            {
-               EString s;
-               s.format("Unknown peer [%s]", peer.c_str());
-               throw EError(EError::Warning, s);
-            }
-         }
-         return srch->second;
-      }
+      Peer &getPeer(const EString &peer, Bool addFlag = True);
+      Peer &addPeer(const EString &peer);
+      Void removePeer(const EString &peer);
+      Void reset();
 
-      Peer &addPeer(const EString &peer)
-      {
-         EWRLock l(m_lock);
-         auto p = m_peers.emplace(peer, Peer(peer,m_msgstats_template));
-         return p.first->second;
-      }
-
-      Void removePeer(const EString &peer)
-      {
-         EWRLock l(m_lock);
-         auto srch = m_peers.find(peer);
-         if (srch != m_peers.end())
-            m_peers.erase( srch );
-      }
-
-      MessageStats &addMessageStatsTemplate(UInt msgid, const EString &name)
-      {
-         auto p = m_msgstats_template.emplace(msgid, MessageStats(msgid, name));
-         return p.first->second;
-      }
-
+      MessageStats &addMessageStatsTemplate(EStatistics::MessageId msgid, const EString &name);
       MessageStatsMap &getMessageStatsTemplate() { return m_msgstats_template; }
 
       #define INCREMENT_MESSAGE_STAT(__peer,__id,__func) \
       {                                                  \
-         Peer &__p( getPeer(__peer) );                     \
-         return __p.__func(__id);                          \
+         EStatistics::Peer &__p( getPeer(__peer) );      \
+         return __p.__func(__id);                        \
       }
 
       UInt incRequestSentErrors(cpStr peer, UInt msgid)           { EString p(peer); INCREMENT_MESSAGE_STAT(p, msgid, incRequestSentErrors); }
@@ -366,7 +243,9 @@ public:
    private:
       Interface();
 
-      InterfaceId m_id;
+      Peer &_addPeer(const EString &peer);
+
+      EStatistics::InterfaceId m_id;
       ProtocolType m_protocol;
       EString m_name;
       ERWLock m_lock;
@@ -374,9 +253,9 @@ public:
       MessageStatsMap m_msgstats_template;
    };
 
-   typedef std::unordered_map<InterfaceId,Interface> InterfaceMap;
+   typedef std::unordered_map<EStatistics::InterfaceId,EStatistics::Interface> InterfaceMap;
 
-   static Interface &getInterface(InterfaceId id)
+   static Interface &getInterface(EStatistics::InterfaceId id)
    {
       ERDLock l(m_lock);
       auto srch = m_interfaces.find(id);
@@ -389,14 +268,14 @@ public:
       return srch->second;
    }
 
-   static Interface &addInterface(InterfaceId id, ProtocolType protocol, const EString &intfc)
+   static Interface &addInterface(EStatistics::InterfaceId id, ProtocolType protocol, const EString &intfc)
    {
       EWRLock l(m_lock);
       auto it = m_interfaces.emplace(id, Interface(id,protocol,intfc));
       return it.first->second;
    }
 
-   static Void removeInterface(InterfaceId id)
+   static Void removeInterface(EStatistics::InterfaceId id)
    {
       EWRLock l(m_lock);
       auto srch = m_interfaces.find(id);
@@ -404,14 +283,17 @@ public:
          m_interfaces.erase( srch );
    }
 
+   static InterfaceMap &getInterfaces() { return m_interfaces; }
+
    static Void init(ELogger &logger);
+   static Void reset();
 
 private:
    static DiameterHook m_hook_error;
    static DiameterHook m_hook_success;
 
    static ERWLock m_lock;
-   static InterfaceMap m_interfaces;
+   static EStatistics::InterfaceMap m_interfaces;
 };
 
 #endif // #ifndef __ESTATS_H

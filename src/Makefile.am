@@ -29,6 +29,7 @@ libepc_a_SOURCES =   \
    ebase.cpp         \
    ebzip2.cpp        \
    ecbuf.cpp         \
+   ecli.cpp          \
    edir.cpp          \
    eerror.cpp        \
    efd.cpp           \

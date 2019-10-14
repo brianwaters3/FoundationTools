@@ -19,7 +19,7 @@
 EStatistics::DiameterHook EStatistics::m_hook_error;
 EStatistics::DiameterHook EStatistics::m_hook_success;
 ERWLock EStatistics::m_lock;
-std::unordered_map<EStatistics::InterfaceId,EStatistics::Interface> EStatistics::m_interfaces;
+EStatistics::InterfaceMap EStatistics::m_interfaces;
 
 Void EStatistics::init(ELogger &logger)
 {
@@ -32,6 +32,17 @@ Void EStatistics::init(ELogger &logger)
    m_hook_error.setLogger( logger );
    m_hook_success.setLogger( logger );
 }
+
+Void EStatistics::reset()
+{
+   for (auto &ifc : getInterfaces())
+   {
+      ifc.second.reset();
+   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 Bool EStatistics::DiameterHook::getResult(struct msg *m)
 {
@@ -47,7 +58,12 @@ Bool EStatistics::DiameterHook::getResult(struct msg *m)
          fd_msg_avp_hdr( a, &ah );
 
          if (ah->avp_vendor == 0 && ah->avp_code == 268 /* Result-Code */)
-            return ah->avp_value->i32 == 2001; /* DIAMETER_SUCCESS */
+         {
+            struct fd_pei ei;
+            if (fd_msg_parse_dict(a, fd_g_config->cnf_dict, &ei) == 0)
+               return ah->avp_value->i32 == 2001; /* DIAMETER_SUCCESS */
+            return False;
+         }
 
          ret = fd_msg_browse_internal(a, MSG_BRW_NEXT, (msg_or_avp**)&a, NULL);
       }
@@ -61,7 +77,7 @@ Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg
 {
    struct msg_hdr* hdr = NULL;
 
-   if ( !msg || !fd_msg_hdr(msg,&hdr) )
+   if ( !msg || fd_msg_hdr(msg,&hdr) )
       return;
 
    Bool isError = HOOK_MASK(HOOK_MESSAGE_RECEIVED, HOOK_MESSAGE_SENDING) & type == 0;
@@ -92,16 +108,16 @@ Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg
             {
                switch (type)
                {
-                  case HOOK_MESSAGE_RECEIVED:   { intfc.incResponseReceivedOkAccepted( peer->info.pi_diamid, msgid ); break; }
-                  case HOOK_MESSAGE_SENDING:    { intfc.incResponseSentOkAccepted( peer->info.pi_diamid, msgid ); break; }
+                  case HOOK_MESSAGE_RECEIVED:   { intfc.incResponseReceivedOkAccepted( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT ); break; }
+                  case HOOK_MESSAGE_SENDING:    { intfc.incResponseSentOkAccepted( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT ); break; }
                }
             }
             else
             {
                switch (type)
                {
-                  case HOOK_MESSAGE_RECEIVED:   { intfc.incResponseReceivedOkRejected( peer->info.pi_diamid, msgid ); break; }
-                  case HOOK_MESSAGE_SENDING:    { intfc.incResponseSentOkRejected( peer->info.pi_diamid, msgid ); break; }
+                  case HOOK_MESSAGE_RECEIVED:   { intfc.incResponseReceivedOkRejected( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT ); break; }
+                  case HOOK_MESSAGE_SENDING:    { intfc.incResponseSentOkRejected( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT ); break; }
                }
             }
          }
@@ -109,8 +125,8 @@ Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg
          {
             switch (type)
             {
-               case HOOK_MESSAGE_PARSING_ERROR: { intfc.incResponseSentErrors( peer->info.pi_diamid, msgid );      break; }
-               case HOOK_MESSAGE_ROUTING_ERROR: { intfc.incResponseReceivedErrors( peer->info.pi_diamid, msgid );  break; }
+               case HOOK_MESSAGE_PARSING_ERROR: { intfc.incResponseSentErrors( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT );      break; }
+               case HOOK_MESSAGE_ROUTING_ERROR: { intfc.incResponseReceivedErrors( peer->info.pi_diamid, msgid | DIAMETER_ANSWER_BIT );  break; }
             }
          }
          
@@ -121,4 +137,173 @@ Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg
       // std::cerr << e.what() << '\n';
       // return;
    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EStatistics::MessageStats::MessageStats(EStatistics::MessageId id, cpStr name)
+   : m_id( id ),
+     m_name( name )
+{
+   reset();
+}
+
+EStatistics::MessageStats::MessageStats(EStatistics::MessageId id, const EString &name)
+   : m_id( id ),
+     m_name( name )
+{
+   reset();
+}
+
+EStatistics::MessageStats::MessageStats(const MessageStats &m)
+   : m_id( m.m_id ),
+     m_name( m.m_name ),
+     m_rqst_sent_err( m.m_rqst_sent_err.load() ),
+     m_rqst_rcvd_err( m.m_rqst_rcvd_err.load() ),
+     m_rqst_sent_ok( m.m_rqst_sent_ok.load() ),
+     m_rqst_rcvd_ok( m.m_rqst_rcvd_ok.load() ),
+
+     m_resp_sent_err( m.m_resp_sent_err.load() ),
+     m_resp_rcvd_err( m.m_resp_rcvd_err.load() ),
+     m_resp_sent_accept( m.m_resp_sent_accept.load() ),
+     m_resp_sent_reject( m.m_resp_sent_reject.load() ),
+     m_resp_rcvd_accept( m.m_resp_rcvd_accept.load() ),
+     m_resp_rcvd_reject( m.m_resp_rcvd_reject.load() )
+{
+}
+
+Void EStatistics::MessageStats::reset()
+{
+   m_rqst_sent_err = 0;
+   m_rqst_rcvd_err = 0;
+   m_rqst_sent_ok = 0;
+   m_rqst_rcvd_ok = 0;
+
+   m_resp_sent_err = 0;
+   m_resp_rcvd_err = 0;
+   m_resp_sent_accept = 0;
+   m_resp_sent_reject = 0;
+   m_resp_rcvd_accept = 0;
+   m_resp_rcvd_reject = 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EStatistics::Peer::Peer(cpStr name, const EStatistics::MessageStatsMap &tmplt)
+   : m_name( name ),
+     m_msgstats( tmplt )
+{         
+}
+
+EStatistics::Peer::Peer(const EString &name, const EStatistics::MessageStatsMap &tmplt)
+   : m_name( name ),
+     m_msgstats( tmplt )
+{         
+}
+
+EStatistics::Peer::Peer(const Peer &p)
+   : m_name( p.m_name ),
+     m_msgstats( p.m_msgstats )
+{
+}
+
+EStatistics::MessageStats &EStatistics::Peer::getMessageStats(UInt msgid)
+{
+   ERDLock l(m_lock);
+   auto srch = m_msgstats.find(msgid);
+   if (srch == m_msgstats.end())
+   {
+      EString s;
+      s.format("Unknown message ID [%u]", msgid);
+      throw EError(EError::Warning, s);
+   }
+   return srch->second;
+}
+
+Void EStatistics::Peer::reset()
+{
+   EWRLock l(m_lock);
+   for (auto &msgstats : getMessageStats())
+      msgstats.second.reset();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+EStatistics::Interface::Interface(EStatistics::InterfaceId id, EStatistics::ProtocolType protocol, cpStr name)
+   : m_id( id ),
+     m_protocol( protocol ),
+     m_name( name )
+{
+}
+
+EStatistics::Interface::Interface(EStatistics::InterfaceId id, EStatistics::ProtocolType protocol, const EString &name)
+   : m_id( id ),
+     m_protocol( protocol ),
+     m_name( name )
+{
+}
+
+EStatistics::Interface::Interface(const EStatistics::Interface &i)
+   : m_id( i.m_id ),
+     m_protocol( i.m_protocol ),
+     m_name( i.m_name ),
+     m_peers( i.m_peers )
+{
+}
+
+EStatistics::Peer &EStatistics::Interface::getPeer(const EString &peer, Bool addFlag)
+{
+   ERDLock l(m_lock);
+   auto srch = m_peers.find(peer);
+   if (srch == m_peers.end())
+   {
+      if (addFlag)
+      {
+         return _addPeer(peer);
+      }
+      else
+      {
+         EString s;
+         s.format("Unknown peer [%s]", peer.c_str());
+         throw EError(EError::Warning, s);
+      }
+   }
+   return srch->second;
+}
+
+EStatistics::Peer &EStatistics::Interface::addPeer(const EString &peer)
+{
+   EWRLock l(m_lock);
+   return _addPeer(peer);
+}
+
+Void EStatistics::Interface::removePeer(const EString &peer)
+{
+   EWRLock l(m_lock);
+   auto srch = m_peers.find(peer);
+   if (srch != m_peers.end())
+      m_peers.erase( srch );
+}
+
+Void EStatistics::Interface::reset()
+{
+   EWRLock l(m_lock);
+   for (auto &peer : getPeers())
+      peer.second.reset();
+}
+
+EStatistics::MessageStats &EStatistics::Interface::addMessageStatsTemplate(EStatistics::MessageId msgid, const EString &name)
+{
+   auto p = m_msgstats_template.emplace(msgid, MessageStats(msgid, name));
+   return p.first->second;
+}
+
+EStatistics::Peer &EStatistics::Interface::_addPeer(const EString &peer)
+{
+   Peer p( peer, getMessageStatsTemplate() );
+   auto addedpeer = m_peers.emplace(peer, p);
+   return addedpeer.first->second;
 }
