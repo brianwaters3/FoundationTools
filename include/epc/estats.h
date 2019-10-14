@@ -286,6 +286,7 @@ public:
    static InterfaceMap &getInterfaces() { return m_interfaces; }
 
    static Void init(ELogger &logger);
+   static Void uninit();
    static Void reset();
 
 private:

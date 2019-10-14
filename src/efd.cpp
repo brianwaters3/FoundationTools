@@ -20,6 +20,7 @@
 
 #include "efd.h"
 #include "efdjson.h"
+#include "estats.h"
 #include "eutil.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -179,6 +180,8 @@ bool FDEngine::start()
 
 Void FDEngine::uninit( bool wait )
 {
+   EStatistics::uninit();
+
    fd_core_shutdown();
    if ( wait )
    {
@@ -2197,6 +2200,15 @@ Bool FDHook::registerHook(UInt hookmask)
    m_hookmask = hookmask;
 
    return fd_hook_register( m_hookmask, FDHook::hook_cb, this, NULL, &m_hdl ) == 0;
+}
+
+Void FDHook::unregisterHook()
+{
+   if (m_hdl)
+      fd_hook_unregister( m_hdl );
+
+   m_hookmask = 0;
+   m_hdl = NULL;
 }
 
 Void FDHook::hook_cb(enum fd_hook_type type, struct msg * msg, struct peer_hdr * peer,

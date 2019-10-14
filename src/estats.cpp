@@ -33,6 +33,12 @@ Void EStatistics::init(ELogger &logger)
    m_hook_success.setLogger( logger );
 }
 
+Void EStatistics::uninit()
+{
+   m_hook_error.unregisterHook();
+   m_hook_success.unregisterHook();
+}
+
 Void EStatistics::reset()
 {
    for (auto &ifc : getInterfaces())

@@ -925,6 +925,7 @@ public:
       Void * other, struct fd_hook_permsgdata *pmd) = 0;
    
    Bool registerHook(UInt hookmask);
+   Void unregisterHook();
 
    struct fd_hook_hdl *getHandle() { return m_hdl; }
 
