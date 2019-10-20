@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/epath.h Source File</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/epath.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 <div class="title">epath.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="epath_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Copyright (c) 2009-2019 Brian Waters</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Copyright (c) 2019 Sprint</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*</span></div>
@@ -90,97 +90,129 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __epath_h_included</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __epath_h_included</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ebase_8h.html">ebase.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;estring.h&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="eerror_8h.html">eerror.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a>(EPathError_ArgumentException);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classEPath.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEPath.html">EPath</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <span class="keyword">static</span> cpStr getDirectorySeparatorString();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;   <span class="keyword">static</span> cChar getDirectorySeparatorChar();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;   <span class="keyword">static</span> cChar getAltDirectorySeparatorChar();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;   <span class="keyword">static</span> cChar getVolumeSeparatorChar();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;   <span class="keyword">static</span> cpStr getPathSeparatorChars();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;   <span class="keyword">static</span> cpStr getInvalidPathChars();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;   <span class="keyword">static</span> cpStr getInvalidFileNameChars();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;   <span class="keyword">static</span> Void changeExtension(cpStr path, cpStr extension, <a class="code" href="classEString.html">EString</a> &amp;newPath);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <span class="keyword">static</span> Void combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">static</span> Void combine(cpStr path1, cpStr path2, cpStr path3, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;   <span class="keyword">static</span> Void combine(cpStr path1, cpStr path2, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> combine(cpStr path1, cpStr path2, cpStr path3);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> combine(cpStr path1, cpStr path2);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   <span class="keyword">static</span> Void getDirectoryName(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;dirName);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;   <span class="keyword">static</span> Void getExtension(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;ext);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keyword">static</span> Void getFileName(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;fileName);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keyword">static</span> Void getFileNameWithoutExtension(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;fileName);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   <span class="keyword">static</span> Void getPathRoot(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;root);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;   <span class="keyword">static</span> Bool m_dirEqualsVolume;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">static</span> Void cleanPath(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;cleanPath);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   <span class="keyword">static</span> Void insecureFullPath(cpStr path, <a class="code" href="classEString.html">EString</a> &amp;fullPath);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   <span class="keyword">static</span> Bool isDsc(cChar c);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;   <span class="keyword">static</span> Bool isPathRooted(cpStr path);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;   <span class="keyword">static</span> Int findExtension(cpStr path);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">inline</span> cpStr EPath::getDirectorySeparatorString()</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">inline</span> cChar EPath::getDirectorySeparatorChar()</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;/&#39;</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">inline</span> cChar EPath::getAltDirectorySeparatorChar()</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;/&#39;</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">inline</span> cChar EPath::getVolumeSeparatorChar()</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;:&#39;</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">inline</span> cpStr EPath::getPathSeparatorChars()</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/:&quot;</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">inline</span> cpStr EPath::getInvalidPathChars()</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">inline</span> cpStr EPath::getInvalidFileNameChars()</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">inline</span> Bool EPath::isDsc(cChar c)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;   <span class="keywordflow">return</span> c == getDirectorySeparatorChar() || c == getAltDirectorySeparatorChar();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif // #define __epath_h_included</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ebase_8h.html">ebase.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="estring_8h.html">estring.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="eerror_8h.html">eerror.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a>(EPathError_ArgumentException);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classEPath.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEPath.html">EPath</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a878c9429e264420bcba3c95ab4388635">getDirectorySeparatorString</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">getDirectorySeparatorChar</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a72980a2f24945d85b818738b20660cef">getAltDirectorySeparatorChar</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a9737157317fce79408c8f275897435ba">getVolumeSeparatorChar</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a9fe8433c64f336e0ef635826065309c8">getPathSeparatorChars</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a7d750bc9e5fb090486c282504a9d748f">getInvalidPathChars</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#ace967729142db8778c6dbb6b3a50110c">getInvalidFileNameChars</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#a20f45da881f357e1d0dfbc4485fc5ba8">changeExtension</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> extension, <a class="code" href="classEString.html">EString</a> &amp;newPath);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path4, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="code" href="classEString.html">EString</a> &amp;path);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path4);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#a262a73e32e241d0a3b225fdeace113e5">getDirectoryName</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;dirName);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#aae2019fe58c6441006b71aa6422991df">getExtension</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;ext);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#ac106ca7e8d5b77534e2ba6444c6a6175">getFileName</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;fileName);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#af1beee3a4e6669309649a105e5196cbb">getFileNameWithoutExtension</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;fileName);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEPath.html#a0e19ad33e13306dac6cea2d8bdc36678">getPathRoot</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;root);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">  127</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">getDirectoryName</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path) { <a class="code" href="classEString.html">EString</a> s; <a class="code" href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">getDirectoryName</a>(path, s); <span class="keywordflow">return</span> s; }</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="classEPath.html#adf82048205343b423efeaef0c0835b04">  131</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#adf82048205343b423efeaef0c0835b04">getExtension</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path) { <a class="code" href="classEString.html">EString</a> s; <a class="code" href="classEPath.html#adf82048205343b423efeaef0c0835b04">getExtension</a>(path, s); <span class="keywordflow">return</span> s; }</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">  135</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">getFileName</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path) { <a class="code" href="classEString.html">EString</a> s; <a class="code" href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">getFileName</a>(path, s); <span class="keywordflow">return</span> s; }</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">  139</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">getFileNameWithoutExtension</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path) { <a class="code" href="classEString.html">EString</a> s; <a class="code" href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">getFileNameWithoutExtension</a>(path, s); <span class="keywordflow">return</span> s; }</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">  143</a></span>&#160;   <span class="keyword">static</span> <a class="code" href="classEString.html">EString</a> <a class="code" href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">getPathRoot</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path) { <a class="code" href="classEString.html">EString</a> s; <a class="code" href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">getPathRoot</a>(path, s); <span class="keywordflow">return</span> s; }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_dirEqualsVolume;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> cleanPath(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;cleanPath);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> insecureFullPath(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="code" href="classEString.html">EString</a> &amp;fullPath);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> isDsc(<a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> c);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> isPathRooted(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;   <span class="keyword">static</span> <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> findExtension(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;};</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a878c9429e264420bcba3c95ab4388635">EPath::getDirectorySeparatorString</a>()</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">EPath::getDirectorySeparatorChar</a>()</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;/&#39;</span>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a72980a2f24945d85b818738b20660cef">EPath::getAltDirectorySeparatorChar</a>()</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;/&#39;</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> <a class="code" href="classEPath.html#a9737157317fce79408c8f275897435ba">EPath::getVolumeSeparatorChar</a>()</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;{</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;   <span class="keywordflow">return</span> <span class="charliteral">&#39;:&#39;</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a9fe8433c64f336e0ef635826065309c8">EPath::getPathSeparatorChars</a>()</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/:&quot;</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#a7d750bc9e5fb090486c282504a9d748f">EPath::getInvalidPathChars</a>()</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEPath.html#ace967729142db8778c6dbb6b3a50110c">EPath::getInvalidFileNameChars</a>()</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   <span class="keywordflow">return</span> <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">inline</span> <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EPath::isDsc(<a class="code" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> c)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;   <span class="keywordflow">return</span> c == <a class="code" href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">getDirectorySeparatorChar</a>() || c == <a class="code" href="classEPath.html#a72980a2f24945d85b818738b20660cef">getAltDirectorySeparatorChar</a>();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif // #define __epath_h_included</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aetypes_8h_html_aac54f2ce6d21874872d23e0972ba7820"><div class="ttname"><a href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a></div><div class="ttdeci">int32_t Int</div><div class="ttdef"><b>Definition:</b> etypes.h:30</div></div>
 <div class="ttc" id="aeerror_8h_html"><div class="ttname"><a href="eerror_8h.html">eerror.h</a></div><div class="ttdoc">Defines base class for exceptions and declaration helper macros.</div></div>
+<div class="ttc" id="aetypes_8h_html_a76a8b016e5ad61faf9062cc387df5016"><div class="ttname"><a href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a></div><div class="ttdeci">bool Bool</div><div class="ttdef"><b>Definition:</b> etypes.h:24</div></div>
+<div class="ttc" id="aclassEPath_html_a0e19ad33e13306dac6cea2d8bdc36678"><div class="ttname"><a href="classEPath.html#a0e19ad33e13306dac6cea2d8bdc36678">EPath::getPathRoot</a></div><div class="ttdeci">static Void getPathRoot(cpStr path, EString &amp;root)</div><div class="ttdoc">Retrieves the path root.</div><div class="ttdef"><b>Definition:</b> epath.cpp:214</div></div>
 <div class="ttc" id="aebase_8h_html"><div class="ttname"><a href="ebase_8h.html">ebase.h</a></div><div class="ttdoc">Macros for various standard C library functions and standard includes.</div></div>
-<div class="ttc" id="aeerror_8h_html_a084f9316bede9d1a93f9cf419da6583a"><div class="ttname"><a href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED4(__e__)</div><div class="ttdoc">Declares exception class derived from EError with an const char* as a constructor parameter and devel...</div><div class="ttdef"><b>Definition:</b> eerror.h:85</div></div>
-<div class="ttc" id="aclassEPath_html"><div class="ttname"><a href="classEPath.html">EPath</a></div><div class="ttdef"><b>Definition:</b> epath.h:27</div></div>
-<div class="ttc" id="aclassEString_html"><div class="ttname"><a href="classEString.html">EString</a></div><div class="ttdef"><b>Definition:</b> estring.h:24</div></div>
+<div class="ttc" id="aclassEPath_html_af12e40adf18104b0ec3927f83ec7c778"><div class="ttname"><a href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">EPath::combine</a></div><div class="ttdeci">static Void combine(cpStr path1, cpStr path2, cpStr path3, cpStr path4, EString &amp;path)</div><div class="ttdoc">Combines individual path names into a single path name.</div><div class="ttdef"><b>Definition:</b> epath.cpp:111</div></div>
+<div class="ttc" id="aclassEPath_html_aab3de7604c12999e5059fe248000fdd8"><div class="ttname"><a href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">EPath::getPathRoot</a></div><div class="ttdeci">static EString getPathRoot(cpStr path)</div><div class="ttdoc">Retrieves the path root.</div><div class="ttdef"><b>Definition:</b> epath.h:143</div></div>
+<div class="ttc" id="aclassEPath_html_aae2019fe58c6441006b71aa6422991df"><div class="ttname"><a href="classEPath.html#aae2019fe58c6441006b71aa6422991df">EPath::getExtension</a></div><div class="ttdeci">static Void getExtension(cpStr path, EString &amp;ext)</div><div class="ttdoc">Retrieves the extension of a file name.</div><div class="ttdef"><b>Definition:</b> epath.cpp:163</div></div>
+<div class="ttc" id="aclassEPath_html_adf82048205343b423efeaef0c0835b04"><div class="ttname"><a href="classEPath.html#adf82048205343b423efeaef0c0835b04">EPath::getExtension</a></div><div class="ttdeci">static EString getExtension(cpStr path)</div><div class="ttdoc">Retrieves the extension of a file name.</div><div class="ttdef"><b>Definition:</b> epath.h:131</div></div>
+<div class="ttc" id="aeerror_8h_html_a084f9316bede9d1a93f9cf419da6583a"><div class="ttname"><a href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED4(__e__)</div><div class="ttdoc">Declares exception class derived from EError with an const char* as a constructor parameter and devel...</div><div class="ttdef"><b>Definition:</b> eerror.h:83</div></div>
+<div class="ttc" id="aclassEPath_html_a20f45da881f357e1d0dfbc4485fc5ba8"><div class="ttname"><a href="classEPath.html#a20f45da881f357e1d0dfbc4485fc5ba8">EPath::changeExtension</a></div><div class="ttdeci">static Void changeExtension(cpStr path, cpStr extension, EString &amp;newPath)</div><div class="ttdoc">Changes the extension of an exist path name.</div><div class="ttdef"><b>Definition:</b> epath.cpp:34</div></div>
+<div class="ttc" id="aclassEPath_html_a2264e996226d67d7bca6eda38bfb4101"><div class="ttname"><a href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">EPath::getDirectoryName</a></div><div class="ttdeci">static EString getDirectoryName(cpStr path)</div><div class="ttdoc">Retrieves the directory name from a file name.</div><div class="ttdef"><b>Definition:</b> epath.h:127</div></div>
+<div class="ttc" id="aclassEPath_html"><div class="ttname"><a href="classEPath.html">EPath</a></div><div class="ttdoc">A path manipulation helper class.</div><div class="ttdef"><b>Definition:</b> epath.h:33</div></div>
+<div class="ttc" id="aetypes_8h_html_afdf0f22c576e6ee1b982f64b839c4bea"><div class="ttname"><a href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a></div><div class="ttdeci">void Void</div><div class="ttdef"><b>Definition:</b> etypes.h:23</div></div>
+<div class="ttc" id="aclassEPath_html_a72980a2f24945d85b818738b20660cef"><div class="ttname"><a href="classEPath.html#a72980a2f24945d85b818738b20660cef">EPath::getAltDirectorySeparatorChar</a></div><div class="ttdeci">static cChar getAltDirectorySeparatorChar()</div><div class="ttdoc">Retrieves the alternate directory separator character.</div></div>
+<div class="ttc" id="aclassEPath_html_ace967729142db8778c6dbb6b3a50110c"><div class="ttname"><a href="classEPath.html#ace967729142db8778c6dbb6b3a50110c">EPath::getInvalidFileNameChars</a></div><div class="ttdeci">static cpStr getInvalidFileNameChars()</div><div class="ttdoc">Retrieves the invalid file name characters.</div></div>
+<div class="ttc" id="aclassEPath_html_ac106ca7e8d5b77534e2ba6444c6a6175"><div class="ttname"><a href="classEPath.html#ac106ca7e8d5b77534e2ba6444c6a6175">EPath::getFileName</a></div><div class="ttdeci">static Void getFileName(cpStr path, EString &amp;fileName)</div><div class="ttdoc">Retrieves just the file name from a fully qualified file name.</div><div class="ttdef"><b>Definition:</b> epath.cpp:190</div></div>
+<div class="ttc" id="aclassEPath_html_ac3f34119da03b5a5df8161876b3ba956"><div class="ttname"><a href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">EPath::getFileNameWithoutExtension</a></div><div class="ttdeci">static EString getFileNameWithoutExtension(cpStr path)</div><div class="ttdoc">Retrieves the file name without any extension.</div><div class="ttdef"><b>Definition:</b> epath.h:139</div></div>
+<div class="ttc" id="aclassEPath_html_a878c9429e264420bcba3c95ab4388635"><div class="ttname"><a href="classEPath.html#a878c9429e264420bcba3c95ab4388635">EPath::getDirectorySeparatorString</a></div><div class="ttdeci">static cpStr getDirectorySeparatorString()</div><div class="ttdoc">Retrieves the directory separator string.</div></div>
+<div class="ttc" id="aclassEString_html"><div class="ttname"><a href="classEString.html">EString</a></div><div class="ttdef"><b>Definition:</b> estring.h:26</div></div>
+<div class="ttc" id="aclassEPath_html_a7d750bc9e5fb090486c282504a9d748f"><div class="ttname"><a href="classEPath.html#a7d750bc9e5fb090486c282504a9d748f">EPath::getInvalidPathChars</a></div><div class="ttdeci">static cpStr getInvalidPathChars()</div><div class="ttdoc">Retrieves the invalid path characters.</div></div>
+<div class="ttc" id="aclassEPath_html_a9737157317fce79408c8f275897435ba"><div class="ttname"><a href="classEPath.html#a9737157317fce79408c8f275897435ba">EPath::getVolumeSeparatorChar</a></div><div class="ttdeci">static cChar getVolumeSeparatorChar()</div><div class="ttdoc">Retrieves the volume separator character.</div></div>
+<div class="ttc" id="aclassEPath_html_a9fe8433c64f336e0ef635826065309c8"><div class="ttname"><a href="classEPath.html#a9fe8433c64f336e0ef635826065309c8">EPath::getPathSeparatorChars</a></div><div class="ttdeci">static cpStr getPathSeparatorChars()</div><div class="ttdoc">Retrieves the path separator characters.</div></div>
+<div class="ttc" id="aclassEPath_html_a8159b27da82e05521a61fe6cc8891e43"><div class="ttname"><a href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">EPath::getDirectorySeparatorChar</a></div><div class="ttdeci">static cChar getDirectorySeparatorChar()</div><div class="ttdoc">Retrieves the directory separator character.</div></div>
+<div class="ttc" id="aclassEPath_html_a262a73e32e241d0a3b225fdeace113e5"><div class="ttname"><a href="classEPath.html#a262a73e32e241d0a3b225fdeace113e5">EPath::getDirectoryName</a></div><div class="ttdeci">static Void getDirectoryName(cpStr path, EString &amp;dirName)</div><div class="ttdoc">Retrieves the directory name from a file name.</div><div class="ttdef"><b>Definition:</b> epath.cpp:139</div></div>
+<div class="ttc" id="aetypes_8h_html_a715443708a83f21fdd93aa3f0030cd35"><div class="ttname"><a href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a></div><div class="ttdeci">const typedef Char * cpStr</div><div class="ttdef"><b>Definition:</b> etypes.h:78</div></div>
+<div class="ttc" id="aestring_8h_html"><div class="ttname"><a href="estring_8h.html">estring.h</a></div></div>
+<div class="ttc" id="aclassEPath_html_af1beee3a4e6669309649a105e5196cbb"><div class="ttname"><a href="classEPath.html#af1beee3a4e6669309649a105e5196cbb">EPath::getFileNameWithoutExtension</a></div><div class="ttdeci">static Void getFileNameWithoutExtension(cpStr path, EString &amp;fileName)</div><div class="ttdoc">Retrieves the file name without any extension.</div><div class="ttdef"><b>Definition:</b> epath.cpp:208</div></div>
+<div class="ttc" id="aetypes_8h_html_a666f14ce951dcb23781214468280183f"><div class="ttname"><a href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a></div><div class="ttdeci">const typedef Char cChar</div><div class="ttdef"><b>Definition:</b> etypes.h:42</div></div>
+<div class="ttc" id="aclassEPath_html_ae5955121732161e25e4ec8b7ad65f32b"><div class="ttname"><a href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">EPath::getFileName</a></div><div class="ttdeci">static EString getFileName(cpStr path)</div><div class="ttdoc">Retrieves just the file name from a fully qualified file name.</div><div class="ttdef"><b>Definition:</b> epath.h:135</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

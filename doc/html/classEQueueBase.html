@@ -72,6 +72,8 @@ $(function() {
 <div class="title">EQueueBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="eqbase_8h_source.html">eqbase.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EQueueBase:</div>
 <div class="dyncontent">
@@ -85,108 +87,936 @@ Inheritance diagram for EQueueBase:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:adf83a626534ef857ba365cef9778e7f0"><td class="memItemLeft" align="right" valign="top"><a id="adf83a626534ef857ba365cef9778e7f0"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Mode</b> { <b>ReadOnly</b>, 
-<b>WriteOnly</b>, 
-<b>ReadWrite</b>
+<tr class="memitem:adf83a626534ef857ba365cef9778e7f0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> { <a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">ReadOnly</a>, 
+<a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">WriteOnly</a>, 
+<a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">ReadWrite</a>
  }</td></tr>
 <tr class="separator:adf83a626534ef857ba365cef9778e7f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afd7e86bdbaa63071881b55ff9bad2710"><td class="memItemLeft" align="right" valign="top"><a id="afd7e86bdbaa63071881b55ff9bad2710"></a>
-Bool&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> (<a class="el" href="classEQueueMessage.html">EQueueMessage</a> &amp;msg, Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memitem:afd7e86bdbaa63071881b55ff9bad2710"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#afd7e86bdbaa63071881b55ff9bad2710">push</a> (<a class="el" href="classEQueueMessage.html">EQueueMessage</a> &amp;msg, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
 <tr class="separator:afd7e86bdbaa63071881b55ff9bad2710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0c64187bcd6c50b817b0e9fff35234"><td class="memItemLeft" align="right" valign="top"><a id="a9a0c64187bcd6c50b817b0e9fff35234"></a>
-<a class="el" href="classEQueueMessage.html">EQueueMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> (Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memitem:a9a0c64187bcd6c50b817b0e9fff35234"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEQueueMessage.html">EQueueMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a9a0c64187bcd6c50b817b0e9fff35234">pop</a> (<a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
 <tr class="separator:a9a0c64187bcd6c50b817b0e9fff35234"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a9115253f51690fd3426bceea0ec723"><td class="memItemLeft" align="right" valign="top"><a id="a6a9115253f51690fd3426bceea0ec723"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>destroy</b> ()</td></tr>
+<tr class="memitem:a6a9115253f51690fd3426bceea0ec723"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a6a9115253f51690fd3426bceea0ec723">destroy</a> ()</td></tr>
 <tr class="separator:a6a9115253f51690fd3426bceea0ec723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:acc41a4ed3bea713270d6ff81c8ccaad6"><td class="memItemLeft" align="right" valign="top"><a id="acc41a4ed3bea713270d6ff81c8ccaad6"></a>
-virtual Bool&#160;</td><td class="memItemRight" valign="bottom"><b>isPublic</b> ()=0</td></tr>
+<tr class="memitem:acc41a4ed3bea713270d6ff81c8ccaad6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#acc41a4ed3bea713270d6ff81c8ccaad6">isPublic</a> ()=0</td></tr>
 <tr class="separator:acc41a4ed3bea713270d6ff81c8ccaad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab12a3cd370953f5a22973dc66a13267b"><td class="memItemLeft" align="right" valign="top"><a id="ab12a3cd370953f5a22973dc66a13267b"></a>
-virtual ULong &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>msgSize</b> ()=0</td></tr>
+<tr class="memitem:ab12a3cd370953f5a22973dc66a13267b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#ab12a3cd370953f5a22973dc66a13267b">msgSize</a> ()=0</td></tr>
 <tr class="separator:ab12a3cd370953f5a22973dc66a13267b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf91734515ed04fd7b049e61509503bb"><td class="memItemLeft" align="right" valign="top"><a id="acf91734515ed04fd7b049e61509503bb"></a>
-virtual Int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>msgCnt</b> ()=0</td></tr>
+<tr class="memitem:acf91734515ed04fd7b049e61509503bb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#acf91734515ed04fd7b049e61509503bb">msgCnt</a> ()=0</td></tr>
 <tr class="separator:acf91734515ed04fd7b049e61509503bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5644ac763fb0db5812102a33fae45e86"><td class="memItemLeft" align="right" valign="top"><a id="a5644ac763fb0db5812102a33fae45e86"></a>
-virtual Long &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>msgHead</b> ()=0</td></tr>
+<tr class="memitem:a5644ac763fb0db5812102a33fae45e86"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a5644ac763fb0db5812102a33fae45e86">msgHead</a> ()=0</td></tr>
 <tr class="separator:a5644ac763fb0db5812102a33fae45e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cb0a114b6f4296e7b42e3367e1c3bef"><td class="memItemLeft" align="right" valign="top"><a id="a4cb0a114b6f4296e7b42e3367e1c3bef"></a>
-virtual Long &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>msgTail</b> ()=0</td></tr>
+<tr class="memitem:a4cb0a114b6f4296e7b42e3367e1c3bef"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a4cb0a114b6f4296e7b42e3367e1c3bef">msgTail</a> ()=0</td></tr>
 <tr class="separator:a4cb0a114b6f4296e7b42e3367e1c3bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed693c8b8a7119af2397688f93563a94"><td class="memItemLeft" align="right" valign="top"><a id="aed693c8b8a7119af2397688f93563a94"></a>
-virtual Bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>multipleReaders</b> ()=0</td></tr>
+<tr class="memitem:aed693c8b8a7119af2397688f93563a94"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#aed693c8b8a7119af2397688f93563a94">multipleReaders</a> ()=0</td></tr>
 <tr class="separator:aed693c8b8a7119af2397688f93563a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e13561e43644cb5f75c9bf5c3892cd4"><td class="memItemLeft" align="right" valign="top"><a id="a1e13561e43644cb5f75c9bf5c3892cd4"></a>
-virtual Bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>multipleWriters</b> ()=0</td></tr>
+<tr class="memitem:a1e13561e43644cb5f75c9bf5c3892cd4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a1e13561e43644cb5f75c9bf5c3892cd4">multipleWriters</a> ()=0</td></tr>
 <tr class="separator:a1e13561e43644cb5f75c9bf5c3892cd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae1ff98a5be367c3f20186ca14e1b53"><td class="memItemLeft" align="right" valign="top"><a id="a6ae1ff98a5be367c3f20186ca14e1b53"></a>
-virtual Int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>numReaders</b> ()=0</td></tr>
+<tr class="memitem:a6ae1ff98a5be367c3f20186ca14e1b53"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a6ae1ff98a5be367c3f20186ca14e1b53">numReaders</a> ()=0</td></tr>
 <tr class="separator:a6ae1ff98a5be367c3f20186ca14e1b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26725be06f7cc36bd6ad7b259f25fc41"><td class="memItemLeft" align="right" valign="top"><a id="a26725be06f7cc36bd6ad7b259f25fc41"></a>
-virtual Int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>numWriters</b> ()=0</td></tr>
+<tr class="memitem:a26725be06f7cc36bd6ad7b259f25fc41"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a26725be06f7cc36bd6ad7b259f25fc41">numWriters</a> ()=0</td></tr>
 <tr class="separator:a26725be06f7cc36bd6ad7b259f25fc41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04c29db780bb87ca32a4372a8c3c2578"><td class="memItemLeft" align="right" valign="top"><a id="a04c29db780bb87ca32a4372a8c3c2578"></a>
-virtual Int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>refCnt</b> ()=0</td></tr>
+<tr class="memitem:a04c29db780bb87ca32a4372a8c3c2578"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a04c29db780bb87ca32a4372a8c3c2578">refCnt</a> ()=0</td></tr>
 <tr class="separator:a04c29db780bb87ca32a4372a8c3c2578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dfb32fe265be92b655d5ba1b5ecee1e"><td class="memItemLeft" align="right" valign="top"><a id="a2dfb32fe265be92b655d5ba1b5ecee1e"></a>
-virtual pChar&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> ()=0</td></tr>
+<tr class="memitem:a2dfb32fe265be92b655d5ba1b5ecee1e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#aae94c6793132a6ae5d6a6af0722d32ce">pChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a2dfb32fe265be92b655d5ba1b5ecee1e">data</a> ()=0</td></tr>
 <tr class="separator:a2dfb32fe265be92b655d5ba1b5ecee1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6e43b92a02c9dab48291c15c612ef20"><td class="memItemLeft" align="right" valign="top"><a id="ae6e43b92a02c9dab48291c15c612ef20"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>allocDataSpace</b> (cpStr sFile, Char cId, Int nSize)=0</td></tr>
+<tr class="memitem:ae6e43b92a02c9dab48291c15c612ef20"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#ae6e43b92a02c9dab48291c15c612ef20">allocDataSpace</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> sFile, <a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a> cId, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> nSize)=0</td></tr>
 <tr class="separator:ae6e43b92a02c9dab48291c15c612ef20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acee5cc7a523879f9d57c9c4b5b4b9c0f"><td class="memItemLeft" align="right" valign="top"><a id="acee5cc7a523879f9d57c9c4b5b4b9c0f"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>initReadMutex</b> ()=0</td></tr>
+<tr class="memitem:acee5cc7a523879f9d57c9c4b5b4b9c0f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#acee5cc7a523879f9d57c9c4b5b4b9c0f">initReadMutex</a> ()=0</td></tr>
 <tr class="separator:acee5cc7a523879f9d57c9c4b5b4b9c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca573525bcec1c76838e2f293815a686"><td class="memItemLeft" align="right" valign="top"><a id="aca573525bcec1c76838e2f293815a686"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>initWriteMutex</b> ()=0</td></tr>
+<tr class="memitem:aca573525bcec1c76838e2f293815a686"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#aca573525bcec1c76838e2f293815a686">initWriteMutex</a> ()=0</td></tr>
 <tr class="separator:aca573525bcec1c76838e2f293815a686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b3a3b8c0532a3de8d15c67e5df57d72"><td class="memItemLeft" align="right" valign="top"><a id="a6b3a3b8c0532a3de8d15c67e5df57d72"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>initSemFree</b> (UInt initialCount)=0</td></tr>
+<tr class="memitem:a6b3a3b8c0532a3de8d15c67e5df57d72"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a6b3a3b8c0532a3de8d15c67e5df57d72">initSemFree</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> initialCount)=0</td></tr>
 <tr class="separator:a6b3a3b8c0532a3de8d15c67e5df57d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ab03a52e6bf59b1d204891633015d9e"><td class="memItemLeft" align="right" valign="top"><a id="a0ab03a52e6bf59b1d204891633015d9e"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>initSemMsgs</b> (UInt initialCount)=0</td></tr>
+<tr class="memitem:a0ab03a52e6bf59b1d204891633015d9e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a0ab03a52e6bf59b1d204891633015d9e">initSemMsgs</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> initialCount)=0</td></tr>
 <tr class="separator:a0ab03a52e6bf59b1d204891633015d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60f38579a0c2e017671c36bce76487c7"><td class="memItemLeft" align="right" valign="top"><a id="a60f38579a0c2e017671c36bce76487c7"></a>
-virtual <a class="el" href="classEMutexData.html">EMutexData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>readMutex</b> ()=0</td></tr>
+<tr class="memitem:a60f38579a0c2e017671c36bce76487c7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classEMutexData.html">EMutexData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a60f38579a0c2e017671c36bce76487c7">readMutex</a> ()=0</td></tr>
 <tr class="separator:a60f38579a0c2e017671c36bce76487c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4b0e601a2f346c1fb8920650fe6f100"><td class="memItemLeft" align="right" valign="top"><a id="ab4b0e601a2f346c1fb8920650fe6f100"></a>
-virtual <a class="el" href="classEMutexData.html">EMutexData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>writeMutex</b> ()=0</td></tr>
+<tr class="memitem:ab4b0e601a2f346c1fb8920650fe6f100"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classEMutexData.html">EMutexData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#ab4b0e601a2f346c1fb8920650fe6f100">writeMutex</a> ()=0</td></tr>
 <tr class="separator:ab4b0e601a2f346c1fb8920650fe6f100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa84272a470010d66d6fbe8a9125533c9"><td class="memItemLeft" align="right" valign="top"><a id="aa84272a470010d66d6fbe8a9125533c9"></a>
-virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>semMsgs</b> ()=0</td></tr>
+<tr class="memitem:aa84272a470010d66d6fbe8a9125533c9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#aa84272a470010d66d6fbe8a9125533c9">semMsgs</a> ()=0</td></tr>
 <tr class="separator:aa84272a470010d66d6fbe8a9125533c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af85cb957f50c77b80f4b789d647430de"><td class="memItemLeft" align="right" valign="top"><a id="af85cb957f50c77b80f4b789d647430de"></a>
-virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>semFree</b> ()=0</td></tr>
+<tr class="memitem:af85cb957f50c77b80f4b789d647430de"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#af85cb957f50c77b80f4b789d647430de">semFree</a> ()=0</td></tr>
 <tr class="separator:af85cb957f50c77b80f4b789d647430de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b1a5e964315ecab4ea970c1af01d174"><td class="memItemLeft" align="right" valign="top"><a id="a5b1a5e964315ecab4ea970c1af01d174"></a>
-virtual <a class="el" href="classEQueueMessage.html">EQueueMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>allocMessage</b> (Long msgType)=0</td></tr>
+<tr class="memitem:a5b1a5e964315ecab4ea970c1af01d174"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classEQueueMessage.html">EQueueMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a5b1a5e964315ecab4ea970c1af01d174">allocMessage</a> (<a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> msgType)=0</td></tr>
 <tr class="separator:a5b1a5e964315ecab4ea970c1af01d174"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8004de05d65ecd4354c0ef0048bb6e5"><td class="memItemLeft" align="right" valign="top"><a id="af8004de05d65ecd4354c0ef0048bb6e5"></a>
-Mode&#160;</td><td class="memItemRight" valign="bottom"><b>mode</b> ()</td></tr>
+<tr class="memitem:af8004de05d65ecd4354c0ef0048bb6e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#af8004de05d65ecd4354c0ef0048bb6e5">mode</a> ()</td></tr>
 <tr class="separator:af8004de05d65ecd4354c0ef0048bb6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a656bda62202483e0b95dc39439e4495a"><td class="memItemLeft" align="right" valign="top"><a id="a656bda62202483e0b95dc39439e4495a"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (ULong nMsgSize, Int nMsgCnt, Int queueId, Bool bMultipleReaders, Bool bMultipleWriters, EQueueBase::Mode eMode)</td></tr>
+<tr class="memitem:aabde60415a88c9726bdd03f9067d6de0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#aabde60415a88c9726bdd03f9067d6de0">EQueueBase</a> ()</td></tr>
+<tr class="separator:aabde60415a88c9726bdd03f9067d6de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e527cf8447a7ec9dad69a88f789f64"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a26e527cf8447a7ec9dad69a88f789f64">~EQueueBase</a> ()</td></tr>
+<tr class="separator:a26e527cf8447a7ec9dad69a88f789f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656bda62202483e0b95dc39439e4495a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a656bda62202483e0b95dc39439e4495a">init</a> (<a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a> nMsgSize, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> nMsgCnt, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> queueId, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bMultipleReaders, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bMultipleWriters, <a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a> eMode)</td></tr>
 <tr class="separator:a656bda62202483e0b95dc39439e4495a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ab2167c150774a87cacef50a607476cb7"><td class="memItemLeft" align="right" valign="top"><a id="ab2167c150774a87cacef50a607476cb7"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>EQueuePublic</b></td></tr>
+<tr class="memitem:ab2167c150774a87cacef50a607476cb7"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#ab2167c150774a87cacef50a607476cb7">EQueuePublic</a></td></tr>
 <tr class="separator:ab2167c150774a87cacef50a607476cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34f08cc45eeb800bbb03d567b63e6e35"><td class="memItemLeft" align="right" valign="top"><a id="a34f08cc45eeb800bbb03d567b63e6e35"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>EQueuePrivate</b></td></tr>
+<tr class="memitem:a34f08cc45eeb800bbb03d567b63e6e35"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html#a34f08cc45eeb800bbb03d567b63e6e35">EQueuePrivate</a></td></tr>
 <tr class="separator:a34f08cc45eeb800bbb03d567b63e6e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="adf83a626534ef857ba365cef9778e7f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf83a626534ef857ba365cef9778e7f0">&#9670;&nbsp;</a></span>Mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d"></a>ReadOnly&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507"></a>WriteOnly&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602"></a>ReadWrite&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aabde60415a88c9726bdd03f9067d6de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabde60415a88c9726bdd03f9067d6de0">&#9670;&nbsp;</a></span>EQueueBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EQueueBase::EQueueBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a26e527cf8447a7ec9dad69a88f789f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26e527cf8447a7ec9dad69a88f789f64">&#9670;&nbsp;</a></span>~EQueueBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EQueueBase::~EQueueBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae6e43b92a02c9dab48291c15c612ef20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6e43b92a02c9dab48291c15c612ef20">&#9670;&nbsp;</a></span>allocDataSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::allocDataSpace </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>sFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a>&#160;</td>
+          <td class="paramname"><em>cId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>nSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a0cf5c9fa46d082f9faa8e397eecaa41a">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#abd697d0580880b362ce1df3d34bfe873">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a5b1a5e964315ecab4ea970c1af01d174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b1a5e964315ecab4ea970c1af01d174">&#9670;&nbsp;</a></span>allocMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classEQueueMessage.html">EQueueMessage</a>* EQueueBase::allocMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&#160;</td>
+          <td class="paramname"><em>msgType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a8e0038d98be43a1657cdaa824be8126c">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a2810955449e7550f9ac0b9a0b4e80a8b">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a2dfb32fe265be92b655d5ba1b5ecee1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dfb32fe265be92b655d5ba1b5ecee1e">&#9670;&nbsp;</a></span>data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#aae94c6793132a6ae5d6a6af0722d32ce">pChar</a> EQueueBase::data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a30c0304a154ac7e2d8f46ef1ed25e286">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#acfd1e434fb4ab75a1725fb6e92c5d434">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a6a9115253f51690fd3426bceea0ec723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a9115253f51690fd3426bceea0ec723">&#9670;&nbsp;</a></span>destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a656bda62202483e0b95dc39439e4495a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a656bda62202483e0b95dc39439e4495a">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a>&#160;</td>
+          <td class="paramname"><em>nMsgSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>nMsgCnt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>queueId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>bMultipleReaders</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>bMultipleWriters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a>&#160;</td>
+          <td class="paramname"><em>eMode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acee5cc7a523879f9d57c9c4b5b4b9c0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee5cc7a523879f9d57c9c4b5b4b9c0f">&#9670;&nbsp;</a></span>initReadMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::initReadMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a992d60a0441074076d193eda86e3aedd">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a8b416417fbffff5980d61b2ca2c0120a">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a6b3a3b8c0532a3de8d15c67e5df57d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3a3b8c0532a3de8d15c67e5df57d72">&#9670;&nbsp;</a></span>initSemFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::initSemFree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a>&#160;</td>
+          <td class="paramname"><em>initialCount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a0946075accfbe4d9e3bb34e94575b7b3">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#ac57cc2a1d1d867af466364b70a1c5868">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a0ab03a52e6bf59b1d204891633015d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ab03a52e6bf59b1d204891633015d9e">&#9670;&nbsp;</a></span>initSemMsgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::initSemMsgs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a>&#160;</td>
+          <td class="paramname"><em>initialCount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a5bcf10543e0ba8cb4a6530e572e3f01d">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a23869e554d5ebfae258f133eac63a50b">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="aca573525bcec1c76838e2f293815a686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca573525bcec1c76838e2f293815a686">&#9670;&nbsp;</a></span>initWriteMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EQueueBase::initWriteMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a4d26303d03f5aefbc4f72c9188763f2d">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a2602f0960490bb8b123bef231b8c5d35">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="acc41a4ed3bea713270d6ff81c8ccaad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc41a4ed3bea713270d6ff81c8ccaad6">&#9670;&nbsp;</a></span>isPublic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EQueueBase::isPublic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#aa6313739c36eb944e3f2a94a88dcca1b">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#ad2248f44d5e903acd0b81f49a1774654">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="af8004de05d65ecd4354c0ef0048bb6e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8004de05d65ecd4354c0ef0048bb6e5">&#9670;&nbsp;</a></span>mode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> EQueueBase::mode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf91734515ed04fd7b049e61509503bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf91734515ed04fd7b049e61509503bb">&#9670;&nbsp;</a></span>msgCnt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EQueueBase::msgCnt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#ad2a860b459a224118b39b3ba62389b9a">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a77fa3f55b7fc89c44a4c3ecdd66c9413">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a5644ac763fb0db5812102a33fae45e86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5644ac763fb0db5812102a33fae45e86">&#9670;&nbsp;</a></span>msgHead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&amp; EQueueBase::msgHead </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#ab82ff80b9812d608813c5867c49bd0c6">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a1638859e1e63b6caad340a83d346ca64">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="ab12a3cd370953f5a22973dc66a13267b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab12a3cd370953f5a22973dc66a13267b">&#9670;&nbsp;</a></span>msgSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a>&amp; EQueueBase::msgSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#ad4df37c50c8bcc305bfb0952fbb277b5">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a1747e2e1c126374a352135bf9916ac5c">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a4cb0a114b6f4296e7b42e3367e1c3bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb0a114b6f4296e7b42e3367e1c3bef">&#9670;&nbsp;</a></span>msgTail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&amp; EQueueBase::msgTail </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#ab0c5c7238bd77a0ad5f6fd19163f5fc5">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#aff61ff708908587a32effafd6d48fefa">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="aed693c8b8a7119af2397688f93563a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed693c8b8a7119af2397688f93563a94">&#9670;&nbsp;</a></span>multipleReaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&amp; EQueueBase::multipleReaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a9d4e237f5f4c2c4815588f71bdde73fe">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#ac96d8ddae9b018c1e1ba97825b4bf81d">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a1e13561e43644cb5f75c9bf5c3892cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e13561e43644cb5f75c9bf5c3892cd4">&#9670;&nbsp;</a></span>multipleWriters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&amp; EQueueBase::multipleWriters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a8511e9cac28ae383a023ac351fa59ff5">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a29976f4d6a9dbbde6a58d07855128ab4">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a6ae1ff98a5be367c3f20186ca14e1b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae1ff98a5be367c3f20186ca14e1b53">&#9670;&nbsp;</a></span>numReaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EQueueBase::numReaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a492afc58527f907de1dd215e5162fbb3">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#afbf24e6603486bb89d5cab8bae9bef2f">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a26725be06f7cc36bd6ad7b259f25fc41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26725be06f7cc36bd6ad7b259f25fc41">&#9670;&nbsp;</a></span>numWriters()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EQueueBase::numWriters </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#acfd60e7f2a41e2ef1da6905cabb3b7a8">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a91ba633fb9a05aad46d875fa850a9187">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a9a0c64187bcd6c50b817b0e9fff35234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0c64187bcd6c50b817b0e9fff35234">&#9670;&nbsp;</a></span>pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEQueueMessage.html">EQueueMessage</a> * EQueueBase::pop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>wait</em> = <code><a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd7e86bdbaa63071881b55ff9bad2710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7e86bdbaa63071881b55ff9bad2710">&#9670;&nbsp;</a></span>push()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EQueueBase::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEQueueMessage.html">EQueueMessage</a> &amp;&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>wait</em> = <code><a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60f38579a0c2e017671c36bce76487c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60f38579a0c2e017671c36bce76487c7">&#9670;&nbsp;</a></span>readMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classEMutexData.html">EMutexData</a>&amp; EQueueBase::readMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a8d350966d4c5cc8466df63a36d4d81c5">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a5c5e533c1244854a850b78a7426427a9">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="a04c29db780bb87ca32a4372a8c3c2578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04c29db780bb87ca32a4372a8c3c2578">&#9670;&nbsp;</a></span>refCnt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EQueueBase::refCnt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a3adc3bdbb693324fabbc1837567698a1">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a45e57e34be05e838cbd17e64059cc978">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="af85cb957f50c77b80f4b789d647430de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af85cb957f50c77b80f4b789d647430de">&#9670;&nbsp;</a></span>semFree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a>&amp; EQueueBase::semFree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#ac61b2a6de8b56391bfd31a8f0ec614f6">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#ace0d52b5f951adbb4f5650fcc9d1799b">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="aa84272a470010d66d6fbe8a9125533c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa84272a470010d66d6fbe8a9125533c9">&#9670;&nbsp;</a></span>semMsgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a>&amp; EQueueBase::semMsgs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a06004ca729865f4594f36c69e6f65885">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a4345987346fc7ff97c754b693e1aa997">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<a id="ab4b0e601a2f346c1fb8920650fe6f100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4b0e601a2f346c1fb8920650fe6f100">&#9670;&nbsp;</a></span>writeMutex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classEMutexData.html">EMutexData</a>&amp; EQueueBase::writeMutex </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classEQueuePublic.html#a3de7d23ab1fb573ce2c4f6896b642101">EQueuePublic</a>, and <a class="el" href="classEQueuePrivate.html#a5862a0e3cc4b11cdc2c4e534d16b502b">EQueuePrivate</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a34f08cc45eeb800bbb03d567b63e6e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34f08cc45eeb800bbb03d567b63e6e35">&#9670;&nbsp;</a></span>EQueuePrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classEQueuePrivate.html">EQueuePrivate</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2167c150774a87cacef50a607476cb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2167c150774a87cacef50a607476cb7">&#9670;&nbsp;</a></span>EQueuePublic</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classEQueuePublic.html">EQueuePublic</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="eqbase_8h_source.html">eqbase.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/eqbase.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="eqbase_8h_source.html">eqbase.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="eqbase_8cpp.html">eqbase.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

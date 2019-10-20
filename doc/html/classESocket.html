@@ -72,6 +72,8 @@ $(function() {
 <div class="title">ESocket Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="esocket_8h_source.html">esocket.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ESocket:</div>
 <div class="dyncontent">
@@ -85,127 +87,1023 @@ Inheritance diagram for ESocket:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:acaee031fbd05eccae4ddfda016c12e27"><td class="memItemLeft" align="right" valign="top"><a id="acaee031fbd05eccae4ddfda016c12e27"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>SOCKETSTATE</b> { <b>DISCONNECTED</b>, 
-<b>CONNECTING</b>, 
-<b>CONNECTED</b>
+<tr class="memitem:acaee031fbd05eccae4ddfda016c12e27"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">SOCKETSTATE</a> { <a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27af0dbe49caa34312748eb66d2b54f4c3d">DISCONNECTED</a>, 
+<a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27a8ef6d088dce0a8d520bd924272faa20d">CONNECTING</a>, 
+<a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27a97655e71b8bacce5f8b888cace028765">CONNECTED</a>
  }</td></tr>
 <tr class="separator:acaee031fbd05eccae4ddfda016c12e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4c070650302e7297f00256ed1d650b8"><td class="memItemLeft" align="right" valign="top"><a id="af4c070650302e7297f00256ed1d650b8"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>SOCKETSTYLE</b> { <b>CONVERSE</b>, 
-<b>LISTEN</b>
+<tr class="memitem:af4c070650302e7297f00256ed1d650b8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">SOCKETSTYLE</a> { <a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8abec8e77ca91624ceab2314eda7a27b2d">CONVERSE</a>, 
+<a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8a7889457849b9c3f302d18729512b0eac">LISTEN</a>
  }</td></tr>
 <tr class="separator:af4c070650302e7297f00256ed1d650b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1d20bd730fe833b7264a2b93051aeda0"><td class="memItemLeft" align="right" valign="top"><a id="a1d20bd730fe833b7264a2b93051aeda0"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>onClose</b> ()</td></tr>
+<tr class="memitem:afbd7f7028b6f91011cd41eaed4f3bfa3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#afbd7f7028b6f91011cd41eaed4f3bfa3">~ESocket</a> ()</td></tr>
+<tr class="separator:afbd7f7028b6f91011cd41eaed4f3bfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d20bd730fe833b7264a2b93051aeda0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1d20bd730fe833b7264a2b93051aeda0">onClose</a> ()</td></tr>
 <tr class="separator:a1d20bd730fe833b7264a2b93051aeda0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1327c68da21229566cba9fef5fed2dd2"><td class="memItemLeft" align="right" valign="top"><a id="a1327c68da21229566cba9fef5fed2dd2"></a>
-virtual Void&#160;</td><td class="memItemRight" valign="bottom"><b>onError</b> ()</td></tr>
+<tr class="memitem:a1327c68da21229566cba9fef5fed2dd2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1327c68da21229566cba9fef5fed2dd2">onError</a> ()</td></tr>
 <tr class="separator:a1327c68da21229566cba9fef5fed2dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a421533d850534966c45abd00de36ea7f"><td class="memItemLeft" align="right" valign="top"><a id="a421533d850534966c45abd00de36ea7f"></a>
-<a class="el" href="classESocketThread.html">ESocketThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getThread</b> ()</td></tr>
+<tr class="memitem:a421533d850534966c45abd00de36ea7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocketThread.html">ESocketThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a421533d850534966c45abd00de36ea7f">getThread</a> ()</td></tr>
 <tr class="separator:a421533d850534966c45abd00de36ea7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96e8fbf7b5eec67f4aca48d2a2ee365c"><td class="memItemLeft" align="right" valign="top"><a id="a96e8fbf7b5eec67f4aca48d2a2ee365c"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setFamily</b> (Int family)</td></tr>
+<tr class="memitem:a96e8fbf7b5eec67f4aca48d2a2ee365c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a96e8fbf7b5eec67f4aca48d2a2ee365c">setFamily</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> family)</td></tr>
 <tr class="separator:a96e8fbf7b5eec67f4aca48d2a2ee365c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af97f37075a18383db1cf2dbbf41ded6a"><td class="memItemLeft" align="right" valign="top"><a id="af97f37075a18383db1cf2dbbf41ded6a"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getFamily</b> ()</td></tr>
+<tr class="memitem:af97f37075a18383db1cf2dbbf41ded6a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#af97f37075a18383db1cf2dbbf41ded6a">getFamily</a> ()</td></tr>
 <tr class="separator:af97f37075a18383db1cf2dbbf41ded6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a975c7eac247208541d018e4bee5708bf"><td class="memItemLeft" align="right" valign="top"><a id="a975c7eac247208541d018e4bee5708bf"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setType</b> (Int type)</td></tr>
+<tr class="memitem:a975c7eac247208541d018e4bee5708bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a975c7eac247208541d018e4bee5708bf">setType</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> type)</td></tr>
 <tr class="separator:a975c7eac247208541d018e4bee5708bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a145df98da5a4715d5e175d9b02041319"><td class="memItemLeft" align="right" valign="top"><a id="a145df98da5a4715d5e175d9b02041319"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
+<tr class="memitem:a145df98da5a4715d5e175d9b02041319"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a145df98da5a4715d5e175d9b02041319">getType</a> ()</td></tr>
 <tr class="separator:a145df98da5a4715d5e175d9b02041319"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adeed363269f4c3ae7b77a90c1e3b6b3c"><td class="memItemLeft" align="right" valign="top"><a id="adeed363269f4c3ae7b77a90c1e3b6b3c"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setProtocol</b> (Int protocol)</td></tr>
+<tr class="memitem:adeed363269f4c3ae7b77a90c1e3b6b3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#adeed363269f4c3ae7b77a90c1e3b6b3c">setProtocol</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> protocol)</td></tr>
 <tr class="separator:adeed363269f4c3ae7b77a90c1e3b6b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85bd482f0ad1ec4b36c0b4e4a6a728b5"><td class="memItemLeft" align="right" valign="top"><a id="a85bd482f0ad1ec4b36c0b4e4a6a728b5"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getProtocol</b> ()</td></tr>
+<tr class="memitem:a85bd482f0ad1ec4b36c0b4e4a6a728b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a85bd482f0ad1ec4b36c0b4e4a6a728b5">getProtocol</a> ()</td></tr>
 <tr class="separator:a85bd482f0ad1ec4b36c0b4e4a6a728b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e407a1b7b56e60534cffa688385e479"><td class="memItemLeft" align="right" valign="top"><a id="a1e407a1b7b56e60534cffa688385e479"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getError</b> ()</td></tr>
+<tr class="memitem:a1e407a1b7b56e60534cffa688385e479"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1e407a1b7b56e60534cffa688385e479">getError</a> ()</td></tr>
 <tr class="separator:a1e407a1b7b56e60534cffa688385e479"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b1da2b8bab429801f12656f65a02d66"><td class="memItemLeft" align="right" valign="top"><a id="a1b1da2b8bab429801f12656f65a02d66"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setPort</b> (UShort port)</td></tr>
+<tr class="memitem:a1b1da2b8bab429801f12656f65a02d66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1b1da2b8bab429801f12656f65a02d66">setPort</a> (<a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a> port)</td></tr>
 <tr class="separator:a1b1da2b8bab429801f12656f65a02d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af467c4ed7cec1f60bdbfaf37eec0756c"><td class="memItemLeft" align="right" valign="top"><a id="af467c4ed7cec1f60bdbfaf37eec0756c"></a>
-UShort&#160;</td><td class="memItemRight" valign="bottom"><b>getPort</b> ()</td></tr>
+<tr class="memitem:af467c4ed7cec1f60bdbfaf37eec0756c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#af467c4ed7cec1f60bdbfaf37eec0756c">getPort</a> ()</td></tr>
 <tr class="separator:af467c4ed7cec1f60bdbfaf37eec0756c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e2de8cee5b0ece634d1adafb5210c2c"><td class="memItemLeft" align="right" valign="top"><a id="a2e2de8cee5b0ece634d1adafb5210c2c"></a>
-SOCKETSTATE&#160;</td><td class="memItemRight" valign="bottom"><b>getState</b> ()</td></tr>
+<tr class="memitem:a2e2de8cee5b0ece634d1adafb5210c2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">SOCKETSTATE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a2e2de8cee5b0ece634d1adafb5210c2c">getState</a> ()</td></tr>
 <tr class="separator:a2e2de8cee5b0ece634d1adafb5210c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae33d5ebfc470468505637a52621444a5"><td class="memItemLeft" align="right" valign="top"><a id="ae33d5ebfc470468505637a52621444a5"></a>
-Bool&#160;</td><td class="memItemRight" valign="bottom"><b>isConnected</b> ()</td></tr>
+<tr class="memitem:ae33d5ebfc470468505637a52621444a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ae33d5ebfc470468505637a52621444a5">isConnected</a> ()</td></tr>
 <tr class="separator:ae33d5ebfc470468505637a52621444a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cfde8b853fbc1b7a4377334a7e46165"><td class="memItemLeft" align="right" valign="top"><a id="a9cfde8b853fbc1b7a4377334a7e46165"></a>
-SOCKETSTYLE&#160;</td><td class="memItemRight" valign="bottom"><b>getStyle</b> ()</td></tr>
+<tr class="memitem:a9cfde8b853fbc1b7a4377334a7e46165"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">SOCKETSTYLE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a9cfde8b853fbc1b7a4377334a7e46165">getStyle</a> ()</td></tr>
 <tr class="separator:a9cfde8b853fbc1b7a4377334a7e46165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d818c78f149dbdb5ec61f6186d935c9"><td class="memItemLeft" align="right" valign="top"><a id="a2d818c78f149dbdb5ec61f6186d935c9"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setIpAddress</b> (cpStr addr)</td></tr>
+<tr class="memitem:a2d818c78f149dbdb5ec61f6186d935c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a2d818c78f149dbdb5ec61f6186d935c9">setIpAddress</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> addr)</td></tr>
 <tr class="separator:a2d818c78f149dbdb5ec61f6186d935c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1199a926b72a9fc6cedb84922aa47ca6"><td class="memItemLeft" align="right" valign="top"><a id="a1199a926b72a9fc6cedb84922aa47ca6"></a>
-cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getIpAddress</b> ()</td></tr>
+<tr class="memitem:a1199a926b72a9fc6cedb84922aa47ca6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1199a926b72a9fc6cedb84922aa47ca6">getIpAddress</a> ()</td></tr>
 <tr class="separator:a1199a926b72a9fc6cedb84922aa47ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a908819195e5f5d927ffc6e1dec996f"><td class="memItemLeft" align="right" valign="top"><a id="a9a908819195e5f5d927ffc6e1dec996f"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> ()</td></tr>
+<tr class="memitem:a9a908819195e5f5d927ffc6e1dec996f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a9a908819195e5f5d927ffc6e1dec996f">bind</a> ()</td></tr>
 <tr class="separator:a9a908819195e5f5d927ffc6e1dec996f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88fdf1eee236be7d840dcbdbf20d059b"><td class="memItemLeft" align="right" valign="top"><a id="a88fdf1eee236be7d840dcbdbf20d059b"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (UShort port)</td></tr>
+<tr class="memitem:a88fdf1eee236be7d840dcbdbf20d059b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a88fdf1eee236be7d840dcbdbf20d059b">bind</a> (<a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a> port)</td></tr>
 <tr class="separator:a88fdf1eee236be7d840dcbdbf20d059b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a890c533b0dc5cee20166082da57ecb11"><td class="memItemLeft" align="right" valign="top"><a id="a890c533b0dc5cee20166082da57ecb11"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>disconnect</b> ()</td></tr>
+<tr class="memitem:a890c533b0dc5cee20166082da57ecb11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a890c533b0dc5cee20166082da57ecb11">disconnect</a> ()</td></tr>
 <tr class="separator:a890c533b0dc5cee20166082da57ecb11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1a25a8ef9effb17e39d7248f0f093f9"><td class="memItemLeft" align="right" valign="top"><a id="ad1a25a8ef9effb17e39d7248f0f093f9"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memitem:ad1a25a8ef9effb17e39d7248f0f093f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ad1a25a8ef9effb17e39d7248f0f093f9">close</a> ()</td></tr>
 <tr class="separator:ad1a25a8ef9effb17e39d7248f0f093f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a174a5f1e923c2763bff1985c04118038"><td class="memItemLeft" align="right" valign="top"><a id="a174a5f1e923c2763bff1985c04118038"></a>
-cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getStateDescription</b> (ESocket::SOCKETSTATE state)</td></tr>
+<tr class="memitem:a174a5f1e923c2763bff1985c04118038"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a174a5f1e923c2763bff1985c04118038">getStateDescription</a> (<a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">ESocket::SOCKETSTATE</a> state)</td></tr>
 <tr class="separator:a174a5f1e923c2763bff1985c04118038"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace67e5fb724189c47310fe09e07b487a"><td class="memItemLeft" align="right" valign="top"><a id="ace67e5fb724189c47310fe09e07b487a"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getHandle</b> ()</td></tr>
+<tr class="memitem:ace67e5fb724189c47310fe09e07b487a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ace67e5fb724189c47310fe09e07b487a">getHandle</a> ()</td></tr>
 <tr class="separator:ace67e5fb724189c47310fe09e07b487a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a253bd87b098918726c60af47ddefd3de"><td class="memItemLeft" align="right" valign="top"><a id="a253bd87b098918726c60af47ddefd3de"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ESocket</b> (<a class="el" href="classESocketThread.html">ESocketThread</a> *pthread, SOCKETSTYLE style, Int family=AF_INET, Int type=SOCK_STREAM, Int protocol=0)</td></tr>
+<tr class="memitem:a253bd87b098918726c60af47ddefd3de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a253bd87b098918726c60af47ddefd3de">ESocket</a> (<a class="el" href="classESocketThread.html">ESocketThread</a> *pthread, <a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">SOCKETSTYLE</a> style, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> family=AF_INET, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> type=SOCK_STREAM, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> protocol=0)</td></tr>
 <tr class="separator:a253bd87b098918726c60af47ddefd3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5d0b583ea6ae02581bbf8825b7c9597"><td class="memItemLeft" align="right" valign="top"><a id="af5d0b583ea6ae02581bbf8825b7c9597"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>createSocket</b> (Int family, Int type, Int protocol)</td></tr>
+<tr class="memitem:af5d0b583ea6ae02581bbf8825b7c9597"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#af5d0b583ea6ae02581bbf8825b7c9597">createSocket</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> family, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> type, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> protocol)</td></tr>
 <tr class="separator:af5d0b583ea6ae02581bbf8825b7c9597"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a2df1b7c19a1e40e6ce49cfe3a278bd"><td class="memItemLeft" align="right" valign="top"><a id="a1a2df1b7c19a1e40e6ce49cfe3a278bd"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>assignAddress</b> (cpStr ipaddr, UShort port, Int family, Int socktype, Int flags, Int protocol, struct addrinfo **address)</td></tr>
+<tr class="memitem:a1a2df1b7c19a1e40e6ce49cfe3a278bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a1a2df1b7c19a1e40e6ce49cfe3a278bd">assignAddress</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> ipaddr, <a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a> port, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> family, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> socktype, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> flags, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> protocol, struct addrinfo **address)</td></tr>
 <tr class="separator:a1a2df1b7c19a1e40e6ce49cfe3a278bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed7c6fe61de922948b322ce3bf8a879d"><td class="memItemLeft" align="right" valign="top"><a id="aed7c6fe61de922948b322ce3bf8a879d"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setState</b> (SOCKETSTATE state)</td></tr>
+<tr class="memitem:aed7c6fe61de922948b322ce3bf8a879d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#aed7c6fe61de922948b322ce3bf8a879d">setState</a> (<a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">SOCKETSTATE</a> state)</td></tr>
 <tr class="separator:aed7c6fe61de922948b322ce3bf8a879d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0529e18e13cfcd4bcd1cc00f7ae81bcd"><td class="memItemLeft" align="right" valign="top"><a id="a0529e18e13cfcd4bcd1cc00f7ae81bcd"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>setError</b> ()</td></tr>
+<tr class="memitem:a0529e18e13cfcd4bcd1cc00f7ae81bcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a0529e18e13cfcd4bcd1cc00f7ae81bcd">setError</a> ()</td></tr>
 <tr class="separator:a0529e18e13cfcd4bcd1cc00f7ae81bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2df001142bc0dbaa2b43c40336fa73ba"><td class="memItemLeft" align="right" valign="top"><a id="a2df001142bc0dbaa2b43c40336fa73ba"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setError</b> (Int error)</td></tr>
+<tr class="memitem:a2df001142bc0dbaa2b43c40336fa73ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a2df001142bc0dbaa2b43c40336fa73ba">setError</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> error)</td></tr>
 <tr class="separator:a2df001142bc0dbaa2b43c40336fa73ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae581be6db0432ec3aedf98656534a1d8"><td class="memItemLeft" align="right" valign="top"><a id="ae581be6db0432ec3aedf98656534a1d8"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setHandle</b> (Int handle)</td></tr>
+<tr class="memitem:ae581be6db0432ec3aedf98656534a1d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ae581be6db0432ec3aedf98656534a1d8">setHandle</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> handle)</td></tr>
 <tr class="separator:ae581be6db0432ec3aedf98656534a1d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:ab87306f4659de4f99c136ed9e48e53a7"><td class="memItemLeft" align="right" valign="top"><a id="ab87306f4659de4f99c136ed9e48e53a7"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>ESocketListen</b></td></tr>
+<tr class="memitem:ab87306f4659de4f99c136ed9e48e53a7"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ab87306f4659de4f99c136ed9e48e53a7">ESocketListen</a></td></tr>
 <tr class="separator:ab87306f4659de4f99c136ed9e48e53a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42362bbaf173a64e85e1ba5d61415a1c"><td class="memItemLeft" align="right" valign="top"><a id="a42362bbaf173a64e85e1ba5d61415a1c"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>ESocketConverse</b></td></tr>
+<tr class="memitem:a42362bbaf173a64e85e1ba5d61415a1c"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#a42362bbaf173a64e85e1ba5d61415a1c">ESocketConverse</a></td></tr>
 <tr class="separator:a42362bbaf173a64e85e1ba5d61415a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad07786c422b3c9fa3632a57ce17140eb"><td class="memItemLeft" align="right" valign="top"><a id="ad07786c422b3c9fa3632a57ce17140eb"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>ESocketThread</b></td></tr>
+<tr class="memitem:ad07786c422b3c9fa3632a57ce17140eb"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket.html#ad07786c422b3c9fa3632a57ce17140eb">ESocketThread</a></td></tr>
 <tr class="separator:ad07786c422b3c9fa3632a57ce17140eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="acaee031fbd05eccae4ddfda016c12e27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaee031fbd05eccae4ddfda016c12e27">&#9670;&nbsp;</a></span>SOCKETSTATE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">ESocket::SOCKETSTATE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acaee031fbd05eccae4ddfda016c12e27af0dbe49caa34312748eb66d2b54f4c3d"></a>DISCONNECTED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acaee031fbd05eccae4ddfda016c12e27a8ef6d088dce0a8d520bd924272faa20d"></a>CONNECTING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acaee031fbd05eccae4ddfda016c12e27a97655e71b8bacce5f8b888cace028765"></a>CONNECTED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="af4c070650302e7297f00256ed1d650b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4c070650302e7297f00256ed1d650b8">&#9670;&nbsp;</a></span>SOCKETSTYLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">ESocket::SOCKETSTYLE</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af4c070650302e7297f00256ed1d650b8abec8e77ca91624ceab2314eda7a27b2d"></a>CONVERSE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af4c070650302e7297f00256ed1d650b8a7889457849b9c3f302d18729512b0eac"></a>LISTEN&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afbd7f7028b6f91011cd41eaed4f3bfa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd7f7028b6f91011cd41eaed4f3bfa3">&#9670;&nbsp;</a></span>~ESocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ESocket::~ESocket </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a253bd87b098918726c60af47ddefd3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a253bd87b098918726c60af47ddefd3de">&#9670;&nbsp;</a></span>ESocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ESocket::ESocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classESocketThread.html">ESocketThread</a> *&#160;</td>
+          <td class="paramname"><em>pthread</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">SOCKETSTYLE</a>&#160;</td>
+          <td class="paramname"><em>style</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>family</em> = <code>AF_INET</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>type</em> = <code>SOCK_STREAM</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>protocol</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1a2df1b7c19a1e40e6ce49cfe3a278bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a2df1b7c19a1e40e6ce49cfe3a278bd">&#9670;&nbsp;</a></span>assignAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::assignAddress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>ipaddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a>&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>socktype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>protocol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct addrinfo **&#160;</td>
+          <td class="paramname"><em>address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a908819195e5f5d927ffc6e1dec996f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a908819195e5f5d927ffc6e1dec996f">&#9670;&nbsp;</a></span>bind() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::bind </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88fdf1eee236be7d840dcbdbf20d059b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88fdf1eee236be7d840dcbdbf20d059b">&#9670;&nbsp;</a></span>bind() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::bind </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a>&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1a25a8ef9effb17e39d7248f0f093f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a25a8ef9effb17e39d7248f0f093f9">&#9670;&nbsp;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af5d0b583ea6ae02581bbf8825b7c9597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d0b583ea6ae02581bbf8825b7c9597">&#9670;&nbsp;</a></span>createSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::createSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>family</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>protocol</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a890c533b0dc5cee20166082da57ecb11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890c533b0dc5cee20166082da57ecb11">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::disconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1e407a1b7b56e60534cffa688385e479"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e407a1b7b56e60534cffa688385e479">&#9670;&nbsp;</a></span>getError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::getError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af97f37075a18383db1cf2dbbf41ded6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97f37075a18383db1cf2dbbf41ded6a">&#9670;&nbsp;</a></span>getFamily()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::getFamily </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace67e5fb724189c47310fe09e07b487a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace67e5fb724189c47310fe09e07b487a">&#9670;&nbsp;</a></span>getHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::getHandle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1199a926b72a9fc6cedb84922aa47ca6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1199a926b72a9fc6cedb84922aa47ca6">&#9670;&nbsp;</a></span>getIpAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> ESocket::getIpAddress </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af467c4ed7cec1f60bdbfaf37eec0756c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af467c4ed7cec1f60bdbfaf37eec0756c">&#9670;&nbsp;</a></span>getPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a> ESocket::getPort </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85bd482f0ad1ec4b36c0b4e4a6a728b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85bd482f0ad1ec4b36c0b4e4a6a728b5">&#9670;&nbsp;</a></span>getProtocol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::getProtocol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e2de8cee5b0ece634d1adafb5210c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e2de8cee5b0ece634d1adafb5210c2c">&#9670;&nbsp;</a></span>getState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">SOCKETSTATE</a> ESocket::getState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a174a5f1e923c2763bff1985c04118038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174a5f1e923c2763bff1985c04118038">&#9670;&nbsp;</a></span>getStateDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> ESocket::getStateDescription </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">ESocket::SOCKETSTATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9cfde8b853fbc1b7a4377334a7e46165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cfde8b853fbc1b7a4377334a7e46165">&#9670;&nbsp;</a></span>getStyle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classESocket.html#af4c070650302e7297f00256ed1d650b8">SOCKETSTYLE</a> ESocket::getStyle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a421533d850534966c45abd00de36ea7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421533d850534966c45abd00de36ea7f">&#9670;&nbsp;</a></span>getThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classESocketThread.html">ESocketThread</a>* ESocket::getThread </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a145df98da5a4715d5e175d9b02041319"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a145df98da5a4715d5e175d9b02041319">&#9670;&nbsp;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae33d5ebfc470468505637a52621444a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33d5ebfc470468505637a52621444a5">&#9670;&nbsp;</a></span>isConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> ESocket::isConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d20bd730fe833b7264a2b93051aeda0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d20bd730fe833b7264a2b93051aeda0">&#9670;&nbsp;</a></span>onClose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::onClose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classESocketListen.html#af0ed38802b955847fb4fec1084879894">ESocketListen</a>, and <a class="el" href="classESocketConverse.html#a80405a0d99491d811e55ea0ac0291a82">ESocketConverse</a>.</p>
+
+</div>
+</div>
+<a id="a1327c68da21229566cba9fef5fed2dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1327c68da21229566cba9fef5fed2dd2">&#9670;&nbsp;</a></span>onError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::onError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classESocketListen.html#a04db39b540a755ae3cefb1fca23f4fd0">ESocketListen</a>, and <a class="el" href="classESocketConverse.html#a0d09f76dd2b9e435335833bcc2d7e3c0">ESocketConverse</a>.</p>
+
+</div>
+</div>
+<a id="a0529e18e13cfcd4bcd1cc00f7ae81bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0529e18e13cfcd4bcd1cc00f7ae81bcd">&#9670;&nbsp;</a></span>setError() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ESocket::setError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2df001142bc0dbaa2b43c40336fa73ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2df001142bc0dbaa2b43c40336fa73ba">&#9670;&nbsp;</a></span>setError() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96e8fbf7b5eec67f4aca48d2a2ee365c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e8fbf7b5eec67f4aca48d2a2ee365c">&#9670;&nbsp;</a></span>setFamily()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setFamily </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>family</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae581be6db0432ec3aedf98656534a1d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae581be6db0432ec3aedf98656534a1d8">&#9670;&nbsp;</a></span>setHandle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setHandle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d818c78f149dbdb5ec61f6186d935c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d818c78f149dbdb5ec61f6186d935c9">&#9670;&nbsp;</a></span>setIpAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setIpAddress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1b1da2b8bab429801f12656f65a02d66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b1da2b8bab429801f12656f65a02d66">&#9670;&nbsp;</a></span>setPort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setPort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#ae5207d95e62674a9314b505238ef1847">UShort</a>&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adeed363269f4c3ae7b77a90c1e3b6b3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeed363269f4c3ae7b77a90c1e3b6b3c">&#9670;&nbsp;</a></span>setProtocol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setProtocol </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>protocol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed7c6fe61de922948b322ce3bf8a879d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed7c6fe61de922948b322ce3bf8a879d">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classESocket.html#acaee031fbd05eccae4ddfda016c12e27">SOCKETSTATE</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a975c7eac247208541d018e4bee5708bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a975c7eac247208541d018e4bee5708bf">&#9670;&nbsp;</a></span>setType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESocket::setType </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a42362bbaf173a64e85e1ba5d61415a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42362bbaf173a64e85e1ba5d61415a1c">&#9670;&nbsp;</a></span>ESocketConverse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classESocketConverse.html">ESocketConverse</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab87306f4659de4f99c136ed9e48e53a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab87306f4659de4f99c136ed9e48e53a7">&#9670;&nbsp;</a></span>ESocketListen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classESocketListen.html">ESocketListen</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad07786c422b3c9fa3632a57ce17140eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad07786c422b3c9fa3632a57ce17140eb">&#9670;&nbsp;</a></span>ESocketThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classESocketThread.html">ESocketThread</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="esocket_8h_source.html">esocket.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/esocket.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="esocket_8h_source.html">esocket.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="esocket_8cpp.html">esocket.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

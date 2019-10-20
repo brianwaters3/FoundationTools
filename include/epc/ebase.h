@@ -19,9 +19,7 @@
 #define __ebase_h_included
 
 /// @file
-///
 /// @brief Macros for various standard C library functions and standard includes.
-///
 
 /// True
 #define True	true

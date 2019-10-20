@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runstate',['RunState',['../classEThreadBasic.html#a6d52c705bf95269004bc80173b8d5e9c',1,'EThreadBasic']]]
+  ['efdextractortype',['eFDExtractorType',['../efd_8h.html#a2ccdab99af1d3a55559c68c1dad2489a',1,'efd.h']]]
 ];

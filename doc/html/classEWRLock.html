@@ -69,21 +69,136 @@ $(function() {
 <div class="title">EWRLock Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="esynch_8h_source.html">esynch.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa966469fe0f33561cb5e476684014911"><td class="memItemLeft" align="right" valign="top"><a id="aa966469fe0f33561cb5e476684014911"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EWRLock</b> (<a class="el" href="classERWLock.html">ERWLock</a> &amp;rwlock, Bool acq=true)</td></tr>
+<tr class="memitem:aa966469fe0f33561cb5e476684014911"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEWRLock.html#aa966469fe0f33561cb5e476684014911">EWRLock</a> (<a class="el" href="classERWLock.html">ERWLock</a> &amp;rwlock, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> acq=true)</td></tr>
 <tr class="separator:aa966469fe0f33561cb5e476684014911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65c18c04ed4147473ef63e1fe6a282b"><td class="memItemLeft" align="right" valign="top"><a id="ae65c18c04ed4147473ef63e1fe6a282b"></a>
-Bool&#160;</td><td class="memItemRight" valign="bottom"><b>acquire</b> (Bool wait=true)</td></tr>
+<tr class="memitem:ac3bb5d481da10905dc7e33d72b39b6d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEWRLock.html#ac3bb5d481da10905dc7e33d72b39b6d2">~EWRLock</a> ()</td></tr>
+<tr class="separator:ac3bb5d481da10905dc7e33d72b39b6d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65c18c04ed4147473ef63e1fe6a282b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEWRLock.html#ae65c18c04ed4147473ef63e1fe6a282b">acquire</a> (<a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=true)</td></tr>
 <tr class="separator:ae65c18c04ed4147473ef63e1fe6a282b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017060582fc89e593f0f1f50b11237f9"><td class="memItemLeft" align="right" valign="top"><a id="a017060582fc89e593f0f1f50b11237f9"></a>
-Bool&#160;</td><td class="memItemRight" valign="bottom"><b>isLocked</b> ()</td></tr>
+<tr class="memitem:a017060582fc89e593f0f1f50b11237f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEWRLock.html#a017060582fc89e593f0f1f50b11237f9">isLocked</a> ()</td></tr>
 <tr class="separator:a017060582fc89e593f0f1f50b11237f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa966469fe0f33561cb5e476684014911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa966469fe0f33561cb5e476684014911">&#9670;&nbsp;</a></span>EWRLock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EWRLock::EWRLock </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classERWLock.html">ERWLock</a> &amp;&#160;</td>
+          <td class="paramname"><em>rwlock</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>acq</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3bb5d481da10905dc7e33d72b39b6d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3bb5d481da10905dc7e33d72b39b6d2">&#9670;&nbsp;</a></span>~EWRLock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EWRLock::~EWRLock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae65c18c04ed4147473ef63e1fe6a282b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65c18c04ed4147473ef63e1fe6a282b">&#9670;&nbsp;</a></span>acquire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EWRLock::acquire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>wait</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a017060582fc89e593f0f1f50b11237f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017060582fc89e593f0f1f50b11237f9">&#9670;&nbsp;</a></span>isLocked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EWRLock::isLocked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="esynch_8h_source.html">esynch.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="esynch_8h_source.html">esynch.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

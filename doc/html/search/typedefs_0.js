@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['epctime_5ft',['epctime_t',['../ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70',1,'ebase.h']]]
+  ['bool',['Bool',['../etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016',1,'etypes.h']]],
+  ['byte',['Byte',['../etypes_8h.html#a59e8652d68cb08192b3c64a744c061de',1,'etypes.h']]]
 ];

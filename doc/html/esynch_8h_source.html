@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/esynch.h Source File</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/esynch.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 <div class="title">esynch.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="esynch_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Copyright (c) 2009-2019 Brian Waters</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Copyright (c) 2019 Sprint</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*</span></div>
@@ -93,30 +93,30 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;semaphore.h&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ebase_8h.html">ebase.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;estring.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="estring_8h.html">estring.h</a>&quot;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="eerror_8h.html">eerror.h</a>&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define MAX_SEMIDS 64</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define MAX_NOTIFYIDS 64</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="esynch_8h.html#aa951fff86e8c7c3c6be227ebd61c09af">   27</a></span>&#160;<span class="preprocessor">#define MAX_SEMIDS 64</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="esynch_8h.html#af6f021fdf1658c1ff0681b1111be6014">   28</a></span>&#160;<span class="preprocessor">#define MAX_NOTIFYIDS 64</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToInitialize);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToLock);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToUnLock);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EMutexError_UnableToAllocateMutex);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EMutexError_AlreadyInitialized);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EMutexError_MutexUninitialized);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToInitialize);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToLock);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a>(EMutexError_UnableToUnLock);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(EMutexError_UnableToAllocateMutex);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(EMutexError_AlreadyInitialized);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(EMutexError_MutexUninitialized);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToInitialize);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToDecrement);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToIncrement);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="esynch_8h.html#a04e864b8fb273baac811cbdfe80bed0d">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToInitialize);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="esynch_8h.html#a04e864b8fb273baac811cbdfe80bed0d">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToDecrement);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="esynch_8h.html#a04e864b8fb273baac811cbdfe80bed0d">DECLARE_ERROR_ADVANCED</a>(ESemaphoreError_UnableToIncrement);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESemaphoreError_UnableToAllocateSemaphore);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESemaphoreError_AlreadyAllocated);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESemaphoreError_NotInitialized);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESemaphoreError_AlreadyInitialized);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESemaphoreError_MaxNotifyIdsExceeded);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(ESemaphoreError_UnableToAllocateSemaphore);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(ESemaphoreError_AlreadyAllocated);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(ESemaphoreError_NotInitialized);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(ESemaphoreError_AlreadyInitialized);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a>(ESemaphoreError_MaxNotifyIdsExceeded);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// Common Mutex Classes</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span> </div>
@@ -127,73 +127,73 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;   <span class="keyword">friend</span> <a class="code" href="classEMutexLock.html">EMutexLock</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;   <a class="code" href="classEMutexData.html">EMutexData</a>()</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classEMutexData.html#a684a4433f5efaf81b4203b699de7dae8">   64</a></span>&#160;   <a class="code" href="classEMutexData.html#a684a4433f5efaf81b4203b699de7dae8">EMutexData</a>()</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      m_initialized = <a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   ~<a class="code" href="classEMutexData.html">EMutexData</a>()</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classEMutexData.html#abc6c033363cea7a7c16e7461d15703fe">   68</a></span>&#160;   <a class="code" href="classEMutexData.html#abc6c033363cea7a7c16e7461d15703fe">~EMutexData</a>()</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;   }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   Void init(Bool shared);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   Void destroy();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexData.html#a52ba5817130acb19794abc71cc259813">init</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> shared);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexData.html#a06036447f250286b3a78de72ba2ae716">destroy</a>();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   Bool initialized()</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classEMutexData.html#af79e338977abe43084bdbc2f022b0d87">   75</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEMutexData.html#af79e338977abe43084bdbc2f022b0d87">initialized</a>()</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> m_initialized;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#if defined(NATIVE_IPC)</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;   pthread_mutex_t &amp;mutex()</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;   pthread_mutex_t &amp;<a class="code" href="classEMutexData.html#aed63c8002c286d185606750ac5584951">mutex</a>()</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;   {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">return</span> m_mutex;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;   }</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;   Long &amp;mutex()</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classEMutexData.html#aed63c8002c286d185606750ac5584951">   86</a></span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;<a class="code" href="classEMutexData.html#aed63c8002c286d185606750ac5584951">mutex</a>()</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="keywordflow">return</span> m_lock;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;   }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;   Bool enter(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   Void leave();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEMutexData.html#ad778cbf1c88a8b27c1355cfc4883719e">enter</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexData.html#ad09ebf35369fac703df4c5e7704399ce">leave</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   Bool m_initialized;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_initialized;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#if defined(NATIVE_IPC)</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;   pthread_mutex_t m_mutex;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   Long m_lock;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> m_lock;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="classEMutexLock.html">  105</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMutexLock.html">EMutexLock</a></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;   <a class="code" href="classEMutexLock.html">EMutexLock</a>(<a class="code" href="classEMutexData.html">EMutexData</a> &amp;mtx, Bool acquire = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      : m_acquire(acquire), m_mtx(mtx)</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classEMutexLock.html#a3bce7eb1fc8361da74e9fa47e5eff35b">  108</a></span>&#160;   <a class="code" href="classEMutexLock.html#a3bce7eb1fc8361da74e9fa47e5eff35b">EMutexLock</a>(<a class="code" href="classEMutexData.html">EMutexData</a> &amp;mtx, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire</a> = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      : m_acquire(<a class="code" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire</a>), m_mtx(mtx)</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   {</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordflow">if</span> (m_acquire)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;         m_mtx.enter();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;         m_mtx.<a class="code" href="classEMutexData.html#ad778cbf1c88a8b27c1355cfc4883719e">enter</a>();</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;   }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   ~<a class="code" href="classEMutexLock.html">EMutexLock</a>()</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classEMutexLock.html#a290e69bec89f280ddfa7b1d208ea1150">  115</a></span>&#160;   <a class="code" href="classEMutexLock.html#a290e69bec89f280ddfa7b1d208ea1150">~EMutexLock</a>()</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;   {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">if</span> (m_acquire)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;         m_mtx.leave();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;         m_mtx.<a class="code" href="classEMutexData.html#ad09ebf35369fac703df4c5e7704399ce">leave</a>();</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;   }</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   Bool acquire(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">  121</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;   {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="keywordflow">if</span> (!m_acquire)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;         m_acquire = m_mtx.enter(wait);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;         m_acquire = m_mtx.<a class="code" href="classEMutexData.html#ad778cbf1c88a8b27c1355cfc4883719e">enter</a>(wait);</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keywordflow">return</span> m_acquire;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;   }</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;   <a class="code" href="classEMutexData.html">EMutexData</a> &amp;m_mtx;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;   Bool m_acquire;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_acquire;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;   <a class="code" href="classEMutexLock.html">EMutexLock</a>();</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;   <a class="code" href="classEMutexLock.html">EMutexLock</a> &amp;operator=(<span class="keyword">const</span> <a class="code" href="classEMutexLock.html">EMutexLock</a> &amp;other);</div>
@@ -204,18 +204,18 @@ $(function() {
 <div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classEMutexPrivate.html">  140</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMutexPrivate.html">EMutexPrivate</a> : <span class="keyword">public</span> <a class="code" href="classEMutexData.html">EMutexData</a></div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   <a class="code" href="classEMutexPrivate.html">EMutexPrivate</a>(Bool bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classEMutexPrivate.html#af41aa4a0d1c1ff5be475a02047a5af70">  143</a></span>&#160;   <a class="code" href="classEMutexPrivate.html#af41aa4a0d1c1ff5be475a02047a5af70">EMutexPrivate</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;       : <a class="code" href="classEMutexData.html">EMutexData</a>()</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;   {</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      <span class="keywordflow">if</span> (bInit)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;         init();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;         <a class="code" href="classEMutexPrivate.html#a828aafdbf0709894fb42228e67f540e6">init</a>();</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;   }</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;   ~<a class="code" href="classEMutexPrivate.html">EMutexPrivate</a>() { destroy(); }</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="classEMutexPrivate.html#ab60e22b3365db3849fc79612c4a84661">  150</a></span>&#160;   <a class="code" href="classEMutexPrivate.html#ab60e22b3365db3849fc79612c4a84661">~EMutexPrivate</a>() { <a class="code" href="classEMutexData.html#a06036447f250286b3a78de72ba2ae716">destroy</a>(); }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;   Void *<span class="keyword">operator</span> <span class="keyword">new</span>(size_t, Void *where) { <span class="keywordflow">return</span> where; }</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classEMutexPrivate.html#a04633bdeeb7b28b2eb515bd7af20e77f">  152</a></span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> *<span class="keyword">operator</span> <span class="keyword">new</span>(size_t, <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> *where) { <span class="keywordflow">return</span> where; }</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   Void init() { EMutexData::init(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>); }</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classEMutexPrivate.html#a828aafdbf0709894fb42228e67f540e6">  154</a></span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexPrivate.html#a828aafdbf0709894fb42228e67f540e6">init</a>() { <a class="code" href="classEMutexData.html#a52ba5817130acb19794abc71cc259813">EMutexData::init</a>(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>); }</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;};</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// Public Mutex Classes</span></div>
@@ -223,44 +223,44 @@ $(function() {
 <div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="classEMutexDataPublic.html">  161</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMutexDataPublic.html">EMutexDataPublic</a> : <span class="keyword">public</span> <a class="code" href="classEMutexData.html">EMutexData</a></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;   <a class="code" href="classEMutexDataPublic.html">EMutexDataPublic</a>() {}</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   ~<a class="code" href="classEMutexDataPublic.html">EMutexDataPublic</a>() {}</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="classEMutexDataPublic.html#a71dad886075c5c60e608f6150b85dfb8">  164</a></span>&#160;   <a class="code" href="classEMutexDataPublic.html#a71dad886075c5c60e608f6150b85dfb8">EMutexDataPublic</a>() {}</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classEMutexDataPublic.html#a803274c58d27d3066625a67510c58d35">  165</a></span>&#160;   <a class="code" href="classEMutexDataPublic.html#a803274c58d27d3066625a67510c58d35">~EMutexDataPublic</a>() {}</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;   Int &amp;nextIndex() { <span class="keywordflow">return</span> m_nextIndex; }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;   Int &amp;mutexId() { <span class="keywordflow">return</span> m_mutexId; }</div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="classEMutexDataPublic.html#abac93df2105d4912784fc6756c81df19">  167</a></span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classEMutexDataPublic.html#abac93df2105d4912784fc6756c81df19">nextIndex</a>() { <span class="keywordflow">return</span> m_nextIndex; }</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classEMutexDataPublic.html#a475e215e5cca7f934d209e8db11e7e76">  168</a></span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classEMutexDataPublic.html#a475e215e5cca7f934d209e8db11e7e76">mutexId</a>() { <span class="keywordflow">return</span> m_mutexId; }</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;   Int m_nextIndex;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;   Int m_mutexId;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_nextIndex;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_mutexId;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;};</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="classEMutexPublic.html">  175</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMutexPublic.html">EMutexPublic</a></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;   <a class="code" href="classEMutexPublic.html">EMutexPublic</a>(Bool bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classEMutexPublic.html#a0a9342cea52525c50fd60132b7bf41f3">  178</a></span>&#160;   <a class="code" href="classEMutexPublic.html#a0a9342cea52525c50fd60132b7bf41f3">EMutexPublic</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;   {</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;      m_mutexid = 0;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <span class="keywordflow">if</span> (bInit)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;         init();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;         <a class="code" href="classEMutexPublic.html#a88231c36df8462c8a93c00f7bfe3a967">init</a>();</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;   }</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;   ~<a class="code" href="classEMutexPublic.html">EMutexPublic</a>()</div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classEMutexPublic.html#a7288bafb2bbdf88c952c916a8f3c0509">  185</a></span>&#160;   <a class="code" href="classEMutexPublic.html#a7288bafb2bbdf88c952c916a8f3c0509">~EMutexPublic</a>()</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;   {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      destroy();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <a class="code" href="classEMutexPublic.html#abdd4413b7d3c1e60460dd087c24592ee">destroy</a>();</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   }</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;   Void init();</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;   Void destroy();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexPublic.html#a88231c36df8462c8a93c00f7bfe3a967">init</a>();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexPublic.html#abdd4413b7d3c1e60460dd087c24592ee">destroy</a>();</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;   Void attach(Int mutexid);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;   Void detach();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">attach</a>(<a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> mutexid);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classEMutexPublic.html#a18746aaed4190392707a3edba0445f85">detach</a>();</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;   Int mutexId() { <span class="keywordflow">return</span> m_mutexid; }</div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">  196</a></span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> <a class="code" href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">mutexId</a>() { <span class="keywordflow">return</span> m_mutexid; }</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;   <span class="keyword">operator</span> <a class="code" href="classEMutexDataPublic.html">EMutexDataPublic</a> &amp;();</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;   Int m_mutexid;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_mutexid;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">// Common Semaphore Classes</span></div>
@@ -268,7 +268,7 @@ $(function() {
 <div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="classESemaphoreData.html">  208</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESemaphoreData.html">ESemaphoreData</a></div>
 <div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;{</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a>()</div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#a23e3b44aa3d69f85ec2331ab6b682434">  211</a></span>&#160;   <a class="code" href="classESemaphoreData.html#a23e3b44aa3d69f85ec2331ab6b682434">ESemaphoreData</a>()</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      : m_initialized(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>),</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        m_shared(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>),</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        m_initCount(0),</div>
@@ -276,59 +276,59 @@ $(function() {
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;   {</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;   }</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a>(Long initcnt, Bool shared)</div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#a73890ad633dcecf36aa30648b8578c24">  219</a></span>&#160;   <a class="code" href="classESemaphoreData.html#a73890ad633dcecf36aa30648b8578c24">ESemaphoreData</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">shared</a>)</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      : m_initialized(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>),</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        m_shared(shared),</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        m_shared(<a class="code" href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">shared</a>),</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        m_initCount(initcnt),</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        m_currCount(0)</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;   {</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;   }</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;   ~<a class="code" href="classESemaphoreData.html">ESemaphoreData</a>()</div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#ac0dbf2b76a6ca83e40703c9963ea9d3c">  227</a></span>&#160;   <a class="code" href="classESemaphoreData.html#ac0dbf2b76a6ca83e40703c9963ea9d3c">~ESemaphoreData</a>()</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;   {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      destroy();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <a class="code" href="classESemaphoreData.html#ad85a7f44402fa683caa9c39df786129e">destroy</a>();</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;   }</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;   Void init();</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;   Void destroy();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphoreData.html#a57df98ac60ef33def07d5ecd634a05c2">init</a>();</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphoreData.html#ad85a7f44402fa683caa9c39df786129e">destroy</a>();</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;   Bool Decrement(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;   Bool Increment();</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreData.html#af0ae39172b6637ca573f30449b0acb6c">Decrement</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreData.html#a43fe418178ce490d23d41ba19ea73e26">Increment</a>();</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;   Bool initialized() { <span class="keywordflow">return</span> m_initialized; }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;   Bool &amp;shared() { <span class="keywordflow">return</span> m_shared; }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;   Long &amp;initialCount() { <span class="keywordflow">return</span> m_initCount; }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;   Long currCount() { <span class="keywordflow">return</span> m_currCount; }</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#a85cd664ade3438751ded17cd81b7c138">  238</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreData.html#a85cd664ade3438751ded17cd81b7c138">initialized</a>() { <span class="keywordflow">return</span> m_initialized; }</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">  239</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;<a class="code" href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">shared</a>() { <span class="keywordflow">return</span> m_shared; }</div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#ae0c8c336b6602b0200ae59169c0d128a">  240</a></span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;<a class="code" href="classESemaphoreData.html#ae0c8c336b6602b0200ae59169c0d128a">initialCount</a>() { <span class="keywordflow">return</span> m_initCount; }</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1">  241</a></span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> <a class="code" href="classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1">currCount</a>() { <span class="keywordflow">return</span> m_currCount; }</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;   Bool m_initialized;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;   Bool m_shared;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;   Long m_initCount;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;   Long m_currCount;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_initialized;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_shared;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> m_initCount;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> m_currCount;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;   sem_t m_sem;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;};</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
 <div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html">  251</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESemaphoreBase.html">ESemaphoreBase</a></div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;   <a class="code" href="classESemaphoreBase.html">ESemaphoreBase</a>() {}</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;   ~<a class="code" href="classESemaphoreBase.html">ESemaphoreBase</a>() {}</div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5">  254</a></span>&#160;   <a class="code" href="classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5">ESemaphoreBase</a>() {}</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5">  255</a></span>&#160;   <a class="code" href="classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5">~ESemaphoreBase</a>() {}</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;   <span class="keyword">virtual</span> Void init(Long initcnt) = 0;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;   <span class="keyword">virtual</span> Void destroy() = 0;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphoreBase.html#a2372fa1a0e48387da7f705d3859e6683">init</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt) = 0;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphoreBase.html#a284f8dfd9fb9f7bdc724a1c9c66331ec">destroy</a>() = 0;</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;   Bool Decrement(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>) { <span class="keywordflow">return</span> getData().Decrement(wait); }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;   Bool Increment() { <span class="keywordflow">return</span> getData().Increment(); }</div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">  260</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement</a>(<a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>) { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#af0ae39172b6637ca573f30449b0acb6c">Decrement</a>(wait); }</div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">  261</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">Increment</a>() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#a43fe418178ce490d23d41ba19ea73e26">Increment</a>(); }</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;   Bool initialized() { <span class="keywordflow">return</span> getData().initialized(); }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;   Bool &amp;shared() { <span class="keywordflow">return</span> getData().shared(); }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;   Long &amp;initialCount() { <span class="keywordflow">return</span> getData().initialCount(); }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;   Long currCount() { <span class="keywordflow">return</span> getData().currCount(); }</div>
+<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">  263</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">initialized</a>() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#a85cd664ade3438751ded17cd81b7c138">initialized</a>(); }</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">  264</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;<a class="code" href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">shared</a>() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">shared</a>(); }</div>
+<div class="line"><a name="l00265"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">  265</a></span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;<a class="code" href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">initialCount</a>() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#ae0c8c336b6602b0200ae59169c0d128a">initialCount</a>(); }</div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">  266</a></span>&#160;   <a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> <a class="code" href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">currCount</a>() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>().<a class="code" href="classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1">currCount</a>(); }</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;   <span class="keyword">operator</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a>&amp;() { <span class="keywordflow">return</span> getData(); }</div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="classESemaphoreBase.html#a053bff01d0e5cc807e635006fd6710af">  268</a></span>&#160;   <span class="keyword">operator</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a>&amp;() { <span class="keywordflow">return</span> <a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>(); }</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;getData() = 0;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;<a class="code" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a>() = 0;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;};</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">// Private Semaphore Classes</span></div>
@@ -336,23 +336,23 @@ $(function() {
 <div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html">  278</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESemaphorePrivate.html">ESemaphorePrivate</a> : <span class="keyword">public</span> <a class="code" href="classESemaphoreBase.html">ESemaphoreBase</a></div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;{</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;   <a class="code" href="classESemaphorePrivate.html">ESemaphorePrivate</a>(Long initcnt=0, Bool bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html#ab4a4bd5ff519b0c7f6e4209d9b128305">  281</a></span>&#160;   <a class="code" href="classESemaphorePrivate.html#ab4a4bd5ff519b0c7f6e4209d9b128305">ESemaphorePrivate</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt=0, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      : m_data(initcnt, <a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>)</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;   {</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      <span class="keywordflow">if</span> (bInit)</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;         init(initcnt);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;         <a class="code" href="classESemaphorePrivate.html#ae628785707d4bb2fddba875d209f93b4">init</a>(initcnt);</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;   }</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;   ~<a class="code" href="classESemaphorePrivate.html">ESemaphorePrivate</a>()</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html#a57f139212fecbf343581c3c53ba47f35">  288</a></span>&#160;   <a class="code" href="classESemaphorePrivate.html#a57f139212fecbf343581c3c53ba47f35">~ESemaphorePrivate</a>()</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;   {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      destroy();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      <a class="code" href="classESemaphorePrivate.html#ad57434f6ce5121502444d43d9a4556a1">destroy</a>();</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;   }</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;   Void init(Long initcnt) { m_data.initialCount() = initcnt; m_data.init(); }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;   Void destroy() { m_data.destroy(); }</div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html#ae628785707d4bb2fddba875d209f93b4">  293</a></span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePrivate.html#ae628785707d4bb2fddba875d209f93b4">init</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt) { m_data.<a class="code" href="classESemaphoreData.html#ae0c8c336b6602b0200ae59169c0d128a">initialCount</a>() = initcnt; m_data.<a class="code" href="classESemaphoreData.html#a57df98ac60ef33def07d5ecd634a05c2">init</a>(); }</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html#ad57434f6ce5121502444d43d9a4556a1">  294</a></span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePrivate.html#ad57434f6ce5121502444d43d9a4556a1">destroy</a>() { m_data.<a class="code" href="classESemaphoreData.html#ad85a7f44402fa683caa9c39df786129e">destroy</a>(); }</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;getData() { <span class="keywordflow">return</span> m_data; }</div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="classESemaphorePrivate.html#a085512550c36aa87fa8bfefd602c68fe">  297</a></span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;<a class="code" href="classESemaphorePrivate.html#a085512550c36aa87fa8bfefd602c68fe">getData</a>() { <span class="keywordflow">return</span> m_data; }</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> m_data;</div>
@@ -363,62 +363,62 @@ $(function() {
 <div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="classESemaphoreDataPublic.html">  307</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESemaphoreDataPublic.html">ESemaphoreDataPublic</a> : <span class="keyword">public</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a></div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;   <a class="code" href="classESemaphoreDataPublic.html">ESemaphoreDataPublic</a>(Long initcnt=0)</div>
+<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="classESemaphoreDataPublic.html#a092cfedde62839c1726289fc7c7627ff">  310</a></span>&#160;   <a class="code" href="classESemaphoreDataPublic.html#a092cfedde62839c1726289fc7c7627ff">ESemaphoreDataPublic</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt=0)</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      : <a class="code" href="classESemaphoreData.html">ESemaphoreData</a>(initcnt, <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;   {</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   ~<a class="code" href="classESemaphoreDataPublic.html">ESemaphoreDataPublic</a>()</div>
+<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classESemaphoreDataPublic.html#a8fba5eaf4a9c69d1c952a096743a36b2">  315</a></span>&#160;   <a class="code" href="classESemaphoreDataPublic.html#a8fba5eaf4a9c69d1c952a096743a36b2">~ESemaphoreDataPublic</a>()</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   {</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;   Int &amp;nextIndex() { <span class="keywordflow">return</span> m_nextIndex; }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   Int &amp;semIndex() { <span class="keywordflow">return</span> m_semIndex; }</div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="classESemaphoreDataPublic.html#ae4ae14dedd0b63e082c5fcb298e88fe8">  319</a></span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classESemaphoreDataPublic.html#ae4ae14dedd0b63e082c5fcb298e88fe8">nextIndex</a>() { <span class="keywordflow">return</span> m_nextIndex; }</div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classESemaphoreDataPublic.html#a6f41c7bc9d6af9642c1faa890fa7fe21">  320</a></span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classESemaphoreDataPublic.html#a6f41c7bc9d6af9642c1faa890fa7fe21">semIndex</a>() { <span class="keywordflow">return</span> m_semIndex; }</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   Int m_nextIndex;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   Int m_semIndex;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_nextIndex;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_semIndex;</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;};</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
 <div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="classESemaphorePublic.html">  327</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESemaphorePublic.html">ESemaphorePublic</a> : <span class="keyword">public</span> <a class="code" href="classESemaphoreBase.html">ESemaphoreBase</a></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;{</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   <a class="code" href="classESemaphorePublic.html">ESemaphorePublic</a>()</div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="classESemaphorePublic.html#ad9250baee3f0865aa738e854d5b5a359">  330</a></span>&#160;   <a class="code" href="classESemaphorePublic.html#ad9250baee3f0865aa738e854d5b5a359">ESemaphorePublic</a>()</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      : m_semid(0)</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   {</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;   <a class="code" href="classESemaphorePublic.html">ESemaphorePublic</a>(Long initcnt, Bool bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
+<div class="line"><a name="l00334"></a><span class="lineno"><a class="line" href="classESemaphorePublic.html#a8fa32e16c0eb8b30f963ab40d6c613e8">  334</a></span>&#160;   <a class="code" href="classESemaphorePublic.html#a8fa32e16c0eb8b30f963ab40d6c613e8">ESemaphorePublic</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bInit = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      : m_semid(0)</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   {</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordflow">if</span> (bInit)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;         init(initcnt);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;         <a class="code" href="classESemaphorePublic.html#a82aaa64ef790bb7f50e46b75cfc0cf35">init</a>(initcnt);</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;   }</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;   ~<a class="code" href="classESemaphorePublic.html">ESemaphorePublic</a>()</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="classESemaphorePublic.html#a33487b077963db0700c0507bb43b11c5">  341</a></span>&#160;   <a class="code" href="classESemaphorePublic.html#a33487b077963db0700c0507bb43b11c5">~ESemaphorePublic</a>()</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;   {</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      destroy();</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      <a class="code" href="classESemaphorePublic.html#ab1c20a99181f230eac073fc2f5f3f7fa">destroy</a>();</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   }</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   Void init(Long initialCount);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   Void destroy();</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePublic.html#a82aaa64ef790bb7f50e46b75cfc0cf35">init</a>(<a class="code" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> <a class="code" href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">initialCount</a>);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePublic.html#ab1c20a99181f230eac073fc2f5f3f7fa">destroy</a>();</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   Int &amp;nextIndex();</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   Int &amp;semIndex();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classESemaphorePublic.html#a2e21e30a9050a5c0e89176c9ac370a5f">nextIndex</a>();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;<a class="code" href="classESemaphorePublic.html#ad0f637362b36344a2de02bdd02217a73">semIndex</a>();</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   Void attach(Int semid);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   Void detach();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePublic.html#a0cbb272ad36c64680929076e32440940">attach</a>(<a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> semid);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESemaphorePublic.html#ac4145aacbb00cd91c1413a80d3b01ad5">detach</a>();</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;getData();</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;   <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;<a class="code" href="classESemaphorePublic.html#a43892a587c839748cc65021e70b85846">getData</a>();</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;   Int m_semid;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_semid;</div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;};</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">// Private Read/Write Lock Classes</span></div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<a class="code" href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a>(ERWLockError_LockAttrInitFailed);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<a class="code" href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a>(ERWLockError_LockInitFailed);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<a class="code" href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a>(ERWLockError_LockAttrInitFailed);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<a class="code" href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a>(ERWLockError_LockInitFailed);</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="keyword">class </span><a class="code" href="classERDLock.html">ERDLock</a>;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">class </span><a class="code" href="classEWRLock.html">EWRLock</a>;</div>
@@ -429,18 +429,18 @@ $(function() {
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;   <span class="keyword">friend</span> <a class="code" href="classEWRLock.html">EWRLock</a>;</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;   <a class="code" href="classERWLock.html">ERWLock</a>();</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;   ~<a class="code" href="classERWLock.html">ERWLock</a>();</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;   <a class="code" href="classERWLock.html#ad4e3a2d98bf805fd643fde3442736ca0">ERWLock</a>();</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;   <a class="code" href="classERWLock.html#a4dd57285bc16dc4557b74f0a057dbd1e">~ERWLock</a>();</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;   <span class="keyword">enum</span> ReadWrite</div>
+<div class="line"><a name="l00382"></a><span class="lineno"><a class="line" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791b">  382</a></span>&#160;   <span class="keyword">enum</span> <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791b">ReadWrite</a></div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;   {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;      Read,</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;      Write</div>
+<div class="line"><a name="l00384"></a><span class="lineno"><a class="line" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba7db36161bc9e7aa8d822dc8c62b1fc85">  384</a></span>&#160;      <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba7db36161bc9e7aa8d822dc8c62b1fc85">Read</a>,</div>
+<div class="line"><a name="l00385"></a><span class="lineno"><a class="line" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba91871e832bb26bf55d0ed8fcf1531121">  385</a></span>&#160;      <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba91871e832bb26bf55d0ed8fcf1531121">Write</a></div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;   };</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;   Bool enter( ReadWrite rw, Bool wait );</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;   Void leave();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classERWLock.html#a494962111825130dd57afc84d7f85907">enter</a>( <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791b">ReadWrite</a> rw, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait );</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classERWLock.html#a084dfcb19226aa8fbd304ec95625dbde">leave</a>();</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;   pthread_rwlock_t m_rwlock;</div>
@@ -449,87 +449,201 @@ $(function() {
 <div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classERDLock.html">  395</a></span>&#160;<span class="keyword">class </span><a class="code" href="classERDLock.html">ERDLock</a></div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;{</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;   <a class="code" href="classERDLock.html">ERDLock</a>( <a class="code" href="classERWLock.html">ERWLock</a> &amp; rwlock, Bool acq = <span class="keyword">true</span> )</div>
+<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="classERDLock.html#af50b2670da68eb4375b69b62077fbe7b">  398</a></span>&#160;   <a class="code" href="classERDLock.html#af50b2670da68eb4375b69b62077fbe7b">ERDLock</a>( <a class="code" href="classERWLock.html">ERWLock</a> &amp; rwlock, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> acq = <span class="keyword">true</span> )</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      : m_rwlock( rwlock ),</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        m_locked( <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        m_locked( false )</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;   {</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      <span class="keywordflow">if</span> (acq)</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;         acquire();</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;         <a class="code" href="classERDLock.html#a08dd52e4a11e19ecd0ec92cb87c2a7b3">acquire</a>();</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;   }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;   ~<a class="code" href="classERDLock.html">ERDLock</a>()</div>
+<div class="line"><a name="l00406"></a><span class="lineno"><a class="line" href="classERDLock.html#a33c2e00eaad817c047f1ce6c84cb8552">  406</a></span>&#160;   <a class="code" href="classERDLock.html#a33c2e00eaad817c047f1ce6c84cb8552">~ERDLock</a>()</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;   {</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;      <span class="keywordflow">if</span> (m_locked)</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;         m_rwlock.leave();</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;         m_rwlock.<a class="code" href="classERWLock.html#a084dfcb19226aa8fbd304ec95625dbde">leave</a>();</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;   }</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;   Bool acquire( Bool wait = <span class="keyword">true</span> )</div>
+<div class="line"><a name="l00412"></a><span class="lineno"><a class="line" href="classERDLock.html#a08dd52e4a11e19ecd0ec92cb87c2a7b3">  412</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classERDLock.html#a08dd52e4a11e19ecd0ec92cb87c2a7b3">acquire</a>( <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <span class="keyword">true</span> )</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;   {</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      <span class="keywordflow">return</span> m_locked = m_rwlock.enter( ERWLock::Read, wait );</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      <span class="keywordflow">return</span> m_locked = m_rwlock.<a class="code" href="classERWLock.html#a494962111825130dd57afc84d7f85907">enter</a>( <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba7db36161bc9e7aa8d822dc8c62b1fc85">ERWLock::Read</a>, wait );</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;   }</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;   Bool isLocked() { <span class="keywordflow">return</span> m_locked; }</div>
+<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="classERDLock.html#aebde99f96370bfc2ed52ec3d3d17017d">  417</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classERDLock.html#aebde99f96370bfc2ed52ec3d3d17017d">isLocked</a>() { <span class="keywordflow">return</span> m_locked; }</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;   <a class="code" href="classERDLock.html">ERDLock</a>();</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;   <a class="code" href="classERWLock.html">ERWLock</a> &amp;m_rwlock;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;   Bool m_locked;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_locked;</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;};</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
 <div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="classEWRLock.html">  426</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEWRLock.html">EWRLock</a></div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;{</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;   <a class="code" href="classEWRLock.html">EWRLock</a>( <a class="code" href="classERWLock.html">ERWLock</a> &amp; rwlock, Bool acq = <span class="keyword">true</span> )</div>
+<div class="line"><a name="l00429"></a><span class="lineno"><a class="line" href="classEWRLock.html#aa966469fe0f33561cb5e476684014911">  429</a></span>&#160;   <a class="code" href="classEWRLock.html#aa966469fe0f33561cb5e476684014911">EWRLock</a>( <a class="code" href="classERWLock.html">ERWLock</a> &amp; rwlock, <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> acq = <span class="keyword">true</span> )</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;      : m_rwlock( rwlock ),</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        m_locked( <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        m_locked( false )</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;   {</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;      <span class="keywordflow">if</span> (acq)</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;         acquire();</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;         <a class="code" href="classEWRLock.html#ae65c18c04ed4147473ef63e1fe6a282b">acquire</a>();</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;   }</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;   ~<a class="code" href="classEWRLock.html">EWRLock</a>()</div>
+<div class="line"><a name="l00437"></a><span class="lineno"><a class="line" href="classEWRLock.html#ac3bb5d481da10905dc7e33d72b39b6d2">  437</a></span>&#160;   <a class="code" href="classEWRLock.html#ac3bb5d481da10905dc7e33d72b39b6d2">~EWRLock</a>()</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;   {</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;      <span class="keywordflow">if</span> (m_locked)</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;         m_rwlock.leave();</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;         m_rwlock.<a class="code" href="classERWLock.html#a084dfcb19226aa8fbd304ec95625dbde">leave</a>();</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;   }</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;   Bool acquire( Bool wait = <span class="keyword">true</span> )</div>
+<div class="line"><a name="l00443"></a><span class="lineno"><a class="line" href="classEWRLock.html#ae65c18c04ed4147473ef63e1fe6a282b">  443</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEWRLock.html#ae65c18c04ed4147473ef63e1fe6a282b">acquire</a>( <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait = <span class="keyword">true</span> )</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;   {</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;      <span class="keywordflow">return</span> m_locked = m_rwlock.enter( ERWLock::Write, wait );</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;      <span class="keywordflow">return</span> m_locked = m_rwlock.<a class="code" href="classERWLock.html#a494962111825130dd57afc84d7f85907">enter</a>( <a class="code" href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba91871e832bb26bf55d0ed8fcf1531121">ERWLock::Write</a>, wait );</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;   }</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;   Bool isLocked() { <span class="keywordflow">return</span> m_locked; }</div>
+<div class="line"><a name="l00448"></a><span class="lineno"><a class="line" href="classEWRLock.html#a017060582fc89e593f0f1f50b11237f9">  448</a></span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> <a class="code" href="classEWRLock.html#a017060582fc89e593f0f1f50b11237f9">isLocked</a>() { <span class="keywordflow">return</span> m_locked; }</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;   <a class="code" href="classEWRLock.html">EWRLock</a>();</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;   <a class="code" href="classERWLock.html">ERWLock</a> &amp;m_rwlock;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;   Bool m_locked;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;   <a class="code" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> m_locked;</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;};</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#endif // #define __esynch_h_included</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno"><a class="line" href="classEEvent.html">  460</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEEvent.html">EEvent</a></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;{</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;   <a class="code" href="classEEvent.html#a30d971498a6c4df345df7f008c636c1d">EEvent</a>( <span class="keywordtype">bool</span> state = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;   <a class="code" href="classEEvent.html#aea364c8e58e78988d744d8db8925aaa4">~EEvent</a>();</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classEEvent.html#ac61efc0bb325c25be5963fee90d7375a">reset</a>();</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;   <span class="keywordtype">void</span> <a class="code" href="classEEvent.html#affcbd4245ade48e1973cfd785e2e9f93">set</a>();</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classEEvent.html#a2b3c1661daa5cd157f49b8cc2ea02bea">wait</a>( <span class="keywordtype">int</span> ms = -1 );</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno"><a class="line" href="classEEvent.html#aa71a7399f402ed1309dcb28d5144a91e">  470</a></span>&#160;   <span class="keywordtype">bool</span> <a class="code" href="classEEvent.html#aa71a7399f402ed1309dcb28d5144a91e">isSet</a>() { <span class="keywordflow">return</span> <a class="code" href="classEEvent.html#a2b3c1661daa5cd157f49b8cc2ea02bea">wait</a>(0); }</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;   <span class="keywordtype">void</span> closepipe();</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;   <span class="keywordtype">int</span> m_pipefd[2];</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;   <span class="keywordtype">char</span> m_buf[1];</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;};</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor">#endif // #define __esynch_h_included</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aeerror_8h_html_ab71591f350ed65d99a1349f90b65f2af"><div class="ttname"><a href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a></div><div class="ttdeci">#define DECLARE_ERROR(__e__)</div><div class="ttdoc">Declares exception class derived from EError with no constructor parameters.</div><div class="ttdef"><b>Definition:</b> eerror.h:55</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a90ec05f86e812563f42153a2d51bcc37"><div class="ttname"><a href="classESemaphoreData.html#a90ec05f86e812563f42153a2d51bcc37">ESemaphoreData::shared</a></div><div class="ttdeci">Bool &amp; shared()</div><div class="ttdef"><b>Definition:</b> esynch.h:239</div></div>
+<div class="ttc" id="aetypes_8h_html_aac54f2ce6d21874872d23e0972ba7820"><div class="ttname"><a href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a></div><div class="ttdeci">int32_t Int</div><div class="ttdef"><b>Definition:</b> etypes.h:30</div></div>
+<div class="ttc" id="aclassEMutexData_html_a52ba5817130acb19794abc71cc259813"><div class="ttname"><a href="classEMutexData.html#a52ba5817130acb19794abc71cc259813">EMutexData::init</a></div><div class="ttdeci">Void init(Bool shared)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:308</div></div>
+<div class="ttc" id="aclassERDLock_html_a33c2e00eaad817c047f1ce6c84cb8552"><div class="ttname"><a href="classERDLock.html#a33c2e00eaad817c047f1ce6c84cb8552">ERDLock::~ERDLock</a></div><div class="ttdeci">~ERDLock()</div><div class="ttdef"><b>Definition:</b> esynch.h:406</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a8ce2a8d979f15263c1a33ae92c5357d5"><div class="ttname"><a href="classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5">ESemaphoreBase::ESemaphoreBase</a></div><div class="ttdeci">ESemaphoreBase()</div><div class="ttdef"><b>Definition:</b> esynch.h:254</div></div>
+<div class="ttc" id="aclassEMutexLock_html_a3bce7eb1fc8361da74e9fa47e5eff35b"><div class="ttname"><a href="classEMutexLock.html#a3bce7eb1fc8361da74e9fa47e5eff35b">EMutexLock::EMutexLock</a></div><div class="ttdeci">EMutexLock(EMutexData &amp;mtx, Bool acquire=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:108</div></div>
+<div class="ttc" id="aclassEMutexDataPublic_html_a71dad886075c5c60e608f6150b85dfb8"><div class="ttname"><a href="classEMutexDataPublic.html#a71dad886075c5c60e608f6150b85dfb8">EMutexDataPublic::EMutexDataPublic</a></div><div class="ttdeci">EMutexDataPublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:164</div></div>
+<div class="ttc" id="aclassERWLock_html_a494962111825130dd57afc84d7f85907"><div class="ttname"><a href="classERWLock.html#a494962111825130dd57afc84d7f85907">ERWLock::enter</a></div><div class="ttdeci">Bool enter(ReadWrite rw, Bool wait)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:594</div></div>
 <div class="ttc" id="aeerror_8h_html"><div class="ttname"><a href="eerror_8h.html">eerror.h</a></div><div class="ttdoc">Defines base class for exceptions and declaration helper macros.</div></div>
 <div class="ttc" id="aclassESemaphoreData_html"><div class="ttname"><a href="classESemaphoreData.html">ESemaphoreData</a></div><div class="ttdef"><b>Definition:</b> esynch.h:208</div></div>
-<div class="ttc" id="aeerror_8h_html_ad340e080791a55e23544114f87d3cee8"><div class="ttname"><a href="eerror_8h.html#ad340e080791a55e23544114f87d3cee8">DECLARE_ERROR_ADVANCED2</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED2(__e__)</div><div class="ttdoc">Declares exception class derived from EError with an Int as a constructor parameter and developer def...</div><div class="ttdef"><b>Definition:</b> eerror.h:69</div></div>
-<div class="ttc" id="aebase_8h_html_add3ca9eefe3b5b754426f51d3043e579"><div class="ttname"><a href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></div><div class="ttdeci">#define True</div><div class="ttdoc">True.</div><div class="ttdef"><b>Definition:</b> ebase.h:27</div></div>
+<div class="ttc" id="aclassEWRLock_html_ae65c18c04ed4147473ef63e1fe6a282b"><div class="ttname"><a href="classEWRLock.html#ae65c18c04ed4147473ef63e1fe6a282b">EWRLock::acquire</a></div><div class="ttdeci">Bool acquire(Bool wait=true)</div><div class="ttdef"><b>Definition:</b> esynch.h:443</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a57df98ac60ef33def07d5ecd634a05c2"><div class="ttname"><a href="classESemaphoreData.html#a57df98ac60ef33def07d5ecd634a05c2">ESemaphoreData::init</a></div><div class="ttdeci">Void init()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:423</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_a18746aaed4190392707a3edba0445f85"><div class="ttname"><a href="classEMutexPublic.html#a18746aaed4190392707a3edba0445f85">EMutexPublic::detach</a></div><div class="ttdeci">Void detach()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:412</div></div>
+<div class="ttc" id="aetypes_8h_html_a76a8b016e5ad61faf9062cc387df5016"><div class="ttname"><a href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a></div><div class="ttdeci">bool Bool</div><div class="ttdef"><b>Definition:</b> etypes.h:24</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html_a085512550c36aa87fa8bfefd602c68fe"><div class="ttname"><a href="classESemaphorePrivate.html#a085512550c36aa87fa8bfefd602c68fe">ESemaphorePrivate::getData</a></div><div class="ttdeci">ESemaphoreData &amp; getData()</div><div class="ttdef"><b>Definition:</b> esynch.h:297</div></div>
+<div class="ttc" id="aclassERWLock_html_af885c5ecb73512789f93c4bb22c8791b"><div class="ttname"><a href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791b">ERWLock::ReadWrite</a></div><div class="ttdeci">ReadWrite</div><div class="ttdef"><b>Definition:</b> esynch.h:382</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a43892a587c839748cc65021e70b85846"><div class="ttname"><a href="classESemaphorePublic.html#a43892a587c839748cc65021e70b85846">ESemaphorePublic::getData</a></div><div class="ttdeci">ESemaphoreData &amp; getData()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:495</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_ad85a7f44402fa683caa9c39df786129e"><div class="ttname"><a href="classESemaphoreData.html#ad85a7f44402fa683caa9c39df786129e">ESemaphoreData::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:435</div></div>
+<div class="ttc" id="aclassERDLock_html_a08dd52e4a11e19ecd0ec92cb87c2a7b3"><div class="ttname"><a href="classERDLock.html#a08dd52e4a11e19ecd0ec92cb87c2a7b3">ERDLock::acquire</a></div><div class="ttdeci">Bool acquire(Bool wait=true)</div><div class="ttdef"><b>Definition:</b> esynch.h:412</div></div>
+<div class="ttc" id="aclassEEvent_html"><div class="ttname"><a href="classEEvent.html">EEvent</a></div><div class="ttdef"><b>Definition:</b> esynch.h:460</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_a7288bafb2bbdf88c952c916a8f3c0509"><div class="ttname"><a href="classEMutexPublic.html#a7288bafb2bbdf88c952c916a8f3c0509">EMutexPublic::~EMutexPublic</a></div><div class="ttdeci">~EMutexPublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:185</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_abdd4413b7d3c1e60460dd087c24592ee"><div class="ttname"><a href="classEMutexPublic.html#abdd4413b7d3c1e60460dd087c24592ee">EMutexPublic::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:388</div></div>
+<div class="ttc" id="aebase_8h_html_add3ca9eefe3b5b754426f51d3043e579"><div class="ttname"><a href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></div><div class="ttdeci">#define True</div><div class="ttdoc">True.</div><div class="ttdef"><b>Definition:</b> ebase.h:25</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_ad9250baee3f0865aa738e854d5b5a359"><div class="ttname"><a href="classESemaphorePublic.html#ad9250baee3f0865aa738e854d5b5a359">ESemaphorePublic::ESemaphorePublic</a></div><div class="ttdeci">ESemaphorePublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:330</div></div>
+<div class="ttc" id="aclassEMutexDataPublic_html_a803274c58d27d3066625a67510c58d35"><div class="ttname"><a href="classEMutexDataPublic.html#a803274c58d27d3066625a67510c58d35">EMutexDataPublic::~EMutexDataPublic</a></div><div class="ttdeci">~EMutexDataPublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:165</div></div>
+<div class="ttc" id="aclassEMutexPrivate_html_af41aa4a0d1c1ff5be475a02047a5af70"><div class="ttname"><a href="classEMutexPrivate.html#af41aa4a0d1c1ff5be475a02047a5af70">EMutexPrivate::EMutexPrivate</a></div><div class="ttdeci">EMutexPrivate(Bool bInit=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:143</div></div>
 <div class="ttc" id="aclassEMutexDataPublic_html"><div class="ttname"><a href="classEMutexDataPublic.html">EMutexDataPublic</a></div><div class="ttdef"><b>Definition:</b> esynch.h:161</div></div>
+<div class="ttc" id="aclassEMutexData_html_af79e338977abe43084bdbc2f022b0d87"><div class="ttname"><a href="classEMutexData.html#af79e338977abe43084bdbc2f022b0d87">EMutexData::initialized</a></div><div class="ttdeci">Bool initialized()</div><div class="ttdef"><b>Definition:</b> esynch.h:75</div></div>
 <div class="ttc" id="aebase_8h_html"><div class="ttname"><a href="ebase_8h.html">ebase.h</a></div><div class="ttdoc">Macros for various standard C library functions and standard includes.</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html_ab4a4bd5ff519b0c7f6e4209d9b128305"><div class="ttname"><a href="classESemaphorePrivate.html#ab4a4bd5ff519b0c7f6e4209d9b128305">ESemaphorePrivate::ESemaphorePrivate</a></div><div class="ttdeci">ESemaphorePrivate(Long initcnt=0, Bool bInit=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:281</div></div>
+<div class="ttc" id="aclassEMutexDataPublic_html_abac93df2105d4912784fc6756c81df19"><div class="ttname"><a href="classEMutexDataPublic.html#abac93df2105d4912784fc6756c81df19">EMutexDataPublic::nextIndex</a></div><div class="ttdeci">Int &amp; nextIndex()</div><div class="ttdef"><b>Definition:</b> esynch.h:167</div></div>
+<div class="ttc" id="aclassEMutexData_html_a684a4433f5efaf81b4203b699de7dae8"><div class="ttname"><a href="classEMutexData.html#a684a4433f5efaf81b4203b699de7dae8">EMutexData::EMutexData</a></div><div class="ttdeci">EMutexData()</div><div class="ttdef"><b>Definition:</b> esynch.h:64</div></div>
+<div class="ttc" id="aclassEMutexLock_html_a290e69bec89f280ddfa7b1d208ea1150"><div class="ttname"><a href="classEMutexLock.html#a290e69bec89f280ddfa7b1d208ea1150">EMutexLock::~EMutexLock</a></div><div class="ttdeci">~EMutexLock()</div><div class="ttdef"><b>Definition:</b> esynch.h:115</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a86d7648f889b24c55505d43a8b2638a5"><div class="ttname"><a href="classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5">ESemaphoreBase::~ESemaphoreBase</a></div><div class="ttdeci">~ESemaphoreBase()</div><div class="ttdef"><b>Definition:</b> esynch.h:255</div></div>
+<div class="ttc" id="aclassEMutexPrivate_html_ab60e22b3365db3849fc79612c4a84661"><div class="ttname"><a href="classEMutexPrivate.html#ab60e22b3365db3849fc79612c4a84661">EMutexPrivate::~EMutexPrivate</a></div><div class="ttdeci">~EMutexPrivate()</div><div class="ttdef"><b>Definition:</b> esynch.h:150</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_ab7ba904a8f25286d03118efaee635e84"><div class="ttname"><a href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">EMutexPublic::attach</a></div><div class="ttdeci">Void attach(Int mutexid)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:405</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_ac4145aacbb00cd91c1413a80d3b01ad5"><div class="ttname"><a href="classESemaphorePublic.html#ac4145aacbb00cd91c1413a80d3b01ad5">ESemaphorePublic::detach</a></div><div class="ttdeci">Void detach()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:545</div></div>
+<div class="ttc" id="aclassEMutexData_html_ad09ebf35369fac703df4c5e7704399ce"><div class="ttname"><a href="classEMutexData.html#ad09ebf35369fac703df4c5e7704399ce">EMutexData::leave</a></div><div class="ttdeci">Void leave()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:364</div></div>
 <div class="ttc" id="aclassEMutexPrivate_html"><div class="ttname"><a href="classEMutexPrivate.html">EMutexPrivate</a></div><div class="ttdef"><b>Definition:</b> esynch.h:140</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html_ae628785707d4bb2fddba875d209f93b4"><div class="ttname"><a href="classESemaphorePrivate.html#ae628785707d4bb2fddba875d209f93b4">ESemaphorePrivate::init</a></div><div class="ttdeci">Void init(Long initcnt)</div><div class="ttdef"><b>Definition:</b> esynch.h:293</div></div>
+<div class="ttc" id="aclassEEvent_html_ac61efc0bb325c25be5963fee90d7375a"><div class="ttname"><a href="classEEvent.html#ac61efc0bb325c25be5963fee90d7375a">EEvent::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:667</div></div>
+<div class="ttc" id="aclassEEvent_html_aa71a7399f402ed1309dcb28d5144a91e"><div class="ttname"><a href="classEEvent.html#aa71a7399f402ed1309dcb28d5144a91e">EEvent::isSet</a></div><div class="ttdeci">bool isSet()</div><div class="ttdef"><b>Definition:</b> esynch.h:470</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a85cd664ade3438751ded17cd81b7c138"><div class="ttname"><a href="classESemaphoreData.html#a85cd664ade3438751ded17cd81b7c138">ESemaphoreData::initialized</a></div><div class="ttdeci">Bool initialized()</div><div class="ttdef"><b>Definition:</b> esynch.h:238</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a33487b077963db0700c0507bb43b11c5"><div class="ttname"><a href="classESemaphorePublic.html#a33487b077963db0700c0507bb43b11c5">ESemaphorePublic::~ESemaphorePublic</a></div><div class="ttdeci">~ESemaphorePublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:341</div></div>
+<div class="ttc" id="aesynch_8h_html_ad82295c661fccad0f6c079cbfbe763f8"><div class="ttname"><a href="esynch_8h.html#ad82295c661fccad0f6c079cbfbe763f8">DECLARE_ERROR_ADVANCED2</a></div><div class="ttdeci">DECLARE_ERROR_ADVANCED2(EMutexError_UnableToInitialize)</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a0cbb272ad36c64680929076e32440940"><div class="ttname"><a href="classESemaphorePublic.html#a0cbb272ad36c64680929076e32440940">ESemaphorePublic::attach</a></div><div class="ttdeci">Void attach(Int semid)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:538</div></div>
+<div class="ttc" id="aesynch_8h_html_a4859a1bfc72328d68b9ca19e9ab98a59"><div class="ttname"><a href="esynch_8h.html#a4859a1bfc72328d68b9ca19e9ab98a59">DECLARE_ERROR</a></div><div class="ttdeci">DECLARE_ERROR(EMutexError_UnableToAllocateMutex)</div></div>
+<div class="ttc" id="aclassESemaphoreDataPublic_html_a8fba5eaf4a9c69d1c952a096743a36b2"><div class="ttname"><a href="classESemaphoreDataPublic.html#a8fba5eaf4a9c69d1c952a096743a36b2">ESemaphoreDataPublic::~ESemaphoreDataPublic</a></div><div class="ttdeci">~ESemaphoreDataPublic()</div><div class="ttdef"><b>Definition:</b> esynch.h:315</div></div>
+<div class="ttc" id="aclassEWRLock_html_a017060582fc89e593f0f1f50b11237f9"><div class="ttname"><a href="classEWRLock.html#a017060582fc89e593f0f1f50b11237f9">EWRLock::isLocked</a></div><div class="ttdeci">Bool isLocked()</div><div class="ttdef"><b>Definition:</b> esynch.h:448</div></div>
+<div class="ttc" id="aclassEMutexDataPublic_html_a475e215e5cca7f934d209e8db11e7e76"><div class="ttname"><a href="classEMutexDataPublic.html#a475e215e5cca7f934d209e8db11e7e76">EMutexDataPublic::mutexId</a></div><div class="ttdeci">Int &amp; mutexId()</div><div class="ttdef"><b>Definition:</b> esynch.h:168</div></div>
+<div class="ttc" id="aesynch_8h_html_a04e864b8fb273baac811cbdfe80bed0d"><div class="ttname"><a href="esynch_8h.html#a04e864b8fb273baac811cbdfe80bed0d">DECLARE_ERROR_ADVANCED</a></div><div class="ttdeci">DECLARE_ERROR_ADVANCED(ESemaphoreError_UnableToInitialize)</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a4517a1a12b12ca7fe182e77b0532dc5a"><div class="ttname"><a href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">ESemaphoreBase::Decrement</a></div><div class="ttdeci">Bool Decrement(Bool wait=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:260</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_aaaf3df3c017b8dc16610665500e79729"><div class="ttname"><a href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">ESemaphoreBase::initialized</a></div><div class="ttdeci">Bool initialized()</div><div class="ttdef"><b>Definition:</b> esynch.h:263</div></div>
 <div class="ttc" id="aclassESemaphorePublic_html"><div class="ttname"><a href="classESemaphorePublic.html">ESemaphorePublic</a></div><div class="ttdef"><b>Definition:</b> esynch.h:327</div></div>
 <div class="ttc" id="aclassERWLock_html"><div class="ttname"><a href="classERWLock.html">ERWLock</a></div><div class="ttdef"><b>Definition:</b> esynch.h:372</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a0f516ca9e53fb7d456d56e5285ea0aed"><div class="ttname"><a href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">ESemaphoreBase::getData</a></div><div class="ttdeci">virtual ESemaphoreData &amp; getData()=0</div></div>
 <div class="ttc" id="aclassEMutexPublic_html"><div class="ttname"><a href="classEMutexPublic.html">EMutexPublic</a></div><div class="ttdef"><b>Definition:</b> esynch.h:175</div></div>
-<div class="ttc" id="aebase_8h_html_a306ebd41c0cd1303b1372c6153f0caf8"><div class="ttname"><a href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></div><div class="ttdeci">#define False</div><div class="ttdoc">False.</div><div class="ttdef"><b>Definition:</b> ebase.h:29</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a3e8c9d20391eab2d3a0f52557a0f2353"><div class="ttname"><a href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">ESemaphoreBase::shared</a></div><div class="ttdeci">Bool &amp; shared()</div><div class="ttdef"><b>Definition:</b> esynch.h:264</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_ab18eafe10a216cffb94fe4dd68bac0da"><div class="ttname"><a href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">EMutexPublic::mutexId</a></div><div class="ttdeci">Int mutexId()</div><div class="ttdef"><b>Definition:</b> esynch.h:196</div></div>
+<div class="ttc" id="aclassEEvent_html_a2b3c1661daa5cd157f49b8cc2ea02bea"><div class="ttname"><a href="classEEvent.html#a2b3c1661daa5cd157f49b8cc2ea02bea">EEvent::wait</a></div><div class="ttdeci">bool wait(int ms=-1)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:672</div></div>
+<div class="ttc" id="aclassEEvent_html_a30d971498a6c4df345df7f008c636c1d"><div class="ttname"><a href="classEEvent.html#a30d971498a6c4df345df7f008c636c1d">EEvent::EEvent</a></div><div class="ttdeci">EEvent(bool state=false)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:640</div></div>
+<div class="ttc" id="aebase_8h_html_a306ebd41c0cd1303b1372c6153f0caf8"><div class="ttname"><a href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></div><div class="ttdeci">#define False</div><div class="ttdoc">False.</div><div class="ttdef"><b>Definition:</b> ebase.h:27</div></div>
+<div class="ttc" id="aclassEWRLock_html_ac3bb5d481da10905dc7e33d72b39b6d2"><div class="ttname"><a href="classEWRLock.html#ac3bb5d481da10905dc7e33d72b39b6d2">EWRLock::~EWRLock</a></div><div class="ttdeci">~EWRLock()</div><div class="ttdef"><b>Definition:</b> esynch.h:437</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html_ad57434f6ce5121502444d43d9a4556a1"><div class="ttname"><a href="classESemaphorePrivate.html#ad57434f6ce5121502444d43d9a4556a1">ESemaphorePrivate::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdef"><b>Definition:</b> esynch.h:294</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a73890ad633dcecf36aa30648b8578c24"><div class="ttname"><a href="classESemaphoreData.html#a73890ad633dcecf36aa30648b8578c24">ESemaphoreData::ESemaphoreData</a></div><div class="ttdeci">ESemaphoreData(Long initcnt, Bool shared)</div><div class="ttdef"><b>Definition:</b> esynch.h:219</div></div>
+<div class="ttc" id="aclassERWLock_html_af885c5ecb73512789f93c4bb22c8791ba91871e832bb26bf55d0ed8fcf1531121"><div class="ttname"><a href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba91871e832bb26bf55d0ed8fcf1531121">ERWLock::Write</a></div><div class="ttdef"><b>Definition:</b> esynch.h:385</div></div>
+<div class="ttc" id="aclassESemaphoreDataPublic_html_ae4ae14dedd0b63e082c5fcb298e88fe8"><div class="ttname"><a href="classESemaphoreDataPublic.html#ae4ae14dedd0b63e082c5fcb298e88fe8">ESemaphoreDataPublic::nextIndex</a></div><div class="ttdeci">Int &amp; nextIndex()</div><div class="ttdef"><b>Definition:</b> esynch.h:319</div></div>
+<div class="ttc" id="aclassERWLock_html_ad4e3a2d98bf805fd643fde3442736ca0"><div class="ttname"><a href="classERWLock.html#ad4e3a2d98bf805fd643fde3442736ca0">ERWLock::ERWLock</a></div><div class="ttdeci">ERWLock()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:570</div></div>
+<div class="ttc" id="aclassERWLock_html_a4dd57285bc16dc4557b74f0a057dbd1e"><div class="ttname"><a href="classERWLock.html#a4dd57285bc16dc4557b74f0a057dbd1e">ERWLock::~ERWLock</a></div><div class="ttdeci">~ERWLock()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:589</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_ac0dbf2b76a6ca83e40703c9963ea9d3c"><div class="ttname"><a href="classESemaphoreData.html#ac0dbf2b76a6ca83e40703c9963ea9d3c">ESemaphoreData::~ESemaphoreData</a></div><div class="ttdeci">~ESemaphoreData()</div><div class="ttdef"><b>Definition:</b> esynch.h:227</div></div>
 <div class="ttc" id="aclassERDLock_html"><div class="ttname"><a href="classERDLock.html">ERDLock</a></div><div class="ttdef"><b>Definition:</b> esynch.h:395</div></div>
+<div class="ttc" id="aclassEMutexData_html_ad778cbf1c88a8b27c1355cfc4883719e"><div class="ttname"><a href="classEMutexData.html#ad778cbf1c88a8b27c1355cfc4883719e">EMutexData::enter</a></div><div class="ttdeci">Bool enter(Bool wait=True)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:344</div></div>
 <div class="ttc" id="aclassESemaphorePrivate_html"><div class="ttname"><a href="classESemaphorePrivate.html">ESemaphorePrivate</a></div><div class="ttdef"><b>Definition:</b> esynch.h:278</div></div>
-<div class="ttc" id="aeerror_8h_html_a974638b398459efd2cc6d8abada9d7ce"><div class="ttname"><a href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED(__e__)</div><div class="ttdoc">Declares exception class derived from EError with no constructor parameters and developer defined con...</div><div class="ttdef"><b>Definition:</b> eerror.h:61</div></div>
+<div class="ttc" id="aetypes_8h_html_afdf0f22c576e6ee1b982f64b839c4bea"><div class="ttname"><a href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a></div><div class="ttdeci">void Void</div><div class="ttdef"><b>Definition:</b> etypes.h:23</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a292bce693b058f636c74c9b6eb3ba226"><div class="ttname"><a href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">ESemaphoreBase::Increment</a></div><div class="ttdeci">Bool Increment()</div><div class="ttdef"><b>Definition:</b> esynch.h:261</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a43fe418178ce490d23d41ba19ea73e26"><div class="ttname"><a href="classESemaphoreData.html#a43fe418178ce490d23d41ba19ea73e26">ESemaphoreData::Increment</a></div><div class="ttdeci">Bool Increment()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:474</div></div>
+<div class="ttc" id="aclassERWLock_html_a084dfcb19226aa8fbd304ec95625dbde"><div class="ttname"><a href="classERWLock.html#a084dfcb19226aa8fbd304ec95625dbde">ERWLock::leave</a></div><div class="ttdeci">Void leave()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:632</div></div>
+<div class="ttc" id="aclassEMutexData_html_aed63c8002c286d185606750ac5584951"><div class="ttname"><a href="classEMutexData.html#aed63c8002c286d185606750ac5584951">EMutexData::mutex</a></div><div class="ttdeci">Long &amp; mutex()</div><div class="ttdef"><b>Definition:</b> esynch.h:86</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a284f8dfd9fb9f7bdc724a1c9c66331ec"><div class="ttname"><a href="classESemaphoreBase.html#a284f8dfd9fb9f7bdc724a1c9c66331ec">ESemaphoreBase::destroy</a></div><div class="ttdeci">virtual Void destroy()=0</div></div>
+<div class="ttc" id="aclassESemaphoreDataPublic_html_a092cfedde62839c1726289fc7c7627ff"><div class="ttname"><a href="classESemaphoreDataPublic.html#a092cfedde62839c1726289fc7c7627ff">ESemaphoreDataPublic::ESemaphoreDataPublic</a></div><div class="ttdeci">ESemaphoreDataPublic(Long initcnt=0)</div><div class="ttdef"><b>Definition:</b> esynch.h:310</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_af0ae39172b6637ca573f30449b0acb6c"><div class="ttname"><a href="classESemaphoreData.html#af0ae39172b6637ca573f30449b0acb6c">ESemaphoreData::Decrement</a></div><div class="ttdeci">Bool Decrement(Bool wait=True)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:449</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_a23e3b44aa3d69f85ec2331ab6b682434"><div class="ttname"><a href="classESemaphoreData.html#a23e3b44aa3d69f85ec2331ab6b682434">ESemaphoreData::ESemaphoreData</a></div><div class="ttdeci">ESemaphoreData()</div><div class="ttdef"><b>Definition:</b> esynch.h:211</div></div>
+<div class="ttc" id="aetypes_8h_html_a0a5eb76a16b3e8ad63bfdf7925f9f37b"><div class="ttname"><a href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a></div><div class="ttdeci">int32_t Long</div><div class="ttdef"><b>Definition:</b> etypes.h:32</div></div>
 <div class="ttc" id="aclassEWRLock_html"><div class="ttname"><a href="classEWRLock.html">EWRLock</a></div><div class="ttdef"><b>Definition:</b> esynch.h:426</div></div>
 <div class="ttc" id="aclassESemaphoreDataPublic_html"><div class="ttname"><a href="classESemaphoreDataPublic.html">ESemaphoreDataPublic</a></div><div class="ttdef"><b>Definition:</b> esynch.h:307</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a2e21e30a9050a5c0e89176c9ac370a5f"><div class="ttname"><a href="classESemaphorePublic.html#a2e21e30a9050a5c0e89176c9ac370a5f">ESemaphorePublic::nextIndex</a></div><div class="ttdeci">Int &amp; nextIndex()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:524</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_a88231c36df8462c8a93c00f7bfe3a967"><div class="ttname"><a href="classEMutexPublic.html#a88231c36df8462c8a93c00f7bfe3a967">EMutexPublic::init</a></div><div class="ttdeci">Void init()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:379</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_ae0c8c336b6602b0200ae59169c0d128a"><div class="ttname"><a href="classESemaphoreData.html#ae0c8c336b6602b0200ae59169c0d128a">ESemaphoreData::initialCount</a></div><div class="ttdeci">Long &amp; initialCount()</div><div class="ttdef"><b>Definition:</b> esynch.h:240</div></div>
+<div class="ttc" id="aclassERDLock_html_af50b2670da68eb4375b69b62077fbe7b"><div class="ttname"><a href="classERDLock.html#af50b2670da68eb4375b69b62077fbe7b">ERDLock::ERDLock</a></div><div class="ttdeci">ERDLock(ERWLock &amp;rwlock, Bool acq=true)</div><div class="ttdef"><b>Definition:</b> esynch.h:398</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_a2372fa1a0e48387da7f705d3859e6683"><div class="ttname"><a href="classESemaphoreBase.html#a2372fa1a0e48387da7f705d3859e6683">ESemaphoreBase::init</a></div><div class="ttdeci">virtual Void init(Long initcnt)=0</div></div>
+<div class="ttc" id="aclassEMutexData_html_a06036447f250286b3a78de72ba2ae716"><div class="ttname"><a href="classEMutexData.html#a06036447f250286b3a78de72ba2ae716">EMutexData::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:331</div></div>
+<div class="ttc" id="aclassEMutexLock_html_ab20eb50fd474396c8c71b3c03a472ed2"><div class="ttname"><a href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">EMutexLock::acquire</a></div><div class="ttdeci">Bool acquire(Bool wait=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:121</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_ab1c20a99181f230eac073fc2f5f3f7fa"><div class="ttname"><a href="classESemaphorePublic.html#ab1c20a99181f230eac073fc2f5f3f7fa">ESemaphorePublic::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:512</div></div>
+<div class="ttc" id="aclassEEvent_html_affcbd4245ade48e1973cfd785e2e9f93"><div class="ttname"><a href="classEEvent.html#affcbd4245ade48e1973cfd785e2e9f93">EEvent::set</a></div><div class="ttdeci">void set()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:659</div></div>
+<div class="ttc" id="aclassEWRLock_html_aa966469fe0f33561cb5e476684014911"><div class="ttname"><a href="classEWRLock.html#aa966469fe0f33561cb5e476684014911">EWRLock::EWRLock</a></div><div class="ttdeci">EWRLock(ERWLock &amp;rwlock, Bool acq=true)</div><div class="ttdef"><b>Definition:</b> esynch.h:429</div></div>
+<div class="ttc" id="aclassERDLock_html_aebde99f96370bfc2ed52ec3d3d17017d"><div class="ttname"><a href="classERDLock.html#aebde99f96370bfc2ed52ec3d3d17017d">ERDLock::isLocked</a></div><div class="ttdeci">Bool isLocked()</div><div class="ttdef"><b>Definition:</b> esynch.h:417</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_a0a9342cea52525c50fd60132b7bf41f3"><div class="ttname"><a href="classEMutexPublic.html#a0a9342cea52525c50fd60132b7bf41f3">EMutexPublic::EMutexPublic</a></div><div class="ttdeci">EMutexPublic(Bool bInit=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:178</div></div>
 <div class="ttc" id="aclassESemaphoreBase_html"><div class="ttname"><a href="classESemaphoreBase.html">ESemaphoreBase</a></div><div class="ttdef"><b>Definition:</b> esynch.h:251</div></div>
+<div class="ttc" id="aclassESemaphoreDataPublic_html_a6f41c7bc9d6af9642c1faa890fa7fe21"><div class="ttname"><a href="classESemaphoreDataPublic.html#a6f41c7bc9d6af9642c1faa890fa7fe21">ESemaphoreDataPublic::semIndex</a></div><div class="ttdeci">Int &amp; semIndex()</div><div class="ttdef"><b>Definition:</b> esynch.h:320</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html_a57f139212fecbf343581c3c53ba47f35"><div class="ttname"><a href="classESemaphorePrivate.html#a57f139212fecbf343581c3c53ba47f35">ESemaphorePrivate::~ESemaphorePrivate</a></div><div class="ttdeci">~ESemaphorePrivate()</div><div class="ttdef"><b>Definition:</b> esynch.h:288</div></div>
+<div class="ttc" id="aestring_8h_html"><div class="ttname"><a href="estring_8h.html">estring.h</a></div></div>
+<div class="ttc" id="aclassEEvent_html_aea364c8e58e78988d744d8db8925aaa4"><div class="ttname"><a href="classEEvent.html#aea364c8e58e78988d744d8db8925aaa4">EEvent::~EEvent</a></div><div class="ttdeci">~EEvent()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:654</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_ad0f637362b36344a2de02bdd02217a73"><div class="ttname"><a href="classESemaphorePublic.html#ad0f637362b36344a2de02bdd02217a73">ESemaphorePublic::semIndex</a></div><div class="ttdeci">Int &amp; semIndex()</div><div class="ttdef"><b>Definition:</b> esynch.cpp:531</div></div>
+<div class="ttc" id="aclassEMutexPrivate_html_a828aafdbf0709894fb42228e67f540e6"><div class="ttname"><a href="classEMutexPrivate.html#a828aafdbf0709894fb42228e67f540e6">EMutexPrivate::init</a></div><div class="ttdeci">Void init()</div><div class="ttdef"><b>Definition:</b> esynch.h:154</div></div>
+<div class="ttc" id="aclassERWLock_html_af885c5ecb73512789f93c4bb22c8791ba7db36161bc9e7aa8d822dc8c62b1fc85"><div class="ttname"><a href="classERWLock.html#af885c5ecb73512789f93c4bb22c8791ba7db36161bc9e7aa8d822dc8c62b1fc85">ERWLock::Read</a></div><div class="ttdef"><b>Definition:</b> esynch.h:384</div></div>
 <div class="ttc" id="aclassEMutexLock_html"><div class="ttname"><a href="classEMutexLock.html">EMutexLock</a></div><div class="ttdef"><b>Definition:</b> esynch.h:105</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a8fa32e16c0eb8b30f963ab40d6c613e8"><div class="ttname"><a href="classESemaphorePublic.html#a8fa32e16c0eb8b30f963ab40d6c613e8">ESemaphorePublic::ESemaphorePublic</a></div><div class="ttdeci">ESemaphorePublic(Long initcnt, Bool bInit=True)</div><div class="ttdef"><b>Definition:</b> esynch.h:334</div></div>
+<div class="ttc" id="aclassESemaphorePublic_html_a82aaa64ef790bb7f50e46b75cfc0cf35"><div class="ttname"><a href="classESemaphorePublic.html#a82aaa64ef790bb7f50e46b75cfc0cf35">ESemaphorePublic::init</a></div><div class="ttdeci">Void init(Long initialCount)</div><div class="ttdef"><b>Definition:</b> esynch.cpp:500</div></div>
+<div class="ttc" id="aclassEMutexData_html_abc6c033363cea7a7c16e7461d15703fe"><div class="ttname"><a href="classEMutexData.html#abc6c033363cea7a7c16e7461d15703fe">EMutexData::~EMutexData</a></div><div class="ttdeci">~EMutexData()</div><div class="ttdef"><b>Definition:</b> esynch.h:68</div></div>
+<div class="ttc" id="aclassESemaphoreData_html_ae604c258c45baf41608fb1836bf99fe1"><div class="ttname"><a href="classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1">ESemaphoreData::currCount</a></div><div class="ttdeci">Long currCount()</div><div class="ttdef"><b>Definition:</b> esynch.h:241</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_ac90974128cda664ba0bd643e8d78ad1b"><div class="ttname"><a href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">ESemaphoreBase::initialCount</a></div><div class="ttdeci">Long &amp; initialCount()</div><div class="ttdef"><b>Definition:</b> esynch.h:265</div></div>
 <div class="ttc" id="aclassEMutexData_html"><div class="ttname"><a href="classEMutexData.html">EMutexData</a></div><div class="ttdef"><b>Definition:</b> esynch.h:59</div></div>
+<div class="ttc" id="aclassESemaphoreBase_html_aac7ea1fe891b896b4d17e9bd969631f1"><div class="ttname"><a href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">ESemaphoreBase::currCount</a></div><div class="ttdeci">Long currCount()</div><div class="ttdef"><b>Definition:</b> esynch.h:266</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

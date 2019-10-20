@@ -99,9 +99,12 @@ Int ECircularBuffer::readData(pUChar dest, Int offset, Int length, Bool peek)
     return amtRead;
 }
 
-void ECircularBuffer::writeData(pUChar src, Int offset, int length)
+void ECircularBuffer::writeData(pUChar src, Int offset, int length, Bool nolock)
 {
-    EMutexLock lockMutex(m_mutex);
+    EMutexLock lockMutex(m_mutex, False);
+
+    if (!nolock)
+      lockMutex.acquire();
 
     if (m_used + length > m_capacity)
         throw ECircularBufferError_AttemptToExceedCapacity();
@@ -129,9 +132,12 @@ void ECircularBuffer::writeData(pUChar src, Int offset, int length)
     }
 }
 
-void ECircularBuffer::modifyData(pUChar src, Int offset, int length)
+void ECircularBuffer::modifyData(pUChar src, Int offset, int length, Bool nolock)
 {
-    EMutexLock lockMutex(m_mutex);
+    EMutexLock lockMutex(m_mutex, False);
+
+    if (!nolock)
+      lockMutex.acquire();
 
     //
     // Generally speaking, data is written to the head and read from the

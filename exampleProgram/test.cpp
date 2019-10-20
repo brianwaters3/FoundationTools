@@ -27,15 +27,6 @@
 
 #include "epc/ecli.h"
 
-// #include "epc/epctools.h"
-// #include "epc/einternal.h"
-// #include "epc/elogger.h"
-// #include "epc/ebzip2.h"
-// #include "epc/esocket.h"
-// #include "epc/esynch.h"
-
-// #include "spdlog/sinks/basic_file_sink.h"
-
 std::locale defaultLocale;
 std::locale mylocale;
 
@@ -367,8 +358,10 @@ class EThreadBasicTest : public EThreadBasic
 public:
    EThreadBasicTest() : m_timetoquit(false) {}
 
-   Dword threadProc(Void *arg) {
-      while (!m_timetoquit) {
+   Dword threadProc(Void *arg)
+   {
+      while (!m_timetoquit)
+      {
          cout << "Inside the thread [" << (cpStr)arg << "]" << endl;
          sleep(1000);
       }
@@ -376,7 +369,8 @@ public:
       return 0;
    }
 
-   Void setTimeToQuit() {
+   Void setTimeToQuit()
+   {
       m_timetoquit = true;
    }
 
@@ -384,7 +378,8 @@ private:
    bool m_timetoquit;
 };
 
-Void EThreadBasic_test() {
+Void EThreadBasic_test()
+{
    cout << "EThread_test() Start" << endl;
 
    EThreadBasicTest t;
@@ -470,7 +465,7 @@ class EThreadTest : public EThreadPublic
 {
 public:
    EThreadTest(EMutexPublic &mutex)
-      : mtx(mutex)
+       : mtx(mutex)
    {
       msg1cnt = 0;
       msg2cnt = 0;
@@ -603,24 +598,24 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(EThreadTest, EThreadPublic)
-   ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
-   ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
+ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
+ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest2, EThreadTest)
-   ON_MESSAGE(EM_USER3, EThreadTest2::userFunc3)
-   ON_MESSAGE(EM_USER4, EThreadTest2::userFunc4)
+ON_MESSAGE(EM_USER3, EThreadTest2::userFunc3)
+ON_MESSAGE(EM_USER4, EThreadTest2::userFunc4)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest3, EThreadPrivate)
-   ON_MESSAGE(EM_USER1, EThreadTest3::userFunc1)
-   ON_MESSAGE(EM_USER2, EThreadTest3::userFunc2)
-   ON_MESSAGE(EM_USER3, EThreadTest3::userFunc3)
-   ON_MESSAGE(EM_USER4, EThreadTest3::userFunc4)
+ON_MESSAGE(EM_USER1, EThreadTest3::userFunc1)
+ON_MESSAGE(EM_USER2, EThreadTest3::userFunc2)
+ON_MESSAGE(EM_USER3, EThreadTest3::userFunc3)
+ON_MESSAGE(EM_USER4, EThreadTest3::userFunc4)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest4, EThreadPrivate)
-   ON_MESSAGE(EM_USER1, EThreadTest4::userFunc1)
+ON_MESSAGE(EM_USER1, EThreadTest4::userFunc1)
 END_MESSAGE_MAP()
 
 template <class T>
@@ -722,9 +717,9 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(EThreadTest5rcv, EThreadPrivate)
-   ON_MESSAGE(EM_USER1, EThreadTest5rcv::rcv1)
-   ON_MESSAGE(EM_USER2, EThreadTest5rcv::rcv2)
-   ON_MESSAGE(EM_USER3, EThreadTest5rcv::rcv3)
+ON_MESSAGE(EM_USER1, EThreadTest5rcv::rcv1)
+ON_MESSAGE(EM_USER2, EThreadTest5rcv::rcv2)
+ON_MESSAGE(EM_USER3, EThreadTest5rcv::rcv3)
 END_MESSAGE_MAP()
 
 class EThreadTest5snd : public EThreadBasic
@@ -993,7 +988,7 @@ public:
    testmessage()
    {
       epc_strcpy_s(m_data, sizeof(m_data),
-                  "This is a shared queue test. Four score and 7 years ago, our fathers");
+                   "This is a shared queue test. Four score and 7 years ago, our fathers");
    }
 
    ~testmessage() {}
@@ -1287,7 +1282,7 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(EThreadTestSuspendResume, EThreadPrivate)
-   ON_MESSAGE(EM_USER1, EThreadTestSuspendResume::userFunc1)
+ON_MESSAGE(EM_USER1, EThreadTestSuspendResume::userFunc1)
 END_MESSAGE_MAP()
 
 Void EThreadSuspendResume_test()
@@ -1300,18 +1295,18 @@ Void EThreadSuspendResume_test()
    EThreadBasic::sleep(1000);
 
    cout << "start sending EM_USER1 messages" << endl;
-   for (Int i=0; i<5; i++)
+   for (Int i = 0; i < 5; i++)
    {
       t.sendMessage(EM_USER1);
       EThreadBasic::sleep(1000);
    }
 
-   for (Int i=0; i<5; i++)
+   for (Int i = 0; i < 5; i++)
    {
       Int ms = 3000;
       if (!i)
       {
-         cout << "suspending the thread for " << ms/1000 << "seconds" << endl;
+         cout << "suspending the thread for " << ms / 1000 << "seconds" << endl;
          t.suspend();
          cout << "sending EM_USER1 while thread is suspended " << endl;
       }
@@ -1530,21 +1525,27 @@ Void deadlock()
 class Listener;
 class Talker;
 
-class Worker : public ESocketThread
+class TcpWorker : public ESocket::Thread
 {
 public:
-	Worker() { m_listen = False; m_port = 0; m_cnt = 0; m_talker = NULL; }
+   TcpWorker()
+   {
+      m_listen = False;
+      m_port = 0;
+      m_cnt = 0;
+      m_talker = NULL;
+   }
 
-	Void onInit();
-	Void onQuit();
-	Void onClose();
+   Void onInit();
+   Void onQuit();
+   Void onClose();
 
-	Void errorHandler(EError &err, ESocket* psocket);
+   Void errorHandler(EError &err, ESocket::Base *psocket);
 
-	Talker* createTalker();
+   Talker *createTalker();
 
-	Void setListen(Bool v) { m_listen = v; }
-	Bool getListen() { return m_listen; }
+   Void setListen(Bool v) { m_listen = v; }
+   Bool getListen() { return m_listen; }
 
    Void setCount(Int cnt) { m_cnt = cnt; }
    Int getCnt() { return m_cnt; }
@@ -1553,163 +1554,237 @@ public:
    UShort getPort() { return m_port; }
 
 private:
-	Bool		   m_listen;
-   UShort      m_port;
-   Int         m_cnt;
-	Listener*	m_listener;
-	Talker*		m_talker;
-
+   Bool m_listen;
+   UShort m_port;
+   Int m_cnt;
+   Listener *m_listener;
+   Talker *m_talker;
 };
 
-class Listener : public ESocketListen
+class Listener : public ESocket::TCP::Listener
 {
 public:
-	Listener(Worker* pthread) : ESocketListen(pthread, 1048576) {}
-	~Listener() {}
+   Listener(TcpWorker &thread) : ESocket::TCP::Listener(thread) {}
+   virtual ~Listener() {}
 
-    ESocketConverse* createSocket(ESocketThread* pthread);
+   ESocket::TCP::Talker *createSocket(ESocket::Thread &thread);
 
-    Void onClose();
-    Void onError();
+   Void onClose();
+   Void onError();
 };
 
-class Talker : public ESocketConverse
+class Talker : public ESocket::TCP::Talker
 {
 public:
-	Talker(Worker* pthread) : ESocketConverse(pthread, 1048576) {}
-	~Talker() {}
+   Talker(TcpWorker &thread) : ESocket::TCP::Talker(thread) {}
+   ~Talker() {}
 
-	Void onConnect();
-	Bool onReceive();
-	Void onClose();
+   Void onConnect();
+   Bool onReceive();
+   Void onClose();
 
 private:
-	Talker();
+   Talker();
 };
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-ESocketConverse* Listener::createSocket(ESocketThread* pthread)
+ESocket::TCP::Talker *Listener::createSocket(ESocket::Thread &thread)
 {
 
-	return ((Worker*)pthread)->createTalker();
+   return ((TcpWorker &)thread).createTalker();
 }
 
 Void Listener::onClose()
 {
-   std::cout << "listening socket closed" << std::endl << std::flush;
+   std::cout << "listening socket closed" << std::endl
+             << std::flush;
 }
 
 Void Listener::onError()
 {
-   std::cout << "socket error " << getError() << " occurred on listening socket during select" << std::endl << std::flush;
+   std::cout << "socket error " << getError() << " occurred on listening socket during select" << std::endl
+             << std::flush;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 Void Talker::onConnect()
 {
-	ESocketConverse::onConnect();
+   ESocket::TCP::Talker::onConnect();
 
-   std::cout << "socket connected" << std::endl << std::flush;
+   if (((TcpWorker &)getThread()).getListen())
+   {
+      std::cout << "Talker::onConnect() - server connected" << std::endl
+                << std::flush;
 
-	Int val = 1;
-	write((pUChar)&val, sizeof(val));
+      EString localIpAddr = getLocalAddress();
+      UShort localPort = getLocalPort();
+      EString remoteIpAddr = getRemoteAddress();
+      UShort remotePort = getRemotePort();
+
+      std::cout.imbue(defaultLocale);
+      std::cout << "socket connected"
+                << " localIp=" << localIpAddr << " localPort=" << localPort
+                << " remoteIp=" << remoteIpAddr << " remotePort=" << remotePort
+                << std::endl
+                << std::flush;
+      std::cout.imbue(mylocale);
+   }
+   else
+   {
+      std::cout << "Talker::onConnect() - client connected" << std::endl
+                << std::flush;
+
+      EString localIpAddr = getLocalAddress();
+      UShort localPort = getLocalPort();
+      EString remoteIpAddr = getRemoteAddress();
+      UShort remotePort = getRemotePort();
+
+      std::cout.imbue(defaultLocale);
+      std::cout << "socket connected"
+                << " localIp=" << localIpAddr << " localPort=" << localPort
+                << " remoteIp=" << remoteIpAddr << " remotePort=" << remotePort
+                << std::endl
+                << std::flush;
+      std::cout.imbue(mylocale);
+
+      try
+      {
+         Int val = 1;
+         write((pUChar)&val, sizeof(val));
+      }
+      catch (const ESocket::TcpTalkerError_SendingPacket &e)
+      {
+         std::cerr << e.what() << '\n'
+                   << std::flush;
+         getThread().quit();
+      }
+   }
 }
 
 Bool Talker::onReceive()
 {
-	UChar buffer[1024];
-   Int *pval = (Int*)buffer;
+   UChar buffer[1024];
+   Int *pval = (Int *)buffer;
 
-	while (true)
-	{
-		if (bytesPending() < 4 || read(buffer,4) != 4)
-			break;
-		if ((*pval) % 10000 == 0)
-         std::cout << "\r" << *pval << std::flush;
-
-      if (*pval != -1)
+   try
+   {
+      while (true)
       {
-         *pval = (((Worker*)getThread())->getCnt() > 0 && *pval >= ((Worker*)getThread())->getCnt()) ? -1 : (*pval + 1);
-         write(buffer, 4);
-      }
+         if (bytesPending() < 4 || read(buffer, 4) != 4)
+            break;
 
-      if (*pval == -1)
-      {
-         if (((Worker*)getThread())->getListen())
-            disconnect();
-         break;
+         if (((TcpWorker &)getThread()).getListen())
+         {
+            if ((*pval) % 10000 == 1)
+               std::cout << "\r" << *pval - 1 << std::flush;
+         }
+         else
+         {
+            if ((*pval) % 10000 == 0)
+               std::cout << "\r" << *pval << std::flush;
+         }
+         
+         if (*pval != -1)
+         {
+            *pval = (((TcpWorker &)getThread()).getCnt() > 0 && *pval >= ((TcpWorker &)getThread()).getCnt()) ? -1 : (*pval + 1);
+            write(buffer, 4);
+         }
+
+         if (*pval == -1)
+         {
+            if (((TcpWorker &)getThread()).getListen())
+               disconnect();
+            break;
+         }
       }
-	}
+   }
+   catch (const ESocket::TcpTalkerError_SendingPacket &e)
+   {
+      std::cerr << e.what() << '\n'
+                << std::flush;
+      getThread().quit();
+   }
+   catch (const std::exception &e)
+   {
+      std::cerr << e.what() << '\n'
+                << std::flush;
+      getThread().quit();
+   }
 
    return True;
 }
 
 Void Talker::onClose()
 {
-   std::cout << std::endl << "socket closed" << std::endl << std::flush;
-	((Worker*)getThread())->onClose();
+   std::cout << std::endl
+             << "socket closed" << std::endl
+             << std::flush;
+   ((TcpWorker &)getThread()).onClose();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-Talker* Worker::createTalker()
+Talker *TcpWorker::createTalker()
 {
-	return m_talker = new Talker(this);
+   return m_talker = new Talker(*this);
 }
 
-Void Worker::onInit()
+Void TcpWorker::onInit()
 {
    UShort port = 12345;
-	if (getListen())
-	{
-		m_listener = new Listener(this);
-		m_listener->listen(port, 10);
+   if (getListen())
+   {
+      m_listener = new Listener(*this);
+      m_listener->listen(port, 10);
       std::cout.imbue(defaultLocale);
-      std::cout << "waiting for client to attach on port " << port << std::endl << std::flush;
+      std::cout << "waiting for client to attach on port " << port << std::endl
+                << std::flush;
       std::cout.imbue(mylocale);
-	}
-	else
-	{
+   }
+   else
+   {
       std::cout.imbue(defaultLocale);
-      std::cout << "connecting to server on port " << port << std::endl << std::flush;
+      std::cout << "connecting to server on port " << port << std::endl
+                << std::flush;
       std::cout.imbue(mylocale);
-		createTalker()->connect("127.0.0.1", 12345);
-	}
+      createTalker()->connect("127.0.0.1", 12345);
+   }
 
-   std::cout << std::endl << std::flush;
+   std::cout << std::endl
+             << std::flush;
 }
 
-Void Worker::onQuit()
+Void TcpWorker::onQuit()
 {
 }
 
-Void Worker::onClose()
+Void TcpWorker::onClose()
 {
-	if (m_talker)
-	{
-		Talker* t = m_talker;
-		m_talker = NULL;
+   if (m_talker)
+   {
+      Talker *t = m_talker;
+      m_talker = NULL;
 
-		//t->close();
-		delete t;
-		quit();
-	}
+      //t->close();
+      delete t;
+      quit();
+   }
 }
 
-Void Worker::errorHandler(EError &err, ESocket* psocket)
+Void TcpWorker::errorHandler(EError &err, ESocket::Base *psocket)
 {
    //std::cout << "Socket exception - " << err << std::endl << std::flush;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-Void sockettest(Bool server)
+Void tcpsockettest(Bool server)
 {
-   static Int messages = 1000000;
+   static Int messages = 100000;
    static UShort port = 12345;
-   Worker* pWorker = new Worker();
+   TcpWorker *pWorker = new TcpWorker();
    Char buffer[128];
 
    cout.imbue(defaultLocale);
@@ -1728,6 +1803,195 @@ Void sockettest(Bool server)
    }
 
    pWorker->setListen(server);
+
+   pWorker->init(1, 1, NULL);
+   pWorker->join();
+   delete pWorker;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+class UdpSocket;
+
+class UdpWorker : public ESocket::Thread
+{
+public:
+   UdpWorker()
+   {
+      m_localport = 0;
+      m_remoteport = 0;
+      m_cnt = 0;
+      m_socket = NULL;
+   }
+
+   Void onInit();
+   Void onQuit();
+   Void onClose();
+
+   Void errorHandler(EError &err, ESocket::Base *psocket);
+
+   Void setCount(Int cnt) { m_cnt = cnt; }
+   Int getCount() { return m_cnt; }
+
+   Void setLocalIp(cpStr ip) { m_localip = ip; }
+   EString &getLocalIp() { return m_localip; }
+   Void setLocalPort(UShort port) { m_localport = port; }
+   UShort getLocalPort() { return m_localport; }
+
+   Void setRemoteIp(cpStr ip) { m_remoteip = ip; }
+   EString &getRemoteIp() { return m_remoteip; }
+   Void setRemotePort(UShort port) { m_remoteport = port; }
+   UShort getRemotePort() { return m_remoteport; }
+
+private:
+   EString m_localip;
+   UShort m_localport;
+   EString m_remoteip;
+   UShort m_remoteport;
+   Int m_cnt;
+   UdpSocket *m_socket;
+};
+
+class UdpSocket : public ESocket::UDP
+{
+public:
+   UdpSocket(UdpWorker &thread) : ESocket::UDP(thread)
+   {
+      m_cnt = 0;
+      m_sentcnt = 0;
+   }
+
+   virtual ~UdpSocket() {}
+
+   Void onReceive(const ESocket::Address &from, pVoid msg, Int len);
+   Void onError();
+
+   Void sendpacket();
+
+   Void setCount(Int cnt) { m_cnt = cnt; }
+
+   Void setRemote(const ESocket::Address addr) { m_remote = addr; }
+
+private:
+   Int m_cnt;
+   Int m_sentcnt;
+   ESocket::Address m_remote;
+};
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Void UdpSocket::sendpacket()
+{
+   if (m_sentcnt != -1)
+   {
+      if (m_sentcnt < m_cnt)
+         m_sentcnt++;
+      else
+         m_sentcnt = -1;
+   }
+   write( m_remote, &m_sentcnt, sizeof(m_sentcnt) );
+}
+
+Void UdpSocket::onReceive(const ESocket::Address &addr, cpVoid pData, Int length)
+{
+   std::cout.imbue(defaultLocale);
+   std::cout << "Received [" << *(Int*)pData << "] length [" << length << "] from [" << addr.getAddress() << ":" << addr.getPort() << "]" << std::endl << std::flush;
+   std::cout.imbue(mylocale);
+
+   if (*(Int*)pData == -1)
+   {
+      if (m_sentcnt != -1)
+      {
+         m_sentcnt = -1;
+         sendpacket();
+      }
+      getThread().quit();
+   }
+   else
+   {
+      sendpacket();
+   }
+}
+
+Void UdpSocket::onError()
+{
+   std::cout << "socket error " << getError() << " occurred on UDP socket during select" << std::endl
+             << std::flush;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Void UdpWorker::onInit()
+{
+   std::cout << "creating local UDP socket" << std::endl << std::flush;
+   m_socket = new UdpSocket(*this);
+
+   std::cout.imbue(defaultLocale);
+   std::cout << "binding to IP [" << getLocalIp() << "] port [" << getLocalPort() << "]" << std::endl << std::flush;
+   std::cout.imbue(mylocale);
+   m_socket->bind( getLocalIp(), getLocalPort() );
+
+   ESocket::Address remote( getRemoteIp(), getRemotePort() );
+   m_socket->setRemote( remote );
+   m_socket->setCount( m_cnt );
+
+   std::cout << "sending first packet" << std::endl << std::endl << std::flush;
+   m_socket->sendpacket();
+}
+
+Void UdpWorker::onQuit()
+{
+   delete m_socket;
+}
+
+Void UdpWorker::errorHandler(EError &err, ESocket::Base *psocket)
+{
+   //std::cout << "Socket exception - " << err << std::endl << std::flush;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Void udpsockettest()
+{
+   static Int messages = 20;
+   static UShort localport = 11111;
+   static UShort remoteport = 22222;
+   static EString localip = "127.0.0.1";
+   static EString remoteip = "127.0.0.1";
+
+   UdpWorker *pWorker = new UdpWorker();
+   Char buffer[128];
+
+   cout << "Enter the local IP address for the connection [" << localip << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   if (*buffer)
+      localip = buffer;
+   cout.imbue(defaultLocale);
+   cout << "Enter the local port number for the connection [" << localport << "]: ";
+   cout.imbue(mylocale);
+   cin.getline(buffer, sizeof(buffer));
+   localport = buffer[0] ? (UShort)std::stoi(buffer) : localport;
+
+   cout << "Enter the remote IP address for the connection [" << remoteip << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   if (*buffer)
+      remoteip = buffer;
+   cout.imbue(defaultLocale);
+   cout << "Enter the remote port number for the connection [" << remoteport << "]: ";
+   cout.imbue(mylocale);
+   cin.getline(buffer, sizeof(buffer));
+   remoteport = buffer[0] ? (UShort)std::stoi(buffer) : remoteport;
+
+   pWorker->setLocalIp(localip);
+   pWorker->setLocalPort(localport);
+   pWorker->setRemoteIp(remoteip);
+   pWorker->setRemotePort(remoteport);
+
+   cout << "Enter number of messages to exchange with the peer [" << messages << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   messages = buffer[0] ? std::stoi(buffer) : messages;
+   pWorker->setCount(messages);
 
    pWorker->init(1, 1, NULL);
    pWorker->join();
@@ -1756,29 +2020,36 @@ public:
       ETimer tmr;
 
       EThreadBasic::sleep(delay);
-      cout << "thread [" << m_name << "] starting after " << delay << "ms (" << tmr.MilliSeconds() << ")" << endl << flush;
+      cout << "thread [" << m_name << "] starting after " << delay << "ms (" << tmr.MilliSeconds() << ")" << endl
+           << flush;
 
       if (m_reader)
       {
          {
-            cout << "thread [" << m_name << "] waiting for read lock" << endl << flush;
+            cout << "thread [" << m_name << "] waiting for read lock" << endl
+                 << flush;
             ERDLock rdlck(m_rwlock);
             epctime_t elapsed = tmr.MilliSeconds();
-            cout << "thread [" << m_name << "] read lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl << flush;
+            cout << "thread [" << m_name << "] read lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl
+                 << flush;
             EThreadBasic::sleep(hold);
          }
-         cout << "thread [" << m_name << "] read lock released" << endl << flush;
+         cout << "thread [" << m_name << "] read lock released" << endl
+              << flush;
       }
       else
       {
          {
-            cout << "thread [" << m_name << "] waiting for write lock" << endl << flush;
+            cout << "thread [" << m_name << "] waiting for write lock" << endl
+                 << flush;
             EWRLock wrlck(m_rwlock);
             epctime_t elapsed = tmr.MilliSeconds();
-            cout << "thread [" << m_name << "] write lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl << flush;
+            cout << "thread [" << m_name << "] write lock obtained after " << elapsed << "ms - holding lock for " << hold << "ms" << endl
+                 << flush;
             EThreadBasic::sleep(hold);
          }
-         cout << "thread [" << m_name << "] write lock released" << endl << flush;
+         cout << "thread [" << m_name << "] write lock released" << endl
+              << flush;
       }
    }
 
@@ -1793,7 +2064,7 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(ERWLockTestThread, EThreadPrivate)
-   ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
+ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
 END_MESSAGE_MAP()
 
 Void ERWLock_test()
@@ -1806,24 +2077,29 @@ Void ERWLock_test()
    ERWLockTestThread read2(rwl, True, "READ2");
    ERWLockTestThread write1(rwl, False, "WRITE1");
 
-   cout << "ERWLock_test - initializing threads" << endl << flush;
+   cout << "ERWLock_test - initializing threads" << endl
+        << flush;
    read1.init(1, 1, NULL, 20000);
    read2.init(1, 2, NULL, 20000);
    write1.init(1, 3, NULL, 20000);
 
-   cout << "ERWLock_test - starting 1st test" << endl << flush;
+   cout << "ERWLock_test - starting 1st test" << endl
+        << flush;
    read1.sendMessage(EM_RWLOCKTEST, 0, 4000);
    read2.sendMessage(EM_RWLOCKTEST, 50, 4000);
    write1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
    EThreadBasic::sleep(10000);
-   cout << "ERWLock_test - 1st test complete" << endl << flush;
+   cout << "ERWLock_test - 1st test complete" << endl
+        << flush;
 
-   cout << "ERWLock_test - starting 2nd test" << endl << flush;
+   cout << "ERWLock_test - starting 2nd test" << endl
+        << flush;
    read1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
    read2.sendMessage(EM_RWLOCKTEST, 1050, 4000);
    write1.sendMessage(EM_RWLOCKTEST, 0, 4000);
    EThreadBasic::sleep(10000);
-   cout << "ERWLock_test - 2nd test complete" << endl << flush;
+   cout << "ERWLock_test - 2nd test complete" << endl
+        << flush;
 
    read1.quit();
    read2.quit();
@@ -1885,15 +2161,15 @@ Void EGetOpt_test(EGetOpt &opt)
    }
 
    opt.setPrefix("");
-   std::cout << "/EpcTools/EnablePublicObjects=" << (opt.get("/EpcTools/EnablePublicObjects",false)?"true":"false") << std::endl;
-   std::cout << "/EpcTools/Logger/ApplicationName=" << opt.get("/EpcTools/Logger/ApplicationName","undefined") << std::endl;
-   std::cout << "/EpcTools/Logger/QueueSize=" << opt.get("/EpcTools/Logger/QueueSize",-1) << std::endl;
-   std::cout << "/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles=" << opt.get("/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles",-1) << std::endl;
+   std::cout << "/EpcTools/EnablePublicObjects=" << (opt.get("/EpcTools/EnablePublicObjects", false) ? "true" : "false") << std::endl;
+   std::cout << "/EpcTools/Logger/ApplicationName=" << opt.get("/EpcTools/Logger/ApplicationName", "undefined") << std::endl;
+   std::cout << "/EpcTools/Logger/QueueSize=" << opt.get("/EpcTools/Logger/QueueSize", -1) << std::endl;
+   std::cout << "/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles=" << opt.get("/EpcTools/Logger/SinkSets/0/Sinks/4/MaxNumberFiles", -1) << std::endl;
 
    {
       UInt cnt = opt.getCount("EpcTools/Logger/SinkSets");
       std::cout << "EpcTools/Logger/SinkSets count=" << cnt << std::endl;
-      for (int i=0; i<cnt; i++)
+      for (int i = 0; i < cnt; i++)
       {
          Long sinkid = opt.get(i, "EpcTools/Logger/SinkSets", "SinkID", -1);
          std::cout << "EpcTools/Logger/SinkSets/" << i << "/SinkID=" << sinkid << std::endl;
@@ -1902,7 +2178,7 @@ Void EGetOpt_test(EGetOpt &opt)
          path.format("/EpcTools/Logger/SinkSets/%d/Sinks", i);
          UInt cnt2 = opt.getCount(path.c_str());
          std::cout << path << " count=" << cnt2 << std::endl;
-         for (int j=0; j<cnt2; j++)
+         for (int j = 0; j < cnt2; j++)
             std::cout << path << "/" << j << "/SinkType = " << opt.get(j, path, "SinkType", "unknown") << std::endl;
       }
    }
@@ -1929,7 +2205,6 @@ Void ELogger_test()
    // ELogger::sinkSet(STANDARD_SINKSET).addSink( s1, ELogger::eWarn, "[__APPNAME__] [%n] [%l] %v" );
    // ELogger::sinkSet(STANDARD_SINKSET).addSink( s2, ELogger::eTrace );
    // ELogger::sinkSet(STANDARD_SINKSET).addSink( s3, ELogger::eTrace );
-
 
    // ELogger::createLog( LOG_SYSTEM, "system", STANDARD_SINKSET );
    // ELogger::createLog( LOG_TEST1, "test1", STANDARD_SINKSET );
@@ -1969,14 +2244,14 @@ Void ELogger_test()
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
-   ELogger::createSinkSet( LOG_TEST3_SINKSET );
+   ELogger::createSinkSet(LOG_TEST3_SINKSET);
    std::shared_ptr<ELoggerSink> sp = std::make_shared<ELoggerSinkBasicFile>(
-      ELogger::eDebug, ELoggerSink::getDefaultPattern(), "mylog", true );
-   ELogger::sinkSet(LOG_TEST3_SINKSET).addSink( sp );
+       ELogger::eDebug, ELoggerSink::getDefaultPattern(), "mylog", true);
+   ELogger::sinkSet(LOG_TEST3_SINKSET).addSink(sp);
 
-   ELogger::createLog( LOG_TEST3, "test3", LOG_TEST3_SINKSET );
+   ELogger::createLog(LOG_TEST3, "test3", LOG_TEST3_SINKSET);
 
-   ELogger::log(LOG_TEST3).setLogLevel( ELogger::eInfo );
+   ELogger::log(LOG_TEST3).setLogLevel(ELogger::eInfo);
 
    ELogger::log(LOG_TEST3).debug("Hello {} from the test3 log!!", "World");
    ELogger::log(LOG_TEST3).info("Hello {} from the test3 log!!", "World");
@@ -2004,21 +2279,24 @@ Void printMenu()
        "                       Enhanced Packet Core Tools Test Menu                     \n"
        "                         Public features are %senabled                          \n"
        "\n"
-       "1.  Semaphore/thread cancellation              16. Thread periodic timer test   \n"
-       "2.  DateTime object tests                      17. Thread one shot timer test   \n"
-       "3.  Public thread test (1 writer, 1 reader)    18. Circular buffer test         \n"
-       "4.  Public thread test (1 writer, 4 readers)   19. Directory test               \n"
-       "5.  Private thread test (1 writer, 4 readers)  20. Hash test                    \n"
-       "6.  Public queue test (reader)                 21. Thread test (1 reader/writer)\n"
-       "7.  Public queue test (writer)                 22. Deadlock                     \n"
-       "8.  Elapsed timer                              23. Thread Test (4 writers)      \n"
-       "9.  Error handling                             24. Mutex performance test       \n"
-       "10. Private Mutex test                         25. Socket server                \n"
-       "11. Public Mutex test                          26. Socket client                \n"
-       "12. Private Semaphore test                     27. Read/Write Lock test         \n"
-       "13. Public Semaphore test                      28. Options test                 \n"
-       "14. Basic thread test                          29. Logger test                  \n"
+       "1.  Semaphore/thread cancellation              19. Directory test               \n"
+       "2.  DateTime object tests                      20. Hash test                    \n"
+       "3.  Public thread test (1 writer, 1 reader)    21. Thread test (1 reader/writer)\n"
+       "4.  Public thread test (1 writer, 4 readers)   22. Deadlock                     \n"
+       "5.  Private thread test (1 writer, 4 readers)  23. Thread Test (4 writers)      \n"
+       "6.  Public queue test (reader)                 24. Mutex performance test       \n"
+       "7.  Public queue test (writer)                 25. Socket server                \n"
+       "8.  Elapsed timer                              26. Socket client                \n"
+       "9.  Error handling                             27. Read/Write Lock test         \n"
+       "10. Private Mutex test                         28. Options test                 \n"
+       "11. Public Mutex test                          29. Logger test                  \n"
+       "12. Private Semaphore test                     30. UDP socket test              \n"
+       "13. Public Semaphore test                                                       \n"
+       "14. Basic thread test                                                           \n"
        "15. Thread suspend/resume                                                       \n"
+       "16. Thread periodic timer test                                                  \n"
+       "17. Thread one shot timer test                                                  \n"
+       "18. Circular buffer test                                                        \n"
        "\n",
        EpcTools::isPublicEnabled() ? "" : "NOT ");
 }
@@ -2098,7 +2376,6 @@ Void run(EGetOpt &options)
          case 18:
             ECircularBuffer_test();
             break;
-            //                case 17:  OpenDBX_test();                   break;
          case 19:
             EDirectory_test();
             break;
@@ -2118,10 +2395,10 @@ Void run(EGetOpt &options)
             EMutex_test2();
             break;
          case 25:
-            sockettest(True);
+            tcpsockettest(True);
             break;
          case 26:
-            sockettest(False);
+            tcpsockettest(False);
             break;
          case 27:
             ERWLock_test();
@@ -2131,6 +2408,10 @@ Void run(EGetOpt &options)
             break;
          case 29:
             ELogger_test();
+            break;
+         case 30:
+            udpsockettest();
+            break;
          default:
             cout << "Invalid Selection" << endl
                  << endl;
@@ -2236,12 +2517,12 @@ int main(int argc, char *argv[])
       if (!optFile.empty())
          opt.loadFile(optFile.c_str());
    }
-   catch(const EGetOptError_FileParsing& e)
+   catch (const EGetOptError_FileParsing &e)
    {
       std::cerr << e.Name() << " - " << e.what() << '\n';
       exit(0);
    }
-   catch(const std::exception& e)
+   catch (const std::exception &e)
    {
       std::cerr << e.what() << '\n';
       exit(0);
@@ -2249,7 +2530,7 @@ int main(int argc, char *argv[])
 
    defaultLocale = std::cout.getloc();
    mylocale = std::locale("");
-   
+
    std::cout.imbue(mylocale);
 
    try

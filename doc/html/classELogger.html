@@ -73,103 +73,1049 @@ $(function() {
 <div class="title">ELogger Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines a logger.  
+ <a href="classELogger.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="elogger_8h_source.html">elogger.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a22fb57bad0e9b0ead993bf7dfb3d3968"><td class="memItemLeft" align="right" valign="top"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>LogLevel</b> { <br />
-&#160;&#160;<b>eDebug</b> = spdlog::level::trace, 
-<b>eInfo</b> = spdlog::level::debug, 
-<b>eStartup</b> = spdlog::level::info, 
-<b>eMinor</b> = spdlog::level::warn, 
+<tr class="memitem:a22fb57bad0e9b0ead993bf7dfb3d3968"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">LogLevel</a> { <br />
+&#160;&#160;<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968a1f0f01a3b5937718bea0102b7048dd26">eDebug</a> = spdlog::level::trace, 
+<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968ad33bdb958ce9a7f75bd8f8db1f5b13be">eInfo</a> = spdlog::level::debug, 
+<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968a70c3ea4d2caebd12b06270bb858acb61">eStartup</a> = spdlog::level::info, 
+<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968a17c9da6fdf1a7e126bf4a5ac16fe830e">eMinor</a> = spdlog::level::warn, 
 <br />
-&#160;&#160;<b>eMajor</b> = spdlog::level::err, 
-<b>eCritical</b> = spdlog::level::critical, 
-<b>eOff</b> = spdlog::level::off
+&#160;&#160;<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968ad69a71ad50b3acc044fd0598e0721a14">eMajor</a> = spdlog::level::err, 
+<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968a770b56350aec9e8d2bf424fab98dec43">eCritical</a> = spdlog::level::critical, 
+<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968a725ff2a12b723ead3ade51c59207f600">eOff</a> = spdlog::level::off
 <br />
  }</td></tr>
+<tr class="memdesc:a22fb57bad0e9b0ead993bf7dfb3d3968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the various log levels.  <a href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">More...</a><br /></td></tr>
 <tr class="separator:a22fb57bad0e9b0ead993bf7dfb3d3968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15715909ba08eb965ef8a39d99e8f594"><td class="memItemLeft" align="right" valign="top"><a id="a15715909ba08eb965ef8a39d99e8f594"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ELogger</b> (Int logid, cpStr category, Int sinkid)</td></tr>
+<tr class="memitem:a15715909ba08eb965ef8a39d99e8f594"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a15715909ba08eb965ef8a39d99e8f594">ELogger</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> logid, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> category, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> sinkid)</td></tr>
+<tr class="memdesc:a15715909ba08eb965ef8a39d99e8f594"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classELogger.html#a15715909ba08eb965ef8a39d99e8f594">More...</a><br /></td></tr>
 <tr class="separator:a15715909ba08eb965ef8a39d99e8f594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac63c0d56df01141bf6611e3126b14dd3"><td class="memTemplParams" colspan="2"><a id="ac63c0d56df01141bf6611e3126b14dd3"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:ac63c0d56df01141bf6611e3126b14dd3"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>trace</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:ac63c0d56df01141bf6611e3126b14dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a7b80de90d1da535d0bdc99997ca46f"><td class="memTemplParams" colspan="2"><a id="a0a7b80de90d1da535d0bdc99997ca46f"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:a0a7b80de90d1da535d0bdc99997ca46f"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>debug</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:a0a7b80de90d1da535d0bdc99997ca46f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa13d5497495bb9cbf8def514e87b6129"><td class="memTemplParams" colspan="2"><a id="aa13d5497495bb9cbf8def514e87b6129"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:aa13d5497495bb9cbf8def514e87b6129"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>info</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:aa13d5497495bb9cbf8def514e87b6129"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac95659bc4d02d23cc024b62d3f8b2428"><td class="memTemplParams" colspan="2"><a id="ac95659bc4d02d23cc024b62d3f8b2428"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:ac95659bc4d02d23cc024b62d3f8b2428"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>startup</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:ac95659bc4d02d23cc024b62d3f8b2428"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72b22e87bdd773c29c556af58710b25c"><td class="memTemplParams" colspan="2"><a id="a72b22e87bdd773c29c556af58710b25c"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:a72b22e87bdd773c29c556af58710b25c"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>warn</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:a72b22e87bdd773c29c556af58710b25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8704a2e2ef5596a8333bc8cafbc53db"><td class="memTemplParams" colspan="2"><a id="ad8704a2e2ef5596a8333bc8cafbc53db"></a>
-template&lt;typename Arg1 , typename... Args&gt; </td></tr>
-<tr class="memitem:ad8704a2e2ef5596a8333bc8cafbc53db"><td class="memTemplItemLeft" align="right" valign="top">Void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>error</b> (cpStr format, const Arg1 &amp;arg1, const Args &amp;... args)</td></tr>
-<tr class="separator:ad8704a2e2ef5596a8333bc8cafbc53db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94861e91d9e1f0911f185ae2a4e7cb63"><td class="memItemLeft" align="right" valign="top"><a id="a94861e91d9e1f0911f185ae2a4e7cb63"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> ()</td></tr>
+<tr class="memitem:ab3cd1881cfde773e2d0679cb41e93ea9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#ab3cd1881cfde773e2d0679cb41e93ea9">~ELogger</a> ()</td></tr>
+<tr class="memdesc:ab3cd1881cfde773e2d0679cb41e93ea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classELogger.html#ab3cd1881cfde773e2d0679cb41e93ea9">More...</a><br /></td></tr>
+<tr class="separator:ab3cd1881cfde773e2d0679cb41e93ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc0d191deb6d801f8866a998c50a28e"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a7bc0d191deb6d801f8866a998c50a28e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a7bc0d191deb6d801f8866a998c50a28e">debug</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a7bc0d191deb6d801f8866a998c50a28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a debug message to this logger.  <a href="classELogger.html#a7bc0d191deb6d801f8866a998c50a28e">More...</a><br /></td></tr>
+<tr class="separator:a7bc0d191deb6d801f8866a998c50a28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f4170a6841e864e3b796376138db529"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a2f4170a6841e864e3b796376138db529"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a2f4170a6841e864e3b796376138db529">info</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a2f4170a6841e864e3b796376138db529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a info message to this logger.  <a href="classELogger.html#a2f4170a6841e864e3b796376138db529">More...</a><br /></td></tr>
+<tr class="separator:a2f4170a6841e864e3b796376138db529"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b04b024d3ba2c8ca119e4ff5cc2f6a7"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a3b04b024d3ba2c8ca119e4ff5cc2f6a7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a3b04b024d3ba2c8ca119e4ff5cc2f6a7">startup</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a3b04b024d3ba2c8ca119e4ff5cc2f6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a startup message to this logger.  <a href="classELogger.html#a3b04b024d3ba2c8ca119e4ff5cc2f6a7">More...</a><br /></td></tr>
+<tr class="separator:a3b04b024d3ba2c8ca119e4ff5cc2f6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06d60680bbf6cf1b235545786effb1bb"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a06d60680bbf6cf1b235545786effb1bb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a06d60680bbf6cf1b235545786effb1bb">minor</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a06d60680bbf6cf1b235545786effb1bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a minor message to this logger.  <a href="classELogger.html#a06d60680bbf6cf1b235545786effb1bb">More...</a><br /></td></tr>
+<tr class="separator:a06d60680bbf6cf1b235545786effb1bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6e00d5778827a86693919a4bbf0a16"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a4c6e00d5778827a86693919a4bbf0a16"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a4c6e00d5778827a86693919a4bbf0a16">major</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a4c6e00d5778827a86693919a4bbf0a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a major message to this logger.  <a href="classELogger.html#a4c6e00d5778827a86693919a4bbf0a16">More...</a><br /></td></tr>
+<tr class="separator:a4c6e00d5778827a86693919a4bbf0a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956c234b45f34ea3799ed0158b28d239"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a956c234b45f34ea3799ed0158b28d239"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classELogger.html#a956c234b45f34ea3799ed0158b28d239">critical</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> format, const Args &amp;... args)</td></tr>
+<tr class="memdesc:a956c234b45f34ea3799ed0158b28d239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a critical message to this logger.  <a href="classELogger.html#a956c234b45f34ea3799ed0158b28d239">More...</a><br /></td></tr>
+<tr class="separator:a956c234b45f34ea3799ed0158b28d239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94861e91d9e1f0911f185ae2a4e7cb63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a94861e91d9e1f0911f185ae2a4e7cb63">flush</a> ()</td></tr>
+<tr class="memdesc:a94861e91d9e1f0911f185ae2a4e7cb63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes any unwritten log messages to the underlying sinks.  <a href="classELogger.html#a94861e91d9e1f0911f185ae2a4e7cb63">More...</a><br /></td></tr>
 <tr class="separator:a94861e91d9e1f0911f185ae2a4e7cb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7656e745ab38929f87ec9a50e355ab3d"><td class="memItemLeft" align="right" valign="top"><a id="a7656e745ab38929f87ec9a50e355ab3d"></a>
-Void&#160;</td><td class="memItemRight" valign="bottom"><b>setLogLevel</b> (LogLevel lvl)</td></tr>
+<tr class="memitem:a7656e745ab38929f87ec9a50e355ab3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a7656e745ab38929f87ec9a50e355ab3d">setLogLevel</a> (<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">LogLevel</a> lvl)</td></tr>
+<tr class="memdesc:a7656e745ab38929f87ec9a50e355ab3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign a log level for this logger. Any log messages lower than the specified log level will not be written.  <a href="classELogger.html#a7656e745ab38929f87ec9a50e355ab3d">More...</a><br /></td></tr>
 <tr class="separator:a7656e745ab38929f87ec9a50e355ab3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62da66e419b72f9e87f6ff244352c433"><td class="memItemLeft" align="right" valign="top"><a id="a62da66e419b72f9e87f6ff244352c433"></a>
-LogLevel&#160;</td><td class="memItemRight" valign="bottom"><b>getLogLevel</b> ()</td></tr>
+<tr class="memitem:a62da66e419b72f9e87f6ff244352c433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a62da66e419b72f9e87f6ff244352c433">getLogLevel</a> ()</td></tr>
+<tr class="memdesc:a62da66e419b72f9e87f6ff244352c433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the currently assigned log level.  <a href="classELogger.html#a62da66e419b72f9e87f6ff244352c433">More...</a><br /></td></tr>
 <tr class="separator:a62da66e419b72f9e87f6ff244352c433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa63f61713b8dc7067b5d3fcaa9086649"><td class="memItemLeft" align="right" valign="top"><a id="aa63f61713b8dc7067b5d3fcaa9086649"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_name</b> ()</td></tr>
+<tr class="memitem:aa63f61713b8dc7067b5d3fcaa9086649"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#aa63f61713b8dc7067b5d3fcaa9086649">get_name</a> ()</td></tr>
+<tr class="memdesc:aa63f61713b8dc7067b5d3fcaa9086649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the name (category) of the logger.  <a href="classELogger.html#aa63f61713b8dc7067b5d3fcaa9086649">More...</a><br /></td></tr>
 <tr class="separator:aa63f61713b8dc7067b5d3fcaa9086649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9c7392785bfa76930c8202157bfdf7"><td class="memItemLeft" align="right" valign="top">spdlog::level::level_enum&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#aef9c7392785bfa76930c8202157bfdf7">get_level</a> ()</td></tr>
+<tr class="memdesc:aef9c7392785bfa76930c8202157bfdf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the current log level from the underlying spdlog object.  <a href="classELogger.html#aef9c7392785bfa76930c8202157bfdf7">More...</a><br /></td></tr>
+<tr class="separator:aef9c7392785bfa76930c8202157bfdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7ab6e137be5592ba660ec638dfe8bab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#ab7ab6e137be5592ba660ec638dfe8bab">set_level</a> (spdlog::level::level_enum lvl)</td></tr>
+<tr class="memdesc:ab7ab6e137be5592ba660ec638dfe8bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current log level of the underlying spdlog object.  <a href="classELogger.html#ab7ab6e137be5592ba660ec638dfe8bab">More...</a><br /></td></tr>
+<tr class="separator:ab7ab6e137be5592ba660ec638dfe8bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e391a1d5b407d8375861a4217f9186"><td class="memItemLeft" align="right" valign="top">const std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classELogger.html">ELogger</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#ad0e391a1d5b407d8375861a4217f9186">get_loggers</a> ()</td></tr>
+<tr class="memdesc:ad0e391a1d5b407d8375861a4217f9186"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the defined loggers.  <a href="classELogger.html#ad0e391a1d5b407d8375861a4217f9186">More...</a><br /></td></tr>
+<tr class="separator:ad0e391a1d5b407d8375861a4217f9186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a80c87d57a792a2dc8132d8ed6560bea0"><td class="memItemLeft" align="right" valign="top"><a id="a80c87d57a792a2dc8132d8ed6560bea0"></a>
-static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>applicationName</b> ()</td></tr>
+<tr class="memitem:a80c87d57a792a2dc8132d8ed6560bea0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a80c87d57a792a2dc8132d8ed6560bea0">applicationName</a> ()</td></tr>
+<tr class="memdesc:a80c87d57a792a2dc8132d8ed6560bea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the application name.  <a href="classELogger.html#a80c87d57a792a2dc8132d8ed6560bea0">More...</a><br /></td></tr>
 <tr class="separator:a80c87d57a792a2dc8132d8ed6560bea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4abf384f4bbf4c85b18c63887c445bb"><td class="memItemLeft" align="right" valign="top"><a id="aa4abf384f4bbf4c85b18c63887c445bb"></a>
-static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>applicationName</b> (cpStr app)</td></tr>
+<tr class="memitem:aa4abf384f4bbf4c85b18c63887c445bb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#aa4abf384f4bbf4c85b18c63887c445bb">applicationName</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> app)</td></tr>
+<tr class="memdesc:aa4abf384f4bbf4c85b18c63887c445bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the application name.  <a href="classELogger.html#aa4abf384f4bbf4c85b18c63887c445bb">More...</a><br /></td></tr>
 <tr class="separator:aa4abf384f4bbf4c85b18c63887c445bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a215d97bbcce4d538a49a096dc7ef68"><td class="memItemLeft" align="right" valign="top"><a id="a5a215d97bbcce4d538a49a096dc7ef68"></a>
-static <a class="el" href="classELogger.html">ELogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>createLog</b> (Int logid, cpStr category, Int sinkid)</td></tr>
+<tr class="memitem:a5a215d97bbcce4d538a49a096dc7ef68"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classELogger.html">ELogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a5a215d97bbcce4d538a49a096dc7ef68">createLog</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> logid, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> category, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> sinkid)</td></tr>
+<tr class="memdesc:a5a215d97bbcce4d538a49a096dc7ef68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually creates a logger.  <a href="classELogger.html#a5a215d97bbcce4d538a49a096dc7ef68">More...</a><br /></td></tr>
 <tr class="separator:a5a215d97bbcce4d538a49a096dc7ef68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c628d5920ebdcc9593ac1413be45a94"><td class="memItemLeft" align="right" valign="top"><a id="a1c628d5920ebdcc9593ac1413be45a94"></a>
-static <a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>createSinkSet</b> (Int sinkid)</td></tr>
+<tr class="memitem:a1c628d5920ebdcc9593ac1413be45a94"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a1c628d5920ebdcc9593ac1413be45a94">createSinkSet</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> sinkid)</td></tr>
+<tr class="memdesc:a1c628d5920ebdcc9593ac1413be45a94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually creates a sink set.  <a href="classELogger.html#a1c628d5920ebdcc9593ac1413be45a94">More...</a><br /></td></tr>
 <tr class="separator:a1c628d5920ebdcc9593ac1413be45a94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94a47d71f929233a7100d573732e3cd9"><td class="memItemLeft" align="right" valign="top"><a id="a94a47d71f929233a7100d573732e3cd9"></a>
-static <a class="el" href="classELogger.html">ELogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (Int logid)</td></tr>
+<tr class="memitem:a94a47d71f929233a7100d573732e3cd9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classELogger.html">ELogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a94a47d71f929233a7100d573732e3cd9">log</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> logid)</td></tr>
+<tr class="memdesc:a94a47d71f929233a7100d573732e3cd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the requested <a class="el" href="classELogger.html" title="Defines a logger.">ELogger</a> object.  <a href="classELogger.html#a94a47d71f929233a7100d573732e3cd9">More...</a><br /></td></tr>
 <tr class="separator:a94a47d71f929233a7100d573732e3cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16b8ce5b92cfcb542abe981e481e2b77"><td class="memItemLeft" align="right" valign="top"><a id="a16b8ce5b92cfcb542abe981e481e2b77"></a>
-static <a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>sinkSet</b> (Int sinkid)</td></tr>
+<tr class="memitem:a16b8ce5b92cfcb542abe981e481e2b77"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a16b8ce5b92cfcb542abe981e481e2b77">sinkSet</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> sinkid)</td></tr>
+<tr class="memdesc:a16b8ce5b92cfcb542abe981e481e2b77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the requested sink set object.  <a href="classELogger.html#a16b8ce5b92cfcb542abe981e481e2b77">More...</a><br /></td></tr>
 <tr class="separator:a16b8ce5b92cfcb542abe981e481e2b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:ad30514eea9d621ae2f2a5dd065c461d5"><td class="memItemLeft" align="right" valign="top"><a id="ad30514eea9d621ae2f2a5dd065c461d5"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (<a class="el" href="classEGetOpt.html">EGetOpt</a> &amp;opt)</td></tr>
+<tr class="memitem:ad30514eea9d621ae2f2a5dd065c461d5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#ad30514eea9d621ae2f2a5dd065c461d5">init</a> (<a class="el" href="classEGetOpt.html">EGetOpt</a> &amp;opt)</td></tr>
+<tr class="memdesc:ad30514eea9d621ae2f2a5dd065c461d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initilizes the logs from the configuration file.  <a href="classELogger.html#ad30514eea9d621ae2f2a5dd065c461d5">More...</a><br /></td></tr>
 <tr class="separator:ad30514eea9d621ae2f2a5dd065c461d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af59d24fbd912e3f253f133406fe37a0d"><td class="memItemLeft" align="right" valign="top"><a id="af59d24fbd912e3f253f133406fe37a0d"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>uninit</b> ()</td></tr>
+<tr class="memitem:af59d24fbd912e3f253f133406fe37a0d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#af59d24fbd912e3f253f133406fe37a0d">uninit</a> ()</td></tr>
+<tr class="memdesc:af59d24fbd912e3f253f133406fe37a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shuts down the logging system.  <a href="classELogger.html#af59d24fbd912e3f253f133406fe37a0d">More...</a><br /></td></tr>
 <tr class="separator:af59d24fbd912e3f253f133406fe37a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a4eaae08ce7063e5517813378f8a6b9b4"><td class="memItemLeft" align="right" valign="top"><a id="a4eaae08ce7063e5517813378f8a6b9b4"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>ELoggerInit</b></td></tr>
+<tr class="memitem:a4eaae08ce7063e5517813378f8a6b9b4"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELogger.html#a4eaae08ce7063e5517813378f8a6b9b4">ELoggerInit</a></td></tr>
 <tr class="separator:a4eaae08ce7063e5517813378f8a6b9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines a logger. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a22fb57bad0e9b0ead993bf7dfb3d3968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22fb57bad0e9b0ead993bf7dfb3d3968">&#9670;&nbsp;</a></span>LogLevel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Defines the various log levels. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968a1f0f01a3b5937718bea0102b7048dd26"></a>eDebug&#160;</td><td class="fielddoc"><p>Debug. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968ad33bdb958ce9a7f75bd8f8db1f5b13be"></a>eInfo&#160;</td><td class="fielddoc"><p>Informational. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968a70c3ea4d2caebd12b06270bb858acb61"></a>eStartup&#160;</td><td class="fielddoc"><p>Startup. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968a17c9da6fdf1a7e126bf4a5ac16fe830e"></a>eMinor&#160;</td><td class="fielddoc"><p>Minor. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968ad69a71ad50b3acc044fd0598e0721a14"></a>eMajor&#160;</td><td class="fielddoc"><p>Major. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968a770b56350aec9e8d2bf424fab98dec43"></a>eCritical&#160;</td><td class="fielddoc"><p>Critical. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a22fb57bad0e9b0ead993bf7dfb3d3968a725ff2a12b723ead3ade51c59207f600"></a>eOff&#160;</td><td class="fielddoc"><p>Disables logging. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a15715909ba08eb965ef8a39d99e8f594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15715909ba08eb965ef8a39d99e8f594">&#9670;&nbsp;</a></span>ELogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ELogger::ELogger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>logid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>sinkid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logid</td><td>the log ID for this logger. </td></tr>
+    <tr><td class="paramname">category</td><td>the category description for this log. </td></tr>
+    <tr><td class="paramname">sinkid</td><td>identifies the set of output sinks for this logger. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab3cd1881cfde773e2d0679cb41e93ea9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3cd1881cfde773e2d0679cb41e93ea9">&#9670;&nbsp;</a></span>~ELogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ELogger::~ELogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a80c87d57a792a2dc8132d8ed6560bea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80c87d57a792a2dc8132d8ed6560bea0">&#9670;&nbsp;</a></span>applicationName() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a>&amp; ELogger::applicationName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the application name. </p>
+<dl class="section return"><dt>Returns</dt><dd>the application name. </dd></dl>
+
+</div>
+</div>
+<a id="aa4abf384f4bbf4c85b18c63887c445bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4abf384f4bbf4c85b18c63887c445bb">&#9670;&nbsp;</a></span>applicationName() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a>&amp; ELogger::applicationName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>app</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assigns the application name. </p>
+<dl class="section return"><dt>Returns</dt><dd>the application name. </dd></dl>
+
+</div>
+</div>
+<a id="a5a215d97bbcce4d538a49a096dc7ef68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a215d97bbcce4d538a49a096dc7ef68">&#9670;&nbsp;</a></span>createLog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classELogger.html">ELogger</a> &amp; ELogger::createLog </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>logid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>sinkid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Manually creates a logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logid</td><td>the log ID for this logger. </td></tr>
+    <tr><td class="paramname">category</td><td>the category description for this log. </td></tr>
+    <tr><td class="paramname">sinkid</td><td>identifies the set of output sinks for this logger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the newly created logger. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ELoggerError_LogExists</td><td></td></tr>
+    <tr><td class="paramname">ELoggerError_SinkSetNotFound</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1c628d5920ebdcc9593ac1413be45a94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c628d5920ebdcc9593ac1413be45a94">&#9670;&nbsp;</a></span>createSinkSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a> &amp; ELogger::createSinkSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>sinkid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Manually creates a sink set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sinkid</td><td>the sink ID to assign to this sink set. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the newly created sink set object. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ELoggerError_SinkSetExists</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a956c234b45f34ea3799ed0158b28d239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a956c234b45f34ea3799ed0158b28d239">&#9670;&nbsp;</a></span>critical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::critical </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a critical message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7bc0d191deb6d801f8866a998c50a28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc0d191deb6d801f8866a998c50a28e">&#9670;&nbsp;</a></span>debug()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::debug </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a debug message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a94861e91d9e1f0911f185ae2a4e7cb63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94861e91d9e1f0911f185ae2a4e7cb63">&#9670;&nbsp;</a></span>flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flushes any unwritten log messages to the underlying sinks. </p>
+
+</div>
+</div>
+<a id="aef9c7392785bfa76930c8202157bfdf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef9c7392785bfa76930c8202157bfdf7">&#9670;&nbsp;</a></span>get_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">spdlog::level::level_enum ELogger::get_level </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the current log level from the underlying spdlog object. </p>
+<dl class="section return"><dt>Returns</dt><dd>the spdlog log level. </dd></dl>
+
+</div>
+</div>
+<a id="ad0e391a1d5b407d8375861a4217f9186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0e391a1d5b407d8375861a4217f9186">&#9670;&nbsp;</a></span>get_loggers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt;std::string,std::shared_ptr&lt;<a class="el" href="classELogger.html">ELogger</a>&gt; &gt; ELogger::get_loggers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the defined loggers. </p>
+<dl class="section return"><dt>Returns</dt><dd>the logger collection. </dd></dl>
+
+</div>
+</div>
+<a id="aa63f61713b8dc7067b5d3fcaa9086649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa63f61713b8dc7067b5d3fcaa9086649">&#9670;&nbsp;</a></span>get_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string&amp; ELogger::get_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the name (category) of the logger. </p>
+<dl class="section return"><dt>Returns</dt><dd>the logger name. </dd></dl>
+
+</div>
+</div>
+<a id="a62da66e419b72f9e87f6ff244352c433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62da66e419b72f9e87f6ff244352c433">&#9670;&nbsp;</a></span>getLogLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">LogLevel</a> ELogger::getLogLevel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieve the currently assigned log level. </p>
+<dl class="section return"><dt>Returns</dt><dd>the current log level. </dd></dl>
+
+</div>
+</div>
+<a id="a2f4170a6841e864e3b796376138db529"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f4170a6841e864e3b796376138db529">&#9670;&nbsp;</a></span>info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a info message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad30514eea9d621ae2f2a5dd065c461d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad30514eea9d621ae2f2a5dd065c461d5">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEGetOpt.html">EGetOpt</a> &amp;&#160;</td>
+          <td class="paramname"><em>opt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initilizes the logs from the configuration file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opt</td><td>the options that contain the settings loaded from the configuration file. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ELoggerError_SinkSetLogIdNotSpecified</td><td></td></tr>
+    <tr><td class="paramname">ELoggerError_SinkSetSinkIdNotSpecified</td><td></td></tr>
+    <tr><td class="paramname">ELoggerError_SinkSetCategoryNotSpecified</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a94a47d71f929233a7100d573732e3cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94a47d71f929233a7100d573732e3cd9">&#9670;&nbsp;</a></span>log()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classELogger.html">ELogger</a>&amp; ELogger::log </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>logid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the requested <a class="el" href="classELogger.html" title="Defines a logger.">ELogger</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logid</td><td>the log ID for the logger. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the logger. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ELoggerError_LogNotFound</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4c6e00d5778827a86693919a4bbf0a16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6e00d5778827a86693919a4bbf0a16">&#9670;&nbsp;</a></span>major()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::major </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a major message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a06d60680bbf6cf1b235545786effb1bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d60680bbf6cf1b235545786effb1bb">&#9670;&nbsp;</a></span>minor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::minor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a minor message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7ab6e137be5592ba660ec638dfe8bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ab6e137be5592ba660ec638dfe8bab">&#9670;&nbsp;</a></span>set_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::set_level </td>
+          <td>(</td>
+          <td class="paramtype">spdlog::level::level_enum&#160;</td>
+          <td class="paramname"><em>lvl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the current log level of the underlying spdlog object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lvl</td><td>the spdlog log level. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7656e745ab38929f87ec9a50e355ab3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7656e745ab38929f87ec9a50e355ab3d">&#9670;&nbsp;</a></span>setLogLevel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::setLogLevel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">LogLevel</a>&#160;</td>
+          <td class="paramname"><em>lvl</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Assign a log level for this logger. Any log messages lower than the specified log level will not be written. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lvl</td><td>the log level to assign. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a16b8ce5b92cfcb542abe981e481e2b77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16b8ce5b92cfcb542abe981e481e2b77">&#9670;&nbsp;</a></span>sinkSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classELoggerSinkSet.html">ELoggerSinkSet</a>&amp; ELogger::sinkSet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>sinkid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the requested sink set object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sinkid</td><td>the sink set ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the sink set object. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">ELoggerError_SinkSetNotFound</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3b04b024d3ba2c8ca119e4ff5cc2f6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b04b024d3ba2c8ca119e4ff5cc2f6a7">&#9670;&nbsp;</a></span>startup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::startup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a startup message to this logger. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>the format of the log message. </td></tr>
+    <tr><td class="paramname">args</td><td>any arguments that will be substituted into the log format. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af59d24fbd912e3f253f133406fe37a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59d24fbd912e3f253f133406fe37a0d">&#9670;&nbsp;</a></span>uninit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ELogger::uninit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shuts down the logging system. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a4eaae08ce7063e5517813378f8a6b9b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4eaae08ce7063e5517813378f8a6b9b4">&#9670;&nbsp;</a></span>ELoggerInit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classELoggerInit.html">ELoggerInit</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="elogger_8h_source.html">elogger.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/elogger.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="elogger_8h_source.html">elogger.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="elogger_8cpp.html">elogger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

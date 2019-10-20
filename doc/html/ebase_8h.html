@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/ebase.h File Reference</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/ebase.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -79,7 +79,7 @@ $(function() {
 <div class="textblock"><code>#include &lt;sys/time.h&gt;</code><br />
 <code>#include &lt;signal.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;etypes.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="etypes_8h_source.html">etypes.h</a>&quot;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -97,89 +97,522 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:add3ca9eefe3b5b754426f51d3043e579"><td class="memItemLeft" align="right" valign="top"><a id="add3ca9eefe3b5b754426f51d3043e579"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>&#160;&#160;&#160;true</td></tr>
-<tr class="memdesc:add3ca9eefe3b5b754426f51d3043e579"><td class="mdescLeft">&#160;</td><td class="mdescRight">True. <br /></td></tr>
+<tr class="memitem:add3ca9eefe3b5b754426f51d3043e579"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>&#160;&#160;&#160;true</td></tr>
+<tr class="memdesc:add3ca9eefe3b5b754426f51d3043e579"><td class="mdescLeft">&#160;</td><td class="mdescRight">True.  <a href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">More...</a><br /></td></tr>
 <tr class="separator:add3ca9eefe3b5b754426f51d3043e579"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a306ebd41c0cd1303b1372c6153f0caf8"><td class="memItemLeft" align="right" valign="top"><a id="a306ebd41c0cd1303b1372c6153f0caf8"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>&#160;&#160;&#160;false</td></tr>
-<tr class="memdesc:a306ebd41c0cd1303b1372c6153f0caf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">False. <br /></td></tr>
+<tr class="memitem:a306ebd41c0cd1303b1372c6153f0caf8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>&#160;&#160;&#160;false</td></tr>
+<tr class="memdesc:a306ebd41c0cd1303b1372c6153f0caf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">False.  <a href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">More...</a><br /></td></tr>
 <tr class="separator:a306ebd41c0cd1303b1372c6153f0caf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41e2969a97793c6f35881c6f1d054145"><td class="memItemLeft" align="right" valign="top"><a id="a41e2969a97793c6f35881c6f1d054145"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a>&#160;&#160;&#160;FILENAME_MAX</td></tr>
-<tr class="memdesc:a41e2969a97793c6f35881c6f1d054145"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum file name length <br /></td></tr>
+<tr class="memitem:a41e2969a97793c6f35881c6f1d054145"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a>&#160;&#160;&#160;FILENAME_MAX</td></tr>
+<tr class="memdesc:a41e2969a97793c6f35881c6f1d054145"><td class="mdescLeft">&#160;</td><td class="mdescRight">maximum file name length  <a href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">More...</a><br /></td></tr>
 <tr class="separator:a41e2969a97793c6f35881c6f1d054145"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab94f0d953965ec9758fe9075114432"><td class="memItemLeft" align="right" valign="top"><a id="a7ab94f0d953965ec9758fe9075114432"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a7ab94f0d953965ec9758fe9075114432">epc_gets_s</a>(a,  b)&#160;&#160;&#160;__builtin_gets(a)</td></tr>
-<tr class="memdesc:a7ab94f0d953965ec9758fe9075114432"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_gets_s - gets_s <br /></td></tr>
+<tr class="memitem:a7ab94f0d953965ec9758fe9075114432"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a7ab94f0d953965ec9758fe9075114432">epc_gets_s</a>(a,  b)&#160;&#160;&#160;__builtin_gets(a)</td></tr>
+<tr class="memdesc:a7ab94f0d953965ec9758fe9075114432"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_gets_s - gets_s  <a href="ebase_8h.html#a7ab94f0d953965ec9758fe9075114432">More...</a><br /></td></tr>
 <tr class="separator:a7ab94f0d953965ec9758fe9075114432"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6913c848430310fd3d117f89d211afaa"><td class="memItemLeft" align="right" valign="top"><a id="a6913c848430310fd3d117f89d211afaa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a6913c848430310fd3d117f89d211afaa">epc_strncpy_s</a>(a,  b,  c,  d)&#160;&#160;&#160;__builtin_strncpy(a,c,d);</td></tr>
-<tr class="memdesc:a6913c848430310fd3d117f89d211afaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strncpy_s - strncpy_s <br /></td></tr>
+<tr class="memitem:a6913c848430310fd3d117f89d211afaa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a6913c848430310fd3d117f89d211afaa">epc_strncpy_s</a>(a,  b,  c,  d)&#160;&#160;&#160;__builtin_strncpy(a,c,d);</td></tr>
+<tr class="memdesc:a6913c848430310fd3d117f89d211afaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strncpy_s - strncpy_s  <a href="ebase_8h.html#a6913c848430310fd3d117f89d211afaa">More...</a><br /></td></tr>
 <tr class="separator:a6913c848430310fd3d117f89d211afaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af835f228f80e482c142e9295ec8b9e30"><td class="memItemLeft" align="right" valign="top"><a id="af835f228f80e482c142e9295ec8b9e30"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#af835f228f80e482c142e9295ec8b9e30">epc_sscanf_s</a>&#160;&#160;&#160;__builtin_sscanf</td></tr>
-<tr class="memdesc:af835f228f80e482c142e9295ec8b9e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_sscanf_s - sscanf_s <br /></td></tr>
+<tr class="memitem:af835f228f80e482c142e9295ec8b9e30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#af835f228f80e482c142e9295ec8b9e30">epc_sscanf_s</a>&#160;&#160;&#160;__builtin_sscanf</td></tr>
+<tr class="memdesc:af835f228f80e482c142e9295ec8b9e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_sscanf_s - sscanf_s  <a href="ebase_8h.html#af835f228f80e482c142e9295ec8b9e30">More...</a><br /></td></tr>
 <tr class="separator:af835f228f80e482c142e9295ec8b9e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cc2d445a1e706397c55eb5d1a72256f"><td class="memItemLeft" align="right" valign="top"><a id="a2cc2d445a1e706397c55eb5d1a72256f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a2cc2d445a1e706397c55eb5d1a72256f">epc_sprintf_s</a>&#160;&#160;&#160;__builtin_snprintf</td></tr>
-<tr class="memdesc:a2cc2d445a1e706397c55eb5d1a72256f"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_sprintf_s - sprintf_s <br /></td></tr>
+<tr class="memitem:a2cc2d445a1e706397c55eb5d1a72256f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a2cc2d445a1e706397c55eb5d1a72256f">epc_sprintf_s</a>&#160;&#160;&#160;__builtin_snprintf</td></tr>
+<tr class="memdesc:a2cc2d445a1e706397c55eb5d1a72256f"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_sprintf_s - sprintf_s  <a href="ebase_8h.html#a2cc2d445a1e706397c55eb5d1a72256f">More...</a><br /></td></tr>
 <tr class="separator:a2cc2d445a1e706397c55eb5d1a72256f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59baeba30e248ce08e466ad20bfbd2a9"><td class="memItemLeft" align="right" valign="top"><a id="a59baeba30e248ce08e466ad20bfbd2a9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a59baeba30e248ce08e466ad20bfbd2a9">epc_vsnprintf_s</a>&#160;&#160;&#160;__builtin_vsnprintf</td></tr>
-<tr class="memdesc:a59baeba30e248ce08e466ad20bfbd2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_vsnprintf_s - vsnprintf_s <br /></td></tr>
+<tr class="memitem:a59baeba30e248ce08e466ad20bfbd2a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a59baeba30e248ce08e466ad20bfbd2a9">epc_vsnprintf_s</a>&#160;&#160;&#160;__builtin_vsnprintf</td></tr>
+<tr class="memdesc:a59baeba30e248ce08e466ad20bfbd2a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_vsnprintf_s - vsnprintf_s  <a href="ebase_8h.html#a59baeba30e248ce08e466ad20bfbd2a9">More...</a><br /></td></tr>
 <tr class="separator:a59baeba30e248ce08e466ad20bfbd2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53be431c4da9ec1be45cedb9acc8a57e"><td class="memItemLeft" align="right" valign="top"><a id="a53be431c4da9ec1be45cedb9acc8a57e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a53be431c4da9ec1be45cedb9acc8a57e">epc_strcpy_s</a>(strDestination,  sizeInBytes,  strSource)&#160;&#160;&#160;__builtin_strncpy(strDestination, strSource, sizeInBytes)</td></tr>
-<tr class="memdesc:a53be431c4da9ec1be45cedb9acc8a57e"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strcpy_s - strncpy <br /></td></tr>
+<tr class="memitem:a53be431c4da9ec1be45cedb9acc8a57e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a53be431c4da9ec1be45cedb9acc8a57e">epc_strcpy_s</a>(strDestination,  sizeInBytes,  strSource)&#160;&#160;&#160;__builtin_strncpy(strDestination, strSource, sizeInBytes)</td></tr>
+<tr class="memdesc:a53be431c4da9ec1be45cedb9acc8a57e"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strcpy_s - strncpy  <a href="ebase_8h.html#a53be431c4da9ec1be45cedb9acc8a57e">More...</a><br /></td></tr>
 <tr class="separator:a53be431c4da9ec1be45cedb9acc8a57e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeae8b9fa36c006b5cc7740de5c81c0cb"><td class="memItemLeft" align="right" valign="top"><a id="aeae8b9fa36c006b5cc7740de5c81c0cb"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#aeae8b9fa36c006b5cc7740de5c81c0cb">epc_strdup</a>(str)&#160;&#160;&#160;__builtin_strdup(str)</td></tr>
-<tr class="memdesc:aeae8b9fa36c006b5cc7740de5c81c0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strdup - strdup <br /></td></tr>
+<tr class="memitem:aeae8b9fa36c006b5cc7740de5c81c0cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#aeae8b9fa36c006b5cc7740de5c81c0cb">epc_strdup</a>(str)&#160;&#160;&#160;__builtin_strdup(str)</td></tr>
+<tr class="memdesc:aeae8b9fa36c006b5cc7740de5c81c0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_strdup - strdup  <a href="ebase_8h.html#aeae8b9fa36c006b5cc7740de5c81c0cb">More...</a><br /></td></tr>
 <tr class="separator:aeae8b9fa36c006b5cc7740de5c81c0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bd081407e511f6d506f653d353be778"><td class="memItemLeft" align="right" valign="top"><a id="a9bd081407e511f6d506f653d353be778"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a9bd081407e511f6d506f653d353be778">epc_strnicmp</a>(str1,  str2,  count)&#160;&#160;&#160;__builtin_strncasecmp(str1, str2, count)</td></tr>
-<tr class="memdesc:a9bd081407e511f6d506f653d353be778"><td class="mdescLeft">&#160;</td><td class="mdescRight">strnicmp - strnicmp, strncasecmp <br /></td></tr>
+<tr class="memitem:a9bd081407e511f6d506f653d353be778"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a9bd081407e511f6d506f653d353be778">epc_strnicmp</a>(str1,  str2,  count)&#160;&#160;&#160;__builtin_strncasecmp(str1, str2, count)</td></tr>
+<tr class="memdesc:a9bd081407e511f6d506f653d353be778"><td class="mdescLeft">&#160;</td><td class="mdescRight">strnicmp - strnicmp, strncasecmp  <a href="ebase_8h.html#a9bd081407e511f6d506f653d353be778">More...</a><br /></td></tr>
 <tr class="separator:a9bd081407e511f6d506f653d353be778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66877b3ffaabf417065da1c194dfbda6"><td class="memItemLeft" align="right" valign="top"><a id="a66877b3ffaabf417065da1c194dfbda6"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a66877b3ffaabf417065da1c194dfbda6">epc_localtime_s</a>(a,  b)&#160;&#160;&#160;localtime_r(b,a)</td></tr>
-<tr class="memdesc:a66877b3ffaabf417065da1c194dfbda6"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_localtime_s - localtime_r <br /></td></tr>
+<tr class="memitem:a66877b3ffaabf417065da1c194dfbda6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a66877b3ffaabf417065da1c194dfbda6">epc_localtime_s</a>(a,  b)&#160;&#160;&#160;localtime_r(b,a)</td></tr>
+<tr class="memdesc:a66877b3ffaabf417065da1c194dfbda6"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_localtime_s - localtime_r  <a href="ebase_8h.html#a66877b3ffaabf417065da1c194dfbda6">More...</a><br /></td></tr>
 <tr class="separator:a66877b3ffaabf417065da1c194dfbda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43b73457dc815ebd1af70dcabac6072c"><td class="memItemLeft" align="right" valign="top"><a id="a43b73457dc815ebd1af70dcabac6072c"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a43b73457dc815ebd1af70dcabac6072c">epc_gmtime_s</a>(a,  b)&#160;&#160;&#160;gmtime_r(b,a)</td></tr>
-<tr class="memdesc:a43b73457dc815ebd1af70dcabac6072c"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_gmtime_s - gmtime_r <br /></td></tr>
+<tr class="memitem:a43b73457dc815ebd1af70dcabac6072c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a43b73457dc815ebd1af70dcabac6072c">epc_gmtime_s</a>(a,  b)&#160;&#160;&#160;gmtime_r(b,a)</td></tr>
+<tr class="memdesc:a43b73457dc815ebd1af70dcabac6072c"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_gmtime_s - gmtime_r  <a href="ebase_8h.html#a43b73457dc815ebd1af70dcabac6072c">More...</a><br /></td></tr>
 <tr class="separator:a43b73457dc815ebd1af70dcabac6072c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9782af06caaea5f92e9044f8de1b3b58"><td class="memItemLeft" align="right" valign="top"><a id="a9782af06caaea5f92e9044f8de1b3b58"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a9782af06caaea5f92e9044f8de1b3b58">epc_fseek</a>(a,  b,  c)&#160;&#160;&#160;fseek(a,b,c)</td></tr>
-<tr class="memdesc:a9782af06caaea5f92e9044f8de1b3b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_fseek - fseek <br /></td></tr>
+<tr class="memitem:a9782af06caaea5f92e9044f8de1b3b58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a9782af06caaea5f92e9044f8de1b3b58">epc_fseek</a>(a,  b,  c)&#160;&#160;&#160;fseek(a,b,c)</td></tr>
+<tr class="memdesc:a9782af06caaea5f92e9044f8de1b3b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_fseek - fseek  <a href="ebase_8h.html#a9782af06caaea5f92e9044f8de1b3b58">More...</a><br /></td></tr>
 <tr class="separator:a9782af06caaea5f92e9044f8de1b3b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7acd4822767c3ac12133368f57c9585"><td class="memItemLeft" align="right" valign="top"><a id="ad7acd4822767c3ac12133368f57c9585"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ad7acd4822767c3ac12133368f57c9585">epc_access</a>(a,  b)&#160;&#160;&#160;access(a,b)</td></tr>
-<tr class="memdesc:ad7acd4822767c3ac12133368f57c9585"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_access - access <br /></td></tr>
+<tr class="memitem:ad7acd4822767c3ac12133368f57c9585"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ad7acd4822767c3ac12133368f57c9585">epc_access</a>(a,  b)&#160;&#160;&#160;access(a,b)</td></tr>
+<tr class="memdesc:ad7acd4822767c3ac12133368f57c9585"><td class="mdescLeft">&#160;</td><td class="mdescRight">epc_access - access  <a href="ebase_8h.html#ad7acd4822767c3ac12133368f57c9585">More...</a><br /></td></tr>
 <tr class="separator:ad7acd4822767c3ac12133368f57c9585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e9af169c34269aabbb74380169cd218"><td class="memItemLeft" align="right" valign="top"><a id="a6e9af169c34269aabbb74380169cd218"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a6e9af169c34269aabbb74380169cd218">EACCESS_F_OK</a>&#160;&#160;&#160;F_OK</td></tr>
-<tr class="memdesc:a6e9af169c34269aabbb74380169cd218"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_F_OK - F_OK. <br /></td></tr>
+<tr class="memitem:a6e9af169c34269aabbb74380169cd218"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a6e9af169c34269aabbb74380169cd218">EACCESS_F_OK</a>&#160;&#160;&#160;F_OK</td></tr>
+<tr class="memdesc:a6e9af169c34269aabbb74380169cd218"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_F_OK - F_OK.  <a href="ebase_8h.html#a6e9af169c34269aabbb74380169cd218">More...</a><br /></td></tr>
 <tr class="separator:a6e9af169c34269aabbb74380169cd218"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab822603a77980fc64349e5a61a9e3865"><td class="memItemLeft" align="right" valign="top"><a id="ab822603a77980fc64349e5a61a9e3865"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ab822603a77980fc64349e5a61a9e3865">EACCESS_R_OK</a>&#160;&#160;&#160;R_OK</td></tr>
-<tr class="memdesc:ab822603a77980fc64349e5a61a9e3865"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_R_OK - R_OK. <br /></td></tr>
+<tr class="memitem:ab822603a77980fc64349e5a61a9e3865"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ab822603a77980fc64349e5a61a9e3865">EACCESS_R_OK</a>&#160;&#160;&#160;R_OK</td></tr>
+<tr class="memdesc:ab822603a77980fc64349e5a61a9e3865"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_R_OK - R_OK.  <a href="ebase_8h.html#ab822603a77980fc64349e5a61a9e3865">More...</a><br /></td></tr>
 <tr class="separator:ab822603a77980fc64349e5a61a9e3865"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad320d573a5539c3a8e35559c70e381e3"><td class="memItemLeft" align="right" valign="top"><a id="ad320d573a5539c3a8e35559c70e381e3"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ad320d573a5539c3a8e35559c70e381e3">EACCESS_W_OK</a>&#160;&#160;&#160;W_OK</td></tr>
-<tr class="memdesc:ad320d573a5539c3a8e35559c70e381e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_W_OK - W_OK. <br /></td></tr>
+<tr class="memitem:ad320d573a5539c3a8e35559c70e381e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#ad320d573a5539c3a8e35559c70e381e3">EACCESS_W_OK</a>&#160;&#160;&#160;W_OK</td></tr>
+<tr class="memdesc:ad320d573a5539c3a8e35559c70e381e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">EACCESS_W_OK - W_OK.  <a href="ebase_8h.html#ad320d573a5539c3a8e35559c70e381e3">More...</a><br /></td></tr>
 <tr class="separator:ad320d573a5539c3a8e35559c70e381e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a2017da1a7bf300a2d47bae722cec5e70"><td class="memItemLeft" align="right" valign="top"><a id="a2017da1a7bf300a2d47bae722cec5e70"></a>
-typedef long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a></td></tr>
-<tr class="memdesc:a2017da1a7bf300a2d47bae722cec5e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">time typedef <br /></td></tr>
+<tr class="memitem:a2017da1a7bf300a2d47bae722cec5e70"><td class="memItemLeft" align="right" valign="top">typedef long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a></td></tr>
+<tr class="memdesc:a2017da1a7bf300a2d47bae722cec5e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">time typedef  <a href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">More...</a><br /></td></tr>
 <tr class="separator:a2017da1a7bf300a2d47bae722cec5e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Macros for various standard C library functions and standard includes. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a6e9af169c34269aabbb74380169cd218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9af169c34269aabbb74380169cd218">&#9670;&nbsp;</a></span>EACCESS_F_OK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EACCESS_F_OK&#160;&#160;&#160;F_OK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EACCESS_F_OK - F_OK. </p>
+
+</div>
+</div>
+<a id="ab822603a77980fc64349e5a61a9e3865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab822603a77980fc64349e5a61a9e3865">&#9670;&nbsp;</a></span>EACCESS_R_OK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EACCESS_R_OK&#160;&#160;&#160;R_OK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EACCESS_R_OK - R_OK. </p>
+
+</div>
+</div>
+<a id="ad320d573a5539c3a8e35559c70e381e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad320d573a5539c3a8e35559c70e381e3">&#9670;&nbsp;</a></span>EACCESS_W_OK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EACCESS_W_OK&#160;&#160;&#160;W_OK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EACCESS_W_OK - W_OK. </p>
+
+</div>
+</div>
+<a id="ad7acd4822767c3ac12133368f57c9585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7acd4822767c3ac12133368f57c9585">&#9670;&nbsp;</a></span>epc_access</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_access</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;access(a,b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_access - access </p>
+
+</div>
+</div>
+<a id="a41e2969a97793c6f35881c6f1d054145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e2969a97793c6f35881c6f1d054145">&#9670;&nbsp;</a></span>EPC_FILENAME_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EPC_FILENAME_MAX&#160;&#160;&#160;FILENAME_MAX</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>maximum file name length </p>
+
+</div>
+</div>
+<a id="a9782af06caaea5f92e9044f8de1b3b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9782af06caaea5f92e9044f8de1b3b58">&#9670;&nbsp;</a></span>epc_fseek</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_fseek</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">c&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;fseek(a,b,c)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_fseek - fseek </p>
+
+</div>
+</div>
+<a id="a7ab94f0d953965ec9758fe9075114432"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ab94f0d953965ec9758fe9075114432">&#9670;&nbsp;</a></span>epc_gets_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_gets_s</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__builtin_gets(a)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_gets_s - gets_s </p>
+
+</div>
+</div>
+<a id="a43b73457dc815ebd1af70dcabac6072c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b73457dc815ebd1af70dcabac6072c">&#9670;&nbsp;</a></span>epc_gmtime_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_gmtime_s</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;gmtime_r(b,a)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_gmtime_s - gmtime_r </p>
+
+</div>
+</div>
+<a id="a66877b3ffaabf417065da1c194dfbda6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66877b3ffaabf417065da1c194dfbda6">&#9670;&nbsp;</a></span>epc_localtime_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_localtime_s</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;localtime_r(b,a)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_localtime_s - localtime_r </p>
+
+</div>
+</div>
+<a id="a2cc2d445a1e706397c55eb5d1a72256f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc2d445a1e706397c55eb5d1a72256f">&#9670;&nbsp;</a></span>epc_sprintf_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_sprintf_s&#160;&#160;&#160;__builtin_snprintf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_sprintf_s - sprintf_s </p>
+
+</div>
+</div>
+<a id="af835f228f80e482c142e9295ec8b9e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af835f228f80e482c142e9295ec8b9e30">&#9670;&nbsp;</a></span>epc_sscanf_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_sscanf_s&#160;&#160;&#160;__builtin_sscanf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_sscanf_s - sscanf_s </p>
+
+</div>
+</div>
+<a id="a53be431c4da9ec1be45cedb9acc8a57e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53be431c4da9ec1be45cedb9acc8a57e">&#9670;&nbsp;</a></span>epc_strcpy_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_strcpy_s</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strDestination, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">sizeInBytes, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">strSource&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__builtin_strncpy(strDestination, strSource, sizeInBytes)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_strcpy_s - strncpy </p>
+
+</div>
+</div>
+<a id="aeae8b9fa36c006b5cc7740de5c81c0cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeae8b9fa36c006b5cc7740de5c81c0cb">&#9670;&nbsp;</a></span>epc_strdup</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_strdup</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str</td><td>)</td>
+          <td>&#160;&#160;&#160;__builtin_strdup(str)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_strdup - strdup </p>
+
+</div>
+</div>
+<a id="a6913c848430310fd3d117f89d211afaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6913c848430310fd3d117f89d211afaa">&#9670;&nbsp;</a></span>epc_strncpy_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_strncpy_s</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">c, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">d&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__builtin_strncpy(a,c,d);</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_strncpy_s - strncpy_s </p>
+
+</div>
+</div>
+<a id="a9bd081407e511f6d506f653d353be778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bd081407e511f6d506f653d353be778">&#9670;&nbsp;</a></span>epc_strnicmp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_strnicmp</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">str2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">count&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__builtin_strncasecmp(str1, str2, count)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>strnicmp - strnicmp, strncasecmp </p>
+
+</div>
+</div>
+<a id="a59baeba30e248ce08e466ad20bfbd2a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59baeba30e248ce08e466ad20bfbd2a9">&#9670;&nbsp;</a></span>epc_vsnprintf_s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define epc_vsnprintf_s&#160;&#160;&#160;__builtin_vsnprintf</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>epc_vsnprintf_s - vsnprintf_s </p>
+
+</div>
+</div>
+<a id="a306ebd41c0cd1303b1372c6153f0caf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a306ebd41c0cd1303b1372c6153f0caf8">&#9670;&nbsp;</a></span>False</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define False&#160;&#160;&#160;false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>False. </p>
+
+</div>
+</div>
+<a id="add3ca9eefe3b5b754426f51d3043e579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3ca9eefe3b5b754426f51d3043e579">&#9670;&nbsp;</a></span>True</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define True&#160;&#160;&#160;true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>True. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a2017da1a7bf300a2d47bae722cec5e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2017da1a7bf300a2d47bae722cec5e70">&#9670;&nbsp;</a></span>epctime_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef long long int <a class="el" href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>time typedef </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['m_5fdwerror',['m_dwError',['../classEError.html#a62e616138e9894b0f296ce0ed9e15e9e',1,'EError']]],
-  ['m_5feseverity',['m_eSeverity',['../classEError.html#a67d43ca768bcc4ca0f65b8c7e93d435e',1,'EError']]]
+  ['datatype',['dataType',['../structEGetOpt_1_1Option.html#abbed4084dc5b746da1a190f9137b23c3',1,'EGetOpt::Option']]],
+  ['diameter_5fanswer_5fbit',['DIAMETER_ANSWER_BIT',['../estats_8h.html#a2bfbbaa3185b4b738b9f884384147c5d',1,'estats.h']]]
 ];

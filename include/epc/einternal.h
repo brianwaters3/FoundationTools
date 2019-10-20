@@ -23,49 +23,38 @@
 #include "estatic.h"
 #include "elogger.h"
 
+/// @file
+/// @brief EpcTools management.
+
 /// @brief The primary class used to initialize/uninitialize EpcTools
 class EpcTools
 {
 public:
    /// @brief Initialize the EpcTools runtime environment
-   ///
    /// @param options The configuration options used to initalize EpcTools
-   ///
    static Void Initialize(EGetOpt &options);
    /// @brief Uninitialize the EpcTools runtime environment
    static Void UnInitialize();
 
    /// @brief Gets the log ID associated with internal log messages
-   ///
    /// @return the log ID
-   ///
    static Int getInternalLogId() { return m_internalLogId; }
    /// @brief Sets the log ID associated with internal log messages
-   ///
    /// @param logid The new log ID.
-   ///
    static Void setInternalLogId(Int logid) { m_internalLogId = logid; }
 
    /// @brief Gets the application ID for this application
-   ///
    /// @return the application ID
-   ///
    static Int getApplicationId() { return m_appid; }
    /// @brief Sets the application ID
-   ///
    /// @param appid The new application ID
-   ///
    static Void setApplicationId(Int appid) { m_appid = appid; }
 
    /// @brief Indicates that public features are enabled.
-   ///
    /// @return True - public features are enabled, False - public features are not enabled
-   ///
    static Bool isPublicEnabled() { return m_public; }
    /// @brief Indicates that public features are enabled.
-   ///
    /// @return True - debug is enabled, False - debug is not enabled
-   ///
    static Bool isDebug() { return m_debug; }
 
 private:

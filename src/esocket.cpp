@@ -25,6 +25,7 @@
 #define EPC_INVALID_SOCKET -1
 #define EPC_EINPROGRESS EINPROGRESS
 #define EPC_EWOULDBLOCK EWOULDBLOCK
+#define EPC_EMSGSIZE EMSGSIZE
 #define EPC_SOCKET_ERROR -1
 typedef Int EPC_SOCKET;
 typedef void *PSOCKETOPT;
@@ -34,107 +35,175 @@ typedef socklen_t EPC_SOCKLEN;
 ////////////////////////////////////////////////////////////////////////////////
 // ESocketError
 ////////////////////////////////////////////////////////////////////////////////
-ESocketError_UnableToCreateSocket::ESocketError_UnableToCreateSocket()
+
+namespace ESocket
+{
+
+AddressError_UnknownAddressType::AddressError_UnknownAddressType()
+{
+   setSevere();
+   setTextf("%s: Unknown address type", Name());
+}
+
+AddressError_CannotConvertInet2Inet6::AddressError_CannotConvertInet2Inet6()
+{
+   setSevere();
+   setTextf("%s: Cannot convert an INET address to an INET6 address", Name());
+}
+
+AddressError_CannotConvertInet62Inet::AddressError_CannotConvertInet62Inet()
+{
+   setSevere();
+   setTextf("%s: Cannot convert an INEt6 address to an INET address", Name());
+}
+
+AddressError_ConvertingToString::AddressError_ConvertingToString()
+{
+   setSevere();
+   setTextf("%s: Error converting address to a string", Name());
+}
+
+AddressError_UndefinedFamily::AddressError_UndefinedFamily()
+{
+   setSevere();
+   setTextf("%s: Undefined family", Name());
+}
+
+BaseError_UnableToCreateSocket::BaseError_UnableToCreateSocket()
 {
    setSevere();
    setTextf("%s: Error creating socket - ", Name());
    appendLastOsError();
 }
 
-ESocketError_UnableToBindSocket::ESocketError_UnableToBindSocket()
+BaseError_GetPeerNameError::BaseError_GetPeerNameError()
+{
+   setSevere();
+   setTextf("%s: Error executing getpeername() - ", Name());
+   appendLastOsError();
+}
+
+TcpListenerError_UnableToBindSocket::TcpListenerError_UnableToBindSocket()
 {
    setSevere();
    setTextf("%s: Error binding socket in bind() - ", Name());
    appendLastOsError();
 }
 
-ESocketError_UnableToAcceptSocket::ESocketError_UnableToAcceptSocket()
+TcpListenerError_UnableToAcceptSocket::TcpListenerError_UnableToAcceptSocket()
 {
    setSevere();
    setTextf("%s: Error accepting new connection in accept() - ", Name());
    appendLastOsError();
 }
 
-ESocketError_GetAddressInfo::ESocketError_GetAddressInfo(cpStr msg)
-{
-   setSevere();
-   setTextf("%s: Error getting address info in getaddrinfo() - %s", Name(), msg);
-}
+// ESocketError_GetAddressInfo::ESocketError_GetAddressInfo(cpStr msg)
+// {
+//    setSevere();
+//    setTextf("%s: Error getting address info in getaddrinfo() - %s", Name(), msg);
+// }
 
-ESocketError_NoAddressesFound::ESocketError_NoAddressesFound(cpStr msg)
-{
-   setSevere();
-   setTextf("%s: Error no addresses found in getaddrinfo() for %s - ", Name(), msg);
-   appendLastOsError();
-}
+// ESocketError_NoAddressesFound::ESocketError_NoAddressesFound(cpStr msg)
+// {
+//    setSevere();
+//    setTextf("%s: Error no addresses found in getaddrinfo() for %s - ", Name(), msg);
+//    appendLastOsError();
+// }
 
-ESocketListenError_UnableToListen::ESocketListenError_UnableToListen()
+TcpListenerError_UnableToListen::TcpListenerError_UnableToListen()
 {
    setSevere();
    setTextf("%s: Error executing listen - ", Name());
    appendLastOsError();
 }
 
-ESocketConverseError_UnableToConnect::ESocketConverseError_UnableToConnect()
+TcpTalkerError_InvalidRemoteAddress::TcpTalkerError_InvalidRemoteAddress()
+{
+   setSevere();
+   setTextf("%s: Invalid remote address", Name());
+}
+
+TcpTalkerError_UnableToConnect::TcpTalkerError_UnableToConnect()
 {
    setSevere();
    setTextf("%s: Unable to connect - ", Name());
    appendLastOsError();
 }
 
-ESocketConverseError_OutOfMemory::ESocketConverseError_OutOfMemory(cpStr msg)
-{
-   setSevere();
-   setTextf("%s: Out of memory in %s", Name(), msg);
-}
-
-ESocketConverseError_UnableToRecvData::ESocketConverseError_UnableToRecvData()
+TcpTalkerError_UnableToRecvData::TcpTalkerError_UnableToRecvData()
 {
    setSevere();
    setTextf("%s: Error while executing recv() - ", Name());
    appendLastOsError();
 }
 
-ESocketConverseError_InvalidSendState::ESocketConverseError_InvalidSendState(cpStr msg)
+TcpTalkerError_InvalidSendState::TcpTalkerError_InvalidSendState(cpStr msg)
 {
    setSevere();
    setTextf("%s: Invalid state while sending: %s", Name(), msg);
 }
 
-ESocketConverseError_ReadingWritePacketLength::ESocketConverseError_ReadingWritePacketLength(cpStr msg)
+TcpTalkerError_ReadingWritePacketLength::TcpTalkerError_ReadingWritePacketLength(cpStr msg)
 {
    setSevere();
    setTextf("%s: Unable to read the write packet length - %s", Name(), msg);
 }
 
-ESocketConverseError_SendingPacket::ESocketConverseError_SendingPacket()
+TcpTalkerError_SendingPacket::TcpTalkerError_SendingPacket()
 {
    setSevere();
    setTextf("%s: Error while attempting to send a packet of data via send() - ", Name());
    appendLastOsError();
 }
 
-ESocketConverseError_UnrecognizedSendReturnValue::ESocketConverseError_UnrecognizedSendReturnValue(cpStr msg)
+UdpError_AlreadyBound::UdpError_AlreadyBound()
 {
    setSevere();
-   setTextf("%s: Unrecoginzed return value - %s", Name(), msg);
+   setTextf("%s: Socket is already bound", Name());
 }
 
-ESocketThreadError_UnableToOpenPipe::ESocketThreadError_UnableToOpenPipe()
+UdpError_UnableToBindSocket::UdpError_UnableToBindSocket()
+{
+   setSevere();
+   setTextf("%s: Error while attempting to bind socket - ", Name());
+   appendLastOsError();
+}
+
+UdpError_UnableToRecvData::UdpError_UnableToRecvData()
+{
+   setSevere();
+   setTextf("%s: Error receiving data - ", Name());
+   appendLastOsError();
+}
+
+UdpError_SendingPacket::UdpError_SendingPacket()
+{
+   setSevere();
+   setTextf("%s: Error while attempting to send a packet of data via sendto() - ", Name());
+   appendLastOsError();
+}
+
+UdpError_ReadingWritePacketLength::UdpError_ReadingWritePacketLength(cpStr msg)
+{
+   setSevere();
+   setTextf("%s: Unable to read the write packet length - %s", Name(), msg);
+}
+
+ThreadError_UnableToOpenPipe::ThreadError_UnableToOpenPipe()
 {
    setSevere();
    setTextf("%s: Error while opening select pipe - ", Name());
    appendLastOsError();
 }
 
-ESocketThreadError_UnableToReadPipe::ESocketThreadError_UnableToReadPipe()
+ThreadError_UnableToReadPipe::ThreadError_UnableToReadPipe()
 {
    setSevere();
    setTextf("%s: Error while reading select pipe - ", Name());
    appendLastOsError();
 }
 
-ESocketThreadError_UnableToWritePipe::ESocketThreadError_UnableToWritePipe()
+ThreadError_UnableToWritePipe::ThreadError_UnableToWritePipe()
 {
    setSevere();
    setTextf("%s: Error while writing select pipe - ", Name());
@@ -142,103 +211,84 @@ ESocketThreadError_UnableToWritePipe::ESocketThreadError_UnableToWritePipe()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// ESocket
+// ESocket::Base
 ////////////////////////////////////////////////////////////////////////////////
-ESocket::ESocket(ESocketThread *pthread, SOCKETSTYLE style, Int family, Int type, Int protocol)
+Base::Base(Thread &thread, SocketType socktype, Int family, Int type, Int protocol)
+   : m_thread( thread ),
+     m_socktype( socktype ),
+     m_family( family ),
+     m_type( type ),
+     m_protocol( protocol ),
+     m_error( 0 ),
+     m_handle( EPC_INVALID_SOCKET )
 {
-   m_thread = pthread;
-
-   m_style = style;
-   m_family = family;
-   m_type = type;
-   m_protocol = protocol;
-
-   m_handle = EPC_INVALID_SOCKET;
-   m_port = -1;
-
-   m_state = DISCONNECTED;
 }
 
-ESocket::~ESocket()
+Base::~Base()
 {
    close();
 }
 
-Void ESocket::onClose()
+Bool Base::onReceive()
 {
 }
 
-Void ESocket::onError()
+Void Base::onConnect()
 {
 }
 
-Int ESocket::setError()
+Void Base::onClose()
 {
-   m_error = errno;
+}
+
+Void Base::onError()
+{
+}
+
+
+Int Base::setError()
+{
+   m_error = EPC_LASTERROR;
    return m_error;
 }
 
-Void ESocket::createSocket(Int family, Int type, Int protocol)
+Void Base::createSocket(Int family, Int type, Int protocol)
 {
-   m_handle = socket(getFamily(), getType(), getProtocol());
+   m_handle = socket(family, type, protocol);
    if (m_handle == EPC_INVALID_SOCKET)
-      throw ESocketError_UnableToCreateSocket();
+      throw BaseError_UnableToCreateSocket();
+
+   m_family = family;
+   m_type = type;
+   m_protocol = protocol;
 
    setOptions();
 }
 
-Void ESocket::bind()
+Void Base::disconnect()
 {
-   bind(getPort());
-}
-
-Void ESocket::bind(UShort port)
-{
-   struct addrinfo *pai = NULL;
-
-   assignAddress(NULL, port, getFamily(), getType(),
-                 AI_PASSIVE, getProtocol(), &pai);
-
-   createSocket(getFamily(), getType(), getProtocol());
-
-   int result = ::bind(m_handle, pai->ai_addr, (EPC_SOCKLEN)pai->ai_addrlen);
-
-   freeaddrinfo(pai);
-
-   if (result == -1)
-   {
-      ESocketError_UnableToBindSocket *perr = new ESocketError_UnableToBindSocket();
-      close();
-      throw perr;
-   }
-}
-
-Void ESocket::disconnect()
-{
-   getThread()->unregisterSocket(this);
+   getThread().unregisterSocket(this);
    if (m_handle != EPC_INVALID_SOCKET)
    {
       epc_closesocket(m_handle);
       m_handle = EPC_INVALID_SOCKET;
-      m_state = ESocket::DISCONNECTED;
-      m_ipaddr.clear();
    }
 }
 
-Void ESocket::close()
+Void Base::close()
 {
    disconnect();
    onClose();
 }
 
-Void ESocket::setHandle(Int handle)
+Void Base::setHandle(Int handle)
 {
    disconnect();
    m_handle = handle;
    setOptions();
 }
 
-Void ESocket::setOptions()
+Void Base::setOptions()
 {
    struct linger l;
    l.l_onoff = 1;
@@ -247,221 +297,484 @@ Void ESocket::setOptions()
 
    fcntl(m_handle, F_SETFL, O_NONBLOCK);
 
-   getThread()->registerSocket(this);
+   getThread().registerSocket(this);
 }
 
-Void ESocket::setIpAddress(cpStr addr)
+Address &Base::setLocalAddress(Address &addr)
 {
-   if (addr)
-      m_ipaddr = addr;
-   else
-      m_ipaddr.clear();
+   addr.clear();
+
+   socklen_t sockaddrlen = addr.getSockAddrLen();;
+
+   if (getsockname(m_handle, addr.getSockAddr(), &sockaddrlen) < 0)
+      throw BaseError_GetPeerNameError();
+
+   return addr;
 }
 
-cpStr ESocket::getIpAddress()
+Address &Base::setRemoteAddress(Address &addr)
 {
-   return m_ipaddr.c_str();
+   addr.clear();
+
+   socklen_t sockaddrlen = addr.getSockAddrLen();;
+
+   if (getpeername(m_handle, addr.getSockAddr(), &sockaddrlen) < 0)
+      throw BaseError_GetPeerNameError();
+
+   return addr;
 }
 
-Void ESocket::assignAddress(cpStr ipaddr, UShort port, Int family, Int socktype,
-                             Int flags, Int protocol, struct addrinfo **paddrs)
+////////////////////////////////////////////////////////////////////////////////
+// ESocket::TCP::Talker
+////////////////////////////////////////////////////////////////////////////////
+namespace TCP
 {
-   Int result;
-   EString sPort;
-   struct addrinfo hints;
-
-   sPort.format("%u", port);
-
-   memset(&hints, 0, sizeof(hints));
-   hints.ai_family = AF_INET;       //family;
-   hints.ai_socktype = SOCK_STREAM; //socktype;
-   hints.ai_flags = AI_PASSIVE;     //flags;
-   hints.ai_protocol = protocol;
-
-   result = getaddrinfo(ipaddr, sPort.c_str(), &hints, paddrs);
-   if (result)
+   Talker::Talker(Thread &thread, Int bufsize)
+      : Base(thread, SocketType::TcpTalker, AF_INET6, SOCK_STREAM, IPPROTO_TCP),
+      m_state( State::Undefined ),
+      m_sending(False),
+      m_rbuf(bufsize),
+      m_wbuf(bufsize)
    {
-      cpStr errStr;
+   }
 
-      switch (result)
+   Talker::~Talker()
+   {
+   }
+
+   Void Talker::connect()
+   {
+      if (getRemote().getFamily() != Address::Family::INET && getRemote().getFamily() != Address::Family::INET6)
+         throw TcpTalkerError_InvalidRemoteAddress();
+
+      struct addrinfo *pAddress;
+
+      Int family = getRemote().getFamily() == Address::Family::INET ? AF_INET : AF_INET6;
+      Int type = getType();
+      Int protocol = getProtocol();
+
+      createSocket( family, type, protocol );
+
+      int result = ::connect(getHandle(), getRemote().getSockAddr(), getRemote().getSockAddrLen());
+
+      if (result == 0)
       {
-      case EAI_ADDRFAMILY:
-         errStr = "EAI_ADDRFAMILY";
-         break;
-      case EAI_AGAIN:
-         errStr = "EAI_AGAIN";
-         break;
-      case EAI_BADFLAGS:
-         errStr = "EAI_BADFLAGS";
-         break;
-      case EAI_FAIL:
-         errStr = "EAI_FAIL";
-         break;
-      case EAI_FAMILY:
-         errStr = "EAI_FAMILY";
-         break;
-      case EAI_MEMORY:
-         errStr = "EAI_MEMORY";
-         break;
-      case EAI_NODATA:
-         errStr = "EAI_NODATA";
-         break;
-      case EAI_NONAME:
-         errStr = "EAI_NONAME";
-         break;
-      case EAI_SERVICE:
-         errStr = "EAI_SERVICE";
-         break;
-      case EAI_SOCKTYPE:
-         errStr = "EAI_SOCKTYPE";
-         break;
-      case EAI_SYSTEM:
-         errStr = "EAI_SYSTEM";
-         break;
-      default:
-         errStr = "UNKNOWN";
-         break;
+         setState( State::Connected );
+         onConnect();
+      }
+      else if (result == -1)
+      {
+         setError();
+         if (getError() != EPC_EINPROGRESS && getError() != EPC_EWOULDBLOCK)
+            throw TcpTalkerError_UnableToConnect();
+
+         setState( State::Connecting );
+
+         getThread().bump();
+      }
+   }
+
+   Int Talker::recv()
+   {
+      //
+      // modified this routine to use a buffer allocated from the stack
+      // instead of a single buffer allocated from the heap (which had
+      // been used for both reading and writing) to avoid between the
+      // read and write process
+      //
+      UChar buf[2048];
+      Int totalReceived = 0;
+
+      while (True)
+      {
+         Int amtReceived = ::recv(getHandle(), (PSNDRCVBUFFER)buf, sizeof(buf), 0);
+         if (amtReceived > 0)
+         {
+            m_rbuf.writeData(buf, 0, amtReceived);
+            totalReceived += amtReceived;
+         }
+         else if (amtReceived == 0)
+         {
+            setState( State::Disconnected );
+            break;
+         }
+         else
+         {
+            setError();
+            if (getError() == EPC_EWOULDBLOCK)
+               break;
+            throw TcpTalkerError_UnableToRecvData();
+         }
       }
 
-      throw ESocketError_GetAddressInfo(errStr);
+      return totalReceived;
    }
 
-   if (!*paddrs)
+   Int Talker::send(pUChar pData, Int length)
    {
-      EString msg;
-      msg.format("%s:%u", ipaddr ? ipaddr : "", port);
-      throw ESocketError_NoAddressesFound(msg.c_str());
-   }
-}
+      Int result = ::send(getHandle(), (PSNDRCVBUFFER)pData, length, MSG_NOSIGNAL);
 
-cpStr ESocket::getStateDescription(ESocket::SOCKETSTATE state)
-{
-   cpStr pState = "Unknown";
-
-   switch (state)
-   {
-   case ESocket::CONNECTING:
-   {
-      pState = "CONNECTING";
-      break;
-   }
-   case ESocket::CONNECTED:
-   {
-      pState = "CONNECTED";
-      break;
-   }
-   case ESocket::DISCONNECTED:
-   {
-      pState = "DISCONNECTED";
-      break;
-   }
-   }
-
-   return pState;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// ESocketConverse
-////////////////////////////////////////////////////////////////////////////////
-ESocketConverse::ESocketConverse(ESocketThread *pthread, Int bufSize, Int family, Int type, Int protocol)
-    : ESocket(pthread, ESocket::CONVERSE, family, type, protocol),
-      m_rbuf(bufSize),
-      m_wbuf(bufSize)
-{
-   m_sending = false;
-   m_remoteport = 0;
-}
-
-ESocketConverse::~ESocketConverse()
-{
-}
-
-Void ESocketConverse::connect()
-{
-   struct addrinfo *pAddress;
-
-   assignAddress(getIpAddress(), getPort(), getFamily(),
-                 getType(), 0, getProtocol(), &pAddress);
-
-   createSocket(getFamily(), getType(), getProtocol());
-
-   int result = ::connect(getHandle(), pAddress->ai_addr, (EPC_SOCKLEN)pAddress->ai_addrlen);
-
-   if (result == 0)
-   {
-      setState(CONNECTED);
-      onConnect();
-   }
-   else if (result == -1)
-   {
-      setError();
-      if (getError() != EPC_EINPROGRESS && getError() != EPC_EWOULDBLOCK)
+      if (result == -1)
       {
-         ESocketConverseError_UnableToConnect *err = new ESocketConverseError_UnableToConnect();
-         freeaddrinfo(pAddress);
+         setError();
+         if (getError() != EPC_EWOULDBLOCK)
+            throw TcpTalkerError_SendingPacket();
+      }
+
+      return result;
+   }
+
+   #include <csignal>
+
+   Void Talker::send(Bool override)
+   {
+      UChar buf[2048];
+
+      EMutexLock lck(m_sendmtx, False);
+      if (!lck.acquire(False))
+         return;
+
+      if (!override && m_sending)
+         return;
+
+      if (m_wbuf.isEmpty())
+      {
+         m_sending = false;
+         return;
+      }
+
+      if (getState() != State::Connected)
+      {
+         std::raise(SIGINT);
+         throw TcpTalkerError_InvalidSendState(getStateDescription(getState()));
+      }
+
+      m_sending = true;
+      while (true)
+      {
+         if (m_wbuf.isEmpty())
+         {
+            m_sending = false;
+            break;
+         }
+
+         Int packetLength = 0;
+         Int amtRead = m_wbuf.peekData((pUChar)&packetLength, 0, sizeof(packetLength));
+         if (amtRead != sizeof(packetLength))
+         {
+            EString msg;
+            msg.format("expected %d bytes, read %d bytes", sizeof(packetLength), amtRead);
+            throw TcpTalkerError_ReadingWritePacketLength(msg.c_str());
+         }
+
+         Int sentLength = 0;
+         while (sentLength < packetLength)
+         {
+            Int sendLength = packetLength - sentLength;
+            if (sendLength > (Int)sizeof(buf))
+               sendLength = sizeof(buf);
+
+            // get data from the circular buffer
+            amtRead = m_wbuf.peekData((pUChar)buf, sizeof(packetLength) + sentLength, sendLength);
+            if (amtRead != sendLength)
+            {
+               EString msg;
+               msg.format("expected %d bytes, read %d bytes", sendLength, amtRead);
+               throw TcpTalkerError_ReadingWritePacketLength(msg.c_str());
+            }
+
+            // write the data to the socket
+            Int amtWritten = send(buf, sendLength);
+            if (amtWritten == -1) // EPC_EWOULDBLOCK
+               break;
+
+            sentLength += amtWritten;
+            if (amtWritten != sendLength) // only part of the data was written
+               break;
+         }
+
+         packetLength -= sentLength;
+         m_wbuf.readData(NULL, 0, sentLength + (!packetLength ? sizeof(packetLength) : 0));
+         if (packetLength > 0)
+         {
+            // need to update the buffer indicating the amount of the
+            // message remaining in the circular buffer
+            //fprintf(stderr,"wrote %d bytes of %d\n", sentLength, packetLength + sentLength);
+            m_wbuf.modifyData((pUChar)&packetLength, 0, (Int)sizeof(packetLength));
+            break;
+         }
+      }
+   }
+
+   Int Talker::peek(pUChar dest, Int len)
+   {
+      return m_rbuf.peekData(dest, 0, len);
+   }
+
+   Int Talker::read(pUChar dest, Int len)
+   {
+      return m_rbuf.readData(dest, 0, len);
+   }
+
+   Void Talker::write(pUChar src, Int len)
+   {
+      {
+         EMutexLock l(m_wbuf.getMutex());
+         m_wbuf.writeData((pUChar)&len, 0, sizeof(len), True);
+         m_wbuf.writeData(src, 0, len, True);
+      }
+
+      send();
+   }
+
+   Void Talker::disconnect()
+   {
+      Base::disconnect();
+      m_state = State::Disconnected;
+      m_remote.clear();
+   }
+
+   Bool Talker::onReceive()
+   {
+      return True;
+   }
+
+   Void Talker::onConnect()
+   {
+   }
+
+   Void Talker::onClose()
+   {
+      close();
+   }
+
+   Void Talker::onError()
+   {
+   }
+
+   ////////////////////////////////////////////////////////////////////////////////
+   // ESocket::TCP::Listener
+   ////////////////////////////////////////////////////////////////////////////////
+   Listener::Listener(Thread &thread, Address::Family family)
+      : Base(thread, SocketType::TcpListener, 
+         family == Address::Family::INET ? AF_INET : AF_INET6,
+         SOCK_STREAM, IPPROTO_TCP),
+        m_state( State::Undefined ),
+        m_backlog( -1 )
+   {
+   }
+
+
+   Listener::Listener(Thread &thread, UShort port, Address::Family family)
+      : Base(thread, SocketType::TcpListener,
+         family == Address::Family::INET ? AF_INET : AF_INET6,
+         SOCK_STREAM, IPPROTO_TCP),
+        m_state( State::Undefined ),
+        m_backlog( -1 )
+   {
+      setPort( port );
+   }
+
+   Listener::Listener(Thread &thread, UShort port, Int backlog, Address::Family family)
+      : Base(thread, SocketType::TcpListener,
+         family == Address::Family::INET ? AF_INET : AF_INET6,
+         SOCK_STREAM, IPPROTO_TCP),
+        m_state( State::Undefined ),
+        m_backlog( backlog )
+   {
+      setPort( port );
+   }
+
+   Void Listener::listen()
+   {
+      bind();
+      if (::listen(getHandle(), getBacklog()) == EPC_SOCKET_ERROR)
+         throw TcpListenerError_UnableToListen();
+      setState( State::Listening );
+   }
+
+   Void Listener::onClose()
+   {
+      Base::onClose();
+      setState( State::Undefined );
+   }
+
+   Void Listener::onError()
+   {
+   }
+
+   Void Listener::bind()
+   {
+      Base::createSocket(getFamily(), getType(), getProtocol());
+
+      int result = ::bind(getHandle(), getLocalAddress().getSockAddr(), getLocalAddress().getSockAddrLen());
+      if (result == -1)
+      {
+         TcpListenerError_UnableToBindSocket err;
+         close();
          throw err;
       }
-
-      setState(CONNECTING);
-
-      getThread()->bump();
    }
-
-   freeaddrinfo(pAddress);
 }
 
-Void ESocketConverse::connect(cpStr ipaddr, UShort port)
+////////////////////////////////////////////////////////////////////////////////
+// ESocket::UDP
+////////////////////////////////////////////////////////////////////////////////
+
+// (Maximum message length) = (max IP packet size) - (min IP header length) - (udp header length)
+// 65507 = 65535 - 20 - 8
+#define UPD_MAX_MSG_LENGTH 65507
+
+UDP::UDP(Thread &thread, Int bufsize)
+   : Base(thread, SocketType::Udp, AF_INET6, SOCK_DGRAM, IPPROTO_UDP),
+     m_sending(False),
+     m_rbuf(bufsize),
+     m_wbuf(bufsize),
+     m_rcvmsg(NULL),
+     m_sndmsg(NULL)
 {
-   setIpAddress(ipaddr);
-   setPort(port);
-   connect();
+   m_rcvmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+   m_sndmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
 }
 
-Int ESocketConverse::recv()
+UDP::UDP(Thread &thread, UShort port, Int bufsize)
+   : Base(thread, SocketType::Udp, AF_INET6, SOCK_DGRAM, IPPROTO_UDP),
+     m_sending(False),
+     m_rbuf(bufsize),
+     m_wbuf(bufsize),
+     m_rcvmsg(NULL),
+     m_sndmsg(NULL)
 {
-   //
-   // modified this routine to use a buffer allocated from the stack
-   // instead of a single buffer allocated from the heap (which had
-   // been used for both reading and writing) to avoid between the
-   // read and write process
-   //
-   UChar buf[2048];
+   m_local = port;
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+   m_rcvmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+   m_sndmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+}
+
+UDP::UDP(Thread &thread, cpStr ipaddr, UShort port, Int bufsize)
+   : Base(thread, SocketType::Udp, AF_INET6, SOCK_DGRAM, IPPROTO_UDP),
+     m_sending(False),
+     m_rbuf(bufsize),
+     m_wbuf(bufsize),
+     m_rcvmsg(NULL),
+     m_sndmsg(NULL)
+{
+   m_local.setAddress( ipaddr, port );
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+   m_rcvmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+   m_sndmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+}
+
+UDP::UDP(Thread &thread, Address &addr, Int bufsize)
+   : Base(thread, SocketType::Udp, AF_INET6, SOCK_DGRAM, IPPROTO_UDP),
+     m_sending(False),
+     m_rbuf(bufsize),
+     m_wbuf(bufsize),
+     m_rcvmsg(NULL),
+     m_sndmsg(NULL)
+{
+   m_local = addr;
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+   m_rcvmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+   m_sndmsg = reinterpret_cast<UDPMessage*>(new UChar[sizeof(UDPMessage) + UPD_MAX_MSG_LENGTH]);
+}
+
+UDP::~UDP()
+{
+   if (m_rcvmsg)
+      delete [] reinterpret_cast<pUChar>(m_rcvmsg);
+   if (m_sndmsg)
+      delete [] reinterpret_cast<pUChar>(m_sndmsg);
+}
+
+Void UDP::bind(UShort port)
+{
+   if (getHandle() != EPC_INVALID_SOCKET)
+      throw UdpError_AlreadyBound();
+   m_local = port;
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+}
+
+Void UDP::bind(cpStr ipaddr, UShort port)
+{
+   if (getHandle() != EPC_INVALID_SOCKET)
+      throw UdpError_AlreadyBound();
+   m_local.setAddress( ipaddr, port );
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+}
+
+Void UDP::bind(const Address &addr)
+{
+   if (getHandle() != EPC_INVALID_SOCKET)
+      throw UdpError_AlreadyBound();
+   m_local = addr;
+   setFamily( m_local.getFamily() == Address::Family::INET ? AF_INET : AF_INET6 );
+   bind();
+}
+
+Void UDP::bind()
+{
+   if (getHandle() != EPC_INVALID_SOCKET)
+      throw UdpError_AlreadyBound();
+
+   Base::createSocket(getFamily(), getType(), getProtocol());
+
+   int result = ::bind(getHandle(), getLocal().getSockAddr(), getLocal().getSockAddrLen());
+   if (result == -1)
+   {
+      UdpError_UnableToBindSocket err;
+      close();
+      throw err;
+   }
+}
+
+Int UDP::recv()
+{
    Int totalReceived = 0;
+   Address addr;
+   socklen_t addrlen;
+   Int flags = 0;
 
    while (True)
    {
-      Int amtReceived = ::recv(getHandle(), (PSNDRCVBUFFER)buf, sizeof(buf), 0);
-      if (amtReceived > 0)
+      addrlen = addr.getSockAddrLen();
+      Int amtReceived = ::recvfrom(getHandle(), m_rcvmsg->data, UPD_MAX_MSG_LENGTH, flags, addr.getSockAddr(), &addrlen);
+      if (amtReceived >= 0)
       {
-         m_rbuf.writeData(buf, 0, amtReceived);
+         m_rcvmsg->total_length = sizeof(UDPMessage) + amtReceived;
+         m_rcvmsg->data_length = amtReceived;
+         m_rcvmsg->addr = addr;
+
+         m_rbuf.writeData( reinterpret_cast<pUChar>(m_rcvmsg), 0, m_rcvmsg->total_length);
          totalReceived += amtReceived;
-      }
-      else if (amtReceived == 0)
-      {
-         setState(DISCONNECTED);
-         break;
       }
       else
       {
          setError();
          if (getError() == EPC_EWOULDBLOCK)
             break;
-         throw ESocketConverseError_UnableToRecvData();
+         throw UdpError_UnableToRecvData();
       }
    }
 
    return totalReceived;
 }
 
-Int ESocketConverse::send(pUChar pData, Int length)
+Int UDP::send(Address &addr, cpVoid pData, Int length)
 {
-   Int result = ::send(getHandle(), (PSNDRCVBUFFER)pData, length, MSG_NOSIGNAL);
+   Int flags = MSG_NOSIGNAL;
+   Int result = ::sendto(getHandle(), pData, length, flags, addr.getSockAddr(), addr.getSockAddrLen());
 
    if (result == -1)
    {
       setError();
-      if (getError() != EPC_EWOULDBLOCK)
-         throw ESocketConverseError_SendingPacket();
+      if (getError() != EPC_EMSGSIZE)
+         throw UdpError_SendingPacket();
    }
 
    return result;
@@ -469,10 +782,8 @@ Int ESocketConverse::send(pUChar pData, Int length)
 
 #include <csignal>
 
-Void ESocketConverse::send(Bool override)
+Void UDP::send(Bool override)
 {
-   UChar buf[2048];
-
    EMutexLock lck(m_sendmtx, False);
    if (!lck.acquire(False))
       return;
@@ -486,12 +797,6 @@ Void ESocketConverse::send(Bool override)
       return;
    }
 
-   if (getState() != CONNECTED)
-   {
-      std::raise(SIGINT);
-      throw ESocketConverseError_InvalidSendState(getStateDescription(getState()));
-   }
-
    m_sending = true;
    while (true)
    {
@@ -501,190 +806,125 @@ Void ESocketConverse::send(Bool override)
          break;
       }
 
-      Int packetLength = 0;
-      Int amtRead = m_wbuf.peekData((pUChar)&packetLength, 0, sizeof(packetLength));
+      size_t packetLength = 0;
+      Int amtRead = m_wbuf.peekData(reinterpret_cast<pUChar>(&packetLength), 0, sizeof(packetLength));
       if (amtRead != sizeof(packetLength))
       {
          EString msg;
          msg.format("expected %d bytes, read %d bytes", sizeof(packetLength), amtRead);
-         throw ESocketConverseError_ReadingWritePacketLength(msg.c_str());
+         throw UdpError_ReadingWritePacketLength(msg.c_str());
       }
 
-      Int sentLength = 0;
-      while (sentLength < packetLength)
+      amtRead = m_wbuf.peekData(reinterpret_cast<pUChar>(m_sndmsg), 0, packetLength);
+      if (amtRead != packetLength)
       {
-         Int sendLength = packetLength - sentLength;
-         if (sendLength > (Int)sizeof(buf))
-            sendLength = sizeof(buf);
-
-         // get data from the circular buffer
-         amtRead = m_wbuf.peekData((pUChar)buf, sizeof(packetLength) + sentLength, sendLength);
-         if (amtRead != sendLength)
-         {
-            EString msg;
-            msg.format("expected %d bytes, read %d bytes", sendLength, amtRead);
-            throw ESocketConverseError_ReadingWritePacketLength(msg.c_str());
-         }
-
-         // write the data to the socket
-         Int amtWritten = send(buf, sendLength);
-         if (amtWritten == -1) // EPC_EWOULDBLOCK
-            break;
-
-         sentLength += amtWritten;
-         if (amtWritten != sendLength) // only part of the data was written
-            break;
+         EString msg;
+         msg.format("expected %d bytes, read %d bytes", sizeof(packetLength), amtRead);
+         throw UdpError_ReadingWritePacketLength(msg.c_str());
       }
 
-      packetLength -= sentLength;
-      m_wbuf.readData(NULL, 0, sentLength + (!packetLength ? sizeof(packetLength) : 0));
-      if (packetLength > 0)
+      if (send(m_sndmsg->addr, m_sndmsg->data, m_sndmsg->data_length) == -1)
       {
-         // need to update the buffer indicating the amount of the
-         // message remaining in the circular buffer
-         //fprintf(stderr,"wrote %d bytes of %d\n", sentLength, packetLength + sentLength);
-         m_wbuf.modifyData((pUChar)&packetLength, 0, (Int)sizeof(packetLength));
+         // unable to send this message so get out, it will be sent when the socket is ready for writing
          break;
       }
+
+      m_wbuf.readData(NULL, 0, m_sndmsg->total_length);
    }
 }
 
-Int ESocketConverse::peek(pUChar dest, Int len)
+Bool UDP::readMessage(UDPMessage &msg)
 {
-   return m_rbuf.peekData(dest, 0, len);
+   if (m_rbuf.peekData(reinterpret_cast<pUChar>(&msg), 0, sizeof(msg)))
+   {
+      m_rbuf.readData(reinterpret_cast<pUChar>(&msg), 0, msg.total_length);
+      return True;
+   }
+
+   return False;
 }
 
-Int ESocketConverse::read(pUChar dest, Int len)
+Void UDP::write(const Address &addr, pVoid src, Int len)
 {
-   return m_rbuf.readData(dest, 0, len);
-}
+   UDPMessage msg;
+   msg.total_length = sizeof(msg) + len;
+   msg.data_length = len;
+   msg.addr = addr;
 
-Void ESocketConverse::write(pUChar src, Int len)
-{
-   m_wbuf.writeData((pUChar)&len, 0, sizeof(len));
-   m_wbuf.writeData(src, 0, len);
+   {
+      EMutexLock l(m_wbuf.getMutex());
+      m_wbuf.writeData(reinterpret_cast<pUChar>(&msg), 0, sizeof(msg), True);
+      m_wbuf.writeData(reinterpret_cast<pUChar>(src), 0, len, True);
+   }
+
    send();
 }
 
-Bool ESocketConverse::onReceive()
+Void UDP::disconnect()
 {
+   Base::disconnect();
+   m_local.clear();
+}
+
+Void UDP::onReceive(const Address &from, pVoid msg, Int len)
+{
+}
+
+Void UDP::onError()
+{
+}
+
+Bool UDP::onReceive()
+{
+   while (readMessage(*m_rcvmsg))
+   {
+      onReceive(m_rcvmsg->addr, reinterpret_cast<pVoid>(m_rcvmsg->data), m_rcvmsg->data_length);
+   }
+
    return True;
 }
 
-Void ESocketConverse::onConnect()
-{
-   setState(CONNECTED);
-}
-
-Void ESocketConverse::onClose()
-{
-   close();
-}
-
-Void ESocketConverse::onError()
-{
-}
-
 ////////////////////////////////////////////////////////////////////////////////
-// ESocketListen
-////////////////////////////////////////////////////////////////////////////////
-ESocketListen::ESocketListen(ESocketThread *pthread, Int size, Int family, Int type, Int protocol)
-    : ESocket(pthread, LISTEN, family, type, protocol)
-{
-   m_depth = -1;
-   m_bufsize = size;
-}
-
-ESocketListen::ESocketListen(ESocketThread *pthread, Int size, UShort port, Int family, Int type, Int protocol)
-    : ESocket(pthread, LISTEN, family, type, protocol)
-{
-   setPort(port);
-   m_depth = -1;
-   m_bufsize = size;
-}
-
-ESocketListen::ESocketListen(ESocketThread *pthread, Int size, UShort port, Int depth, Int family, Int type, Int protocol)
-    : ESocket(pthread, LISTEN, family, type, protocol)
-{
-   setPort(port);
-   m_depth = depth;
-   m_bufsize = size;
-}
-
-ESocketListen::~ESocketListen()
-{
-}
-
-Void ESocketListen::listen()
-{
-   bind();
-   if (::listen(getHandle(), getDepth()) == EPC_SOCKET_ERROR)
-      throw ESocketListenError_UnableToListen();
-}
-
-Void ESocketListen::listen(UShort port, Int depth)
-{
-   setPort(port);
-   setDepth(depth);
-   listen();
-}
-
-ESocketConverse *ESocketListen::createSocket(ESocketThread *pthread)
-{
-   ESocketConverse *pSocket = new ESocketConverse(pthread, getBufferSize());
-   return pSocket;
-}
-
-Void ESocketListen::onClose()
-{
-   ESocket::onClose();
-}
-
-Void ESocketListen::onError()
-{
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// ESocketThread
+// ESocket::Thread
 ////////////////////////////////////////////////////////////////////////////////
 
-BEGIN_MESSAGE_MAP(ESocketThread, EThreadPrivate)
+BEGIN_MESSAGE_MAP(Thread, EThreadPrivate)
 END_MESSAGE_MAP()
 
-ESocketThread::ESocketThread()
+Thread::Thread()
 {
    m_error = 0;
 
    int result = pipe(m_pipefd);
    if (result == -1)
-      throw ESocketThreadError_UnableToOpenPipe();
+      throw ThreadError_UnableToOpenPipe();
    fcntl(m_pipefd[0], F_SETFL, O_NONBLOCK);
 
    FD_ZERO(&m_master);
 }
 
-ESocketThread::~ESocketThread()
+Thread::~Thread()
 {
 }
 
-Void ESocketThread::onInit()
+Void Thread::onInit()
 {
    EThreadPrivate::onInit();
 }
 
-Void ESocketThread::onQuit()
+Void Thread::onQuit()
 {
    EThreadPrivate::onQuit();
 }
 
-Void ESocketThread::registerSocket(ESocket *psocket)
+Void Thread::registerSocket(Base *psocket)
 {
    m_socketmap.insert(std::make_pair(psocket->getHandle(), psocket));
    FD_SET(psocket->getHandle(), &m_master);
    bump();
 }
 
-Void ESocketThread::unregisterSocket(ESocket *psocket)
+Void Thread::unregisterSocket(Base *psocket)
 {
    if (m_socketmap.erase(psocket->getHandle()))
    {
@@ -693,20 +933,20 @@ Void ESocketThread::unregisterSocket(ESocket *psocket)
    }
 }
 
-Void ESocketThread::processSelectConnect(ESocket *psocket)
+Void Thread::processSelectConnect(Base *psocket)
 {
-   if (psocket->getStyle() == ESocket::CONVERSE)
-      ((ESocketConverse *)psocket)->onConnect();
+   if (psocket->getSocketType() == Base::SocketType::TcpTalker)
+      ((TCP::Talker *)psocket)->onConnect();
 }
 
-Void ESocketThread::processSelectClose(ESocket *psocket)
+Void Thread::processSelectClose(Base *psocket)
 {
    psocket->onClose();
 }
 
-Void ESocketThread::processSelectAccept(ESocket *psocket)
+Void Thread::processSelectAccept(Base *psocket)
 {
-   if (psocket->getStyle() == ESocket::LISTEN)
+   if (psocket->getSocketType() == Base::SocketType::TcpListener)
    {
       bool more = true;
       while (more)
@@ -716,20 +956,21 @@ Void ESocketThread::processSelectAccept(ESocket *psocket)
             struct sockaddr ipaddr;
             socklen_t ipaddrlen = sizeof(ipaddr);
 
-            EPC_SOCKET handle = ::accept(((ESocketListen *)psocket)->getHandle(), &ipaddr, &ipaddrlen);
+            EPC_SOCKET handle = ::accept((static_cast<TCP::Listener*>(psocket))->getHandle(), &ipaddr, &ipaddrlen);
             if (handle == EPC_INVALID_SOCKET)
             {
                Int err = EPC_LASTERROR;
                if (err == EPC_EWOULDBLOCK)
                   break;
-               throw ESocketError_UnableToAcceptSocket();
+               throw TcpListenerError_UnableToAcceptSocket();
             }
 
-            ESocketConverse *pnewsocket = ((ESocketListen *)psocket)->createSocket(this);
+            TCP::Talker *pnewsocket = (static_cast<TCP::Listener*>(psocket))->createSocket(*this);
             if (pnewsocket)
             {
                pnewsocket->setHandle(handle);
-               pnewsocket->setState(ESocket::CONNECTED);
+               pnewsocket->setAddresses();
+               pnewsocket->setState( TCP::Talker::State::Connected );
                registerSocket(pnewsocket);
                pnewsocket->onConnect();
             }
@@ -752,22 +993,26 @@ Void ESocketThread::processSelectAccept(ESocket *psocket)
    }
 }
 
-Void ESocketThread::processSelectRead(ESocket *psocket)
+Void Thread::processSelectRead(Base *psocket)
 {
-   if (psocket->getStyle() == ESocket::LISTEN)
+   if (psocket->getSocketType() == Base::SocketType::TcpListener)
    {
       processSelectAccept(psocket);
    }
-   else if (psocket->getStyle() == ESocket::CONVERSE)
+   else if (psocket->getSocketType() == Base::SocketType::TcpTalker)
    {
-      if (psocket->getState() == ESocket::CONNECTING)
-         ((ESocketConverse *)psocket)->onConnect();
+      if ((static_cast<TCP::Talker*>(psocket))->getState() == TCP::Talker::State::Connecting)
+      {
+         (static_cast<TCP::Talker*>(psocket))->setState( TCP::Talker::State::Connected );
+         (static_cast<TCP::Talker*>(psocket))->setAddresses();
+         (static_cast<TCP::Talker*>(psocket))->onConnect();
+      }
 
       while (true)
       {
          try
          {
-            Int amtRead = ((ESocketConverse *)psocket)->recv();
+            Int amtRead = (static_cast<TCP::Talker*>(psocket))->recv();
             if (amtRead <= 0)
                break;
          }
@@ -778,27 +1023,47 @@ Void ESocketThread::processSelectRead(ESocket *psocket)
          }
       }
 
-      ((ESocketConverse *)psocket)->onReceive();
+      ((TCP::Talker *)psocket)->onReceive();
 
-      if (psocket->getState() == ESocket::DISCONNECTED)
+      if ((static_cast<TCP::Talker*>(psocket))->getState() == TCP::Talker::State::Disconnected)
          processSelectClose(psocket);
+   }
+   else if (psocket->getSocketType() == Base::SocketType::Udp)
+   {
+      while (true)
+      {
+         try
+         {
+            Int amtRead = (static_cast<UDP*>(psocket))->recv();
+            if (amtRead <= 0)
+               break;
+         }
+         catch (EError &err)
+         {
+            //printf("errorHandler() 2\n");
+            errorHandler(err, psocket);
+         }
+      }
+
+      (reinterpret_cast<UDP*>(psocket))->onReceive();
    }
 }
 
-Void ESocketThread::processSelectWrite(ESocket *psocket)
+Void Thread::processSelectWrite(Base *psocket)
 {
-   if (psocket->getStyle() == ESocket::CONVERSE)
+   if (psocket->getSocketType() == Base::SocketType::TcpTalker)
    {
-      if (psocket->getState() == ESocket::CONNECTING)
+      if ((static_cast<TCP::Talker*>(psocket))->getState() == TCP::Talker::State::Connecting)
       {
-         psocket->setState(ESocket::CONNECTED);
-         ((ESocketConverse *)psocket)->onConnect();
+         (static_cast<TCP::Talker*>(psocket))->setState(TCP::Talker::State::Connected);
+         (static_cast<TCP::Talker*>(psocket))->setAddresses();
+         (static_cast<TCP::Talker*>(psocket))->onConnect();
       }
       else
       {
          try
          {
-            ((ESocketConverse *)psocket)->send(True);
+            (static_cast<TCP::Talker*>(psocket))->send(True);
          }
          catch (EError &err)
          {
@@ -807,40 +1072,52 @@ Void ESocketThread::processSelectWrite(ESocket *psocket)
          }
       }
    }
+   else if (psocket->getSocketType() == Base::SocketType::Udp)
+   {
+      try
+      {
+         (static_cast<UDP*>(psocket))->send(True);
+      }
+      catch (EError &err)
+      {
+         //printf("errorHandler() 3\n");
+         errorHandler(err, psocket);
+      }
+   }
 }
 
-Void ESocketThread::processSelectError(ESocket *psocket)
+Void Thread::processSelectError(Base *psocket)
 {
    psocket->onError();
 }
 
-Void ESocketThread::messageQueued()
+Void Thread::messageQueued()
 {
    EThreadPrivate::messageQueued();
    bump();
 }
 
-Void ESocketThread::onError()
+Void Thread::onError()
 {
 }
 
-int ESocketThread::getMaxFileDescriptor()
+int Thread::getMaxFileDescriptor()
 {
    if (m_socketmap.size() == 0)
       return m_pipefd[0];
 
-   int maxfd = m_socketmap.rbegin()->first;
+   int maxfd = m_socketmap.begin()->first;
 
    return (maxfd > m_pipefd[0]) ? maxfd : m_pipefd[0];
 }
 
-Void ESocketThread::bump()
+Void Thread::bump()
 {
    if (write(m_pipefd[1], "~", 1) == -1)
-      throw ESocketThreadError_UnableToWritePipe();
+      throw ThreadError_UnableToWritePipe();
 }
 
-Void ESocketThread::clearBump()
+Void Thread::clearBump()
 {
    char buf[1];
    while (true)
@@ -849,12 +1126,12 @@ Void ESocketThread::clearBump()
       {
          if (errno == EWOULDBLOCK)
             break;
-         throw ESocketThreadError_UnableToReadPipe();
+         throw ThreadError_UnableToReadPipe();
       }
    }
 }
 
-Bool ESocketThread::pumpMessagesInternal()
+Bool Thread::pumpMessagesInternal()
 {
    EThreadMessage msg;
 
@@ -878,10 +1155,10 @@ Bool ESocketThread::pumpMessagesInternal()
    return msg.getMsgId() != EM_QUIT;
 }
 
-Void ESocketThread::pumpMessages()
+Void Thread::pumpMessages()
 {
    int maxfd, fd, fdcnt;
-   ESocketMap::const_iterator socket_it;
+   BasePtrMap::const_iterator socket_it;
    fd_set readworking, writeworking, errorworking;
    while (true)
    {
@@ -890,17 +1167,16 @@ Void ESocketThread::pumpMessages()
          FD_SET(m_pipefd[0], &readworking);
 
          FD_ZERO(&writeworking);
-         for (ESocketMap::const_iterator it = m_socketmap.begin(); it != m_socketmap.end(); it++)
+         for (BasePtrMap::const_iterator it = m_socketmap.begin(); it != m_socketmap.end(); it++)
          {
-            ESocket *pSocket = it->second;
-            if (pSocket->getStyle() == ESocket::CONVERSE &&
-                (((ESocketConverse *)pSocket)->getSending() ||
-                 pSocket->getState() == ESocket::CONNECTING))
+            Base *pSocket = it->second;
+            if ((pSocket->getSocketType() == Base::SocketType::TcpTalker &&
+                  ((static_cast<TCP::Talker*>(pSocket))->getSending() ||
+                   (static_cast<TCP::Talker*>(pSocket))->getState() == TCP::Talker::State::Connecting)) ||
+                (pSocket->getSocketType() == Base::SocketType::Udp && (static_cast<UDP*>(pSocket))->getSending()))
+            {
                FD_SET(it->first, &writeworking);
-            //                if (it->second->getStyle() == ESocket::CONVERSE &&
-            //                    (((ESocketConverse*)it->second)->getSending() ||
-            //                     it->second->getState() == ESocket::CONNECTING))
-            //                    FD_SET(it->first, &writeworking);
+            }
          }
 
          memcpy(&errorworking, &m_master, sizeof(m_master));
@@ -943,7 +1219,7 @@ Void ESocketThread::pumpMessages()
             socket_it = m_socketmap.find(fd);
             if (socket_it != m_socketmap.end())
             {
-               ESocket *pSocket = socket_it->second;
+               Base *pSocket = socket_it->second;
                if (pSocket)
                {
                   int error;
@@ -961,7 +1237,7 @@ Void ESocketThread::pumpMessages()
             socket_it = m_socketmap.find(fd);
             if (socket_it != m_socketmap.end())
             {
-               ESocket *pSocket = socket_it->second;
+               Base *pSocket = socket_it->second;
                if (pSocket)
                   processSelectRead(pSocket);
             }
@@ -973,7 +1249,7 @@ Void ESocketThread::pumpMessages()
             socket_it = m_socketmap.find(fd);
             if (socket_it != m_socketmap.end())
             {
-               ESocket *pSocket = socket_it->second;
+               Base *pSocket = socket_it->second;
                if (pSocket)
                   processSelectWrite(pSocket);
             }
@@ -993,11 +1269,13 @@ Void ESocketThread::pumpMessages()
 
    while (true)
    {
-      ESocketMap::iterator it = m_socketmap.begin();
+      BasePtrMap::iterator it = m_socketmap.begin();
       if (it == m_socketmap.end())
          break;
-      ESocket *psocket = it->second;
+      Base *psocket = it->second;
       m_socketmap.erase(it);
       delete psocket;
    }
+}
+
 }

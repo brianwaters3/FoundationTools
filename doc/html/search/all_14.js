@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['warning',['Warning',['../classEError.html#a74f6b6a08d7437d3af94162b2a933498a3e6f1b38cdfdb6bd518c3c1cc5fd4cda',1,'EError']]],
-  ['what',['what',['../classEError.html#add555169deec451fcb0a07335a45a685',1,'EError']]],
-  ['write',['write',['../classEBzip2.html#aa064e5c15d0bea7c707c3c2ce1accb04',1,'EBzip2']]],
-  ['writedata',['writeData',['../classECircularBuffer.html#af9f81dd434d30cc913cf12bc08293ff1',1,'ECircularBuffer']]],
-  ['writeopen',['writeOpen',['../classEBzip2.html#a73a5fa228b27cf40a6ba60f622bf5b52',1,'EBzip2']]]
+  ['u',['u',['../unionEThreadMessage_1_1__etmessage__data.html#a7f0f7da615653273c5f9b685e29da9be',1,'EThreadMessage::_etmessage_data']]],
+  ['uchar',['UChar',['../etypes_8h.html#a5a0fa7fd26bf95968c50ea6c1dc48825',1,'etypes.h']]],
+  ['udp_5fport',['udp_port',['../structDNS_1_1NamedServer.html#a625185efbb25ffe1ea621576602e64f5',1,'DNS::NamedServer']]],
+  ['uint',['UInt',['../etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3',1,'etypes.h']]],
+  ['uli',['uli',['../unionulonginteger__t.html#a7424510b60381df7f96005a50e9b69a5',1,'ulonginteger_t']]],
+  ['ulong',['ULong',['../etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf',1,'etypes.h']]],
+  ['ulonginteger_5ft',['ulonginteger_t',['../unionulonginteger__t.html',1,'']]],
+  ['ulonglong',['ULongLong',['../etypes_8h.html#a6ab823ca8389c5ade3284aa4605af670',1,'etypes.h']]],
+  ['uninit',['uninit',['../classFDEngine.html#a43d9598acf5ccab2f97664877401e8c8',1,'FDEngine::uninit()'],['../classELogger.html#af59d24fbd912e3f253f133406fe37a0d',1,'ELogger::uninit()'],['../classEStatic.html#a5084cb094db936249865154e5a66da66',1,'EStatic::uninit()'],['../classEStatistics.html#a1782989405928d85d95b629913b0c27f',1,'EStatistics::uninit()'],['../classESynchObjects.html#ae488e04ee4b1e52643d3b0e3267c0107',1,'ESynchObjects::uninit()'],['../classELoggerInit.html#a8481983455b64dc21c275010393b29be',1,'ELoggerInit::uninit()']]],
+  ['uninitialize',['UnInitialize',['../classEpcTools.html#a3c6f9a52b98c9452d2ec05c8b923087f',1,'EpcTools::UnInitialize()'],['../classEStatic.html#aeec78f783da9a797ef14e9a72cf277e9',1,'EStatic::UnInitialize()'],['../classEThreadBasic.html#a1659dac8c65cf3cd1542d0d4a070f91f',1,'EThreadBasic::UnInitialize()']]],
+  ['unpack',['unpack',['../classEMessage.html#a057f478aa4dbb04fac936e42854784e4',1,'EMessage::unpack(Bool &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a843eeab2407dcbb13679ed4276bd20e1',1,'EMessage::unpack(Char &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#aaa7ce5adebd4893f192c93c2737af2a9',1,'EMessage::unpack(UChar &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a7a0b06001e90573bee4d7e4e983de7cb',1,'EMessage::unpack(Short &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a5832d9ef78e8b0c816e271a9113948bd',1,'EMessage::unpack(UShort &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#ac8c3a4717e5c22ab503067dc0316d7e6',1,'EMessage::unpack(Long &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a0fd188619474b7d3ca0dba3883338bf5',1,'EMessage::unpack(ULong &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a703e920302871893b1e2d8f1f173d602',1,'EMessage::unpack(LongLong &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a7decabea2d34a5d47d308b740dd381a3',1,'EMessage::unpack(ULongLong &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a633777ee29138df93a0d3e47be27a456',1,'EMessage::unpack(Float &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#af59064a0cf713ffcb9bfec88a7c1072c',1,'EMessage::unpack(Double &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#abf9744c61110c3d0921eb788c92085fc',1,'EMessage::unpack(pStr val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#aaeeee23098cb9622275c9026ac51a1ff',1,'EMessage::unpack(ETimer &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#acdc9dbc17799beb0df6c61221e32ad19',1,'EMessage::unpack(ETime &amp;val, pVoid pBuffer, ULong &amp;nOffset)'],['../classEMessage.html#a3d236fd80e05db83989b3efb9cf57357',1,'EMessage::unpack(EString &amp;val, pVoid pBuffer, ULong &amp;nOffset)']]],
+  ['unpackvector',['unpackVector',['../classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd',1,'EMessageVector']]],
+  ['unregisterhook',['unregisterHook',['../classFDHook.html#a063fd29771598d5db0dc29a4104409cf',1,'FDHook']]],
+  ['unregistersocket',['unregisterSocket',['../classESocketThread.html#a51ef0f2698e5e8602fbd57a1975e7e28',1,'ESocketThread']]],
+  ['unserialize',['unserialize',['../classEMessage.html#af05515219dc4240ead32bff1917aee10',1,'EMessage::unserialize()'],['../classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b',1,'EQueueMessage::unserialize()']]],
+  ['updatecache',['updateCache',['../classDNS_1_1Cache.html#a4f98f64f2963fd20a387cf4706eec60d',1,'DNS::Cache']]],
+  ['upf_5fx_5fsxa',['upf_x_sxa',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90ac0af35cebaee6964f6635f8b50f6bdfb',1,'EPCDNS']]],
+  ['upf_5fx_5fsxb',['upf_x_sxb',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90a17786ffff8236112de48747dba289ba7',1,'EPCDNS']]],
+  ['upf_5fx_5fsxc',['upf_x_sxc',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90adc2c2c810d0afbb520313f2d4f4ca291',1,'EPCDNS']]],
+  ['upfappprotocolenum',['UPFAppProtocolEnum',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90',1,'EPCDNS']]],
+  ['uppernibble',['UPPERNIBBLE',['../efdjson_8cpp.html#a56e617380b44cf91e7743654183b7a45',1,'efdjson.cpp']]],
+  ['usagetypelist',['UsageTypeList',['../classEPCDNS_1_1UsageTypeList.html',1,'EPCDNS::UsageTypeList'],['../classEPCDNS_1_1UsageTypeList.html#a1917e17c146103a398276898b5247890',1,'EPCDNS::UsageTypeList::UsageTypeList()']]],
+  ['used',['used',['../classECircularBuffer.html#a9d6458e75b378b0182ce46f0fe29a27e',1,'ECircularBuffer']]],
+  ['ushort',['UShort',['../etypes_8h.html#ae5207d95e62674a9314b505238ef1847',1,'etypes.h']]],
+  ['utility',['Utility',['../classEPCDNS_1_1Utility.html',1,'EPCDNS']]]
 ];

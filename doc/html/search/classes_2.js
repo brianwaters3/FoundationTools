@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['longinteger_5ft',['longinteger_t',['../unionlonginteger__t.html',1,'']]]
+  ['buffer',['Buffer',['../classBuffer.html',1,'']]],
+  ['buffer_3c_20uint8_5ft_20_3e',['Buffer&lt; uint8_t &gt;',['../classBuffer.html',1,'']]]
 ];

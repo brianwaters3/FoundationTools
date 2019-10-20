@@ -462,12 +462,12 @@ EString Utility::epc( const unsigned char *plmnid )
    return epc( mnc, mcc );
 }
 
-EString Utility::apn_fqdn( const char *apnoi, const char *mnc, const char *mcc )
+EString Utility::apn_fqdn( const char *apn, const char *mnc, const char *mcc )
 {
    EString s;
 
    // '(.+)\.apn\.epc\.mnc(\d{3})\.mcc(\d{3})\.3gppnetworks\.org$'
-   s.append( apnoi )
+   s.append( apn )
     .append( ".apn.epc." )
     .APPEND_MNC( mnc )
     .APPEND_MCC( mcc )
@@ -476,18 +476,18 @@ EString Utility::apn_fqdn( const char *apnoi, const char *mnc, const char *mcc )
    return s;
 }
 
-EString Utility::apn_fqdn( const char *apnoi, const unsigned char *plmnid )
+EString Utility::apn_fqdn( const char *apn, const unsigned char *plmnid )
 {
    PARSE_PLMNID( plmnid );
-   return apn_fqdn( apnoi, mnc, mcc );
+   return apn_fqdn( apn, mnc, mcc );
 }
 
-EString Utility::apn( const char *apnoi, const char *mnc, const char *mcc )
+EString Utility::apn( const char *_apn, const char *mnc, const char *mcc )
 {
    EString s;
 
    // '(.+)\.apn\.mnc(\d{3})\.mcc(\d{3})\.gprs$'} 
-   s.append( apnoi )
+   s.append( _apn )
     .append( ".apn." )
     .APPEND_MNC( mnc )
     .APPEND_MCC( mcc )
@@ -496,10 +496,10 @@ EString Utility::apn( const char *apnoi, const char *mnc, const char *mcc )
    return s;
 }
 
-EString Utility::apn( const char *apnoi, const unsigned char *plmnid )
+EString Utility::apn( const char *_apn, const unsigned char *plmnid )
 {
    PARSE_PLMNID( plmnid );
-   return apn( apnoi, mnc, mcc );
+   return apn( _apn, mnc, mcc );
 }
 
 AppServiceEnum Utility::getAppService( const std::string &s )
@@ -803,21 +803,21 @@ const char *Utility::getDiameterProtocol( DiameterProtocolEnum protocol )
 ////////////////////////////////////////////////////////////////////////////////
 
 CanonicalNodeName::CanonicalNodeName()
-   : m_topon( false )
+   : m_topon( False )
 {
 }
 
 CanonicalNodeName::CanonicalNodeName( const std::string &n )
-   : m_topon( false )
+   : m_topon( False )
 {
    setName( n );
 }
 
-void CanonicalNodeName::setName( const std::string &n )
+Void CanonicalNodeName::setName( const std::string &n )
 {
    // reset the object
    clear();
-   m_topon = false;
+   m_topon = False;
    m_name = "";
    
    // parse the name into labels
@@ -888,7 +888,7 @@ NodeSelectorResultList &NodeSelector::process()
    std::list<AppProtocolEnum> supportedProtocols;
 
    // perform dns query
-   bool cacheHit = false;
+   Bool cacheHit = False;
    m_query = DNS::Cache::getInstance(m_nsid).query( ns_t_naptr, m_domain, cacheHit );
 
    // evaluate each answer to see if it matches the service/protocol requirements
@@ -953,7 +953,7 @@ NodeSelectorResultList &NodeSelector::process()
 
                // the protocol has to support all of the requested network capabilities
                {
-                  bool addit = true;
+                  Bool addit = True;
                   for ( NetworkCapabilityList::iterator ncit = m_desiredNetworkCapabilities.begin();
                         ncit != m_desiredNetworkCapabilities.end();
                         ++ncit )
@@ -965,7 +965,7 @@ NodeSelectorResultList &NodeSelector::process()
                      else
                      {
                         // the protocol is not a match since this network capability is not supported
-                        addit = false;
+                        addit = False;
                         break;
                      }
                   }
@@ -1047,13 +1047,13 @@ NodeSelector::~NodeSelector()
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-bool NodeSelectorResultList::sort_compare( NodeSelectorResult*& first, NodeSelectorResult*& second )
+Bool NodeSelectorResultList::sort_compare( NodeSelectorResult*& first, NodeSelectorResult*& second )
 {
    if ( first->getOrder() < second->getOrder() )
-      return true;
+      return True;
 
    if ( first->getOrder() > second->getOrder() )
-      return false;
+      return False;
 
    return first->getPreference() < second->getPreference();
 }
@@ -1061,7 +1061,7 @@ bool NodeSelectorResultList::sort_compare( NodeSelectorResult*& first, NodeSelec
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-void AppService::parse( const std::string &rs )
+Void AppService::parse( const std::string &rs )
 {
    m_rawService = rs;
    
@@ -1084,7 +1084,7 @@ void AppService::parse( const std::string &rs )
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-void AppProtocol::parse( const std::string &rp )
+Void AppProtocol::parse( const std::string &rp )
 {
    m_rawProtocol = rp;
 
@@ -1165,19 +1165,19 @@ ColocatedCandidateList::~ColocatedCandidateList()
    }
 }
 
-bool ColocatedCandidateList::sort_compare( ColocatedCandidate*& first, ColocatedCandidate*& second )
+Bool ColocatedCandidateList::sort_compare( ColocatedCandidate*& first, ColocatedCandidate*& second )
 {
    // sort by pairtype ascending
    if ( (int)first->getPairType() < (int)second->getPairType() )
-      return true;
+      return True;
    if ( (int)first->getPairType() > (int)second->getPairType() )
-      return false;
+      return False;
 
    // sort by the candidate1 order
    if ( first->getCandidate1().getOrder() < second->getCandidate1().getOrder() )
-      return true;
+      return True;
    if ( first->getCandidate1().getOrder() > second->getCandidate1().getOrder() )
-      return false;
+      return False;
 
    // sort by the candidate1 preference
    return first->getCandidate1().getPreference() < second->getCandidate1().getPreference();
@@ -1210,7 +1210,7 @@ DiameterNaptrList &DiameterSelector::process()
    EString service( Utility::getDiameterService( m_application, m_protocol ) );
 
    // perform dns query
-   bool cacheHit = false;
+   Bool cacheHit = False;
    m_query = DNS::Cache::getInstance().query( ns_t_naptr, m_realm, cacheHit );
 
    // evaluate each answer to see if it matches the service/protocol requirements
@@ -1344,7 +1344,7 @@ DiameterNaptrList &DiameterSelector::process()
    return m_results;
 }
 
-void DiameterSrvVector::sort_vector()
+Void DiameterSrvVector::sort_vector()
 {
    // sort the SRV records according to RFC 2782
 
@@ -1425,9 +1425,9 @@ void DiameterSrvVector::sort_vector()
    }
 }
 
-bool DiameterSrvVector::sort_compare( DiameterSrv* first, DiameterSrv* second )
+Bool DiameterSrvVector::sort_compare( DiameterSrv* first, DiameterSrv* second )
 {
    return
-      first->getPriority() < second->getPriority() ? true :
-      first->getPriority() > second->getPriority() ? false : first->getWeight() < second->getWeight();
+      first->getPriority() < second->getPriority() ? True :
+      first->getPriority() > second->getPriority() ? False : first->getWeight() < second->getWeight();
 }

@@ -30,7 +30,7 @@ static Void copyall( msg_or_avp *from, msg_or_avp *to );
 
 static Void copy( struct avp *from, msg_or_avp *to )
 {
-   int ret;
+   Int ret;
    struct dict_object *model;
    struct dict_avp_data avp_data;
    struct avp *a;
@@ -95,7 +95,7 @@ static Void copy( struct avp *from, msg_or_avp *to )
 
 static Void copyall( msg_or_avp *from, msg_or_avp *to )
 {
-   int ret;
+   Int ret;
 
    // iterate through all "source" AVP's adding them to the newly create AVP
    struct avp *loopavp;
@@ -141,44 +141,48 @@ FDEngine::~FDEngine()
 {
 }
 
-bool FDEngine::init()
+Bool FDEngine::init()
 {
-   int ret;
+   Int ret;
 
    // initialize the freeDiameter core
    if ( ( ret = fd_core_initialize() ) != 0 )
    {
-      std::cout << "An error occurred during freeDiameter core library initialization." << std::endl;
-      return false;
+      throw FDException(
+         EUtility::string_format("%s:%d - An error occurred during freeDiameter core library initialization. ret=%d",
+         __FILE__, __LINE__, ret )
+      );
    }
 
    // Parse the configuration file
    if ( ( ret = fd_core_parseconf( m_cfgfile.c_str() ) ) != 0 )
    {
-      std::cout << "An error occurred parsing the freeDiameter configuration file." << std::endl;
-      return false;
+      throw FDException(
+         EUtility::string_format("%s:%d - An error occurred parsing the freeDiameter configuration file. ret=%d",
+         __FILE__, __LINE__, ret )
+      );
    }
 
    return true;
 }
 
-bool FDEngine::start()
+Bool FDEngine::start()
 {
-   int ret;
+   Int ret;
 
    // Start the servers
    if ( ( ret = fd_core_start() ) != 0 )
    {
-      std::cout << "An error occurred in fd_core_start()." << std::endl;
-      return false;
+      throw FDException(
+         EUtility::string_format("%s:%d - An error occurred in fd_core_start(). ret=%d",
+         __FILE__, __LINE__, ret )
+      );
    }
-
-   std::cout << "The freeDiameter engine has been started" << std::endl;
 
    return true;
 }
 
-Void FDEngine::uninit( bool wait )
+Void FDEngine::uninit( Bool wait )
 {
    EStatistics::uninit();
 
@@ -186,7 +190,6 @@ Void FDEngine::uninit( bool wait )
    if ( wait )
    {
       waitForShutdown();
-      std::cout << "The freeDiameter engine has been stopped" << std::endl;
    }
 }
 
@@ -195,9 +198,9 @@ Void FDEngine::waitForShutdown()
    fd_core_wait_shutdown_complete();
 }
 
-Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, int auth, int acct )
+Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, Int auth, Int acct )
 {
-   int ret;
+   Int ret;
 
    ret = fd_disp_app_support( app.getEntry(), NULL, auth, acct );
    if ( ret != 0 )
@@ -207,9 +210,9 @@ Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, int auth, in
       );
 }
 
-Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, int auth, int acct )
+Void FDEngine::advertiseSupport( FDDictionaryEntryApplication &app, FDDictionaryEntryVendor &vendor, Int auth, Int acct )
 {
-   int ret;
+   Int ret;
 
    // always advertise support in using top level Auth-Application-ID or Acct-Applicaiton-ID
    //advertiseSupport( app, auth, acct );
@@ -232,13 +235,13 @@ FDDictionaryEntry::FDDictionaryEntry()
    m_de = NULL;
 }
 
-FDDictionaryEntry::FDDictionaryEntry( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
+FDDictionaryEntry::FDDictionaryEntry( const Void *what, enum dict_object_type type, Int criteria, struct dictionary *dict )
 {
    m_destroy = false;
    init( what, type, criteria, dict );
 }
 
-Void FDDictionaryEntry::init( const Void *what, enum dict_object_type type, int criteria, struct dictionary *dict )
+Void FDDictionaryEntry::init( const Void *what, enum dict_object_type type, Int criteria, struct dictionary *dict )
 {
    // assign the dictionary
    m_dict = dict ? dict : fd_g_config->cnf_dict;
@@ -255,7 +258,7 @@ Void FDDictionaryEntry::init( struct dict_object *de, struct dictionary *dict )
 
    if ( dict == NULL )
    {
-      int ret;
+      Int ret;
 
       ret = fd_dict_getdict( de, &dict );
       if ( ret != 0 )
@@ -285,9 +288,9 @@ FDDictionaryEntryApplication::FDDictionaryEntryApplication( const char *name, st
    init();
 }
 
-bool FDDictionaryEntryApplication::init()
+Bool FDDictionaryEntryApplication::init()
 {
-   int ret;
+   Int ret;
 
    ret = fd_dict_getval( getEntry(), &m_data );
    if ( ret != 0 )
@@ -338,9 +341,9 @@ FDDictionaryEntryVendor::FDDictionaryEntryVendor( const FDDictionaryEntryApplica
    init();
 }
 
-bool FDDictionaryEntryVendor::init()
+Bool FDDictionaryEntryVendor::init()
 {
-   int ret;
+   Int ret;
 
    ret = fd_dict_getval( getEntry(), &m_data );
    if ( ret != 0 )
@@ -355,7 +358,7 @@ bool FDDictionaryEntryVendor::init()
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-FDDictionaryEntryAVP::FDDictionaryEntryAVP( const char *name, bool allVendors , struct dictionary *dict )
+FDDictionaryEntryAVP::FDDictionaryEntryAVP( const char *name, Bool allVendors , struct dictionary *dict )
    : FDDictionaryEntry( name, DICT_AVP, allVendors ? AVP_BY_NAME_ALL_VENDORS : AVP_BY_NAME, dict ),
      m_name( name ),
      m_vendorid( 0 ),
@@ -421,7 +424,7 @@ FDDictionaryEntryAVP::FDDictionaryEntryAVP( struct dict_object *de )
 
 Void FDDictionaryEntryAVP::getTypeInfo()
 {
-   int ret = fd_dict_getval( getEntry(), &m_basedata );
+   Int ret = fd_dict_getval( getEntry(), &m_basedata );
    if ( ret == 0 )
    {
       struct dictionary *dict;
@@ -475,7 +478,7 @@ FDDictionaryEntryCommand::FDDictionaryEntryCommand( const char *name, struct dic
          __FILE__, __LINE__, name )
       );
 
-   int ret = fd_dict_getval( getEntry(), &m_data );
+   Int ret = fd_dict_getval( getEntry(), &m_data );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format( "%s:%d - INFO - Unable to retrieve command data for [%s]",
@@ -492,7 +495,7 @@ FDDictionaryEntryCommand::FDDictionaryEntryCommand( command_code_t cmdid, struct
          __FILE__, __LINE__, cmdid )
       );
 
-   int ret = fd_dict_getval( getEntry(), &m_data );
+   Int ret = fd_dict_getval( getEntry(), &m_data );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format( "%s:%d - INFO - Unable to find command dictionary entry for command code [%u]",
@@ -509,7 +512,7 @@ FDDictionaryEntryCommand::FDDictionaryEntryCommand( const FDDictionaryEntryComma
          __FILE__, __LINE__, req.m_data.cmd_name )
       );
 
-   int ret = fd_dict_getval( getEntry(), &m_data );
+   Int ret = fd_dict_getval( getEntry(), &m_data );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format( "%s:%d - INFO - Unable to find answer command dictionary entry for answer command [%s]",
@@ -525,7 +528,7 @@ FDDictionaryEntryCommand::FDDictionaryEntryCommand( const FDDictionaryEntryComma
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-FDAvp::FDAvp( FDDictionaryEntryAVP &de, bool dedel )
+FDAvp::FDAvp( FDDictionaryEntryAVP &de, Bool dedel )
    : m_de( &de ),
      m_buf( NULL ),
      m_assigned( false ),
@@ -536,7 +539,7 @@ FDAvp::FDAvp( FDDictionaryEntryAVP &de, bool dedel )
    init();
 }
 
-FDAvp::FDAvp( FDDictionaryEntryAVP &de, struct avp *a, bool dedel )
+FDAvp::FDAvp( FDDictionaryEntryAVP &de, struct avp *a, Bool dedel )
    : m_de( &de ),
      m_buf( NULL ),
      m_assigned( true ),
@@ -548,7 +551,7 @@ FDAvp::FDAvp( FDDictionaryEntryAVP &de, struct avp *a, bool dedel )
 
    if ( m_avp )
    {
-      int ret = fd_msg_avp_hdr( m_avp, &m_avphdr );
+      Int ret = fd_msg_avp_hdr( m_avp, &m_avphdr );
       if ( ret != 0 )
       throw FDException(
          EUtility::string_format("%s:%d - ERROR - error retrieving AVP header",
@@ -575,7 +578,7 @@ FDAvp &FDAvp::add( FDAvp &avp )
    return *this;
 }
 
-bool FDAvp::get( int64_t &v )
+Bool FDAvp::get( int64_t &v )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -604,7 +607,7 @@ bool FDAvp::get( int64_t &v )
    return true;
 }
 
-bool FDAvp::get( std::string &v )
+Bool FDAvp::get( std::string &v )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -644,7 +647,7 @@ bool FDAvp::get( std::string &v )
    return true;
 }
 
-bool FDAvp::get( char *data, size_t &len )
+Bool FDAvp::get( char *data, size_t &len )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -713,7 +716,7 @@ bool FDAvp::get( char *data, size_t &len )
    return true;
 }
 
-bool FDAvp::get( uint8_t *data, size_t &len )
+Bool FDAvp::get( uint8_t *data, size_t &len )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -730,7 +733,7 @@ bool FDAvp::get( uint8_t *data, size_t &len )
   return true;
 }
 
-bool FDAvp::get( sSS &ss )
+Bool FDAvp::get( sSS &ss )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -770,7 +773,7 @@ bool FDAvp::get( sSS &ss )
    return true;
 }
 
-bool FDAvp::get( ETime &v )
+Bool FDAvp::get( ETime &v )
 {
    if ( m_avphdr == NULL )
       return false;
@@ -911,9 +914,9 @@ FDAvp &FDAvp::set( const ETime &v )
    return *this;
 }
 
-FDAvp FDAvp::getNext( bool &found )
+FDAvp FDAvp::getNext( Bool &found )
 {
-   int ret;
+   Int ret;
    FDDictionaryEntryAVP *de = NULL;
    struct avp *a = NULL;
 
@@ -936,9 +939,9 @@ FDAvp FDAvp::getNext( bool &found )
    return FDAvp( *de, a );
 }
 
-FDAvp FDAvp::getChild( bool &found )
+FDAvp FDAvp::getChild( Bool &found )
 {
-   int ret;
+   Int ret;
    FDDictionaryEntryAVP *de = NULL;
    struct avp *a = NULL;
 
@@ -966,7 +969,7 @@ FDAvp FDAvp::getChild( bool &found )
 
 Void FDAvp::addTo( msg_or_avp *reference )
 {
-   int ret;
+   Int ret;
 
    if ( ( ret = fd_msg_avp_add( reference, MSG_BRW_LAST_CHILD, m_avp ) ) != 0)
       throw FDException(
@@ -979,7 +982,7 @@ Void FDAvp::addTo( msg_or_avp *reference )
 
 Void FDAvp::init()
 {
-   int ret;
+   Int ret;
 
    if ( !m_avp && ( ret = fd_msg_avp_new( m_de->getEntry(), 0, &m_avp ) ) != 0)
       throw FDException(
@@ -996,7 +999,7 @@ Void FDAvp::assignValue()
    {
       if ( m_de->getDataType() != DDTGrouped )
       {
-         int ret;
+         Int ret;
 
          if ( ( ret = fd_msg_avp_setvalue( m_avp, &m_value ) ) != 0)
             throw FDException(
@@ -1023,7 +1026,7 @@ FDAvp &FDAvp::setAvp( struct avp *a )
 
    m_avp = a;
 
-   int ret = fd_msg_avp_hdr( m_avp, &m_avphdr );
+   Int ret = fd_msg_avp_hdr( m_avp, &m_avphdr );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format("%s:%d - ERROR - error retrieving AVP header fd_msg_avp_hdr ret=%d",
@@ -1057,7 +1060,7 @@ FDAvp &FDAvp::add( FDExtractorList &el )
 
 FDAvp &FDAvp::add( FDExtractorAvp &ea )
 {
-   int ret;
+   Int ret;
 
    if ( ea.exists() )
    {
@@ -1086,7 +1089,7 @@ FDAvp &FDAvp::addJson( const char *json )
    return *this;
 }
 
-bool FDAvp::getJson( std::string &json )
+Bool FDAvp::getJson( std::string &json )
 {
    fdJsonGetJSON( getAvp(), json, NULL );
    return true;
@@ -1097,7 +1100,7 @@ Void FDAvp::dump()
    struct dictionary *dict;
    char * buf = NULL;
    size_t len = 0;
-   int ret;
+   Int ret;
 
    ret = fd_dict_getdict( m_de->getEntry(), &dict );
    if ( ret != 0 )
@@ -1113,13 +1116,13 @@ Void FDAvp::dump()
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-FDMessage::FDMessage( bool req2ans, FDDictionaryEntryCommand *de, struct msg *pmsg, bool dedel, bool msgdel )
+FDMessage::FDMessage( Bool req2ans, FDDictionaryEntryCommand *de, struct msg *pmsg, Bool dedel, Bool msgdel )
    : m_de( de ),
      m_msg( pmsg ),
      m_dedel( dedel ),
      m_msgdel( msgdel )
 {
-   int ret;
+   Int ret;
 
    if ( m_msg )
    {
@@ -1161,13 +1164,13 @@ FDMessage::FDMessage( bool req2ans, FDDictionaryEntryCommand *de, struct msg *pm
    }
 }
 
-FDMessage::FDMessage( FDDictionaryEntryCommand *de, struct msg *pmsg, bool dedel )
+FDMessage::FDMessage( FDDictionaryEntryCommand *de, struct msg *pmsg, Bool dedel )
    : m_de( de ),
      m_msg( pmsg ),
      m_dedel( dedel ),
      m_msgdel( true )
 {
-   int ret;
+   Int ret;
 
    if ( !m_msg )
    {
@@ -1180,13 +1183,13 @@ FDMessage::FDMessage( FDDictionaryEntryCommand *de, struct msg *pmsg, bool dedel
    }
 }
 
-FDMessage::FDMessage( FDDictionaryEntryApplication *ade, FDDictionaryEntryCommand *cde, struct msg *pmsg, bool dedel )
+FDMessage::FDMessage( FDDictionaryEntryApplication *ade, FDDictionaryEntryCommand *cde, struct msg *pmsg, Bool dedel )
    : m_de( cde ),
      m_msg( pmsg ),
      m_dedel( dedel ),
      m_msgdel( true )
 {
-   int ret;
+   Int ret;
 
    if ( !m_msg )
    {
@@ -1209,7 +1212,7 @@ FDMessage::~FDMessage()
 
 FDAvp FDMessage::findAVP( FDDictionaryEntryAVP &de )
 {
-   int ret;
+   Int ret;
    struct avp *a;
 
    ret =  fd_msg_search_avp ( m_msg, de.getEntry(), &a );
@@ -1222,9 +1225,9 @@ FDAvp FDMessage::findAVP( FDDictionaryEntryAVP &de )
    return FDAvp( de, a );
 }
 
-FDAvp FDMessage::getFirstAVP( bool &found )
+FDAvp FDMessage::getFirstAVP( Bool &found )
 {
-   int ret;
+   Int ret;
    FDDictionaryEntryAVP *de = NULL;
    struct avp *child = NULL;
 
@@ -1252,7 +1255,7 @@ Void FDMessage::dump()
    struct dictionary *dict;
    char * buf = NULL;
    size_t len = 0;
-   int ret;
+   Int ret;
 
    ret = fd_dict_getdict( m_de->getEntry(), &dict );
    if ( ret != 0 )
@@ -1267,7 +1270,7 @@ Void FDMessage::dump()
 
 FDMessage &FDMessage::sendRequest( Void (*anscb)(Void*,struct msg**), FDMessageRequest &req )
 {
-   int ret;
+   Int ret;
 
    // send the message
    ret = fd_msg_send( &m_msg, anscb, &req );
@@ -1282,7 +1285,7 @@ FDMessage &FDMessage::sendRequest( Void (*anscb)(Void*,struct msg**), FDMessageR
 
 FDMessage &FDMessage::sendAnswer()
 {
-   int ret;
+   Int ret;
 
    // send the message
    ret = fd_msg_send( &m_msg, NULL, NULL );
@@ -1297,7 +1300,7 @@ FDMessage &FDMessage::sendAnswer()
 
 Void FDMessage::addOrigin()
 {
-   int ret = fd_msg_add_origin( m_msg, 0 );
+   Int ret = fd_msg_add_origin( m_msg, 0 );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format("%s:%d - Exception - error adding Origin-Host and Origin-Realm ret=%d",
@@ -1329,7 +1332,7 @@ FDMessage &FDMessage::add( FDExtractorList &el )
 
 FDMessage &FDMessage::add( FDExtractorAvp &ea )
 {
-   int ret;
+   Int ret;
 
    if ( ea.exists() )
    {
@@ -1358,7 +1361,7 @@ FDMessage &FDMessage::addJson( const char *json )
    return *this;
 }
 
-bool FDMessage::getJson( std::string &json )
+Bool FDMessage::getJson( std::string &json )
 {
    fdJsonGetJSON( getMsg(), json, NULL );
    return true;
@@ -1519,7 +1522,7 @@ FDApplication &FDApplication::registerHandler( FDCommandRequest &cmd )
       .value   = NULL
    };
 
-   int ret = fd_disp_register( commandcb, DISP_HOW_CC, &when, &cmd, NULL );
+   Int ret = fd_disp_register( commandcb, DISP_HOW_CC, &when, &cmd, NULL );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format("%s:%d - ERROR - fd_disp_register failed ret=%d",
@@ -1531,19 +1534,19 @@ FDApplication &FDApplication::registerHandler( FDCommandRequest &cmd )
    return *this;
 }
 
-int FDApplication::commandcb( struct msg **m, struct avp *avp, struct session *session, Void *data, enum disp_action *action )
+Int FDApplication::commandcb( struct msg **m, struct avp *avp, struct session *session, Void *data, enum disp_action *action )
 {
    FDCommandRequest *cmd = (FDCommandRequest*)data;
    struct msg_hdr *hdr = NULL;
 
-   int ret = fd_msg_hdr( *m, &hdr );
+   Int ret = fd_msg_hdr( *m, &hdr );
    if ( ret != 0 )
    {
       // unable to retrieve message header
       return EINVAL;
    }
 
-   bool isRequest = (hdr->msg_flags & CMD_FLAG_REQUEST) == CMD_FLAG_REQUEST;
+   Bool isRequest = (hdr->msg_flags & CMD_FLAG_REQUEST) == CMD_FLAG_REQUEST;
 
    if ( FDISANSWER(hdr) )
    {
@@ -1576,7 +1579,7 @@ FDSession::FDSession()
    : m_session( NULL )
 {
 #if 0
-   int ret;
+   Int ret;
 
    ret = fd_sess_new( &m_session, fd_g_config->cnf_diamid, 0, NULL, 0 );
    if ( ret != 0 )
@@ -1599,7 +1602,7 @@ FDSession::FDSession()
 
 FDSession::~FDSession()
 {
-   int ret;
+   Int ret;
    if ( m_session )
    {
       ret = fd_sess_destroy( &m_session );
@@ -1617,7 +1620,7 @@ Void FDSession::addSessionId( FDMessage &msg, FDDictionaryEntryAVP &deSessionId 
 
    msg.add( deSessionId, m_sid );
 
-   int ret = fd_msg_sess_set( msg.getMsg(), m_session );
+   Int ret = fd_msg_sess_set( msg.getMsg(), m_session );
    if ( ret != 0 )
       throw FDException(
          EUtility::string_format("%s:%d - EXCEPTION - fd_msg_sess_set failed ret=%d",
@@ -1637,7 +1640,7 @@ Void FDSession::init()
    if ( m_session )
       return;
 
-   int ret;
+   Int ret;
 
    ret = fd_sess_new( &m_session, fd_g_config->cnf_diamid, 0, NULL, 0 );
    if ( ret != 0 )
@@ -1684,7 +1687,7 @@ FDPeer::FDPeer( const std::string &diamid, uint16_t port )
 FDPeerState FDPeer::getState()
 {
    FDPeerState ps = PSInvalid;
-   int ret;
+   Int ret;
    
    if ( !m_peer )
    {
@@ -1739,13 +1742,13 @@ Void FDPeer::add()
    pi.config.pic_flags.exp = PI_EXP_NONE;
    pi.config.pic_flags.persist = PI_PRST_ALWAYS;
 
-   int ret;
+   Int ret;
    struct addrinfo *ai = NULL;
 
    if ( !m_destip.empty() )
    {
       struct addrinfo hints;
-      int disc = 0;
+      Int disc = 0;
 
       memset( &hints, 0, sizeof( hints ) );
       hints.ai_flags = AI_ADDRCONFIG | AI_NUMERICHOST;
@@ -1828,7 +1831,7 @@ FDPeerList::~FDPeerList()
    }
 }
 
-bool FDPeerList::isPeerOpen()
+Bool FDPeerList::isPeerOpen()
 {
    for ( FDPeerList::const_iterator it = begin();
          it != end();
@@ -1891,7 +1894,7 @@ Void FDExtractor::add( FDExtractorBase &base )
    m_entries[k] = &base;
 }
 
-bool FDExtractor::exists( bool skipResolve )
+Bool FDExtractor::exists( Bool skipResolve )
 {
    if ( !getResolved() && !skipResolve )
       resolve();
@@ -1939,7 +1942,7 @@ Void FDExtractor::resolve()
       }
    }
 
-   bool needToResolve = !getResolved();
+   Bool needToResolve = !getResolved();
 
    setResolved();
 
@@ -1950,7 +1953,7 @@ Void FDExtractor::resolve()
       msg_or_avp *loopavp;
 
       // get the first child AVP
-      int ret = fd_msg_browse_internal( m_reference, MSG_BRW_FIRST_CHILD, (msg_or_avp**)&loopavp, NULL);
+      Int ret = fd_msg_browse_internal( m_reference, MSG_BRW_FIRST_CHILD, (msg_or_avp**)&loopavp, NULL);
       if ( ret != 0 )
          throw FDException(
             EUtility::string_format("%s:%d - ERROR - FDExtractor browse returned %d direction MSG_BRW_FIRST_CHILD",
@@ -2044,7 +2047,7 @@ Void FDExtractor::dump()
    struct dictionary *dict;
    char * buf = NULL;
    size_t len = 0;
-   int ret;
+   Int ret;
 
    ret = fd_dict_getdict( getDictionaryEntry()->getEntry(), &dict );
    if ( ret != 0 )
@@ -2057,7 +2060,7 @@ Void FDExtractor::dump()
    free(buf);
 }
 
-bool FDExtractor::getJson( std::string &json )
+Bool FDExtractor::getJson( std::string &json )
 {
    if ( exists() )
    {
@@ -2092,7 +2095,7 @@ Void FDExtractorList::addExtractor( FDExtractor *e )
    m_list.push_back( e );
 }
 
-bool FDExtractorList::exists()
+Bool FDExtractorList::exists()
 {
    return !getList().empty();
 }
@@ -2107,7 +2110,7 @@ std::list<FDExtractor*> &FDExtractorList::getList()
 
 ////////////////////////////////////////////////////////////////////////////////
 
-FDExtractorAvp::FDExtractorAvp( FDExtractor &extractor, FDDictionaryEntryAVP &de, bool dedel )
+FDExtractorAvp::FDExtractorAvp( FDExtractor &extractor, FDDictionaryEntryAVP &de, Bool dedel )
    : FDExtractorBase( &de ),
      m_extractor( extractor ),
      m_avp( de, NULL, dedel )
@@ -2118,7 +2121,7 @@ FDExtractorAvp::~FDExtractorAvp()
 {
 }
 
-bool FDExtractorAvp::exists()
+Bool FDExtractorAvp::exists()
 {
    if ( !getResolved() )
       m_extractor.resolve();
@@ -2134,7 +2137,7 @@ Void FDExtractorAvp::dump()
    m_avp.dump();
 }
 
-bool FDExtractorAvp::getJson( std::string &json )
+Bool FDExtractorAvp::getJson( std::string &json )
 {
    if ( exists() )
       return m_avp.getJson( json );
@@ -2161,7 +2164,7 @@ FDExtractorAvpList::~FDExtractorAvpList()
    }
 }
 
-bool FDExtractorAvpList::exists()
+Bool FDExtractorAvpList::exists()
 {
    return !getList().empty();
 }

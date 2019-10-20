@@ -69,70 +69,1077 @@ $(function() {
 <div class="title">EPath Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A path manipulation helper class.  
+ <a href="classEPath.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="epath_8h_source.html">epath.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ac28bceae6f9e7e6e90f9e88274eb67b6"><td class="memItemLeft" align="right" valign="top"><a id="ac28bceae6f9e7e6e90f9e88274eb67b6"></a>
-static cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getDirectorySeparatorString</b> ()</td></tr>
-<tr class="separator:ac28bceae6f9e7e6e90f9e88274eb67b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae457a554ff7eedb1aea8898244ee4b77"><td class="memItemLeft" align="right" valign="top"><a id="ae457a554ff7eedb1aea8898244ee4b77"></a>
-static cChar&#160;</td><td class="memItemRight" valign="bottom"><b>getDirectorySeparatorChar</b> ()</td></tr>
-<tr class="separator:ae457a554ff7eedb1aea8898244ee4b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d477ad898ba54688ea68202323c325"><td class="memItemLeft" align="right" valign="top"><a id="a31d477ad898ba54688ea68202323c325"></a>
-static cChar&#160;</td><td class="memItemRight" valign="bottom"><b>getAltDirectorySeparatorChar</b> ()</td></tr>
-<tr class="separator:a31d477ad898ba54688ea68202323c325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b40a9177c2960f95060ef6a8995fdc2"><td class="memItemLeft" align="right" valign="top"><a id="a2b40a9177c2960f95060ef6a8995fdc2"></a>
-static cChar&#160;</td><td class="memItemRight" valign="bottom"><b>getVolumeSeparatorChar</b> ()</td></tr>
-<tr class="separator:a2b40a9177c2960f95060ef6a8995fdc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a414df182dcc23d29b368273589696e01"><td class="memItemLeft" align="right" valign="top"><a id="a414df182dcc23d29b368273589696e01"></a>
-static cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getPathSeparatorChars</b> ()</td></tr>
-<tr class="separator:a414df182dcc23d29b368273589696e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbc1a89b616936b491de46391fea46ff"><td class="memItemLeft" align="right" valign="top"><a id="adbc1a89b616936b491de46391fea46ff"></a>
-static cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getInvalidPathChars</b> ()</td></tr>
-<tr class="separator:adbc1a89b616936b491de46391fea46ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a588c42b18466cf0948f5f7df7329e240"><td class="memItemLeft" align="right" valign="top"><a id="a588c42b18466cf0948f5f7df7329e240"></a>
-static cpStr&#160;</td><td class="memItemRight" valign="bottom"><b>getInvalidFileNameChars</b> ()</td></tr>
-<tr class="separator:a588c42b18466cf0948f5f7df7329e240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20f45da881f357e1d0dfbc4485fc5ba8"><td class="memItemLeft" align="right" valign="top"><a id="a20f45da881f357e1d0dfbc4485fc5ba8"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>changeExtension</b> (cpStr path, cpStr extension, <a class="el" href="classEString.html">EString</a> &amp;newPath)</td></tr>
+<tr class="memitem:a878c9429e264420bcba3c95ab4388635"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a878c9429e264420bcba3c95ab4388635">getDirectorySeparatorString</a> ()</td></tr>
+<tr class="memdesc:a878c9429e264420bcba3c95ab4388635"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the directory separator string.  <a href="classEPath.html#a878c9429e264420bcba3c95ab4388635">More...</a><br /></td></tr>
+<tr class="separator:a878c9429e264420bcba3c95ab4388635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8159b27da82e05521a61fe6cc8891e43"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">getDirectorySeparatorChar</a> ()</td></tr>
+<tr class="memdesc:a8159b27da82e05521a61fe6cc8891e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the directory separator character.  <a href="classEPath.html#a8159b27da82e05521a61fe6cc8891e43">More...</a><br /></td></tr>
+<tr class="separator:a8159b27da82e05521a61fe6cc8891e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72980a2f24945d85b818738b20660cef"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a72980a2f24945d85b818738b20660cef">getAltDirectorySeparatorChar</a> ()</td></tr>
+<tr class="memdesc:a72980a2f24945d85b818738b20660cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the alternate directory separator character.  <a href="classEPath.html#a72980a2f24945d85b818738b20660cef">More...</a><br /></td></tr>
+<tr class="separator:a72980a2f24945d85b818738b20660cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9737157317fce79408c8f275897435ba"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a9737157317fce79408c8f275897435ba">getVolumeSeparatorChar</a> ()</td></tr>
+<tr class="memdesc:a9737157317fce79408c8f275897435ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the volume separator character.  <a href="classEPath.html#a9737157317fce79408c8f275897435ba">More...</a><br /></td></tr>
+<tr class="separator:a9737157317fce79408c8f275897435ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fe8433c64f336e0ef635826065309c8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a9fe8433c64f336e0ef635826065309c8">getPathSeparatorChars</a> ()</td></tr>
+<tr class="memdesc:a9fe8433c64f336e0ef635826065309c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the path separator characters.  <a href="classEPath.html#a9fe8433c64f336e0ef635826065309c8">More...</a><br /></td></tr>
+<tr class="separator:a9fe8433c64f336e0ef635826065309c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d750bc9e5fb090486c282504a9d748f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a7d750bc9e5fb090486c282504a9d748f">getInvalidPathChars</a> ()</td></tr>
+<tr class="memdesc:a7d750bc9e5fb090486c282504a9d748f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the invalid path characters.  <a href="classEPath.html#a7d750bc9e5fb090486c282504a9d748f">More...</a><br /></td></tr>
+<tr class="separator:a7d750bc9e5fb090486c282504a9d748f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace967729142db8778c6dbb6b3a50110c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#ace967729142db8778c6dbb6b3a50110c">getInvalidFileNameChars</a> ()</td></tr>
+<tr class="memdesc:ace967729142db8778c6dbb6b3a50110c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the invalid file name characters.  <a href="classEPath.html#ace967729142db8778c6dbb6b3a50110c">More...</a><br /></td></tr>
+<tr class="separator:ace967729142db8778c6dbb6b3a50110c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20f45da881f357e1d0dfbc4485fc5ba8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a20f45da881f357e1d0dfbc4485fc5ba8">changeExtension</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> extension, <a class="el" href="classEString.html">EString</a> &amp;newPath)</td></tr>
+<tr class="memdesc:a20f45da881f357e1d0dfbc4485fc5ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the extension of an exist path name.  <a href="classEPath.html#a20f45da881f357e1d0dfbc4485fc5ba8">More...</a><br /></td></tr>
 <tr class="separator:a20f45da881f357e1d0dfbc4485fc5ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af12e40adf18104b0ec3927f83ec7c778"><td class="memItemLeft" align="right" valign="top"><a id="af12e40adf18104b0ec3927f83ec7c778"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2, cpStr path3, cpStr path4, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memitem:af12e40adf18104b0ec3927f83ec7c778"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path4, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memdesc:af12e40adf18104b0ec3927f83ec7c778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#af12e40adf18104b0ec3927f83ec7c778">More...</a><br /></td></tr>
 <tr class="separator:af12e40adf18104b0ec3927f83ec7c778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c08d3978a616a9c4c32a3fff492f53"><td class="memItemLeft" align="right" valign="top"><a id="aa8c08d3978a616a9c4c32a3fff492f53"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2, cpStr path3, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memitem:aa8c08d3978a616a9c4c32a3fff492f53"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#aa8c08d3978a616a9c4c32a3fff492f53">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memdesc:aa8c08d3978a616a9c4c32a3fff492f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#aa8c08d3978a616a9c4c32a3fff492f53">More...</a><br /></td></tr>
 <tr class="separator:aa8c08d3978a616a9c4c32a3fff492f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b050ecb9dec72508f3efbbffd7ecce6"><td class="memItemLeft" align="right" valign="top"><a id="a2b050ecb9dec72508f3efbbffd7ecce6"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memitem:a2b050ecb9dec72508f3efbbffd7ecce6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a2b050ecb9dec72508f3efbbffd7ecce6">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="el" href="classEString.html">EString</a> &amp;path)</td></tr>
+<tr class="memdesc:a2b050ecb9dec72508f3efbbffd7ecce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#a2b050ecb9dec72508f3efbbffd7ecce6">More...</a><br /></td></tr>
 <tr class="separator:a2b050ecb9dec72508f3efbbffd7ecce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1826f33e95ee199f35682df79014a33"><td class="memItemLeft" align="right" valign="top"><a id="ac1826f33e95ee199f35682df79014a33"></a>
-static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2, cpStr path3, cpStr path4)</td></tr>
+<tr class="memitem:ac1826f33e95ee199f35682df79014a33"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#ac1826f33e95ee199f35682df79014a33">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path4)</td></tr>
+<tr class="memdesc:ac1826f33e95ee199f35682df79014a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#ac1826f33e95ee199f35682df79014a33">More...</a><br /></td></tr>
 <tr class="separator:ac1826f33e95ee199f35682df79014a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f192cb0974b5d7f52a6a6f97678f0a2"><td class="memItemLeft" align="right" valign="top"><a id="a0f192cb0974b5d7f52a6a6f97678f0a2"></a>
-static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2, cpStr path3)</td></tr>
+<tr class="memitem:a0f192cb0974b5d7f52a6a6f97678f0a2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a0f192cb0974b5d7f52a6a6f97678f0a2">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path3)</td></tr>
+<tr class="memdesc:a0f192cb0974b5d7f52a6a6f97678f0a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#a0f192cb0974b5d7f52a6a6f97678f0a2">More...</a><br /></td></tr>
 <tr class="separator:a0f192cb0974b5d7f52a6a6f97678f0a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d2dfd9d4c6fdb4da1903d77256eff33"><td class="memItemLeft" align="right" valign="top"><a id="a7d2dfd9d4c6fdb4da1903d77256eff33"></a>
-static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>combine</b> (cpStr path1, cpStr path2)</td></tr>
+<tr class="memitem:a7d2dfd9d4c6fdb4da1903d77256eff33"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a7d2dfd9d4c6fdb4da1903d77256eff33">combine</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path1, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path2)</td></tr>
+<tr class="memdesc:a7d2dfd9d4c6fdb4da1903d77256eff33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combines individual path names into a single path name.  <a href="classEPath.html#a7d2dfd9d4c6fdb4da1903d77256eff33">More...</a><br /></td></tr>
 <tr class="separator:a7d2dfd9d4c6fdb4da1903d77256eff33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a262a73e32e241d0a3b225fdeace113e5"><td class="memItemLeft" align="right" valign="top"><a id="a262a73e32e241d0a3b225fdeace113e5"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>getDirectoryName</b> (cpStr path, <a class="el" href="classEString.html">EString</a> &amp;dirName)</td></tr>
+<tr class="memitem:a262a73e32e241d0a3b225fdeace113e5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a262a73e32e241d0a3b225fdeace113e5">getDirectoryName</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="classEString.html">EString</a> &amp;dirName)</td></tr>
+<tr class="memdesc:a262a73e32e241d0a3b225fdeace113e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the directory name from a file name.  <a href="classEPath.html#a262a73e32e241d0a3b225fdeace113e5">More...</a><br /></td></tr>
 <tr class="separator:a262a73e32e241d0a3b225fdeace113e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae2019fe58c6441006b71aa6422991df"><td class="memItemLeft" align="right" valign="top"><a id="aae2019fe58c6441006b71aa6422991df"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>getExtension</b> (cpStr path, <a class="el" href="classEString.html">EString</a> &amp;ext)</td></tr>
+<tr class="memitem:aae2019fe58c6441006b71aa6422991df"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#aae2019fe58c6441006b71aa6422991df">getExtension</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="classEString.html">EString</a> &amp;ext)</td></tr>
+<tr class="memdesc:aae2019fe58c6441006b71aa6422991df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the extension of a file name.  <a href="classEPath.html#aae2019fe58c6441006b71aa6422991df">More...</a><br /></td></tr>
 <tr class="separator:aae2019fe58c6441006b71aa6422991df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac106ca7e8d5b77534e2ba6444c6a6175"><td class="memItemLeft" align="right" valign="top"><a id="ac106ca7e8d5b77534e2ba6444c6a6175"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>getFileName</b> (cpStr path, <a class="el" href="classEString.html">EString</a> &amp;fileName)</td></tr>
+<tr class="memitem:ac106ca7e8d5b77534e2ba6444c6a6175"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#ac106ca7e8d5b77534e2ba6444c6a6175">getFileName</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="classEString.html">EString</a> &amp;fileName)</td></tr>
+<tr class="memdesc:ac106ca7e8d5b77534e2ba6444c6a6175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves just the file name from a fully qualified file name.  <a href="classEPath.html#ac106ca7e8d5b77534e2ba6444c6a6175">More...</a><br /></td></tr>
 <tr class="separator:ac106ca7e8d5b77534e2ba6444c6a6175"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1beee3a4e6669309649a105e5196cbb"><td class="memItemLeft" align="right" valign="top"><a id="af1beee3a4e6669309649a105e5196cbb"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>getFileNameWithoutExtension</b> (cpStr path, <a class="el" href="classEString.html">EString</a> &amp;fileName)</td></tr>
+<tr class="memitem:af1beee3a4e6669309649a105e5196cbb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#af1beee3a4e6669309649a105e5196cbb">getFileNameWithoutExtension</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="classEString.html">EString</a> &amp;fileName)</td></tr>
+<tr class="memdesc:af1beee3a4e6669309649a105e5196cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the file name without any extension.  <a href="classEPath.html#af1beee3a4e6669309649a105e5196cbb">More...</a><br /></td></tr>
 <tr class="separator:af1beee3a4e6669309649a105e5196cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e19ad33e13306dac6cea2d8bdc36678"><td class="memItemLeft" align="right" valign="top"><a id="a0e19ad33e13306dac6cea2d8bdc36678"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><b>getPathRoot</b> (cpStr path, <a class="el" href="classEString.html">EString</a> &amp;root)</td></tr>
+<tr class="memitem:a0e19ad33e13306dac6cea2d8bdc36678"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a0e19ad33e13306dac6cea2d8bdc36678">getPathRoot</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="classEString.html">EString</a> &amp;root)</td></tr>
+<tr class="memdesc:a0e19ad33e13306dac6cea2d8bdc36678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the path root.  <a href="classEPath.html#a0e19ad33e13306dac6cea2d8bdc36678">More...</a><br /></td></tr>
 <tr class="separator:a0e19ad33e13306dac6cea2d8bdc36678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2264e996226d67d7bca6eda38bfb4101"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">getDirectoryName</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path)</td></tr>
+<tr class="memdesc:a2264e996226d67d7bca6eda38bfb4101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the directory name from a file name.  <a href="classEPath.html#a2264e996226d67d7bca6eda38bfb4101">More...</a><br /></td></tr>
+<tr class="separator:a2264e996226d67d7bca6eda38bfb4101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf82048205343b423efeaef0c0835b04"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#adf82048205343b423efeaef0c0835b04">getExtension</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path)</td></tr>
+<tr class="memdesc:adf82048205343b423efeaef0c0835b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the extension of a file name.  <a href="classEPath.html#adf82048205343b423efeaef0c0835b04">More...</a><br /></td></tr>
+<tr class="separator:adf82048205343b423efeaef0c0835b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5955121732161e25e4ec8b7ad65f32b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">getFileName</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path)</td></tr>
+<tr class="memdesc:ae5955121732161e25e4ec8b7ad65f32b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves just the file name from a fully qualified file name.  <a href="classEPath.html#ae5955121732161e25e4ec8b7ad65f32b">More...</a><br /></td></tr>
+<tr class="separator:ae5955121732161e25e4ec8b7ad65f32b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f34119da03b5a5df8161876b3ba956"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">getFileNameWithoutExtension</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path)</td></tr>
+<tr class="memdesc:ac3f34119da03b5a5df8161876b3ba956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the file name without any extension.  <a href="classEPath.html#ac3f34119da03b5a5df8161876b3ba956">More...</a><br /></td></tr>
+<tr class="separator:ac3f34119da03b5a5df8161876b3ba956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab3de7604c12999e5059fe248000fdd8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">getPathRoot</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path)</td></tr>
+<tr class="memdesc:aab3de7604c12999e5059fe248000fdd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the path root.  <a href="classEPath.html#aab3de7604c12999e5059fe248000fdd8">More...</a><br /></td></tr>
+<tr class="separator:aab3de7604c12999e5059fe248000fdd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A path manipulation helper class. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a20f45da881f357e1d0dfbc4485fc5ba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20f45da881f357e1d0dfbc4485fc5ba8">&#9670;&nbsp;</a></span>changeExtension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::changeExtension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>extension</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>newPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Changes the extension of an exist path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the original path name. </td></tr>
+    <tr><td class="paramname">extension</td><td>the new extension. </td></tr>
+    <tr><td class="paramname">newPath</td><td>the new path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d2dfd9d4c6fdb4da1903d77256eff33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d2dfd9d4c6fdb4da1903d77256eff33">&#9670;&nbsp;</a></span>combine() <span class="overload">[1/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the combined path name. </dd></dl>
+
+</div>
+</div>
+<a id="a0f192cb0974b5d7f52a6a6f97678f0a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f192cb0974b5d7f52a6a6f97678f0a2">&#9670;&nbsp;</a></span>combine() <span class="overload">[2/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+    <tr><td class="paramname">path3</td><td>the third path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the combined path name. </dd></dl>
+
+</div>
+</div>
+<a id="ac1826f33e95ee199f35682df79014a33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1826f33e95ee199f35682df79014a33">&#9670;&nbsp;</a></span>combine() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+    <tr><td class="paramname">path3</td><td>the third path name. </td></tr>
+    <tr><td class="paramname">path4</td><td>the fourth path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the combined path name. </dd></dl>
+
+</div>
+</div>
+<a id="af12e40adf18104b0ec3927f83ec7c778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af12e40adf18104b0ec3927f83ec7c778">&#9670;&nbsp;</a></span>combine() <span class="overload">[4/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path4</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+    <tr><td class="paramname">path3</td><td>the third path name. </td></tr>
+    <tr><td class="paramname">path4</td><td>the fourth path name. </td></tr>
+    <tr><td class="paramname">path</td><td>the combined path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa8c08d3978a616a9c4c32a3fff492f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c08d3978a616a9c4c32a3fff492f53">&#9670;&nbsp;</a></span>combine() <span class="overload">[5/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+    <tr><td class="paramname">path3</td><td>the third path name. </td></tr>
+    <tr><td class="paramname">path</td><td>the combined path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2b050ecb9dec72508f3efbbffd7ecce6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b050ecb9dec72508f3efbbffd7ecce6">&#9670;&nbsp;</a></span>combine() <span class="overload">[6/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::combine </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Combines individual path names into a single path name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path1</td><td>the first path name. </td></tr>
+    <tr><td class="paramname">path2</td><td>the second path name. </td></tr>
+    <tr><td class="paramname">path</td><td>the combined path name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a72980a2f24945d85b818738b20660cef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72980a2f24945d85b818738b20660cef">&#9670;&nbsp;</a></span>getAltDirectorySeparatorChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> EPath::getAltDirectorySeparatorChar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the alternate directory separator character. </p>
+<dl class="section return"><dt>Returns</dt><dd>the alternate directory separator character. </dd></dl>
+
+</div>
+</div>
+<a id="a2264e996226d67d7bca6eda38bfb4101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2264e996226d67d7bca6eda38bfb4101">&#9670;&nbsp;</a></span>getDirectoryName() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a> EPath::getDirectoryName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the directory name from a file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the original file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the extracted directory name. </dd></dl>
+
+</div>
+</div>
+<a id="a262a73e32e241d0a3b225fdeace113e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a262a73e32e241d0a3b225fdeace113e5">&#9670;&nbsp;</a></span>getDirectoryName() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::getDirectoryName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>dirName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the directory name from a file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the original file name. </td></tr>
+    <tr><td class="paramname">dirName</td><td>the extracted directory name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8159b27da82e05521a61fe6cc8891e43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8159b27da82e05521a61fe6cc8891e43">&#9670;&nbsp;</a></span>getDirectorySeparatorChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> EPath::getDirectorySeparatorChar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the directory separator character. </p>
+<dl class="section return"><dt>Returns</dt><dd>the directory separator character. </dd></dl>
+
+</div>
+</div>
+<a id="a878c9429e264420bcba3c95ab4388635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878c9429e264420bcba3c95ab4388635">&#9670;&nbsp;</a></span>getDirectorySeparatorString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> EPath::getDirectorySeparatorString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the directory separator string. </p>
+<dl class="section return"><dt>Returns</dt><dd>the directory separator string. </dd></dl>
+
+</div>
+</div>
+<a id="adf82048205343b423efeaef0c0835b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf82048205343b423efeaef0c0835b04">&#9670;&nbsp;</a></span>getExtension() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a> EPath::getExtension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the extension of a file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the original file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the extracted file extension. </dd></dl>
+
+</div>
+</div>
+<a id="aae2019fe58c6441006b71aa6422991df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae2019fe58c6441006b71aa6422991df">&#9670;&nbsp;</a></span>getExtension() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::getExtension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>ext</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the extension of a file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the original file name. </td></tr>
+    <tr><td class="paramname">ext</td><td>the extracted file extension. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae5955121732161e25e4ec8b7ad65f32b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5955121732161e25e4ec8b7ad65f32b">&#9670;&nbsp;</a></span>getFileName() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a> EPath::getFileName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves just the file name from a fully qualified file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the fully qualified file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the extracted file name. </dd></dl>
+
+</div>
+</div>
+<a id="ac106ca7e8d5b77534e2ba6444c6a6175"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac106ca7e8d5b77534e2ba6444c6a6175">&#9670;&nbsp;</a></span>getFileName() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::getFileName </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves just the file name from a fully qualified file name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the fully qualified file name. </td></tr>
+    <tr><td class="paramname">fileName</td><td>the extracted file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac3f34119da03b5a5df8161876b3ba956"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3f34119da03b5a5df8161876b3ba956">&#9670;&nbsp;</a></span>getFileNameWithoutExtension() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a> EPath::getFileNameWithoutExtension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the file name without any extension. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the fully qualified file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the file name without any extension. </dd></dl>
+
+</div>
+</div>
+<a id="af1beee3a4e6669309649a105e5196cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1beee3a4e6669309649a105e5196cbb">&#9670;&nbsp;</a></span>getFileNameWithoutExtension() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::getFileNameWithoutExtension </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>fileName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the file name without any extension. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the fully qualified file name. </td></tr>
+    <tr><td class="paramname">fileName</td><td>the file name without any extension. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ace967729142db8778c6dbb6b3a50110c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace967729142db8778c6dbb6b3a50110c">&#9670;&nbsp;</a></span>getInvalidFileNameChars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> EPath::getInvalidFileNameChars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the invalid file name characters. </p>
+<dl class="section return"><dt>Returns</dt><dd>the invalid file name characters. </dd></dl>
+
+</div>
+</div>
+<a id="a7d750bc9e5fb090486c282504a9d748f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d750bc9e5fb090486c282504a9d748f">&#9670;&nbsp;</a></span>getInvalidPathChars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> EPath::getInvalidPathChars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the invalid path characters. </p>
+<dl class="section return"><dt>Returns</dt><dd>the invalid path characters. </dd></dl>
+
+</div>
+</div>
+<a id="aab3de7604c12999e5059fe248000fdd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab3de7604c12999e5059fe248000fdd8">&#9670;&nbsp;</a></span>getPathRoot() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classEString.html">EString</a> EPath::getPathRoot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the path root. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the full path. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the path root. </dd></dl>
+
+</div>
+</div>
+<a id="a0e19ad33e13306dac6cea2d8bdc36678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e19ad33e13306dac6cea2d8bdc36678">&#9670;&nbsp;</a></span>getPathRoot() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EPath::getPathRoot </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>root</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the path root. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the full path. </td></tr>
+    <tr><td class="paramname">root</td><td>the path root. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9fe8433c64f336e0ef635826065309c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fe8433c64f336e0ef635826065309c8">&#9670;&nbsp;</a></span>getPathSeparatorChars()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> EPath::getPathSeparatorChars </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the path separator characters. </p>
+<dl class="section return"><dt>Returns</dt><dd>the path separator characters. </dd></dl>
+
+</div>
+</div>
+<a id="a9737157317fce79408c8f275897435ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9737157317fce79408c8f275897435ba">&#9670;&nbsp;</a></span>getVolumeSeparatorChar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a666f14ce951dcb23781214468280183f">cChar</a> EPath::getVolumeSeparatorChar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the volume separator character. </p>
+<dl class="section return"><dt>Returns</dt><dd>the volume separator character. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="epath_8h_source.html">epath.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/epath.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="epath_8h_source.html">epath.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="epath_8cpp.html">epath.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

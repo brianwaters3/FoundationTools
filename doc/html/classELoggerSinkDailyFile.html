@@ -69,82 +69,302 @@ $(function() {
 <div class="title">ELoggerSinkDailyFile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A daily file sink.  
+ <a href="classELoggerSinkDailyFile.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="elogger_8h_source.html">elogger.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ELoggerSinkDailyFile:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classELoggerSinkDailyFile.png" usemap="#ELoggerSinkDailyFile_map" alt=""/>
   <map id="ELoggerSinkDailyFile_map" name="ELoggerSinkDailyFile_map">
-<area href="classELoggerSink.html" alt="ELoggerSink" shape="rect" coords="0,0,134,24"/>
+<area href="classELoggerSink.html" title="Represents a logger output sink." alt="ELoggerSink" shape="rect" coords="0,0,134,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae8fd4c4e4e4be443775b21d5a4e49312"><td class="memItemLeft" align="right" valign="top"><a id="ae8fd4c4e4e4be443775b21d5a4e49312"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ELoggerSinkDailyFile</b> (ELogger::LogLevel loglevel, cpStr pattern, cpStr filename, Bool truncate, Int rolloverhour, Int rolloverminute)</td></tr>
+<tr class="memitem:ae8fd4c4e4e4be443775b21d5a4e49312"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#ae8fd4c4e4e4be443775b21d5a4e49312">ELoggerSinkDailyFile</a> (<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a> loglevel, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> pattern, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> filename, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> truncate, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> rolloverhour, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> rolloverminute)</td></tr>
+<tr class="memdesc:ae8fd4c4e4e4be443775b21d5a4e49312"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classELoggerSinkDailyFile.html#ae8fd4c4e4e4be443775b21d5a4e49312">More...</a><br /></td></tr>
 <tr class="separator:ae8fd4c4e4e4be443775b21d5a4e49312"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e4bcc63f9b3c5adc5d28ee63249aef"><td class="memItemLeft" align="right" valign="top"><a id="ab3e4bcc63f9b3c5adc5d28ee63249aef"></a>
-<a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getFilename</b> ()</td></tr>
+<tr class="memitem:a09e246c67fd95db70158c1da61ecce07"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#a09e246c67fd95db70158c1da61ecce07">~ELoggerSinkDailyFile</a> ()</td></tr>
+<tr class="memdesc:a09e246c67fd95db70158c1da61ecce07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classELoggerSinkDailyFile.html#a09e246c67fd95db70158c1da61ecce07">More...</a><br /></td></tr>
+<tr class="separator:a09e246c67fd95db70158c1da61ecce07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3e4bcc63f9b3c5adc5d28ee63249aef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#ab3e4bcc63f9b3c5adc5d28ee63249aef">getFilename</a> ()</td></tr>
+<tr class="memdesc:ab3e4bcc63f9b3c5adc5d28ee63249aef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the log file name.  <a href="classELoggerSinkDailyFile.html#ab3e4bcc63f9b3c5adc5d28ee63249aef">More...</a><br /></td></tr>
 <tr class="separator:ab3e4bcc63f9b3c5adc5d28ee63249aef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d04f1ec7e8a7defcaaba76a1c5f594b"><td class="memItemLeft" align="right" valign="top"><a id="a2d04f1ec7e8a7defcaaba76a1c5f594b"></a>
-Bool&#160;</td><td class="memItemRight" valign="bottom"><b>getTruncate</b> ()</td></tr>
+<tr class="memitem:a2d04f1ec7e8a7defcaaba76a1c5f594b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#a2d04f1ec7e8a7defcaaba76a1c5f594b">getTruncate</a> ()</td></tr>
+<tr class="memdesc:a2d04f1ec7e8a7defcaaba76a1c5f594b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the truncate flag.  <a href="classELoggerSinkDailyFile.html#a2d04f1ec7e8a7defcaaba76a1c5f594b">More...</a><br /></td></tr>
 <tr class="separator:a2d04f1ec7e8a7defcaaba76a1c5f594b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa51880624ac5c40b807776407a51b044"><td class="memItemLeft" align="right" valign="top"><a id="aa51880624ac5c40b807776407a51b044"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getRolloverHour</b> ()</td></tr>
+<tr class="memitem:aa51880624ac5c40b807776407a51b044"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#aa51880624ac5c40b807776407a51b044">getRolloverHour</a> ()</td></tr>
+<tr class="memdesc:aa51880624ac5c40b807776407a51b044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the hour during the day when the rollover will occur.  <a href="classELoggerSinkDailyFile.html#aa51880624ac5c40b807776407a51b044">More...</a><br /></td></tr>
 <tr class="separator:aa51880624ac5c40b807776407a51b044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f09aebf1339b3a7c4a2c4aed92381a4"><td class="memItemLeft" align="right" valign="top"><a id="a7f09aebf1339b3a7c4a2c4aed92381a4"></a>
-Int&#160;</td><td class="memItemRight" valign="bottom"><b>getRolloverMinute</b> ()</td></tr>
+<tr class="memitem:a7f09aebf1339b3a7c4a2c4aed92381a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSinkDailyFile.html#a7f09aebf1339b3a7c4a2c4aed92381a4">getRolloverMinute</a> ()</td></tr>
+<tr class="memdesc:a7f09aebf1339b3a7c4a2c4aed92381a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the minute within the hour when the rollover will occur.  <a href="classELoggerSinkDailyFile.html#a7f09aebf1339b3a7c4a2c4aed92381a4">More...</a><br /></td></tr>
 <tr class="separator:a7f09aebf1339b3a7c4a2c4aed92381a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classELoggerSink"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classELoggerSink')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classELoggerSink.html">ELoggerSink</a></td></tr>
-<tr class="memitem:a70c04e380049641036706d8e0c2d6deb inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a70c04e380049641036706d8e0c2d6deb"></a>
-SinkType&#160;</td><td class="memItemRight" valign="bottom"><b>getSinkType</b> ()</td></tr>
+<tr class="memitem:a8bbae63569f89a13f5f14add2f789654 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a8bbae63569f89a13f5f14add2f789654">~ELoggerSink</a> ()</td></tr>
+<tr class="memdesc:a8bbae63569f89a13f5f14add2f789654 inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classELoggerSink.html#a8bbae63569f89a13f5f14add2f789654">More...</a><br /></td></tr>
+<tr class="separator:a8bbae63569f89a13f5f14add2f789654 inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c04e380049641036706d8e0c2d6deb inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563f">SinkType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a70c04e380049641036706d8e0c2d6deb">getSinkType</a> ()</td></tr>
+<tr class="memdesc:a70c04e380049641036706d8e0c2d6deb inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the sink type.  <a href="classELoggerSink.html#a70c04e380049641036706d8e0c2d6deb">More...</a><br /></td></tr>
 <tr class="separator:a70c04e380049641036706d8e0c2d6deb inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371c03b19187f92ea4073eae48e23e77 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a371c03b19187f92ea4073eae48e23e77"></a>
-ELogger::LogLevel&#160;</td><td class="memItemRight" valign="bottom"><b>getLogLevel</b> ()</td></tr>
+<tr class="memitem:a371c03b19187f92ea4073eae48e23e77 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a371c03b19187f92ea4073eae48e23e77">getLogLevel</a> ()</td></tr>
+<tr class="memdesc:a371c03b19187f92ea4073eae48e23e77 inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the log level for this sink.  <a href="classELoggerSink.html#a371c03b19187f92ea4073eae48e23e77">More...</a><br /></td></tr>
 <tr class="separator:a371c03b19187f92ea4073eae48e23e77 inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55527e51410be93a3d9260222642b340 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a55527e51410be93a3d9260222642b340"></a>
-<a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getPattern</b> ()</td></tr>
+<tr class="memitem:a55527e51410be93a3d9260222642b340 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a55527e51410be93a3d9260222642b340">getPattern</a> ()</td></tr>
+<tr class="memdesc:a55527e51410be93a3d9260222642b340 inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the log message formatting pattern.  <a href="classELoggerSink.html#a55527e51410be93a3d9260222642b340">More...</a><br /></td></tr>
 <tr class="separator:a55527e51410be93a3d9260222642b340 inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a296a1ff8322bc1330a007ee77eaea6 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a9a296a1ff8322bc1330a007ee77eaea6"></a>
-ELogger::LogLevel&#160;</td><td class="memItemRight" valign="bottom"><b>setLogLevel</b> (ELogger::LogLevel loglevel)</td></tr>
+<tr class="memitem:a9a296a1ff8322bc1330a007ee77eaea6 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a9a296a1ff8322bc1330a007ee77eaea6">setLogLevel</a> (<a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a> loglevel)</td></tr>
+<tr class="memdesc:a9a296a1ff8322bc1330a007ee77eaea6 inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the sink log level.  <a href="classELoggerSink.html#a9a296a1ff8322bc1330a007ee77eaea6">More...</a><br /></td></tr>
 <tr class="separator:a9a296a1ff8322bc1330a007ee77eaea6 inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbdaef60ec277a6074b3e5bf93b04b54 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="abbdaef60ec277a6074b3e5bf93b04b54"></a>
-<a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>setPattern</b> (cpStr pattern)</td></tr>
+<tr class="memitem:abbdaef60ec277a6074b3e5bf93b04b54 inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#abbdaef60ec277a6074b3e5bf93b04b54">setPattern</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> pattern)</td></tr>
+<tr class="memdesc:abbdaef60ec277a6074b3e5bf93b04b54 inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the log message formatting pattern.  <a href="classELoggerSink.html#abbdaef60ec277a6074b3e5bf93b04b54">More...</a><br /></td></tr>
 <tr class="separator:abbdaef60ec277a6074b3e5bf93b04b54 inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58f913f6edc531cf6ceabcc068126b7b inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a58f913f6edc531cf6ceabcc068126b7b"></a>
-spdlog::sink_ptr&#160;</td><td class="memItemRight" valign="bottom"><b>getSinkPtr</b> ()</td></tr>
+<tr class="memitem:a58f913f6edc531cf6ceabcc068126b7b inherit pub_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top">spdlog::sink_ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a58f913f6edc531cf6ceabcc068126b7b">getSinkPtr</a> ()</td></tr>
+<tr class="memdesc:a58f913f6edc531cf6ceabcc068126b7b inherit pub_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the underlying spdlog sink pointer.  <a href="classELoggerSink.html#a58f913f6edc531cf6ceabcc068126b7b">More...</a><br /></td></tr>
 <tr class="separator:a58f913f6edc531cf6ceabcc068126b7b inherit pub_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_types_classELoggerSink"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classELoggerSink')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classELoggerSink.html">ELoggerSink</a></td></tr>
-<tr class="memitem:acbf2dda13ee6f4a4b0e7201d8eee563f inherit pub_types_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="acbf2dda13ee6f4a4b0e7201d8eee563f"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>SinkType</b> { <br />
-&#160;&#160;<b>eSyslog</b>, 
-<b>eStdout</b>, 
-<b>eStderr</b>, 
-<b>eBasicFile</b>, 
+<tr class="memitem:acbf2dda13ee6f4a4b0e7201d8eee563f inherit pub_types_classELoggerSink"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563f">SinkType</a> { <br />
+&#160;&#160;<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563fa752528bade6730aa2ee209409d2e588d">eSyslog</a>, 
+<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563fa7250b4aa26697028a7c165456a155872">eStdout</a>, 
+<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563fa2241f28a863d2f1f3b44a8a58d17099b">eStderr</a>, 
+<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563fa43513a12ff3ff778aa729bde16b99f63">eBasicFile</a>, 
 <br />
-&#160;&#160;<b>eRotatingFile</b>, 
-<b>eDailyFile</b>
+&#160;&#160;<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563fab1ebe4445c03eeef11632d0c2b92c41e">eRotatingFile</a>, 
+<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563faa377a1b5bc6814d77dfb9abfd6e7e50e">eDailyFile</a>
 <br />
  }</td></tr>
+<tr class="memdesc:acbf2dda13ee6f4a4b0e7201d8eee563f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the type of output sinks.  <a href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563f">More...</a><br /></td></tr>
 <tr class="separator:acbf2dda13ee6f4a4b0e7201d8eee563f inherit pub_types_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classELoggerSink"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classELoggerSink')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classELoggerSink.html">ELoggerSink</a></td></tr>
-<tr class="memitem:a3200b7304b8e6ded95f05f99fb1cd917 inherit pub_static_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a3200b7304b8e6ded95f05f99fb1cd917"></a>
-static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getDefaultPattern</b> ()</td></tr>
+<tr class="memitem:a3200b7304b8e6ded95f05f99fb1cd917 inherit pub_static_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a3200b7304b8e6ded95f05f99fb1cd917">getDefaultPattern</a> ()</td></tr>
+<tr class="memdesc:a3200b7304b8e6ded95f05f99fb1cd917 inherit pub_static_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the default log message formatting pattern.  <a href="classELoggerSink.html#a3200b7304b8e6ded95f05f99fb1cd917">More...</a><br /></td></tr>
 <tr class="separator:a3200b7304b8e6ded95f05f99fb1cd917 inherit pub_static_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classELoggerSink"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classELoggerSink')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classELoggerSink.html">ELoggerSink</a></td></tr>
-<tr class="memitem:a0b7abf1bf38f37a8968cb2864423defc inherit pro_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="a0b7abf1bf38f37a8968cb2864423defc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ELoggerSink</b> (SinkType sinktype, ELogger::LogLevel loglevel, cpStr pattern)</td></tr>
+<tr class="memitem:a0b7abf1bf38f37a8968cb2864423defc inherit pro_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#a0b7abf1bf38f37a8968cb2864423defc">ELoggerSink</a> (<a class="el" href="classELoggerSink.html#acbf2dda13ee6f4a4b0e7201d8eee563f">SinkType</a> sinktype, <a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a> loglevel, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> pattern)</td></tr>
+<tr class="memdesc:a0b7abf1bf38f37a8968cb2864423defc inherit pro_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">The base class constructor.  <a href="classELoggerSink.html#a0b7abf1bf38f37a8968cb2864423defc">More...</a><br /></td></tr>
 <tr class="separator:a0b7abf1bf38f37a8968cb2864423defc inherit pro_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e468fbbc4b759dfa09f6068a94b0b6 inherit pro_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top"><a id="ab3e468fbbc4b759dfa09f6068a94b0b6"></a>
-spdlog::sink_ptr&#160;</td><td class="memItemRight" valign="bottom"><b>setSinkPtr</b> (spdlog::sink_ptr &amp;sinkptr)</td></tr>
+<tr class="memitem:ab3e468fbbc4b759dfa09f6068a94b0b6 inherit pro_methods_classELoggerSink"><td class="memItemLeft" align="right" valign="top">spdlog::sink_ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classELoggerSink.html#ab3e468fbbc4b759dfa09f6068a94b0b6">setSinkPtr</a> (spdlog::sink_ptr &amp;sinkptr)</td></tr>
+<tr class="memdesc:ab3e468fbbc4b759dfa09f6068a94b0b6 inherit pro_methods_classELoggerSink"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the spdlog pointer value.  <a href="classELoggerSink.html#ab3e468fbbc4b759dfa09f6068a94b0b6">More...</a><br /></td></tr>
 <tr class="separator:ab3e468fbbc4b759dfa09f6068a94b0b6 inherit pro_methods_classELoggerSink"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A daily file sink. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae8fd4c4e4e4be443775b21d5a4e49312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8fd4c4e4e4be443775b21d5a4e49312">&#9670;&nbsp;</a></span>ELoggerSinkDailyFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ELoggerSinkDailyFile::ELoggerSinkDailyFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classELogger.html#a22fb57bad0e9b0ead993bf7dfb3d3968">ELogger::LogLevel</a>&#160;</td>
+          <td class="paramname"><em>loglevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramname"><em>truncate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>rolloverhour</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>rolloverminute</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loglevel</td><td>the sink log level. </td></tr>
+    <tr><td class="paramname">pattern</td><td>the log message formatting pattern. </td></tr>
+    <tr><td class="paramname">filename</td><td>the log file name. </td></tr>
+    <tr><td class="paramname">truncate</td><td>indicates if the log file should be truncated if it already exists. </td></tr>
+    <tr><td class="paramname">rolloverhour</td><td>the hour during the day when the rollover will occur. </td></tr>
+    <tr><td class="paramname">rolloverminute</td><td>the minute within the hour when the rollover will occur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a09e246c67fd95db70158c1da61ecce07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e246c67fd95db70158c1da61ecce07">&#9670;&nbsp;</a></span>~ELoggerSinkDailyFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ELoggerSinkDailyFile::~ELoggerSinkDailyFile </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class destructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab3e4bcc63f9b3c5adc5d28ee63249aef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e4bcc63f9b3c5adc5d28ee63249aef">&#9670;&nbsp;</a></span>getFilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a>&amp; ELoggerSinkDailyFile::getFilename </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the log file name. </p>
+<dl class="section return"><dt>Returns</dt><dd>the log file name. </dd></dl>
+
+</div>
+</div>
+<a id="aa51880624ac5c40b807776407a51b044"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51880624ac5c40b807776407a51b044">&#9670;&nbsp;</a></span>getRolloverHour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ELoggerSinkDailyFile::getRolloverHour </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the hour during the day when the rollover will occur. </p>
+<dl class="section return"><dt>Returns</dt><dd>the hour during the day when the rollover will occur. </dd></dl>
+
+</div>
+</div>
+<a id="a7f09aebf1339b3a7c4a2c4aed92381a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f09aebf1339b3a7c4a2c4aed92381a4">&#9670;&nbsp;</a></span>getRolloverMinute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> ELoggerSinkDailyFile::getRolloverMinute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the minute within the hour when the rollover will occur. </p>
+<dl class="section return"><dt>Returns</dt><dd>the minute within the hour when the rollover will occur. </dd></dl>
+
+</div>
+</div>
+<a id="a2d04f1ec7e8a7defcaaba76a1c5f594b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d04f1ec7e8a7defcaaba76a1c5f594b">&#9670;&nbsp;</a></span>getTruncate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> ELoggerSinkDailyFile::getTruncate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the truncate flag. </p>
+<dl class="section return"><dt>Returns</dt><dd>True will cause the file to truncated when it is opened, otherwise False. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="elogger_8h_source.html">elogger.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/elogger.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="elogger_8h_source.html">elogger.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="elogger_8cpp.html">elogger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

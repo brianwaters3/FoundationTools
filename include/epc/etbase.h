@@ -314,7 +314,7 @@ public:
       Long getInterval() { return m_interval; }
       /// @brief sets the timer interval
       ///
-      /// @param Interval the timer interval in milliseconds.
+      /// @param interval the timer interval in milliseconds.
       ///
       Void setInterval(Long interval) { m_interval = interval; }
       /// @brief sets the type of timer

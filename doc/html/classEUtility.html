@@ -69,31 +69,631 @@ $(function() {
 <div class="title">EUtility Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="eutil_8h_source.html">eutil.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a944fdd4bde5dcf2d0adc570e0f3c1b52"><td class="memItemLeft" align="right" valign="top"><a id="a944fdd4bde5dcf2d0adc570e0f3c1b52"></a>
-static Int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOf</b> (cpStr path, Char search, Int start=0)</td></tr>
+<tr class="memitem:a944fdd4bde5dcf2d0adc570e0f3c1b52"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a944fdd4bde5dcf2d0adc570e0f3c1b52">indexOf</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a> search, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> start=0)</td></tr>
 <tr class="separator:a944fdd4bde5dcf2d0adc570e0f3c1b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a565fb5cc0eea3d8292ba7e5a1122c0cd"><td class="memItemLeft" align="right" valign="top"><a id="a565fb5cc0eea3d8292ba7e5a1122c0cd"></a>
-static Int&#160;</td><td class="memItemRight" valign="bottom"><b>indexOfAny</b> (cpStr path, cpStr search)</td></tr>
+<tr class="memitem:a565fb5cc0eea3d8292ba7e5a1122c0cd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a565fb5cc0eea3d8292ba7e5a1122c0cd">indexOfAny</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> search)</td></tr>
 <tr class="separator:a565fb5cc0eea3d8292ba7e5a1122c0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8df7cc94aed8b0280efa09fc7e17da50"><td class="memItemLeft" align="right" valign="top"><a id="a8df7cc94aed8b0280efa09fc7e17da50"></a>
-static Int&#160;</td><td class="memItemRight" valign="bottom"><b>lastIndexOfAny</b> (cpStr path, cpStr search)</td></tr>
+<tr class="memitem:a8df7cc94aed8b0280efa09fc7e17da50"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a8df7cc94aed8b0280efa09fc7e17da50">lastIndexOfAny</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> path, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> search)</td></tr>
 <tr class="separator:a8df7cc94aed8b0280efa09fc7e17da50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a866fd3da386083d3b0a822cf674490e3"><td class="memItemLeft" align="right" valign="top"><a id="a866fd3da386083d3b0a822cf674490e3"></a>
-static std::vector&lt; <a class="el" href="classEString.html">EString</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>split</b> (cpStr s, cpStr delims)</td></tr>
+<tr class="memitem:a866fd3da386083d3b0a822cf674490e3"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; <a class="el" href="classEString.html">EString</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a866fd3da386083d3b0a822cf674490e3">split</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> s, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> delims)</td></tr>
 <tr class="separator:a866fd3da386083d3b0a822cf674490e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06d09ed5c6f844c0244ce1d6fcc68e1b"><td class="memItemLeft" align="right" valign="top"><a id="a06d09ed5c6f844c0244ce1d6fcc68e1b"></a>
-static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>replaceAll</b> (<a class="el" href="classEString.html">EString</a> &amp;str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)</td></tr>
+<tr class="memitem:a06d09ed5c6f844c0244ce1d6fcc68e1b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a06d09ed5c6f844c0244ce1d6fcc68e1b">replaceAll</a> (<a class="el" href="classEString.html">EString</a> &amp;str, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> srch, size_t srchlen, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> rplc, size_t rplclen)</td></tr>
 <tr class="separator:a06d09ed5c6f844c0244ce1d6fcc68e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d4c5289980107c5622b29078db7b54a"><td class="memItemLeft" align="right" valign="top"><a id="a8d4c5289980107c5622b29078db7b54a"></a>
-static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><b>replaceAllCopy</b> (const <a class="el" href="classEString.html">EString</a> &amp;str, cpStr srch, size_t srchlen, cpStr rplc, size_t rplclen)</td></tr>
+<tr class="memitem:a8d4c5289980107c5622b29078db7b54a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classEString.html">EString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a8d4c5289980107c5622b29078db7b54a">replaceAllCopy</a> (const <a class="el" href="classEString.html">EString</a> &amp;str, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> srch, size_t srchlen, <a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> rplc, size_t rplclen)</td></tr>
 <tr class="separator:a8d4c5289980107c5622b29078db7b54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20e1f771586bfe809ef2fe6582fcbb05"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a20e1f771586bfe809ef2fe6582fcbb05">string_format</a> (const char *format,...)</td></tr>
+<tr class="separator:a20e1f771586bfe809ef2fe6582fcbb05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a854e8bfdaac5798f32697aa1dd1158ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a854e8bfdaac5798f32697aa1dd1158ea">string_format</a> (std::string &amp;dest, const char *format,...)</td></tr>
+<tr class="separator:a854e8bfdaac5798f32697aa1dd1158ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32df93b481c8acb92f3d613976468140"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a32df93b481c8acb92f3d613976468140">copy_file</a> (const std::string &amp;dst, const std::string &amp;src)</td></tr>
+<tr class="separator:a32df93b481c8acb92f3d613976468140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a585b10c45b5917917365eb6d4df853"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a1a585b10c45b5917917365eb6d4df853">copy_file</a> (const char *dst, const std::string &amp;src)</td></tr>
+<tr class="separator:a1a585b10c45b5917917365eb6d4df853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71e957bd899e4080b5d3c83450c261c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#ac71e957bd899e4080b5d3c83450c261c">copy_file</a> (const std::string &amp;dst, const char *src)</td></tr>
+<tr class="separator:ac71e957bd899e4080b5d3c83450c261c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3835f9ad7a87f786f04798f22d270365"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a3835f9ad7a87f786f04798f22d270365">copy_file</a> (const char *dst, const char *src)</td></tr>
+<tr class="separator:a3835f9ad7a87f786f04798f22d270365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fcd4c6ea0a63b6150ac4394730003d1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a2fcd4c6ea0a63b6150ac4394730003d1">delete_file</a> (const std::string &amp;fn)</td></tr>
+<tr class="separator:a2fcd4c6ea0a63b6150ac4394730003d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0444c3de75b35a99e453d63e955fc80"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#ae0444c3de75b35a99e453d63e955fc80">delete_file</a> (const char *fn)</td></tr>
+<tr class="separator:ae0444c3de75b35a99e453d63e955fc80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7d8c79a89f3694018a5f6f9bb7ced0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a3f7d8c79a89f3694018a5f6f9bb7ced0">file_exists</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> fn)</td></tr>
+<tr class="separator:a3f7d8c79a89f3694018a5f6f9bb7ced0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4edb2b40da4ccde3f06253b4294b21e2"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEUtility.html#a4edb2b40da4ccde3f06253b4294b21e2">currentTime</a> ()</td></tr>
+<tr class="separator:a4edb2b40da4ccde3f06253b4294b21e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3835f9ad7a87f786f04798f22d270365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3835f9ad7a87f786f04798f22d270365">&#9670;&nbsp;</a></span>copy_file() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EUtility::copy_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a585b10c45b5917917365eb6d4df853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a585b10c45b5917917365eb6d4df853">&#9670;&nbsp;</a></span>copy_file() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void EUtility::copy_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac71e957bd899e4080b5d3c83450c261c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac71e957bd899e4080b5d3c83450c261c">&#9670;&nbsp;</a></span>copy_file() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void EUtility::copy_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a32df93b481c8acb92f3d613976468140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32df93b481c8acb92f3d613976468140">&#9670;&nbsp;</a></span>copy_file() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void EUtility::copy_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4edb2b40da4ccde3f06253b4294b21e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4edb2b40da4ccde3f06253b4294b21e2">&#9670;&nbsp;</a></span>currentTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string EUtility::currentTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae0444c3de75b35a99e453d63e955fc80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0444c3de75b35a99e453d63e955fc80">&#9670;&nbsp;</a></span>delete_file() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EUtility::delete_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2fcd4c6ea0a63b6150ac4394730003d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fcd4c6ea0a63b6150ac4394730003d1">&#9670;&nbsp;</a></span>delete_file() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void EUtility::delete_file </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f7d8c79a89f3694018a5f6f9bb7ced0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7d8c79a89f3694018a5f6f9bb7ced0">&#9670;&nbsp;</a></span>file_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EUtility::file_exists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>fn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a944fdd4bde5dcf2d0adc570e0f3c1b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a944fdd4bde5dcf2d0adc570e0f3c1b52">&#9670;&nbsp;</a></span>indexOf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> EUtility::indexOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a>&#160;</td>
+          <td class="paramname"><em>search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramname"><em>start</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a565fb5cc0eea3d8292ba7e5a1122c0cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565fb5cc0eea3d8292ba7e5a1122c0cd">&#9670;&nbsp;</a></span>indexOfAny()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> EUtility::indexOfAny </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>search</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8df7cc94aed8b0280efa09fc7e17da50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8df7cc94aed8b0280efa09fc7e17da50">&#9670;&nbsp;</a></span>lastIndexOfAny()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> EUtility::lastIndexOfAny </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>search</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06d09ed5c6f844c0244ce1d6fcc68e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06d09ed5c6f844c0244ce1d6fcc68e1b">&#9670;&nbsp;</a></span>replaceAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a> &amp; EUtility::replaceAll </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>srch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>srchlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>rplc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>rplclen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d4c5289980107c5622b29078db7b54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d4c5289980107c5622b29078db7b54a">&#9670;&nbsp;</a></span>replaceAllCopy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classEString.html">EString</a> EUtility::replaceAllCopy </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classEString.html">EString</a> &amp;&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>srch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>srchlen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>rplc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>rplclen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a866fd3da386083d3b0a822cf674490e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a866fd3da386083d3b0a822cf674490e3">&#9670;&nbsp;</a></span>split()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classEString.html">EString</a> &gt; EUtility::split </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
+          <td class="paramname"><em>delims</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a20e1f771586bfe809ef2fe6582fcbb05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20e1f771586bfe809ef2fe6582fcbb05">&#9670;&nbsp;</a></span>string_format() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string EUtility::string_format </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a854e8bfdaac5798f32697aa1dd1158ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a854e8bfdaac5798f32697aa1dd1158ea">&#9670;&nbsp;</a></span>string_format() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EUtility::string_format </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="eutil_8h_source.html">eutil.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/eutil.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="eutil_8h_source.html">eutil.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="eutil_8cpp.html">eutil.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/eerror.h File Reference</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/eerror.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,7 +77,7 @@ $(function() {
 <p>Defines base class for exceptions and declaration helper macros.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;exception&gt;</code><br />
-<code>#include &quot;estring.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="estring_8h_source.html">estring.h</a>&quot;</code><br />
 </div>
 <p><a href="eerror_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -91,13 +91,11 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:aed385ba21d4b38186c99c4a401681a5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#aed385ba21d4b38186c99c4a401681a5d">DECLARE_ERR_MAP</a>(__name__)&#160;&#160;&#160;EErrorMapEntry __name__[];</td></tr>
 <tr class="separator:aed385ba21d4b38186c99c4a401681a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cfbd6a813a2a599b8ab6e1c4695492a"><td class="memItemLeft" align="right" valign="top"><a id="a3cfbd6a813a2a599b8ab6e1c4695492a"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#a3cfbd6a813a2a599b8ab6e1c4695492a">BGN_ERR_MAP</a>(__name__)&#160;&#160;&#160;EErrorMapEntry __name__[] = {</td></tr>
-<tr class="memdesc:a3cfbd6a813a2a599b8ab6e1c4695492a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the definition of the error map in the code. <br /></td></tr>
+<tr class="memitem:a3cfbd6a813a2a599b8ab6e1c4695492a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#a3cfbd6a813a2a599b8ab6e1c4695492a">BGN_ERR_MAP</a>(__name__)&#160;&#160;&#160;EErrorMapEntry __name__[] = {</td></tr>
+<tr class="memdesc:a3cfbd6a813a2a599b8ab6e1c4695492a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the definition of the error map in the code.  <a href="eerror_8h.html#a3cfbd6a813a2a599b8ab6e1c4695492a">More...</a><br /></td></tr>
 <tr class="separator:a3cfbd6a813a2a599b8ab6e1c4695492a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58b17bbd438eb54d3d105144ba44fad9"><td class="memItemLeft" align="right" valign="top"><a id="a58b17bbd438eb54d3d105144ba44fad9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#a58b17bbd438eb54d3d105144ba44fad9">ERR_MAP_ENTRY</a>(id,  err)&#160;&#160;&#160;{id, err},</td></tr>
-<tr class="memdesc:a58b17bbd438eb54d3d105144ba44fad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an error map entry. <br /></td></tr>
+<tr class="memitem:a58b17bbd438eb54d3d105144ba44fad9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#a58b17bbd438eb54d3d105144ba44fad9">ERR_MAP_ENTRY</a>(id,  err)&#160;&#160;&#160;{id, err},</td></tr>
+<tr class="memdesc:a58b17bbd438eb54d3d105144ba44fad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an error map entry.  <a href="eerror_8h.html#a58b17bbd438eb54d3d105144ba44fad9">More...</a><br /></td></tr>
 <tr class="separator:a58b17bbd438eb54d3d105144ba44fad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe4e5acc11fc4465d33383e5dd8ebc85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eerror_8h.html#abe4e5acc11fc4465d33383e5dd8ebc85">END_ERR_MAP</a>()</td></tr>
 <tr class="memdesc:abe4e5acc11fc4465d33383e5dd8ebc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ends (closes) the error map definition.  <a href="eerror_8h.html#abe4e5acc11fc4465d33383e5dd8ebc85">More...</a><br /></td></tr>
@@ -121,6 +119,26 @@ Macros</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines base class for exceptions and declaration helper macros. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a3cfbd6a813a2a599b8ab6e1c4695492a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cfbd6a813a2a599b8ab6e1c4695492a">&#9670;&nbsp;</a></span>BGN_ERR_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BGN_ERR_MAP</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__name__</td><td>)</td>
+          <td>&#160;&#160;&#160;EErrorMapEntry __name__[] = {</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the definition of the error map in the code. </p>
+
+</div>
+</div>
 <a id="aed385ba21d4b38186c99c4a401681a5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed385ba21d4b38186c99c4a401681a5d">&#9670;&nbsp;</a></span>DECLARE_ERR_MAP</h2>
 
@@ -157,7 +175,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">class </span>__e__ : <span class="keyword">public</span> <a class="code" href="classEError.html">EError</a>                              \</div>
 <div class="line">   {                                                        \</div>
-<div class="line">      virtual <span class="keyword">const</span> cpStr <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
+<div class="line">      virtual <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
 <div class="line">   }</div>
 </div><!-- fragment -->
 <p>Declares exception class derived from <a class="el" href="classEError.html" title="The base class for exceptions derived from std::exception.">EError</a> with no constructor parameters. </p>
@@ -183,7 +201,7 @@ Macros</h2></td></tr>
 <div class="line">   {                                                        \</div>
 <div class="line">   public:                                                  \</div>
 <div class="line">      __e__();                                              \</div>
-<div class="line">      virtual <span class="keyword">const</span> cpStr <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
+<div class="line">      virtual <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
 <div class="line">   }</div>
 </div><!-- fragment -->
 <p>Declares exception class derived from <a class="el" href="classEError.html" title="The base class for exceptions derived from std::exception.">EError</a> with no constructor parameters and developer defined constructor body. </p>
@@ -208,8 +226,8 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">class </span>__e__ : <span class="keyword">public</span> <a class="code" href="classEError.html">EError</a>                              \</div>
 <div class="line">   {                                                        \</div>
 <div class="line">   public:                                                  \</div>
-<div class="line">      __e__(Int err);                                       \</div>
-<div class="line">      virtual <span class="keyword">const</span> cpStr <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
+<div class="line">      __e__(<a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> err);                                       \</div>
+<div class="line">      virtual <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
 <div class="line">   }</div>
 </div><!-- fragment -->
 <p>Declares exception class derived from <a class="el" href="classEError.html" title="The base class for exceptions derived from std::exception.">EError</a> with an Int as a constructor parameter and developer defined constructor body. </p>
@@ -234,8 +252,8 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">class </span>__e__ : <span class="keyword">public</span> <a class="code" href="classEError.html">EError</a>                              \</div>
 <div class="line">   {                                                        \</div>
 <div class="line">   public:                                                  \</div>
-<div class="line">      __e__(Int err, cpChar msg);                           \</div>
-<div class="line">      virtual <span class="keyword">const</span> cpStr <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
+<div class="line">      __e__(<a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> err, <a class="code" href="etypes_8h.html#a1d5bc58196e8e050e51109d84ceac694">cpChar</a> msg);                           \</div>
+<div class="line">      virtual <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
 <div class="line">   }</div>
 </div><!-- fragment -->
 <p>Declares exception class derived from <a class="el" href="classEError.html" title="The base class for exceptions derived from std::exception.">EError</a> with an Int and a const char * as constructor parameters and developer defined constructor body. </p>
@@ -260,8 +278,8 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keyword">class </span>__e__ : <span class="keyword">public</span> <a class="code" href="classEError.html">EError</a>                              \</div>
 <div class="line">   {                                                        \</div>
 <div class="line">   public:                                                  \</div>
-<div class="line">      __e__(cpStr msg);                                     \</div>
-<div class="line">      virtual <span class="keyword">const</span> cpStr <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
+<div class="line">      __e__(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> msg);                                     \</div>
+<div class="line">      virtual <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> #__e__; }   \</div>
 <div class="line">   }</div>
 </div><!-- fragment -->
 <p>Declares exception class derived from <a class="el" href="classEError.html" title="The base class for exceptions derived from std::exception.">EError</a> with an const char* as a constructor parameter and developer defined constructor body. </p>
@@ -292,9 +310,42 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a id="a58b17bbd438eb54d3d105144ba44fad9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b17bbd438eb54d3d105144ba44fad9">&#9670;&nbsp;</a></span>ERR_MAP_ENTRY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ERR_MAP_ENTRY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">id, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">err&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;{id, err},</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an error map entry. </p>
+
+</div>
+</div>
 </div><!-- contents -->
-<div class="ttc" id="aclassEError_html_a3f026182a4b0ddece206507a5ee08a3d"><div class="ttname"><a href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">EError::Name</a></div><div class="ttdeci">virtual const cpStr Name() const</div><div class="ttdoc">Returns the name of this object.</div><div class="ttdef"><b>Definition:</b> eerror.h:174</div></div>
-<div class="ttc" id="aclassEError_html"><div class="ttname"><a href="classEError.html">EError</a></div><div class="ttdoc">The base class for exceptions derived from std::exception.</div><div class="ttdef"><b>Definition:</b> eerror.h:94</div></div>
+<div class="ttc" id="aetypes_8h_html_aac54f2ce6d21874872d23e0972ba7820"><div class="ttname"><a href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a></div><div class="ttdeci">int32_t Int</div><div class="ttdef"><b>Definition:</b> etypes.h:30</div></div>
+<div class="ttc" id="aetypes_8h_html_a1d5bc58196e8e050e51109d84ceac694"><div class="ttname"><a href="etypes_8h.html#a1d5bc58196e8e050e51109d84ceac694">cpChar</a></div><div class="ttdeci">const typedef Char * cpChar</div><div class="ttdef"><b>Definition:</b> etypes.h:77</div></div>
+<div class="ttc" id="aclassEError_html_a3f026182a4b0ddece206507a5ee08a3d"><div class="ttname"><a href="classEError.html#a3f026182a4b0ddece206507a5ee08a3d">EError::Name</a></div><div class="ttdeci">virtual const cpStr Name() const</div><div class="ttdoc">Returns the name of this object.</div><div class="ttdef"><b>Definition:</b> eerror.h:189</div></div>
+<div class="ttc" id="aclassEError_html"><div class="ttname"><a href="classEError.html">EError</a></div><div class="ttdoc">The base class for exceptions derived from std::exception.</div><div class="ttdef"><b>Definition:</b> eerror.h:92</div></div>
+<div class="ttc" id="aetypes_8h_html_a715443708a83f21fdd93aa3f0030cd35"><div class="ttname"><a href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a></div><div class="ttdeci">const typedef Char * cpStr</div><div class="ttdef"><b>Definition:</b> etypes.h:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

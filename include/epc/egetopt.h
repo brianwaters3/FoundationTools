@@ -21,6 +21,7 @@
 #include "eerror.h"
 #include "estring.h"
 
+/// @file
 /// @brief Manages configuration parameters from a file and the command line.
 ///
 /// @details

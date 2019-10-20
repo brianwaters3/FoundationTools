@@ -1,6 +1,6 @@
 {
     "EpcTools": {
-        "EnablePublicObjects": true,
+        "EnablePublicObjects": false,
         "Debug": false,
         "SynchronizationObjects": {
             "NumberSemaphores": 100,

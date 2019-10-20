@@ -19,9 +19,7 @@
 #define __eatomic_h_included
 
 /// @file
-///
 /// @brief Macros for performing CPU atomic/interlaced operations.
-///
 
 /// atomic decrement - decrements a by 1
 #define atomic_dec(a) __sync_sub_and_fetch(&a, 1)

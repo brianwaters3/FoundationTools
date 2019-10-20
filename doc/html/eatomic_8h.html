@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/eatomic.h File Reference</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/eatomic.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,38 +80,320 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:afd446c349676294a955ad8837ade6cbf"><td class="memItemLeft" align="right" valign="top"><a id="afd446c349676294a955ad8837ade6cbf"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#afd446c349676294a955ad8837ade6cbf">atomic_dec</a>(a)&#160;&#160;&#160;__sync_sub_and_fetch(&amp;a, 1)</td></tr>
-<tr class="memdesc:afd446c349676294a955ad8837ade6cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic decrement - decrements a by 1 <br /></td></tr>
+<tr class="memitem:afd446c349676294a955ad8837ade6cbf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#afd446c349676294a955ad8837ade6cbf">atomic_dec</a>(a)&#160;&#160;&#160;__sync_sub_and_fetch(&amp;a, 1)</td></tr>
+<tr class="memdesc:afd446c349676294a955ad8837ade6cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic decrement - decrements a by 1  <a href="eatomic_8h.html#afd446c349676294a955ad8837ade6cbf">More...</a><br /></td></tr>
 <tr class="separator:afd446c349676294a955ad8837ade6cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ad8c41fa90cf160f025c573812e7071"><td class="memItemLeft" align="right" valign="top"><a id="a9ad8c41fa90cf160f025c573812e7071"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a9ad8c41fa90cf160f025c573812e7071">atomic_inc</a>(a)&#160;&#160;&#160;__sync_add_and_fetch(&amp;a, 1)</td></tr>
-<tr class="memdesc:a9ad8c41fa90cf160f025c573812e7071"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic increment - increments a by 1 <br /></td></tr>
+<tr class="memitem:a9ad8c41fa90cf160f025c573812e7071"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a9ad8c41fa90cf160f025c573812e7071">atomic_inc</a>(a)&#160;&#160;&#160;__sync_add_and_fetch(&amp;a, 1)</td></tr>
+<tr class="memdesc:a9ad8c41fa90cf160f025c573812e7071"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic increment - increments a by 1  <a href="eatomic_8h.html#a9ad8c41fa90cf160f025c573812e7071">More...</a><br /></td></tr>
 <tr class="separator:a9ad8c41fa90cf160f025c573812e7071"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad60a499eb13d3a85193e0c76ffafe159"><td class="memItemLeft" align="right" valign="top"><a id="ad60a499eb13d3a85193e0c76ffafe159"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ad60a499eb13d3a85193e0c76ffafe159">atomic_cas</a>(a,  b,  c)&#160;&#160;&#160;__sync_val_compare_and_swap(&amp;a, b, c)</td></tr>
-<tr class="memdesc:ad60a499eb13d3a85193e0c76ffafe159"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic compare and swap - if a equals b then a is replaced with c <br /></td></tr>
+<tr class="memitem:a635033227930c7d4bec33afeca3cedd4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a635033227930c7d4bec33afeca3cedd4">atomic_dec_fetch</a>(a)&#160;&#160;&#160;__sync_sub_and_fetch(&amp;a, 1)</td></tr>
+<tr class="memdesc:a635033227930c7d4bec33afeca3cedd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic decrement - decrements a by 1  <a href="eatomic_8h.html#a635033227930c7d4bec33afeca3cedd4">More...</a><br /></td></tr>
+<tr class="separator:a635033227930c7d4bec33afeca3cedd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a490f620fa2c6fe7cabdc627494000dae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a490f620fa2c6fe7cabdc627494000dae">atomic_inc_fetch</a>(a)&#160;&#160;&#160;__sync_add_and_fetch(&amp;a, 1)</td></tr>
+<tr class="memdesc:a490f620fa2c6fe7cabdc627494000dae"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic increment - increments a by 1  <a href="eatomic_8h.html#a490f620fa2c6fe7cabdc627494000dae">More...</a><br /></td></tr>
+<tr class="separator:a490f620fa2c6fe7cabdc627494000dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3b4a9cb1966c5293b364aa2b7761ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a2e3b4a9cb1966c5293b364aa2b7761ea">atomic_fetch_dec</a>(a)&#160;&#160;&#160;__sync_fetch_and_sub(&amp;a, 1)</td></tr>
+<tr class="memdesc:a2e3b4a9cb1966c5293b364aa2b7761ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic decrement - decrements a by 1  <a href="eatomic_8h.html#a2e3b4a9cb1966c5293b364aa2b7761ea">More...</a><br /></td></tr>
+<tr class="separator:a2e3b4a9cb1966c5293b364aa2b7761ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2833338f9a1374e17a58f9d61c726ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#af2833338f9a1374e17a58f9d61c726ac">atomic_fetch_inc</a>(a)&#160;&#160;&#160;__sync_fetch_and_add(&amp;a, 1)</td></tr>
+<tr class="memdesc:af2833338f9a1374e17a58f9d61c726ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic increment - increments a by 1  <a href="eatomic_8h.html#af2833338f9a1374e17a58f9d61c726ac">More...</a><br /></td></tr>
+<tr class="separator:af2833338f9a1374e17a58f9d61c726ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad60a499eb13d3a85193e0c76ffafe159"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ad60a499eb13d3a85193e0c76ffafe159">atomic_cas</a>(a,  b,  c)&#160;&#160;&#160;__sync_val_compare_and_swap(&amp;a, b, c)</td></tr>
+<tr class="memdesc:ad60a499eb13d3a85193e0c76ffafe159"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic compare and swap - if a equals b then a is replaced with c  <a href="eatomic_8h.html#ad60a499eb13d3a85193e0c76ffafe159">More...</a><br /></td></tr>
 <tr class="separator:ad60a499eb13d3a85193e0c76ffafe159"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7e467dc008880df7f1435c967797c64"><td class="memItemLeft" align="right" valign="top"><a id="ae7e467dc008880df7f1435c967797c64"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ae7e467dc008880df7f1435c967797c64">atomic_swap</a>(a,  b)&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td></tr>
-<tr class="memdesc:ae7e467dc008880df7f1435c967797c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic swap - replaces a with b <br /></td></tr>
+<tr class="memitem:ae7e467dc008880df7f1435c967797c64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ae7e467dc008880df7f1435c967797c64">atomic_swap</a>(a,  b)&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td></tr>
+<tr class="memdesc:ae7e467dc008880df7f1435c967797c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic swap - replaces a with b  <a href="eatomic_8h.html#ae7e467dc008880df7f1435c967797c64">More...</a><br /></td></tr>
 <tr class="separator:ae7e467dc008880df7f1435c967797c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02c5920683b93f7a16f000490fddfc2b"><td class="memItemLeft" align="right" valign="top"><a id="a02c5920683b93f7a16f000490fddfc2b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a02c5920683b93f7a16f000490fddfc2b">atomic_and</a>(a,  b)&#160;&#160;&#160;__sync_fetch_and_and(&amp;a, b)</td></tr>
-<tr class="memdesc:a02c5920683b93f7a16f000490fddfc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic and - performs a logical and between a and b putting the result in a <br /></td></tr>
+<tr class="memitem:a02c5920683b93f7a16f000490fddfc2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a02c5920683b93f7a16f000490fddfc2b">atomic_and</a>(a,  b)&#160;&#160;&#160;__sync_fetch_and_and(&amp;a, b)</td></tr>
+<tr class="memdesc:a02c5920683b93f7a16f000490fddfc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic and - performs a logical and between a and b putting the result in a  <a href="eatomic_8h.html#a02c5920683b93f7a16f000490fddfc2b">More...</a><br /></td></tr>
 <tr class="separator:a02c5920683b93f7a16f000490fddfc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab45b46109d0fd182b9cfd1e127ff47ac"><td class="memItemLeft" align="right" valign="top"><a id="ab45b46109d0fd182b9cfd1e127ff47ac"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ab45b46109d0fd182b9cfd1e127ff47ac">atomic_or</a>(a,  b)&#160;&#160;&#160;__sync_fetch_and_or(&amp;a, b)</td></tr>
-<tr class="memdesc:ab45b46109d0fd182b9cfd1e127ff47ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic or - performs a logical or between a and b putting the result in a <br /></td></tr>
+<tr class="memitem:ab45b46109d0fd182b9cfd1e127ff47ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#ab45b46109d0fd182b9cfd1e127ff47ac">atomic_or</a>(a,  b)&#160;&#160;&#160;__sync_fetch_and_or(&amp;a, b)</td></tr>
+<tr class="memdesc:ab45b46109d0fd182b9cfd1e127ff47ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic or - performs a logical or between a and b putting the result in a  <a href="eatomic_8h.html#ab45b46109d0fd182b9cfd1e127ff47ac">More...</a><br /></td></tr>
 <tr class="separator:ab45b46109d0fd182b9cfd1e127ff47ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e99c430fd028c43f277ea7ee824ac59"><td class="memItemLeft" align="right" valign="top"><a id="a5e99c430fd028c43f277ea7ee824ac59"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a5e99c430fd028c43f277ea7ee824ac59">atomic_set</a>(a,  b)&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td></tr>
-<tr class="memdesc:a5e99c430fd028c43f277ea7ee824ac59"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic set - replaces a with b <br /></td></tr>
+<tr class="memitem:a5e99c430fd028c43f277ea7ee824ac59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eatomic_8h.html#a5e99c430fd028c43f277ea7ee824ac59">atomic_set</a>(a,  b)&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td></tr>
+<tr class="memdesc:a5e99c430fd028c43f277ea7ee824ac59"><td class="mdescLeft">&#160;</td><td class="mdescRight">atomic set - replaces a with b  <a href="eatomic_8h.html#a5e99c430fd028c43f277ea7ee824ac59">More...</a><br /></td></tr>
 <tr class="separator:a5e99c430fd028c43f277ea7ee824ac59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Macros for performing CPU atomic/interlaced operations. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a02c5920683b93f7a16f000490fddfc2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02c5920683b93f7a16f000490fddfc2b">&#9670;&nbsp;</a></span>atomic_and</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_and</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__sync_fetch_and_and(&amp;a, b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic and - performs a logical and between a and b putting the result in a </p>
+
+</div>
+</div>
+<a id="ad60a499eb13d3a85193e0c76ffafe159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad60a499eb13d3a85193e0c76ffafe159">&#9670;&nbsp;</a></span>atomic_cas</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_cas</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">c&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__sync_val_compare_and_swap(&amp;a, b, c)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic compare and swap - if a equals b then a is replaced with c </p>
+
+</div>
+</div>
+<a id="afd446c349676294a955ad8837ade6cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd446c349676294a955ad8837ade6cbf">&#9670;&nbsp;</a></span>atomic_dec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_sub_and_fetch(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic decrement - decrements a by 1 </p>
+
+</div>
+</div>
+<a id="a635033227930c7d4bec33afeca3cedd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a635033227930c7d4bec33afeca3cedd4">&#9670;&nbsp;</a></span>atomic_dec_fetch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_dec_fetch</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_sub_and_fetch(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic decrement - decrements a by 1 </p>
+
+</div>
+</div>
+<a id="a2e3b4a9cb1966c5293b364aa2b7761ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3b4a9cb1966c5293b364aa2b7761ea">&#9670;&nbsp;</a></span>atomic_fetch_dec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_fetch_dec</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_fetch_and_sub(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic decrement - decrements a by 1 </p>
+
+</div>
+</div>
+<a id="af2833338f9a1374e17a58f9d61c726ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2833338f9a1374e17a58f9d61c726ac">&#9670;&nbsp;</a></span>atomic_fetch_inc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_fetch_inc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_fetch_and_add(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic increment - increments a by 1 </p>
+
+</div>
+</div>
+<a id="a9ad8c41fa90cf160f025c573812e7071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ad8c41fa90cf160f025c573812e7071">&#9670;&nbsp;</a></span>atomic_inc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_add_and_fetch(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic increment - increments a by 1 </p>
+
+</div>
+</div>
+<a id="a490f620fa2c6fe7cabdc627494000dae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a490f620fa2c6fe7cabdc627494000dae">&#9670;&nbsp;</a></span>atomic_inc_fetch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_inc_fetch</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a</td><td>)</td>
+          <td>&#160;&#160;&#160;__sync_add_and_fetch(&amp;a, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic increment - increments a by 1 </p>
+
+</div>
+</div>
+<a id="ab45b46109d0fd182b9cfd1e127ff47ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab45b46109d0fd182b9cfd1e127ff47ac">&#9670;&nbsp;</a></span>atomic_or</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_or</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__sync_fetch_and_or(&amp;a, b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic or - performs a logical or between a and b putting the result in a </p>
+
+</div>
+</div>
+<a id="a5e99c430fd028c43f277ea7ee824ac59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e99c430fd028c43f277ea7ee824ac59">&#9670;&nbsp;</a></span>atomic_set</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_set</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic set - replaces a with b </p>
+
+</div>
+</div>
+<a id="ae7e467dc008880df7f1435c967797c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7e467dc008880df7f1435c967797c64">&#9670;&nbsp;</a></span>atomic_swap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define atomic_swap</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">a, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">b&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;__sync_lock_test_and_set(&amp;a, b)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>atomic swap - replaces a with b </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

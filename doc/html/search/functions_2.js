@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['defmessagehandler',['defMessageHandler',['../classEThreadBase.html#a20f4ad92fdaba4df8370573446d92c77',1,'EThreadBase::defMessageHandler()'],['../classEThreadPublic.html#a3c1475399cc90644dc809edc885ee012',1,'EThreadPublic::defMessageHandler()'],['../classEThreadPrivate.html#a21902823b2c4296f21a7b6304fee2f08',1,'EThreadPrivate::defMessageHandler()']]],
-  ['destroy',['destroy',['../classEThreadBase_1_1Timer.html#aef7ad0700ff1478b43dd5f13696f7297',1,'EThreadBase::Timer']]]
+  ['beginquery',['beginQuery',['../classDNS_1_1QueryProcessor.html#a2298d811daa00d662b361caf7fc41250',1,'DNS::QueryProcessor']]],
+  ['bind',['bind',['../classESocket.html#a9a908819195e5f5d927ffc6e1dec996f',1,'ESocket::bind()'],['../classESocket.html#a88fdf1eee236be7d840dcbdbf20d059b',1,'ESocket::bind(UShort port)']]],
+  ['buffer',['Buffer',['../classBuffer.html#a4d4fb3b9b375131cc5f2fb29ba4c0eab',1,'Buffer::Buffer(size_t size)'],['../classBuffer.html#a4d4fb3b9b375131cc5f2fb29ba4c0eab',1,'Buffer::Buffer(size_t size)']]],
+  ['bump',['bump',['../classESocketThread.html#a0765d3b1774943dc1f97d063cc90ae23',1,'ESocketThread']]],
+  ['bytespending',['bytesPending',['../classESocketConverse.html#a2c96aaeef60ca6ac4de2f55dd05a25ad',1,'ESocketConverse']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['severity',['Severity',['../classEError.html#a74f6b6a08d7437d3af94162b2a933498',1,'EError']]]
+  ['fdpeerstate',['FDPeerState',['../efd_8h.html#ad3f6c56f016515d6f0f961624e19926f',1,'efd.h']]]
 ];

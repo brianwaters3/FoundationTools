@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/eshmem.h Source File</title>
+<title>EpcTools: /home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/eshmem.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 <div class="title">eshmem.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="eshmem_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">* Copyright (c) 2009-2019 Brian Waters</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Copyright (c) 2019 Sprint</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*</span></div>
@@ -90,44 +90,44 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef __eshmem_h_included</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __eshmem_h_included</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;esynch.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="esynch_8h.html">esynch.h</a>&quot;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(ESharedMemoryError_NotInitialized);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a>(ESharedMemoryError_UnableToCreate);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a>(ESharedMemoryError_UnableToMap);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="eshmem_8h.html#aca25573e02c55197d0db3b36f6b8d83c">DECLARE_ERROR</a>(ESharedMemoryError_NotInitialized);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<a class="code" href="eshmem_8h.html#a508ee3d785091a9ba676ac959b516407">DECLARE_ERROR_ADVANCED4</a>(ESharedMemoryError_UnableToCreate);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="eshmem_8h.html#a8767ca6e3b3a08d28bd365edcf8db072">DECLARE_ERROR_ADVANCED</a>(ESharedMemoryError_UnableToMap);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classESharedMemoryError__UnableToCreateKeyFile.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESharedMemoryError__UnableToCreateKeyFile.html">ESharedMemoryError_UnableToCreateKeyFile</a> : <span class="keyword">public</span> <a class="code" href="classEError.html">EError</a></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <a class="code" href="classESharedMemoryError__UnableToCreateKeyFile.html">ESharedMemoryError_UnableToCreateKeyFile</a>(cpStr pszFile);</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba">   31</a></span>&#160;   <span class="keyword">virtual</span> <span class="keyword">const</span> cpStr <a class="code" href="classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;ESharedMemoryError_UnableToCreateKeyFile&quot;</span>; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;   <a class="code" href="classESharedMemoryError__UnableToCreateKeyFile.html#aa1a13fa0bce0a06d2426a447453b422d">ESharedMemoryError_UnableToCreateKeyFile</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> pszFile);</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba">   31</a></span>&#160;   <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> <a class="code" href="classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba">Name</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;ESharedMemoryError_UnableToCreateKeyFile&quot;</span>; }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classESharedMemory.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="classESharedMemory.html">ESharedMemory</a></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   <a class="code" href="classESharedMemory.html">ESharedMemory</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <a class="code" href="classESharedMemory.html">ESharedMemory</a>(cpStr file, Int <span class="keywordtype">id</span>, Int size);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   ~<a class="code" href="classESharedMemory.html">ESharedMemory</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;   <a class="code" href="classESharedMemory.html#abb36ed3d7aca6d3aa1626a09d09cbbaa">ESharedMemory</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;   <a class="code" href="classESharedMemory.html#abb36ed3d7aca6d3aa1626a09d09cbbaa">ESharedMemory</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> file, <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> <span class="keywordtype">id</span>, <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> size);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   <a class="code" href="classESharedMemory.html#ab9f944b21e2054d7228d41672177fd01">~ESharedMemory</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   Void init(cpStr file, Int <span class="keywordtype">id</span>, Int size);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;   <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">init</a>(<a class="code" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> file, <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> <span class="keywordtype">id</span>, <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> size);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;   pVoid getDataPtr()</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">   46</a></span>&#160;   <a class="code" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> <a class="code" href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">getDataPtr</a>()</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;   {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">return</span> m_pData;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;   }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;   <span class="keyword">virtual</span> Void onDestroy()</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classESharedMemory.html#a663df10e1bd29583ef6fdb53844ae474">   51</a></span>&#160;   <span class="keyword">virtual</span> <a class="code" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> <a class="code" href="classESharedMemory.html#a663df10e1bd29583ef6fdb53844ae474">onDestroy</a>()</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;   {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;   }</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   Int getUsageCount();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> <a class="code" href="classESharedMemory.html#a4c3f7647baddb3eab4d296586050c89e">getUsageCount</a>();</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;   <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;   {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      Int s_usageCnt;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> s_usageCnt;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <a class="code" href="classEMutexPrivate.html">EMutexPrivate</a> s_mutex;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;   } eshmemctrl_t;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -136,27 +136,40 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordflow">return</span> m_pCtrl-&gt;s_mutex;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   Char m_szShMem[<a class="code" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a> + 1];</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;   Char m_szMutex[<a class="code" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a> + 1];</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   pVoid m_pShMem;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   pVoid m_pData;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;   <a class="code" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a> m_szShMem[<a class="code" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a> + 1];</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;   <a class="code" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a> m_szMutex[<a class="code" href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a> + 1];</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;   <a class="code" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> m_pShMem;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   <a class="code" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> m_pData;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;   eshmemctrl_t *m_pCtrl;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   Int m_shmid;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;   <a class="code" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> m_shmid;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   key_t m_key;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif // #define __eshmem_h_included</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aeerror_8h_html_ab71591f350ed65d99a1349f90b65f2af"><div class="ttname"><a href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a></div><div class="ttdeci">#define DECLARE_ERROR(__e__)</div><div class="ttdoc">Declares exception class derived from EError with no constructor parameters.</div><div class="ttdef"><b>Definition:</b> eerror.h:55</div></div>
+<div class="ttc" id="aclassESharedMemory_html_ab9f944b21e2054d7228d41672177fd01"><div class="ttname"><a href="classESharedMemory.html#ab9f944b21e2054d7228d41672177fd01">ESharedMemory::~ESharedMemory</a></div><div class="ttdeci">~ESharedMemory()</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:73</div></div>
+<div class="ttc" id="aetypes_8h_html_aac54f2ce6d21874872d23e0972ba7820"><div class="ttname"><a href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a></div><div class="ttdeci">int32_t Int</div><div class="ttdef"><b>Definition:</b> etypes.h:30</div></div>
+<div class="ttc" id="aeshmem_8h_html_aca25573e02c55197d0db3b36f6b8d83c"><div class="ttname"><a href="eshmem_8h.html#aca25573e02c55197d0db3b36f6b8d83c">DECLARE_ERROR</a></div><div class="ttdeci">DECLARE_ERROR(ESharedMemoryError_NotInitialized)</div></div>
+<div class="ttc" id="aclassESharedMemory_html_abb36ed3d7aca6d3aa1626a09d09cbbaa"><div class="ttname"><a href="classESharedMemory.html#abb36ed3d7aca6d3aa1626a09d09cbbaa">ESharedMemory::ESharedMemory</a></div><div class="ttdeci">ESharedMemory()</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:56</div></div>
+<div class="ttc" id="aeshmem_8h_html_a508ee3d785091a9ba676ac959b516407"><div class="ttname"><a href="eshmem_8h.html#a508ee3d785091a9ba676ac959b516407">DECLARE_ERROR_ADVANCED4</a></div><div class="ttdeci">DECLARE_ERROR_ADVANCED4(ESharedMemoryError_UnableToCreate)</div></div>
+<div class="ttc" id="aeshmem_8h_html_a8767ca6e3b3a08d28bd365edcf8db072"><div class="ttname"><a href="eshmem_8h.html#a8767ca6e3b3a08d28bd365edcf8db072">DECLARE_ERROR_ADVANCED</a></div><div class="ttdeci">DECLARE_ERROR_ADVANCED(ESharedMemoryError_UnableToMap)</div></div>
+<div class="ttc" id="aetypes_8h_html_a7942e32f6409fbd1fd347a8c23ef725e"><div class="ttname"><a href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a></div><div class="ttdeci">char Char</div><div class="ttdef"><b>Definition:</b> etypes.h:25</div></div>
 <div class="ttc" id="aclassESharedMemoryError__UnableToCreateKeyFile_html_ad63c815afe341417a424f7b853e880ba"><div class="ttname"><a href="classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba">ESharedMemoryError_UnableToCreateKeyFile::Name</a></div><div class="ttdeci">virtual const cpStr Name() const</div><div class="ttdoc">Returns the name of this object.</div><div class="ttdef"><b>Definition:</b> eshmem.h:31</div></div>
 <div class="ttc" id="aclassEMutexPrivate_html"><div class="ttname"><a href="classEMutexPrivate.html">EMutexPrivate</a></div><div class="ttdef"><b>Definition:</b> esynch.h:140</div></div>
-<div class="ttc" id="aeerror_8h_html_a084f9316bede9d1a93f9cf419da6583a"><div class="ttname"><a href="eerror_8h.html#a084f9316bede9d1a93f9cf419da6583a">DECLARE_ERROR_ADVANCED4</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED4(__e__)</div><div class="ttdoc">Declares exception class derived from EError with an const char* as a constructor parameter and devel...</div><div class="ttdef"><b>Definition:</b> eerror.h:85</div></div>
-<div class="ttc" id="aeerror_8h_html_a974638b398459efd2cc6d8abada9d7ce"><div class="ttname"><a href="eerror_8h.html#a974638b398459efd2cc6d8abada9d7ce">DECLARE_ERROR_ADVANCED</a></div><div class="ttdeci">#define DECLARE_ERROR_ADVANCED(__e__)</div><div class="ttdoc">Declares exception class derived from EError with no constructor parameters and developer defined con...</div><div class="ttdef"><b>Definition:</b> eerror.h:61</div></div>
+<div class="ttc" id="aesynch_8h_html"><div class="ttname"><a href="esynch_8h.html">esynch.h</a></div></div>
+<div class="ttc" id="aclassESharedMemory_html_affda2d92d4ba4506b196d7c266b777ad"><div class="ttname"><a href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">ESharedMemory::getDataPtr</a></div><div class="ttdeci">pVoid getDataPtr()</div><div class="ttdef"><b>Definition:</b> eshmem.h:46</div></div>
+<div class="ttc" id="aclassESharedMemory_html_ad231d66f0e4d22240690008d6131cff7"><div class="ttname"><a href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">ESharedMemory::init</a></div><div class="ttdeci">Void init(cpStr file, Int id, Int size)</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:105</div></div>
+<div class="ttc" id="aclassESharedMemory_html_a4c3f7647baddb3eab4d296586050c89e"><div class="ttname"><a href="classESharedMemory.html#a4c3f7647baddb3eab4d296586050c89e">ESharedMemory::getUsageCount</a></div><div class="ttdeci">Int getUsageCount()</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:165</div></div>
+<div class="ttc" id="aetypes_8h_html_afdf0f22c576e6ee1b982f64b839c4bea"><div class="ttname"><a href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a></div><div class="ttdeci">void Void</div><div class="ttdef"><b>Definition:</b> etypes.h:23</div></div>
 <div class="ttc" id="aclassESharedMemory_html"><div class="ttname"><a href="classESharedMemory.html">ESharedMemory</a></div><div class="ttdef"><b>Definition:</b> eshmem.h:37</div></div>
+<div class="ttc" id="aclassESharedMemory_html_a663df10e1bd29583ef6fdb53844ae474"><div class="ttname"><a href="classESharedMemory.html#a663df10e1bd29583ef6fdb53844ae474">ESharedMemory::onDestroy</a></div><div class="ttdeci">virtual Void onDestroy()</div><div class="ttdef"><b>Definition:</b> eshmem.h:51</div></div>
+<div class="ttc" id="aclassESharedMemoryError__UnableToCreateKeyFile_html_aa1a13fa0bce0a06d2426a447453b422d"><div class="ttname"><a href="classESharedMemoryError__UnableToCreateKeyFile.html#aa1a13fa0bce0a06d2426a447453b422d">ESharedMemoryError_UnableToCreateKeyFile::ESharedMemoryError_UnableToCreateKeyFile</a></div><div class="ttdeci">ESharedMemoryError_UnableToCreateKeyFile(cpStr pszFile)</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:46</div></div>
 <div class="ttc" id="aclassESharedMemoryError__UnableToCreateKeyFile_html"><div class="ttname"><a href="classESharedMemoryError__UnableToCreateKeyFile.html">ESharedMemoryError_UnableToCreateKeyFile</a></div><div class="ttdef"><b>Definition:</b> eshmem.h:27</div></div>
-<div class="ttc" id="aebase_8h_html_a41e2969a97793c6f35881c6f1d054145"><div class="ttname"><a href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a></div><div class="ttdeci">#define EPC_FILENAME_MAX</div><div class="ttdoc">maximum file name length</div><div class="ttdef"><b>Definition:</b> ebase.h:39</div></div>
-<div class="ttc" id="aclassEError_html"><div class="ttname"><a href="classEError.html">EError</a></div><div class="ttdoc">The base class for exceptions derived from std::exception.</div><div class="ttdef"><b>Definition:</b> eerror.h:94</div></div>
+<div class="ttc" id="aetypes_8h_html_ab4ab448fb0f5fec64a3172f2d16340a6"><div class="ttname"><a href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a></div><div class="ttdeci">Void * pVoid</div><div class="ttdef"><b>Definition:</b> etypes.h:57</div></div>
+<div class="ttc" id="aebase_8h_html_a41e2969a97793c6f35881c6f1d054145"><div class="ttname"><a href="ebase_8h.html#a41e2969a97793c6f35881c6f1d054145">EPC_FILENAME_MAX</a></div><div class="ttdeci">#define EPC_FILENAME_MAX</div><div class="ttdoc">maximum file name length</div><div class="ttdef"><b>Definition:</b> ebase.h:37</div></div>
+<div class="ttc" id="aclassEError_html"><div class="ttname"><a href="classEError.html">EError</a></div><div class="ttdoc">The base class for exceptions derived from std::exception.</div><div class="ttdef"><b>Definition:</b> eerror.h:92</div></div>
+<div class="ttc" id="aetypes_8h_html_a715443708a83f21fdd93aa3f0030cd35"><div class="ttname"><a href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a></div><div class="ttdeci">const typedef Char * cpStr</div><div class="ttdef"><b>Definition:</b> etypes.h:78</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

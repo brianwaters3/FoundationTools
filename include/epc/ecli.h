@@ -17,6 +17,9 @@
 #ifndef __ECLI_H
 #define __ECLI_H
 
+/// @file
+/// @brief Classes used for implementing a REST based command line interface.
+
 #include <iostream>
 #include <pistache/endpoint.h>
 #include <pistache/http_header.h>
@@ -31,56 +34,85 @@
 #include "estring.h"
 #include "etime.h"
 
+/// @brief Custom HTTP header class for the X-User-Name header.
 class ECliUserNameHeader : public Pistache::Http::Header::Header
 {
 public:
    NAME("X-User-Name")
 
+   /// @brief Class constructor.
    ECliUserNameHeader()
    {
    }
 
+   /// @brief Parses the user name from the buffer.
+   /// @param data A string object containing the header data to parse.
    void parse(const std::string &data)
    {
       m_username = data;
    }
 
+   /// @brief Serializes the user name to the output stream.
+   /// @param os The output stream to write the data to.
    void write(std::ostream &os) const
    {
       os << m_username;
    }
 
+   /// @brief Returns the value of the user name.
    EString &getUserName() { return m_username; }
-   EString &setUserName(cpStr username) { return m_username = username; }
-   EString &setUserName(std::string &username) { return m_username = username; }
 
 private:
    EString m_username;
 };
 
+/// @brief Pure virtual base class for a command line interface (CLI) handler.
 class ECliHandler
 {
    friend class ECliEndpoint;
 
 public:
+   /// @brief Represents the type of the handler.
    enum class HttpMethod
    {
+      /// HTTP GET
       httpGet,
+      /// HTTP POST
       httpPost,
+      /// HTTP PUT
       httpPut,
+      /// HTTP DELETE
       httpDelete,
+      /// @cond DOXYGEN_EXCLUDE
       httpPatch,
       httpOptions
+      /// @endcond
    };
 
+   /// @brief Class constructor.
+   /// @param mthd HTTP method associated with this handler.
+   /// @param pth the HTTP route for this handler.
+   /// @param audit a reference to the ELogger object that will log all CLI operations.
    ECliHandler(HttpMethod mthd, cpStr pth, ELogger &audit);
+   /// @brief Class constructor.
+   /// @param mthd HTTP method associated with this handler.
+   /// @param pth the HTTP route for this handler.
+   /// @param audit a reference to the ELogger object that will log all CLI operations.
    ECliHandler(HttpMethod mthd, const std::string &pth, ELogger &audit);
 
+   /// @brief Pure virtual method that will be called by handler() to perform the processing.
+   /// @param request HTTP request object.
+   /// @param response HTTP response object.
    virtual Void process(const Pistache::Http::Request& request, Pistache::Http::ResponseWriter &response) = 0;
 
+   /// @brief HTTP handler that will be called by the Pistache framework.
+   /// @param request HTTP request object.
+   /// @param response HTTP response object.
    Void handler(const Pistache::Http::Request& request, Pistache::Http::ResponseWriter response);
 
+   /// @brief Returns the route path for this HTTP handler.
    const EString &path() { return m_path; }
+   /// @brief Returns the HTTP method for this HTTP handler.
    HttpMethod httpMethod() { return m_method; }
 
 protected:
@@ -94,15 +126,25 @@ private:
    HttpMethod m_method;
 };
 
+/// @brief Implemts the HTTP server endpoint.
 class ECliEndpoint
 {
 public:
+   /// @brief Class constructor.
+   /// @param port the IP port to listen for requests on (all IP addresses).
+   /// @param thrds the number of threads that will process requests.
    ECliEndpoint(uint16_t port, size_t thrds=1);
+   /// @brief Class constructor.
+   /// @param addr the IP Address to listen for requests on (all IP addresses).
+   /// @param thrds the number of threads that will process requests.
    ECliEndpoint(Pistache::Address &addr, size_t thrds=1);
 
+   /// @brief Starts the endpoint.
    Void start();
+   /// @brief Stops and shuts down the endpoint.
    Void shutdown();
 
+   /// @brief Registers a REST handler.
    Void registerHandler(ECliHandler &hndlr);
 
 private:

@@ -84,10 +84,12 @@ Inheritance diagram for EThreadBasic:</div>
  <div class="center">
   <img src="classEThreadBasic.png" usemap="#EThreadBasic_map" alt=""/>
   <map id="EThreadBasic_map" name="EThreadBasic_map">
-<area href="classEThreadBase.html" title="base class for EThreadPrivate and EThreadPublic" alt="EThreadBase" shape="rect" coords="55,56,155,80"/>
-<area href="classEThreadPrivate.html" alt="EThreadPrivate" shape="rect" coords="0,112,100,136"/>
-<area href="classEThreadPublic.html" alt="EThreadPublic" shape="rect" coords="110,112,210,136"/>
-<area href="classESocketThread.html" alt="ESocketThread" shape="rect" coords="0,168,100,192"/>
+<area href="classDNS_1_1QueryProcessorThread.html" alt="DNS::QueryProcessorThread" shape="rect" coords="0,56,178,80"/>
+<area href="classEThreadBase.html" title="base class for EThreadPrivate and EThreadPublic" alt="EThreadBase" shape="rect" coords="188,56,366,80"/>
+<area href="classEThreadPrivate.html" alt="EThreadPrivate" shape="rect" coords="94,112,272,136"/>
+<area href="classEThreadPublic.html" alt="EThreadPublic" shape="rect" coords="282,112,460,136"/>
+<area href="classDNS_1_1CacheRefresher.html" alt="DNS::CacheRefresher" shape="rect" coords="0,168,178,192"/>
+<area href="classESocketThread.html" alt="ESocketThread" shape="rect" coords="188,168,366,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -102,69 +104,63 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad38ea3648fd940f9ac758d0a4f310f2c"><td class="memItemLeft" align="right" valign="top"><a id="ad38ea3648fd940f9ac758d0a4f310f2c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#ad38ea3648fd940f9ac758d0a4f310f2c">EThreadBasic</a> ()</td></tr>
-<tr class="memdesc:ad38ea3648fd940f9ac758d0a4f310f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor. <br /></td></tr>
+<tr class="memitem:ad38ea3648fd940f9ac758d0a4f310f2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#ad38ea3648fd940f9ac758d0a4f310f2c">EThreadBasic</a> ()</td></tr>
+<tr class="memdesc:ad38ea3648fd940f9ac758d0a4f310f2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadBasic.html#ad38ea3648fd940f9ac758d0a4f310f2c">More...</a><br /></td></tr>
 <tr class="separator:ad38ea3648fd940f9ac758d0a4f310f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae47eddc2ccb39b225986dd328803c783"><td class="memItemLeft" align="right" valign="top"><a id="ae47eddc2ccb39b225986dd328803c783"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#ae47eddc2ccb39b225986dd328803c783">~EThreadBasic</a> ()</td></tr>
-<tr class="memdesc:ae47eddc2ccb39b225986dd328803c783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor. <br /></td></tr>
+<tr class="memitem:ae47eddc2ccb39b225986dd328803c783"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#ae47eddc2ccb39b225986dd328803c783">~EThreadBasic</a> ()</td></tr>
+<tr class="memdesc:ae47eddc2ccb39b225986dd328803c783"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classEThreadBasic.html#ae47eddc2ccb39b225986dd328803c783">More...</a><br /></td></tr>
 <tr class="separator:ae47eddc2ccb39b225986dd328803c783"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2af11d0367222ca518151c21f543a6ec"><td class="memItemLeft" align="right" valign="top">virtual Dword&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">threadProc</a> (pVoid arg)=0</td></tr>
+<tr class="memitem:a2af11d0367222ca518151c21f543a6ec"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#a3b6545722630d0a7057db2a3b5cf4949">Dword</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">threadProc</a> (<a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> arg)=0</td></tr>
 <tr class="memdesc:a2af11d0367222ca518151c21f543a6ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that will be called in a separate thread.  <a href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">More...</a><br /></td></tr>
 <tr class="separator:a2af11d0367222ca518151c21f543a6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51261a61fc5d83f67c41efd37c436a20"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a51261a61fc5d83f67c41efd37c436a20">init</a> (pVoid arg, size_t stackSize=0)</td></tr>
+<tr class="memitem:a51261a61fc5d83f67c41efd37c436a20"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a51261a61fc5d83f67c41efd37c436a20">init</a> (<a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> arg, size_t stackSize=0)</td></tr>
 <tr class="memdesc:a51261a61fc5d83f67c41efd37c436a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize and start the thread.  <a href="classEThreadBasic.html#a51261a61fc5d83f67c41efd37c436a20">More...</a><br /></td></tr>
 <tr class="separator:a51261a61fc5d83f67c41efd37c436a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c5765e549d250fcc912b41932dc7ff5"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a8c5765e549d250fcc912b41932dc7ff5">join</a> ()</td></tr>
+<tr class="memitem:a8c5765e549d250fcc912b41932dc7ff5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a8c5765e549d250fcc912b41932dc7ff5">join</a> ()</td></tr>
 <tr class="memdesc:a8c5765e549d250fcc912b41932dc7ff5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for the thread to terminate.  <a href="classEThreadBasic.html#a8c5765e549d250fcc912b41932dc7ff5">More...</a><br /></td></tr>
 <tr class="separator:a8c5765e549d250fcc912b41932dc7ff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c6b0ae9e2a8c7550442efa1d589ac6c"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a0c6b0ae9e2a8c7550442efa1d589ac6c">isInitialized</a> ()</td></tr>
+<tr class="memitem:a0c6b0ae9e2a8c7550442efa1d589ac6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a0c6b0ae9e2a8c7550442efa1d589ac6c">isInitialized</a> ()</td></tr>
 <tr class="memdesc:a0c6b0ae9e2a8c7550442efa1d589ac6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the thread initialization state.  <a href="classEThreadBasic.html#a0c6b0ae9e2a8c7550442efa1d589ac6c">More...</a><br /></td></tr>
 <tr class="separator:a0c6b0ae9e2a8c7550442efa1d589ac6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bd631ba3d868348174f3d12c0bc475e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEThreadBasic.html#a6d52c705bf95269004bc80173b8d5e9c">RunState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a9bd631ba3d868348174f3d12c0bc475e">getRunState</a> ()</td></tr>
 <tr class="memdesc:a9bd631ba3d868348174f3d12c0bc475e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current thread run state.  <a href="classEThreadBasic.html#a9bd631ba3d868348174f3d12c0bc475e">More...</a><br /></td></tr>
 <tr class="separator:a9bd631ba3d868348174f3d12c0bc475e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9acc3bf6da9f70ebf1019fa5f3e1b0c1"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a9acc3bf6da9f70ebf1019fa5f3e1b0c1">isWaitingToRun</a> ()</td></tr>
+<tr class="memitem:a9acc3bf6da9f70ebf1019fa5f3e1b0c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a9acc3bf6da9f70ebf1019fa5f3e1b0c1">isWaitingToRun</a> ()</td></tr>
 <tr class="memdesc:a9acc3bf6da9f70ebf1019fa5f3e1b0c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the thread is waiting to run.  <a href="classEThreadBasic.html#a9acc3bf6da9f70ebf1019fa5f3e1b0c1">More...</a><br /></td></tr>
 <tr class="separator:a9acc3bf6da9f70ebf1019fa5f3e1b0c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81f697228b613778889cdf03d814ee63"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a81f697228b613778889cdf03d814ee63">isRunning</a> ()</td></tr>
+<tr class="memitem:a81f697228b613778889cdf03d814ee63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a81f697228b613778889cdf03d814ee63">isRunning</a> ()</td></tr>
 <tr class="memdesc:a81f697228b613778889cdf03d814ee63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the thread is running.  <a href="classEThreadBasic.html#a81f697228b613778889cdf03d814ee63">More...</a><br /></td></tr>
 <tr class="separator:a81f697228b613778889cdf03d814ee63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a809ca7f0e06eea33d8036b9e4dbb1aa0"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a809ca7f0e06eea33d8036b9e4dbb1aa0">isDoneRunning</a> ()</td></tr>
+<tr class="memitem:a809ca7f0e06eea33d8036b9e4dbb1aa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a809ca7f0e06eea33d8036b9e4dbb1aa0">isDoneRunning</a> ()</td></tr>
 <tr class="memdesc:a809ca7f0e06eea33d8036b9e4dbb1aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the thread has finished running.  <a href="classEThreadBasic.html#a809ca7f0e06eea33d8036b9e4dbb1aa0">More...</a><br /></td></tr>
 <tr class="separator:a809ca7f0e06eea33d8036b9e4dbb1aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c0f1dd3e998f9d8128421181ad959f6"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a1c0f1dd3e998f9d8128421181ad959f6">cancelWait</a> ()</td></tr>
+<tr class="memitem:a1c0f1dd3e998f9d8128421181ad959f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a1c0f1dd3e998f9d8128421181ad959f6">cancelWait</a> ()</td></tr>
 <tr class="memdesc:a1c0f1dd3e998f9d8128421181ad959f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a cancellation request to the thread.  <a href="classEThreadBasic.html#a1c0f1dd3e998f9d8128421181ad959f6">More...</a><br /></td></tr>
 <tr class="separator:a1c0f1dd3e998f9d8128421181ad959f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a94c06aeb1d4a549f367fda6d39c43a71"><td class="memItemLeft" align="right" valign="top">static Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">sleep</a> (Int milliseconds)</td></tr>
+<tr class="memitem:a94c06aeb1d4a549f367fda6d39c43a71"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">sleep</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> milliseconds)</td></tr>
 <tr class="memdesc:a94c06aeb1d4a549f367fda6d39c43a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sleeps for the specified number of milliseconds.  <a href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">More...</a><br /></td></tr>
 <tr class="separator:a94c06aeb1d4a549f367fda6d39c43a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36312dfda1c19fc7f40bd82c3f9e4550"><td class="memItemLeft" align="right" valign="top">static Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a36312dfda1c19fc7f40bd82c3f9e4550">yield</a> ()</td></tr>
+<tr class="memitem:a36312dfda1c19fc7f40bd82c3f9e4550"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a36312dfda1c19fc7f40bd82c3f9e4550">yield</a> ()</td></tr>
 <tr class="memdesc:a36312dfda1c19fc7f40bd82c3f9e4550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relinquishes the CPU.  <a href="classEThreadBasic.html#a36312dfda1c19fc7f40bd82c3f9e4550">More...</a><br /></td></tr>
 <tr class="separator:a36312dfda1c19fc7f40bd82c3f9e4550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:a75ffa83a7bb40832504b013431b59150"><td class="memItemLeft" align="right" valign="top"><a id="a75ffa83a7bb40832504b013431b59150"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a75ffa83a7bb40832504b013431b59150">Initialize</a> ()</td></tr>
-<tr class="memdesc:a75ffa83a7bb40832504b013431b59150"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs internal initialization *** DO NOT CALL *** <br /></td></tr>
+<tr class="memitem:a75ffa83a7bb40832504b013431b59150"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a75ffa83a7bb40832504b013431b59150">Initialize</a> ()</td></tr>
+<tr class="memdesc:a75ffa83a7bb40832504b013431b59150"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs internal initialization *** DO NOT CALL ***  <a href="classEThreadBasic.html#a75ffa83a7bb40832504b013431b59150">More...</a><br /></td></tr>
 <tr class="separator:a75ffa83a7bb40832504b013431b59150"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1659dac8c65cf3cd1542d0d4a070f91f"><td class="memItemLeft" align="right" valign="top"><a id="a1659dac8c65cf3cd1542d0d4a070f91f"></a>
-static Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a1659dac8c65cf3cd1542d0d4a070f91f">UnInitialize</a> ()</td></tr>
-<tr class="memdesc:a1659dac8c65cf3cd1542d0d4a070f91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs internal de-initialization *** DO NOT CALL *** <br /></td></tr>
+<tr class="memitem:a1659dac8c65cf3cd1542d0d4a070f91f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a1659dac8c65cf3cd1542d0d4a070f91f">UnInitialize</a> ()</td></tr>
+<tr class="memdesc:a1659dac8c65cf3cd1542d0d4a070f91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">performs internal de-initialization *** DO NOT CALL ***  <a href="classEThreadBasic.html#a1659dac8c65cf3cd1542d0d4a070f91f">More...</a><br /></td></tr>
 <tr class="separator:a1659dac8c65cf3cd1542d0d4a070f91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a8a6444ab2d61ca39605f118d18754f6c"><td class="memItemLeft" align="right" valign="top"><a id="a8a6444ab2d61ca39605f118d18754f6c"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>EThreadBase</b></td></tr>
+<tr class="memitem:a8a6444ab2d61ca39605f118d18754f6c"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#a8a6444ab2d61ca39605f118d18754f6c">EThreadBase</a></td></tr>
 <tr class="separator:a8a6444ab2d61ca39605f118d18754f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa678c03f503b319c41ef27681da9747"><td class="memItemLeft" align="right" valign="top"><a id="aaa678c03f503b319c41ef27681da9747"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></tr>
+<tr class="memitem:aaa678c03f503b319c41ef27681da9747"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadBasic.html#aaa678c03f503b319c41ef27681da9747">EpcTools</a></td></tr>
 <tr class="separator:aaa678c03f503b319c41ef27681da9747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -195,6 +191,53 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 
 </div>
 </div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad38ea3648fd940f9ac758d0a4f310f2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad38ea3648fd940f9ac758d0a4f310f2c">&#9670;&nbsp;</a></span>EThreadBasic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadBasic::EThreadBasic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+
+</div>
+</div>
+<a id="ae47eddc2ccb39b225986dd328803c783"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47eddc2ccb39b225986dd328803c783">&#9670;&nbsp;</a></span>~EThreadBasic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadBasic::~EThreadBasic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class destructor. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1c0f1dd3e998f9d8128421181ad959f6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1c0f1dd3e998f9d8128421181ad959f6">&#9670;&nbsp;</a></span>cancelWait()</h2>
@@ -203,7 +246,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Int EThreadBasic::cancelWait </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> EThreadBasic::cancelWait </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -253,9 +296,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Void EThreadBasic::init </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::init </td>
           <td>(</td>
-          <td class="paramtype">pVoid&#160;</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a>&#160;</td>
           <td class="paramname"><em>arg</em>, </td>
         </tr>
         <tr>
@@ -291,6 +334,33 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 
 </div>
 </div>
+<a id="a75ffa83a7bb40832504b013431b59150"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ffa83a7bb40832504b013431b59150">&#9670;&nbsp;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::Initialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>performs internal initialization *** DO NOT CALL *** </p>
+
+</div>
+</div>
 <a id="a809ca7f0e06eea33d8036b9e4dbb1aa0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a809ca7f0e06eea33d8036b9e4dbb1aa0">&#9670;&nbsp;</a></span>isDoneRunning()</h2>
 
@@ -301,7 +371,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Bool EThreadBasic::isDoneRunning </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EThreadBasic::isDoneRunning </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -327,7 +397,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Bool EThreadBasic::isInitialized </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EThreadBasic::isInitialized </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -351,7 +421,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Bool EThreadBasic::isRunning </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EThreadBasic::isRunning </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -380,7 +450,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Bool EThreadBasic::isWaitingToRun </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EThreadBasic::isWaitingToRun </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -406,7 +476,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Void EThreadBasic::join </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::join </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -436,9 +506,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void EThreadBasic::sleep </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::sleep </td>
           <td>(</td>
-          <td class="paramtype">Int&#160;</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
           <td class="paramname"><em>milliseconds</em></td><td>)</td>
           <td></td>
         </tr>
@@ -465,9 +535,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Dword EThreadBasic::threadProc </td>
+          <td class="memname">virtual <a class="el" href="etypes_8h.html#a3b6545722630d0a7057db2a3b5cf4949">Dword</a> EThreadBasic::threadProc </td>
           <td>(</td>
-          <td class="paramtype">pVoid&#160;</td>
+          <td class="paramtype"><a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a>&#160;</td>
           <td class="paramname"><em>arg</em></td><td>)</td>
           <td></td>
         </tr>
@@ -490,6 +560,33 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 
 </div>
 </div>
+<a id="a1659dac8c65cf3cd1542d0d4a070f91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1659dac8c65cf3cd1542d0d4a070f91f">&#9670;&nbsp;</a></span>UnInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::UnInitialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>performs internal de-initialization *** DO NOT CALL *** </p>
+
+</div>
+</div>
 <a id="a36312dfda1c19fc7f40bd82c3f9e4550"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36312dfda1c19fc7f40bd82c3f9e4550">&#9670;&nbsp;</a></span>yield()</h2>
 
@@ -500,7 +597,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void EThreadBasic::yield </td>
+          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadBasic::yield </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -518,9 +615,54 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>EpcTools</b></td></t
 
 </div>
 </div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="aaa678c03f503b319c41ef27681da9747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa678c03f503b319c41ef27681da9747">&#9670;&nbsp;</a></span>EpcTools</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classEpcTools.html">EpcTools</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a6444ab2d61ca39605f118d18754f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a6444ab2d61ca39605f118d18754f6c">&#9670;&nbsp;</a></span>EThreadBase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classEThreadBase.html">EThreadBase</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/include/epc/<a class="el" href="etbase_8h_source.html">etbase.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/bw2/src/etbase.cpp</li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etbase_8h_source.html">etbase.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="etbase_8cpp.html">etbase.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

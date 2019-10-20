@@ -18,6 +18,9 @@
 #ifndef __edir_h_included
 #define __edir_h_included
 
+/// @file
+/// @brief Implements directory processing.
+
 #include <dirent.h>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -43,42 +46,30 @@ public:
 	~EDirectory();
 
    /// @brief Gets the first entry from the directory.
-   ///
    /// @param pDirectory The directory name to process.
    /// @param pFileMask The file pattern file names must match to be returned.
-   ///
    /// @return a pointer to the file name
-   ///
    /// @throws EDirectoryError_GetFirstEntry
-   ///
    /// @details Returns the first file name from pDirectory that matches
    /// pFileMask.  pFileMask can contain any alphanumeric character as well as
    /// wildcard characters.  The supported wildcard characters are '*' which
    /// corresponds to any number of any character and '?' which corresonds to
    /// a single character.
-   ///
 	cpStr getFirstEntry(cpStr pDirectory, cpStr pFileMask);
    /// @brief Gets the next entry from the directory.
-   ///
    /// @return a pointer to the file name
-   ///
    /// @throws EDirectoryError_GetNextEntry
-   ///
    /// @details
    /// Reads the next entry from the directory that matches the previously
    /// supplied file name mask.  This function will throw 
    /// EDirectoryError_GetNextEntry if it is called before calling 
    /// getFirstEntry().
-   ///
 	cpStr getNextEntry();
 
    /// @brief Returns the current working directory.
-   ///
    /// @param dir A reference to an EString variable where the directory name
    /// will be stored.
-   ///
    /// @throws EDirectoryError_CurrentDirectory
-   ///
 	static Void getCurrentDirectory(EString& dir);
 
 private:

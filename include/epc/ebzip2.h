@@ -22,16 +22,17 @@
 #include "eerror.h"
 #include "bzlib.h"
 
+/// @cond DOXYGEN_EXCLUDE
 DECLARE_ERROR_ADVANCED4(EBZip2Error_ReadOpen);
 DECLARE_ERROR_ADVANCED4(EBZip2Error_WriteOpen);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2ReadInit);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2WriteInit);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2Read);
 DECLARE_ERROR_ADVANCED2(EBZip2Error_Bzip2Write);
+/// @endcond
 
-///
+/// @file
 /// @brief Wrapper around bzip2 library.
-///
 /// @details
 /// EBzip2 provides the ability to compress or decompress a file utilizing
 /// the Burrows-Wheeler compression algorithm.  The library is compatible
