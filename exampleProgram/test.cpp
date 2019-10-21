@@ -1844,6 +1844,8 @@ public:
    Void setRemotePort(UShort port) { m_remoteport = port; }
    UShort getRemotePort() { return m_remoteport; }
 
+   Void onTimer(EThreadBase::Timer *pTimer);
+
 private:
    EString m_localip;
    UShort m_localport;
@@ -1851,6 +1853,7 @@ private:
    UShort m_remoteport;
    Int m_cnt;
    UdpSocket *m_socket;
+   EThreadBase::Timer m_timer;
 };
 
 class UdpSocket : public ESocket::UDP
@@ -1896,7 +1899,16 @@ Void UdpSocket::sendpacket()
 Void UdpSocket::onReceive(const ESocket::Address &addr, cpVoid pData, Int length)
 {
    std::cout.imbue(defaultLocale);
-   std::cout << "Received [" << *(Int*)pData << "] length [" << length << "] from [" << addr.getAddress() << ":" << addr.getPort() << "]" << std::endl << std::flush;
+   std::cout << ETime::Now().Format("%Y-%m-%dT%H:%M:%S.%0",True)
+             << " Received ["
+             << *(Int*)pData
+             << "] length ["
+             << length
+             << "] from ["
+             << addr.getAddress()
+             << ":"
+             << addr.getPort()
+             << "]" << std::endl << std::flush;
    std::cout.imbue(mylocale);
 
    if (*(Int*)pData == -1)
@@ -1910,7 +1922,7 @@ Void UdpSocket::onReceive(const ESocket::Address &addr, cpVoid pData, Int length
    }
    else
    {
-      sendpacket();
+      //sendpacket();
    }
 }
 
@@ -1936,8 +1948,14 @@ Void UdpWorker::onInit()
    m_socket->setRemote( remote );
    m_socket->setCount( m_cnt );
 
-   std::cout << "sending first packet" << std::endl << std::endl << std::flush;
-   m_socket->sendpacket();
+   //std::cout << "sending first packet" << std::endl << std::endl << std::flush;
+   //m_socket->sendpacket();
+
+   std::cout << "starting the periodic timer" << std::endl << std::endl << std::flush;
+   m_timer.setInterval(1000);
+   m_timer.setOneShot(False);
+   initTimer(m_timer);
+   m_timer.start();
 }
 
 Void UdpWorker::onQuit()
@@ -1948,6 +1966,14 @@ Void UdpWorker::onQuit()
 Void UdpWorker::errorHandler(EError &err, ESocket::Base *psocket)
 {
    //std::cout << "Socket exception - " << err << std::endl << std::flush;
+}
+
+Void UdpWorker::onTimer(EThreadBase::Timer *pTimer)
+{
+   if (pTimer->getId() == m_timer.getId())
+   {
+      m_socket->sendpacket();
+   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
