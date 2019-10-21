@@ -18,8 +18,12 @@
 #ifndef __eshmem_h_included
 #define __eshmem_h_included
 
+/// @file
+/// @brief Defines a class for access to shared memory.
+
 #include "esynch.h"
 
+/// @cond DOXYGEN_EXCLUDE
 DECLARE_ERROR(ESharedMemoryError_NotInitialized);
 DECLARE_ERROR_ADVANCED4(ESharedMemoryError_UnableToCreate);
 DECLARE_ERROR_ADVANCED(ESharedMemoryError_UnableToMap);
@@ -30,28 +34,45 @@ public:
    ESharedMemoryError_UnableToCreateKeyFile(cpStr pszFile);
    virtual const cpStr Name() const { return "ESharedMemoryError_UnableToCreateKeyFile"; }
 };
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @brief The shared memory access class.
 class ESharedMemory
 {
 public:
+   /// @brief Default constructor.
    ESharedMemory();
+   /// @brief Class constructor.
+   /// @param file the file name associated with the shared memory.
+   /// @param id the identifier for the shared memory.
+   /// @param size the amount of memory to allocate for this shared memory object.
    ESharedMemory(cpStr file, Int id, Int size);
+   /// @brief Class destructor.
    ~ESharedMemory();
 
+   /// @brief Initializes this shared memory object.  This method is called by the
+   ///    parameterized constructor.
+   /// @param file the file name associated with the shared memory.
+   /// @param id the identifier for the shared memory.
+   /// @param size the amount of memory to allocate for this shared memory object.
    Void init(cpStr file, Int id, Int size);
 
+   /// @brief Retrieves a pointer to the first location of the shated memory.
+   /// @return a pointer to the first location of the shated memory.
    pVoid getDataPtr()
    {
       return m_pData;
    }
 
+   /// @brief Called when teh shared memory is destroyed.
    virtual Void onDestroy()
    {
    }
 
+   /// @brief Retrieves the number of clients accessing the shared memory.
    Int getUsageCount();
 
 private:

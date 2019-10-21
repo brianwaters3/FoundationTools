@@ -33,12 +33,18 @@ DECLARE_ERROR_ADVANCED2(EQueuePublicError_QueueNotFound);
 class EQueuePublic : public EQueueBase
 {
 public:
+   /// @brief Default constructor.
    EQueuePublic();
+   /// @brief Class destructor.
    ~EQueuePublic();
 
+   /// @brief Initializes the queue object.
+   /// @param queueid the queue identifier.
+   /// @param mode the open mode.
    Void init(Int queuid, EQueueBase::Mode mode);
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    Bool isPublic() { return True; }
    ULong &msgSize();
    Int &msgCnt();
@@ -69,6 +75,7 @@ protected:
    {
       EQueueBase::init(nMsgSize, nMsgCnt, queueId, bMultipleReaders, bMultipleWriters, eMode);
    }
+   /// @endcond
 
 private:
    typedef struct

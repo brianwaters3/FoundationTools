@@ -1580,7 +1580,7 @@ public:
    ~Talker() {}
 
    Void onConnect();
-   Bool onReceive();
+   Void onReceive();
    Void onClose();
 
 private:
@@ -1663,7 +1663,7 @@ Void Talker::onConnect()
    }
 }
 
-Bool Talker::onReceive()
+Void Talker::onReceive()
 {
    UChar buffer[1024];
    Int *pval = (Int *)buffer;
@@ -1712,8 +1712,6 @@ Bool Talker::onReceive()
                 << std::flush;
       getThread().quit();
    }
-
-   return True;
 }
 
 Void Talker::onClose()

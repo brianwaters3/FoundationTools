@@ -18,14 +18,27 @@
 #ifndef __eqpriv_h_included
 #define __eqpriv_h_included
 
+/// @file
+/// @brief Contains the private queue class definition
+
 #include "eqbase.h"
 
+/// @brief The private queue class.
 class EQueuePrivate : virtual public EQueueBase
 {
 public:
+   /// @brief Default constructor.
    EQueuePrivate();
+   /// @brief Class destructor.
    ~EQueuePrivate();
 
+   /// @brief Initializes the private message queue.
+   /// @param nMsgSize the maximum message size.
+   /// @param nMsgCnt the maximum number of messages that can be in the queue at one time.
+   /// @param queueId the queue identifier.
+   /// @param bMultipleReaders indicates whether or not that there are multiple readers.
+   /// @param bMultipleWriters indicates whether or not that there are multiple writers.
+   /// @param eMode the open mode.
    Void init(Int nMsgSize, Int nMsgCnt, Int queueId, Bool bMultipleReaders,
              Bool bMultipleWriters, EQueueBase::Mode eMode)
    {
@@ -33,6 +46,7 @@ public:
    }
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    Bool isPublic() { return False; }
    ULong &msgSize();
    Int &msgCnt();
@@ -57,6 +71,7 @@ protected:
    ESemaphoreData &semMsgs() { return m_semMsgs; }
 
    virtual EQueueMessage *allocMessage(Long msgType) = 0;
+   /// @endcond
 
 private:
    Int m_refCnt;

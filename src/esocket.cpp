@@ -229,7 +229,7 @@ Base::~Base()
    close();
 }
 
-Bool Base::onReceive()
+Void Base::onReceive()
 {
 }
 
@@ -534,9 +534,8 @@ namespace TCP
       m_remote.clear();
    }
 
-   Bool Talker::onReceive()
+   Void Talker::onReceive()
    {
-      return True;
    }
 
    Void Talker::onConnect()
@@ -874,14 +873,12 @@ Void UDP::onError()
 {
 }
 
-Bool UDP::onReceive()
+Void UDP::onReceive()
 {
    while (readMessage(*m_rcvmsg))
    {
       onReceive(m_rcvmsg->addr, reinterpret_cast<pVoid>(m_rcvmsg->data), m_rcvmsg->data_length);
    }
-
-   return True;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
