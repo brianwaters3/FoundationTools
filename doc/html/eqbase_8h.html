@@ -67,12 +67,14 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">eqbase.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides base class support for sending and receiving messages via a message queue.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="ebase_8h_source.html">ebase.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="etime_8h_source.html">etime.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="etimer_8h_source.html">etimer.h</a>&quot;</code><br />
@@ -84,95 +86,16 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html">EQueueMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a message to be written to/read from a message queue.  <a href="classEQueueMessage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueBase.html">EQueueBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The message queue base class.  <a href="classEQueueBase.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a5463c756f6758cd58c8bbafb9a1db821"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eqbase_8h.html#a5463c756f6758cd58c8bbafb9a1db821">DECLARE_ERROR</a> (EQueueBaseError_UnInitialized)</td></tr>
-<tr class="separator:a5463c756f6758cd58c8bbafb9a1db821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9097dfe261ff6eb36b2fd141be1f8381"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eqbase_8h.html#a9097dfe261ff6eb36b2fd141be1f8381">DECLARE_ERROR</a> (EQueueBaseError_NotOpenForWriting)</td></tr>
-<tr class="separator:a9097dfe261ff6eb36b2fd141be1f8381"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2184a061eb7954c4eb8fedcdea1aba6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eqbase_8h.html#aa2184a061eb7954c4eb8fedcdea1aba6">DECLARE_ERROR</a> (EQueueBaseError_NotOpenForReading)</td></tr>
-<tr class="separator:aa2184a061eb7954c4eb8fedcdea1aba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2365e883b508efcb0cf1c62470a8d3c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="eqbase_8h.html#a2365e883b508efcb0cf1c62470a8d3c0">DECLARE_ERROR</a> (EQueueBaseError_MultipleReadersNotAllowed)</td></tr>
-<tr class="separator:a2365e883b508efcb0cf1c62470a8d3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a2365e883b508efcb0cf1c62470a8d3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2365e883b508efcb0cf1c62470a8d3c0">&#9670;&nbsp;</a></span>DECLARE_ERROR() <span class="overload">[1/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DECLARE_ERROR </td>
-          <td>(</td>
-          <td class="paramtype">EQueueBaseError_MultipleReadersNotAllowed&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa2184a061eb7954c4eb8fedcdea1aba6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2184a061eb7954c4eb8fedcdea1aba6">&#9670;&nbsp;</a></span>DECLARE_ERROR() <span class="overload">[2/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DECLARE_ERROR </td>
-          <td>(</td>
-          <td class="paramtype">EQueueBaseError_NotOpenForReading&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9097dfe261ff6eb36b2fd141be1f8381"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9097dfe261ff6eb36b2fd141be1f8381">&#9670;&nbsp;</a></span>DECLARE_ERROR() <span class="overload">[3/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DECLARE_ERROR </td>
-          <td>(</td>
-          <td class="paramtype">EQueueBaseError_NotOpenForWriting&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5463c756f6758cd58c8bbafb9a1db821"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5463c756f6758cd58c8bbafb9a1db821">&#9670;&nbsp;</a></span>DECLARE_ERROR() <span class="overload">[4/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">DECLARE_ERROR </td>
-          <td>(</td>
-          <td class="paramtype">EQueueBaseError_UnInitialized&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides base class support for sending and receiving messages via a message queue. </p>
+<p>This custom FIFO message queue implementation stores the data in a buffer either allocated from the heap or from shared memory. The private queue, allocated from the heap, can be accessed by any thread in the same process, while the public queue, allocated from shared memory, can be accessed from any process running on the same machine. The <a class="el" href="classEMessage.html" title="The message queue base message class.">EMessage</a> class serializes/deserializes the data to/from the queue. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

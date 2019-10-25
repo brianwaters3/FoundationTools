@@ -30,10 +30,10 @@ public:
    EThreadPublic();
    ~EThreadPublic();
 
-   Bool sendMessage(UInt message, Bool wait = True);
-   Bool sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait = True);
-   Bool sendMessage(UInt message, pVoid voidPtr, Bool wait = True);
-   Bool sendMessage(UInt message, LongLong quadPart, Bool wait = True);
+   // Bool sendMessage(UInt message, Bool wait = True);
+   // Bool sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait = True);
+   // Bool sendMessage(UInt message, pVoid voidPtr, Bool wait = True);
+   // Bool sendMessage(UInt message, LongLong quadPart, Bool wait = True);
 
    virtual Void init(Short appId, UShort threadId, pVoid arg, Int queueSize = 16384, Bool suspended = False, Dword stackSize = 0);
    Void quit();
@@ -62,6 +62,7 @@ private:
 
    EThreadQueuePublic m_queue;
 };
+typedef std::shared_ptr<EThreadPublic> EThreadPublicPtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -72,10 +73,10 @@ public:
    EThreadPrivate();
    ~EThreadPrivate();
 
-   Bool sendMessage(UInt message, Bool wait = True);
-   Bool sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait = True);
-   Bool sendMessage(UInt message, pVoid voidPtr, Bool wait = True);
-   Bool sendMessage(UInt message, LongLong quadPart, Bool wait = True);
+   // Bool sendMessage(UInt message, Bool wait = True);
+   // Bool sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait = True);
+   // Bool sendMessage(UInt message, pVoid voidPtr, Bool wait = True);
+   // Bool sendMessage(UInt message, LongLong quadPart, Bool wait = True);
 
    virtual Void init(Short appId, UShort threadId, pVoid arg, Int queueSize = 16384, Bool suspended = False, Dword stackSize = 0);
    Void quit();
@@ -104,5 +105,6 @@ private:
 
    EThreadQueuePrivate m_queue;
 };
+typedef std::shared_ptr<EThreadPrivate> EThreadPrivatePtr;
 
 #endif // #define __ethread_h_included

@@ -27,6 +27,7 @@ var menudata={children:[
 {text:"Namespace Members",url:"namespacemembers.html",children:[
 {text:"All",url:"namespacemembers.html",children:[
 {text:"a",url:"namespacemembers.html#index_a"},
+{text:"b",url:"namespacemembers.html#index_b"},
 {text:"c",url:"namespacemembers.html#index_c"},
 {text:"d",url:"namespacemembers.html#index_d"},
 {text:"g",url:"namespacemembers.html#index_g"},
@@ -119,11 +120,9 @@ var menudata={children:[
 {text:"Typedefs",url:"functions_type.html"},
 {text:"Enumerations",url:"functions_enum.html"},
 {text:"Enumerator",url:"functions_eval.html",children:[
-{text:"c",url:"functions_eval.html#index_c"},
 {text:"d",url:"functions_eval.html#index_d"},
 {text:"e",url:"functions_eval.html#index_e"},
 {text:"i",url:"functions_eval.html#index_i"},
-{text:"l",url:"functions_eval.html#index_l"},
 {text:"n",url:"functions_eval.html#index_n"},
 {text:"o",url:"functions_eval.html#index_o"},
 {text:"p",url:"functions_eval.html#index_p"},

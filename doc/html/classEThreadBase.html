@@ -86,7 +86,7 @@ Inheritance diagram for EThreadBase:</div>
 <area href="classEThreadPrivate.html" alt="EThreadPrivate" shape="rect" coords="73,112,210,136"/>
 <area href="classEThreadPublic.html" alt="EThreadPublic" shape="rect" coords="220,112,357,136"/>
 <area href="classDNS_1_1CacheRefresher.html" alt="DNS::CacheRefresher" shape="rect" coords="0,168,137,192"/>
-<area href="classESocketThread.html" alt="ESocketThread" shape="rect" coords="147,168,284,192"/>
+<area href="classESocket_1_1Thread.html" title="The socket thread base class. An event based thread class capable of surfacing socket events." alt="ESocket::Thread" shape="rect" coords="147,168,284,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -431,7 +431,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Called when an event message is queued. </p>
 <p>This method is called in the context of the thread where <a class="el" href="classEThreadBase.html#a97febd31652251deb5e00c9f3d64d2f7" title="Sends event message to this thread.">sendMessage()</a> is called after the message has been added to the thread's event queue. </p>
 
-<p>Reimplemented in <a class="el" href="classESocketThread.html#a97e4758c3b818549490a94c7af82442a">ESocketThread</a>, <a class="el" href="classEThreadPrivate.html#a04469f19f61978560d3914b4b916a89e">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a6534bd2f9d64993776ac687a6722f3b3">EThreadPublic</a>.</p>
+<p>Reimplemented in <a class="el" href="classEThreadPrivate.html#a04469f19f61978560d3914b4b916a89e">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a6534bd2f9d64993776ac687a6722f3b3">EThreadPublic</a>.</p>
 
 </div>
 </div>
@@ -460,7 +460,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Called in the context of the thread when the EM_INIT event is processed. </p>
 
-<p>Reimplemented in <a class="el" href="classESocketThread.html#a2a8818dc9b30b640dd4c56f480b66f6e">ESocketThread</a>, <a class="el" href="classDNS_1_1CacheRefresher.html#ab00c977aa84cdcddbc2fa1aa4da3bdf2">DNS::CacheRefresher</a>, <a class="el" href="classEThreadPrivate.html#a70f81bbf659900f7799fffdd4e14d2c1">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a7586d4ccdc53355361200029cd5f2ee3">EThreadPublic</a>.</p>
+<p>Reimplemented in <a class="el" href="classDNS_1_1CacheRefresher.html#ab00c977aa84cdcddbc2fa1aa4da3bdf2">DNS::CacheRefresher</a>, <a class="el" href="classEThreadPrivate.html#a70f81bbf659900f7799fffdd4e14d2c1">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a7586d4ccdc53355361200029cd5f2ee3">EThreadPublic</a>.</p>
 
 </div>
 </div>
@@ -489,7 +489,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Called in the context of the thread when the EM_QUIT event is processed. </p>
 
-<p>Reimplemented in <a class="el" href="classESocketThread.html#a44dd2cb213d3632f1134ccd6aa4790be">ESocketThread</a>, <a class="el" href="classDNS_1_1CacheRefresher.html#a70cdded6e856d3f7a399bedc7832f12b">DNS::CacheRefresher</a>, <a class="el" href="classEThreadPrivate.html#aca0004bdca78128ff494bde04cd9f9aa">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a14ec123f843c9b7d2c5ca5085b0883ca">EThreadPublic</a>.</p>
+<p>Reimplemented in <a class="el" href="classDNS_1_1CacheRefresher.html#a70cdded6e856d3f7a399bedc7832f12b">DNS::CacheRefresher</a>, <a class="el" href="classEThreadPrivate.html#aca0004bdca78128ff494bde04cd9f9aa">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#a14ec123f843c9b7d2c5ca5085b0883ca">EThreadPublic</a>.</p>
 
 </div>
 </div>
@@ -634,7 +634,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Any overridden version of <a class="el" href="classEThreadBase.html#a1bd2aed96644cddeee26afa48f89793c" title="Process event messages.">pumpMessages()</a> must call <a class="el" href="classEThreadBase.html#a23a46cd6bd972559853f28fd18f56741" title="Dispatches the next thread event message.">pumpMessage()</a> to process each individual message. </p>
 
-<p>Reimplemented in <a class="el" href="classESocketThread.html#ae88eb7df2ad33bfc9b6cffc439723131">ESocketThread</a>, <a class="el" href="classEThreadPrivate.html#ae525253aa589ed4518399af754f45656">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#ab303fe35e2512f34f6b9a84e750d70fa">EThreadPublic</a>.</p>
+<p>Reimplemented in <a class="el" href="classEThreadPrivate.html#ae525253aa589ed4518399af754f45656">EThreadPrivate</a>, and <a class="el" href="classEThreadPublic.html#ab303fe35e2512f34f6b9a84e750d70fa">EThreadPublic</a>.</p>
 
 </div>
 </div>

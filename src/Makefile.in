@@ -163,8 +163,9 @@ am_libepc_a_OBJECTS = libepc_a-ebase.$(OBJEXT) \
 	libepc_a-estring.$(OBJEXT) libepc_a-esynch.$(OBJEXT) \
 	libepc_a-etbase.$(OBJEXT) libepc_a-ethread.$(OBJEXT) \
 	libepc_a-etime.$(OBJEXT) libepc_a-etimer.$(OBJEXT) \
-	libepc_a-etq.$(OBJEXT) libepc_a-eutil.$(OBJEXT) \
-	libepc_a-dnscache.$(OBJEXT) libepc_a-dnsparser.$(OBJEXT)
+	libepc_a-etimerpool.$(OBJEXT) libepc_a-etq.$(OBJEXT) \
+	libepc_a-eutil.$(OBJEXT) libepc_a-dnscache.$(OBJEXT) \
+	libepc_a-dnsparser.$(OBJEXT)
 libepc_a_OBJECTS = $(am_libepc_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -356,6 +357,7 @@ libepc_a_SOURCES = \
    ethread.cpp       \
    etime.cpp         \
    etimer.cpp        \
+   etimerpool.cpp    \
    etq.cpp           \
    eutil.cpp         \
    dnscache.cpp      \
@@ -473,6 +475,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ethread.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etimer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etimerpool.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etq.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-eutil.Po@am__quote@
 
@@ -867,6 +870,20 @@ libepc_a-etimer.obj: etimer.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etimer.cpp' object='libepc_a-etimer.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etimer.obj `if test -f 'etimer.cpp'; then $(CYGPATH_W) 'etimer.cpp'; else $(CYGPATH_W) '$(srcdir)/etimer.cpp'; fi`
+
+libepc_a-etimerpool.o: etimerpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etimerpool.o -MD -MP -MF $(DEPDIR)/libepc_a-etimerpool.Tpo -c -o libepc_a-etimerpool.o `test -f 'etimerpool.cpp' || echo '$(srcdir)/'`etimerpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etimerpool.Tpo $(DEPDIR)/libepc_a-etimerpool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etimerpool.cpp' object='libepc_a-etimerpool.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etimerpool.o `test -f 'etimerpool.cpp' || echo '$(srcdir)/'`etimerpool.cpp
+
+libepc_a-etimerpool.obj: etimerpool.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etimerpool.obj -MD -MP -MF $(DEPDIR)/libepc_a-etimerpool.Tpo -c -o libepc_a-etimerpool.obj `if test -f 'etimerpool.cpp'; then $(CYGPATH_W) 'etimerpool.cpp'; else $(CYGPATH_W) '$(srcdir)/etimerpool.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etimerpool.Tpo $(DEPDIR)/libepc_a-etimerpool.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etimerpool.cpp' object='libepc_a-etimerpool.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etimerpool.obj `if test -f 'etimerpool.cpp'; then $(CYGPATH_W) 'etimerpool.cpp'; else $(CYGPATH_W) '$(srcdir)/etimerpool.cpp'; fi`
 
 libepc_a-etq.o: etq.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etq.o -MD -MP -MF $(DEPDIR)/libepc_a-etq.Tpo -c -o libepc_a-etq.o `test -f 'etq.cpp' || echo '$(srcdir)/'`etq.cpp

@@ -54,6 +54,7 @@ nobase_include_HEADERS =   \
    epc/ethread.h           \
    epc/etime.h             \
    epc/etimer.h            \
+   epc/etimerpool.h        \
    epc/etq.h               \
    epc/etypes.h            \
    epc/eutil.h

@@ -286,6 +286,13 @@ Bool EThreadBase::sendMessage(UInt message, LongLong quadPart, Bool wait_for_slo
    return result;
 }
 
+Bool EThreadBase::sendMessage(EThreadMessage &message, Bool wait_for_slot)
+{
+   Bool result = queue().push(message.getMsgId(), message.getQuadPart(), wait_for_slot);
+   messageQueued();
+   return result;
+}
+
 Void EThreadBase::init(pVoid arg, Bool suspended, size_t stackSize)
 {
    m_arg = arg;

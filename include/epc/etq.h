@@ -82,12 +82,17 @@ public:
       m_msgid = msgid;
       m_data.quadPart = quadPart;
    }
+   EThreadMessage(const EThreadMessage &msg)
+   {
+      m_msgid = msg.m_msgid;
+      m_data.quadPart = msg.m_data.quadPart;
+   }
 
    ~EThreadMessage()
    {
    }
 
-   EThreadMessage &operator=(EThreadMessage &val)
+   EThreadMessage &operator=(const EThreadMessage &val)
    {
       m_msgid = val.m_msgid;
       m_timer = val.m_timer;

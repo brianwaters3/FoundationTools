@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['Name',['../classEError.html#a3f026182a4b0ddece206507a5ee08a3d',1,'EError::Name()'],['../classESharedMemoryError__UnableToCreateKeyFile.html#ad63c815afe341417a424f7b853e880ba',1,'ESharedMemoryError_UnableToCreateKeyFile::Name()']]],
+  ['name',['Name',['../classEError.html#a3f026182a4b0ddece206507a5ee08a3d',1,'EError']]],
   ['name_5fday_5fweek_5fabb',['NAME_DAY_WEEK_ABB',['../etime_8h.html#a53821bec19f0f2535608ede81f8ff633ab7954f566a7d78ce8668b635a2fada71',1,'etime.h']]],
   ['namedserver',['NamedServer',['../structDNS_1_1NamedServer.html',1,'DNS']]],
   ['namedserverid_5ft',['namedserverid_t',['../namespaceDNS.html#ad6cf1813705e2c74085cac02622b6d1f',1,'DNS']]],
@@ -24,6 +24,6 @@ var searchData=
   ['num_5fof_5fdays_5fleapyear',['NUM_OF_DAYS_LEAPYEAR',['../etime_8h.html#a1a399d80122637d684ab62dfe33c14ee',1,'etime.h']]],
   ['num_5fof_5fdays_5fweek',['NUM_OF_DAYS_WEEK',['../etime_8h.html#a1cad4b43dad510b172b31010b9340db2',1,'etime.h']]],
   ['num_5fof_5fdays_5fyear',['NUM_OF_DAYS_YEAR',['../etime_8h.html#a4f3bda19b9edba2edc052ac62b7ea378',1,'etime.h']]],
-  ['numreaders',['numReaders',['../classEQueueBase.html#a6ae1ff98a5be367c3f20186ca14e1b53',1,'EQueueBase::numReaders()'],['../classEQueuePrivate.html#afbf24e6603486bb89d5cab8bae9bef2f',1,'EQueuePrivate::numReaders()'],['../classEQueuePublic.html#a492afc58527f907de1dd215e5162fbb3',1,'EQueuePublic::numReaders()'],['../classEThreadQueueBase.html#af87891465eb18050c4d5cc592b641dfd',1,'EThreadQueueBase::numReaders()'],['../classEThreadQueuePublic.html#a2076720c2481708acde7157212bed0a4',1,'EThreadQueuePublic::numReaders()'],['../classEThreadQueuePrivate.html#a88b8871cb2e3e618009a82120f72b93d',1,'EThreadQueuePrivate::numReaders()']]],
-  ['numwriters',['numWriters',['../classEQueueBase.html#a26725be06f7cc36bd6ad7b259f25fc41',1,'EQueueBase::numWriters()'],['../classEQueuePrivate.html#a91ba633fb9a05aad46d875fa850a9187',1,'EQueuePrivate::numWriters()'],['../classEQueuePublic.html#acfd60e7f2a41e2ef1da6905cabb3b7a8',1,'EQueuePublic::numWriters()'],['../classEThreadQueueBase.html#a197f52e05a53184994a5d45335f5090e',1,'EThreadQueueBase::numWriters()'],['../classEThreadQueuePublic.html#aa0c9218301fe6023239843a400151048',1,'EThreadQueuePublic::numWriters()'],['../classEThreadQueuePrivate.html#a478c17b9fedce5037b01225a37c61046',1,'EThreadQueuePrivate::numWriters()']]]
+  ['numreaders',['numReaders',['../classEThreadQueueBase.html#af87891465eb18050c4d5cc592b641dfd',1,'EThreadQueueBase::numReaders()'],['../classEThreadQueuePublic.html#a2076720c2481708acde7157212bed0a4',1,'EThreadQueuePublic::numReaders()'],['../classEThreadQueuePrivate.html#a88b8871cb2e3e618009a82120f72b93d',1,'EThreadQueuePrivate::numReaders()']]],
+  ['numwriters',['numWriters',['../classEThreadQueueBase.html#a197f52e05a53184994a5d45335f5090e',1,'EThreadQueueBase::numWriters()'],['../classEThreadQueuePublic.html#aa0c9218301fe6023239843a400151048',1,'EThreadQueuePublic::numWriters()'],['../classEThreadQueuePrivate.html#a478c17b9fedce5037b01225a37c61046',1,'EThreadQueuePrivate::numWriters()']]]
 ];

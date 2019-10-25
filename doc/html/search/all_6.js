@@ -1,7 +1,7 @@
 var searchData=
 [
   ['false',['False',['../ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8',1,'ebase.h']]],
-  ['family',['family',['../structDNS_1_1NamedServer.html#aaa935958eaa8f38e3245bd30a466fce8',1,'DNS::NamedServer']]],
+  ['family',['Family',['../classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76',1,'ESocket::Address::Family()'],['../structDNS_1_1NamedServer.html#aaa935958eaa8f38e3245bd30a466fce8',1,'DNS::NamedServer::family()']]],
   ['fdapplication',['FDApplication',['../classFDApplication.html',1,'FDApplication'],['../classFDApplication.html#a38de0bbaca16afd58d2eb96bf63767a0',1,'FDApplication::FDApplication(FDDictionaryEntryApplication *de)'],['../classFDApplication.html#af5e06bcde2e54d03058ac95a110e194a',1,'FDApplication::FDApplication()']]],
   ['fdavp',['FDAvp',['../classFDAvp.html',1,'FDAvp'],['../classFDAvp.html#ae5d25299e08fff0a341a39fb7aa717fb',1,'FDAvp::FDAvp(FDDictionaryEntryAVP &amp;de, Bool dedel=false)'],['../classFDAvp.html#ac0b0874958f517c7ac7ae0248a305034',1,'FDAvp::FDAvp(FDDictionaryEntryAVP &amp;de, struct avp *a, Bool dedel=false)']]],
   ['fdbuffer',['FDBuffer',['../classFDBuffer.html',1,'FDBuffer&lt; T &gt;'],['../classFDBuffer.html#a9ab2a8fc717ef4cf30aaaba6c3a65e6a',1,'FDBuffer::FDBuffer()']]],

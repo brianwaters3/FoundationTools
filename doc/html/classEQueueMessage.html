@@ -71,6 +71,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a message to be written to/read from a message queue.  
+ <a href="classEQueueMessage.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="eqbase_8h_source.html">eqbase.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for EQueueMessage:</div>
@@ -85,25 +88,31 @@ Inheritance diagram for EQueueMessage:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a34ec71ead815ad7957f52d3d76461933"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">EQueueMessage</a> ()</td></tr>
+<tr class="memdesc:a34ec71ead815ad7957f52d3d76461933"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">More...</a><br /></td></tr>
 <tr class="separator:a34ec71ead815ad7957f52d3d76461933"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad032447289237fe63f6b6b117ca80edc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">~EQueueMessage</a> ()</td></tr>
+<tr class="memdesc:ad032447289237fe63f6b6b117ca80edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">More...</a><br /></td></tr>
 <tr class="separator:ad032447289237fe63f6b6b117ca80edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6c6479b85fe9d55752bfed034780516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEQueueMessage.html">EQueueMessage</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">operator=</a> (const <a class="el" href="classEQueueMessage.html">EQueueMessage</a> &amp;a)</td></tr>
+<tr class="memdesc:ae6c6479b85fe9d55752bfed034780516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <a href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">More...</a><br /></td></tr>
 <tr class="separator:ae6c6479b85fe9d55752bfed034780516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af001a37d24975f70833267232b1c0acc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">getLength</a> (<a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a> &amp;length)</td></tr>
-<tr class="memdesc:af001a37d24975f70833267232b1c0acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the packed length of a message.  <a href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">More...</a><br /></td></tr>
+<tr class="memdesc:af001a37d24975f70833267232b1c0acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the length of the message.  <a href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">More...</a><br /></td></tr>
 <tr class="separator:af001a37d24975f70833267232b1c0acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a073b83c6eb60a8313eb1d3025f8845"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">serialize</a> (<a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> pBuffer, <a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a> &amp;nOffset)</td></tr>
-<tr class="memdesc:a8a073b83c6eb60a8313eb1d3025f8845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes (packs) a message.  <a href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">More...</a><br /></td></tr>
+<tr class="memdesc:a8a073b83c6eb60a8313eb1d3025f8845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the message.  <a href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">More...</a><br /></td></tr>
 <tr class="separator:a8a073b83c6eb60a8313eb1d3025f8845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae009309b11a70546ac08a867b43cf02b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">unserialize</a> (<a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> pBuffer, <a class="el" href="etypes_8h.html#a6607e461df297723bc2fbbaa87530bbf">ULong</a> &amp;nOffset)</td></tr>
-<tr class="memdesc:ae009309b11a70546ac08a867b43cf02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unserializes (unpacks) a message.  <a href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">More...</a><br /></td></tr>
+<tr class="memdesc:ae009309b11a70546ac08a867b43cf02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserializes the message.  <a href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">More...</a><br /></td></tr>
 <tr class="separator:ae009309b11a70546ac08a867b43cf02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a526a9c415e66ab7f2d1cf2cdfe79aa95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classETime.html">ETime</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">getTimer</a> ()</td></tr>
+<tr class="memdesc:a526a9c415e66ab7f2d1cf2cdfe79aa95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the message lifetime timer.  <a href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">More...</a><br /></td></tr>
 <tr class="separator:a526a9c415e66ab7f2d1cf2cdfe79aa95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3236366140cdb177b50577f2cee6f8ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">setMsgType</a> (<a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> msgType)</td></tr>
+<tr class="memdesc:a3236366140cdb177b50577f2cee6f8ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the message type value.  <a href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">More...</a><br /></td></tr>
 <tr class="separator:a3236366140cdb177b50577f2cee6f8ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a360ae27882013bb47a31e39d5cd54eec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">getMsgType</a> ()</td></tr>
+<tr class="memdesc:a360ae27882013bb47a31e39d5cd54eec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the message type value.  <a href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">More...</a><br /></td></tr>
 <tr class="separator:a360ae27882013bb47a31e39d5cd54eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classEMessage"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEMessage')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classEMessage.html">EMessage</a></td></tr>
 <tr class="memitem:a969ee041d1fe897752829ba22ff5850c inherit pub_methods_classEMessage"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEMessage.html#a969ee041d1fe897752829ba22ff5850c">EMessage</a> ()</td></tr>
@@ -250,7 +259,9 @@ Friends</h2></td></tr>
 <tr class="memitem:ae6772dab8f4989884e3bbaf2df0b2061"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEQueueMessage.html#ae6772dab8f4989884e3bbaf2df0b2061">EQueueBase</a></td></tr>
 <tr class="separator:ae6772dab8f4989884e3bbaf2df0b2061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a message to be written to/read from a message queue. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a34ec71ead815ad7957f52d3d76461933"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a34ec71ead815ad7957f52d3d76461933">&#9670;&nbsp;</a></span>EQueueMessage()</h2>
 
@@ -273,6 +284,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -298,6 +311,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Class destructor. </p>
 
 </div>
 </div>
@@ -326,10 +341,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Calculates the packed length of a message. </p>
+<p>Calculates the length of the message. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">length</td><td>a reference to the length value to update. </td></tr>
+    <tr><td class="paramname">length</td><td>the variable to update with the length. </td></tr>
   </table>
   </dd>
 </dl>
@@ -361,6 +376,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves the message type value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the message type value. </dd></dl>
+
 </div>
 </div>
 <a id="a526a9c415e66ab7f2d1cf2cdfe79aa95"></a>
@@ -385,6 +403,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the message lifetime timer. </p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to the message lifetime timer. </dd></dl>
 
 </div>
 </div>
@@ -411,6 +432,15 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>the <a class="el" href="classEQueueMessage.html" title="Represents a message to be written to/read from a message queue.">EQueueMessage</a> to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to this object. </dd></dl>
 
 </div>
 </div>
@@ -448,11 +478,11 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Serializes (packs) a message. </p>
+<p>Serializes the message. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pBuffer</td><td>a pointer to the destination buffer. </td></tr>
-    <tr><td class="paramname">nOffset</td><td>a reference to the next location to write to in the buffer. </td></tr>
+    <tr><td class="paramname">pBuffer</td><td>a pointer to the serialized message data. </td></tr>
+    <tr><td class="paramname">nOffset</td><td>a reference that will update the offset where to next write data. </td></tr>
   </table>
   </dd>
 </dl>
@@ -484,6 +514,14 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Assigns the message type value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgType</td><td>the message type value. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -521,11 +559,11 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Unserializes (unpacks) a message. </p>
+<p>Deserializes the message. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pBuffer</td><td>a pointer to the raw buffer to unpack. </td></tr>
-    <tr><td class="paramname">nOffset</td><td>a reference to the next location in the buffer to unpack. </td></tr>
+    <tr><td class="paramname">pBuffer</td><td>a pointer to the serialized message data. </td></tr>
+    <tr><td class="paramname">nOffset</td><td>a reference that will update the offset where to next read data. </td></tr>
   </table>
   </dd>
 </dl>

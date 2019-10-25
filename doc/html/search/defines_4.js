@@ -17,6 +17,7 @@ var searchData=
   ['epc_5faccess',['epc_access',['../ebase_8h.html#ad7acd4822767c3ac12133368f57c9585',1,'ebase.h']]],
   ['epc_5fclosesocket',['epc_closesocket',['../esocket_8cpp.html#a6a215b95fd48e435417d63ada5d6c316',1,'esocket.cpp']]],
   ['epc_5feinprogress',['EPC_EINPROGRESS',['../esocket_8cpp.html#a10e69915df17679b0d89d0bae09f98a3',1,'esocket.cpp']]],
+  ['epc_5femsgsize',['EPC_EMSGSIZE',['../esocket_8cpp.html#af4ed2aa4fcf6a7fa86aa65d8dfbae783',1,'esocket.cpp']]],
   ['epc_5fewouldblock',['EPC_EWOULDBLOCK',['../esocket_8cpp.html#a2a31ed11e98b7cd82f39ce52c3a63916',1,'esocket.cpp']]],
   ['epc_5ffilename_5fmax',['EPC_FILENAME_MAX',['../ebase_8h.html#a41e2969a97793c6f35881c6f1d054145',1,'ebase.h']]],
   ['epc_5ffseek',['epc_fseek',['../ebase_8h.html#a9782af06caaea5f92e9044f8de1b3b58',1,'ebase.h']]],

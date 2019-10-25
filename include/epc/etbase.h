@@ -205,6 +205,9 @@ public:
    ///
    Int cancelWait();
 
+   /// @brief
+   Void signal(Int sig) { pthread_kill(m_thread, sig); }
+
 protected:
    /// @brief performs internal initialization *** DO NOT CALL ***
    static Void Initialize();
@@ -411,6 +414,15 @@ public:
    /// One 64-bit value is included with the message.
    /// 
    Bool sendMessage(UInt message, LongLong quadPart, Bool wait = True);
+   /// @brief Sends event message to this thread.
+   ///
+   /// @param message the message thread message object to send.
+   /// @param wait waits for the message to be sent
+   ///
+   /// @details
+   /// Sends (posts) the supplied event message to this thread's event queue.
+   /// 
+   Bool sendMessage(EThreadMessage &message, Bool wait = True);
 
    /// @brief Initializes the EThreadBase thread object.
    ///
@@ -516,6 +528,7 @@ private:
    Int m_suspendCnt;
    ESemaphorePrivate m_suspendSem;
 };
+typedef std::shared_ptr<EThreadBase> EThreadBasePtr;
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

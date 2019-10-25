@@ -43,12 +43,6 @@ var searchData=
   ['esemaphoreprivate',['ESemaphorePrivate',['../classESemaphorePrivate.html',1,'']]],
   ['esemaphorepublic',['ESemaphorePublic',['../classESemaphorePublic.html',1,'']]],
   ['esharedmemory',['ESharedMemory',['../classESharedMemory.html',1,'']]],
-  ['esharedmemoryerror_5funabletocreatekeyfile',['ESharedMemoryError_UnableToCreateKeyFile',['../classESharedMemoryError__UnableToCreateKeyFile.html',1,'']]],
-  ['esocket',['ESocket',['../classESocket.html',1,'']]],
-  ['esocketconverse',['ESocketConverse',['../classESocketConverse.html',1,'']]],
-  ['esocketlisten',['ESocketListen',['../classESocketListen.html',1,'']]],
-  ['esocketmap',['ESocketMap',['../classESocketMap.html',1,'']]],
-  ['esocketthread',['ESocketThread',['../classESocketThread.html',1,'']]],
   ['estatic',['EStatic',['../classEStatic.html',1,'']]],
   ['estatistics',['EStatistics',['../classEStatistics.html',1,'']]],
   ['estring',['EString',['../classEString.html',1,'']]],
@@ -65,6 +59,7 @@ var searchData=
   ['ethreadqueuepublic',['EThreadQueuePublic',['../classEThreadQueuePublic.html',1,'']]],
   ['etime',['ETime',['../classETime.html',1,'']]],
   ['etimer',['ETimer',['../classETimer.html',1,'']]],
+  ['etimerpool',['ETimerPool',['../classETimerPool.html',1,'']]],
   ['eutility',['EUtility',['../classEUtility.html',1,'']]],
   ['ewrlock',['EWRLock',['../classEWRLock.html',1,'']]]
 ];

@@ -75,16 +75,17 @@ typedef long long int epctime_t;
 #include <limits.h>
 
 // stl
-#include <string>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
 #include <list>
 #include <map>
-#include <vector>
+#include <memory>
 #include <set>
-#include <iostream>
-#include <fstream>
 #include <sstream>
-#include <iomanip>
-#include <cmath>
+#include <string>
+#include <vector>
 using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -71,26 +71,38 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>The shared memory access class.  
+ <a href="classESharedMemory.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="eshmem_8h_source.html">eshmem.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abb36ed3d7aca6d3aa1626a09d09cbbaa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#abb36ed3d7aca6d3aa1626a09d09cbbaa">ESharedMemory</a> ()</td></tr>
+<tr class="memdesc:abb36ed3d7aca6d3aa1626a09d09cbbaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classESharedMemory.html#abb36ed3d7aca6d3aa1626a09d09cbbaa">More...</a><br /></td></tr>
 <tr class="separator:abb36ed3d7aca6d3aa1626a09d09cbbaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab234e244944fb79c9d6a978553d5d7e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#ab234e244944fb79c9d6a978553d5d7e4">ESharedMemory</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> file, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> id, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> size)</td></tr>
+<tr class="memdesc:ab234e244944fb79c9d6a978553d5d7e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESharedMemory.html#ab234e244944fb79c9d6a978553d5d7e4">More...</a><br /></td></tr>
 <tr class="separator:ab234e244944fb79c9d6a978553d5d7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9f944b21e2054d7228d41672177fd01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#ab9f944b21e2054d7228d41672177fd01">~ESharedMemory</a> ()</td></tr>
+<tr class="memdesc:ab9f944b21e2054d7228d41672177fd01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classESharedMemory.html#ab9f944b21e2054d7228d41672177fd01">More...</a><br /></td></tr>
 <tr class="separator:ab9f944b21e2054d7228d41672177fd01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad231d66f0e4d22240690008d6131cff7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">init</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> file, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> id, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> size)</td></tr>
+<tr class="memdesc:ad231d66f0e4d22240690008d6131cff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes this shared memory object. This method is called by the parameterized constructor.  <a href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">More...</a><br /></td></tr>
 <tr class="separator:ad231d66f0e4d22240690008d6131cff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affda2d92d4ba4506b196d7c266b777ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">getDataPtr</a> ()</td></tr>
+<tr class="memdesc:affda2d92d4ba4506b196d7c266b777ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a pointer to the first location of the shated memory.  <a href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">More...</a><br /></td></tr>
 <tr class="separator:affda2d92d4ba4506b196d7c266b777ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a663df10e1bd29583ef6fdb53844ae474"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#a663df10e1bd29583ef6fdb53844ae474">onDestroy</a> ()</td></tr>
+<tr class="memdesc:a663df10e1bd29583ef6fdb53844ae474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when teh shared memory is destroyed.  <a href="classESharedMemory.html#a663df10e1bd29583ef6fdb53844ae474">More...</a><br /></td></tr>
 <tr class="separator:a663df10e1bd29583ef6fdb53844ae474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c3f7647baddb3eab4d296586050c89e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESharedMemory.html#a4c3f7647baddb3eab4d296586050c89e">getUsageCount</a> ()</td></tr>
+<tr class="memdesc:a4c3f7647baddb3eab4d296586050c89e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the number of clients accessing the shared memory.  <a href="classESharedMemory.html#a4c3f7647baddb3eab4d296586050c89e">More...</a><br /></td></tr>
 <tr class="separator:a4c3f7647baddb3eab4d296586050c89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The shared memory access class. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abb36ed3d7aca6d3aa1626a09d09cbbaa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb36ed3d7aca6d3aa1626a09d09cbbaa">&#9670;&nbsp;</a></span>ESharedMemory() <span class="overload">[1/2]</span></h2>
 
@@ -105,6 +117,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -140,6 +154,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the file name associated with the shared memory. </td></tr>
+    <tr><td class="paramname">id</td><td>the identifier for the shared memory. </td></tr>
+    <tr><td class="paramname">size</td><td>the amount of memory to allocate for this shared memory object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab9f944b21e2054d7228d41672177fd01"></a>
@@ -156,6 +180,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Class destructor. </p>
 
 </div>
 </div>
@@ -183,6 +209,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves a pointer to the first location of the shated memory. </p>
+<dl class="section return"><dt>Returns</dt><dd>a pointer to the first location of the shated memory. </dd></dl>
+
 </div>
 </div>
 <a id="a4c3f7647baddb3eab4d296586050c89e"></a>
@@ -199,6 +228,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves the number of clients accessing the shared memory. </p>
 
 </div>
 </div>
@@ -234,6 +265,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Initializes this shared memory object. This method is called by the parameterized constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the file name associated with the shared memory. </td></tr>
+    <tr><td class="paramname">id</td><td>the identifier for the shared memory. </td></tr>
+    <tr><td class="paramname">size</td><td>the amount of memory to allocate for this shared memory object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a663df10e1bd29583ef6fdb53844ae474"></a>
@@ -258,6 +299,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Called when teh shared memory is destroyed. </p>
 
 </div>
 </div>

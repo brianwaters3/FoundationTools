@@ -54,7 +54,7 @@ var searchData=
   ['dia_5fprotocol_5ftls_5ftcp',['dia_protocol_tls_tcp',['../namespaceEPCDNS.html#a28954380b48f08776a2a9444678bb713a23e9f4e832af29479fec459131894943',1,'EPCDNS']]],
   ['dia_5fprotocol_5funknown',['dia_protocol_unknown',['../namespaceEPCDNS.html#a28954380b48f08776a2a9444678bb713ad22630f7dec51ab75ceaeacb12fa7527',1,'EPCDNS']]],
   ['diameter',['diameter',['../classEStatistics.html#af0c90a6321515dc102a560fea68e2201a35f16dc084a53860f5cb3962107d5378',1,'EStatistics']]],
-  ['disconnected',['DISCONNECTED',['../classESocket.html#acaee031fbd05eccae4ddfda016c12e27af0dbe49caa34312748eb66d2b54f4c3d',1,'ESocket']]],
+  ['disconnected',['Disconnected',['../classESocket_1_1TCP_1_1Talker.html#a6cf3b40536b92ce79665e20cd10471ddaef70e46fd3bbc21e3e1f0b6815e750c0',1,'ESocket::TCP::Talker']]],
   ['dnt_5fhostname',['dnt_hostname',['../namespaceEPCDNS.html#ac24caeda3af42ad616a18a346afffdeca98c811aa77e192783bd5e05c98842388',1,'EPCDNS']]],
   ['dnt_5fservice',['dnt_service',['../namespaceEPCDNS.html#ac24caeda3af42ad616a18a346afffdeca7d5e765e53d2a98deb0a68db86f1fcb9',1,'EPCDNS']]],
   ['dnt_5funknown',['dnt_unknown',['../namespaceEPCDNS.html#ac24caeda3af42ad616a18a346afffdeca5d64dbf64317639ab22fee84b67f5f3c',1,'EPCDNS']]],

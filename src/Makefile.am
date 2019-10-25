@@ -53,6 +53,7 @@ libepc_a_SOURCES =   \
    ethread.cpp       \
    etime.cpp         \
    etimer.cpp        \
+   etimerpool.cpp    \
    etq.cpp           \
    eutil.cpp         \
    dnscache.cpp      \

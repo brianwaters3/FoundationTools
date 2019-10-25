@@ -19,6 +19,7 @@
 #include <iostream>
 #include <locale>
 #include <memory.h>
+#include <signal.h>
 
 #include "epc/epctools.h"
 #include "epc/ethread.h"
@@ -26,6 +27,7 @@
 #include "epc/einternal.h"
 
 #include "epc/ecli.h"
+#include "epc/etimerpool.h"
 
 std::locale defaultLocale;
 std::locale mylocale;
@@ -2288,6 +2290,131 @@ Void ELogger_test()
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define EM_TIMERPOOLTEST1 (EM_USER + 1)
+#define EM_TIMERPOOLTEST2 (EM_USER + 2)
+#define EM_TIMERPOOLTEST3 (EM_USER + 3)
+#define EM_TIMERPOOLTEST4 (EM_USER + 4)
+
+class TimerPoolTestThread : public EThreadPrivate
+{
+public:
+
+   Void userFunc1(EThreadMessage &msg)
+   {
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc1 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+   }
+
+   Void userFunc2(EThreadMessage &msg)
+   {
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc2 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+   }
+
+   Void userFunc3(EThreadMessage &msg)
+   {
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc3 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+   }
+
+   Void userFunc4(EThreadMessage &msg)
+   {
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc4 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+   }
+
+   DECLARE_MESSAGE_MAP()
+};
+
+BEGIN_MESSAGE_MAP(TimerPoolTestThread, EThreadPrivate)
+   ON_MESSAGE(EM_TIMERPOOLTEST1, TimerPoolTestThread::userFunc1)
+   ON_MESSAGE(EM_TIMERPOOLTEST2, TimerPoolTestThread::userFunc2)
+   ON_MESSAGE(EM_TIMERPOOLTEST3, TimerPoolTestThread::userFunc3)
+   ON_MESSAGE(EM_TIMERPOOLTEST4, TimerPoolTestThread::userFunc4)
+END_MESSAGE_MAP()
+
+Void timerpooltest()
+{
+   ETimerPool::Instance().setResolution( 50 );
+   ETimerPool::Instance().setRounding( ETimerPool::Rounding::up );
+
+   std::cout << "ETimerPool Settings" << std::endl
+      << "\tresolution = " << ETimerPool::Instance().getResolution() << std::endl;
+   std::cout
+      << "\trounding = " << (ETimerPool::Instance().getRounding()==ETimerPool::Rounding::up?"UP":"DOWN") << std::endl;
+   std::cout
+      << "\ttimer signal = " << strsignal(ETimerPool::Instance().getTimerSignal()) << std::endl;
+   std::cout
+      << "\tquit signal = " << strsignal(ETimerPool::Instance().getQuitSignal()) << std::endl;
+   
+   std::cout << "Initializing ETimerPool..." << std::flush;
+   ETimerPool::Instance().init();
+   std::cout << "complete" << std::endl << std::flush;
+
+   std::cout << "Starting TimerPoolTestThread..." << std::flush;
+   TimerPoolTestThread t;
+   t.init(1, 1, NULL, 200000);
+   std::cout << "complete" << std::endl << std::endl << std::flush;
+
+   ETime now;
+   std::cout << "Starting registrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+   ULong id1 = ETimerPool::Instance().registerTimer(1000, EThreadMessage(EM_TIMERPOOLTEST1,11111111111111), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id1 << " for 1000ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   ULong id2 = ETimerPool::Instance().registerTimer(2500, EThreadMessage(EM_TIMERPOOLTEST2,22222222222222), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id2 << " for 2500ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   ULong id3 = ETimerPool::Instance().registerTimer(4123, EThreadMessage(EM_TIMERPOOLTEST3,33333333333333), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id3 << " for 4123ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   ULong id4 = ETimerPool::Instance().registerTimer(1000, EThreadMessage(EM_TIMERPOOLTEST4,44444444444444), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id4 << " for 1000ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   now = ETime::Now();
+   std::cout << "Completed registrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+
+   std::cout << "Sleeping for 10 seconds" << std::endl << std::flush;
+   EThreadBasic::sleep(10000);
+   ETimerPool::Instance().dump();
+
+   now = ETime::Now();
+   std::cout << "Starting registrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl;
+   id1 = ETimerPool::Instance().registerTimer(1000, EThreadMessage(EM_TIMERPOOLTEST1,11111111111111), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id1 << " for 1000ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   id2 = ETimerPool::Instance().registerTimer(2500, EThreadMessage(EM_TIMERPOOLTEST2,22222222222222), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id2 << " for 2500ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   id3 = ETimerPool::Instance().registerTimer(4123, EThreadMessage(EM_TIMERPOOLTEST3,33333333333333), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id3 << " for 4123ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   id4 = ETimerPool::Instance().registerTimer(1000, EThreadMessage(EM_TIMERPOOLTEST4,44444444444444), t);
+   std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " registered timer " << id4 << " for 1000ms" << std::endl << std::flush;
+   ETimerPool::Instance().dump();
+   now = ETime::Now();
+   std::cout << "Completed registrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+
+   now = ETime::Now();
+   std::cout << "Starting unregistrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+   std::cout << "Unregistering " << id1 << std::endl << std::flush;
+   ETimerPool::Instance().unregisterTimer( id1 );
+   ETimerPool::Instance().dump();
+   std::cout << "Unregistering " << id3 << std::endl << std::flush;
+   ETimerPool::Instance().unregisterTimer( id3 );
+   ETimerPool::Instance().dump();
+   now = ETime::Now();
+   std::cout << "Completed unregistrations at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+
+   now = ETime::Now();
+   std::cout << "Calling ETimerPool::Instance().uninit()" << std::endl << std::flush;
+   ETimerPool::Instance().uninit(True);
+   now = ETime::Now();
+   std::cout << "Completed ETimerPool::Instance().uninit() at tv_sec=" << now.getTimeVal().tv_sec << " tv_usec=" << now.getTimeVal().tv_usec << std::endl << std::flush;
+   
+   t.quit();
+   t.join();
+   std::cout << "ETimerPool test complete" << std::endl << std::flush;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -2315,7 +2442,7 @@ Void printMenu()
        "10. Private Mutex test                         28. Options test                 \n"
        "11. Public Mutex test                          29. Logger test                  \n"
        "12. Private Semaphore test                     30. UDP socket test              \n"
-       "13. Public Semaphore test                                                       \n"
+       "13. Public Semaphore test                      31. Timer Pool test              \n"
        "14. Basic thread test                                                           \n"
        "15. Thread suspend/resume                                                       \n"
        "16. Thread periodic timer test                                                  \n"
@@ -2435,6 +2562,9 @@ Void run(EGetOpt &options)
             break;
          case 30:
             udpsockettest();
+            break;
+         case 31:
+            timerpooltest();
             break;
          default:
             cout << "Invalid Selection" << endl
@@ -2557,8 +2687,34 @@ int main(int argc, char *argv[])
 
    std::cout.imbue(mylocale);
 
+ETime now = ETime::Now();
+std::cout
+   << "timeval.tv_sec="
+   << now.getTimeVal().tv_sec
+   << " sizeof(timeval.tv_sec)="
+   << sizeof(now.getTimeVal().tv_sec)
+   << " timeval.tv_usec="
+   << now.getTimeVal().tv_usec
+   << " sizeof(timeval.tv_usec)="
+   << sizeof(now.getTimeVal().tv_usec)
+   << " (timeval.tv_sec * 1000000 + timeval.tv_usec % 1000000)="
+   << now.getTimeVal().tv_sec * 1000000 + now.getTimeVal().tv_usec % 1000000
+   << std::endl << std::flush;
+
    try
    {
+      {
+         sigset_t sigset;
+
+         /* mask SIGALRM in all threads by default */
+         sigemptyset(&sigset);
+         sigaddset(&sigset, SIGRTMIN);
+         sigaddset(&sigset, SIGRTMIN + 2);
+         sigaddset(&sigset, SIGRTMIN + 3);
+         sigaddset(&sigset, SIGUSR1);
+         sigprocmask(SIG_BLOCK, &sigset, NULL);
+      }
+
       EpcTools::Initialize(opt);
 
       run(opt);
