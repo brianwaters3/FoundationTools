@@ -18,6 +18,8 @@
 #include <sched.h>
 #include <time.h>
 #include <pthread.h>
+#include <unistd.h>
+#include <sys/syscall.h>
 
 #include "etbase.h"
 #include "eatomic.h"
@@ -247,6 +249,7 @@ END_MESSAGE_MAP()
 
 EThreadBase::EThreadBase()
     : EThreadBasic(),
+      m_tid(-1),
       m_arg(NULL),
       m_stacksize(0),
       m_suspendCnt(0),
@@ -326,6 +329,13 @@ Void EThreadBase::resume()
 {
    if (atomic_dec(m_suspendCnt) == 0)
       m_suspendSem.Increment();
+}
+
+pid_t EThreadBase::getThreadId()
+{
+   if (m_tid == -1)
+      m_tid = syscall(SYS_gettid);
+   return m_tid;
 }
 
 Void EThreadBase::onInit()
@@ -479,7 +489,7 @@ Void EThreadBase::Timer::init(EThreadBase *pThread)
 {
    m_pThread = pThread;
 
-   struct sigevent sev;
+   struct sigevent sev = {};
    sev.sigev_notify = SIGEV_SIGNAL;
    sev.sigev_signo = SIGRTMIN;
    sev.sigev_value.sival_ptr = this;

@@ -519,10 +519,15 @@ protected:
    ///
    virtual Void defMessageHandler(EThreadMessage &msg);
 
+   /// @brief Retrieves the internal thread ID.
+   /// @return the internal thread ID
+   pid_t getThreadId();
+
 private:
    Dword threadProc(pVoid arg);
    Bool dispatch(EThreadMessage &msg);
 
+   pid_t m_tid;
    pVoid m_arg;
    size_t m_stacksize;
    Int m_suspendCnt;

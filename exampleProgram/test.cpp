@@ -2708,7 +2708,6 @@ std::cout
 
          /* mask SIGALRM in all threads by default */
          sigemptyset(&sigset);
-         sigaddset(&sigset, SIGRTMIN);
          sigaddset(&sigset, SIGRTMIN + 2);
          sigaddset(&sigset, SIGRTMIN + 3);
          sigaddset(&sigset, SIGUSR1);
