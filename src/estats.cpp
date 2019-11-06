@@ -78,8 +78,10 @@ Bool EStatistics::DiameterHook::getResult(struct msg *m)
    return false;
 }
 
+/// @cond DOXYGEN_EXCLUDE
+
 Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg,
-   struct peer_hdr * peer, void * other, struct fd_hook_permsgdata *pmd)
+   struct peer_hdr * peer, Void * other, struct fd_hook_permsgdata *pmd)
 {
    struct msg_hdr* hdr = NULL;
 
@@ -144,6 +146,8 @@ Void EStatistics::DiameterHook::process(enum fd_hook_type type, struct msg * msg
       // return;
    }
 }
+
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

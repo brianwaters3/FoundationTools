@@ -27,6 +27,8 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
+
 EThreadError_UnableToResume::EThreadError_UnableToResume() : EError()
 {
    setSevere();
@@ -81,6 +83,8 @@ EThreadTimerError_UnableToStop::EThreadTimerError_UnableToStop()
    setTextf("%s: Error stopping timer - ", Name());
    appendLastOsError();
 }
+
+/// @endcond
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -485,6 +489,7 @@ EThreadBase::Timer::~Timer()
    destroy();
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Void EThreadBase::Timer::init(EThreadBase *pThread)
 {
    m_pThread = pThread;
@@ -496,6 +501,7 @@ Void EThreadBase::Timer::init(EThreadBase *pThread)
    if (timer_create(CLOCK_REALTIME, &sev, &m_timer) == -1)
       throw EThreadTimerError_UnableToInitialize();
 }
+/// @endcond
 
 Void EThreadBase::Timer::destroy()
 {
@@ -543,6 +549,7 @@ void EThreadBase::Timer::_timerHandler(int signo, siginfo_t *pinfo, void *pconte
 
 EThreadBase::TimerHandler _initTimerHandler;
 
+/// @cond DOXYGEN_EXCLUDE
 Void EThreadBase::TimerHandler::init(EGetOpt &options)
 {
    struct sigaction sa;
@@ -557,3 +564,4 @@ Void EThreadBase::TimerHandler::init(EGetOpt &options)
 Void EThreadBase::TimerHandler::uninit()
 {
 }
+/// @endcond

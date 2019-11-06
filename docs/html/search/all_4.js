@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['datatype',['dataType',['../structEGetOpt_1_1Option.html#abbed4084dc5b746da1a190f9137b23c3',1,'EGetOpt::Option::dataType()'],['../classEGetOpt.html#ae8a83370799c1a12d423360b34486aa5',1,'EGetOpt::DataType()']]],
+  ['datatype',['DataType',['../classEGetOpt.html#ae8a83370799c1a12d423360b34486aa5',1,'EGetOpt::DataType()'],['../structEGetOpt_1_1Option.html#abbed4084dc5b746da1a190f9137b23c3',1,'EGetOpt::Option::dataType()']]],
   ['datefromstr',['DateFromStr',['../etime_8cpp.html#a66652644b8a46da38a2b1ae312e864b9',1,'etime.cpp']]],
   ['day',['day',['../classETime.html#acaa7d41f38b364e0c76ba0903468d06c',1,'ETime']]],
   ['ddtaddress',['DDTAddress',['../efd_8h.html#a9c0e4cae2225ac169c8fa180b60e9a14ac15d5d840818af35dcac7c9b33478ebe',1,'efd.h']]],
@@ -76,7 +76,7 @@ var searchData=
   ['diameterselector',['DiameterSelector',['../classEPCDNS_1_1DiameterSelector.html',1,'EPCDNS::DiameterSelector'],['../classEPCDNS_1_1DiameterSelector.html#ab6228812c29bb9a01ba1722c40370131',1,'EPCDNS::DiameterSelector::DiameterSelector()']]],
   ['diametersrv',['DiameterSrv',['../classEPCDNS_1_1DiameterSrv.html',1,'EPCDNS::DiameterSrv'],['../classEPCDNS_1_1DiameterSrv.html#aca98aeeba9938fcd6754caf04473c259',1,'EPCDNS::DiameterSrv::DiameterSrv()']]],
   ['diametersrvvector',['DiameterSrvVector',['../classEPCDNS_1_1DiameterSrvVector.html',1,'EPCDNS']]],
-  ['disconnect',['disconnect',['../classESocket_1_1Base.html#a9e35506ad70eec3497161a574bb26d7b',1,'ESocket::Base::disconnect()'],['../classESocket_1_1TCP_1_1Talker.html#afc89869d337b3a42d0d2542d45832708',1,'ESocket::TCP::Talker::disconnect()'],['../classESocket_1_1UDP.html#ac9e775573f485c1791fd582ff191afca',1,'ESocket::UDP::disconnect()']]],
+  ['disconnect',['disconnect',['../classESocket_1_1Base.html#aa9f3bc7902768f4c6b63d4987c8bb81a',1,'ESocket::Base::disconnect()'],['../classESocket_1_1TCP_1_1Talker.html#afc89869d337b3a42d0d2542d45832708',1,'ESocket::TCP::Talker::disconnect()'],['../classESocket_1_1UDP.html#ac9e775573f485c1791fd582ff191afca',1,'ESocket::UDP::disconnect()']]],
   ['disconnected',['Disconnected',['../classESocket_1_1TCP_1_1Talker.html#a6cf3b40536b92ce79665e20cd10471ddaef70e46fd3bbc21e3e1f0b6815e750c0',1,'ESocket::TCP::Talker']]],
   ['dns',['DNS',['../namespaceDNS.html',1,'']]],
   ['dnscache_2ecpp',['dnscache.cpp',['../dnscache_8cpp.html',1,'']]],

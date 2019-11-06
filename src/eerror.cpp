@@ -22,9 +22,9 @@
 #include "ebase.h"
 #include "eerror.h"
 
-cpStr EError::m_pszSeverity[] =
-    {
-        "Info", "Warning", "Error"};
+/// @cond DOXYGEN_EXCLUDE
+cpStr EError::m_pszSeverity[] = { "Info", "Warning", "Error" };
+/// @endcond
 
 Void EError::setTextf(cpStr pszFormat, ...)
 {

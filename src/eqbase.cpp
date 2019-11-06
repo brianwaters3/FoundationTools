@@ -42,6 +42,8 @@ Void EQueueMessage::unserialize(pVoid pBuffer, ULong &nOffset)
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
+
 EQueueBase::EQueueBase()
 {
    m_initialized = False;
@@ -113,6 +115,8 @@ Void EQueueBase::init(ULong nMsgSize,
       throw;
    }
 }
+
+/// @endcond
 
 Void EQueueBase::destroy()
 {

@@ -22,6 +22,8 @@
 #include "dnsparser.h"
 #include "eerror.h"
 
+/// @cond DOXYGEN_EXCLUDE
+
 using namespace DNS;
 
 Parser::Parser( QueryPtr &q, unsigned char *rdata, int rlen )
@@ -312,3 +314,5 @@ void Parser::parseCharacterString( EString &cs )
    // force the string to lower case
    std::transform( cs.begin(), cs.end(), cs.begin(), ::tolower );
 }
+
+/// @endcond

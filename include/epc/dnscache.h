@@ -66,7 +66,7 @@ namespace DNS
       QueryProcessorThread();
       Void wait_for_completion();
 
-      bool m_shutdown;
+      Bool m_shutdown;
       QueryProcessor &m_qp;
       ESemaphorePrivate m_activequeries;
    };
@@ -158,7 +158,7 @@ namespace DNS
 
    private:
       CacheRefresher();
-      static Void callback( QueryPtr q, bool cacheHit, const Void *data );
+      static Void callback( QueryPtr q, Bool cacheHit, const Void *data );
       Void _submitQueries( std::list<QueryCacheKey> &keys );
       Void _refreshQueries();
       Void _saveQueries();
@@ -169,7 +169,7 @@ namespace DNS
       int m_percent;
       EThreadBase::Timer m_timer;
       long m_interval;
-      bool m_running;
+      Bool m_running;
       EString m_qfn;
       long m_qsf;
       EThreadBase::Timer m_qst;
@@ -249,9 +249,9 @@ namespace DNS
       /// @param rtype the named server type of the query.
       /// @param domain the domain name of the query.
       /// @param cb a callback function pointer that will be called when the query is complete.
-      /// @param data a void pointer that will be passed to the callback function when the query is complete.
+      /// @param data a Void pointer that will be passed to the callback function when the query is complete.
       /// @param ignorecache directs the query to optionally ignore any results in the local DNS cache.
-      Void query( ns_type rtype, const std::string &domain, CachedDNSQueryCallback cb, const Void *data=NULL, bool ignorecache=false );
+      Void query( ns_type rtype, const std::string &domain, CachedDNSQueryCallback cb, const Void *data=NULL, Bool ignorecache=false );
 
       /// @brief Executes the DNS queries at startup from the suppoied file.
       /// @param qfn the DNS query file name to load.

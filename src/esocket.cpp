@@ -17,6 +17,7 @@
 
 #include <sys/fcntl.h>
 #include <unistd.h>
+#include <csignal>
 
 #include "esocket.h"
 
@@ -38,6 +39,8 @@ typedef socklen_t EPC_SOCKLEN;
 
 namespace ESocket
 {
+
+/// @cond DOXYGEN_EXCLUDE
 
 AddressError_UnknownAddressType::AddressError_UnknownAddressType()
 {
@@ -96,19 +99,6 @@ TcpListenerError_UnableToAcceptSocket::TcpListenerError_UnableToAcceptSocket()
    setTextf("%s: Error accepting new connection in accept() - ", Name());
    appendLastOsError();
 }
-
-// ESocketError_GetAddressInfo::ESocketError_GetAddressInfo(cpStr msg)
-// {
-//    setSevere();
-//    setTextf("%s: Error getting address info in getaddrinfo() - %s", Name(), msg);
-// }
-
-// ESocketError_NoAddressesFound::ESocketError_NoAddressesFound(cpStr msg)
-// {
-//    setSevere();
-//    setTextf("%s: Error no addresses found in getaddrinfo() for %s - ", Name(), msg);
-//    appendLastOsError();
-// }
 
 TcpListenerError_UnableToListen::TcpListenerError_UnableToListen()
 {
@@ -210,9 +200,14 @@ ThreadError_UnableToWritePipe::ThreadError_UnableToWritePipe()
    appendLastOsError();
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 // ESocket::Base
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
+
 Base::Base(Thread &thread, SocketType socktype, Int family, Int type, Int protocol)
    : m_thread( thread ),
      m_socktype( socktype ),
@@ -324,6 +319,8 @@ Address &Base::setRemoteAddress(Address &addr)
    return addr;
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 // ESocket::TCP::Talker
 ////////////////////////////////////////////////////////////////////////////////
@@ -374,6 +371,7 @@ namespace TCP
       }
    }
 
+   /// @cond DOXYGEN_EXCLUDE
    Int Talker::recv()
    {
       //
@@ -409,6 +407,7 @@ namespace TCP
 
       return totalReceived;
    }
+   /// @endcond
 
    Int Talker::send(pUChar pData, Int length)
    {
@@ -423,8 +422,6 @@ namespace TCP
 
       return result;
    }
-
-   #include <csignal>
 
    Void Talker::send(Bool override)
    {
@@ -732,6 +729,7 @@ Void UDP::bind()
    }
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Int UDP::recv()
 {
    Int totalReceived = 0;
@@ -763,6 +761,7 @@ Int UDP::recv()
 
    return totalReceived;
 }
+/// @endcond
 
 Int UDP::send(Address &addr, cpVoid pData, Int length)
 {
@@ -904,6 +903,7 @@ Thread::~Thread()
 {
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Void Thread::onInit()
 {
    EThreadPrivate::onInit();
@@ -913,6 +913,7 @@ Void Thread::onQuit()
 {
    EThreadPrivate::onQuit();
 }
+/// @endcond
 
 Void Thread::registerSocket(Base *psocket)
 {
@@ -1088,6 +1089,7 @@ Void Thread::processSelectError(Base *psocket)
    psocket->onError();
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Void Thread::messageQueued()
 {
    EThreadPrivate::messageQueued();
@@ -1097,6 +1099,7 @@ Void Thread::messageQueued()
 Void Thread::onError()
 {
 }
+/// @endcond
 
 int Thread::getMaxFileDescriptor()
 {
@@ -1108,6 +1111,7 @@ int Thread::getMaxFileDescriptor()
    return (maxfd > m_pipefd[0]) ? maxfd : m_pipefd[0];
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Void Thread::bump()
 {
    if (write(m_pipefd[1], "~", 1) == -1)
@@ -1127,6 +1131,7 @@ Void Thread::clearBump()
       }
    }
 }
+/// @endcond
 
 Bool Thread::pumpMessagesInternal()
 {
@@ -1152,6 +1157,7 @@ Bool Thread::pumpMessagesInternal()
    return msg.getMsgId() != EM_QUIT;
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Void Thread::pumpMessages()
 {
    int maxfd, fd, fdcnt;
@@ -1274,5 +1280,5 @@ Void Thread::pumpMessages()
       delete psocket;
    }
 }
-
+/// @endcond
 }

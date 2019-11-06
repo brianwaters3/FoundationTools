@@ -18,11 +18,18 @@
 #include "eqpub.h"
 #include "esynch2.h"
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
+
 EQueuePublicError_QueueNotFound::EQueuePublicError_QueueNotFound(Int queueid)
 {
    setSevere();
    setTextf("Unable to find queueid %d ", queueid);
 }
+
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,6 +44,8 @@ EQueuePublic::~EQueuePublic()
 {
    destroy();
 }
+
+/// @cond DOXYGEN_EXCLUDE
 
 Void EQueuePublic::init(Int queueid, EQueueBase::Mode mode)
 {
@@ -133,3 +142,5 @@ Void EQueuePublic::allocDataSpace(cpStr sFile, Char cId, Int nSize)
    m_pCtrl = (esharedqueue_ctrl_t *)m_sharedmem.getDataPtr();
    m_pData = ((pChar)m_sharedmem.getDataPtr()) + sizeof(esharedqueue_ctrl_t);
 }
+
+/// @endcond

@@ -86,7 +86,7 @@ public:
       }
 
       Void process(enum fd_hook_type type, struct msg * msg, struct peer_hdr * peer,
-         void * other, struct fd_hook_permsgdata *pmd);
+         Void * other, struct fd_hook_permsgdata *pmd);
       
       Void setLogger(ELogger &logger) { m_logger = &logger; }
    /// @endcond

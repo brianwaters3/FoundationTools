@@ -17,7 +17,9 @@
 
 #include "estatic.h"
 
+/// @cond DOXYGEN_EXCLUDE
 EStatic *EStatic::m_pFirst = NULL;
+/// @endcond
 
 Void EStatic::Initialize(EGetOpt &opt)
 {
@@ -43,6 +45,8 @@ void EStatic::UnInitialize()
    }
 }
 
+/// @cond DOXYGEN_EXCLUDE
+
 EStatic::~EStatic()
 {
    EStatic *last = NULL;
@@ -63,3 +67,5 @@ EStatic::EStatic()
    m_pNext = m_pFirst;
    m_pFirst = this;
 }
+
+/// @endcond

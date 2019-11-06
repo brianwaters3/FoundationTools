@@ -100,9 +100,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae81c17af7bc8660d5e3bc56b526fce8e"><td class="memItemLeft" align="right" valign="top">QueryPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDNS_1_1Cache.html#ae81c17af7bc8660d5e3bc56b526fce8e">query</a> (ns_type rtype, const std::string &amp;domain, Bool &amp;cacheHit, Bool ignorecache=false)</td></tr>
 <tr class="memdesc:ae81c17af7bc8660d5e3bc56b526fce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a <a class="el" href="namespaceDNS.html">DNS</a> query synchronously.  <a href="classDNS_1_1Cache.html#ae81c17af7bc8660d5e3bc56b526fce8e">More...</a><br /></td></tr>
 <tr class="separator:ae81c17af7bc8660d5e3bc56b526fce8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e1b30e085948e81716c76f2d727e4ce"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDNS_1_1Cache.html#a6e1b30e085948e81716c76f2d727e4ce">query</a> (ns_type rtype, const std::string &amp;domain, CachedDNSQueryCallback cb, const Void *data=NULL, bool ignorecache=false)</td></tr>
-<tr class="memdesc:a6e1b30e085948e81716c76f2d727e4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a <a class="el" href="namespaceDNS.html">DNS</a> query asynchronously.  <a href="classDNS_1_1Cache.html#a6e1b30e085948e81716c76f2d727e4ce">More...</a><br /></td></tr>
-<tr class="separator:a6e1b30e085948e81716c76f2d727e4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876d958479ed3cb4e5c6dfadfeb1ce08"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDNS_1_1Cache.html#a876d958479ed3cb4e5c6dfadfeb1ce08">query</a> (ns_type rtype, const std::string &amp;domain, CachedDNSQueryCallback cb, const Void *data=NULL, Bool ignorecache=false)</td></tr>
+<tr class="memdesc:a876d958479ed3cb4e5c6dfadfeb1ce08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a <a class="el" href="namespaceDNS.html">DNS</a> query asynchronously.  <a href="classDNS_1_1Cache.html#a876d958479ed3cb4e5c6dfadfeb1ce08">More...</a><br /></td></tr>
+<tr class="separator:a876d958479ed3cb4e5c6dfadfeb1ce08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e0464482d38ff888e59abfd4efd1580"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDNS_1_1Cache.html#a3e0464482d38ff888e59abfd4efd1580">loadQueries</a> (const char *qfn)</td></tr>
 <tr class="memdesc:a3e0464482d38ff888e59abfd4efd1580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the <a class="el" href="namespaceDNS.html">DNS</a> queries at startup from the suppoied file.  <a href="classDNS_1_1Cache.html#a3e0464482d38ff888e59abfd4efd1580">More...</a><br /></td></tr>
 <tr class="separator:a3e0464482d38ff888e59abfd4efd1580"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -599,8 +599,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e1b30e085948e81716c76f2d727e4ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e1b30e085948e81716c76f2d727e4ce">&#9670;&nbsp;</a></span>query() <span class="overload">[2/2]</span></h2>
+<a id="a876d958479ed3cb4e5c6dfadfeb1ce08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a876d958479ed3cb4e5c6dfadfeb1ce08">&#9670;&nbsp;</a></span>query() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -632,7 +632,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
+          <td class="paramtype">Bool&#160;</td>
           <td class="paramname"><em>ignorecache</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
@@ -649,7 +649,7 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramname">rtype</td><td>the named server type of the query. </td></tr>
     <tr><td class="paramname">domain</td><td>the domain name of the query. </td></tr>
     <tr><td class="paramname">cb</td><td>a callback function pointer that will be called when the query is complete. </td></tr>
-    <tr><td class="paramname">data</td><td>a void pointer that will be passed to the callback function when the query is complete. </td></tr>
+    <tr><td class="paramname">data</td><td>a Void pointer that will be passed to the callback function when the query is complete. </td></tr>
     <tr><td class="paramname">ignorecache</td><td>directs the query to optionally ignore any results in the local <a class="el" href="namespaceDNS.html">DNS</a> cache. </td></tr>
   </table>
   </dd>

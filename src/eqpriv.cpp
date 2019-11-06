@@ -36,6 +36,8 @@ EQueuePrivate::~EQueuePrivate()
    destroy();
 }
 
+/// @cond DOXYGEN_EXCLUDE
+
 ULong &EQueuePrivate::msgSize()
 {
    return m_msgSize;
@@ -110,3 +112,5 @@ Void EQueuePrivate::allocDataSpace(cpStr sFile, Char cId, Int nSize)
    m_pData = (pChar)malloc(nSize);
    memset(m_pData, 0, nSize);
 }
+
+/// @endcond

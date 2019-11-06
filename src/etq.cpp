@@ -18,6 +18,8 @@
 #include "etq.h"
 #include "esynch2.h"
 
+/// @cond DOXYGEN_EXCLUDE
+
 Bool EThreadQueueBase::m_debug = False;
 
 EThreadQueueBase::EThreadQueueBase()
@@ -198,8 +200,12 @@ Bool EThreadQueueBase::peek(EThreadMessage &msg, Bool wait)
    return True;
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 EThreadQueuePublic::EThreadQueuePublic()
 {
@@ -239,8 +245,12 @@ Void EThreadQueuePublic::initSemMsgs(UInt initialCount)
    s.detach();
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 EThreadQueuePrivate::EThreadQueuePrivate()
     : m_mutex(False), m_semFree(0, False), m_semMsgs(0, False)
@@ -285,3 +295,5 @@ Void EThreadQueuePrivate::initSemMsgs(UInt initialCount)
 {
    m_semMsgs.init(initialCount);
 }
+
+/// @endcond

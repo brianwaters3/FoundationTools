@@ -81,6 +81,7 @@ using namespace RAPIDJSON_NAMESPACE;
 
 namespace DNS
 {
+   /// @cond DOXYGEN_EXLCUDE
    QueryProcessorThread::QueryProcessorThread(QueryProcessor &qp)
       : m_shutdown( false ),
         m_qp(qp),
@@ -213,10 +214,12 @@ namespace DNS
 
       delete qq;
    }
+   /// @endcond
 
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @cond DOXYGEN_EXCLUDE
    QueryProcessor::QueryProcessor( Cache &cache )
       : m_cache( cache ),
         m_qpt( *this )
@@ -356,6 +359,7 @@ namespace DNS
    {
       m_qpt.decActiveQueries();
    }
+   /// @endcond
 
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
@@ -459,7 +463,7 @@ namespace DNS
       m_qp.applyNamedServers();
    }
 
-   QueryPtr Cache::query( ns_type rtype, const std::string & domain, bool &cacheHit, bool ignorecache )
+   QueryPtr Cache::query( ns_type rtype, const std::string & domain, Bool &cacheHit, Bool ignorecache )
    {
       QueryPtr q = lookupQuery( rtype, domain );
 
@@ -476,11 +480,11 @@ namespace DNS
       return q;
    }
 
-   Void Cache::query( ns_type rtype, const std::string &domain, CachedDNSQueryCallback cb, const Void *data, bool ignorecache )
+   Void Cache::query( ns_type rtype, const std::string &domain, CachedDNSQueryCallback cb, const Void *data, Bool ignorecache )
    {
       QueryPtr q = lookupQuery( rtype, domain );
 
-      bool cacheHit = !( !q || q->isExpired() );
+      Bool cacheHit = !( !q || q->isExpired() );
 
       if ( cacheHit && !ignorecache )
       {
@@ -516,6 +520,7 @@ namespace DNS
       m_refresher.forceRefresh();
    }
 
+   /// @cond DOXYGEN_EXCLUDE
    QueryPtr Cache::lookupQuery( ns_type rtype, const std::string &domain )
    {
       QueryCacheKey qck( rtype, domain );
@@ -572,9 +577,12 @@ namespace DNS
       for (auto val : m_cache )
          keys.push_back( val.first );
    }
+   /// @endcond
 
    ////////////////////////////////////////////////////////////////////////////////
    ////////////////////////////////////////////////////////////////////////////////
+
+   /// @cond DOXYGEN_EXCLUDE
 
    BEGIN_MESSAGE_MAP(CacheRefresher, EThreadPrivate)
       ON_MESSAGE(CR_SAVEQUERIES, CacheRefresher::saveQueries)
@@ -613,7 +621,7 @@ namespace DNS
          _saveQueries();
    }
 
-   Void CacheRefresher::callback( QueryPtr q, bool cacheHit, const Void *data )
+   Void CacheRefresher::callback( QueryPtr q, Bool cacheHit, const Void *data )
    {
       CacheRefresher *ths = (CacheRefresher*)data;
       ths->m_sem.Increment();
@@ -755,4 +763,10 @@ namespace DNS
          throw EError( EError::Warning, msg );
       }
    }
+
+   /// @endcond
+
+   ////////////////////////////////////////////////////////////////////////////////
+   ////////////////////////////////////////////////////////////////////////////////
+
 } // namespace DNS

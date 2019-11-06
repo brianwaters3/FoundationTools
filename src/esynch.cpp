@@ -26,6 +26,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
+
 EMutexError_UnableToInitialize::EMutexError_UnableToInitialize(Int err)
 {
    setSevere();
@@ -47,8 +49,12 @@ EMutexError_UnableToUnLock::EMutexError_UnableToUnLock(Int err)
    appendLastOsError(err);
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 ESemaphoreError_UnableToInitialize::ESemaphoreError_UnableToInitialize()
 {
@@ -71,8 +77,12 @@ ESemaphoreError_UnableToIncrement::ESemaphoreError_UnableToIncrement()
    appendLastOsError();
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 ESynchObjectsError_UnableToAllocateSynchObject::ESynchObjectsError_UnableToAllocateSynchObject(Int err)
 {
@@ -81,11 +91,15 @@ ESynchObjectsError_UnableToAllocateSynchObject::ESynchObjectsError_UnableToAlloc
    appendLastOsError(err);
 }
 
+/// @endcond
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 ESynchObjects _synchObjCtrl;
 ESynchObjects *ESynchObjects::m_pThis = NULL;
+/// @endcond
 
 Void ESynchObjects::ESynchObjectsSharedMemory::onDestroy()
 {
@@ -96,6 +110,7 @@ Void ESynchObjects::ESynchObjectsSharedMemory::setSynchObjectsPtr(ESynchObjects 
    m_pSynchObjects = p;
 }
 
+/// @cond DOXYGEN_EXCLUDE
 ESynchObjects::ESynchObjects()
 {
    m_pCtrl = NULL;
@@ -300,10 +315,13 @@ Void ESynchObjects::freeMutex(Int nMutexId)
 
    pctrl->m_mutexCtrl.m_currused--;
 }
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 // Common Mutex Classes
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 Void EMutexData::init(Bool isPublic)
 {
@@ -371,6 +389,8 @@ Void EMutexData::leave()
    atomic_swap(mutex(), 0);
 #endif
 }
+
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 // Public Mutex Classes
@@ -492,10 +512,12 @@ Bool ESemaphoreData::Increment()
 // Public Semaphore Classes
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 ESemaphoreData &ESemaphorePublic::getData()
 {
    return ESynchObjects::getSemaphore(m_semid);
 }
+/// @endcond
 
 Void ESemaphorePublic::init(Long initialCount)
 {
@@ -521,12 +543,14 @@ Void ESemaphorePublic::destroy()
    m_semid = 0;
 }
 
+/// @cond DOXYGEN_EXCLUDE
 Int &ESemaphorePublic::nextIndex()
 {
    if (m_semid == 0)
       throw ESemaphoreError_NotInitialized();
    return ESynchObjects::getSynchObjCtrlPtr()->getSemaphore(m_semid).nextIndex();      
 }
+/// @endcond
 
 Int &ESemaphorePublic::semIndex()
 {
@@ -553,6 +577,7 @@ Void ESemaphorePublic::detach()
 // Private Read/Write Lock Classes
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 ERWLockError_LockAttrInitFailed::ERWLockError_LockAttrInitFailed(Int err)
 {
    setSevere();
@@ -566,6 +591,7 @@ ERWLockError_LockInitFailed::ERWLockError_LockInitFailed(Int err)
    setText("Unable to initialize read/write lock ");
    appendLastOsError(err);
 }
+/// @endcond
 
 ERWLock::ERWLock()
 {
@@ -591,6 +617,7 @@ ERWLock::~ERWLock()
    pthread_rwlock_destroy( &m_rwlock );
 }
 
+/// @cond DOXYGEN_EXCLUDE
 bool ERWLock::enter( ReadWrite rw, bool wait )
 {
    int status;
@@ -613,26 +640,11 @@ bool ERWLock::enter( ReadWrite rw, bool wait )
    return status == 0;
 }
 
-//bool ERWLock::enter( ReadWrite rw, long ms )
-//{
-//   int status;
-//
-//   struct timespec ts;
-//   ts.tv_sec = ms / 1000;
-//   ts.tv_nsec = (ms % 1000) * 1000000;
-//
-//   if (rw == ERWLock::Read)
-//      status = pthread_rwlock_timedrdlock( &m_rwlock, &ts );
-//   else
-//      status = pthread_rwlock_timedwrlock( &m_rwlock, &ts );
-//
-//   return status == 0;
-//}
-
 void ERWLock::leave()
 {
    pthread_rwlock_unlock( &m_rwlock );
 }
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
