@@ -30,7 +30,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-ETimerPoolError_UnableCreatingTimer::ETimerPoolError_UnableCreatingTimer()
+ETimerPoolError_CreatingTimer::ETimerPoolError_CreatingTimer()
 {
    setSevere();
    setTextf("%s: Error executing timer_create() - ", Name());
@@ -85,7 +85,7 @@ ULong ETimerPool::registerTimer(LongLong ms, const EThreadMessage &msg, EThreadB
       {
          tp = std::make_shared<Timer>();
          if (!tp->create(m_thread.getThreadId(), getTimerSignal()))
-            throw ETimerPoolError_UnableCreatingTimer();
+            throw ETimerPoolError_CreatingTimer();
       }
       else
       {

@@ -693,7 +693,7 @@ namespace ESocket
       /// @param msg pointer to the received data.
       /// @param len number of bytes received.
       virtual Void onReceive(const Address &from, pVoid msg, Int len);
-      /// @param Called when an error is detected on this socket.
+      /// @brief Called when an error is detected on this socket.
       virtual Void onError();
 
    protected:

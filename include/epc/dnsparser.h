@@ -18,6 +18,8 @@
 #ifndef __DNSPARSER_H
 #define __DNSPARSER_H
 
+/// @cond DOXYGEN_EXCLUDE
+
 #include "estring.h"
 #include "dnsquery.h"
 
@@ -148,5 +150,7 @@ namespace DNS
       static const int SRV_TARGET_OFS       = 6;
    };
 }
+
+/// @endcond
 
 #endif // #ifndef DNSPARSER_H

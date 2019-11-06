@@ -28,7 +28,7 @@
 #include "ethread.h"
 #include "etime.h"
 
-DECLARE_ERROR_ADVANCED(ETimerPoolError_UnableCreatingTimer);
+DECLARE_ERROR_ADVANCED(ETimerPoolError_CreatingTimer);
 DECLARE_ERROR_ADVANCED(ETimerPoolError_TimerSetTimeFailed);
 
 class ETimerPool
@@ -53,12 +53,17 @@ protected:
 
    friend ExpirationTime;
 public:
+   /// @brief Defines how rounding will be performed.
    enum class Rounding
    {
+      /// Rounds up
       up,
+      /// Rounds down
       down
    };
 
+   /// @brief Retrieves the single instance of the ETimerPool object.
+   /// @return a reference to the single instance of the ETimerPool object.
    static ETimerPool &Instance()
    {
       if (!m_instance)
@@ -66,27 +71,62 @@ public:
       return *m_instance;
    }
 
+   /// @brief Default constructor.
    ETimerPool();
+   /// @brief Class destructor.
    ~ETimerPool();
 
+   /// @brief Retrieves the current timer resolution value.
+   /// @param raw True retrieves the value in milliseconds, otherwise microseconds.
+   /// @return the current timer resolution value.
    LongLong getResolution(Bool raw=False) { return raw ? m_resolution : m_resolution / 1000; }
+   /// @brief Retrieves the current rounding value.
+   /// @return the current rounding value.
    Rounding getRounding()                 { return m_rounding; }
+   /// @brief Retrieves the current timer signal value.
+   /// @return the current timer signal value.
    Int getTimerSignal()                   { return m_sigtimer; }
+   /// @brief Retrieves the current quit signal value.
+   /// @return the current quit signal value.
    Int getQuitSignal()                    { return m_sigquit; }
 
+   /// @brief Assigns the timer resolution value.
+   /// @param ms the resolution in milliseconds.
+   /// @return a reference to the ETimerPool object.
    ETimerPool &setResolution(LongLong ms) { m_resolution = ms * 1000;   return *this; }
+   /// @brief Assigns the timer rounding method.
+   /// @param r the timer rounding method.
+   /// @return a reference to the ETimerPool object.
    ETimerPool &setRounding(Rounding r)    { m_rounding = r;             return *this; }
+   /// @brief Assigns the timer signal value.
+   /// @param sig the timer signal value.
+   /// @return a reference to the ETimerPool object.
    ETimerPool &setTimerSignal(Int sig)    { m_sigtimer = sig;           return *this; }
+   /// @brief Assigns the quit signal value.
+   /// @param sig the quit signal value.
+   /// @return a reference to the ETimerPool object.
    ETimerPool &setQuitSignal(Int sig)     { m_sigquit = sig;            return *this; }
 
+   /// @brief Registers an expiration timer.
+   /// @param ms the length of the timer in milliseconds.
+   /// @param msg the thread message to post when the timer expires.
+   /// @param thread the thread to post the message to when the timer expires.
+   /// @return the ID for this timer.
    ULong registerTimer(LongLong ms, const EThreadMessage &msg, EThreadBase &thread);
+   /// @brief Unregisters an expiration timer.
+   /// @param timerid the ID of the timer to unregister (returned by registerTimer).
+   /// @return a reference to the ETimerPool object.
    ETimerPool &unregisterTimer(ULong timerid);
+   /// @brief Initializes the ETimerPool.
    Void init();
+   /// @brief Uninitializes the ETimerPool.
    Void uninit(Bool dumpit=False);
 
+   /// @brief Prints the contents of the internal collections.
    Void dump();
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    /////////////////////////////////////////////////////////////////////////////
    
    class Timer
@@ -293,8 +333,9 @@ protected:
 
    /////////////////////////////////////////////////////////////////////////////
 
-protected:
    Void sendNotifications(ExpirationTimeEntryPtr &etep);
+
+   /// @endcond
 
 private:
    static ETimerPool *m_instance;

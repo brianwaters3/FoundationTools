@@ -18,6 +18,8 @@
 #ifndef __esynch2_h_included
 #define __esynch2_h_included
 
+/// @file
+
 #include "esynch.h"
 #include "eshmem.h"
 #include "eatomic.h"
@@ -35,8 +37,10 @@ DECLARE_ERROR(ESynchObjectsError_InvalidOffset);
 
 class ESharedMemory;
 
+/// @brief Used internally by EpcTools for managing access to public (shared memory) objects.
 class ESynchObjects : public EStatic
 {
+/// @cond DOXYGEN_EXCLUDE
 public:
    typedef struct
    {
@@ -124,6 +128,7 @@ public:
          throw ESynchObjectsError_InvalidOffset();
       return getSynchObjCtrlPtr()->m_pMutexes[ofs - 1];
    }
+/// @endcond
 
 private:
    class ESynchObjectsSharedMemory : public ESharedMemory

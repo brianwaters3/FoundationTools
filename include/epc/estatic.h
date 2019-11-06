@@ -18,11 +18,20 @@
 #ifndef __estatic_h_included
 #define __estatic_h_included
 
+/// @file
+/// @brief Performs static initialization associated with any
+///        EpcTools class that requires it.  Initialization and
+///        uninitialization is performed by EpcTools::Initialize()
+///        and EpcTools::UnInitialize().
+
 #include "ebase.h"
 #include "egetopt.h"
 
+/// @brief Static initialization priorities.  Initialization is
+///        performed in ascending order.
 enum
 {
+   /// @cond DOXYGEN_EXCLUDE
    STATIC_INIT_TYPE_SHARED_OBJECT_MANAGER,
    STATIC_INIT_TYPE_PRIORITY,
    STATIC_INIT_TYPE_THREADS, // initialized thread info
@@ -33,8 +42,12 @@ enum
    STATIC_INIT_TYPE_BEFORE_OTHER,
    STATIC_INIT_TYPE_OTHER,
    STATIC_INIT_TYPE_AFTER_ALL //For anything that relies upon others
+   /// @endcond
 };
 
+/// @brief Any EpcTools that needs to have initialization performed
+///        as part of EpcTools::Initialize() should derive from this
+///        class and provide implementations for init() and uninit().
 class EStatic
 {
 public:
@@ -43,15 +56,22 @@ public:
 
    virtual Int getInitType() { return STATIC_INIT_TYPE_OTHER; }
 
+   /// @brief Performs class specific initialization.
+   /// @param opt reference to the options object.
    virtual Void init(EGetOpt &opt) {}
+   /// @brief Performs uninitialization at system shutdown.
    virtual Void uninit() {}
 
+   /// @cond DOXYGEN_EXCLUDE
    EStatic();
    virtual ~EStatic();
+   /// @endcond
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    static EStatic *m_pFirst;
    EStatic *m_pNext;
+   /// @endcond
 };
 
 #endif // #define __estatic_h_included

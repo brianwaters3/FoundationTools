@@ -18,6 +18,9 @@
 #ifndef __etq_h_included
 #define __etq_h_included
 
+/// @file
+/// @brief Defines the classes related to event messages and the event queues.
+
 #include "ebase.h"
 #include "eerror.h"
 #include "etimer.h"
@@ -28,22 +31,26 @@
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
+/// @cond DOXYGEN_EXCLUDE
 DECLARE_ERROR(EThreadQueueBaseError_NotOpenForWriting);
 DECLARE_ERROR(EThreadQueueBaseError_NotOpenForReading);
 DECLARE_ERROR(EThreadQueueBaseError_MultipleReadersNotAllowed);
 
 DECLARE_ERROR(EThreadQueuePublicError_UnInitialized);
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 class EThreadQueueBase;
 
+/// @brief Represents an event message to be sent to a thread.
 class EThreadMessage
 {
    friend class EThreadQueueBase;
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    typedef union _etmessage_data {
       struct
       {
@@ -52,46 +59,65 @@ protected:
       } u;
       pVoid voidPtr;
       LongLong quadPart;
+      UChar bytes[sizeof(LongLong)];
    } etmessage_data_t;
+   /// @endcond
 
 public:
+   /// @brief Default constructor.
    EThreadMessage()
    {
       m_msgid = 0;
       m_data.quadPart = 0;
    }
-
+   /// @brief Class constructor.
+   /// @param msgid the event/message ID.
    EThreadMessage(UInt msgid)
    {
       m_msgid = msgid;
       m_data.quadPart = 0;
    }
+   /// @brief Class constructor.
+   /// @param msgid the event/message ID.
+   /// @param lowPart an unsigned 32-bit value to be included with the message.
+   /// @param highPart a signed 32-bit value to be included with the message.
    EThreadMessage(UInt msgid, Dword lowPart, Long highPart)
    {
       m_msgid = msgid;
       m_data.u.lowPart = lowPart;
       m_data.u.highPart = highPart;
    }
+   /// @brief Class constructor.
+   /// @param msgid the event/message ID.
+   /// @param voidPtr a void pointer to be included with the message.
    EThreadMessage(UInt msgid, pVoid voidPtr)
    {
       m_msgid = msgid;
       m_data.voidPtr = voidPtr;
    }
+   /// @brief Class constructor.
+   /// @param msgid the event/message ID.
+   /// @param quadPart a signed 64-bit value to be included with the message.
    EThreadMessage(UInt msgid, LongLong quadPart)
    {
       m_msgid = msgid;
       m_data.quadPart = quadPart;
    }
+   /// @brief Copy constructor.
+   /// @param msg the EThreadMessage to copy.
    EThreadMessage(const EThreadMessage &msg)
    {
       m_msgid = msg.m_msgid;
       m_data.quadPart = msg.m_data.quadPart;
    }
-
+   /// @brief Class destructor.
    ~EThreadMessage()
    {
    }
 
+   /// @brief Assignment operator.
+   /// @param val the value to copy.
+   /// @return a reference to this object.
    EThreadMessage &operator=(const EThreadMessage &val)
    {
       m_msgid = val.m_msgid;
@@ -101,48 +127,72 @@ public:
       return *this;
    }
 
+   /// @brief Assigns values to this message object.
+   /// @param msgid the message ID.
    Void set(UInt msgid)
    {
       m_msgid = msgid;
       m_data.quadPart = 0;
    }
+   /// @brief Assigns values to this message object.
+   /// @param msgid the message ID.
+   /// @param lowPart an unsigned 32-bit value to be included with the message.
+   /// @param highPart a signed 32-bit value to be included with the message.
    Void set(UInt msgid, Dword lowPart, Long highPart)
    {
       m_msgid = msgid;
       m_data.u.lowPart = lowPart;
       m_data.u.highPart = highPart;
    }
+   /// @brief Assigns values to this message object.
+   /// @param msgid the message ID.
+   /// @param voidPtr a void pointer to be included with the message.
    Void set(UInt msgid, pVoid voidPtr)
    {
       m_msgid = msgid;
       m_data.voidPtr = voidPtr;
    }
+   /// @brief Assigns values to this message object.
+   /// @param msgid the message ID.
+   /// @param quadPart a signed 64-bit value to be included with the message.
    Void set(UInt msgid, LongLong quadPart)
    {
       m_msgid = msgid;
       m_data.quadPart = quadPart;
    }
 
+   /// @brief Retrieves the ETimer object associated with this event.
+   /// @return the ETimer object associated with this event.
    ETimer &getTimer()
    {
       return m_timer;
    }
+   /// @brief Retrieves the message ID associated with this message.
+   /// @return the message ID associated with this message.
    UInt &getMsgId()
    {
       return m_msgid;
    }
+   /// @brief Retrieves the unsigned 32-bit value associated with this message.
+   /// @return the unsigned 32-bit value associated with this message.
    Dword &getLowPart()
    {
       return m_data.u.lowPart;
    }
+   /// @brief Retrieves the signed 32-bit value associated with this message.
+   /// @return the signed 32-bit value associated with this message.
    Long &getHighPart()
    {
       return m_data.u.highPart;
    }
+   /// @brief Retrieves the signed 64-bit value associated with this message.
+   /// @return the signed 64-bit value associated with this message.
    LongLong &getQuadPart()
    {
       return m_data.quadPart;
    }
+   /// @brief Retrieves the void pointer value associated with this message.
+   /// @return the signed void pointer value associated with this message.
    pVoid &getVoidPtr()
    {
       return m_data.voidPtr;
@@ -156,6 +206,8 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
+
+/// @cond DOXYGEN_EXCLUDE
 
 class EThreadMessageQueuePublic;
 class EThreadMessageQueuePrivate;
@@ -326,6 +378,8 @@ private:
 
    EThreadMessage *m_pData;
 };
+
+/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////

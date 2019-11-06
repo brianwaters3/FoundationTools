@@ -49,7 +49,6 @@ nobase_include_HEADERS =   \
    epc/estring.h           \
    epc/esynch.h            \
    epc/esynch2.h           \
-   epc/esyslog.h           \
    epc/etbase.h            \
    epc/ethread.h           \
    epc/etime.h             \

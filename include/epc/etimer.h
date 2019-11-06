@@ -18,25 +18,49 @@
 #ifndef __etimer_h_included
 #define __etimer_h_included
 
+/// @file
+
 #include "ebase.h"
 
+/// @brief Implements a stopwatch style timer.
 class ETimer
 {
 public:
+   /// @brief Default constructor.
    ETimer();
+   /// @brief Copy constructor.
+   /// @param a the ETimer object to copy.
    ETimer(const ETimer &a);
+   /// @brief Class constructor.
+   /// @param t an epctime_t value to initilize the timer.
    ETimer(const epctime_t t);
+   /// @brief Class desctructor.
    ~ETimer();
 
-   void Start();
-   void Stop();
-   void Set(epctime_t a);
+   /// @brief Starts the timer.
+   Void Start();
+   /// @brief Stops the timer.
+   Void Stop();
+   /// @brief Assigns a value to the timer.
+   /// @param a the value to assign to the timer.
+   Void Set(epctime_t a);
+   /// @brief Retrieves the current value of the timer in milliseconds.
+   /// @param bRestart if True, the timer is restarted, otherwise it continues.
    epctime_t MilliSeconds(Bool bRestart = False);
+   /// @brief Retrieves the current value of the timer in microseconds.
+   /// @param bRestart if True, the timer is restarted, otherwise it continues.
    epctime_t MicroSeconds(Bool bRestart = False);
 
+   /// @brief Assignment operator.
+   /// @param a ETimer value to assign.
+   /// @return a reference to this ETimer object.
    ETimer &operator=(const ETimer &a);
+   /// @brief Assignment operator.
+   /// @param t the epctime_t value to assign.
+   /// @return a reference to this ETimer object.
    ETimer &operator=(const epctime_t t);
 
+   /// @brief Retrieves the internal epctime_t value.
    operator epctime_t() { return _time; }
 
 private:

@@ -18,6 +18,10 @@
 #ifndef __etypes_h_included
 #define __etypes_h_included
 
+/// @file
+/// @brief Contains type definitions used by this library.
+/// @cond DOXYGEN_EXCLUDE
+
 // basic data types
 #include <stdint.h>
 typedef void Void;
@@ -106,5 +110,7 @@ typedef union {
    } uli;
    ULongLong quadPart;
 } ulonginteger_t;
+
+/// @endcond
 
 #endif // #define __etypes_h_included

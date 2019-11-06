@@ -31,26 +31,6 @@ EThreadPublic::~EThreadPublic()
 {
 }
 
-// Bool EThreadPublic::sendMessage(UInt message, Bool wait)
-// {
-//    return EThreadBase::sendMessage(message, wait);
-// }
-
-// Bool EThreadPublic::sendMessage(UInt message, Dword lowPart, Long highPart, Bool wait)
-// {
-//    return EThreadBase::sendMessage(message, lowPart, highPart, wait);
-// }
-
-// Bool EThreadPublic::sendMessage(UInt message, pVoid voidPtr, Bool wait)
-// {
-//    return EThreadBase::sendMessage(message, voidPtr, wait);
-// }
-
-// Bool EThreadPublic::sendMessage(UInt message, LongLong quadPart, Bool wait)
-// {
-//    return EThreadBase::sendMessage(message, quadPart, wait);
-// }
-
 Void EThreadPublic::init(Short appId, UShort threadId, pVoid arg, Int queueSize, Bool suspended, Dword stackSize)
 {
    m_appId = appId;

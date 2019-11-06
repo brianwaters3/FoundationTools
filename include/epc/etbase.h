@@ -18,6 +18,8 @@
 #ifndef __etbase_h_included
 #define __etbase_h_included
 
+/// @file
+
 #include <time.h>
 
 #include "ebase.h"
@@ -26,8 +28,6 @@
 #include "estatic.h"
 #include "esynch.h"
 #include "etq.h"
-
-/// @file
 
 class EThreadBasic;
 class EThreadBase;

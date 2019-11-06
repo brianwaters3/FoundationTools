@@ -41,7 +41,7 @@ public:
    /// @brief Initializes the queue object.
    /// @param queueid the queue identifier.
    /// @param mode the open mode.
-   Void init(Int queuid, EQueueBase::Mode mode);
+   Void init(Int queueid, EQueueBase::Mode mode);
 
 protected:
    /// @cond DOXYGEN_EXCLUDE

@@ -18,6 +18,9 @@
 #ifndef __DNSCACHE_H
 #define __DNSCACHE_H
 
+/// @file
+/// @brief Defines classes related to the DNS cache.
+
 #include <list>
 #include <map>
 #include <ares.h>
@@ -29,6 +32,8 @@
 
 namespace DNS
 {
+   /// @cond DOXYGEN_EXCLUDE
+
    typedef int namedserverid_t;
 
    class Cache;
@@ -170,9 +175,12 @@ namespace DNS
       EThreadBase::Timer m_qst;
    };
 
+   /// @endcond
+
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Defines the functionality associated with a DNS cache
    class Cache
    {
       friend QueryProcessor;
@@ -181,46 +189,102 @@ namespace DNS
       friend CacheRefresher;
 
    public:
+      /// @brief Default constructor.
       Cache();
+      /// @brief Class destructor.
       ~Cache();
 
+      /// @brief Retrieves/creates the Cache instance associated with the named server ID.
+      /// @param nsid the named server ID.
+      /// @return a reference to the Cache object.
       static Cache& getInstance(namedserverid_t nsid);
+      /// @brief Retrieves/creates the default Cache instance.
+      /// @return a reference to the Cache object.
       static Cache& getInstance() { return getInstance(NS_DEFAULT); }
 
+      /// @brief Retrieves the current setting of the maximum number of conncurrent DNS
+      ///   queries that can be performed while refreshing the DNS cache.
       static unsigned int getRefreshConcurrent() { return m_concur; }
+      /// @brief Sets the maximum number of conncurrent DNS
+      ///   queries that can be performed while refreshing the DNS cache.
+      /// @param concur the maximum number of concurrent DNS queries.
+      /// @return the current maximum number of concurrent DNS queries.
       static unsigned int setRefreshConcurrent(unsigned int concur) { return m_concur = concur; }
 
+      /// @brief Retrieves the current refresh percentage value.
+      /// @return the current refresh percenting value.
       static int getRefreshPercent() { return m_percent; }
+      /// @brief Assigns the refresh percentage value.
+      /// @param percent the refresh percentage value.
+      /// @return the refresh percenting value.
       static int setRefreshPercent(int percent) { return m_percent = percent; }
 
+      /// @brief Retrieves the refresh interval.
+      /// @return the refresh interval.
       static long getRefeshInterval() { return m_interval; }
+      /// @brief Assigns the refresh interval.
+      /// @param interval the new refresh interval.
+      /// @return the refresh interval.
       static long setRefreshInterval(long interval) { return m_interval = interval; }
 
+      /// @brief Adds a named server to this DNS cache object.
+      /// @param address the address of the named server.
+      /// @param udp_port the UDP port to communicate with the DNS server on.
+      /// @param tcp_port the TCP port to communicate with the DNS server on.
       Void addNamedServer(const char *address, int udp_port=53, int tcp_port=53);
+      /// @brief Removes the specified named server from this DNS cache.
+      /// @param address the address of the named server to remove.
       Void removeNamedServer(const char *address);
+      /// @brief Updates the named servers as a set in the underlying c-ares library.
       Void applyNamedServers();
 
-      QueryPtr query( ns_type rtype, const std::string &domain, bool &cacheHit, bool ignorecache=false );
+      /// @brief Performs a DNS query synchronously.
+      /// @param rtype the named server type of the query.
+      /// @param domain the domain name of the query.
+      /// @param cacheHit updated with an indication if the result came from the local DNS cache.
+      /// @param ignorecache directs the query to optionally ignore any results in the local DNS cache.
+      /// @return a QueryPtr with the DNS query results.
+      QueryPtr query( ns_type rtype, const std::string &domain, Bool &cacheHit, Bool ignorecache=false );
+      /// @brief Performs a DNS query asynchronously.
+      /// @param rtype the named server type of the query.
+      /// @param domain the domain name of the query.
+      /// @param cb a callback function pointer that will be called when the query is complete.
+      /// @param data a void pointer that will be passed to the callback function when the query is complete.
+      /// @param ignorecache directs the query to optionally ignore any results in the local DNS cache.
       Void query( ns_type rtype, const std::string &domain, CachedDNSQueryCallback cb, const Void *data=NULL, bool ignorecache=false );
 
+      /// @brief Executes the DNS queries at startup from the suppoied file.
+      /// @param qfn the DNS query file name to load.
       Void loadQueries(const char *qfn);
+      /// @brief Executes the DNS queries at startup from the suppoied file.
+      /// @param qfn the DNS query file name to load.
       Void loadQueries(const std::string &qfn) { loadQueries(qfn.c_str()); }
+      /// @brief Initializes the settings used to save queries.
+      /// @param qfn the file name to save the DNS queries to.
+      /// @param qsf the frequency in milliseconds to save the DNS queries.
       Void initSaveQueries(const char *qfn, long qsf);
+      /// @brief Saves the DNS queries that are part of the cache.
       Void saveQueries();
+      /// @brief Forces a refresh of the DNS cache.
       Void forceRefresh();
 
+      /// @brief Retrieves the named server ID associated with this DNS cache.
+      /// @return the named server ID associated with this DNS cache.
       namedserverid_t getNamedServerId() { return m_nsid; }
 
+      /// @brief Resets the number of new queries (not saved) to zero.
+      /// @return the previous the number of new queries (not saved).
       long resetNewQueryCount() { return atomic_swap(m_newquerycnt, 0); }
 
    protected:
+      /// @cond DOXYGEN_EXCLUDE
       Void updateCache( QueryPtr q );
       QueryPtr lookupQuery( ns_type rtype, const std::string &domain );
       QueryPtr lookupQuery( QueryCacheKey &qck );
 
       Void identifyExpired( std::list<QueryCacheKey> &keys, int percent );
       Void getCacheKeys( std::list<QueryCacheKey> &keys );
-
+      /// @endcond
 
    private:
 

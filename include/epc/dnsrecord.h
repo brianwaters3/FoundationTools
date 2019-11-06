@@ -18,6 +18,9 @@
 #ifndef __DNSRECORD_H
 #define __DNSRECORD_H
 
+/// @file
+/// @brief Defines the classes related to DNS records.
+
 #include <list>
 
 #include <netinet/in.h>
@@ -33,9 +36,14 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents the question for the name server.
    class Question
    {
    public:
+      /// @brief Class constructor.
+      /// @param qname the query name of the requested resource.
+      /// @param qtype the query type for the requested resource.
+      /// @param qclass specifies the class of the query.
       Question( const std::string& qname, ns_type qtype, ns_class qclass )
          : m_qname( qname ),
            m_qtype( qtype ),
@@ -43,11 +51,18 @@ namespace DNS
       {
       }
 
+      /// @brief Retrieves the query name of the requested resource.
+      /// @return the query name of the requested resource.
       EString &getQName() { return m_qname; }
+      /// @brief Retrieves the query type for the requested resource.
+      /// @return the query type for the requested resource.
       ns_type getQType() { return m_qtype; }
+      /// @brief Retrieves the class of the query.
+      /// @return the class of the query.
       ns_class getQClass() { return m_qclass; }
 
-      void dump()
+      /// @brief Prints the contents the stdout.
+      Void dump()
       {
          std::cout << "Question:"
             << " qtype=" << m_qtype
@@ -67,6 +82,7 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @cond DOXYGEN_EXCLUDE
    class QuestionList : public std::list<Question*>
    {
    public:
@@ -81,13 +97,21 @@ namespace DNS
          }
       }
    };
+   /// @endcond
 
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents a DNS Resource Record.
    class ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param rtype specifies the meaning of the data in the RDATA field.
+      /// @param rclass the class of the data in the RDATA field.
+      /// @param ttl specifies the time interval (in seconds) that the resource
+      ///   record may be cached before it should be discarded.
       ResourceRecord( const std::string &name,
                       ns_type rtype,
                       ns_class rclass,
@@ -99,18 +123,33 @@ namespace DNS
            m_expires( time(NULL) + ttl )
       {
       }
-
+      /// @brief Class destructor.
       virtual ~ResourceRecord() {}
 
+      /// @brief Retrieves the domain name to which this resource record pertains.
+      /// @return the domain name to which this resource record pertains.
       const EString &getName() { return m_name; }
+      /// @brief Retrieves the resource type.
+      /// @return the resource type.
       ns_type getType() { return m_type; }
+      /// @brief Retrieves the class of the data in the RDATA field.
+      /// @return the class of the data in the RDATA field.
       ns_class getClass() { return m_class; }
+      /// @brief Retrieves the time interval (in seconds) that the resource
+      ///   record may be cached before it should be discarded.
+      /// @return the time interval (in seconds) that the resource
+      ///   record may be cached before it should be discarded.
       uint32_t getTTL() { return m_ttl; }
+      /// @brief Retrieves the expiration time of this resource record.
+      /// @return the expiration time of this resource record.
       time_t getExpires() { return m_expires; }
 
-      bool isExpired() { return m_expires <= time(NULL); }
+      /// @brief Determines if this resource record has expired.
+      /// @return True indicates that this resource record is expired, otherwise False.
+      Bool isExpired() { return m_expires <= time(NULL); }
 
-      virtual void dump()
+      /// @brief Prints the contents of this resource record.
+      virtual Void dump()
       {
          std::cout << "ResourceRecord:"
             << " type=" << getType()
@@ -132,6 +171,7 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @cond DOXYGEN_EXCLUDE
    class ResourceRecordList : public std::list<ResourceRecord*>
    {
    public:
@@ -146,13 +186,19 @@ namespace DNS
          }
       }
    };
+   /// @endcond
 
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an A resource record.
    class RRecordA : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param address the IPv4 address associated with this server.
       RRecordA( const std::string &name,
                 int32_t ttl,
                 const struct in_addr &address )
@@ -161,8 +207,12 @@ namespace DNS
          memcpy( &m_address, &address, sizeof(m_address) );
       }
 
+      /// @brief Retrieves the IP address for this A record.
+      /// @return the IP address for this A record.
       const struct in_addr &getAddress() { return m_address; }
 
+      /// @brief Convert the IPv4 address to a string.
+      /// @return the string representation of the IPv4 address.
       EString getAddressString()
       {
          char address[ INET_ADDRSTRLEN ];
@@ -170,7 +220,8 @@ namespace DNS
          return EString( address );
       }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this A record.
+      virtual Void dump()
       {
          std::cout << "RRecordA:"
             << " type=" << getType()
@@ -189,9 +240,14 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an NS resource record.
    class RRecordNS : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param ns the named server for this NS record.
       RRecordNS( const std::string &name,
                     int32_t ttl,
                     const std::string &ns )
@@ -202,7 +258,8 @@ namespace DNS
 
       const EString &getNamedServer() { return m_namedserver; }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this NS record.
+      virtual Void dump()
       {
          std::cout << "RRecordNS:"
             << " type=" << getType()
@@ -221,9 +278,14 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an AAAA resource record.
    class RRecordAAAA : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param address the IPv6 address associated with this server.
       RRecordAAAA( const std::string &name,
                    int32_t ttl,
                    const struct in6_addr &address )
@@ -241,7 +303,8 @@ namespace DNS
          return EString( address );
       }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this AAAA record.
+      virtual Void dump()
       {
          std::cout << "RRecordAAAA:"
             << " type=" << getType()
@@ -260,9 +323,14 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an CNAME resource record.
    class RRecordCNAME : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param alias the alias.
       RRecordCNAME( const std::string &name,
                     int32_t ttl,
                     const std::string &alias )
@@ -273,7 +341,8 @@ namespace DNS
 
       const EString &getAlias() { return m_alias; }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this CNAME record.
+      virtual Void dump()
       {
          std::cout << "RRecordCNAME:"
             << " type=" << getType()
@@ -292,9 +361,17 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an SRV resource record.
    class RRecordSRV : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param priority the priority of this target host.
+      /// @param weight the relative weight for entries with the same priority.
+      /// @param port the port on this target host of this service.
+      /// @param target the domain name of the target host.
       RRecordSRV( const std::string &name,
                   int32_t ttl,
                   uint16_t priority,
@@ -309,12 +386,21 @@ namespace DNS
       {
       }
 
+      /// @brief Retrieves the priority of this target host.
+      /// @return the priority of this target host.
       uint16_t getPriority() { return m_priority; }
+      /// @brief Retrieves 
+      /// @return 
       uint16_t getWeight() { return m_weight; }
+      /// @brief Retrieves the relative weight for entries with the same priority.
+      /// @return the relative weight for entries with the same priority.
       uint16_t getPort() { return m_port; }
+      /// @brief The domain name of the target host.
+      /// @return the domain name of the target host.
       const EString &getTarget() { return m_target; }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this SRV record.
+      virtual Void dump()
       {
          std::cout << "RRecordSRV:"
             << " type=" << getType()
@@ -339,9 +425,26 @@ namespace DNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
+   /// @brief Represents an NAPTR resource record.
    class RRecordNAPTR : public ResourceRecord
    {
    public:
+      /// @brief Class constructor.
+      /// @param name the domain name to which this resource record pertains.
+      /// @param ttl the time to live value.
+      /// @param order the order in which the NAPTR records MUST be processed in
+      ///   order to accurately represent the ordered list of Rules.
+      /// @param preference the order in which NAPTR records with equal Order
+      ///   values SHOULD be processed, low numbers being processed before high numbers.
+      /// @param flags controls aspects of the rewriting and interpretation of
+      ///   the fields in the record.
+      /// @param service the Service Parameters applicable to this this
+      ///   delegation path.
+      /// @param regexp a substitution expression that is applied to the original
+      ///   string held by the client in order to construct the next domain name
+      ///   to lookup.
+      /// @param replacement this field is used when the regular expression is a
+      ///   simple replacement operation.
       RRecordNAPTR( const std::string &name,
                     int32_t ttl,
                     uint16_t order,
@@ -360,14 +463,32 @@ namespace DNS
       {
       }
 
+      /// @brief Retrieves the order in which the NAPTR records MUST be processed in
+      ///   order to accurately represent the ordered list of Rules.
+      /// @return the order in which the NAPTR records MUST be processed in
+      ///   order to accurately represent the ordered list of Rules.
       const uint16_t getOrder() const { return m_order; }
+      /// @brief Retrieves he order in which NAPTR records with equal Order
+      ///   values SHOULD be processed, low numbers being processed before high numbers.
+      /// @return he order in which NAPTR records with equal Order
+      ///   values SHOULD be processed, low numbers being processed before high numbers.
       const uint16_t getPreference() const { return m_preference; }
+      /// @brief Retrieves the flags associated with this NAPTR record.
+      /// @return the flags associated with this NAPTR record.
       const EString &getFlags() { return m_flags; }
+      /// @brief Retrieves the Service Parameters applicable to this this
+      ///   delegation path.
+      /// @return the Service Parameters applicable to this this delegation path.
       const EString &getService() { return m_service; }
+      /// @brief Retrieves the regular expression associated with this NAPTR record.
+      /// @return the regular expression associated with this NAPTR record.
       const EString &getRegexp() { return m_regexp; }
+      /// @brief Retrieves the replacement string associated with this NAPTR record.
+      /// @return the replacement string associated with this NAPTR record.
       const EString &getReplacement() { return m_replacement; }
 
-      virtual void dump()
+      /// @brief Prints the contents fo this NAPTR record.
+      virtual Void dump()
       {
          std::cout << "RRecordNAPTR:"
             << " type=" << getType()
