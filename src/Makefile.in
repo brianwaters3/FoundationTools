@@ -151,7 +151,7 @@ libepc_a_AR = $(AR) $(ARFLAGS)
 libepc_a_LIBADD =
 am_libepc_a_OBJECTS = libepc_a-ebase.$(OBJEXT) \
 	libepc_a-ebzip2.$(OBJEXT) libepc_a-ecbuf.$(OBJEXT) \
-	libepc_a-ecli.$(OBJEXT) libepc_a-edir.$(OBJEXT) \
+	libepc_a-emgmt.$(OBJEXT) libepc_a-edir.$(OBJEXT) \
 	libepc_a-eerror.$(OBJEXT) libepc_a-efd.$(OBJEXT) \
 	libepc_a-efdjson.$(OBJEXT) libepc_a-egetopt.$(OBJEXT) \
 	libepc_a-ehash.$(OBJEXT) libepc_a-elogger.$(OBJEXT) \
@@ -332,7 +332,7 @@ libepc_a_SOURCES = \
    ebase.cpp         \
    ebzip2.cpp        \
    ecbuf.cpp         \
-   ecli.cpp          \
+   emgmt.cpp         \
    edir.cpp          \
    eerror.cpp        \
    efd.cpp           \
@@ -453,7 +453,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ebase.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ebzip2.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ecbuf.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ecli.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-edir.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-eerror.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-efd.Po@am__quote@
@@ -461,6 +460,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-egetopt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ehash.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-elogger.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-emgmt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-emsg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-epath.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-epcdns.Po@am__quote@
@@ -536,19 +536,19 @@ libepc_a-ecbuf.obj: ecbuf.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-ecbuf.obj `if test -f 'ecbuf.cpp'; then $(CYGPATH_W) 'ecbuf.cpp'; else $(CYGPATH_W) '$(srcdir)/ecbuf.cpp'; fi`
 
-libepc_a-ecli.o: ecli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-ecli.o -MD -MP -MF $(DEPDIR)/libepc_a-ecli.Tpo -c -o libepc_a-ecli.o `test -f 'ecli.cpp' || echo '$(srcdir)/'`ecli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-ecli.Tpo $(DEPDIR)/libepc_a-ecli.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ecli.cpp' object='libepc_a-ecli.o' libtool=no @AMDEPBACKSLASH@
+libepc_a-emgmt.o: emgmt.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-emgmt.o -MD -MP -MF $(DEPDIR)/libepc_a-emgmt.Tpo -c -o libepc_a-emgmt.o `test -f 'emgmt.cpp' || echo '$(srcdir)/'`emgmt.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-emgmt.Tpo $(DEPDIR)/libepc_a-emgmt.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='emgmt.cpp' object='libepc_a-emgmt.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-ecli.o `test -f 'ecli.cpp' || echo '$(srcdir)/'`ecli.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-emgmt.o `test -f 'emgmt.cpp' || echo '$(srcdir)/'`emgmt.cpp
 
-libepc_a-ecli.obj: ecli.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-ecli.obj -MD -MP -MF $(DEPDIR)/libepc_a-ecli.Tpo -c -o libepc_a-ecli.obj `if test -f 'ecli.cpp'; then $(CYGPATH_W) 'ecli.cpp'; else $(CYGPATH_W) '$(srcdir)/ecli.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-ecli.Tpo $(DEPDIR)/libepc_a-ecli.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ecli.cpp' object='libepc_a-ecli.obj' libtool=no @AMDEPBACKSLASH@
+libepc_a-emgmt.obj: emgmt.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-emgmt.obj -MD -MP -MF $(DEPDIR)/libepc_a-emgmt.Tpo -c -o libepc_a-emgmt.obj `if test -f 'emgmt.cpp'; then $(CYGPATH_W) 'emgmt.cpp'; else $(CYGPATH_W) '$(srcdir)/emgmt.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-emgmt.Tpo $(DEPDIR)/libepc_a-emgmt.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='emgmt.cpp' object='libepc_a-emgmt.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-ecli.obj `if test -f 'ecli.cpp'; then $(CYGPATH_W) 'ecli.cpp'; else $(CYGPATH_W) '$(srcdir)/ecli.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-emgmt.obj `if test -f 'emgmt.cpp'; then $(CYGPATH_W) 'emgmt.cpp'; else $(CYGPATH_W) '$(srcdir)/emgmt.cpp'; fi`
 
 libepc_a-edir.o: edir.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-edir.o -MD -MP -MF $(DEPDIR)/libepc_a-edir.Tpo -c -o libepc_a-edir.o `test -f 'edir.cpp' || echo '$(srcdir)/'`edir.cpp

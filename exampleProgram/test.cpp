@@ -27,7 +27,7 @@
 #include "epc/esocket.h"
 #include "epc/einternal.h"
 
-#include "epc/ecli.h"
+#include "epc/emgmt.h"
 #include "epc/etimerpool.h"
 
 std::locale defaultLocale;

@@ -14,8 +14,8 @@
 * limitations under the License.
 */
 
-#ifndef __ECLI_H
-#define __ECLI_H
+#ifndef __EMGMT_H
+#define __EMGMT_H
 
 /// @file
 /// @brief Classes used for implementing a REST based command line interface.
@@ -35,13 +35,13 @@
 #include "etime.h"
 
 /// @brief Custom HTTP header class for the X-User-Name header.
-class ECliUserNameHeader : public Pistache::Http::Header::Header
+class EManagementUserNameHeader : public Pistache::Http::Header::Header
 {
 public:
    NAME("X-User-Name")
 
    /// @brief Class constructor.
-   ECliUserNameHeader()
+   EManagementUserNameHeader()
    {
    }
 
@@ -66,10 +66,10 @@ private:
    EString m_username;
 };
 
-/// @brief Pure virtual base class for a command line interface (CLI) handler.
-class ECliHandler
+/// @brief Pure virtual base class for an administrative management interface handler.
+class EManagementHandler
 {
-   friend class ECliEndpoint;
+   friend class EManagementEndpoint;
 
 public:
    /// @brief Represents the type of the handler.
@@ -92,13 +92,13 @@ public:
    /// @brief Class constructor.
    /// @param mthd HTTP method associated with this handler.
    /// @param pth the HTTP route for this handler.
-   /// @param audit a reference to the ELogger object that will log all CLI operations.
-   ECliHandler(HttpMethod mthd, cpStr pth, ELogger &audit);
+   /// @param audit a reference to the ELogger object that will log all management operations.
+   EManagementHandler(HttpMethod mthd, cpStr pth, ELogger &audit);
    /// @brief Class constructor.
    /// @param mthd HTTP method associated with this handler.
    /// @param pth the HTTP route for this handler.
-   /// @param audit a reference to the ELogger object that will log all CLI operations.
-   ECliHandler(HttpMethod mthd, const std::string &pth, ELogger &audit);
+   /// @param audit a reference to the ELogger object that will log all management operations.
+   EManagementHandler(HttpMethod mthd, const std::string &pth, ELogger &audit);
 
    /// @brief Pure virtual method that will be called by handler() to perform the processing.
    /// @param request HTTP request object.
@@ -119,7 +119,7 @@ protected:
    Pistache::Rest::Route::Handler getHandler();
 
 private:
-   ECliHandler();
+   EManagementHandler();
 
    ELogger &m_audit;
    EString m_path;
@@ -127,17 +127,17 @@ private:
 };
 
 /// @brief Implemts the HTTP server endpoint.
-class ECliEndpoint
+class EManagementEndpoint
 {
 public:
    /// @brief Class constructor.
    /// @param port the IP port to listen for requests on (all IP addresses).
    /// @param thrds the number of threads that will process requests.
-   ECliEndpoint(uint16_t port, size_t thrds=1);
+   EManagementEndpoint(uint16_t port, size_t thrds=1);
    /// @brief Class constructor.
    /// @param addr the IP Address to listen for requests on (all IP addresses).
    /// @param thrds the number of threads that will process requests.
-   ECliEndpoint(Pistache::Address &addr, size_t thrds=1);
+   EManagementEndpoint(Pistache::Address &addr, size_t thrds=1);
 
    /// @brief Starts the endpoint.
    Void start();
@@ -145,7 +145,7 @@ public:
    Void shutdown();
 
    /// @brief Registers a REST handler.
-   Void registerHandler(ECliHandler &hndlr);
+   Void registerHandler(EManagementHandler &hndlr);
 
 private:
    Void init(size_t thrds);
@@ -156,4 +156,4 @@ private:
    static Bool m_username_header_registered;
 };
 
-#endif // #ifndef __ECLI_H
+#endif // #ifndef __EMGMT_H

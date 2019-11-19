@@ -26,7 +26,7 @@ nobase_include_HEADERS =   \
    epc/ebase.h             \
    epc/ebzip2.h            \
    epc/ecbuf.h             \
-   epc/ecli.h              \
+   epc/emgmt.h             \
    epc/edir.h              \
    epc/eerror.h            \
    epc/efd.h               \
@@ -49,6 +49,8 @@ nobase_include_HEADERS =   \
    epc/estring.h           \
    epc/esynch.h            \
    epc/esynch2.h           \
+   epc/etbasic.h           \
+   epc/etevent.h           \
    epc/etime.h             \
    epc/etimer.h            \
    epc/etimerpool.h        \
