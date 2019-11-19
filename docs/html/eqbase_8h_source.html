@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,153 +92,156 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define __eqbase_h_included</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ebase_8h.html">ebase.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etime_8h.html">etime.h</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etimer_8h.html">etimer.h</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etq_8h.html">etq.h</a>&quot;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emsg_8h.html">emsg.h</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_UnInitialized);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_NotOpenForWriting);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_NotOpenForReading);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_MultipleReadersNotAllowed);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="eerror_8h.html">eerror.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="esynch_8h.html">esynch.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etime_8h.html">etime.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etimer_8h.html">etimer.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//#include &quot;etq.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="emsg_8h.html">emsg.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_UnInitialized);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_NotOpenForWriting);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_NotOpenForReading);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a>(EQueueBaseError_MultipleReadersNotAllowed);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classEQueueMessage.html">   53</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueMessage.html">EQueueMessage</a> : <span class="keyword">public</span> <a class="code" href="classEMessage.html">EMessage</a></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ae6772dab8f4989884e3bbaf2df0b2061">   55</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a>;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">   59</a></span>&#160;   <a class="code" href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">EQueueMessage</a>()</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;   {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;   }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">   64</a></span>&#160;   <a class="code" href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">~EQueueMessage</a>()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;   {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;   }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">   71</a></span>&#160;   <a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;<a class="code" href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">operator=</a>(<span class="keyword">const</span> <a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;a)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;   {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      m_timer = a.m_timer;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      m_msgType = a.m_msgType;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;   }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">getLength</a>(ULong &amp;length);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">serialize</a>(pVoid pBuffer, ULong &amp;nOffset);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">unserialize</a>(pVoid pBuffer, ULong &amp;nOffset);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">   94</a></span>&#160;   <a class="code" href="classETime.html">ETime</a> &amp;<a class="code" href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">getTimer</a>()</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;   {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keywordflow">return</span> m_timer;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">  101</a></span>&#160;   Void <a class="code" href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">setMsgType</a>(Long msgType) { m_msgType = msgType; }</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">  104</a></span>&#160;   Long <a class="code" href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">getMsgType</a>() { <span class="keywordflow">return</span> m_msgType; }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;   <a class="code" href="classETime.html">ETime</a> m_timer;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;   Long m_msgType;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;};</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueuePublic.html">EQueuePublic</a>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueuePrivate.html">EQueuePrivate</a>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classEQueueBase.html">  118</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classEQueueBase.html#ab2167c150774a87cacef50a607476cb7">  120</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueuePublic.html">EQueuePublic</a>;</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classEQueueBase.html#a34f08cc45eeb800bbb03d567b63e6e35">  121</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueuePrivate.html">EQueuePrivate</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">  125</a></span>&#160;   <span class="keyword">enum</span> <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;   {</div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">  128</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">ReadOnly</a>,</div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">  130</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">WriteOnly</a>,</div>
-<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">  132</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">ReadWrite</a></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;   };</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;   Bool <a class="code" href="classEQueueBase.html#afd7e86bdbaa63071881b55ff9bad2710">push</a>(<a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;msg, Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;   <a class="code" href="classEQueueMessage.html">EQueueMessage</a> *<a class="code" href="classEQueueBase.html#a9a0c64187bcd6c50b817b0e9fff35234">pop</a>(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;   Void <a class="code" href="classEQueueBase.html#a6a9115253f51690fd3426bceea0ec723">destroy</a>();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;   <span class="keyword">virtual</span> Bool isPublic() = 0;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;   <span class="keyword">virtual</span> ULong &amp;msgSize() = 0;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   <span class="keyword">virtual</span> Int &amp;msgCnt() = 0;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   <span class="keyword">virtual</span> Long &amp;msgHead() = 0;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <span class="keyword">virtual</span> Long &amp;msgTail() = 0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;   <span class="keyword">virtual</span> Bool &amp;multipleReaders() = 0;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   <span class="keyword">virtual</span> Bool &amp;multipleWriters() = 0;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   <span class="keyword">virtual</span> Int &amp;numReaders() = 0;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;   <span class="keyword">virtual</span> Int &amp;numWriters() = 0;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;   <span class="keyword">virtual</span> Int &amp;refCnt() = 0;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;   <span class="keyword">virtual</span> pChar data() = 0;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;   <span class="keyword">virtual</span> Void allocDataSpace(cpStr sFile, Char cId, Int nSize) = 0;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;   <span class="keyword">virtual</span> Void initReadMutex() = 0;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   <span class="keyword">virtual</span> Void initWriteMutex() = 0;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keyword">virtual</span> Void initSemFree(UInt initialCount) = 0;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;   <span class="keyword">virtual</span> Void initSemMsgs(UInt initialCount) = 0;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEMutexData.html">EMutexData</a> &amp;readMutex() = 0;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEMutexData.html">EMutexData</a> &amp;writeMutex() = 0;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;semMsgs() = 0;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;semFree() = 0;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEQueueMessage.html">EQueueMessage</a> *allocMessage(Long msgType) = 0;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classEQueueMessage.html">   55</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueMessage.html">EQueueMessage</a> : <span class="keyword">public</span> <a class="code" href="classEMessage.html">EMessage</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ae6772dab8f4989884e3bbaf2df0b2061">   57</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">   61</a></span>&#160;   <a class="code" href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">EQueueMessage</a>()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;   {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;   }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">   66</a></span>&#160;   <a class="code" href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">~EQueueMessage</a>()</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;   {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;   }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">   73</a></span>&#160;   <a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;<a class="code" href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">operator=</a>(<span class="keyword">const</span> <a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;a)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;   {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      m_timer = a.m_timer;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      m_msgType = a.m_msgType;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;   }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">getLength</a>(ULong &amp;length);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">serialize</a>(pVoid pBuffer, ULong &amp;nOffset);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;   <span class="keyword">virtual</span> Void <a class="code" href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">unserialize</a>(pVoid pBuffer, ULong &amp;nOffset);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">   96</a></span>&#160;   <a class="code" href="classETime.html">ETime</a> &amp;<a class="code" href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">getTimer</a>()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;   {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordflow">return</span> m_timer;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;   }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">  103</a></span>&#160;   Void <a class="code" href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">setMsgType</a>(Long msgType) { m_msgType = msgType; }</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">  106</a></span>&#160;   Long <a class="code" href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">getMsgType</a>() { <span class="keywordflow">return</span> m_msgType; }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;   <a class="code" href="classETime.html">ETime</a> m_timer;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;   Long m_msgType;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueuePublic.html">EQueuePublic</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">class </span><a class="code" href="classEQueuePrivate.html">EQueuePrivate</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="classEQueueBase.html">  120</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEQueueBase.html">EQueueBase</a></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classEQueueBase.html#ab2167c150774a87cacef50a607476cb7">  122</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueuePublic.html">EQueuePublic</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="classEQueueBase.html#a34f08cc45eeb800bbb03d567b63e6e35">  123</a></span>&#160;   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classEQueuePrivate.html">EQueuePrivate</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">  127</a></span>&#160;   <span class="keyword">enum</span> <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;   {</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">  130</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">ReadOnly</a>,</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">  132</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">WriteOnly</a>,</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">  134</a></span>&#160;      <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">ReadWrite</a></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;   };</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;   Bool <a class="code" href="classEQueueBase.html#afd7e86bdbaa63071881b55ff9bad2710">push</a>(<a class="code" href="classEQueueMessage.html">EQueueMessage</a> &amp;msg, Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;   <a class="code" href="classEQueueMessage.html">EQueueMessage</a> *<a class="code" href="classEQueueBase.html#a9a0c64187bcd6c50b817b0e9fff35234">pop</a>(Bool wait = <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;   Void <a class="code" href="classEQueueBase.html#a6a9115253f51690fd3426bceea0ec723">destroy</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;   <span class="keyword">virtual</span> Bool isPublic() = 0;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;   <span class="keyword">virtual</span> ULong &amp;msgSize() = 0;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;   <span class="keyword">virtual</span> Int &amp;msgCnt() = 0;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;   <span class="keyword">virtual</span> Long &amp;msgHead() = 0;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;   <span class="keyword">virtual</span> Long &amp;msgTail() = 0;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;   <span class="keyword">virtual</span> Bool &amp;multipleReaders() = 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;   <span class="keyword">virtual</span> Bool &amp;multipleWriters() = 0;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;   <span class="keyword">virtual</span> Int &amp;numReaders() = 0;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;   <span class="keyword">virtual</span> Int &amp;numWriters() = 0;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;   <span class="keyword">virtual</span> Int &amp;refCnt() = 0;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;   <span class="keyword">virtual</span> pChar data() = 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   <span class="keyword">virtual</span> Void allocDataSpace(cpStr sFile, Char cId, Int nSize) = 0;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   <span class="keyword">virtual</span> Void initReadMutex() = 0;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;   <span class="keyword">virtual</span> Void initWriteMutex() = 0;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;   <span class="keyword">virtual</span> Void initSemFree(UInt initialCount) = 0;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;   <span class="keyword">virtual</span> Void initSemMsgs(UInt initialCount) = 0;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEMutexData.html">EMutexData</a> &amp;readMutex() = 0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEMutexData.html">EMutexData</a> &amp;writeMutex() = 0;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;semMsgs() = 0;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classESemaphoreData.html">ESemaphoreData</a> &amp;semFree() = 0;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;   <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> mode() { <span class="keywordflow">return</span> m_mode; }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;   <span class="keyword">virtual</span> <a class="code" href="classEQueueMessage.html">EQueueMessage</a> *allocMessage(Long msgType) = 0;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;   <a class="code" href="classEQueueBase.html">EQueueBase</a>();</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;   ~<a class="code" href="classEQueueBase.html">EQueueBase</a>();</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   Void <a class="code" href="classEQueuePrivate.html#aebaf0769b1f181e144970c8ca4c751a2">init</a>(ULong nMsgSize, Int nMsgCnt, Int queueId, Bool bMultipleReaders,</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;             Bool bMultipleWriters, <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a> eMode);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;   Bool m_initialized;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;   <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> m_mode;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   Char m_rBuffer[USHRT_MAX];</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;   Char m_wBuffer[USHRT_MAX];</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;};</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#endif // #define __eqbase_h_included</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;   <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> mode() { <span class="keywordflow">return</span> m_mode; }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;   <a class="code" href="classEQueueBase.html">EQueueBase</a>();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;   ~<a class="code" href="classEQueueBase.html">EQueueBase</a>();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;   Void <a class="code" href="classEQueuePrivate.html#aebaf0769b1f181e144970c8ca4c751a2">init</a>(ULong nMsgSize, Int nMsgCnt, Int queueId, Bool bMultipleReaders,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;             Bool bMultipleWriters, <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a> eMode);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;   Bool m_initialized;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;   <a class="code" href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">Mode</a> m_mode;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;   Char m_rBuffer[USHRT_MAX];</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;   Char m_wBuffer[USHRT_MAX];</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;};</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif // #define __eqbase_h_included</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassEQueueMessage_html_af001a37d24975f70833267232b1c0acc"><div class="ttname"><a href="classEQueueMessage.html#af001a37d24975f70833267232b1c0acc">EQueueMessage::getLength</a></div><div class="ttdeci">virtual Void getLength(ULong &amp;length)</div><div class="ttdoc">Calculates the length of the message.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:24</div></div>
 <div class="ttc" id="aeerror_8h_html_ab71591f350ed65d99a1349f90b65f2af"><div class="ttname"><a href="eerror_8h.html#ab71591f350ed65d99a1349f90b65f2af">DECLARE_ERROR</a></div><div class="ttdeci">#define DECLARE_ERROR(__e__)</div><div class="ttdoc">Declares exception class derived from EError with no constructor parameters.</div><div class="ttdef"><b>Definition:</b> eerror.h:53</div></div>
+<div class="ttc" id="aeerror_8h_html"><div class="ttname"><a href="eerror_8h.html">eerror.h</a></div><div class="ttdoc">Defines base class for exceptions and declaration helper macros.</div></div>
 <div class="ttc" id="aclassESemaphoreData_html"><div class="ttname"><a href="classESemaphoreData.html">ESemaphoreData</a></div><div class="ttdoc">Contains the data associated with a public or private semaphore.</div><div class="ttdef"><b>Definition:</b> esynch.h:268</div></div>
 <div class="ttc" id="aclassETime_html"><div class="ttname"><a href="classETime.html">ETime</a></div><div class="ttdoc">Class for manipulating date and time of day values.</div><div class="ttdef"><b>Definition:</b> etime.h:199</div></div>
 <div class="ttc" id="aebase_8h_html_add3ca9eefe3b5b754426f51d3043e579"><div class="ttname"><a href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></div><div class="ttdeci">#define True</div><div class="ttdoc">True.</div><div class="ttdef"><b>Definition:</b> ebase.h:25</div></div>
-<div class="ttc" id="aclassEQueueBase_html"><div class="ttname"><a href="classEQueueBase.html">EQueueBase</a></div><div class="ttdoc">The message queue base class.</div><div class="ttdef"><b>Definition:</b> eqbase.h:118</div></div>
+<div class="ttc" id="aclassEQueueBase_html"><div class="ttname"><a href="classEQueueBase.html">EQueueBase</a></div><div class="ttdoc">The message queue base class.</div><div class="ttdef"><b>Definition:</b> eqbase.h:120</div></div>
 <div class="ttc" id="aebase_8h_html"><div class="ttname"><a href="ebase_8h.html">ebase.h</a></div><div class="ttdoc">Macros for various standard C library functions and standard includes.</div></div>
-<div class="ttc" id="aclassEQueueMessage_html"><div class="ttname"><a href="classEQueueMessage.html">EQueueMessage</a></div><div class="ttdoc">Represents a message to be written to/read from a message queue.</div><div class="ttdef"><b>Definition:</b> eqbase.h:53</div></div>
-<div class="ttc" id="aclassEQueueMessage_html_a3236366140cdb177b50577f2cee6f8ef"><div class="ttname"><a href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">EQueueMessage::setMsgType</a></div><div class="ttdeci">Void setMsgType(Long msgType)</div><div class="ttdoc">Assigns the message type value.</div><div class="ttdef"><b>Definition:</b> eqbase.h:101</div></div>
+<div class="ttc" id="aclassEQueueMessage_html"><div class="ttname"><a href="classEQueueMessage.html">EQueueMessage</a></div><div class="ttdoc">Represents a message to be written to/read from a message queue.</div><div class="ttdef"><b>Definition:</b> eqbase.h:55</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_a3236366140cdb177b50577f2cee6f8ef"><div class="ttname"><a href="classEQueueMessage.html#a3236366140cdb177b50577f2cee6f8ef">EQueueMessage::setMsgType</a></div><div class="ttdeci">Void setMsgType(Long msgType)</div><div class="ttdoc">Assigns the message type value.</div><div class="ttdef"><b>Definition:</b> eqbase.h:103</div></div>
+<div class="ttc" id="aesynch_8h_html"><div class="ttname"><a href="esynch_8h.html">esynch.h</a></div><div class="ttdoc">Contains definitions for synchronization objects.</div></div>
 <div class="ttc" id="aclassEQueueMessage_html_a8a073b83c6eb60a8313eb1d3025f8845"><div class="ttname"><a href="classEQueueMessage.html#a8a073b83c6eb60a8313eb1d3025f8845">EQueueMessage::serialize</a></div><div class="ttdeci">virtual Void serialize(pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Serializes the message.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:30</div></div>
 <div class="ttc" id="aetimer_8h_html"><div class="ttname"><a href="etimer_8h.html">etimer.h</a></div></div>
-<div class="ttc" id="aclassEQueueMessage_html_a526a9c415e66ab7f2d1cf2cdfe79aa95"><div class="ttname"><a href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">EQueueMessage::getTimer</a></div><div class="ttdeci">ETime &amp; getTimer()</div><div class="ttdoc">Retrieves the message lifetime timer.</div><div class="ttdef"><b>Definition:</b> eqbase.h:94</div></div>
-<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">The queue access modes.</div><div class="ttdef"><b>Definition:</b> eqbase.h:125</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_a526a9c415e66ab7f2d1cf2cdfe79aa95"><div class="ttname"><a href="classEQueueMessage.html#a526a9c415e66ab7f2d1cf2cdfe79aa95">EQueueMessage::getTimer</a></div><div class="ttdeci">ETime &amp; getTimer()</div><div class="ttdoc">Retrieves the message lifetime timer.</div><div class="ttdef"><b>Definition:</b> eqbase.h:96</div></div>
+<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0">EQueueBase::Mode</a></div><div class="ttdeci">Mode</div><div class="ttdoc">The queue access modes.</div><div class="ttdef"><b>Definition:</b> eqbase.h:127</div></div>
 <div class="ttc" id="aetime_8h_html"><div class="ttname"><a href="etime_8h.html">etime.h</a></div><div class="ttdoc">Provides class for manipulating time of day values.</div></div>
 <div class="ttc" id="aclassEQueueBase_html_afd7e86bdbaa63071881b55ff9bad2710"><div class="ttname"><a href="classEQueueBase.html#afd7e86bdbaa63071881b55ff9bad2710">EQueueBase::push</a></div><div class="ttdeci">Bool push(EQueueMessage &amp;msg, Bool wait=True)</div><div class="ttdoc">Writes a message to the queue.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:154</div></div>
-<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">EQueueBase::WriteOnly</a></div><div class="ttdoc">provides write only access</div><div class="ttdef"><b>Definition:</b> eqbase.h:130</div></div>
+<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a6350ffe1e4c32eede95bd656ca75a507">EQueueBase::WriteOnly</a></div><div class="ttdoc">provides write only access</div><div class="ttdef"><b>Definition:</b> eqbase.h:132</div></div>
 <div class="ttc" id="aclassEQueuePrivate_html"><div class="ttname"><a href="classEQueuePrivate.html">EQueuePrivate</a></div><div class="ttdoc">The private queue class.</div><div class="ttdef"><b>Definition:</b> eqpriv.h:27</div></div>
-<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">EQueueBase::ReadWrite</a></div><div class="ttdoc">provides read/write access</div><div class="ttdef"><b>Definition:</b> eqbase.h:132</div></div>
-<div class="ttc" id="aclassEQueueMessage_html_ad032447289237fe63f6b6b117ca80edc"><div class="ttname"><a href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">EQueueMessage::~EQueueMessage</a></div><div class="ttdeci">~EQueueMessage()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> eqbase.h:64</div></div>
+<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a46c41a76bf9b8b691bfc455215367602">EQueueBase::ReadWrite</a></div><div class="ttdoc">provides read/write access</div><div class="ttdef"><b>Definition:</b> eqbase.h:134</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_ad032447289237fe63f6b6b117ca80edc"><div class="ttname"><a href="classEQueueMessage.html#ad032447289237fe63f6b6b117ca80edc">EQueueMessage::~EQueueMessage</a></div><div class="ttdeci">~EQueueMessage()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> eqbase.h:66</div></div>
 <div class="ttc" id="aemsg_8h_html"><div class="ttname"><a href="emsg_8h.html">emsg.h</a></div><div class="ttdoc">Classes used to encode and decode messages sent to and recieved from a message queue.</div></div>
 <div class="ttc" id="aclassEQueuePublic_html"><div class="ttname"><a href="classEQueuePublic.html">EQueuePublic</a></div><div class="ttdef"><b>Definition:</b> eqpub.h:33</div></div>
 <div class="ttc" id="aclassEQueuePrivate_html_aebaf0769b1f181e144970c8ca4c751a2"><div class="ttname"><a href="classEQueuePrivate.html#aebaf0769b1f181e144970c8ca4c751a2">EQueuePrivate::init</a></div><div class="ttdeci">Void init(Int nMsgSize, Int nMsgCnt, Int queueId, Bool bMultipleReaders, Bool bMultipleWriters, EQueueBase::Mode eMode)</div><div class="ttdoc">Initializes the private message queue.</div><div class="ttdef"><b>Definition:</b> eqpriv.h:42</div></div>
-<div class="ttc" id="aclassEQueueMessage_html_ae6c6479b85fe9d55752bfed034780516"><div class="ttname"><a href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">EQueueMessage::operator=</a></div><div class="ttdeci">EQueueMessage &amp; operator=(const EQueueMessage &amp;a)</div><div class="ttdoc">Assignment operator.</div><div class="ttdef"><b>Definition:</b> eqbase.h:71</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_ae6c6479b85fe9d55752bfed034780516"><div class="ttname"><a href="classEQueueMessage.html#ae6c6479b85fe9d55752bfed034780516">EQueueMessage::operator=</a></div><div class="ttdeci">EQueueMessage &amp; operator=(const EQueueMessage &amp;a)</div><div class="ttdoc">Assignment operator.</div><div class="ttdef"><b>Definition:</b> eqbase.h:73</div></div>
 <div class="ttc" id="aclassEMessage_html"><div class="ttname"><a href="classEMessage.html">EMessage</a></div><div class="ttdoc">The message queue base message class.</div><div class="ttdef"><b>Definition:</b> emsg.h:29</div></div>
 <div class="ttc" id="aclassEQueueMessage_html_ae009309b11a70546ac08a867b43cf02b"><div class="ttname"><a href="classEQueueMessage.html#ae009309b11a70546ac08a867b43cf02b">EQueueMessage::unserialize</a></div><div class="ttdeci">virtual Void unserialize(pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Deserializes the message.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:36</div></div>
-<div class="ttc" id="aclassEQueueMessage_html_a360ae27882013bb47a31e39d5cd54eec"><div class="ttname"><a href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">EQueueMessage::getMsgType</a></div><div class="ttdeci">Long getMsgType()</div><div class="ttdoc">Retrieves the message type value.</div><div class="ttdef"><b>Definition:</b> eqbase.h:104</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_a360ae27882013bb47a31e39d5cd54eec"><div class="ttname"><a href="classEQueueMessage.html#a360ae27882013bb47a31e39d5cd54eec">EQueueMessage::getMsgType</a></div><div class="ttdeci">Long getMsgType()</div><div class="ttdoc">Retrieves the message type value.</div><div class="ttdef"><b>Definition:</b> eqbase.h:106</div></div>
 <div class="ttc" id="aclassEQueueBase_html_a6a9115253f51690fd3426bceea0ec723"><div class="ttname"><a href="classEQueueBase.html#a6a9115253f51690fd3426bceea0ec723">EQueueBase::destroy</a></div><div class="ttdeci">Void destroy()</div><div class="ttdoc">Destroys the message queue.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:121</div></div>
-<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">EQueueBase::ReadOnly</a></div><div class="ttdoc">provivdes read only access</div><div class="ttdef"><b>Definition:</b> eqbase.h:128</div></div>
-<div class="ttc" id="aetq_8h_html"><div class="ttname"><a href="etq_8h.html">etq.h</a></div><div class="ttdoc">Defines the classes related to event messages and the event queues.</div></div>
+<div class="ttc" id="aclassEQueueBase_html_adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d"><div class="ttname"><a href="classEQueueBase.html#adf83a626534ef857ba365cef9778e7f0a194979163884a705c853900fa8d7db3d">EQueueBase::ReadOnly</a></div><div class="ttdoc">provivdes read only access</div><div class="ttdef"><b>Definition:</b> eqbase.h:130</div></div>
 <div class="ttc" id="aclassEQueueBase_html_a9a0c64187bcd6c50b817b0e9fff35234"><div class="ttname"><a href="classEQueueBase.html#a9a0c64187bcd6c50b817b0e9fff35234">EQueueBase::pop</a></div><div class="ttdeci">EQueueMessage * pop(Bool wait=True)</div><div class="ttdoc">Retrieves the next message from the queue.</div><div class="ttdef"><b>Definition:</b> eqbase.cpp:224</div></div>
-<div class="ttc" id="aclassEQueueMessage_html_a34ec71ead815ad7957f52d3d76461933"><div class="ttname"><a href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">EQueueMessage::EQueueMessage</a></div><div class="ttdeci">EQueueMessage()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> eqbase.h:59</div></div>
+<div class="ttc" id="aclassEQueueMessage_html_a34ec71ead815ad7957f52d3d76461933"><div class="ttname"><a href="classEQueueMessage.html#a34ec71ead815ad7957f52d3d76461933">EQueueMessage::EQueueMessage</a></div><div class="ttdeci">EQueueMessage()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> eqbase.h:61</div></div>
 <div class="ttc" id="aclassEMutexData_html"><div class="ttname"><a href="classEMutexData.html">EMutexData</a></div><div class="ttdoc">Contains the data associated with a public or private mutex.</div><div class="ttdef"><b>Definition:</b> esynch.h:72</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

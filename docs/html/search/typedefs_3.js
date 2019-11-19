@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['messageid',['MessageId',['../classEStatistics.html#a8000150175dbddd630c31ceb9f1deb83',1,'EStatistics']]],
-  ['messagestatsmap',['MessageStatsMap',['../classEStatistics.html#a7e42493bdd445b5a570fa7d82e30fb07',1,'EStatistics']]]
+  ['interfaceid',['InterfaceId',['../classEStatistics.html#aabcde47d2b3c8be834aa41a96b86148e',1,'EStatistics']]],
+  ['interfacemap',['InterfaceMap',['../classEStatistics.html#a87e383d0e08ecd8e8477d9ae2eb4db61',1,'EStatistics']]]
 ];

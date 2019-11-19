@@ -18,5 +18,7 @@ exampleProgram/.deps
 exampleProgram/myfile
 exampleProgram/mylog
 exampleProgram/logs
+exampleProgram/test2*
+exampleProgram/test3*
 doc/Doxyfile.bak
 epctools.code-workspace

@@ -25,7 +25,7 @@
 
 #include "epctools.h"
 #include "eerror.h"
-#include "ethread.h"
+#include "etevent.h"
 #include "esynch.h"
 #include "dnscache.h"
 #include "dnsparser.h"
@@ -613,7 +613,7 @@ namespace DNS
       m_timer.stop();
    }
 
-   Void CacheRefresher::onTimer( EThreadBase::Timer &timer)
+   Void CacheRefresher::onTimer( EThreadEventTimer &timer)
    {
       if (timer.getId() == m_timer.getId())
          _refreshQueries();

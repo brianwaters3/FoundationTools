@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['udp',['Udp',['../classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626a81baba40274ccb30f9fdfa2c73cf0482',1,'ESocket::Base']]],
-  ['undefined',['Undefined',['../classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76aec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::Address::Undefined()'],['../classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626aec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::Base::Undefined()'],['../classESocket_1_1TCP_1_1Talker.html#a6cf3b40536b92ce79665e20cd10471ddaec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::TCP::Talker::Undefined()'],['../classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1aec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::TCP::Listener::Undefined()']]],
+  ['udp',['Udp',['../namespaceESocket.html#a697fb92c0493432a108cda172a39eb97a81baba40274ccb30f9fdfa2c73cf0482',1,'ESocket']]],
+  ['undefined',['Undefined',['../namespaceESocket.html#a1c4699facd27add9989fa67b3c63316eaec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::Undefined()'],['../namespaceESocket.html#a697fb92c0493432a108cda172a39eb97aec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::Undefined()'],['../namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713feaec0fc0100c4fc1ce4eea230c3dc10360',1,'ESocket::Undefined()']]],
   ['up',['up',['../classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1aca46c48bec0d282018b9d167eef7711b2c',1,'ETimerPool']]],
   ['upf_5fx_5fsxa',['upf_x_sxa',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90ac0af35cebaee6964f6635f8b50f6bdfb',1,'EPCDNS']]],
   ['upf_5fx_5fsxb',['upf_x_sxb',['../namespaceEPCDNS.html#a9342407c49fe0b6a9612fed8e51f2d90a17786ffff8236112de48747dba289ba7',1,'EPCDNS']]],

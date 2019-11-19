@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: ESocket::TCP::Listener Class Reference</title>
+<title>EpcTools: ESocket::TCP::Listener&lt; TQueue, TMessage &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,11 +68,11 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classESocket_1_1TCP_1_1Listener-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ESocket::TCP::Listener Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">ESocket::TCP::Listener&lt; TQueue, TMessage &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -80,164 +81,133 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="esocket_8h_source.html">esocket.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for ESocket::TCP::Listener:</div>
+Inheritance diagram for ESocket::TCP::Listener&lt; TQueue, TMessage &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classESocket_1_1TCP_1_1Listener.png" usemap="#ESocket::TCP::Listener_map" alt=""/>
-  <map id="ESocket::TCP::Listener_map" name="ESocket::TCP::Listener_map">
-<area href="classESocket_1_1Base.html" title="The base socket class." alt="ESocket::Base" shape="rect" coords="0,0,139,24"/>
+  <img src="classESocket_1_1TCP_1_1Listener.png" usemap="#ESocket::TCP::Listener_3C_20TQueue_2C_20TMessage_20_3E_map" alt=""/>
+  <map id="ESocket::TCP::Listener_3C_20TQueue_2C_20TMessage_20_3E_map" name="ESocket::TCP::Listener_3C_20TQueue_2C_20TMessage_20_3E_map">
+<area href="classESocket_1_1Base.html" title="The base socket class." alt="ESocket::Base&lt; TQueue, TMessage &gt;" shape="rect" coords="0,0,275,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:af8e8c418541bb231f17c1ca3e97b32b1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1">State</a> { <a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1aec0fc0100c4fc1ce4eea230c3dc10360">State::Undefined</a>, 
-<a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1a962ef616821625a13a028ac14ac0fef8">State::Listening</a>
- }</td></tr>
-<tr class="memdesc:af8e8c418541bb231f17c1ca3e97b32b1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classESocket_1_1TCP_1_1Listener.html" title="Listens for incoming TCP/IP connections.">Listener</a> connection state.  <a href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1">More...</a><br /></td></tr>
-<tr class="separator:af8e8c418541bb231f17c1ca3e97b32b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_types_classESocket_1_1Base"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classESocket_1_1Base')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classESocket_1_1Base.html">ESocket::Base</a></td></tr>
-<tr class="memitem:a14f6c3e1746ac6c15847c2e6e1e9d626 inherit pub_types_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626">SocketType</a> { <a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626aec0fc0100c4fc1ce4eea230c3dc10360">SocketType::Undefined</a>, 
-<a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626a6d6d3999c6e78f8d976c76e11db4a95d">SocketType::TcpTalker</a>, 
-<a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626a905aaf6ae84f274f898e6c3b7dea6edf">SocketType::TcpListener</a>, 
-<a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626a81baba40274ccb30f9fdfa2c73cf0482">SocketType::Udp</a>
- }</td></tr>
-<tr class="memdesc:a14f6c3e1746ac6c15847c2e6e1e9d626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the possible socket types.  <a href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626">More...</a><br /></td></tr>
-<tr class="separator:a14f6c3e1746ac6c15847c2e6e1e9d626 inherit pub_types_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0eaffd1119a4ff01a9054dbf6f12ec4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a0eaffd1119a4ff01a9054dbf6f12ec4a">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;thread, <a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a> family=<a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a>)</td></tr>
-<tr class="memdesc:a0eaffd1119a4ff01a9054dbf6f12ec4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#a0eaffd1119a4ff01a9054dbf6f12ec4a">More...</a><br /></td></tr>
-<tr class="separator:a0eaffd1119a4ff01a9054dbf6f12ec4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b316139930cd72ba0f5bc68052a9bde"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a6b316139930cd72ba0f5bc68052a9bde">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;thread, UShort port, <a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a> family=<a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a>)</td></tr>
-<tr class="memdesc:a6b316139930cd72ba0f5bc68052a9bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#a6b316139930cd72ba0f5bc68052a9bde">More...</a><br /></td></tr>
-<tr class="separator:a6b316139930cd72ba0f5bc68052a9bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a082b8a9f8f745f1328d08d8837a9ebc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a082b8a9f8f745f1328d08d8837a9ebc8">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;thread, UShort port, Int backlog, <a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a> family=<a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a>)</td></tr>
-<tr class="memdesc:a082b8a9f8f745f1328d08d8837a9ebc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#a082b8a9f8f745f1328d08d8837a9ebc8">More...</a><br /></td></tr>
-<tr class="separator:a082b8a9f8f745f1328d08d8837a9ebc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32afb8c27d0a28ba9ab7f6e7bc6f13f2"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a32afb8c27d0a28ba9ab7f6e7bc6f13f2">~Listener</a> ()</td></tr>
-<tr class="memdesc:a32afb8c27d0a28ba9ab7f6e7bc6f13f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classESocket_1_1TCP_1_1Listener.html#a32afb8c27d0a28ba9ab7f6e7bc6f13f2">More...</a><br /></td></tr>
-<tr class="separator:a32afb8c27d0a28ba9ab7f6e7bc6f13f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab7e693915cd0e3390d03aac2e1227d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a9ab7e693915cd0e3390d03aac2e1227d">getState</a> ()</td></tr>
-<tr class="memdesc:a9ab7e693915cd0e3390d03aac2e1227d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current socket state.  <a href="classESocket_1_1TCP_1_1Listener.html#a9ab7e693915cd0e3390d03aac2e1227d">More...</a><br /></td></tr>
-<tr class="separator:a9ab7e693915cd0e3390d03aac2e1227d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee9399ad52f649ace464689e1ef5b699"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Address.html">Address</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#aee9399ad52f649ace464689e1ef5b699">getLocalAddress</a> ()</td></tr>
-<tr class="memdesc:aee9399ad52f649ace464689e1ef5b699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the local listening address.  <a href="classESocket_1_1TCP_1_1Listener.html#aee9399ad52f649ace464689e1ef5b699">More...</a><br /></td></tr>
-<tr class="separator:aee9399ad52f649ace464689e1ef5b699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17e024dfb118bfcc0a503ebab23ec624"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a17e024dfb118bfcc0a503ebab23ec624">setPort</a> (UShort port)</td></tr>
-<tr class="memdesc:a17e024dfb118bfcc0a503ebab23ec624"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the port to listen for incoming connections on.  <a href="classESocket_1_1TCP_1_1Listener.html#a17e024dfb118bfcc0a503ebab23ec624">More...</a><br /></td></tr>
-<tr class="separator:a17e024dfb118bfcc0a503ebab23ec624"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c82bc57aa458af90a1e941faf453288"><td class="memItemLeft" align="right" valign="top">UShort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a4c82bc57aa458af90a1e941faf453288">getPort</a> ()</td></tr>
-<tr class="memdesc:a4c82bc57aa458af90a1e941faf453288"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the port being listened on for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a4c82bc57aa458af90a1e941faf453288">More...</a><br /></td></tr>
-<tr class="separator:a4c82bc57aa458af90a1e941faf453288"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc6c25feea347ca3b33977d22ca6b3cb"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#abc6c25feea347ca3b33977d22ca6b3cb">setBacklog</a> (Int backlog)</td></tr>
-<tr class="memdesc:abc6c25feea347ca3b33977d22ca6b3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the maximum number of "unaccepted" connections.  <a href="classESocket_1_1TCP_1_1Listener.html#abc6c25feea347ca3b33977d22ca6b3cb">More...</a><br /></td></tr>
-<tr class="separator:abc6c25feea347ca3b33977d22ca6b3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0dc178b3e3be0bbb044cec2ac421c56"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#aa0dc178b3e3be0bbb044cec2ac421c56">getBacklog</a> ()</td></tr>
-<tr class="memdesc:aa0dc178b3e3be0bbb044cec2ac421c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the maximum number of "unaccepted" connections.  <a href="classESocket_1_1TCP_1_1Listener.html#aa0dc178b3e3be0bbb044cec2ac421c56">More...</a><br /></td></tr>
-<tr class="separator:aa0dc178b3e3be0bbb044cec2ac421c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43dce51eb22364d860a5ffde1a47ae0"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#ab43dce51eb22364d860a5ffde1a47ae0">listen</a> ()</td></tr>
-<tr class="memdesc:ab43dce51eb22364d860a5ffde1a47ae0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts listening for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#ab43dce51eb22364d860a5ffde1a47ae0">More...</a><br /></td></tr>
-<tr class="separator:ab43dce51eb22364d860a5ffde1a47ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ca9f586d541e0fb8c6459aa50eff666"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a8ca9f586d541e0fb8c6459aa50eff666">listen</a> (UShort port, Int backlog)</td></tr>
-<tr class="memdesc:a8ca9f586d541e0fb8c6459aa50eff666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts listening for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a8ca9f586d541e0fb8c6459aa50eff666">More...</a><br /></td></tr>
-<tr class="separator:a8ca9f586d541e0fb8c6459aa50eff666"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8680ac6c8605b0ff5b1b74ecfa7de2cf"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a8680ac6c8605b0ff5b1b74ecfa7de2cf">createSocket</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;thread)=0</td></tr>
-<tr class="memdesc:a8680ac6c8605b0ff5b1b74ecfa7de2cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to create a talking socket when a incoming connection is received.  <a href="classESocket_1_1TCP_1_1Listener.html#a8680ac6c8605b0ff5b1b74ecfa7de2cf">More...</a><br /></td></tr>
-<tr class="separator:a8680ac6c8605b0ff5b1b74ecfa7de2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96f50466c297efecabbe8b0587ee9ccb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a96f50466c297efecabbe8b0587ee9ccb">createSocket</a> ()</td></tr>
-<tr class="memdesc:a96f50466c297efecabbe8b0587ee9ccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to create a talking socket when a incoming connection is received.  <a href="classESocket_1_1TCP_1_1Listener.html#a96f50466c297efecabbe8b0587ee9ccb">More...</a><br /></td></tr>
-<tr class="separator:a96f50466c297efecabbe8b0587ee9ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addd4611effba5b7e75c17bc7b099e737"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#addd4611effba5b7e75c17bc7b099e737">onClose</a> ()</td></tr>
-<tr class="memdesc:addd4611effba5b7e75c17bc7b099e737"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when this socket is closed.  <a href="classESocket_1_1TCP_1_1Listener.html#addd4611effba5b7e75c17bc7b099e737">More...</a><br /></td></tr>
-<tr class="separator:addd4611effba5b7e75c17bc7b099e737"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f42b902f5dc87a6008b9eb95f2485b3"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a1f42b902f5dc87a6008b9eb95f2485b3">onError</a> ()</td></tr>
-<tr class="memdesc:a1f42b902f5dc87a6008b9eb95f2485b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an error is detected on this socket.  <a href="classESocket_1_1TCP_1_1Listener.html#a1f42b902f5dc87a6008b9eb95f2485b3">More...</a><br /></td></tr>
-<tr class="separator:a1f42b902f5dc87a6008b9eb95f2485b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classESocket_1_1Base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classESocket_1_1Base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classESocket_1_1Base.html">ESocket::Base</a></td></tr>
-<tr class="memitem:a9c5ee88acaea4d589b948644e22157ff inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a9c5ee88acaea4d589b948644e22157ff">~Base</a> ()</td></tr>
-<tr class="memdesc:a9c5ee88acaea4d589b948644e22157ff inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual class destructor.  <a href="classESocket_1_1Base.html#a9c5ee88acaea4d589b948644e22157ff">More...</a><br /></td></tr>
-<tr class="separator:a9c5ee88acaea4d589b948644e22157ff inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17e79736d1a1ac4f05784df2208a3280 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a17e79736d1a1ac4f05784df2208a3280">getThread</a> ()</td></tr>
-<tr class="memdesc:a17e79736d1a1ac4f05784df2208a3280 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket thread that this socket is associated with.  <a href="classESocket_1_1Base.html#a17e79736d1a1ac4f05784df2208a3280">More...</a><br /></td></tr>
-<tr class="separator:a17e79736d1a1ac4f05784df2208a3280 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada6b24c9beecdfd42635c36abcc98e4f inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Base.html#a14f6c3e1746ac6c15847c2e6e1e9d626">SocketType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#ada6b24c9beecdfd42635c36abcc98e4f">getSocketType</a> ()</td></tr>
-<tr class="memdesc:ada6b24c9beecdfd42635c36abcc98e4f inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket type.  <a href="classESocket_1_1Base.html#ada6b24c9beecdfd42635c36abcc98e4f">More...</a><br /></td></tr>
-<tr class="separator:ada6b24c9beecdfd42635c36abcc98e4f inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaca81510b7ed5bf1e457ae1e157070e inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#afaca81510b7ed5bf1e457ae1e157070e">getFamily</a> ()</td></tr>
-<tr class="memdesc:afaca81510b7ed5bf1e457ae1e157070e inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the address family.  <a href="classESocket_1_1Base.html#afaca81510b7ed5bf1e457ae1e157070e">More...</a><br /></td></tr>
-<tr class="separator:afaca81510b7ed5bf1e457ae1e157070e inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17b914b3cd22b09365d5fdc2df23e2a4 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a17b914b3cd22b09365d5fdc2df23e2a4">getType</a> ()</td></tr>
-<tr class="memdesc:a17b914b3cd22b09365d5fdc2df23e2a4 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket type.  <a href="classESocket_1_1Base.html#a17b914b3cd22b09365d5fdc2df23e2a4">More...</a><br /></td></tr>
-<tr class="separator:a17b914b3cd22b09365d5fdc2df23e2a4 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc40b418fed6fa3cc0be24971c6703b5 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#abc40b418fed6fa3cc0be24971c6703b5">getProtocol</a> ()</td></tr>
-<tr class="memdesc:abc40b418fed6fa3cc0be24971c6703b5 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the protocol.  <a href="classESocket_1_1Base.html#abc40b418fed6fa3cc0be24971c6703b5">More...</a><br /></td></tr>
-<tr class="separator:abc40b418fed6fa3cc0be24971c6703b5 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c07760120420358ccfea8a876029d89 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a8c07760120420358ccfea8a876029d89">getError</a> ()</td></tr>
-<tr class="memdesc:a8c07760120420358ccfea8a876029d89 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last error value.  <a href="classESocket_1_1Base.html#a8c07760120420358ccfea8a876029d89">More...</a><br /></td></tr>
-<tr class="separator:a8c07760120420358ccfea8a876029d89 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f8f0a165268595bf1cfc1af473dde85 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a0f8f0a165268595bf1cfc1af473dde85">close</a> ()</td></tr>
-<tr class="memdesc:a0f8f0a165268595bf1cfc1af473dde85 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes this socket.  <a href="classESocket_1_1Base.html#a0f8f0a165268595bf1cfc1af473dde85">More...</a><br /></td></tr>
-<tr class="separator:a0f8f0a165268595bf1cfc1af473dde85 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9f3bc7902768f4c6b63d4987c8bb81a inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#aa9f3bc7902768f4c6b63d4987c8bb81a">disconnect</a> ()</td></tr>
-<tr class="memdesc:aa9f3bc7902768f4c6b63d4987c8bb81a inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects this socket.  <a href="classESocket_1_1Base.html#aa9f3bc7902768f4c6b63d4987c8bb81a">More...</a><br /></td></tr>
-<tr class="separator:aa9f3bc7902768f4c6b63d4987c8bb81a inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab64b2af8ab658206c490b106ee788fc1 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#ab64b2af8ab658206c490b106ee788fc1">getHandle</a> ()</td></tr>
-<tr class="memdesc:ab64b2af8ab658206c490b106ee788fc1 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket file handle.  <a href="classESocket_1_1Base.html#ab64b2af8ab658206c490b106ee788fc1">More...</a><br /></td></tr>
-<tr class="separator:ab64b2af8ab658206c490b106ee788fc1 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac459e99dbb89be054d34665ac77b7f78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#ac459e99dbb89be054d34665ac77b7f78">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;thread, <a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a> family=<a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a>)</td></tr>
+<tr class="memdesc:ac459e99dbb89be054d34665ac77b7f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#ac459e99dbb89be054d34665ac77b7f78">More...</a><br /></td></tr>
+<tr class="separator:ac459e99dbb89be054d34665ac77b7f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaffb16522ad24de109b9d816d69327ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#aaffb16522ad24de109b9d816d69327ce">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;thread, UShort port, <a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a> family=<a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a>)</td></tr>
+<tr class="memdesc:aaffb16522ad24de109b9d816d69327ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#aaffb16522ad24de109b9d816d69327ce">More...</a><br /></td></tr>
+<tr class="separator:aaffb16522ad24de109b9d816d69327ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7fe677d9cd7c3cc466c89ab80ac39b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a6f7fe677d9cd7c3cc466c89ab80ac39b">Listener</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;thread, UShort port, Int backlog, <a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a> family=<a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a>)</td></tr>
+<tr class="memdesc:a6f7fe677d9cd7c3cc466c89ab80ac39b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classESocket_1_1TCP_1_1Listener.html#a6f7fe677d9cd7c3cc466c89ab80ac39b">More...</a><br /></td></tr>
+<tr class="separator:a6f7fe677d9cd7c3cc466c89ab80ac39b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb5e0d65fddbc44cfcfdbc6d8404ca97"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#abb5e0d65fddbc44cfcfdbc6d8404ca97">~Listener</a> ()</td></tr>
+<tr class="memdesc:abb5e0d65fddbc44cfcfdbc6d8404ca97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classESocket_1_1TCP_1_1Listener.html#abb5e0d65fddbc44cfcfdbc6d8404ca97">More...</a><br /></td></tr>
+<tr class="separator:abb5e0d65fddbc44cfcfdbc6d8404ca97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb7b68ebbf888252d84e95d942ea1c01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">SocketState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#aeb7b68ebbf888252d84e95d942ea1c01">getState</a> ()</td></tr>
+<tr class="memdesc:aeb7b68ebbf888252d84e95d942ea1c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current socket state.  <a href="classESocket_1_1TCP_1_1Listener.html#aeb7b68ebbf888252d84e95d942ea1c01">More...</a><br /></td></tr>
+<tr class="separator:aeb7b68ebbf888252d84e95d942ea1c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eac3ce8e5f0fa2f058071e131ce5e9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Address.html">Address</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a2eac3ce8e5f0fa2f058071e131ce5e9f">getLocalAddress</a> ()</td></tr>
+<tr class="memdesc:a2eac3ce8e5f0fa2f058071e131ce5e9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the local listening address.  <a href="classESocket_1_1TCP_1_1Listener.html#a2eac3ce8e5f0fa2f058071e131ce5e9f">More...</a><br /></td></tr>
+<tr class="separator:a2eac3ce8e5f0fa2f058071e131ce5e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c324460062a242c64c89ef607431b33"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a0c324460062a242c64c89ef607431b33">setPort</a> (UShort port)</td></tr>
+<tr class="memdesc:a0c324460062a242c64c89ef607431b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the port to listen for incoming connections on.  <a href="classESocket_1_1TCP_1_1Listener.html#a0c324460062a242c64c89ef607431b33">More...</a><br /></td></tr>
+<tr class="separator:a0c324460062a242c64c89ef607431b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a017e7053fcf9af0f3f45976ee0b0b27b"><td class="memItemLeft" align="right" valign="top">UShort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a017e7053fcf9af0f3f45976ee0b0b27b">getPort</a> ()</td></tr>
+<tr class="memdesc:a017e7053fcf9af0f3f45976ee0b0b27b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the port being listened on for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a017e7053fcf9af0f3f45976ee0b0b27b">More...</a><br /></td></tr>
+<tr class="separator:a017e7053fcf9af0f3f45976ee0b0b27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68fe6c98ecc8cdfa4d2e4be531ff3dc0"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a68fe6c98ecc8cdfa4d2e4be531ff3dc0">setBacklog</a> (Int backlog)</td></tr>
+<tr class="memdesc:a68fe6c98ecc8cdfa4d2e4be531ff3dc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the maximum number of "unaccepted" connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a68fe6c98ecc8cdfa4d2e4be531ff3dc0">More...</a><br /></td></tr>
+<tr class="separator:a68fe6c98ecc8cdfa4d2e4be531ff3dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ebad61dec3fbeb27b2c5d5b847fdc07"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a3ebad61dec3fbeb27b2c5d5b847fdc07">getBacklog</a> ()</td></tr>
+<tr class="memdesc:a3ebad61dec3fbeb27b2c5d5b847fdc07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the maximum number of "unaccepted" connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a3ebad61dec3fbeb27b2c5d5b847fdc07">More...</a><br /></td></tr>
+<tr class="separator:a3ebad61dec3fbeb27b2c5d5b847fdc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f51fa0e58e4ce2fb085a2b31918932c"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a2f51fa0e58e4ce2fb085a2b31918932c">listen</a> ()</td></tr>
+<tr class="memdesc:a2f51fa0e58e4ce2fb085a2b31918932c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts listening for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a2f51fa0e58e4ce2fb085a2b31918932c">More...</a><br /></td></tr>
+<tr class="separator:a2f51fa0e58e4ce2fb085a2b31918932c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f835a5e55926074d08d2cd7cdcd8691"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a4f835a5e55926074d08d2cd7cdcd8691">listen</a> (UShort port, Int backlog)</td></tr>
+<tr class="memdesc:a4f835a5e55926074d08d2cd7cdcd8691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts listening for incoming connections.  <a href="classESocket_1_1TCP_1_1Listener.html#a4f835a5e55926074d08d2cd7cdcd8691">More...</a><br /></td></tr>
+<tr class="separator:a4f835a5e55926074d08d2cd7cdcd8691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2910b7d5739e9291784cc3af4bfab01"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>&lt; TQueue, TMessage &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#ac2910b7d5739e9291784cc3af4bfab01">createSocket</a> (<a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;thread)=0</td></tr>
+<tr class="memdesc:ac2910b7d5739e9291784cc3af4bfab01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to create a talking socket when a incoming connection is received.  <a href="classESocket_1_1TCP_1_1Listener.html#ac2910b7d5739e9291784cc3af4bfab01">More...</a><br /></td></tr>
+<tr class="separator:ac2910b7d5739e9291784cc3af4bfab01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e39611743cf6dfac413e6a8d4f67bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>&lt; TQueue, TMessage &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#ae5e39611743cf6dfac413e6a8d4f67bf">createSocket</a> ()</td></tr>
+<tr class="memdesc:ae5e39611743cf6dfac413e6a8d4f67bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to create a talking socket when a incoming connection is received.  <a href="classESocket_1_1TCP_1_1Listener.html#ae5e39611743cf6dfac413e6a8d4f67bf">More...</a><br /></td></tr>
+<tr class="separator:ae5e39611743cf6dfac413e6a8d4f67bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f9b721b8075770566ca000626d2f03f"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a2f9b721b8075770566ca000626d2f03f">onClose</a> ()</td></tr>
+<tr class="memdesc:a2f9b721b8075770566ca000626d2f03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when this socket is closed.  <a href="classESocket_1_1TCP_1_1Listener.html#a2f9b721b8075770566ca000626d2f03f">More...</a><br /></td></tr>
+<tr class="separator:a2f9b721b8075770566ca000626d2f03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1477b6dd6c8da334612db807d9c22f75"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a1477b6dd6c8da334612db807d9c22f75">onError</a> ()</td></tr>
+<tr class="memdesc:a1477b6dd6c8da334612db807d9c22f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an error is detected on this socket.  <a href="classESocket_1_1TCP_1_1Listener.html#a1477b6dd6c8da334612db807d9c22f75">More...</a><br /></td></tr>
+<tr class="separator:a1477b6dd6c8da334612db807d9c22f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classESocket_1_1Base"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classESocket_1_1Base')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classESocket_1_1Base.html">ESocket::Base&lt; TQueue, TMessage &gt;</a></td></tr>
+<tr class="memitem:aff19da93bbc2cd05ce679cd1f4297364 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#aff19da93bbc2cd05ce679cd1f4297364">~Base</a> ()</td></tr>
+<tr class="memdesc:aff19da93bbc2cd05ce679cd1f4297364 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual class destructor.  <a href="classESocket_1_1Base.html#aff19da93bbc2cd05ce679cd1f4297364">More...</a><br /></td></tr>
+<tr class="separator:aff19da93bbc2cd05ce679cd1f4297364 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d8e6493e00ee44723d9e62a879052c inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#ab9d8e6493e00ee44723d9e62a879052c">getThread</a> ()</td></tr>
+<tr class="memdesc:ab9d8e6493e00ee44723d9e62a879052c inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket thread that this socket is associated with.  <a href="classESocket_1_1Base.html#ab9d8e6493e00ee44723d9e62a879052c">More...</a><br /></td></tr>
+<tr class="separator:ab9d8e6493e00ee44723d9e62a879052c inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1cb54f12a54fc18d690de7de1cdeb61 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97">SocketType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#ac1cb54f12a54fc18d690de7de1cdeb61">getSocketType</a> ()</td></tr>
+<tr class="memdesc:ac1cb54f12a54fc18d690de7de1cdeb61 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket type.  <a href="classESocket_1_1Base.html#ac1cb54f12a54fc18d690de7de1cdeb61">More...</a><br /></td></tr>
+<tr class="separator:ac1cb54f12a54fc18d690de7de1cdeb61 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a938bc6abada7d7139c789b8b9d494846 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a938bc6abada7d7139c789b8b9d494846">getFamily</a> ()</td></tr>
+<tr class="memdesc:a938bc6abada7d7139c789b8b9d494846 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the address family.  <a href="classESocket_1_1Base.html#a938bc6abada7d7139c789b8b9d494846">More...</a><br /></td></tr>
+<tr class="separator:a938bc6abada7d7139c789b8b9d494846 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c018cad9d609b48d10cbaa9d7b79cde inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a6c018cad9d609b48d10cbaa9d7b79cde">getType</a> ()</td></tr>
+<tr class="memdesc:a6c018cad9d609b48d10cbaa9d7b79cde inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket type.  <a href="classESocket_1_1Base.html#a6c018cad9d609b48d10cbaa9d7b79cde">More...</a><br /></td></tr>
+<tr class="separator:a6c018cad9d609b48d10cbaa9d7b79cde inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931c803d402b43131b68448d32d1d099 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a931c803d402b43131b68448d32d1d099">getProtocol</a> ()</td></tr>
+<tr class="memdesc:a931c803d402b43131b68448d32d1d099 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the protocol.  <a href="classESocket_1_1Base.html#a931c803d402b43131b68448d32d1d099">More...</a><br /></td></tr>
+<tr class="separator:a931c803d402b43131b68448d32d1d099 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b99ddcf9c8db8c26b7cb5eab79cfb7c inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a9b99ddcf9c8db8c26b7cb5eab79cfb7c">getError</a> ()</td></tr>
+<tr class="memdesc:a9b99ddcf9c8db8c26b7cb5eab79cfb7c inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last error value.  <a href="classESocket_1_1Base.html#a9b99ddcf9c8db8c26b7cb5eab79cfb7c">More...</a><br /></td></tr>
+<tr class="separator:a9b99ddcf9c8db8c26b7cb5eab79cfb7c inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd5d0c36dd9a445270ab0e68dbec1bd6 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#acd5d0c36dd9a445270ab0e68dbec1bd6">close</a> ()</td></tr>
+<tr class="memdesc:acd5d0c36dd9a445270ab0e68dbec1bd6 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes this socket.  <a href="classESocket_1_1Base.html#acd5d0c36dd9a445270ab0e68dbec1bd6">More...</a><br /></td></tr>
+<tr class="separator:acd5d0c36dd9a445270ab0e68dbec1bd6 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ba9a9e9efdb9c5fb240ea65abbb68ba inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a6ba9a9e9efdb9c5fb240ea65abbb68ba">disconnect</a> ()</td></tr>
+<tr class="memdesc:a6ba9a9e9efdb9c5fb240ea65abbb68ba inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnects this socket.  <a href="classESocket_1_1Base.html#a6ba9a9e9efdb9c5fb240ea65abbb68ba">More...</a><br /></td></tr>
+<tr class="separator:a6ba9a9e9efdb9c5fb240ea65abbb68ba inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c36f25cdef8005fcb972549c03c1205 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">Int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a4c36f25cdef8005fcb972549c03c1205">getHandle</a> ()</td></tr>
+<tr class="memdesc:a4c36f25cdef8005fcb972549c03c1205 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the socket file handle.  <a href="classESocket_1_1Base.html#a4c36f25cdef8005fcb972549c03c1205">More...</a><br /></td></tr>
+<tr class="separator:a4c36f25cdef8005fcb972549c03c1205 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07667549fb985bfc32841f4aeb423686 inherit pub_methods_classESocket_1_1Base"><td class="memItemLeft" align="right" valign="top">cpStr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Base.html#a07667549fb985bfc32841f4aeb423686">getStateDescription</a> (<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">SocketState</a> state)</td></tr>
+<tr class="memdesc:a07667549fb985bfc32841f4aeb423686 inherit pub_methods_classESocket_1_1Base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the description of the connection state.  <a href="classESocket_1_1Base.html#a07667549fb985bfc32841f4aeb423686">More...</a><br /></td></tr>
+<tr class="separator:a07667549fb985bfc32841f4aeb423686 inherit pub_methods_classESocket_1_1Base"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:abb2c00c5fabc97e789a5ed65b141c785"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#abb2c00c5fabc97e789a5ed65b141c785">Thread&lt; TQueue, TMessage &gt;</a></td></tr>
+<tr class="separator:abb2c00c5fabc97e789a5ed65b141c785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Listens for incoming TCP/IP connections. </p>
-</div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="af8e8c418541bb231f17c1ca3e97b32b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8e8c418541bb231f17c1ca3e97b32b1">&#9670;&nbsp;</a></span>State</h2>
+<div class="textblock"><h3>template&lt;class TQueue, class TMessage&gt;<br />
+class ESocket::TCP::Listener&lt; TQueue, TMessage &gt;</h3>
+
+<p>Listens for incoming TCP/IP connections. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac459e99dbb89be054d34665ac77b7f78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac459e99dbb89be054d34665ac77b7f78">&#9670;&nbsp;</a></span>Listener() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1">ESocket::TCP::Listener::State</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="classESocket_1_1TCP_1_1Listener.html" title="Listens for incoming TCP/IP connections.">Listener</a> connection state. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af8e8c418541bb231f17c1ca3e97b32b1aec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>undefined </p>
-</td></tr>
-<tr><td class="fieldname"><a id="af8e8c418541bb231f17c1ca3e97b32b1a962ef616821625a13a028ac14ac0fef8"></a>Listening&#160;</td><td class="fielddoc"><p>listening for incoming connections </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0eaffd1119a4ff01a9054dbf6f12ec4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0eaffd1119a4ff01a9054dbf6f12ec4a">&#9670;&nbsp;</a></span>Listener() <span class="overload">[1/3]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ESocket::TCP::Listener::Listener </td>
+          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::<a class="el" href="classESocket_1_1TCP_1_1Listener.html">Listener</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;&#160;</td>
           <td class="paramname"><em>thread</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a>&#160;</td>
-          <td class="paramname"><em>family</em> = <code><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a></code>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a>&#160;</td>
+          <td class="paramname"><em>family</em> = <code><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -245,6 +215,11 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Class constructor. </p>
@@ -258,16 +233,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6b316139930cd72ba0f5bc68052a9bde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b316139930cd72ba0f5bc68052a9bde">&#9670;&nbsp;</a></span>Listener() <span class="overload">[2/3]</span></h2>
+<a id="aaffb16522ad24de109b9d816d69327ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaffb16522ad24de109b9d816d69327ce">&#9670;&nbsp;</a></span>Listener() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ESocket::TCP::Listener::Listener </td>
+          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::<a class="el" href="classESocket_1_1TCP_1_1Listener.html">Listener</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;&#160;</td>
           <td class="paramname"><em>thread</em>, </td>
         </tr>
         <tr>
@@ -279,8 +259,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a>&#160;</td>
-          <td class="paramname"><em>family</em> = <code><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a></code>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a>&#160;</td>
+          <td class="paramname"><em>family</em> = <code><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -288,6 +268,11 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Class constructor. </p>
@@ -302,16 +287,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a082b8a9f8f745f1328d08d8837a9ebc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a082b8a9f8f745f1328d08d8837a9ebc8">&#9670;&nbsp;</a></span>Listener() <span class="overload">[3/3]</span></h2>
+<a id="a6f7fe677d9cd7c3cc466c89ab80ac39b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7fe677d9cd7c3cc466c89ab80ac39b">&#9670;&nbsp;</a></span>Listener() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ESocket::TCP::Listener::Listener </td>
+          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::<a class="el" href="classESocket_1_1TCP_1_1Listener.html">Listener</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;&#160;</td>
           <td class="paramname"><em>thread</em>, </td>
         </tr>
         <tr>
@@ -329,8 +319,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Address::Family</a>&#160;</td>
-          <td class="paramname"><em>family</em> = <code><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Address::Family::INET6</a></code>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a>&#160;</td>
+          <td class="paramname"><em>family</em> = <code><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -338,6 +328,11 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Class constructor. </p>
@@ -353,17 +348,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a32afb8c27d0a28ba9ab7f6e7bc6f13f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32afb8c27d0a28ba9ab7f6e7bc6f13f2">&#9670;&nbsp;</a></span>~Listener()</h2>
+<a id="abb5e0d65fddbc44cfcfdbc6d8404ca97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5e0d65fddbc44cfcfdbc6d8404ca97">&#9670;&nbsp;</a></span>~Listener()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual ESocket::TCP::Listener::~Listener </td>
+          <td class="memname">virtual <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::~<a class="el" href="classESocket_1_1TCP_1_1Listener.html">Listener</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -381,17 +378,19 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a96f50466c297efecabbe8b0587ee9ccb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96f50466c297efecabbe8b0587ee9ccb">&#9670;&nbsp;</a></span>createSocket() <span class="overload">[1/2]</span></h2>
+<a id="ae5e39611743cf6dfac413e6a8d4f67bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e39611743cf6dfac413e6a8d4f67bf">&#9670;&nbsp;</a></span>createSocket() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>* ESocket::TCP::Listener::createSocket </td>
+          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>&lt;TQueue,TMessage&gt;* <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::createSocket </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -409,19 +408,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8680ac6c8605b0ff5b1b74ecfa7de2cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8680ac6c8605b0ff5b1b74ecfa7de2cf">&#9670;&nbsp;</a></span>createSocket() <span class="overload">[2/2]</span></h2>
+<a id="ac2910b7d5739e9291784cc3af4bfab01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2910b7d5739e9291784cc3af4bfab01">&#9670;&nbsp;</a></span>createSocket() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>* ESocket::TCP::Listener::createSocket </td>
+          <td class="memname">virtual <a class="el" href="classESocket_1_1TCP_1_1Talker.html">Talker</a>&lt;TQueue,TMessage&gt;* <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::createSocket </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt; &amp;&#160;</td>
           <td class="paramname"><em>thread</em></td><td>)</td>
           <td></td>
         </tr>
@@ -444,17 +445,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa0dc178b3e3be0bbb044cec2ac421c56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0dc178b3e3be0bbb044cec2ac421c56">&#9670;&nbsp;</a></span>getBacklog()</h2>
+<a id="a3ebad61dec3fbeb27b2c5d5b847fdc07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ebad61dec3fbeb27b2c5d5b847fdc07">&#9670;&nbsp;</a></span>getBacklog()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Int ESocket::TCP::Listener::getBacklog </td>
+          <td class="memname">Int <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::getBacklog </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -472,17 +475,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aee9399ad52f649ace464689e1ef5b699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee9399ad52f649ace464689e1ef5b699">&#9670;&nbsp;</a></span>getLocalAddress()</h2>
+<a id="a2eac3ce8e5f0fa2f058071e131ce5e9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eac3ce8e5f0fa2f058071e131ce5e9f">&#9670;&nbsp;</a></span>getLocalAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classESocket_1_1Address.html">Address</a>&amp; ESocket::TCP::Listener::getLocalAddress </td>
+          <td class="memname"><a class="el" href="classESocket_1_1Address.html">Address</a>&amp; <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::getLocalAddress </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -500,17 +505,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4c82bc57aa458af90a1e941faf453288"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c82bc57aa458af90a1e941faf453288">&#9670;&nbsp;</a></span>getPort()</h2>
+<a id="a017e7053fcf9af0f3f45976ee0b0b27b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a017e7053fcf9af0f3f45976ee0b0b27b">&#9670;&nbsp;</a></span>getPort()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">UShort ESocket::TCP::Listener::getPort </td>
+          <td class="memname">UShort <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::getPort </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -528,17 +535,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ab7e693915cd0e3390d03aac2e1227d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ab7e693915cd0e3390d03aac2e1227d">&#9670;&nbsp;</a></span>getState()</h2>
+<a id="aeb7b68ebbf888252d84e95d942ea1c01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb7b68ebbf888252d84e95d942ea1c01">&#9670;&nbsp;</a></span>getState()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#af8e8c418541bb231f17c1ca3e97b32b1">State</a> ESocket::TCP::Listener::getState </td>
+          <td class="memname"><a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">SocketState</a> <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::getState </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -556,36 +565,48 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab43dce51eb22364d860a5ffde1a47ae0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab43dce51eb22364d860a5ffde1a47ae0">&#9670;&nbsp;</a></span>listen() <span class="overload">[1/2]</span></h2>
+<a id="a2f51fa0e58e4ce2fb085a2b31918932c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f51fa0e58e4ce2fb085a2b31918932c">&#9670;&nbsp;</a></span>listen() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::listen </td>
+          <td class="memname">Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::listen </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Starts listening for incoming connections. </p>
 
 </div>
 </div>
-<a id="a8ca9f586d541e0fb8c6459aa50eff666"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ca9f586d541e0fb8c6459aa50eff666">&#9670;&nbsp;</a></span>listen() <span class="overload">[2/2]</span></h2>
+<a id="a4f835a5e55926074d08d2cd7cdcd8691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f835a5e55926074d08d2cd7cdcd8691">&#9670;&nbsp;</a></span>listen() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::listen </td>
+          <td class="memname">Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::listen </td>
           <td>(</td>
           <td class="paramtype">UShort&#160;</td>
           <td class="paramname"><em>port</em>, </td>
@@ -620,17 +641,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="addd4611effba5b7e75c17bc7b099e737"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addd4611effba5b7e75c17bc7b099e737">&#9670;&nbsp;</a></span>onClose()</h2>
+<a id="a2f9b721b8075770566ca000626d2f03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f9b721b8075770566ca000626d2f03f">&#9670;&nbsp;</a></span>onClose()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::onClose </td>
+          <td class="memname">virtual Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::onClose </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -638,7 +661,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -647,17 +670,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1f42b902f5dc87a6008b9eb95f2485b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f42b902f5dc87a6008b9eb95f2485b3">&#9670;&nbsp;</a></span>onError()</h2>
+<a id="a1477b6dd6c8da334612db807d9c22f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1477b6dd6c8da334612db807d9c22f75">&#9670;&nbsp;</a></span>onError()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::onError </td>
+          <td class="memname">virtual Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::onError </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -665,7 +690,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -674,17 +699,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abc6c25feea347ca3b33977d22ca6b3cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc6c25feea347ca3b33977d22ca6b3cb">&#9670;&nbsp;</a></span>setBacklog()</h2>
+<a id="a68fe6c98ecc8cdfa4d2e4be531ff3dc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68fe6c98ecc8cdfa4d2e4be531ff3dc0">&#9670;&nbsp;</a></span>setBacklog()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::setBacklog </td>
+          <td class="memname">Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::setBacklog </td>
           <td>(</td>
           <td class="paramtype">Int&#160;</td>
           <td class="paramname"><em>backlog</em></td><td>)</td>
@@ -708,17 +735,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a17e024dfb118bfcc0a503ebab23ec624"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17e024dfb118bfcc0a503ebab23ec624">&#9670;&nbsp;</a></span>setPort()</h2>
+<a id="a0c324460062a242c64c89ef607431b33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c324460062a242c64c89ef607431b33">&#9670;&nbsp;</a></span>setPort()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Void ESocket::TCP::Listener::setPort </td>
+          <td class="memname">Void <a class="el" href="classESocket_1_1TCP_1_1Listener.html">ESocket::TCP::Listener</a>&lt; TQueue, TMessage &gt;::setPort </td>
           <td>(</td>
           <td class="paramtype">UShort&#160;</td>
           <td class="paramname"><em>port</em></td><td>)</td>
@@ -742,9 +771,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="abb2c00c5fabc97e789a5ed65b141c785"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb2c00c5fabc97e789a5ed65b141c785">&#9670;&nbsp;</a></span>Thread&lt; TQueue, TMessage &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; TQueue, TMessage &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="esocket_8h_source.html">esocket.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="esocket_8cpp.html">esocket.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shortname',['shortName',['../structEGetOpt_1_1Option.html#aedc33640e498bb92e84750966329a5c4',1,'EGetOpt::Option']]]
+  ['upd_5fmax_5fmsg_5flength',['UPD_MAX_MSG_LENGTH',['../namespaceESocket.html#ad7e5c9e566fc34b80f332f9c409c7f99',1,'ESocket']]]
 ];

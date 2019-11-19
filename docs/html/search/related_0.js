@@ -10,6 +10,6 @@ var searchData=
   ['equeueprivate',['EQueuePrivate',['../classEQueueBase.html#a34f08cc45eeb800bbb03d567b63e6e35',1,'EQueueBase']]],
   ['equeuepublic',['EQueuePublic',['../classEQueueBase.html#ab2167c150774a87cacef50a607476cb7',1,'EQueueBase']]],
   ['esynchobjects',['ESynchObjects',['../classESemaphorePublic.html#adf4e876158e825e614990a009b7e768c',1,'ESemaphorePublic']]],
-  ['ethreadbase',['EThreadBase',['../classEThreadBasic.html#a8a6444ab2d61ca39605f118d18754f6c',1,'EThreadBasic::EThreadBase()'],['../classEThreadBase_1_1Timer.html#a8a6444ab2d61ca39605f118d18754f6c',1,'EThreadBase::Timer::EThreadBase()']]],
+  ['ethreadbase',['EThreadBase',['../classEThreadBasic.html#a8a6444ab2d61ca39605f118d18754f6c',1,'EThreadBasic']]],
   ['ethreadqueuebase',['EThreadQueueBase',['../classEThreadMessage.html#a57d60d8846d09d1d0c244e88b55ec20f',1,'EThreadMessage']]]
 ];

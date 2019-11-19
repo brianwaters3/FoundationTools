@@ -28,7 +28,7 @@
 #include "dnsquery.h"
 #include "eatomic.h"
 #include "esynch.h"
-#include "ethread.h"
+#include "etevent.h"
 
 namespace DNS
 {
@@ -141,7 +141,7 @@ namespace DNS
 
       virtual Void onInit();
       virtual Void onQuit();
-      virtual Void onTimer( EThreadBase::Timer &timer );
+      virtual Void onTimer( EThreadEventTimer &timer );
       Void saveQueries( EThreadMessage &msg ) { _saveQueries(); }
       Void forceRefresh( EThreadMessage &msg ) { _forceRefresh(); }
 
@@ -167,12 +167,12 @@ namespace DNS
       Cache &m_cache;
       ESemaphorePrivate m_sem;
       int m_percent;
-      EThreadBase::Timer m_timer;
+      EThreadEventTimer m_timer;
       long m_interval;
       Bool m_running;
       EString m_qfn;
       long m_qsf;
-      EThreadBase::Timer m_qst;
+      EThreadEventTimer m_qst;
    };
 
    /// @endcond

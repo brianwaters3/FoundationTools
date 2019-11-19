@@ -161,11 +161,10 @@ am_libepc_a_OBJECTS = libepc_a-ebase.$(OBJEXT) \
 	libepc_a-eshmem.$(OBJEXT) libepc_a-esocket.$(OBJEXT) \
 	libepc_a-estatic.$(OBJEXT) libepc_a-estats.$(OBJEXT) \
 	libepc_a-estring.$(OBJEXT) libepc_a-esynch.$(OBJEXT) \
-	libepc_a-etbase.$(OBJEXT) libepc_a-ethread.$(OBJEXT) \
+	libepc_a-etbasic.$(OBJEXT) libepc_a-etevent.$(OBJEXT) \
 	libepc_a-etime.$(OBJEXT) libepc_a-etimer.$(OBJEXT) \
-	libepc_a-etimerpool.$(OBJEXT) libepc_a-etq.$(OBJEXT) \
-	libepc_a-eutil.$(OBJEXT) libepc_a-dnscache.$(OBJEXT) \
-	libepc_a-dnsparser.$(OBJEXT)
+	libepc_a-etimerpool.$(OBJEXT) libepc_a-eutil.$(OBJEXT) \
+	libepc_a-dnscache.$(OBJEXT) libepc_a-dnsparser.$(OBJEXT)
 libepc_a_OBJECTS = $(am_libepc_a_OBJECTS)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -353,16 +352,19 @@ libepc_a_SOURCES = \
    estats.cpp        \
    estring.cpp       \
    esynch.cpp        \
-   etbase.cpp        \
-   ethread.cpp       \
+   etbasic.cpp       \
+   etevent.cpp       \
    etime.cpp         \
    etimer.cpp        \
    etimerpool.cpp    \
-   etq.cpp           \
    eutil.cpp         \
    dnscache.cpp      \
    dnsparser.cpp 
 
+
+#   etbase.cpp        
+#   ethread.cpp
+#   etq.cpp
 
 # Linker options libTestProgram
 #libepc_a_LDFLAGS = 
@@ -471,12 +473,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-estats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-estring.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-esynch.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etbase.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-ethread.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etbasic.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etevent.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etime.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etimer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etimerpool.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-etq.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libepc_a-eutil.Po@am__quote@
 
 .cpp.o:
@@ -815,33 +816,33 @@ libepc_a-esynch.obj: esynch.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-esynch.obj `if test -f 'esynch.cpp'; then $(CYGPATH_W) 'esynch.cpp'; else $(CYGPATH_W) '$(srcdir)/esynch.cpp'; fi`
 
-libepc_a-etbase.o: etbase.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etbase.o -MD -MP -MF $(DEPDIR)/libepc_a-etbase.Tpo -c -o libepc_a-etbase.o `test -f 'etbase.cpp' || echo '$(srcdir)/'`etbase.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etbase.Tpo $(DEPDIR)/libepc_a-etbase.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etbase.cpp' object='libepc_a-etbase.o' libtool=no @AMDEPBACKSLASH@
+libepc_a-etbasic.o: etbasic.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etbasic.o -MD -MP -MF $(DEPDIR)/libepc_a-etbasic.Tpo -c -o libepc_a-etbasic.o `test -f 'etbasic.cpp' || echo '$(srcdir)/'`etbasic.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etbasic.Tpo $(DEPDIR)/libepc_a-etbasic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etbasic.cpp' object='libepc_a-etbasic.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etbase.o `test -f 'etbase.cpp' || echo '$(srcdir)/'`etbase.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etbasic.o `test -f 'etbasic.cpp' || echo '$(srcdir)/'`etbasic.cpp
 
-libepc_a-etbase.obj: etbase.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etbase.obj -MD -MP -MF $(DEPDIR)/libepc_a-etbase.Tpo -c -o libepc_a-etbase.obj `if test -f 'etbase.cpp'; then $(CYGPATH_W) 'etbase.cpp'; else $(CYGPATH_W) '$(srcdir)/etbase.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etbase.Tpo $(DEPDIR)/libepc_a-etbase.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etbase.cpp' object='libepc_a-etbase.obj' libtool=no @AMDEPBACKSLASH@
+libepc_a-etbasic.obj: etbasic.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etbasic.obj -MD -MP -MF $(DEPDIR)/libepc_a-etbasic.Tpo -c -o libepc_a-etbasic.obj `if test -f 'etbasic.cpp'; then $(CYGPATH_W) 'etbasic.cpp'; else $(CYGPATH_W) '$(srcdir)/etbasic.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etbasic.Tpo $(DEPDIR)/libepc_a-etbasic.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etbasic.cpp' object='libepc_a-etbasic.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etbase.obj `if test -f 'etbase.cpp'; then $(CYGPATH_W) 'etbase.cpp'; else $(CYGPATH_W) '$(srcdir)/etbase.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etbasic.obj `if test -f 'etbasic.cpp'; then $(CYGPATH_W) 'etbasic.cpp'; else $(CYGPATH_W) '$(srcdir)/etbasic.cpp'; fi`
 
-libepc_a-ethread.o: ethread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-ethread.o -MD -MP -MF $(DEPDIR)/libepc_a-ethread.Tpo -c -o libepc_a-ethread.o `test -f 'ethread.cpp' || echo '$(srcdir)/'`ethread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-ethread.Tpo $(DEPDIR)/libepc_a-ethread.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ethread.cpp' object='libepc_a-ethread.o' libtool=no @AMDEPBACKSLASH@
+libepc_a-etevent.o: etevent.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etevent.o -MD -MP -MF $(DEPDIR)/libepc_a-etevent.Tpo -c -o libepc_a-etevent.o `test -f 'etevent.cpp' || echo '$(srcdir)/'`etevent.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etevent.Tpo $(DEPDIR)/libepc_a-etevent.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etevent.cpp' object='libepc_a-etevent.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-ethread.o `test -f 'ethread.cpp' || echo '$(srcdir)/'`ethread.cpp
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etevent.o `test -f 'etevent.cpp' || echo '$(srcdir)/'`etevent.cpp
 
-libepc_a-ethread.obj: ethread.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-ethread.obj -MD -MP -MF $(DEPDIR)/libepc_a-ethread.Tpo -c -o libepc_a-ethread.obj `if test -f 'ethread.cpp'; then $(CYGPATH_W) 'ethread.cpp'; else $(CYGPATH_W) '$(srcdir)/ethread.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-ethread.Tpo $(DEPDIR)/libepc_a-ethread.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='ethread.cpp' object='libepc_a-ethread.obj' libtool=no @AMDEPBACKSLASH@
+libepc_a-etevent.obj: etevent.cpp
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etevent.obj -MD -MP -MF $(DEPDIR)/libepc_a-etevent.Tpo -c -o libepc_a-etevent.obj `if test -f 'etevent.cpp'; then $(CYGPATH_W) 'etevent.cpp'; else $(CYGPATH_W) '$(srcdir)/etevent.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etevent.Tpo $(DEPDIR)/libepc_a-etevent.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etevent.cpp' object='libepc_a-etevent.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-ethread.obj `if test -f 'ethread.cpp'; then $(CYGPATH_W) 'ethread.cpp'; else $(CYGPATH_W) '$(srcdir)/ethread.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etevent.obj `if test -f 'etevent.cpp'; then $(CYGPATH_W) 'etevent.cpp'; else $(CYGPATH_W) '$(srcdir)/etevent.cpp'; fi`
 
 libepc_a-etime.o: etime.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etime.o -MD -MP -MF $(DEPDIR)/libepc_a-etime.Tpo -c -o libepc_a-etime.o `test -f 'etime.cpp' || echo '$(srcdir)/'`etime.cpp
@@ -884,20 +885,6 @@ libepc_a-etimerpool.obj: etimerpool.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etimerpool.cpp' object='libepc_a-etimerpool.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etimerpool.obj `if test -f 'etimerpool.cpp'; then $(CYGPATH_W) 'etimerpool.cpp'; else $(CYGPATH_W) '$(srcdir)/etimerpool.cpp'; fi`
-
-libepc_a-etq.o: etq.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etq.o -MD -MP -MF $(DEPDIR)/libepc_a-etq.Tpo -c -o libepc_a-etq.o `test -f 'etq.cpp' || echo '$(srcdir)/'`etq.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etq.Tpo $(DEPDIR)/libepc_a-etq.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etq.cpp' object='libepc_a-etq.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etq.o `test -f 'etq.cpp' || echo '$(srcdir)/'`etq.cpp
-
-libepc_a-etq.obj: etq.cpp
-@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-etq.obj -MD -MP -MF $(DEPDIR)/libepc_a-etq.Tpo -c -o libepc_a-etq.obj `if test -f 'etq.cpp'; then $(CYGPATH_W) 'etq.cpp'; else $(CYGPATH_W) '$(srcdir)/etq.cpp'; fi`
-@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libepc_a-etq.Tpo $(DEPDIR)/libepc_a-etq.Po
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(AM_V_CXX)source='etq.cpp' object='libepc_a-etq.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libepc_a-etq.obj `if test -f 'etq.cpp'; then $(CYGPATH_W) 'etq.cpp'; else $(CYGPATH_W) '$(srcdir)/etq.cpp'; fi`
 
 libepc_a-eutil.o: eutil.cpp
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libepc_a_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libepc_a-eutil.o -MD -MP -MF $(DEPDIR)/libepc_a-eutil.Tpo -c -o libepc_a-eutil.o `test -f 'eutil.cpp' || echo '$(srcdir)/'`eutil.cpp

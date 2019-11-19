@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timerptr',['TimerPtr',['../classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2',1,'ETimerPool']]],
-  ['timerptrlist',['TimerPtrList',['../classETimerPool.html#aba55e27d1afd38c2e89f279cf7d7dcce',1,'ETimerPool']]]
+  ['udpprivate',['UdpPrivate',['../namespaceESocket.html#a24cc0ce3fc2469d0913def48e8a7f4dd',1,'ESocket']]],
+  ['udppublic',['UdpPublic',['../namespaceESocket.html#a01c287e132584ba636fcc4021566ad7b',1,'ESocket']]]
 ];

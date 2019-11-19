@@ -21,17 +21,17 @@
 
 #include "esocket.h"
 
-#define epc_closesocket(a) ::close(a)
-#define EPC_LASTERROR errno
-#define EPC_INVALID_SOCKET -1
-#define EPC_EINPROGRESS EINPROGRESS
-#define EPC_EWOULDBLOCK EWOULDBLOCK
-#define EPC_EMSGSIZE EMSGSIZE
-#define EPC_SOCKET_ERROR -1
-typedef Int EPC_SOCKET;
-typedef void *PSOCKETOPT;
-typedef void *PSNDRCVBUFFER;
-typedef socklen_t EPC_SOCKLEN;
+// #define epc_closesocket(a) ::close(a)
+// #define EPC_LASTERROR errno
+// #define EPC_INVALID_SOCKET -1
+// #define EPC_EINPROGRESS EINPROGRESS
+// #define EPC_EWOULDBLOCK EWOULDBLOCK
+// #define EPC_EMSGSIZE EMSGSIZE
+// #define EPC_SOCKET_ERROR -1
+// typedef Int EPC_SOCKET;
+// typedef void *PSOCKETOPT;
+// typedef void *PSNDRCVBUFFER;
+// typedef socklen_t EPC_SOCKLEN;
 
 ////////////////////////////////////////////////////////////////////////////////
 // ESocketError
@@ -200,8 +200,13 @@ ThreadError_UnableToWritePipe::ThreadError_UnableToWritePipe()
    appendLastOsError();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
 /// @endcond
 
+#if 0
 ////////////////////////////////////////////////////////////////////////////////
 // ESocket::Base
 ////////////////////////////////////////////////////////////////////////////////
@@ -559,7 +564,6 @@ namespace TCP
         m_backlog( -1 )
    {
    }
-
 
    Listener::Listener(Thread &thread, UShort port, Address::Family family)
       : Base(thread, SocketType::TcpListener,
@@ -1141,7 +1145,7 @@ Bool Thread::pumpMessagesInternal()
    {
       while (True)
       {
-         if (!pumpMessage(msg, false) || msg.getMsgId() == EM_QUIT)
+         if (!pumpMessage(msg, false) || msg.getMessageId() == EM_QUIT)
             break;
       }
    }
@@ -1154,7 +1158,7 @@ Bool Thread::pumpMessagesInternal()
    // get out if the thread has been told to stop
    ////////////////////////////////////////////////////////////////////
    //return (keepGoing() && msg.getMsgId() != EM_QUIT);
-   return msg.getMsgId() != EM_QUIT;
+   return msg.getMessageId() != EM_QUIT;
 }
 
 /// @cond DOXYGEN_EXCLUDE
@@ -1280,5 +1284,6 @@ Void Thread::pumpMessages()
       delete psocket;
    }
 }
+#endif
 /// @endcond
 }

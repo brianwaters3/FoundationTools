@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['udp',['UDP',['../classESocket_1_1UDP.html',1,'ESocket']]],
-  ['usagetypelist',['UsageTypeList',['../classEPCDNS_1_1UsageTypeList.html',1,'EPCDNS']]],
-  ['utility',['Utility',['../classEPCDNS_1_1Utility.html',1,'EPCDNS']]]
+  ['talker',['Talker',['../classESocket_1_1TCP_1_1Talker.html',1,'ESocket::TCP']]],
+  ['thread',['Thread',['../classESocket_1_1Thread.html',1,'ESocket']]]
 ];

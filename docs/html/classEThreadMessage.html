@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -71,13 +72,59 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Represents an event message to be sent to a thread.  
+<p>An event message that is to be sent to a thread.  
  <a href="classEThreadMessage.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="etq_8h_source.html">etq.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="etevent_8h_source.html">etevent.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for EThreadMessage:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classEThreadMessage.png" usemap="#EThreadMessage_map" alt=""/>
+  <map id="EThreadMessage_map" name="EThreadMessage_map">
+<area href="classEThreadEventMessageBase.html" title="A template class that all event message classes should derive from." alt="EThreadEventMessageBase&lt; T &gt;" shape="rect" coords="0,56,352,80"/>
+<area href="class__EThreadEventMessageBase.html" title="The event message base class." alt="_EThreadEventMessageBase" shape="rect" coords="0,0,352,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a64d1ba98a758fe15745307bfce0d900d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a64d1ba98a758fe15745307bfce0d900d">EThreadMessage</a> ()</td></tr>
+<tr class="memdesc:a64d1ba98a758fe15745307bfce0d900d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default class constructor.  <a href="classEThreadMessage.html#a64d1ba98a758fe15745307bfce0d900d">More...</a><br /></td></tr>
+<tr class="separator:a64d1ba98a758fe15745307bfce0d900d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614488b442826092a9bb6225759b9d03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a614488b442826092a9bb6225759b9d03">EThreadMessage</a> (UInt msgid)</td></tr>
+<tr class="memdesc:a614488b442826092a9bb6225759b9d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a614488b442826092a9bb6225759b9d03">More...</a><br /></td></tr>
+<tr class="separator:a614488b442826092a9bb6225759b9d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67736461309c15c095ce60ae17585b9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a67736461309c15c095ce60ae17585b9d">EThreadMessage</a> (UInt msgid, <a class="el" href="classEThreadEventMessageData.html">EThreadEventMessageData</a> &amp;<a class="el" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a>)</td></tr>
+<tr class="memdesc:a67736461309c15c095ce60ae17585b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a67736461309c15c095ce60ae17585b9d">More...</a><br /></td></tr>
+<tr class="separator:a67736461309c15c095ce60ae17585b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b0ded49a46a24101bc4d4beaf1ffb80"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a3b0ded49a46a24101bc4d4beaf1ffb80">EThreadMessage</a> (UInt msgid, pVoid v)</td></tr>
+<tr class="memdesc:a3b0ded49a46a24101bc4d4beaf1ffb80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a3b0ded49a46a24101bc4d4beaf1ffb80">More...</a><br /></td></tr>
+<tr class="separator:a3b0ded49a46a24101bc4d4beaf1ffb80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1acc702961698475059e296f3e0a754c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a1acc702961698475059e296f3e0a754c">EThreadMessage</a> (UInt msgid, LongLong v)</td></tr>
+<tr class="memdesc:a1acc702961698475059e296f3e0a754c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a1acc702961698475059e296f3e0a754c">More...</a><br /></td></tr>
+<tr class="separator:a1acc702961698475059e296f3e0a754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca89f9f83f64d631242738afe59c25d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a0ca89f9f83f64d631242738afe59c25d">EThreadMessage</a> (UInt msgid, ULongLong v)</td></tr>
+<tr class="memdesc:a0ca89f9f83f64d631242738afe59c25d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a0ca89f9f83f64d631242738afe59c25d">More...</a><br /></td></tr>
+<tr class="separator:a0ca89f9f83f64d631242738afe59c25d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a082db0869ddc600e73eb893cc0f19a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a2a082db0869ddc600e73eb893cc0f19a">EThreadMessage</a> (UInt msgid, Long v1, Long v2=0)</td></tr>
+<tr class="memdesc:a2a082db0869ddc600e73eb893cc0f19a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a2a082db0869ddc600e73eb893cc0f19a">More...</a><br /></td></tr>
+<tr class="separator:a2a082db0869ddc600e73eb893cc0f19a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c18145fc2368b079166137217e09a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#ad5c18145fc2368b079166137217e09a9">EThreadMessage</a> (UInt msgid, ULong v1, ULong v2=0)</td></tr>
+<tr class="memdesc:ad5c18145fc2368b079166137217e09a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#ad5c18145fc2368b079166137217e09a9">More...</a><br /></td></tr>
+<tr class="separator:ad5c18145fc2368b079166137217e09a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7648594242c1bd2890f92318dc3178c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#ae7648594242c1bd2890f92318dc3178c">EThreadMessage</a> (UInt msgid, Short v1, Short v2=0, Short v3=0, Short v4=0)</td></tr>
+<tr class="memdesc:ae7648594242c1bd2890f92318dc3178c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#ae7648594242c1bd2890f92318dc3178c">More...</a><br /></td></tr>
+<tr class="separator:ae7648594242c1bd2890f92318dc3178c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7cf477dc43eefe485c4d7c85d401ba9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#ac7cf477dc43eefe485c4d7c85d401ba9">EThreadMessage</a> (UInt msgid, UShort v1, UShort v2=0, UShort v3=0, UShort v4=0)</td></tr>
+<tr class="memdesc:ac7cf477dc43eefe485c4d7c85d401ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#ac7cf477dc43eefe485c4d7c85d401ba9">More...</a><br /></td></tr>
+<tr class="separator:ac7cf477dc43eefe485c4d7c85d401ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f509b21b4e2680b4e124efa77d0cf39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a8f509b21b4e2680b4e124efa77d0cf39">EThreadMessage</a> (UInt msgid, Char v1, Char v2=0, Char v3=0, Char v4=0, Char v5=0, Char v6=0, Char v7=0, Char v8=0)</td></tr>
+<tr class="memdesc:a8f509b21b4e2680b4e124efa77d0cf39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a8f509b21b4e2680b4e124efa77d0cf39">More...</a><br /></td></tr>
+<tr class="separator:a8f509b21b4e2680b4e124efa77d0cf39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5028679d5c0bc730bf0d4677b09ecfb5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a5028679d5c0bc730bf0d4677b09ecfb5">EThreadMessage</a> (UInt msgid, UChar v1, UChar v2=0, UChar v3=0, UChar v4=0, UChar v5=0, UChar v6=0, UChar v7=0, UChar v8=0)</td></tr>
+<tr class="memdesc:a5028679d5c0bc730bf0d4677b09ecfb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="classEThreadMessage.html#a5028679d5c0bc730bf0d4677b09ecfb5">More...</a><br /></td></tr>
+<tr class="separator:a5028679d5c0bc730bf0d4677b09ecfb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64d1ba98a758fe15745307bfce0d900d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a64d1ba98a758fe15745307bfce0d900d">EThreadMessage</a> ()</td></tr>
 <tr class="memdesc:a64d1ba98a758fe15745307bfce0d900d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classEThreadMessage.html#a64d1ba98a758fe15745307bfce0d900d">More...</a><br /></td></tr>
 <tr class="separator:a64d1ba98a758fe15745307bfce0d900d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,6 +179,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7f607b3aac9c3be6130f8f26bd870819"><td class="memItemLeft" align="right" valign="top">pVoid &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html#a7f607b3aac9c3be6130f8f26bd870819">getVoidPtr</a> ()</td></tr>
 <tr class="memdesc:a7f607b3aac9c3be6130f8f26bd870819"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the void pointer value associated with this message.  <a href="classEThreadMessage.html#a7f607b3aac9c3be6130f8f26bd870819">More...</a><br /></td></tr>
 <tr class="separator:a7f607b3aac9c3be6130f8f26bd870819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classEThreadEventMessageBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEThreadEventMessageBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classEThreadEventMessageBase.html">EThreadEventMessageBase&lt; T &gt;</a></td></tr>
+<tr class="memitem:a1692737ac06df0b6410a2dd4636a73fc inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a1692737ac06df0b6410a2dd4636a73fc">EThreadEventMessageBase</a> ()</td></tr>
+<tr class="memdesc:a1692737ac06df0b6410a2dd4636a73fc inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classEThreadEventMessageBase.html#a1692737ac06df0b6410a2dd4636a73fc">More...</a><br /></td></tr>
+<tr class="separator:a1692737ac06df0b6410a2dd4636a73fc inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32352601508cc8805f51aadd2a62207f inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a32352601508cc8805f51aadd2a62207f">EThreadEventMessageBase</a> (const T &amp;<a class="el" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a>)</td></tr>
+<tr class="memdesc:a32352601508cc8805f51aadd2a62207f inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classEThreadEventMessageBase.html#a32352601508cc8805f51aadd2a62207f">More...</a><br /></td></tr>
+<tr class="separator:a32352601508cc8805f51aadd2a62207f inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afd3430ef6d14bba3a2a1725f7da350 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a1afd3430ef6d14bba3a2a1725f7da350">~EThreadEventMessageBase</a> ()</td></tr>
+<tr class="memdesc:a1afd3430ef6d14bba3a2a1725f7da350 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classEThreadEventMessageBase.html#a1afd3430ef6d14bba3a2a1725f7da350">More...</a><br /></td></tr>
+<tr class="separator:a1afd3430ef6d14bba3a2a1725f7da350 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2109f232b88941ef1c5e72c8d0af7028 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a2109f232b88941ef1c5e72c8d0af7028">operator=</a> (const T &amp;<a class="el" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a>)</td></tr>
+<tr class="memdesc:a2109f232b88941ef1c5e72c8d0af7028 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <a href="classEThreadEventMessageBase.html#a2109f232b88941ef1c5e72c8d0af7028">More...</a><br /></td></tr>
+<tr class="separator:a2109f232b88941ef1c5e72c8d0af7028 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a230c9b28843f770b7cbe41c573516603 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a> ()</td></tr>
+<tr class="memdesc:a230c9b28843f770b7cbe41c573516603 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the data portion of the message.  <a href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">More...</a><br /></td></tr>
+<tr class="separator:a230c9b28843f770b7cbe41c573516603 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3389f69104fa69f709d4c32520b8a370 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">UInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a3389f69104fa69f709d4c32520b8a370">getMessageId</a> ()</td></tr>
+<tr class="memdesc:a3389f69104fa69f709d4c32520b8a370 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the event message ID associated with this event message.  <a href="classEThreadEventMessageBase.html#a3389f69104fa69f709d4c32520b8a370">More...</a><br /></td></tr>
+<tr class="separator:a3389f69104fa69f709d4c32520b8a370 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e9f13e22f67856ee9ba43ec1b8f8c7 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEThreadEventMessageBase.html">EThreadEventMessageBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#ab2e9f13e22f67856ee9ba43ec1b8f8c7">setMessageId</a> (UInt msgid)</td></tr>
+<tr class="memdesc:ab2e9f13e22f67856ee9ba43ec1b8f8c7 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the event message ID for this event message.  <a href="classEThreadEventMessageBase.html#ab2e9f13e22f67856ee9ba43ec1b8f8c7">More...</a><br /></td></tr>
+<tr class="separator:ab2e9f13e22f67856ee9ba43ec1b8f8c7 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcbf94f689ee25602f42429fb9e187d inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">pVoid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#adbcbf94f689ee25602f42429fb9e187d">getVoidPtr</a> ()</td></tr>
+<tr class="memdesc:adbcbf94f689ee25602f42429fb9e187d inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the void pointer from the data portion of this event message.  <a href="classEThreadEventMessageBase.html#adbcbf94f689ee25602f42429fb9e187d">More...</a><br /></td></tr>
+<tr class="separator:adbcbf94f689ee25602f42429fb9e187d inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984c6a4d1094ac27166d4d5fc8b429b0 inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a984c6a4d1094ac27166d4d5fc8b429b0">setVoidPtr</a> (pVoid p)</td></tr>
+<tr class="memdesc:a984c6a4d1094ac27166d4d5fc8b429b0 inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the void pointer for this event message.  <a href="classEThreadEventMessageBase.html#a984c6a4d1094ac27166d4d5fc8b429b0">More...</a><br /></td></tr>
+<tr class="separator:a984c6a4d1094ac27166d4d5fc8b429b0 inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f92ffc042c0e8b6093ffc76375a31df inherit pub_methods_classEThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classETimer.html">ETimer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventMessageBase.html#a4f92ffc042c0e8b6093ffc76375a31df">getTimer</a> ()</td></tr>
+<tr class="memdesc:a4f92ffc042c0e8b6093ffc76375a31df inherit pub_methods_classEThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the timer associated with this event message.  <a href="classEThreadEventMessageBase.html#a4f92ffc042c0e8b6093ffc76375a31df">More...</a><br /></td></tr>
+<tr class="separator:a4f92ffc042c0e8b6093ffc76375a31df inherit pub_methods_classEThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class__EThreadEventMessageBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class__EThreadEventMessageBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a></td></tr>
+<tr class="memitem:a267071bbebd98127de3f23f275c1082f inherit pub_methods_class__EThreadEventMessageBase"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__EThreadEventMessageBase.html#a267071bbebd98127de3f23f275c1082f">~_EThreadEventMessageBase</a> ()</td></tr>
+<tr class="memdesc:a267071bbebd98127de3f23f275c1082f inherit pub_methods_class__EThreadEventMessageBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual class destructor.  <a href="class__EThreadEventMessageBase.html#a267071bbebd98127de3f23f275c1082f">More...</a><br /></td></tr>
+<tr class="separator:a267071bbebd98127de3f23f275c1082f inherit pub_methods_class__EThreadEventMessageBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -139,10 +221,677 @@ Friends</h2></td></tr>
 <tr class="separator:a57d60d8846d09d1d0c244e88b55ec20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents an event message to be sent to a thread. </p>
+<div class="textblock"><p>An event message that is to be sent to a thread. </p>
+<p>Represents an event message to be sent to a thread.</p>
+<p>This thread message contains a union that interprets 8 bytes in various ways. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a64d1ba98a758fe15745307bfce0d900d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64d1ba98a758fe15745307bfce0d900d">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d1ba98a758fe15745307bfce0d900d">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[1/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default class constructor. </p>
+
+</div>
+</div>
+<a id="a614488b442826092a9bb6225759b9d03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614488b442826092a9bb6225759b9d03">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[2/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a67736461309c15c095ce60ae17585b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67736461309c15c095ce60ae17585b9d">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[3/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classEThreadEventMessageData.html">EThreadEventMessageData</a> &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">data</td><td>a data object to include in the message (contains the union definition). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3b0ded49a46a24101bc4d4beaf1ffb80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b0ded49a46a24101bc4d4beaf1ffb80">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[4/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pVoid&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v</td><td>a void pointer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1acc702961698475059e296f3e0a754c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1acc702961698475059e296f3e0a754c">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[5/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">LongLong&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v</td><td>a 64-bit signed integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0ca89f9f83f64d631242738afe59c25d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca89f9f83f64d631242738afe59c25d">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[6/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ULongLong&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v</td><td>a 64-bit unsigned integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2a082db0869ddc600e73eb893cc0f19a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a082db0869ddc600e73eb893cc0f19a">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[7/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Long&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Long&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 32-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 32-bit signed integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5c18145fc2368b079166137217e09a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c18145fc2368b079166137217e09a9">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[8/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ULong&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ULong&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 32-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 32-bit unsigned integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae7648594242c1bd2890f92318dc3178c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7648594242c1bd2890f92318dc3178c">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[9/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Short&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Short&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Short&#160;</td>
+          <td class="paramname"><em>v3</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Short&#160;</td>
+          <td class="paramname"><em>v4</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 16-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 16-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v3</td><td>the third 16-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v4</td><td>the fourth 16-bit signed integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac7cf477dc43eefe485c4d7c85d401ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7cf477dc43eefe485c4d7c85d401ba9">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[10/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UShort&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UShort&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UShort&#160;</td>
+          <td class="paramname"><em>v3</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UShort&#160;</td>
+          <td class="paramname"><em>v4</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 16-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 16-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v3</td><td>the third 16-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v4</td><td>the fourth 16-bit unsigned integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8f509b21b4e2680b4e124efa77d0cf39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f509b21b4e2680b4e124efa77d0cf39">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[11/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v3</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v4</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v5</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v6</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v7</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Char&#160;</td>
+          <td class="paramname"><em>v8</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v3</td><td>the third 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v4</td><td>the fourth 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v5</td><td>the fifth 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v6</td><td>the sixth 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v7</td><td>the seventh 8-bit signed integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v8</td><td>the eighth 8-bit signed integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5028679d5c0bc730bf0d4677b09ecfb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5028679d5c0bc730bf0d4677b09ecfb5">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[12/18]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EThreadMessage::EThreadMessage </td>
+          <td>(</td>
+          <td class="paramtype">UInt&#160;</td>
+          <td class="paramname"><em>msgid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v2</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v3</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v4</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v5</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v6</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v7</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UChar&#160;</td>
+          <td class="paramname"><em>v8</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Class constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msgid</td><td>the event message id. </td></tr>
+    <tr><td class="paramname">v1</td><td>the first 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v2</td><td>the second 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v3</td><td>the third 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v4</td><td>the fourth 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v5</td><td>the fifth 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v6</td><td>the sixth 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v7</td><td>the seventh 8-bit unsigned integer to include in the event message. </td></tr>
+    <tr><td class="paramname">v8</td><td>the eighth 8-bit unsigned integer to include in the event message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a64d1ba98a758fe15745307bfce0d900d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d1ba98a758fe15745307bfce0d900d">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[13/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +918,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a614488b442826092a9bb6225759b9d03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a614488b442826092a9bb6225759b9d03">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[2/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a614488b442826092a9bb6225759b9d03">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[14/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,7 +952,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a5b6240270e5a9d6b8d74dcd68a985ec0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b6240270e5a9d6b8d74dcd68a985ec0">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[3/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6240270e5a9d6b8d74dcd68a985ec0">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[15/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +1004,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="ad493d710c3ff56c425ef45ab314b9007"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad493d710c3ff56c425ef45ab314b9007">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[4/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad493d710c3ff56c425ef45ab314b9007">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[16/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -300,7 +1049,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a6898984ef9090cce0369472e1419a635"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6898984ef9090cce0369472e1419a635">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6898984ef9090cce0369472e1419a635">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[17/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,7 +1094,7 @@ Friends</h2></td></tr>
 </div>
 </div>
 <a id="a00ae687dd805f195f02e0cfbeb133210"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00ae687dd805f195f02e0cfbeb133210">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00ae687dd805f195f02e0cfbeb133210">&#9670;&nbsp;</a></span>EThreadMessage() <span class="overload">[18/18]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -371,7 +1120,7 @@ Friends</h2></td></tr>
 <p>Copy constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>the <a class="el" href="classEThreadMessage.html" title="Represents an event message to be sent to a thread.">EThreadMessage</a> to copy. </td></tr>
+    <tr><td class="paramname">msg</td><td>the <a class="el" href="classEThreadMessage.html" title="An event message that is to be sent to a thread.">EThreadMessage</a> to copy. </td></tr>
   </table>
   </dd>
 </dl>
@@ -808,7 +1557,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etevent_8h_source.html">etevent.h</a></li>
 <li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etq_8h_source.html">etq.h</a></li>
 </ul>
 </div><!-- contents -->

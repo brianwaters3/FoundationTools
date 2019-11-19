@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['m_5fdwerror',['m_dwError',['../classEError.html#a62e616138e9894b0f296ce0ed9e15e9e',1,'EError']]],
-  ['m_5feseverity',['m_eSeverity',['../classEError.html#a67d43ca768bcc4ca0f65b8c7e93d435e',1,'EError']]],
-  ['m_5ftimer',['m_timer',['../classFDMessageRequest.html#a2cfe513b147319767d216ae3930a28f7',1,'FDMessageRequest']]]
+  ['upd_5fmax_5fmsg_5flength',['UPD_MAX_MSG_LENGTH',['../namespaceESocket.html#ad7e5c9e566fc34b80f332f9c409c7f99',1,'ESocket']]]
 ];

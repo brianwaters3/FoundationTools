@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -77,19 +78,7 @@ $(function() {
 <p>An abstract class that represents contains the <a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec" title="Function that will be called in a separate thread.">threadProc()</a> that will be run in a separate thread.  
  <a href="classEThreadBasic.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="etbase_8h_source.html">etbase.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for EThreadBasic:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classEThreadBasic.png" usemap="#EThreadBasic_map" alt=""/>
-  <map id="EThreadBasic_map" name="EThreadBasic_map">
-<area href="classEThreadBase.html" title="base class for EThreadPrivate and EThreadPublic" alt="EThreadBase" shape="rect" coords="57,56,161,80"/>
-<area href="classEThreadPrivate.html" title="Private event based thread where the event queue is allocated from the heap." alt="EThreadPrivate" shape="rect" coords="0,112,104,136"/>
-<area href="classEThreadPublic.html" title="Public event based thread where the event queue is stored in shared memory." alt="EThreadPublic" shape="rect" coords="114,112,218,136"/>
-<area href="classESocket_1_1Thread.html" title="The socket thread base class. An event based thread class capable of surfacing socket events." alt="ESocket::Thread" shape="rect" coords="0,168,104,192"/>
-  </map>
-</div></div>
+<p><code>#include &lt;<a class="el" href="etbasic_8h_source.html">etbasic.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -165,7 +154,7 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An abstract class that represents contains the <a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec" title="Function that will be called in a separate thread.">threadProc()</a> that will be run in a separate thread. </p>
-<p><a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a> is the base class that represents a single CPU thread. The function that will be called in the new thread is <a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec" title="Function that will be called in a separate thread.">EThreadBasic::threadProc()</a>. Additionally, <a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a> is one of the base classes used by the event thread base class <a class="el" href="classEThreadBase.html" title="base class for EThreadPrivate and EThreadPublic">EThreadBase</a>. </p>
+<p><a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a> is the base class that represents a single CPU thread. The function that will be called in the new thread is <a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec" title="Function that will be called in a separate thread.">EThreadBasic::threadProc()</a>. Additionally, <a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a> is one of the base classes used by the event thread base class EThreadBase. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a6d52c705bf95269004bc80173b8d5e9c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d52c705bf95269004bc80173b8d5e9c">&#9670;&nbsp;</a></span>RunState</h2>
@@ -325,8 +314,8 @@ Friends</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">EThreadError_AlreadyInitialized</td><td>the thread has already been initialized </td></tr>
-    <tr><td class="paramname">EThreadError_UnableToInitialize</td><td>unable to initialize the thread</td></tr>
+    <tr><td class="paramname"><a class="el" href="classEThreadError__AlreadyInitialized.html">EThreadError_AlreadyInitialized</a></td><td>the thread has already been initialized </td></tr>
+    <tr><td class="paramname"><a class="el" href="classEThreadError__UnableToInitialize.html">EThreadError_UnableToInitialize</a></td><td>unable to initialize the thread</td></tr>
   </table>
   </dd>
 </dl>
@@ -487,8 +476,8 @@ Friends</h2></td></tr>
 <p>Waits for the thread to terminate. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">EThreadError_AlreadyInitialized</td><td>already initialized </td></tr>
-    <tr><td class="paramname">EThreadError_UnableToInitialize</td><td>unable to initailize</td></tr>
+    <tr><td class="paramname"><a class="el" href="classEThreadError__AlreadyInitialized.html">EThreadError_AlreadyInitialized</a></td><td>already initialized </td></tr>
+    <tr><td class="paramname"><a class="el" href="classEThreadError__UnableToInitialize.html">EThreadError_UnableToInitialize</a></td><td>unable to initailize</td></tr>
   </table>
   </dd>
 </dl>
@@ -674,7 +663,7 @@ Friends</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">friend class <a class="el" href="classEThreadBase.html">EThreadBase</a></td>
+          <td class="memname">friend class EThreadBase</td>
         </tr>
       </table>
   </td>
@@ -687,8 +676,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etbase_8h_source.html">etbase.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="etbase_8cpp.html">etbase.cpp</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etbasic_8h_source.html">etbasic.h</a></li>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="etbasic_8cpp.html">etbasic.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

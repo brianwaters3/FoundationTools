@@ -65,7 +65,7 @@ ETimerPool::~ETimerPool()
 {
 }
 
-ULong ETimerPool::registerTimer(LongLong ms, const EThreadMessage &msg, EThreadBase &thread)
+ULong ETimerPool::registerTimer(LongLong ms, const _EThreadEventMessageBase &msg, _EThreadEventBase &thread)
 {
    EMutexLock l(m_mutex);
 
@@ -334,7 +334,7 @@ Void ETimerPool::Timer::stop()
 /// @cond DOXYGEN_EXCLUDE
 Void ETimerPool::Entry::notify()
 {
-   m_thread.sendMessage( m_msg );
+   m_thread._sendMessage( m_msg );
 }
 /// @endcond
 

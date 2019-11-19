@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -65,7 +66,8 @@ $(function() {
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">ESocket Namespace Reference</div>  </div>
 </div><!--header-->
@@ -97,39 +99,233 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a104cc866361a007305dd8af24c186987"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1Base.html">Base</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a104cc866361a007305dd8af24c186987">BasePtr</a></td></tr>
-<tr class="separator:a104cc866361a007305dd8af24c186987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a274da2851e083f9b697bb6ae14a2c0a7"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; Int, <a class="el" href="namespaceESocket.html#a104cc866361a007305dd8af24c186987">BasePtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a274da2851e083f9b697bb6ae14a2c0a7">BasePtrMap</a></td></tr>
-<tr class="separator:a274da2851e083f9b697bb6ae14a2c0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafc601c22c06fc77e6c3670ea92c96b8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1Base.html">Base</a>&lt; EThreadQueuePublic&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#aafc601c22c06fc77e6c3670ea92c96b8">BasePublic</a></td></tr>
+<tr class="separator:aafc601c22c06fc77e6c3670ea92c96b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c1f042a80e7141c04bbc9e1d1d8b46"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1Base.html">Base</a>&lt; EThreadQueuePrivate&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a12c1f042a80e7141c04bbc9e1d1d8b46">BasePrivate</a></td></tr>
+<tr class="separator:a12c1f042a80e7141c04bbc9e1d1d8b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53b82c25258d58ec8f1cd75d2969445e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; EThreadQueuePublic&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a53b82c25258d58ec8f1cd75d2969445e">ThreadPublic</a></td></tr>
+<tr class="separator:a53b82c25258d58ec8f1cd75d2969445e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1d4833cec3593351f95478b0a1886e"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt; EThreadQueuePrivate&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a2c1d4833cec3593351f95478b0a1886e">ThreadPrivate</a></td></tr>
+<tr class="separator:a2c1d4833cec3593351f95478b0a1886e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c287e132584ba636fcc4021566ad7b"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1UDP.html">UDP</a>&lt; EThreadQueuePublic&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a01c287e132584ba636fcc4021566ad7b">UdpPublic</a></td></tr>
+<tr class="separator:a01c287e132584ba636fcc4021566ad7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24cc0ce3fc2469d0913def48e8a7f4dd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classESocket_1_1UDP.html">UDP</a>&lt; EThreadQueuePrivate&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a24cc0ce3fc2469d0913def48e8a7f4dd">UdpPrivate</a></td></tr>
+<tr class="separator:a24cc0ce3fc2469d0913def48e8a7f4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a1c4699facd27add9989fa67b3c63316e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a> { <a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316eaec0fc0100c4fc1ce4eea230c3dc10360">Family::Undefined</a>, 
+<a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316eacbeeb469aeabf16bcff81f4cde1e0b48">Family::INET</a>, 
+<a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a>
+ }</td></tr>
+<tr class="memdesc:a1c4699facd27add9989fa67b3c63316e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the possible address family values.  <a href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">More...</a><br /></td></tr>
+<tr class="separator:a1c4699facd27add9989fa67b3c63316e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a697fb92c0493432a108cda172a39eb97"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97">SocketType</a> { <a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97aec0fc0100c4fc1ce4eea230c3dc10360">SocketType::Undefined</a>, 
+<a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97a6d6d3999c6e78f8d976c76e11db4a95d">SocketType::TcpTalker</a>, 
+<a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97a905aaf6ae84f274f898e6c3b7dea6edf">SocketType::TcpListener</a>, 
+<a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97a81baba40274ccb30f9fdfa2c73cf0482">SocketType::Udp</a>
+ }</td></tr>
+<tr class="memdesc:a697fb92c0493432a108cda172a39eb97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the possible socket types.  <a href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97">More...</a><br /></td></tr>
+<tr class="separator:a697fb92c0493432a108cda172a39eb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a2743f415f1aac7f482cfb9cc713fe"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">SocketState</a> { <br />
+&#160;&#160;<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713feaec0fc0100c4fc1ce4eea230c3dc10360">SocketState::Undefined</a>, 
+<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713feaef70e46fd3bbc21e3e1f0b6815e750c0">SocketState::Disconnected</a>, 
+<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713feae321c53b354930ba96f0243e652df458">SocketState::Connecting</a>, 
+<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fea962ef616821625a13a028ac14ac0fef8">SocketState::Listening</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fea2ec0d16e4ca169baedb9b2d50ec5c6d7">SocketState::Connected</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a95a2743f415f1aac7f482cfb9cc713fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The socket connection state.  <a href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">More...</a><br /></td></tr>
+<tr class="separator:a95a2743f415f1aac7f482cfb9cc713fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The namespace for all socket related classes. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a104cc866361a007305dd8af24c186987"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a104cc866361a007305dd8af24c186987">&#9670;&nbsp;</a></span>BasePtr</h2>
+<a id="a12c1f042a80e7141c04bbc9e1d1d8b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12c1f042a80e7141c04bbc9e1d1d8b46">&#9670;&nbsp;</a></span>BasePrivate</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="classESocket_1_1Base.html">Base</a>* <a class="el" href="namespaceESocket.html#a104cc866361a007305dd8af24c186987">ESocket::BasePtr</a></td>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1Base.html">Base</a>&lt;EThreadQueuePrivate&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#a12c1f042a80e7141c04bbc9e1d1d8b46">ESocket::BasePrivate</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a274da2851e083f9b697bb6ae14a2c0a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a274da2851e083f9b697bb6ae14a2c0a7">&#9670;&nbsp;</a></span>BasePtrMap</h2>
+<a id="aafc601c22c06fc77e6c3670ea92c96b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafc601c22c06fc77e6c3670ea92c96b8">&#9670;&nbsp;</a></span>BasePublic</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::unordered_map&lt;Int,<a class="el" href="namespaceESocket.html#a104cc866361a007305dd8af24c186987">BasePtr</a>&gt; <a class="el" href="namespaceESocket.html#a274da2851e083f9b697bb6ae14a2c0a7">ESocket::BasePtrMap</a></td>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1Base.html">Base</a>&lt;EThreadQueuePublic&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#aafc601c22c06fc77e6c3670ea92c96b8">ESocket::BasePublic</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2c1d4833cec3593351f95478b0a1886e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c1d4833cec3593351f95478b0a1886e">&#9670;&nbsp;</a></span>ThreadPrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt;EThreadQueuePrivate&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#a2c1d4833cec3593351f95478b0a1886e">ESocket::ThreadPrivate</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53b82c25258d58ec8f1cd75d2969445e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53b82c25258d58ec8f1cd75d2969445e">&#9670;&nbsp;</a></span>ThreadPublic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1Thread.html">Thread</a>&lt;EThreadQueuePublic&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#a53b82c25258d58ec8f1cd75d2969445e">ESocket::ThreadPublic</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a24cc0ce3fc2469d0913def48e8a7f4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24cc0ce3fc2469d0913def48e8a7f4dd">&#9670;&nbsp;</a></span>UdpPrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1UDP.html">UDP</a>&lt;EThreadQueuePrivate&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#a24cc0ce3fc2469d0913def48e8a7f4dd">ESocket::UdpPrivate</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01c287e132584ba636fcc4021566ad7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01c287e132584ba636fcc4021566ad7b">&#9670;&nbsp;</a></span>UdpPublic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classESocket_1_1UDP.html">UDP</a>&lt;EThreadQueuePublic&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="namespaceESocket.html#a01c287e132584ba636fcc4021566ad7b">ESocket::UdpPublic</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a1c4699facd27add9989fa67b3c63316e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c4699facd27add9989fa67b3c63316e">&#9670;&nbsp;</a></span>Family</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">ESocket::Family</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defines the possible address family values. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1c4699facd27add9989fa67b3c63316eaec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>undefined </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c4699facd27add9989fa67b3c63316eacbeeb469aeabf16bcff81f4cde1e0b48"></a>INET&#160;</td><td class="fielddoc"><p>IPv4 address. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1c4699facd27add9989fa67b3c63316ea3a1be585a9d1d7af08b562f200a982bb"></a>INET6&#160;</td><td class="fielddoc"><p>IPv6 address. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a95a2743f415f1aac7f482cfb9cc713fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a2743f415f1aac7f482cfb9cc713fe">&#9670;&nbsp;</a></span>SocketState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceESocket.html#a95a2743f415f1aac7f482cfb9cc713fe">ESocket::SocketState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The socket connection state. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a95a2743f415f1aac7f482cfb9cc713feaec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>undefined </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a95a2743f415f1aac7f482cfb9cc713feaef70e46fd3bbc21e3e1f0b6815e750c0"></a>Disconnected&#160;</td><td class="fielddoc"><p>socket is disconnected </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a95a2743f415f1aac7f482cfb9cc713feae321c53b354930ba96f0243e652df458"></a>Connecting&#160;</td><td class="fielddoc"><p>socket is connecting </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a95a2743f415f1aac7f482cfb9cc713fea962ef616821625a13a028ac14ac0fef8"></a>Listening&#160;</td><td class="fielddoc"><p>socket is listening </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a95a2743f415f1aac7f482cfb9cc713fea2ec0d16e4ca169baedb9b2d50ec5c6d7"></a>Connected&#160;</td><td class="fielddoc"><p>socket is connected </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a697fb92c0493432a108cda172a39eb97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a697fb92c0493432a108cda172a39eb97">&#9670;&nbsp;</a></span>SocketType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceESocket.html#a697fb92c0493432a108cda172a39eb97">ESocket::SocketType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defines the possible socket types. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a697fb92c0493432a108cda172a39eb97aec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>an undefined socket </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a697fb92c0493432a108cda172a39eb97a6d6d3999c6e78f8d976c76e11db4a95d"></a>TcpTalker&#160;</td><td class="fielddoc"><p>a <a class="el" href="namespaceESocket_1_1TCP.html" title="Namespace for TCP related classes.">TCP</a> talker socket </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a697fb92c0493432a108cda172a39eb97a905aaf6ae84f274f898e6c3b7dea6edf"></a>TcpListener&#160;</td><td class="fielddoc"><p>a <a class="el" href="namespaceESocket_1_1TCP.html" title="Namespace for TCP related classes.">TCP</a> listener socket </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a697fb92c0493432a108cda172a39eb97a81baba40274ccb30f9fdfa2c73cf0482"></a>Udp&#160;</td><td class="fielddoc"><p>a <a class="el" href="classESocket_1_1UDP.html" title="A UDP socket class capabile of sending and receiving data.">UDP</a> socket </p>
+</td></tr>
+</table>
 
 </div>
 </div>

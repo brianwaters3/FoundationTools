@@ -49,15 +49,19 @@ libepc_a_SOURCES =   \
    estats.cpp        \
    estring.cpp       \
    esynch.cpp        \
-   etbase.cpp        \
-   ethread.cpp       \
+   etbasic.cpp       \
+   etevent.cpp       \
    etime.cpp         \
    etimer.cpp        \
    etimerpool.cpp    \
-   etq.cpp           \
    eutil.cpp         \
    dnscache.cpp      \
    dnsparser.cpp 
+
+#   etbase.cpp        
+#   ethread.cpp
+#   etq.cpp
+
 
 # Linker options libTestProgram
 #libepc_a_LDFLAGS = 

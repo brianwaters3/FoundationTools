@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['query',['Query',['../classDNS_1_1Query.html',1,'DNS']]],
-  ['question',['Question',['../classDNS_1_1Question.html',1,'DNS']]]
+  ['peer',['Peer',['../classEStatistics_1_1Peer.html',1,'EStatistics']]],
+  ['pgwnodeselector',['PGWNodeSelector',['../classEPCDNS_1_1PGWNodeSelector.html',1,'EPCDNS']]],
+  ['pgwupfnodeselector',['PGWUPFNodeSelector',['../classEPCDNS_1_1PGWUPFNodeSelector.html',1,'EPCDNS']]]
 ];

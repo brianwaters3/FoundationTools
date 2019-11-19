@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -116,9 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af55c0dda878a4fa3df6404ed07be50e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classETimerPool.html">ETimerPool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classETimerPool.html#af55c0dda878a4fa3df6404ed07be50e0">setQuitSignal</a> (Int sig)</td></tr>
 <tr class="memdesc:af55c0dda878a4fa3df6404ed07be50e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns the quit signal value.  <a href="classETimerPool.html#af55c0dda878a4fa3df6404ed07be50e0">More...</a><br /></td></tr>
 <tr class="separator:af55c0dda878a4fa3df6404ed07be50e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a936962d31b1baba43261ca2c818b471d"><td class="memItemLeft" align="right" valign="top">ULong&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classETimerPool.html#a936962d31b1baba43261ca2c818b471d">registerTimer</a> (LongLong ms, const <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg, <a class="el" href="classEThreadBase.html">EThreadBase</a> &amp;thread)</td></tr>
-<tr class="memdesc:a936962d31b1baba43261ca2c818b471d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an expiration timer.  <a href="classETimerPool.html#a936962d31b1baba43261ca2c818b471d">More...</a><br /></td></tr>
-<tr class="separator:a936962d31b1baba43261ca2c818b471d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6f25a9f27a55931811e7f2a2da33d28"><td class="memItemLeft" align="right" valign="top">ULong&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classETimerPool.html#ae6f25a9f27a55931811e7f2a2da33d28">registerTimer</a> (LongLong ms, const <a class="el" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> &amp;msg, _EThreadEventBase &amp;thread)</td></tr>
+<tr class="memdesc:ae6f25a9f27a55931811e7f2a2da33d28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers an expiration timer.  <a href="classETimerPool.html#ae6f25a9f27a55931811e7f2a2da33d28">More...</a><br /></td></tr>
+<tr class="separator:ae6f25a9f27a55931811e7f2a2da33d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25eed20ebfa613ad108e9945a62fb53f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classETimerPool.html">ETimerPool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classETimerPool.html#a25eed20ebfa613ad108e9945a62fb53f">unregisterTimer</a> (ULong timerid)</td></tr>
 <tr class="memdesc:a25eed20ebfa613ad108e9945a62fb53f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregisters an expiration timer.  <a href="classETimerPool.html#a25eed20ebfa613ad108e9945a62fb53f">More...</a><br /></td></tr>
 <tr class="separator:a25eed20ebfa613ad108e9945a62fb53f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -571,8 +572,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a936962d31b1baba43261ca2c818b471d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a936962d31b1baba43261ca2c818b471d">&#9670;&nbsp;</a></span>registerTimer()</h2>
+<a id="ae6f25a9f27a55931811e7f2a2da33d28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6f25a9f27a55931811e7f2a2da33d28">&#9670;&nbsp;</a></span>registerTimer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -586,13 +587,13 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classEThreadBase.html">EThreadBase</a> &amp;&#160;</td>
+          <td class="paramtype">_EThreadEventBase &amp;&#160;</td>
           <td class="paramname"><em>thread</em>&#160;</td>
         </tr>
         <tr>

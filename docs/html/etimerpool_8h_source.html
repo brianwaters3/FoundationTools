@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -97,7 +98,7 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="esynch_8h.html">esynch.h</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ethread_8h.html">ethread.h</a>&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etevent_8h.html">etevent.h</a>&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="etime_8h.html">etime.h</a>&quot;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="etimerpool_8h.html#ac01ade419368e51e7207fbaae7eadd8c">DECLARE_ERROR_ADVANCED</a>(ETimerPoolError_CreatingTimer);</div>
@@ -151,7 +152,7 @@ $(function() {
 <div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classETimerPool.html#aa5a4429b8c2065dab0014cf77bccf3eb">  104</a></span>&#160;   <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;<a class="code" href="classETimerPool.html#aa5a4429b8c2065dab0014cf77bccf3eb">setTimerSignal</a>(Int sig)    { m_sigtimer = sig;           <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classETimerPool.html#af55c0dda878a4fa3df6404ed07be50e0">  108</a></span>&#160;   <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;<a class="code" href="classETimerPool.html#af55c0dda878a4fa3df6404ed07be50e0">setQuitSignal</a>(Int sig)     { m_sigquit = sig;            <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   ULong <a class="code" href="classETimerPool.html#a936962d31b1baba43261ca2c818b471d">registerTimer</a>(LongLong ms, <span class="keyword">const</span> <a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg, <a class="code" href="classEThreadBase.html">EThreadBase</a> &amp;thread);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   ULong <a class="code" href="classETimerPool.html#ae6f25a9f27a55931811e7f2a2da33d28">registerTimer</a>(LongLong ms, <span class="keyword">const</span> <a class="code" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> &amp;msg, _EThreadEventBase &amp;thread);</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;   <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;<a class="code" href="classETimerPool.html#a25eed20ebfa613ad108e9945a62fb53f">unregisterTimer</a>(ULong timerid);</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;   Void <a class="code" href="classETimerPool.html#ae306165771e989eacacfd7b7ac8a3814">init</a>();</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;   Void <a class="code" href="classETimerPool.html#a593e3710fb33ea4112d41ab53bb37d3d">uninit</a>(Bool dumpit=<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>);</div>
@@ -174,8 +175,8 @@ $(function() {
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <a class="code" href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ExpirationTimeEntryPtr</a> &amp;getExpirationTimeEntry() { <span class="keywordflow">return</span> m_etep; }</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      Timer &amp; clearExpirationTimeEntry() { m_etep.reset(); <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      Void start();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      Void stop();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;      Void <a class="code" href="etevent_8h.html#ab5b1abe3ef14f7710851c5b57fe92c64">start</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      Void <a class="code" href="etevent_8h.html#a7483b7a3e8c9a0e05cd11fe070dec39a">stop</a>();</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      timer_t getHandle() { <span class="keywordflow">return</span> m_timer; }</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
@@ -244,7 +245,7 @@ $(function() {
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;   <span class="keyword">class </span>Entry</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;   {</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      Entry(ULong <span class="keywordtype">id</span>, <a class="code" href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ExpirationTime</a> &amp;exptm, <span class="keyword">const</span> <a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg, <a class="code" href="classEThreadBase.html">EThreadBase</a> &amp;thread)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      Entry(ULong <span class="keywordtype">id</span>, <a class="code" href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ExpirationTime</a> &amp;exptm, <span class="keyword">const</span> <a class="code" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> &amp;msg, _EThreadEventBase &amp;thread)</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;         : m_id( id ),</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;           m_exptm( exptm ),</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;           m_msg( msg ),</div>
@@ -259,10 +260,10 @@ $(function() {
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      }</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      ULong getId()                       { <span class="keywordflow">return</span> m_id; }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="keyword">const</span> <a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;getMessage()  { <span class="keywordflow">return</span> m_msg; }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      <a class="code" href="classEThreadBase.html">EThreadBase</a> &amp;getThread()            { <span class="keywordflow">return</span> m_thread; }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <a class="code" href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ExpirationTime</a> &amp;getExpirationTime() { <span class="keywordflow">return</span> m_exptm; }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      ULong <a class="code" href="etevent_8h.html#a30e533a51833664ad05441781ee6a6a0">getId</a>()                                { <span class="keywordflow">return</span> m_id; }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="keyword">const</span> <a class="code" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> &amp;getMessage() { <span class="keywordflow">return</span> m_msg; }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;      _EThreadEventBase &amp;getThread()               { <span class="keywordflow">return</span> m_thread; }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <a class="code" href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ExpirationTime</a> &amp;getExpirationTime()          { <span class="keywordflow">return</span> m_exptm; }</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      Void notify();</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
@@ -271,128 +272,124 @@ $(function() {
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      ULong m_id;</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <a class="code" href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ExpirationTime</a> m_exptm;</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <a class="code" href="classEThreadMessage.html">EThreadMessage</a> m_msg;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      <a class="code" href="classEThreadBase.html">EThreadBase</a> &amp;m_thread;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <a class="code" href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a> m_msg;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      _EThreadEventBase &amp;m_thread;</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;   };</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;   <span class="keyword">class </span>ExpirationTimeEntry</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;   {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      ExpirationTimeEntry(LongLong expiretime)</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;         : m_expiretime( expiretime )</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      {</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;      }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      LongLong getExpireTime() { <span class="keywordflow">return</span> m_expiretime; }</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      ExpirationTimeEntry &amp;setExpireTime(LongLong exp) { m_expiretime = exp; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      ExpirationTimeEntry &amp;addEntry(<a class="code" href="classETimerPool.html#ace0c907893593d720bdba8b3c3ada126">EntryPtr</a> &amp;ep)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      {</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;         m_map[ep-&gt;getId()] = ep;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      Void removeEntry(ULong <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      {</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;         m_map.erase( <span class="keywordtype">id</span> );</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      Bool isEntryMapEmpty()</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;         <span class="keywordflow">return</span> m_map.empty();</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      ExpirationTimeEntry &amp;setTimer(<a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> &amp;tp)</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;         m_timer = tp;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> &amp;getTimer()</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;      {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;         <span class="keywordflow">return</span> m_timer;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      <a class="code" href="classETimerPool.html#a381536bd1fd33373d0d023c7a2569f84">EntryMap</a> &amp;getEntryMap()</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;      {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;         <span class="keywordflow">return</span> m_map;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;      }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      ExpirationTimeEntry &amp;notify()</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = m_map.begin(); it != m_map.end();)</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;         {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="comment">// send the notificaiton for the entry</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            it-&gt;second-&gt;notify();</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="comment">// remove the entry</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            it = m_map.erase( it );</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;         }</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      ExpirationTimeEntry();</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      LongLong m_expiretime;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> m_timer;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <a class="code" href="classETimerPool.html#a381536bd1fd33373d0d023c7a2569f84">EntryMap</a> m_map;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;   };</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;   <span class="keyword">class </span>Thread : <span class="keyword">public</span> <a class="code" href="classEThreadBasic.html">EThreadBasic</a></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;      Thread(<a class="code" href="classETimerPool.html">ETimerPool</a> &amp;tp);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      pid_t getThreadId() { <span class="keywordflow">return</span> m_tid; }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;      Void quit();</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      Dword threadProc(Void *arg);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;   <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      Thread();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;m_tp;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      pid_t m_tid;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;   };</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   <span class="keyword">friend</span> Thread;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   Void sendNotifications(<a class="code" href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ExpirationTimeEntryPtr</a> &amp;etep);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;   <span class="keyword">static</span> <a class="code" href="classETimerPool.html">ETimerPool</a> *m_instance;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;   ULong assignNextId();</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;removeExpirationTimeEntry(<a class="code" href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ETimerPool::ExpirationTimeEntryPtr</a> &amp;etep);</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   <a class="code" href="classEMutexPrivate.html">EMutexPrivate</a> m_mutex;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   std::atomic&lt;ULong&gt; m_nextid;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;   Int m_sigtimer;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   Int m_sigquit;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   <a class="code" href="classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1ac">Rounding</a> m_rounding;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   LongLong m_resolution; <span class="comment">// in microseconds</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <a class="code" href="classETimerPool.html#ad6b5a98530a7431d444d1937851acd37">ExpirationTimeEntryMap</a> m_etmap;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   <a class="code" href="classETimerPool.html#a7ee91823db6da345e80124220124b830">ExpirationTimeEntryIdMap</a> m_etidmap;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;   <a class="code" href="classETimerPool.html#aba55e27d1afd38c2e89f279cf7d7dcce">TimerPtrList</a> m_freetimers;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;   Thread m_thread;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;};</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#endif // #define __ETIMERPOOL_H</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;   <span class="keyword">class </span>ExpirationTimeEntry</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;   {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      ExpirationTimeEntry(LongLong expiretime)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;         : m_expiretime( expiretime )</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;      LongLong getExpireTime() { <span class="keywordflow">return</span> m_expiretime; }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      ExpirationTimeEntry &amp;setExpireTime(LongLong exp) { m_expiretime = exp; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      ExpirationTimeEntry &amp;addEntry(<a class="code" href="classETimerPool.html#ace0c907893593d720bdba8b3c3ada126">EntryPtr</a> &amp;ep)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;      {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;         m_map[ep-&gt;getId()] = ep;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;      Void removeEntry(ULong <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;         m_map.erase( <span class="keywordtype">id</span> );</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;      }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;      Bool isEntryMapEmpty()</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;      {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;         <span class="keywordflow">return</span> m_map.empty();</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      ExpirationTimeEntry &amp;setTimer(<a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> &amp;tp)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;         m_timer = tp;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;         <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      <a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> &amp;getTimer()</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;         <span class="keywordflow">return</span> m_timer;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;      <a class="code" href="classETimerPool.html#a381536bd1fd33373d0d023c7a2569f84">EntryMap</a> &amp;getEntryMap()</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;      {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;         <span class="keywordflow">return</span> m_map;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;      ExpirationTimeEntry &amp;notify()</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = m_map.begin(); it != m_map.end();)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;         {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="comment">// send the notificaiton for the entry</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            it-&gt;second-&gt;notify();</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="comment">// remove the entry</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            it = m_map.erase( it );</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;         }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;      ExpirationTimeEntry();</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;      LongLong m_expiretime;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;      <a class="code" href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">TimerPtr</a> m_timer;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;      <a class="code" href="classETimerPool.html#a381536bd1fd33373d0d023c7a2569f84">EntryMap</a> m_map;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;   };</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;   </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   <span class="keyword">class </span>Thread : <span class="keyword">public</span> <a class="code" href="classEThreadBasic.html">EThreadBasic</a></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;   {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      Thread(<a class="code" href="classETimerPool.html">ETimerPool</a> &amp;tp);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      pid_t getThreadId() { <span class="keywordflow">return</span> m_tid; }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;      Void quit();</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      Dword threadProc(Void *arg);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;      Thread();</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;m_tp;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      pid_t m_tid;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   };</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;   <span class="keyword">friend</span> Thread;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;   Void sendNotifications(<a class="code" href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ExpirationTimeEntryPtr</a> &amp;etep);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   <span class="keyword">static</span> <a class="code" href="classETimerPool.html">ETimerPool</a> *m_instance;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;   ULong assignNextId();</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;   <a class="code" href="classETimerPool.html">ETimerPool</a> &amp;removeExpirationTimeEntry(<a class="code" href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ETimerPool::ExpirationTimeEntryPtr</a> &amp;etep);</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   <a class="code" href="classEMutexPrivate.html">EMutexPrivate</a> m_mutex;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   std::atomic&lt;ULong&gt; m_nextid;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   Int m_sigtimer;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;   Int m_sigquit;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   <a class="code" href="classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1ac">Rounding</a> m_rounding;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   LongLong m_resolution; <span class="comment">// in microseconds</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;   <a class="code" href="classETimerPool.html#ad6b5a98530a7431d444d1937851acd37">ExpirationTimeEntryMap</a> m_etmap;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <a class="code" href="classETimerPool.html#a7ee91823db6da345e80124220124b830">ExpirationTimeEntryIdMap</a> m_etidmap;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   <a class="code" href="classETimerPool.html#aba55e27d1afd38c2e89f279cf7d7dcce">TimerPtrList</a> m_freetimers;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;   Thread m_thread;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;};</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#endif // #define __ETIMERPOOL_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassETimerPool_html_a381536bd1fd33373d0d023c7a2569f84"><div class="ttname"><a href="classETimerPool.html#a381536bd1fd33373d0d023c7a2569f84">ETimerPool::EntryMap</a></div><div class="ttdeci">std::unordered_map&lt; ULong, EntryPtr &gt; EntryMap</div><div class="ttdef"><b>Definition:</b> etimerpool.h:44</div></div>
 <div class="ttc" id="aclassETimerPool_html_a7b96d4d7ca7b39af96aca88749eb8b3a"><div class="ttname"><a href="classETimerPool.html#a7b96d4d7ca7b39af96aca88749eb8b3a">ETimerPool::getQuitSignal</a></div><div class="ttdeci">Int getQuitSignal()</div><div class="ttdoc">Retrieves the current quit signal value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:91</div></div>
 <div class="ttc" id="aclassETimerPool_html_a8ace76ab46fc02bb0935196ae519e951"><div class="ttname"><a href="classETimerPool.html#a8ace76ab46fc02bb0935196ae519e951">ETimerPool::ETimerPool</a></div><div class="ttdeci">ETimerPool()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> etimerpool.cpp:54</div></div>
 <div class="ttc" id="aclassETime_html"><div class="ttname"><a href="classETime.html">ETime</a></div><div class="ttdoc">Class for manipulating date and time of day values.</div><div class="ttdef"><b>Definition:</b> etime.h:199</div></div>
-<div class="ttc" id="aethread_8h_html"><div class="ttname"><a href="ethread_8h.html">ethread.h</a></div><div class="ttdoc">Contains the definitions for public and private event based threads.</div></div>
 <div class="ttc" id="aclassETimerPool_html_ad6b5a98530a7431d444d1937851acd37"><div class="ttname"><a href="classETimerPool.html#ad6b5a98530a7431d444d1937851acd37">ETimerPool::ExpirationTimeEntryMap</a></div><div class="ttdeci">std::unordered_map&lt; LongLong, ExpirationTimeEntryPtr &gt; ExpirationTimeEntryMap</div><div class="ttdef"><b>Definition:</b> etimerpool.h:49</div></div>
-<div class="ttc" id="aclassEThreadBase_html"><div class="ttname"><a href="classEThreadBase.html">EThreadBase</a></div><div class="ttdoc">base class for EThreadPrivate and EThreadPublic</div><div class="ttdef"><b>Definition:</b> etbase.h:271</div></div>
 <div class="ttc" id="aclassETimerPool_html_aa5ffc5f83e43a857225351fae15ed98c"><div class="ttname"><a href="classETimerPool.html#aa5ffc5f83e43a857225351fae15ed98c">ETimerPool::ExpirationTimeEntryPtr</a></div><div class="ttdeci">std::shared_ptr&lt; ExpirationTimeEntry &gt; ExpirationTimeEntryPtr</div><div class="ttdef"><b>Definition:</b> etimerpool.h:47</div></div>
 <div class="ttc" id="aebase_8h_html_add3ca9eefe3b5b754426f51d3043e579"><div class="ttname"><a href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></div><div class="ttdeci">#define True</div><div class="ttdoc">True.</div><div class="ttdef"><b>Definition:</b> ebase.h:25</div></div>
-<div class="ttc" id="aclassEThreadMessage_html"><div class="ttname"><a href="classEThreadMessage.html">EThreadMessage</a></div><div class="ttdoc">Represents an event message to be sent to a thread.</div><div class="ttdef"><b>Definition:</b> etq.h:48</div></div>
 <div class="ttc" id="aclassETimerPool_html_a593e3710fb33ea4112d41ab53bb37d3d"><div class="ttname"><a href="classETimerPool.html#a593e3710fb33ea4112d41ab53bb37d3d">ETimerPool::uninit</a></div><div class="ttdeci">Void uninit(Bool dumpit=False)</div><div class="ttdoc">Uninitializes the ETimerPool.</div></div>
 <div class="ttc" id="aclassETimerPool_html_a6eaa7287827ab92ac87fd39dd1a1c1aca74e8333ad11685ff3bdae589c8f6e34d"><div class="ttname"><a href="classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1aca74e8333ad11685ff3bdae589c8f6e34d">ETimerPool::Rounding::down</a></div><div class="ttdoc">Rounds down.</div></div>
 <div class="ttc" id="aclassETimerPool_html_aba55e27d1afd38c2e89f279cf7d7dcce"><div class="ttname"><a href="classETimerPool.html#aba55e27d1afd38c2e89f279cf7d7dcce">ETimerPool::TimerPtrList</a></div><div class="ttdeci">std::list&lt; TimerPtr &gt; TimerPtrList</div><div class="ttdef"><b>Definition:</b> etimerpool.h:40</div></div>
@@ -401,8 +398,10 @@ $(function() {
 <div class="ttc" id="aclassETimerPool_html_af55c0dda878a4fa3df6404ed07be50e0"><div class="ttname"><a href="classETimerPool.html#af55c0dda878a4fa3df6404ed07be50e0">ETimerPool::setQuitSignal</a></div><div class="ttdeci">ETimerPool &amp; setQuitSignal(Int sig)</div><div class="ttdoc">Assigns the quit signal value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:108</div></div>
 <div class="ttc" id="aesynch_8h_html"><div class="ttname"><a href="esynch_8h.html">esynch.h</a></div><div class="ttdoc">Contains definitions for synchronization objects.</div></div>
 <div class="ttc" id="aclassETimerPool_html_a7ee91823db6da345e80124220124b830"><div class="ttname"><a href="classETimerPool.html#a7ee91823db6da345e80124220124b830">ETimerPool::ExpirationTimeEntryIdMap</a></div><div class="ttdeci">std::unordered_map&lt; ULong, ExpirationTimeEntryPtr &gt; ExpirationTimeEntryIdMap</div><div class="ttdef"><b>Definition:</b> etimerpool.h:50</div></div>
+<div class="ttc" id="aetevent_8h_html"><div class="ttname"><a href="etevent_8h.html">etevent.h</a></div></div>
 <div class="ttc" id="aclassETimerPool_html_a17b1c4d4aa86b5a0b00fcb6325a7ef6b"><div class="ttname"><a href="classETimerPool.html#a17b1c4d4aa86b5a0b00fcb6325a7ef6b">ETimerPool::ExpirationTime</a></div><div class="ttdeci">friend ExpirationTime</div><div class="ttdef"><b>Definition:</b> etimerpool.h:52</div></div>
 <div class="ttc" id="aclassETimerPool_html_a25eed20ebfa613ad108e9945a62fb53f"><div class="ttname"><a href="classETimerPool.html#a25eed20ebfa613ad108e9945a62fb53f">ETimerPool::unregisterTimer</a></div><div class="ttdeci">ETimerPool &amp; unregisterTimer(ULong timerid)</div><div class="ttdoc">Unregisters an expiration timer.</div><div class="ttdef"><b>Definition:</b> etimerpool.cpp:127</div></div>
+<div class="ttc" id="aetevent_8h_html_a30e533a51833664ad05441781ee6a6a0"><div class="ttname"><a href="etevent_8h.html#a30e533a51833664ad05441781ee6a6a0">getId</a></div><div class="ttdeci">Long getId()</div><div class="ttdoc">Returns the unique timer id.</div><div class="ttdef"><b>Definition:</b> etevent.h:980</div></div>
 <div class="ttc" id="aetime_8h_html"><div class="ttname"><a href="etime_8h.html">etime.h</a></div><div class="ttdoc">Provides class for manipulating time of day values.</div></div>
 <div class="ttc" id="aclassETimerPool_html_a4e3157c2702ebedc4492a34b557ebf85"><div class="ttname"><a href="classETimerPool.html#a4e3157c2702ebedc4492a34b557ebf85">ETimerPool::setResolution</a></div><div class="ttdeci">ETimerPool &amp; setResolution(LongLong ms)</div><div class="ttdoc">Assigns the timer resolution value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:96</div></div>
 <div class="ttc" id="aebase_8h_html_a306ebd41c0cd1303b1372c6153f0caf8"><div class="ttname"><a href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></div><div class="ttdeci">#define False</div><div class="ttdoc">False.</div><div class="ttdef"><b>Definition:</b> ebase.h:27</div></div>
@@ -410,19 +409,22 @@ $(function() {
 <div class="ttc" id="aclassETimerPool_html_a2d0de1cfdf3f258bebb37e968590e67b"><div class="ttname"><a href="classETimerPool.html#a2d0de1cfdf3f258bebb37e968590e67b">ETimerPool::dump</a></div><div class="ttdeci">Void dump()</div><div class="ttdoc">Prints the contents of the internal collections.</div></div>
 <div class="ttc" id="aclassETimerPool_html_a6eaa7287827ab92ac87fd39dd1a1c1aca46c48bec0d282018b9d167eef7711b2c"><div class="ttname"><a href="classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1aca46c48bec0d282018b9d167eef7711b2c">ETimerPool::Rounding::up</a></div><div class="ttdoc">Rounds up.</div></div>
 <div class="ttc" id="aclassETimerPool_html_aef1279a3601f8444e72bb58594a0258a"><div class="ttname"><a href="classETimerPool.html#aef1279a3601f8444e72bb58594a0258a">ETimerPool::getResolution</a></div><div class="ttdeci">LongLong getResolution(Bool raw=False)</div><div class="ttdoc">Retrieves the current timer resolution value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:82</div></div>
+<div class="ttc" id="aclassETimerPool_html_ae6f25a9f27a55931811e7f2a2da33d28"><div class="ttname"><a href="classETimerPool.html#ae6f25a9f27a55931811e7f2a2da33d28">ETimerPool::registerTimer</a></div><div class="ttdeci">ULong registerTimer(LongLong ms, const _EThreadEventMessageBase &amp;msg, _EThreadEventBase &amp;thread)</div><div class="ttdoc">Registers an expiration timer.</div><div class="ttdef"><b>Definition:</b> etimerpool.cpp:68</div></div>
 <div class="ttc" id="aclassETime_html_ac2f9e80686360265464666c0af7a50a6"><div class="ttname"><a href="classETime.html#ac2f9e80686360265464666c0af7a50a6">ETime::getTimeVal</a></div><div class="ttdeci">const timeval &amp; getTimeVal()</div><div class="ttdoc">Retrieves a reference to the timeval structure.</div><div class="ttdef"><b>Definition:</b> etime.h:446</div></div>
 <div class="ttc" id="aclassETimerPool_html_a588487c9ef8fd32a8a2e2972f2e40457"><div class="ttname"><a href="classETimerPool.html#a588487c9ef8fd32a8a2e2972f2e40457">ETimerPool::getRounding</a></div><div class="ttdeci">Rounding getRounding()</div><div class="ttdoc">Retrieves the current rounding value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:85</div></div>
 <div class="ttc" id="aclassETimerPool_html_a7c1700c2ccb74b87dd3f9b5ea5407da6"><div class="ttname"><a href="classETimerPool.html#a7c1700c2ccb74b87dd3f9b5ea5407da6">ETimerPool::~ETimerPool</a></div><div class="ttdeci">~ETimerPool()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> etimerpool.cpp:64</div></div>
 <div class="ttc" id="aclassETimerPool_html_a554246c91bbab4e6137f1aefe4f5f400"><div class="ttname"><a href="classETimerPool.html#a554246c91bbab4e6137f1aefe4f5f400">ETimerPool::Instance</a></div><div class="ttdeci">static ETimerPool &amp; Instance()</div><div class="ttdoc">Retrieves the single instance of the ETimerPool object.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:67</div></div>
+<div class="ttc" id="aetevent_8h_html_ab5b1abe3ef14f7710851c5b57fe92c64"><div class="ttname"><a href="etevent_8h.html#ab5b1abe3ef14f7710851c5b57fe92c64">start</a></div><div class="ttdeci">Void start()</div><div class="ttdoc">Starts the timer.</div><div class="ttdef"><b>Definition:</b> etevent.h:936</div></div>
+<div class="ttc" id="aclass__EThreadEventMessageBase_html"><div class="ttname"><a href="class__EThreadEventMessageBase.html">_EThreadEventMessageBase</a></div><div class="ttdoc">The event message base class.</div><div class="ttdef"><b>Definition:</b> etevent.h:197</div></div>
 <div class="ttc" id="aclassETimerPool_html"><div class="ttname"><a href="classETimerPool.html">ETimerPool</a></div><div class="ttdef"><b>Definition:</b> etimerpool.h:34</div></div>
-<div class="ttc" id="aclassEThreadBasic_html"><div class="ttname"><a href="classEThreadBasic.html">EThreadBasic</a></div><div class="ttdoc">An abstract class that represents contains the threadProc() that will be run in a separate thread.</div><div class="ttdef"><b>Definition:</b> etbase.h:79</div></div>
+<div class="ttc" id="aclassEThreadBasic_html"><div class="ttname"><a href="classEThreadBasic.html">EThreadBasic</a></div><div class="ttdoc">An abstract class that represents contains the threadProc() that will be run in a separate thread.</div><div class="ttdef"><b>Definition:</b> etbasic.h:53</div></div>
 <div class="ttc" id="aclassETimerPool_html_aa5a4429b8c2065dab0014cf77bccf3eb"><div class="ttname"><a href="classETimerPool.html#aa5a4429b8c2065dab0014cf77bccf3eb">ETimerPool::setTimerSignal</a></div><div class="ttdeci">ETimerPool &amp; setTimerSignal(Int sig)</div><div class="ttdoc">Assigns the timer signal value.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:104</div></div>
 <div class="ttc" id="aclassETimerPool_html_a55a904e4440d31345d345a131b775c1b"><div class="ttname"><a href="classETimerPool.html#a55a904e4440d31345d345a131b775c1b">ETimerPool::setRounding</a></div><div class="ttdeci">ETimerPool &amp; setRounding(Rounding r)</div><div class="ttdoc">Assigns the timer rounding method.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:100</div></div>
-<div class="ttc" id="aclassETimerPool_html_a936962d31b1baba43261ca2c818b471d"><div class="ttname"><a href="classETimerPool.html#a936962d31b1baba43261ca2c818b471d">ETimerPool::registerTimer</a></div><div class="ttdeci">ULong registerTimer(LongLong ms, const EThreadMessage &amp;msg, EThreadBase &amp;thread)</div><div class="ttdoc">Registers an expiration timer.</div><div class="ttdef"><b>Definition:</b> etimerpool.cpp:68</div></div>
 <div class="ttc" id="aclassETimerPool_html_a6eaa7287827ab92ac87fd39dd1a1c1ac"><div class="ttname"><a href="classETimerPool.html#a6eaa7287827ab92ac87fd39dd1a1c1ac">ETimerPool::Rounding</a></div><div class="ttdeci">Rounding</div><div class="ttdoc">Defines how rounding will be performed.</div><div class="ttdef"><b>Definition:</b> etimerpool.h:57</div></div>
 <div class="ttc" id="aclassETimerPool_html_ab322d8555aa923d58e8ad244d13b43d2"><div class="ttname"><a href="classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2">ETimerPool::TimerPtr</a></div><div class="ttdeci">std::shared_ptr&lt; Timer &gt; TimerPtr</div><div class="ttdef"><b>Definition:</b> etimerpool.h:38</div></div>
 <div class="ttc" id="aclassETimerPool_html_ae306165771e989eacacfd7b7ac8a3814"><div class="ttname"><a href="classETimerPool.html#ae306165771e989eacacfd7b7ac8a3814">ETimerPool::init</a></div><div class="ttdeci">Void init()</div><div class="ttdoc">Initializes the ETimerPool.</div></div>
 <div class="ttc" id="aclassETimerPool_html_ace0c907893593d720bdba8b3c3ada126"><div class="ttname"><a href="classETimerPool.html#ace0c907893593d720bdba8b3c3ada126">ETimerPool::EntryPtr</a></div><div class="ttdeci">std::shared_ptr&lt; Entry &gt; EntryPtr</div><div class="ttdef"><b>Definition:</b> etimerpool.h:42</div></div>
+<div class="ttc" id="aetevent_8h_html_a7483b7a3e8c9a0e05cd11fe070dec39a"><div class="ttname"><a href="etevent_8h.html#a7483b7a3e8c9a0e05cd11fe070dec39a">stop</a></div><div class="ttdeci">Void stop()</div><div class="ttdoc">Stops the timer.</div><div class="ttdef"><b>Definition:</b> etevent.h:950</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

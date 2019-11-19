@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -134,16 +135,16 @@ Macros</h2></td></tr>
 <tr class="memitem:ae52a1e808bcf6220acbef40e8351b8e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a>()</td></tr>
 <tr class="memdesc:ae52a1e808bcf6220acbef40e8351b8e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts the message map declaration  <a href="etbase_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">More...</a><br /></td></tr>
 <tr class="separator:ae52a1e808bcf6220acbef40e8351b8e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addc28ad260863deafe385e57f496345d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#addc28ad260863deafe385e57f496345d">ON_EM_INIT</a>()&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a12a88eebdfeaddbbf3d9cdc3e45335a5">EM_INIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a6fb8b98792af9ae8296cd741a49ef514">EThreadBase::onInit</a>)},</td></tr>
+<tr class="memitem:addc28ad260863deafe385e57f496345d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#addc28ad260863deafe385e57f496345d">ON_EM_INIT</a>()&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a12a88eebdfeaddbbf3d9cdc3e45335a5">EM_INIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a6fb8b98792af9ae8296cd741a49ef514">EThreadBase::onInit</a>)},</td></tr>
 <tr class="memdesc:addc28ad260863deafe385e57f496345d"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds EM_INIT event handler  <a href="etbase_8h.html#addc28ad260863deafe385e57f496345d">More...</a><br /></td></tr>
 <tr class="separator:addc28ad260863deafe385e57f496345d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afba0f9034db9d0d7925469c95bdf2f49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#afba0f9034db9d0d7925469c95bdf2f49">ON_EM_QUIT</a>()&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a9033464dedda10c0e9518393262912a0">EM_QUIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a46249d090cc1e568bfbffe4ce7ece521">EThreadBase::onQuit</a>)},</td></tr>
+<tr class="memitem:afba0f9034db9d0d7925469c95bdf2f49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#afba0f9034db9d0d7925469c95bdf2f49">ON_EM_QUIT</a>()&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a9033464dedda10c0e9518393262912a0">EM_QUIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a46249d090cc1e568bfbffe4ce7ece521">EThreadBase::onQuit</a>)},</td></tr>
 <tr class="memdesc:afba0f9034db9d0d7925469c95bdf2f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds EM_QUIT event handler  <a href="etbase_8h.html#afba0f9034db9d0d7925469c95bdf2f49">More...</a><br /></td></tr>
 <tr class="separator:afba0f9034db9d0d7925469c95bdf2f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65f9d05b0a9069a44cfe3b245996ca9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#a65f9d05b0a9069a44cfe3b245996ca9e">ON_EM_SUSPEND</a>()&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a70b0f6950c221ec7091e2c42ce9e53df">EM_SUSPEND</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ab192689d65d33c2105628619da9842e1">EThreadBase::onSuspend</a>)},</td></tr>
+<tr class="memitem:a65f9d05b0a9069a44cfe3b245996ca9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#a65f9d05b0a9069a44cfe3b245996ca9e">ON_EM_SUSPEND</a>()&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a70b0f6950c221ec7091e2c42ce9e53df">EM_SUSPEND</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ab192689d65d33c2105628619da9842e1">EThreadBase::onSuspend</a>)},</td></tr>
 <tr class="memdesc:a65f9d05b0a9069a44cfe3b245996ca9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds EM_SUSPEND event handler  <a href="etbase_8h.html#a65f9d05b0a9069a44cfe3b245996ca9e">More...</a><br /></td></tr>
 <tr class="separator:a65f9d05b0a9069a44cfe3b245996ca9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7723616495a620ceb5c36d6a9a9aba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#ac7723616495a620ceb5c36d6a9a9aba5">ON_EM_TIMER</a>()&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a62c7f861374d2d4f3935e48f316e4077">EM_TIMER</a>, eMsgFxnD, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ac49ee6fb61696e559b7ad698d197b949">EThreadBase::onTimer</a>)},</td></tr>
+<tr class="memitem:ac7723616495a620ceb5c36d6a9a9aba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#ac7723616495a620ceb5c36d6a9a9aba5">ON_EM_TIMER</a>()&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a62c7f861374d2d4f3935e48f316e4077">EM_TIMER</a>, eMsgFxnD, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ac49ee6fb61696e559b7ad698d197b949">EThreadBase::onTimer</a>)},</td></tr>
 <tr class="memdesc:ac7723616495a620ceb5c36d6a9a9aba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds EM_TIMER event handler  <a href="etbase_8h.html#ac7723616495a620ceb5c36d6a9a9aba5">More...</a><br /></td></tr>
 <tr class="separator:ac7723616495a620ceb5c36d6a9a9aba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fbc3aa077e4e82c9f1fa82d32653273"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etbase_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(id,  memberFxn)&#160;&#160;&#160;{id, eMsgFxnB, (ethread_msgfxnA_t)(Void(EThreadBase::*)(<a class="el" href="classEThreadMessage.html">EThreadMessage</a> &amp;))(&amp;memberFxn)},</td></tr>
@@ -397,7 +398,7 @@ Typedefs</h2></td></tr>
           <td class="memname">#define ON_EM_INIT</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a12a88eebdfeaddbbf3d9cdc3e45335a5">EM_INIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a6fb8b98792af9ae8296cd741a49ef514">EThreadBase::onInit</a>)},</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a12a88eebdfeaddbbf3d9cdc3e45335a5">EM_INIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a6fb8b98792af9ae8296cd741a49ef514">EThreadBase::onInit</a>)},</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -416,7 +417,7 @@ Typedefs</h2></td></tr>
           <td class="memname">#define ON_EM_QUIT</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a9033464dedda10c0e9518393262912a0">EM_QUIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a46249d090cc1e568bfbffe4ce7ece521">EThreadBase::onQuit</a>)},</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a9033464dedda10c0e9518393262912a0">EM_QUIT</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#a46249d090cc1e568bfbffe4ce7ece521">EThreadBase::onQuit</a>)},</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -435,7 +436,7 @@ Typedefs</h2></td></tr>
           <td class="memname">#define ON_EM_SUSPEND</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a70b0f6950c221ec7091e2c42ce9e53df">EM_SUSPEND</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ab192689d65d33c2105628619da9842e1">EThreadBase::onSuspend</a>)},</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a70b0f6950c221ec7091e2c42ce9e53df">EM_SUSPEND</a>, eMsgFxnA, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ab192689d65d33c2105628619da9842e1">EThreadBase::onSuspend</a>)},</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -454,7 +455,7 @@ Typedefs</h2></td></tr>
           <td class="memname">#define ON_EM_TIMER</td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td>&#160;&#160;&#160;{<a class="el" href="etbase_8h.html#a62c7f861374d2d4f3935e48f316e4077">EM_TIMER</a>, eMsgFxnD, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ac49ee6fb61696e559b7ad698d197b949">EThreadBase::onTimer</a>)},</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="etevent_8h.html#a62c7f861374d2d4f3935e48f316e4077">EM_TIMER</a>, eMsgFxnD, (ethread_msgfxnA_t)(&amp;<a class="el" href="classEThreadBase.html#ac49ee6fb61696e559b7ad698d197b949">EThreadBase::onTimer</a>)},</td>
         </tr>
       </table>
 </div><div class="memdoc">

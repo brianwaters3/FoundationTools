@@ -25,7 +25,7 @@
 #include <signal.h>
 
 #include "esynch.h"
-#include "ethread.h"
+#include "etevent.h"
 #include "etime.h"
 
 DECLARE_ERROR_ADVANCED(ETimerPoolError_CreatingTimer);
@@ -112,7 +112,7 @@ public:
    /// @param msg the thread message to post when the timer expires.
    /// @param thread the thread to post the message to when the timer expires.
    /// @return the ID for this timer.
-   ULong registerTimer(LongLong ms, const EThreadMessage &msg, EThreadBase &thread);
+   ULong registerTimer(LongLong ms, const _EThreadEventMessageBase &msg, _EThreadEventBase &thread);
    /// @brief Unregisters an expiration timer.
    /// @param timerid the ID of the timer to unregister (returned by registerTimer).
    /// @return a reference to the ETimerPool object.
@@ -215,7 +215,7 @@ protected:
    class Entry
    {
    public:
-      Entry(ULong id, ExpirationTime &exptm, const EThreadMessage &msg, EThreadBase &thread)
+      Entry(ULong id, ExpirationTime &exptm, const _EThreadEventMessageBase &msg, _EThreadEventBase &thread)
          : m_id( id ),
            m_exptm( exptm ),
            m_msg( msg ),
@@ -230,10 +230,10 @@ protected:
       {
       }
 
-      ULong getId()                       { return m_id; }
-      const EThreadMessage &getMessage()  { return m_msg; }
-      EThreadBase &getThread()            { return m_thread; }
-      ExpirationTime &getExpirationTime() { return m_exptm; }
+      ULong getId()                                { return m_id; }
+      const _EThreadEventMessageBase &getMessage() { return m_msg; }
+      _EThreadEventBase &getThread()               { return m_thread; }
+      ExpirationTime &getExpirationTime()          { return m_exptm; }
 
       Void notify();
 
@@ -242,10 +242,9 @@ protected:
 
       ULong m_id;
       ExpirationTime m_exptm;
-      EThreadMessage m_msg;
-      EThreadBase &m_thread;
+      _EThreadEventMessageBase m_msg;
+      _EThreadEventBase &m_thread;
    };
-
 
    class ExpirationTimeEntry
    {

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['timerptr',['TimerPtr',['../classETimerPool.html#ab322d8555aa923d58e8ad244d13b43d2',1,'ETimerPool']]],
-  ['timerptrlist',['TimerPtrList',['../classETimerPool.html#aba55e27d1afd38c2e89f279cf7d7dcce',1,'ETimerPool']]]
+  ['messageid',['MessageId',['../classEStatistics.html#a8000150175dbddd630c31ceb9f1deb83',1,'EStatistics']]],
+  ['messagestatsmap',['MessageStatsMap',['../classEStatistics.html#a7e42493bdd445b5a570fa7d82e30fb07',1,'EStatistics']]]
 ];

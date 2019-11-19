@@ -22,7 +22,8 @@
 #include <signal.h>
 
 #include "epc/epctools.h"
-#include "epc/ethread.h"
+//#include "epc/ethread.h"
+#include "epc/etevent.h"
 #include "epc/esocket.h"
 #include "epc/einternal.h"
 
@@ -422,7 +423,7 @@ public:
       if (msg1rcv == msgmax)
          quit();
       else if (msg1snt < msgmax)
-         sendMessage(EM_USER1, 0, (Long)msg1snt++);
+         sendMessage(EThreadMessage(EM_USER1, 0, (Long)msg1snt++));
    }
 
    Void onInit()
@@ -432,7 +433,7 @@ public:
       te.Start();
 
       //sendMessage(EM_USER1, 0, (Long)msg1snt++);
-      sendMessage(EM_USER1, 0, (Long)msg1snt++);
+      sendMessage(EThreadMessage(EM_USER1, 0, (Long)msg1snt++));
    }
 
    virtual Void onQuit()
@@ -600,24 +601,24 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(EThreadTest, EThreadPublic)
-ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
-ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
+   ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
+   ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest2, EThreadTest)
-ON_MESSAGE(EM_USER3, EThreadTest2::userFunc3)
-ON_MESSAGE(EM_USER4, EThreadTest2::userFunc4)
+   ON_MESSAGE(EM_USER3, EThreadTest2::userFunc3)
+   ON_MESSAGE(EM_USER4, EThreadTest2::userFunc4)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest3, EThreadPrivate)
-ON_MESSAGE(EM_USER1, EThreadTest3::userFunc1)
-ON_MESSAGE(EM_USER2, EThreadTest3::userFunc2)
-ON_MESSAGE(EM_USER3, EThreadTest3::userFunc3)
-ON_MESSAGE(EM_USER4, EThreadTest3::userFunc4)
+   ON_MESSAGE(EM_USER1, EThreadTest3::userFunc1)
+   ON_MESSAGE(EM_USER2, EThreadTest3::userFunc2)
+   ON_MESSAGE(EM_USER3, EThreadTest3::userFunc3)
+   ON_MESSAGE(EM_USER4, EThreadTest3::userFunc4)
 END_MESSAGE_MAP()
 
 BEGIN_MESSAGE_MAP(EThreadTest4, EThreadPrivate)
-ON_MESSAGE(EM_USER1, EThreadTest4::userFunc1)
+   ON_MESSAGE(EM_USER1, EThreadTest4::userFunc1)
 END_MESSAGE_MAP()
 
 template <class T>
@@ -816,10 +817,10 @@ Void EThread_test()
 
    for (i = 0; i < 4000000; i++)
    {
-      t1.sendMessage(EM_USER1, 0, (Long)i);
-      t1.sendMessage(EM_USER2, 0, (Long)i);
-      t1.sendMessage(EM_USER3, 0, (Long)i);
-      t1.sendMessage(EM_USER4, 0, (Long)i);
+      t1.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+      t1.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+      t1.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+      t1.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
       //        EThreadBasic::yield();
    }
 
@@ -858,28 +859,28 @@ Void EThread_test2()
             switch (i)
             {
             case 0:
-               t1.sendMessage(EM_USER1, 0, (Long)i);
-               t2.sendMessage(EM_USER1, 0, (Long)i);
-               t3.sendMessage(EM_USER1, 0, (Long)i);
-               t4.sendMessage(EM_USER1, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
                break;
             case 1:
-               t1.sendMessage(EM_USER2, 0, (Long)i);
-               t2.sendMessage(EM_USER2, 0, (Long)i);
-               t3.sendMessage(EM_USER2, 0, (Long)i);
-               t4.sendMessage(EM_USER2, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
                break;
             case 2:
-               t1.sendMessage(EM_USER3, 0, (Long)i);
-               t2.sendMessage(EM_USER3, 0, (Long)i);
-               t3.sendMessage(EM_USER3, 0, (Long)i);
-               t4.sendMessage(EM_USER3, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
                break;
             case 3:
-               t1.sendMessage(EM_USER4, 0, (Long)i);
-               t2.sendMessage(EM_USER4, 0, (Long)i);
-               t3.sendMessage(EM_USER4, 0, (Long)i);
-               t4.sendMessage(EM_USER4, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
                break;
             }
          }
@@ -932,28 +933,28 @@ Void EThread_test3()
             switch (i)
             {
             case 0:
-               t1.sendMessage(EM_USER1, 0, (Long)i);
-               t2.sendMessage(EM_USER1, 0, (Long)i);
-               t3.sendMessage(EM_USER1, 0, (Long)i);
-               t4.sendMessage(EM_USER1, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER1, 0, (Long)i));
                break;
             case 1:
-               t1.sendMessage(EM_USER2, 0, (Long)i);
-               t2.sendMessage(EM_USER2, 0, (Long)i);
-               t3.sendMessage(EM_USER2, 0, (Long)i);
-               t4.sendMessage(EM_USER2, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER2, 0, (Long)i));
                break;
             case 2:
-               t1.sendMessage(EM_USER3, 0, (Long)i);
-               t2.sendMessage(EM_USER3, 0, (Long)i);
-               t3.sendMessage(EM_USER3, 0, (Long)i);
-               t4.sendMessage(EM_USER3, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER3, 0, (Long)i));
                break;
             case 3:
-               t1.sendMessage(EM_USER4, 0, (Long)i);
-               t2.sendMessage(EM_USER4, 0, (Long)i);
-               t3.sendMessage(EM_USER4, 0, (Long)i);
-               t4.sendMessage(EM_USER4, 0, (Long)i);
+               t1.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t2.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t3.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
+               t4.sendMessage(EThreadMessage(EM_USER4, 0, (Long)i));
                break;
             }
          }
@@ -1159,6 +1160,7 @@ public:
 
    Void onInit()
    {
+      std::cout << "EThreadTimerTest::onInit()" << std::endl << std::flush;
       if (m_oneshot)
       {
          m_cnt = 0;
@@ -1190,9 +1192,9 @@ public:
       }
    }
 
-   Void onTimer(EThreadBase::Timer *pTimer)
+   Void onTimer(EThreadEventTimer *pTimer)
    {
-      cout << m_elapsed.MilliSeconds(True) << " milliseconds has elapsed." << endl;
+      cout << m_elapsed.MilliSeconds(m_oneshot?False:True) << " milliseconds has elapsed for timer " << pTimer->getId() << endl << std::flush;
       if (pTimer->getId() == m_timer1.getId())
       {
          m_cnt++;
@@ -1210,6 +1212,7 @@ public:
 
    Void onQuit()
    {
+      std::cout << "EThreadTimerTest::onQuit()" << std::endl << std::flush;
    }
 
    Void setOneShot(Bool oneshot) { m_oneshot = oneshot; }
@@ -1219,9 +1222,9 @@ public:
 private:
    Int m_cnt;
    Bool m_oneshot;
-   EThreadBase::Timer m_timer1;
-   EThreadBase::Timer m_timer2;
-   EThreadBase::Timer m_timer3;
+   EThreadEventTimer m_timer1;
+   EThreadEventTimer m_timer2;
+   EThreadEventTimer m_timer3;
    ETimer m_elapsed;
 };
 
@@ -1527,7 +1530,7 @@ Void deadlock()
 class Listener;
 class Talker;
 
-class TcpWorker : public ESocket::Thread
+class TcpWorker : public ESocket::ThreadPrivate
 {
 public:
    TcpWorker()
@@ -1542,7 +1545,7 @@ public:
    Void onQuit();
    Void onClose();
 
-   Void errorHandler(EError &err, ESocket::Base *psocket);
+   Void errorHandler(EError &err, ESocket::BasePrivate *psocket);
 
    Talker *createTalker();
 
@@ -1563,22 +1566,22 @@ private:
    Talker *m_talker;
 };
 
-class Listener : public ESocket::TCP::Listener
+class Listener : public ESocket::TCP::ListenerPrivate
 {
 public:
-   Listener(TcpWorker &thread) : ESocket::TCP::Listener(thread) {}
+   Listener(TcpWorker &thread) : ESocket::TCP::ListenerPrivate(thread) {}
    virtual ~Listener() {}
 
-   ESocket::TCP::Talker *createSocket(ESocket::Thread &thread);
+   ESocket::TCP::TalkerPrivate *createSocket(ESocket::ThreadPrivate &thread);
 
    Void onClose();
    Void onError();
 };
 
-class Talker : public ESocket::TCP::Talker
+class Talker : public ESocket::TCP::TalkerPrivate
 {
 public:
-   Talker(TcpWorker &thread) : ESocket::TCP::Talker(thread) {}
+   Talker(TcpWorker &thread) : ESocket::TCP::TalkerPrivate(thread) {}
    ~Talker() {}
 
    Void onConnect();
@@ -1591,7 +1594,7 @@ private:
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-ESocket::TCP::Talker *Listener::createSocket(ESocket::Thread &thread)
+ESocket::TCP::TalkerPrivate *Listener::createSocket(ESocket::ThreadPrivate &thread)
 {
 
    return ((TcpWorker &)thread).createTalker();
@@ -1613,7 +1616,7 @@ Void Listener::onError()
 
 Void Talker::onConnect()
 {
-   ESocket::TCP::Talker::onConnect();
+   ESocket::TCP::TalkerPrivate::onConnect();
 
    if (((TcpWorker &)getThread()).getListen())
    {
@@ -1773,7 +1776,7 @@ Void TcpWorker::onClose()
    }
 }
 
-Void TcpWorker::errorHandler(EError &err, ESocket::Base *psocket)
+Void TcpWorker::errorHandler(EError &err, ESocket::BasePrivate *psocket)
 {
    //std::cout << "Socket exception - " << err << std::endl << std::flush;
 }
@@ -1814,7 +1817,7 @@ Void tcpsockettest(Bool server)
 
 class UdpSocket;
 
-class UdpWorker : public ESocket::Thread
+class UdpWorker : public ESocket::ThreadPrivate
 {
 public:
    UdpWorker()
@@ -1829,7 +1832,7 @@ public:
    Void onQuit();
    Void onClose();
 
-   Void errorHandler(EError &err, ESocket::Base *psocket);
+   Void errorHandler(EError &err, ESocket::BasePrivate *psocket);
 
    Void setCount(Int cnt) { m_cnt = cnt; }
    Int getCount() { return m_cnt; }
@@ -1844,7 +1847,7 @@ public:
    Void setRemotePort(UShort port) { m_remoteport = port; }
    UShort getRemotePort() { return m_remoteport; }
 
-   Void onTimer(EThreadBase::Timer *pTimer);
+   Void onTimer(EThreadEventTimer *pTimer);
 
 private:
    EString m_localip;
@@ -1853,13 +1856,13 @@ private:
    UShort m_remoteport;
    Int m_cnt;
    UdpSocket *m_socket;
-   EThreadBase::Timer m_timer;
+   EThreadEventTimer m_timer;
 };
 
-class UdpSocket : public ESocket::UDP
+class UdpSocket : public ESocket::UdpPrivate
 {
 public:
-   UdpSocket(UdpWorker &thread) : ESocket::UDP(thread)
+   UdpSocket(UdpWorker &thread) : ESocket::UdpPrivate(thread)
    {
       m_cnt = 0;
       m_sentcnt = 0;
@@ -1873,6 +1876,7 @@ public:
    Void sendpacket();
 
    Void setCount(Int cnt) { m_cnt = cnt; }
+   Int getSentCount() { return m_sentcnt; }
 
    Void setRemote(const ESocket::Address addr) { m_remote = addr; }
 
@@ -1963,16 +1967,18 @@ Void UdpWorker::onQuit()
    delete m_socket;
 }
 
-Void UdpWorker::errorHandler(EError &err, ESocket::Base *psocket)
+Void UdpWorker::errorHandler(EError &err, ESocket::BasePrivate *psocket)
 {
    //std::cout << "Socket exception - " << err << std::endl << std::flush;
 }
 
-Void UdpWorker::onTimer(EThreadBase::Timer *pTimer)
+Void UdpWorker::onTimer(EThreadEventTimer *pTimer)
 {
    if (pTimer->getId() == m_timer.getId())
    {
       m_socket->sendpacket();
+      if (m_socket->getSentCount() == -1)
+         m_timer.stop();
    }
 }
 
@@ -2041,8 +2047,8 @@ public:
 
    Void handleRequest(EThreadMessage &msg)
    {
-      Int delay = (Int)msg.getLowPart();
-      Int hold = (Int)msg.getHighPart();
+      Int delay = (Int)msg.data().data().int32[0];
+      Int hold = (Int)msg.data().data().int32[1];
       ETimer tmr;
 
       EThreadBasic::sleep(delay);
@@ -2090,7 +2096,7 @@ private:
 };
 
 BEGIN_MESSAGE_MAP(ERWLockTestThread, EThreadPrivate)
-ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
+   ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
 END_MESSAGE_MAP()
 
 Void ERWLock_test()
@@ -2111,18 +2117,18 @@ Void ERWLock_test()
 
    cout << "ERWLock_test - starting 1st test" << endl
         << flush;
-   read1.sendMessage(EM_RWLOCKTEST, 0, 4000);
-   read2.sendMessage(EM_RWLOCKTEST, 50, 4000);
-   write1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
+   read1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 0, 4000));
+   read2.sendMessage(EThreadMessage(EM_RWLOCKTEST, 50, 4000));
+   write1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1000, 4000));
    EThreadBasic::sleep(10000);
    cout << "ERWLock_test - 1st test complete" << endl
         << flush;
 
    cout << "ERWLock_test - starting 2nd test" << endl
         << flush;
-   read1.sendMessage(EM_RWLOCKTEST, 1000, 4000);
-   read2.sendMessage(EM_RWLOCKTEST, 1050, 4000);
-   write1.sendMessage(EM_RWLOCKTEST, 0, 4000);
+   read1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1000, 4000));
+   read2.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1050, 4000));
+   write1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 0, 4000));
    EThreadBasic::sleep(10000);
    cout << "ERWLock_test - 2nd test complete" << endl
         << flush;
@@ -2301,22 +2307,22 @@ public:
 
    Void userFunc1(EThreadMessage &msg)
    {
-      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc1 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc1 - msg data " << msg.data().data().int64 << std::endl << std::flush;
    }
 
    Void userFunc2(EThreadMessage &msg)
    {
-      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc2 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc2 - msg data " << msg.data().data().int64 << std::endl << std::flush;
    }
 
    Void userFunc3(EThreadMessage &msg)
    {
-      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc3 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc3 - msg data " << msg.data().data().int64 << std::endl << std::flush;
    }
 
    Void userFunc4(EThreadMessage &msg)
    {
-      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc4 - msg data " << msg.getQuadPart() << std::endl << std::flush;
+      std::cout << ETime::Now().Format("%Y-%m-%d %H:%M:%S.%0", True) << " - userFunc4 - msg data " << msg.data().data().int64 << std::endl << std::flush;
    }
 
    DECLARE_MESSAGE_MAP()
@@ -2415,6 +2421,162 @@ Void timerpooltest()
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+Void printObjectSizes()
+{
+   std::cout << "sizeof(EThreadMessage) = " << sizeof(EThreadMessage) << std::endl;
+   std::cout << "sizeof(_EThreadMessage) = " << sizeof(_EThreadMessage) << std::endl;
+   std::cout << "sizeof(_EThreadEventMessageBase) = " << sizeof(_EThreadEventMessageBase) << std::endl;
+   std::cout << "sizeof(EThreadEventMessageData) = " << sizeof(EThreadEventMessageData) << std::endl;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
+class MyCustomEventData : public EThreadEventMessageDataBase
+{
+public:
+   MyCustomEventData() : EThreadEventMessageDataBase(), m_voidptr(), m_print(False), m_val() {}
+   MyCustomEventData(UInt msgid) : EThreadEventMessageDataBase(msgid), m_voidptr(), m_val() {}
+
+   pVoid getVoidPtr() { return m_voidptr; }
+   Void setVoidPtr(pVoid p) { m_voidptr = p; }
+
+   Void setValue(Int idx, Int val) { if (idx>=0 && idx<4) m_val[idx] = val; }
+   Int getValue(Int idx) { if (idx>=0 && idx<4) return m_val[idx]; return -1; }
+
+   Void setPrint(Bool print) { m_print = print; }
+   Bool getPrint() { return m_print; }
+
+private:
+   pVoid m_voidptr;
+   Bool m_print;
+   Int m_val[4];
+};
+
+typedef EThreadEventMessageBase<MyCustomEventData> MyCustomEvent;
+
+#define MYAPPID      9
+#define MYTHREADID   99
+#define MYEVENT_1    (EM_USER + 1)
+
+typedef EThreadQueuePublic<MyCustomEvent> MyCustomEventPublicQueue;
+typedef EThreadEvent<MyCustomEventPublicQueue, MyCustomEvent> MyCustomThreadEventPublic;
+
+class MyCustomThread : public MyCustomThreadEventPublic
+{
+public:
+   MyCustomThread()
+   {
+      m_count = 0;
+   }
+
+   Void onInit()
+   {
+      std::cout << "MyCustomThread::onInit()" << std::endl << std::flush;
+   }
+
+   Void onQuit()
+   {
+      m_timer.Stop();
+
+      std::cout << "MyCustomThread::onQuit()" << std::endl << std::flush;
+
+      double persec = ((double)m_count) / (((double)m_timer.MicroSeconds()) / 1000000);
+      std::string s = numberFormatWithCommas<double>(persec);
+      cout << "Processed " << m_count << " messages in " << ((double)m_timer.MicroSeconds()) / 1000000 << " seconds (" << s << " per second)" << std::endl;
+   }
+
+   Void myfunc1(MyCustomEvent &msg)
+   {
+      if (m_count == 0)
+         m_timer.Start();
+
+      m_count++;
+
+      if (msg.data().getPrint())
+      {
+         std::cout << "MyCustomThread::myfunc1() -"
+            << " event=" << msg.data().getMessageId()
+            << " m_voidptr=" << msg.data().getVoidPtr()
+            << " m_print=" << (msg.data().getPrint()?"TRUE":"FALSE")
+            << " m_val[0]=" << msg.data().getValue(0)
+            << " m_val[1]=" << msg.data().getValue(1)
+            << " m_val[2]=" << msg.data().getValue(2)
+            << " m_val[3]=" << msg.data().getValue(3)
+            << std::endl;
+      }
+   }
+
+   DECLARE_MESSAGE_MAP()
+private:
+   Int m_maxprintindex;
+   Int m_count;
+   ETimer m_timer;
+};
+
+BEGIN_MESSAGE_MAP(MyCustomThread, MyCustomThreadEventPublic)
+   ON_MESSAGE(MYEVENT_1, MyCustomThread::myfunc1)
+END_MESSAGE_MAP()
+
+Void customThreadTest(Bool isHost)
+{
+   static Int queueSize = 100000;
+   Char buffer[128];
+
+   cout << "Enter the public event queue size [" << queueSize << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   queueSize = *buffer ? std::stoi(buffer) : queueSize;
+
+   if (isHost)
+   {
+      MyCustomThread t;
+      std::cout << "customThreadTest() starting custom thread" << std::endl << std::flush;
+      t.init(MYAPPID, MYTHREADID, NULL, queueSize);
+      t.join();
+      std::cout << "customThreadTest() custom thread test complete" << std::endl << std::flush;
+   }
+   else
+   {
+      static Int msgcnt = 10000;
+      static Int maxPrintIndex = 1;
+
+      cout << "Enter the number of messages to send [" << msgcnt << "]: ";
+      cin.getline(buffer, sizeof(buffer));
+      msgcnt = *buffer ? std::stoi(buffer) : msgcnt;
+
+      cout << "Enter the number of messages to print [" << maxPrintIndex << "]: ";
+      cin.getline(buffer, sizeof(buffer));
+      maxPrintIndex = *buffer ? std::stoi(buffer) : maxPrintIndex;
+
+      MyCustomEventPublicQueue q;
+      Long id = MYAPPID * 10000 + MYTHREADID;
+      q.init(queueSize, id, True, EThreadQueueMode::WriteOnly);
+
+      Bool print = True;
+      MyCustomEvent event;
+      event.data().setMessageId(MYEVENT_1);
+      event.data().setPrint(True);
+      Int idx;
+      for (idx=0; idx<msgcnt; idx++)
+      {
+         if (idx == maxPrintIndex)
+            event.data().setPrint(False);
+
+         event.data().setValue(0,100000000+idx);
+         event.data().setValue(1,200000000+idx);
+         event.data().setValue(2,300000000+idx);
+         event.data().setValue(3,400000000+idx);
+
+         q.push(event);
+      }
+      q.push(MyCustomEvent(EM_QUIT));
+      cout << std::endl << "Posted " << idx << " MyCustomEvent event messages to public queue " << id << std::endl;
+   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -2443,9 +2605,9 @@ Void printMenu()
        "11. Public Mutex test                          29. Logger test                  \n"
        "12. Private Semaphore test                     30. UDP socket test              \n"
        "13. Public Semaphore test                      31. Timer Pool test              \n"
-       "14. Basic thread test                                                           \n"
-       "15. Thread suspend/resume                                                       \n"
-       "16. Thread periodic timer test                                                  \n"
+       "14. Basic thread test                          32. Object Sizes                 \n"
+       "15. Thread suspend/resume                      33. Custom Public Event Host     \n"
+       "16. Thread periodic timer test                 34. Custom Public Event Client   \n"
        "17. Thread one shot timer test                                                  \n"
        "18. Circular buffer test                                                        \n"
        "\n",
@@ -2565,6 +2727,15 @@ Void run(EGetOpt &options)
             break;
          case 31:
             timerpooltest();
+            break;
+         case 32:
+            printObjectSizes();
+            break;
+         case 33:
+            customThreadTest(True);
+            break;
+         case 34:
+            customThreadTest(False);
             break;
          default:
             cout << "Invalid Selection" << endl

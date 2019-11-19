@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -67,7 +68,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classESocket_1_1Address-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -80,15 +80,6 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="esocket_8h_source.html">esocket.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a8e263c0eeb6a58ddcefaf87c0bd18f76"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Family</a> { <a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76aec0fc0100c4fc1ce4eea230c3dc10360">Family::Undefined</a>, 
-<a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76acbeeb469aeabf16bcff81f4cde1e0b48">Family::INET</a>, 
-<a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb">Family::INET6</a>
- }</td></tr>
-<tr class="memdesc:a8e263c0eeb6a58ddcefaf87c0bd18f76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the possible address family values.  <a href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">More...</a><br /></td></tr>
-<tr class="separator:a8e263c0eeb6a58ddcefaf87c0bd18f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8712e4354e4b8949ea934b7db00add67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#a8712e4354e4b8949ea934b7db00add67">Address</a> ()</td></tr>
@@ -130,7 +121,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adc4fa6ddf71554e2744fb2a9985e903a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Address.html">Address</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#adc4fa6ddf71554e2744fb2a9985e903a">operator=</a> (UShort port)</td></tr>
 <tr class="memdesc:adc4fa6ddf71554e2744fb2a9985e903a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assigns a port value (allowing IPADDR_ANY).  <a href="classESocket_1_1Address.html#adc4fa6ddf71554e2744fb2a9985e903a">More...</a><br /></td></tr>
 <tr class="separator:adc4fa6ddf71554e2744fb2a9985e903a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3c327b9a9a5d9320ef362e13691c101"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Family</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#ac3c327b9a9a5d9320ef362e13691c101">getFamily</a> () const</td></tr>
+<tr class="memitem:ac3c327b9a9a5d9320ef362e13691c101"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#ac3c327b9a9a5d9320ef362e13691c101">getFamily</a> () const</td></tr>
 <tr class="memdesc:ac3c327b9a9a5d9320ef362e13691c101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the address family for this address.  <a href="classESocket_1_1Address.html#ac3c327b9a9a5d9320ef362e13691c101">More...</a><br /></td></tr>
 <tr class="separator:ac3c327b9a9a5d9320ef362e13691c101"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359a57f4e4d3bc04b5f5aa823c144ea4"><td class="memItemLeft" align="right" valign="top">struct sockaddr_in &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESocket_1_1Address.html#a359a57f4e4d3bc04b5f5aa823c144ea4">getInet</a> ()</td></tr>
@@ -151,40 +142,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Encapsulates a sockaddr_storage structure that represents a socket address. </p>
-</div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a8e263c0eeb6a58ddcefaf87c0bd18f76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e263c0eeb6a58ddcefaf87c0bd18f76">&#9670;&nbsp;</a></span>Family</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">ESocket::Address::Family</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Defines the possible address family values. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8e263c0eeb6a58ddcefaf87c0bd18f76aec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>undefined </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8e263c0eeb6a58ddcefaf87c0bd18f76acbeeb469aeabf16bcff81f4cde1e0b48"></a>INET&#160;</td><td class="fielddoc"><p>IPv4 address. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a8e263c0eeb6a58ddcefaf87c0bd18f76a3a1be585a9d1d7af08b562f200a982bb"></a>INET6&#160;</td><td class="fielddoc"><p>IPv6 address. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8712e4354e4b8949ea934b7db00add67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8712e4354e4b8949ea934b7db00add67">&#9670;&nbsp;</a></span>Address() <span class="overload">[1/5]</span></h2>
 
@@ -426,7 +384,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classESocket_1_1Address.html#a8e263c0eeb6a58ddcefaf87c0bd18f76">Family</a> ESocket::Address::getFamily </td>
+          <td class="memname"><a class="el" href="namespaceESocket.html#a1c4699facd27add9989fa67b3c63316e">Family</a> ESocket::Address::getFamily </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

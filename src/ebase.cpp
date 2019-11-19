@@ -16,7 +16,7 @@
 */
 
 #include "einternal.h"
-#include "etbase.h"
+#include "etbasic.h"
 #include "esynch2.h"
 
 Void EpcTools::Initialize(EGetOpt &options)
@@ -32,8 +32,7 @@ Void EpcTools::Initialize(EGetOpt &options)
 
 Void EpcTools::UnInitialize()
 {
-   ESynchObjects::getSynchObjCtrlPtr()->logObjectUsage();
-
+   //ESynchObjects::getSynchObjCtrlPtr()->logObjectUsage();
    EThreadBasic::UnInitialize();
    EStatic::UnInitialize();
 }

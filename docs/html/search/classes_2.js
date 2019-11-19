@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['cache',['Cache',['../classDNS_1_1Cache.html',1,'DNS']]],
-  ['cachemap',['CacheMap',['../classDNS_1_1CacheMap.html',1,'DNS']]],
-  ['canonicalnodename',['CanonicalNodeName',['../classEPCDNS_1_1CanonicalNodeName.html',1,'EPCDNS']]],
-  ['colocatedcandidate',['ColocatedCandidate',['../classEPCDNS_1_1ColocatedCandidate.html',1,'EPCDNS']]],
-  ['colocatedcandidatelist',['ColocatedCandidateList',['../classEPCDNS_1_1ColocatedCandidateList.html',1,'EPCDNS']]]
+  ['base',['Base',['../classESocket_1_1Base.html',1,'ESocket']]],
+  ['buffer',['Buffer',['../classBuffer.html',1,'']]],
+  ['buffer_3c_20uint8_5ft_20_3e',['Buffer&lt; uint8_t &gt;',['../classBuffer.html',1,'']]]
 ];

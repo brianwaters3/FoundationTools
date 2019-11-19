@@ -19,9 +19,11 @@
 #define __eqbase_h_included
 
 #include "ebase.h"
+#include "eerror.h"
+#include "esynch.h"
 #include "etime.h"
 #include "etimer.h"
-#include "etq.h"
+//#include "etq.h"
 #include "emsg.h"
 
 /// @file

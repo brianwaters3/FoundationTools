@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: EpcTools - Enhanced Packet Core Development Tools</title>
+<title>EpcTools: &lt;em&gt;&lt;strong&gt;EpcTools&lt;/strong&gt;&lt;/em&gt; - Enhanced Packet Core Application Development Tools for Linux</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -63,40 +64,515 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title"><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a> - Enhanced Packet Core Development Tools </div>  </div>
+<div class="title"><em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> - Enhanced Packet Core Application Development Tools for Linux </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a> is an event based, multi-threaded C++ development framework designed for any Linux implementation that supports g++ and pthreads.</p>
+<div class="textblock"><p><em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> is a set of C++ classes that simplifies the development and management of EPC applications. This library is intended for use on any Linux based system that supports g++ and pthreads.</p>
 <h1><a class="anchor" id="autotoc_md10"></a>
+Contents</h1>
+<div class="mycustomlist"> <ol>
+<li>
+<a href="#dependencies">Dependencies</a> </li>
+<li>
+<a href="#installation">Installation</a> </li>
+<li>
+<a href="#configuration">Configuration</a> <ol>
+<li>
+<a href="#configuration-command-line">Command Line</a> </li>
+<li>
+<a href="#configuration-file">Configuration File</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview">Feature Overview</a> <ol>
+<li>
+<a href="#feature-overview-public-private">Public vs. Private</a> </li>
+<li>
+<a href="#feature-overview-shared-memory">Shared Memory</a> </li>
+<li>
+<a href="#feature-overview-threads">Threads</a> <ol>
+<li>
+<a href="#feature-overview-threads-basic-thread">Basic Thread</a> </li>
+<li>
+<a href="#feature-overview-threads-event-thread">Event Thread</a> <ol>
+<li>
+<a href="#feature-overview-threads-event-thread-event-message-standard">Standard Event Message</a> </li>
+<li>
+<a href="#feature-overview-threads-event-thread-event-message-custom">Custom Event Message</a> </li>
+<li>
+<a href="#feature-overview-threads-event-thread-timers">Timers</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview-threads-public-event-threads">Public Event Threads</a> </li>
+</ol>
+</li>
+<li>
+Message Queue(#feature-overview-message-queue) <ol>
+<li>
+<a href="#feature-overview-message-queue-pack-unpack">Pack/Unpack</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview-synchronization">Synchronization</a> <ol>
+<li>
+<a href="#feature-overview-synchronization-mutex">Mutex</a> </li>
+<li>
+<a href="#feature-overview-synchronization-semaphore">Semaphore</a> </li>
+<li>
+<a href="#feature-overview-synchronization-event">Event</a> </li>
+<li>
+<a href="#feature-overview-synchronization-read-write-lock">Read/Write Lock</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview-socket-communications">Socket Communications</a> <ol>
+<li>
+<a href="#feature-overview-socket-communications-socket-thread">Socket Thread</a> </li>
+<li>
+<a href="#feature-overview-socket-communications-tcp">TCP</a> </li>
+<li>
+<a href="#feature-overview-socket-communications-udp">UDP</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview-logging">Logging</a> </li>
+<li>
+<a href="#feature-overview-dns">DNS</a> <ol>
+<li>
+<a href="#feature-overview-dns-cache">Cache</a> </li>
+<li>
+<a href="#feature-overview-dns-epc-node-discovery">EPC Node Discovery</a> </li>
+<li>
+<a href="#feature-overview-dns-diameter-s-naptr">Diameter S-NAPTR</a> </li>
+</ol>
+</li>
+<li>
+<a href="#feature-overview-rest-server">REST Server</a> </li>
+<li>
+<a href="#feature-overview-freediameter">freeDiameter</a> </li>
+<li>
+<a href="#feature-overview-statistics">Interface Statistics</a> </li>
+<li>
+<a href="#feature-overview-timer-pool">Timer Pool</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous">Miscellaneous</a> <ol>
+<li>
+<a href="#feature-overview-miscellaneous-string">String</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-utilities">Utilities</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-time">Time</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-timer">Timer</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-path">Path</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-directory">Directory</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-error">Error</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-hash">Hash</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-bzip2">BZip2</a> </li>
+<li>
+<a href="#feature-overview-miscellaneous-circular-buffer">Circular Buffer</a> </li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div><p><a class="anchor" id="dependencies"></a> </p>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Dependencies</h1>
 <ul>
+<li><a href="https://github.com/omec-project/freediameter">freeDiameter</a> - an implementation of the Diameter protocol</li>
 <li><a href="http://rapidjson.org">RapidJSON</a> - a JSON parser and generator for C++</li>
-<li><a href="https://github.com/gabime/spdlog">spdlog</a> - Very fast, header-only/compiled, C++ logging library</li>
+<li><a href="https://github.com/gabime/spdlog">spdlog</a> - very fast, header-only/compiled, C++ logging library</li>
+<li><a href="http://pistache.io/">pistache</a> - an elegant C++ REST framework</li>
+<li><a href="https://www.sourceware.org/bzip2/">bzip2</a> - a freely available, patent free (see below), high-quality data compressor</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<p><a class="anchor" id="installation"></a> </p>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Installation</h1>
-<p>Clone the project, install the dependencies (via configure), build the static library and install.</p>
-<div class="fragment"><div class="line">$ sudo apt-get update</div>
-<div class="line">$ sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake</div>
-<div class="line">$ git clone https://github.com/brianwaters3/FoundationTools.git epctools</div>
+<p><em><b>Update your system.</b></em> </p><div class="fragment"><div class="line">$ sudo apt-get update</div>
+</div><!-- fragment --><p> <em><b>Install Ubuntu 16.04 prerequisites.</b></em> </p><div class="fragment"><div class="line">sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake libtool</div>
+</div><!-- fragment --><p> <em><b>Install Ubuntu 18.04 prerequisites.</b></em> </p><div class="fragment"><div class="line">sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls28-dev libgcrypt-dev libidn11-dev m4 automake libtool</div>
+</div><!-- fragment --><p> <em><b>Clone the project, install the dependencies (via configure), build the static library and install.</b></em> </p><div class="fragment"><div class="line">$ git clone https://github.com/brianwaters3/FoundationTools.git epctools</div>
 <div class="line">$ cd epctools</div>
+<div class="line">$ git checkout sprint</div>
 <div class="line">$ ./configure</div>
 <div class="line">$ make</div>
 <div class="line">$ sudo make install</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
-Features</h1>
-<p><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a> includes classes for:</p>
-<ul>
-<li>Threading - Basic, Event, Event thread with TCP socket capabilities</li>
-<li>Synchronization - Mutex using native IPC (pthread) or custom mutex implementation and an optimized Semaphore implementation</li>
+</div><!-- fragment --><p> <a class="anchor" id="feature-overview"></a> </p>
+<h1><a class="anchor" id="autotoc_md13"></a>
+Feature Overview</h1>
+<p><a class="anchor" id="feature-overview-public-private"></a> </p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Public vs. Private</h2>
+<p>For some classes, <em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> supports the concept of public classes and private. A public class/object is one that can be accessed from a different process, while a private class/object can only be accessed from within the current process. This is achieved by storing the data associated with the public object in shared memory, thereby giving access to the public objects to any process.</p>
+<p><em><b>NOTE:</b></em> Since public objects have data stored in shared memory, each application that wants to have access to the public object must enable the EpcTools/EnablePublicObjects configuration option to TRUE. By default, the EpcTools/EnablePublicObjects configuration option is <code>FALSE</code>. Additionally, if an application does not call <a class="el" href="classEpcTools.html#a3c6f9a52b98c9452d2ec05c8b923087f">EpcTools::UnInitialize()</a> prior to exiting, the objects in shared memory will be remain until the shared memory is released. <em><b>This condition can lead to unexpected/unexplained application behavior.</b></em></p>
+<p>The classes that support public/private are: </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Public  </th><th class="markdownTableHeadLeft">Private  </th><th class="markdownTableHeadLeft">Description   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><a class="el" href="classEMutexPublic.html">EMutexPublic</a>  </td><td class="markdownTableBodyLeft"><a class="el" href="classEMutexPrivate.html">EMutexPrivate</a>  </td><td class="markdownTableBodyLeft">A mutex (mutual exclusion object) is a program object that is created so that multiple threads can take turns sharing the same resource, such as a file or list. An application can attach to a public mutex specifying the mutex ID when calling the <a class="el" href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">attach()</a> method.   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><a class="el" href="classESemaphorePublic.html">ESemaphorePublic</a>  </td><td class="markdownTableBodyLeft"><a class="el" href="classESemaphorePrivate.html">ESemaphorePrivate</a>  </td><td class="markdownTableBodyLeft">A semaphore is simply a variable which is non-negative and shared between threads. The <em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> semaphore is what is considered a counting semaphore. Semaphores are used internally in <em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> as part of various queue implementations to represent the number of messages in the queue. If you attempt to read a queue that is empty, the semaphore will block until a message has been added to the queue. An application can attach to a public semaphore by specifying the semaphore ID when calling the <a class="el" href="classESemaphorePublic.html#a0cbb272ad36c64680929076e32440940">attach()</a> method.   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><a class="el" href="classEQueuePublic.html">EQueuePublic</a>  </td><td class="markdownTableBodyLeft"><a class="el" href="classEQueuePrivate.html">EQueuePrivate</a>  </td><td class="markdownTableBodyLeft">A message queue is a FIFO (first in first out) list of messages. Since these messages may be shared across processes, pointer values are not allowed. A message class derived from <a class="el" href="classEMessage.html">EMessage</a> provides utilities to pack and unpack data that can be written to and read from a queue. An application can attach to a public queue by specifying the queue ID when calling the <a class="el" href="classEQueuePublic.html#a66e656a4c8a66cf2c2dd053b50b4208f">init()</a> method.   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">EThreadPublic  </td><td class="markdownTableBodyLeft">EThreadPrivate  </td><td class="markdownTableBodyLeft">A thread provides multiple threads of execution within the same program in a shared memory address space. Threads allow for concurrent programming and, on multiple processor/core systems, true parallelism. To send an event message to a public thread from a different process, the application must first create an instance of EThreadPublic that refers to the same application ID and thread ID that the target thread was initialized with.   </td></tr>
+</table>
+<p><a class="anchor" id="feature-overview-shared-memory"></a> </p>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Shared Memory</h2>
+<p>Inter process communication through shared memory is a concept where two or more processes can access the common memory and changes to the shared memory made by one process can viewed (and changed) by another process. The <a class="el" href="classESharedMemory.html">ESharedMemory</a> class provides functionality to allocate, access and release a shared memory block. Once created, a pointer to the shared memory can be retrieved using the <a class="el" href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">getDataPtr()</a> method. Concurrent access to the shared memory should be controlled via an instance of <a class="el" href="classEMutexPublic.html">EMutexPublic</a>.</p>
+<div class="fragment"><div class="line">....</div>
+<div class="line">    <a class="code" href="classESharedMemory.html">ESharedMemory</a> sm;</div>
+<div class="line">    sm.<a class="code" href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">init</a>( <span class="stringliteral">&quot;/tmp/sm1&quot;</span>, 1, 1048576 );</div>
+<div class="line">    <span class="keywordtype">void</span> *p = sm.<a class="code" href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">getDataPtr</a>();</div>
+<div class="line">....</div>
+</div><!-- fragment --><p>This example either creates or attaches to the shared memory identified by the file <code>"/tmp/sm1"</code> and a shared memory ID of 1 and is 1MB in size. The variable <code>p</code> is assigned the first address of the 1MB shared memory block. When <code>sm</code> goes out of scope, the shared memory will be released if no other clients are attached.</p>
+<p><a class="anchor" id="feature-overview-threads"></a> </p>
+<h2><a class="anchor" id="autotoc_md16"></a>
+Threads</h2>
+<p><a class="anchor" id="feature-overview-threads-basic-thread"></a> </p>
+<h3><a class="anchor" id="autotoc_md17"></a>
+Basic Thread</h3>
+<p>A basic thread is a thread wrapper that will execute a user provided procedure/function in a separate thread. The basic thread is defined by deriving a class from <a class="el" href="classEThreadBasic.html">EThreadBasic</a> and overloading the <code>threadProc()</code> method. To initialize and start the thread simply call the <code>init(pVoid arg, Dword stackSize = 0)</code> method. Call <a class="el" href="classEThreadBasic.html#a8c5765e549d250fcc912b41932dc7ff5">join()</a> to wait for the thread to exit. Other useful <a class="el" href="classEThreadBasic.html">EThreadBasic</a> methods include <a class="el" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">sleep(Int milliseconds)</a> and <a class="el" href="classEThreadBasic.html#a36312dfda1c19fc7f40bd82c3f9e4550">yield()</a>.</p>
+<p>In this example, a basic thread is defined in the class <code>EThreadBasicTest</code>. </p><div class="fragment"><div class="line"><span class="keyword">class </span>EThreadBasicTest : <span class="keyword">public</span> <a class="code" href="classEThreadBasic.html">EThreadBasic</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">   EThreadBasicTest() : m_timetoquit(false) {}</div>
+<div class="line"> </div>
+<div class="line">   Dword <a class="code" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">threadProc</a>(Void *arg) {</div>
+<div class="line">      <span class="keywordflow">while</span> (!m_timetoquit) {</div>
+<div class="line">         cout &lt;&lt; <span class="stringliteral">&quot;Inside the thread [&quot;</span> &lt;&lt; (cpStr)arg &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; endl;</div>
+<div class="line">         <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">sleep</a>(1000);</div>
+<div class="line">      }</div>
+<div class="line">      cout &lt;&lt; <span class="stringliteral">&quot;Exiting EThreadTest::threadProc()&quot;</span> &lt;&lt; endl;</div>
+<div class="line">      <span class="keywordflow">return</span> 0;</div>
+<div class="line">   }</div>
+<div class="line"> </div>
+<div class="line">   Void setTimeToQuit() {</div>
+<div class="line">      m_timetoquit = <span class="keyword">true</span>;</div>
+<div class="line">   }</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">   <span class="keywordtype">bool</span> m_timetoquit;</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">Void EThreadBasic_test() {</div>
+<div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;EThread_test() Start&quot;</span> &lt;&lt; endl;</div>
+<div class="line"> </div>
+<div class="line">   EThreadBasicTest t;</div>
+<div class="line"> </div>
+<div class="line">   t.init((Void *)<span class="stringliteral">&quot;this is the thread argument&quot;</span>);</div>
+<div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;before 5 second sleep sleep&quot;</span> &lt;&lt; endl;</div>
+<div class="line">   t.sleep(5000);</div>
+<div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;before setTimeToQuit()&quot;</span> &lt;&lt; endl;</div>
+<div class="line">   t.setTimeToQuit();</div>
+<div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;before join&quot;</span> &lt;&lt; endl;</div>
+<div class="line">   t.join();</div>
+<div class="line"> </div>
+<div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;EThread_test() Complete&quot;</span> &lt;&lt; endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><a class="anchor" id="feature-overview-threads-event-thread"></a> </p>
+<h3><a class="anchor" id="autotoc_md18"></a>
+Event Thread</h3>
+<p>An event thread is derived from either EThreadPrivate or EThreadPublic. An event based thread maintains an internal event message queue. Event messages are added to the event queue using one of the sendMessage() methods. sendMessage() can be called from any thread. Internally, the event thread blocks waiting for an event message to be added to the event message queue. When an event message appears in the event queue, the message is dequeued and the appropriate handler is identified and executed. The association between event ID's and handlers is defined in a message map. </p><div class="fragment"><div class="line"><a class="code" href="etevent_8h.html#a0c8d25bf6492235c4f7f47ee387698ae">BEGIN_MESSAGE_MAP</a>(EThreadTest, EThreadPrivate)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_USER1, EThreadTest::userFunc1)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_USER2, EThreadTest::userFunc2)</div>
+<div class="line"><a class="code" href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a>()</div>
+</div><!-- fragment --><p> In this example, <code>EThreadTest</code> is derived from EThreadPrivate and there are two event handlers defined in <code>EThreadTest</code>: <code>userFunc1()</code> and <code>userFunc2()</code>. According to the message map, when event <code>EM_USER1</code> is received, the dispatcher will call <code>userFunc1()</code> and when <code>EM_USER2</code> is received, the dispatcher will call <code>userFunc2()</code>.</p>
+<p>The event dispatcher searches the message map looking for the event ID. If the event ID is not found, the dispatcher will then search the parent class which is the second parameter in the <code>BEGIN_MESSAGE_MAP</code> macro. This process will continue until a handler is identified or there are no more base classes to evaluate. In this case, the defMessageHandler() will be called to process the message. </p><div class="fragment"><div class="line"><span class="keyword">class </span>EThreadTestParent : EThreadPrivate {</div>
+<div class="line">    ....</div>
+<div class="line">    Void userFunc1(<a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg);</div>
+<div class="line">    Void userFunc2(<a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg);</div>
+<div class="line">    ....</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><a class="code" href="etevent_8h.html#a0c8d25bf6492235c4f7f47ee387698ae">BEGIN_MESSAGE_MAP</a>(EThreadTestParent, EThreadPrivate)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_USER1, EThreadTestParent::userFunc1)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_USER2, EThreadTestParent::userFunc2)</div>
+<div class="line"><a class="code" href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a>()</div>
+<div class="line"> </div>
+<div class="line">class EThreadTestChild : public EThreadTestParent {</div>
+<div class="line">    ....</div>
+<div class="line">    Void childUserFunc1(<a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg);</div>
+<div class="line">    ....</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><a class="code" href="etevent_8h.html#a0c8d25bf6492235c4f7f47ee387698ae">BEGIN_MESSAGE_MAP</a>(EThreadTestChild, EThreadTestParent)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_USER1, EThreadTestChild::childUserFunc1)</div>
+<div class="line"><a class="code" href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a>()</div>
+</div><!-- fragment --><p> This example demonstrates the inheritance behavior of the event dispatcher. When an instance of <code>EThreadTestParent</code> is created and <code>EM_USER1</code> is sent to it, <code>EThreadTestParent::userFunc1()</code> will be called to process the event. Similarly, when an instance of <code>EThreadTestChild</code> is created and <code>EM_USER1</code> is sent to it, <code>EThreadTestChild::childUserFunc1()</code> will be called. Finally, when <code>EM_USER2</code> is sent to the instance of <code>EThreadTestChild</code>, the event dispatcher will call <code>EThreadTestParent::userFunc2()</code> to process the event message since there isn't an event handler defined in <code>EThreadTestChild</code> to process <code>EM_USER2</code>.</p>
+<p>In addition to custom event message handlers, the dispatcher also identifies special events including <code>EM_INIT</code>, <code>EM_QUIT</code>, <code>EM_SUSPEND</code> and <code>EM_TIMER</code>. When one of these events is identified, the corresponding method will be called (onInit(), onQuit(), onSuspend() and onTimer()).</p>
+<p><a class="anchor" id="feature-overview-threads-event-thread-event-message-standard"></a> </p>
+<h4><a class="anchor" id="autotoc_md19"></a>
+Standard Event Message</h4>
+<p><a class="anchor" id="feature-overview-threads-event-thread-event-message-custom"></a> </p>
+<h4><a class="anchor" id="autotoc_md20"></a>
+Custom Event Message</h4>
+<p><a class="anchor" id="feature-overview-threads-event-thread-timers"></a> </p>
+<h4><a class="anchor" id="autotoc_md21"></a>
+Timers</h4>
+<p><a class="anchor" id="feature-overview-threads-public-event-threads"></a> </p>
+<h3><a class="anchor" id="autotoc_md22"></a>
+Public Event Threads</h3>
+<p>The benefit of a public event thread over a private event thread is that thread event messages can be sent from a thread in one process to a thread in another process. This is achieved by storing the event message queue in shared memory. When a process creates an instance of a class derived from EThreadPublic the init() is called with an application ID and thread ID. These ID's are used to locate the public event message queue in shared memory. If the specified application ID and thread ID do not exist in shared memory when init() is called, then the thread is created in the current process and the thread's event message queue is created in shared memory. If the application ID and thread ID are found in shared memory, then thread object attaches to the public event queue and no local thread is created.</p>
+<p>Here is sample code for the application that will host the public thread. </p><div class="fragment"><div class="line"><span class="preprocessor">#define EVENT1 (EM_USER + 1)</span></div>
+<div class="line"><span class="keyword">class </span>MyThread : <span class="keyword">public</span> EThreadPublic {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    ....</div>
+<div class="line">    Void eventHandler1(<a class="code" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg);</div>
+<div class="line">    ....</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">....</div>
+<div class="line">    MyThread t;</div>
+<div class="line">    t.init(<span class="comment">/*application id*/</span> 1, <span class="comment">/*thread id*/</span> 1);</div>
+<div class="line">....</div>
+</div><!-- fragment --><p>And here is sample code for the application that will send event messages. </p><div class="fragment"><div class="line"><span class="preprocessor">#define EVENT1 (EM_USER + 1)</span></div>
+<div class="line"> </div>
+<div class="line">....</div>
+<div class="line">    EThreadPublic t;</div>
+<div class="line">    t.init(<span class="comment">/*application id*/</span> 1, <span class="comment">/*thread id*/</span> 1);</div>
+<div class="line">....</div>
+<div class="line">    t.sendMessage(EVENT1);</div>
+<div class="line">....</div>
+</div><!-- fragment --><p>You will notice that the thread in the second example is an instance of EThreadPublic while the thread in the first example is an instance of <code>MyThread</code>. This is because the thread object in the second example will only be used to send event messages, it will not be processing any events, therefore it doesn't need any event handlers.</p>
+<p><em><b>NOTE:</b></em> The order that these two applications are started is very important. The first application to start will host the thread and in this case we would want the code in the first example to be started first.</p>
+<p><a class="anchor" id="feature-overview-message-queue"></a> </p>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Message Queue</h2>
+<p><a class="anchor" id="feature-overview-message-queue-pack-unpack"></a> </p>
+<h3><a class="anchor" id="autotoc_md24"></a>
+Pack/Unpack</h3>
+<p><a class="anchor" id="feature-overview-synchronization"></a> </p>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Synchronization</h2>
+<p><a class="anchor" id="feature-overview-synchronization-mutex"></a> </p>
+<h3><a class="anchor" id="autotoc_md26"></a>
+Mutex</h3>
+<p><a class="anchor" id="feature-overview-synchronization-semaphore"></a> </p>
+<h3><a class="anchor" id="autotoc_md27"></a>
+Semaphore</h3>
+<p><a class="anchor" id="feature-overview-synchronization-event"></a> </p>
+<h3><a class="anchor" id="autotoc_md28"></a>
+Event</h3>
+<p><a class="anchor" id="feature-overview-synchronization-read-write-lock"></a> </p>
+<h3><a class="anchor" id="autotoc_md29"></a>
+Read/Write Lock</h3>
+<p><a class="anchor" id="feature-overview-socket-communications"></a> </p>
+<h2><a class="anchor" id="autotoc_md30"></a>
+Socket Communications</h2>
+<p>Asynchronous socket communications is supported by <em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> in the <a class="el" href="namespaceESocket.html" title="The namespace for all socket related classes.">ESocket</a> namespace. Currently, support for IPv4 and IPv6 with both TCP and UDP have been implemented. The framework can be enhanced to support additional socket types such as Unix domain socket.</p>
+<p><a class="anchor" id="feature-overview-socket-communications-socket-thread"></a> </p>
+<h3><a class="anchor" id="autotoc_md31"></a>
+Socket Thread</h3>
+<p><a class="el" href="classESocket_1_1Thread.html">ESocket::Thread</a> is derived from EThreadPrivate and has a custom message pump and dispatcher to identify and process socket events for sockets that are registered with the socket thread. The message pump function utilizes <code>select()</code> to detect when a socket can be read from, written to or when an error has occurred. These events are then dispatched to appropriate callback methods depending on the role and state of the socket.</p>
+<p>In addition to processing socket events <a class="el" href="classESocket_1_1Thread.html">ESocket::Thread</a> is also capable of processing standard event messages. See <a href="#feature-overview-threads-event-thread">Event Thread</a> for more information.</p>
+<p><a class="anchor" id="feature-overview-socket-communications-tcp"></a> </p>
+<h3><a class="anchor" id="autotoc_md32"></a>
+TCP</h3>
+<p>TCP is a streaming connection based protocol. As such, a TCP application will either act as a client (connects to a server) or as a server (accepts connections from clients). The <a class="el" href="namespaceESocket_1_1TCP.html">ESocket::TCP</a> namespace contains the class definitions used by the client and server applications.</p>
+<p>A server application listens for incoming connections using a class derived from <a class="el" href="classESocket_1_1TCP_1_1Listener.html">TCP::Listener</a>. When the listener detects an incoming connection, the <a class="el" href="classESocket_1_1TCP_1_1Listener.html#ac2910b7d5739e9291784cc3af4bfab01">TCP::Listener::createSocket()</a> will be called to create an instance of a class derived from <a class="el" href="classESocket_1_1TCP_1_1Talker.html">TCP::Talker</a> that will be used to received data from and send data to the client.</p>
+<p>Conversely, a client application initiates a connection to a server by calling the <a class="el" href="classESocket_1_1TCP_1_1Talker.html#ad4be48c44bed5afc09c823c7c53f6a3d">connect()</a> method with the IP address, IPv4 or IPv6, and port of the server. When the connection is complete, the <a class="el" href="classESocket_1_1TCP_1_1Talker.html#a1f2208e942a66964cc5be4ca1e172aa6">onConnect()</a> method of the socket object will be called by the dispatcher indicating that the connection is up and communication can proceed.</p>
+<p><b><a class="el" href="classESocket_1_1TCP_1_1Listener.html">TCP::Listener</a> Events</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Event  </th><th class="markdownTableHeadNone">Callback Method  </th><th class="markdownTableHeadLeft">Description   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1TCP_1_1Talker.html#a1f2208e942a66964cc5be4ca1e172aa6">TCP::Talker::onConnect</a>  </td><td class="markdownTableBodyLeft">A listening socket will indicate that it can be read from when a new client connects. The internals will create a new <a class="el" href="classESocket_1_1TCP_1_1Talker.html">TCP::Talker</a> object to handle the new connection by calling the <a class="el" href="classESocket_1_1TCP_1_1Listener.html#ac2910b7d5739e9291784cc3af4bfab01">TCP::Listener::createSocket()</a> method. Once the talking object has been created, the dispatcher will then call the <a class="el" href="classESocket_1_1TCP_1_1Talker.html#a1f2208e942a66964cc5be4ca1e172aa6">TCP::Talker::onConnect()</a> method to start communication with the new client.   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">None  </td><td class="markdownTableBodyLeft">This event is not applicable to a listening socket.   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Error  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1TCP_1_1Listener.html#a1477b6dd6c8da334612db807d9c22f75">TCP::Listener::onError</a>  </td><td class="markdownTableBodyLeft">Indicates that an error has occurred on the socket while listening for new connections.   </td></tr>
+</table>
+<p><b><a class="el" href="classESocket_1_1TCP_1_1Listener.html">TCP::Talker</a> Events</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Event  </th><th class="markdownTableHeadNone">Callback Method  </th><th class="markdownTableHeadLeft">Description   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1TCP_1_1Talker.html#aa2ee361ebd7638ae4a2c2a3c1dc44f39">TCP::Talker::onReceive</a><br  />
+<a class="el" href="classESocket_1_1TCP_1_1Talker.html#ab3fbfcfbd4fc5378966ad4362779006c">TCP::Talker::onClose</a>  </td><td class="markdownTableBodyLeft">When a talking socket indicates that it can be read, the framework calls <code>recv()</code> to read any pending data. If zero bytes are read, the socket has been closed and the dispatcher will call the <a class="el" href="classESocket_1_1TCP_1_1Talker.html#ab3fbfcfbd4fc5378966ad4362779006c">TCP::Talker::onClose()</a> method. If more than zero bytes are read, the data is inserted it into an internal receive buffer and the dispatcher will call the <a class="el" href="classESocket_1_1TCP_1_1Talker.html#aa2ee361ebd7638ae4a2c2a3c1dc44f39">TCP::Talker::onReceive()</a> method allowing the application to process the data that has been read.   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">None  </td><td class="markdownTableBodyLeft">The framework processes the write event by attempting to send any unsent data to the peer. No application interaction is required to process this event.   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Error  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1TCP_1_1Talker.html#ade2186d5cc1b4eef1cbb679e28a34895">TCP::Talker::onError</a>  </td><td class="markdownTableBodyLeft">Indicates that an error has occurred on the socket.   </td></tr>
+</table>
+<p><a class="anchor" id="feature-overview-socket-communications-udp"></a> </p>
+<h3><a class="anchor" id="autotoc_md33"></a>
+UDP</h3>
+<p><b><a class="el" href="classESocket_1_1UDP.html">UDP</a> Events</b> </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Event  </th><th class="markdownTableHeadNone">Callback Method  </th><th class="markdownTableHeadLeft">Description   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Read  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1UDP.html#a6dfcc6372f4e8e9acbb2e4685b147d12">UDP::onReceive</a>  </td><td class="markdownTableBodyLeft">When a UDP socket indicates that it can be read, the framework calls <code>recvfrom()</code> to read any pending data. If more than zero bytes are read, the data is inserted it into an internal receive buffer and the dispatcher will call the <a class="el" href="classESocket_1_1UDP.html#a6dfcc6372f4e8e9acbb2e4685b147d12">UDP::onReceive()</a> method allowing the application to process the data that has been read.   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Write  </td><td class="markdownTableBodyNone">None  </td><td class="markdownTableBodyLeft">The framework processes the write event by sending any unsent messages to the destination. No application interaction is required to process this event.   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Error  </td><td class="markdownTableBodyNone"><a class="el" href="classESocket_1_1UDP.html#a7853433bb2daa353e88263ac62d9e04f">UDP::onError</a>  </td><td class="markdownTableBodyLeft">Indicates that an error has occurred on the socket.   </td></tr>
+</table>
+<pre class="fragment">-# [Logging](#feature-overview-logging)
+-# [DNS](#feature-overview-dns)
+    -# [Cache](#feature-overview-dns-cache)
+    -# [EPC Node Discovery](#feature-overview-dns-epc-node-discovery)
+    -# [Diameter S-NAPTR](#feature-overview-dns-diameter-s-naptr)
+-# [REST Server](#feature-overview-rest-server)
+-# [freeDiameter](#feature-overview-freediameter)
+-# [Interface Statistics](#feature-overview-statistics)
+-# [Timer Pool](#feature-overview-timer-pool)
+-# [Miscellaneous](#feature-overview-miscellaneous)
+    -# [String](#feature-overview-miscellaneous-string)
+    -# [Utilities](#feature-overview-miscellaneous-utilities)
+    -# [Time](#feature-overview-miscellaneous-time)
+    -# [Timer](#feature-overview-miscellaneous-timer)
+    -# [Path](#feature-overview-miscellaneous-path)
+    -# [Directory](#feature-overview-miscellaneous-directory)
+    -# [Error](#feature-overview-miscellaneous-error)
+    -# [Hash](#feature-overview-miscellaneous-hash)
+    -# [BZip2](#feature-overview-miscellaneous-bzip2)
+    -# [Circular Buffer](#feature-overview-miscellaneous-circular-buffer)
+</pre><p><a class="anchor" id="feature-overview-logging"></a> </p>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Logging</h2>
+<p><a class="anchor" id="feature-overview-dns"></a> </p>
+<h2><a class="anchor" id="autotoc_md35"></a>
+DNS</h2>
+<p><a class="anchor" id="feature-overview-dns-cache"></a> </p>
+<h3><a class="anchor" id="autotoc_md36"></a>
+DNS Cache</h3>
+<p><a class="anchor" id="feature-overview-dns-epc-node-discovery"></a> </p>
+<h3><a class="anchor" id="autotoc_md37"></a>
+EPC Node Discovery</h3>
+<p><a class="anchor" id="feature-overview-dns-diameter"></a> </p>
+<h3><a class="anchor" id="autotoc_md38"></a>
+Diameter S-NAPTR</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h2><a class="anchor" id="autotoc_md39"></a>
+REST Server</h2>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h2><a class="anchor" id="autotoc_md40"></a>
+freeDiameter</h2>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h2><a class="anchor" id="autotoc_md41"></a>
+Interface Statistics</h2>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h2><a class="anchor" id="autotoc_md42"></a>
+Timer Pool</h2>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h2><a class="anchor" id="autotoc_md43"></a>
+Miscellaneous</h2>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md44"></a>
+String</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md45"></a>
+Utilities</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md46"></a>
+Time</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md47"></a>
+Timer</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md48"></a>
+Path</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md49"></a>
+Directory</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md50"></a>
+Error</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md51"></a>
+Hash</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md52"></a>
+BZip2</h3>
+<p><a class="anchor" id="feature-overview-"></a> </p>
+<h3><a class="anchor" id="autotoc_md53"></a>
+Circular Buffer</h3>
+<h3><a class="anchor" id="autotoc_md54"></a>
+Socket Thread</h3>
+<p>A socket thread is derived from an event thread. The socket thread has a custom message pump and dispatcher to identify and process any socket event for sockets that are registered with the current socket thread. The message pump function utilizes <code>select()</code> to detect the various events associated with the registered sockets.with the addition that it can detect and process socket events. This is achieved with a specialized message pump that also capable of </p><pre class="fragment">- Event Based Thread
+    - Each thread maintains an internal event queue
+    - User defined event handlers
+</pre><ul>
+<li>Thread based timers</li>
+<li>Private thread - can only be sent events from threads within the same process</li>
+<li>Public thread - can be sent events from the same or different processes</li>
+</ul>
+<p>Asynchronous IP communications</p><ul>
+<li>TCP with both "listener" and "talker" classes</li>
+<li>UDP support</li>
+<li>IPv4 and IPv6 address support</li>
+<li>Socket events are processed from within an event based socket thread</li>
+</ul>
+<p>Cached <a class="el" href="namespaceDNS.html">DNS</a> client</p><ul>
+<li>Supports multiple <a class="el" href="namespaceDNS.html">DNS</a> caches, with each <a class="el" href="namespaceDNS.html">DNS</a> cache being associated with one or more named servers</li>
+<li>Support for 3GPP Domain Name System Procedures as defined in TS 29.303</li>
+<li>Support for Diameter <a class="el" href="namespaceDNS.html">DNS</a> usage as defined in RFC 6408</li>
+<li>Automated refresh of the cache</li>
+<li>"Priming" the cache at startup based on previous usage</li>
+</ul>
+<p>Configuration</p><ul>
+<li>Command line options<ul>
+<li>Named options that require an additional typed argument</li>
+<li>Named options with out additional arguments (boolean)</li>
+<li>Positional arguments</li>
+</ul>
+</li>
+<li>JSON configuration file(s)<ul>
+<li>Supports a heirarchial definition of configuration options</li>
+<li>Supports array(s) of options</li>
+<li>Multiple configuration files can be loaded</li>
+</ul>
+</li>
+</ul>
+<p>REST Based Management Interface</p><ul>
+<li>A REST based interface for processing external commands<ul>
+<li>Extensible user defined handlers (for different commands)</li>
+<li>Can support multiple REST servers</li>
+</ul>
+</li>
+</ul>
+<p>freeDiameter Support</p><ul>
+<li>Supports 1 or more active Diameter applications</li>
+<li>Simplified interface for creating messages and adding <a class="el" href="classAVP.html">AVP</a>'s</li>
+<li>Extractor classes that eliminate the need to manually extract <a class="el" href="classAVP.html">AVP</a> values</li>
+<li>Peer management</li>
+</ul>
+<p>Synchronization - Mutex using native IPC (pthread) or custom mutex implementation and an optimized Semaphore implementation</p><ul>
 <li>Custom queue implementation with message encoding and decoding</li>
 <li>Shared Memory configuration and access</li>
 <li>Ability to enable or disable public variants of threads, mutexes, semaphores and queues that utilize shared memory</li>
 <li>Various utility classes including circular buffer, directory processing, bzip2, time, elapsed timer, string, exception and logging</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<p><a class="anchor" id="dependencies"></a> </p>
+<h1><a class="anchor" id="autotoc_md55"></a>
+Dependencies</h1>
+<ul>
+<li><a href="https://github.com/omec-project/freediameter">freeDiameter</a> - an implementation of the Diameter protocol</li>
+<li><a href="http://rapidjson.org">RapidJSON</a> - a JSON parser and generator for C++</li>
+<li><a href="https://github.com/gabime/spdlog">spdlog</a> - very fast, header-only/compiled, C++ logging library</li>
+<li><a href="http://pistache.io/">pistache</a> - an elegant C++ REST framework</li>
+<li><a href="https://www.sourceware.org/bzip2/">bzip2</a> - a freely available, patent free (see below), high-quality data compressor</li>
+</ul>
+<p><a class="anchor" id="installation"></a> </p>
+<h1><a class="anchor" id="autotoc_md56"></a>
+Installation</h1>
+<p>Clone the project, install the dependencies (via configure), build the static library and install. </p><div class="fragment"><div class="line">$ sudo apt-get update</div>
+<div class="line">$ sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake</div>
+<div class="line">$ git clone https://github.com/brianwaters3/FoundationTools.git epctools</div>
+<div class="line">$ cd epctools</div>
+<div class="line">$ git checkout sprint</div>
+<div class="line">$ ./configure</div>
+<div class="line">$ make</div>
+<div class="line">$ sudo make install</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md57"></a>
 Threading</h2>
-<h3><a class="anchor" id="autotoc_md14"></a>
+<h3><a class="anchor" id="autotoc_md58"></a>
 Basic Thread</h3>
 <p>To create a basic thread, an object must be derived from <code><a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a></code> overriding the <code><a class="el" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec" title="Function that will be called in a separate thread.">EThreadBasic::threadProc()</a></code> method which represents the code that will be executed in a separate thread. To initialize and start the thread simply call the <code>Void init(pVoid arg, Dword stackSize = 0)</code> method. Call <code>Void join()</code> to wait for the thread to exit. Other useful <code><a class="el" href="classEThreadBasic.html" title="An abstract class that represents contains the threadProc() that will be run in a separate thread.">EThreadBasic</a></code> methods include <code>static Void sleep(Int milliseconds)</code> and <code>static Void yield()</code>.</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>EThreadBasicTest : <span class="keyword">public</span> <a class="code" href="classEThreadBasic.html">EThreadBasic</a></div>
@@ -136,31 +612,31 @@ Basic Thread</h3>
 <div class="line"> </div>
 <div class="line">   cout &lt;&lt; <span class="stringliteral">&quot;EThread_test() Complete&quot;</span> &lt;&lt; endl;</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md59"></a>
 Event Thread</h3>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md60"></a>
 Socket Thread (TCP)</h3>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md61"></a>
 Synchronization</h2>
-<h3><a class="anchor" id="autotoc_md18"></a>
+<h3><a class="anchor" id="autotoc_md62"></a>
 Mutex</h3>
-<h3><a class="anchor" id="autotoc_md19"></a>
+<h3><a class="anchor" id="autotoc_md63"></a>
 Semaphore</h3>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 Queue</h2>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md65"></a>
 Configuration</h3>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<h3><a class="anchor" id="autotoc_md66"></a>
 Encode/Decode</h3>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md67"></a>
 Shared Memory</h2>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md68"></a>
 Configuration</h2>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md69"></a>
 Exceptions</h2>
-<h2><a class="anchor" id="autotoc_md26"></a>
+<h2><a class="anchor" id="autotoc_md70"></a>
 Logger</h2>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md71"></a>
 Tech</h3>
 <p>Dillinger uses a number of open source projects to work properly:</p>
 <ul>
@@ -175,7 +651,7 @@ Tech</h3>
 <li><a href="http://jquery.com&gt;">jQuery</a> - duh</li>
 </ul>
 <p>And of course Dillinger itself is open source with a <a href="https://github.com/joemccann/dillinger&gt;">public repository</a> on GitHub.</p>
-<h3><a class="anchor" id="autotoc_md28"></a>
+<h3><a class="anchor" id="autotoc_md72"></a>
 Installation</h3>
 <p>Dillinger requires <a href="https://nodejs.org/">Node.js</a> v4+ to run.</p>
 <p>Install the dependencies and devDependencies and start the server.</p>
@@ -185,7 +661,7 @@ Installation</h3>
 </div><!-- fragment --><p>For production environments...</p>
 <div class="fragment"><div class="line">$ npm install --production</div>
 <div class="line">$ NODE_ENV=production node app</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md29"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md73"></a>
 Plugins</h3>
 <p>Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.</p>
 <table class="markdownTable">
@@ -204,7 +680,7 @@ Plugins</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Google Analytics  </td><td class="markdownTableBodyNone"><a href="https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md&gt;">plugins/googleanalytics/README.md</a>   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md30"></a>
+<h3><a class="anchor" id="autotoc_md74"></a>
 Development</h3>
 <p>Want to contribute? Great!</p>
 <p>Dillinger uses Gulp + Webpack for fast developing. Make a change in your file and instantanously see your updates!</p>
@@ -212,11 +688,11 @@ Development</h3>
 <p>First Tab: </p><div class="fragment"><div class="line">$ node app</div>
 </div><!-- fragment --><p>Second Tab: </p><div class="fragment"><div class="line">$ gulp watch</div>
 </div><!-- fragment --><p>(optional) Third: </p><div class="fragment"><div class="line">$ karma test</div>
-</div><!-- fragment --> <h4><a class="anchor" id="autotoc_md31"></a>
+</div><!-- fragment --> <h4><a class="anchor" id="autotoc_md75"></a>
 Building for source</h4>
 <p>For production release: </p><div class="fragment"><div class="line">$ gulp build --prod</div>
 </div><!-- fragment --><p> Generating pre-built zip archives for distribution: </p><div class="fragment"><div class="line">$ gulp build dist --prod</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md32"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md76"></a>
 Docker</h3>
 <p>Dillinger is very easy to install and deploy in a Docker container.</p>
 <p>By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.</p>
@@ -227,24 +703,143 @@ Docker</h3>
 <div class="fragment"><div class="line">docker run -d -p 8000:8080 --restart=&quot;always&quot; &lt;youruser&gt;/dillinger:${package.json.version}</div>
 </div><!-- fragment --><p>Verify the deployment by navigating to your server address in your preferred browser.</p>
 <div class="fragment"><div class="line">127.0.0.1:8000</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md33"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md77"></a>
 Kubernetes + Google Cloud</h4>
 <p>See <a href="https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md">KUBERNETES.md</a></p>
-<h3><a class="anchor" id="autotoc_md34"></a>
+<h3><a class="anchor" id="autotoc_md78"></a>
 Todos</h3>
 <ul>
 <li>Write MORE Tests</li>
 <li>Add Night Mode</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md79"></a>
 License</h2>
 <p>MIT</p>
-<p><b>Free Software, Hell Yeah!</b> </p>
-</div></div><!-- PageDoc -->
+<p><b>Free Software, Hell Yeah!</b></p>
+<h1><a class="anchor" id="autotoc_md80"></a>
+Welcome to StackEdit!</h1>
+<p>Hi! I'm your first Markdown file in <b>StackEdit</b>. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the <b>file explorer</b> on the left corner of the navigation bar.</p>
+<h1><a class="anchor" id="autotoc_md81"></a>
+Files</h1>
+<p>StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible <b>offline!</b></p>
+<h2><a class="anchor" id="autotoc_md82"></a>
+Create files and folders</h2>
+<p>The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the <b>New file</b> button in the file explorer. You can also create folders by clicking the <b>New folder</b> button.</p>
+<h2><a class="anchor" id="autotoc_md83"></a>
+Switch to another file</h2>
+<p>All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.</p>
+<h2><a class="anchor" id="autotoc_md84"></a>
+Rename a file</h2>
+<p>You can rename the current file by clicking the file name in the navigation bar or by clicking the <b>Rename</b> button in the file explorer.</p>
+<h2><a class="anchor" id="autotoc_md85"></a>
+Delete a file</h2>
+<p>You can delete the current file by clicking the <b>Remove</b> button in the file explorer. The file will be moved into the <b>Trash</b> folder and automatically deleted after 7 days of inactivity.</p>
+<h2><a class="anchor" id="autotoc_md86"></a>
+Export a file</h2>
+<p>You can export the current file by clicking <b>Export to disk</b> in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.</p>
+<h1><a class="anchor" id="autotoc_md87"></a>
+Synchronization</h1>
+<p>Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your <b>Google Drive</b>, your <b>Dropbox</b> and your <b>GitHub</b> accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.</p>
+<p>There are two types of synchronization and they can complement each other:</p>
+<ul>
+<li>The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device. &gt; To start syncing your workspace, just sign in with Google in the menu.</li>
+<li>The file synchronization will keep one file of the workspace synced with one or multiple files in <b>Google Drive</b>, <b>Dropbox</b> or <b>GitHub</b>. &gt; Before starting to sync files, you must link an account in the <b>Synchronize</b> sub-menu.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md88"></a>
+Open a file</h2>
+<p>You can open a file from <b>Google Drive</b>, <b>Dropbox</b> or <b>GitHub</b> by opening the <b>Synchronize</b> sub-menu and clicking <b>Open from</b>. Once opened in the workspace, any modification in the file will be automatically synced.</p>
+<h2><a class="anchor" id="autotoc_md89"></a>
+Save a file</h2>
+<p>You can save any file of the workspace to <b>Google Drive</b>, <b>Dropbox</b> or <b>GitHub</b> by opening the <b>Synchronize</b> sub-menu and clicking <b>Save on</b>. Even if a file in the workspace is already synced, you can save it to another location. StackEdit can sync one file with multiple locations and accounts.</p>
+<h2><a class="anchor" id="autotoc_md90"></a>
+Synchronize a file</h2>
+<p>Once your file is linked to a synchronized location, StackEdit will periodically synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be resolved.</p>
+<p>If you just have modified your file and you want to force syncing, click the <b>Synchronize now</b> button in the navigation bar.</p>
+<blockquote class="doxtable">
+<p><b>Note:</b> The <b>Synchronize now</b> button is disabled if you have no file to synchronize. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md91"></a>
+Manage file synchronization</h2>
+<p>Since one file can be synced with multiple locations, you can list and manage synchronized locations by clicking <b>File synchronization</b> in the <b>Synchronize</b> sub-menu. This allows you to list and remove synchronized locations that are linked to your file.</p>
+<h1><a class="anchor" id="autotoc_md92"></a>
+Publication</h1>
+<p>Publishing in StackEdit makes it simple for you to publish online your files. Once you're happy with a file, you can publish it to different hosting platforms like <b>Blogger</b>, <b>Dropbox</b>, <b>Gist</b>, <b>GitHub</b>, <b>Google Drive</b>, <b>WordPress</b> and <b>Zendesk</b>. With <a href="http://handlebarsjs.com/">Handlebars templates</a>, you have full control over what you export.</p>
+<blockquote class="doxtable">
+<p>Before starting to publish, you must link an account in the <b>Publish</b> sub-menu. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md93"></a>
+Publish a File</h2>
+<p>You can publish your file by opening the <b>Publish</b> sub-menu and by clicking <b>Publish to</b>. For some locations, you can choose between the following formats:</p>
+<ul>
+<li>Markdown: publish the Markdown text on a website that can interpret it (<b>GitHub</b> for instance),</li>
+<li>HTML: publish the file converted to HTML via a Handlebars template (on a blog for example).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md94"></a>
+Update a publication</h2>
+<p>After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the <b>Publish now</b> button in the navigation bar.</p>
+<blockquote class="doxtable">
+<p><b>Note:</b> The <b>Publish now</b> button is disabled if your file has not been published yet. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md95"></a>
+Manage file publication</h2>
+<p>Since one file can be published to multiple locations, you can list and manage publish locations by clicking <b>File publication</b> in the <b>Publish</b> sub-menu. This allows you to list and remove publication locations that are linked to your file.</p>
+<h1><a class="anchor" id="autotoc_md96"></a>
+Markdown extensions</h1>
+<p>StackEdit extends the standard Markdown syntax by adding extra <b>Markdown extensions</b>, providing you with some nice features.</p>
+<blockquote class="doxtable">
+<p><b>ProTip:</b> You can disable any <b>Markdown extension</b> in the <b>File properties</b> dialog. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md97"></a>
+SmartyPants</h2>
+<p>SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone"></th><th class="markdownTableHeadNone">ASCII  </th><th class="markdownTableHeadNone">HTML   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Single backticks  </td><td class="markdownTableBodyNone">&lsquo;'Isn't this fun?&rsquo;&lsquo;  </td><td class="markdownTableBodyNone">'Isn't this fun?&rsquo;   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Quotes  </td><td class="markdownTableBodyNone"><code>"Isn't this fun?"</code>  </td><td class="markdownTableBodyNone">"Isn't this fun?"   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Dashes  </td><td class="markdownTableBodyNone"><code>-- is en-dash, --- is em-dash</code>  </td><td class="markdownTableBodyNone">&ndash; is en-dash, &mdash; is em-dash   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md98"></a>
+KaTeX</h2>
+<p>You can render LaTeX mathematical expressions using <a href="https://khan.github.io/KaTeX/">KaTeX</a>:</p>
+<p>The <em>Gamma function</em> satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral</p>
+<p>$$ \Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,. $$</p>
+<blockquote class="doxtable">
+<p>You can find more information about <b>LaTeX</b> mathematical expressions <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">here</a>. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md99"></a>
+UML diagrams</h2>
+<p>You can render UML diagrams using <a href="https://mermaidjs.github.io/">Mermaid</a>. For example, this will produce a sequence diagram:</p>
+<div class="fragment"><div class="line">sequenceDiagram</div>
+<div class="line">Alice -&gt;&gt; Bob: Hello Bob, how are you?</div>
+<div class="line">Bob--&gt;&gt;John: How about you John?</div>
+<div class="line">Bob--x Alice: I am good thanks!</div>
+<div class="line">Bob-x John: I am good thanks!</div>
+<div class="line">Note right of John: Bob thinks a long&lt;br/&gt;long time, so long&lt;br/&gt;that the text does&lt;br/&gt;not fit on a row.</div>
+<div class="line"> </div>
+<div class="line">Bob--&gt;Alice: Checking with John...</div>
+<div class="line">Alice-&gt;John: Yes... John, how are you?</div>
+</div><!-- fragment --><p>And this will produce a flow chart:</p>
+<div class="fragment"><div class="line">graph LR</div>
+<div class="line">A[Square Rect] -- Link text --&gt; B((Circle))</div>
+<div class="line">A --&gt; C(Round Rect)</div>
+<div class="line">B --&gt; D{Rhombus}</div>
+<div class="line">C --&gt; D</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <div class="ttc" id="aclassEThreadBasic_html_a2af11d0367222ca518151c21f543a6ec"><div class="ttname"><a href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">EThreadBasic::threadProc</a></div><div class="ttdeci">virtual Dword threadProc(pVoid arg)=0</div><div class="ttdoc">Function that will be called in a separate thread.</div></div>
-<div class="ttc" id="aclassEThreadBasic_html_a94c06aeb1d4a549f367fda6d39c43a71"><div class="ttname"><a href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a></div><div class="ttdeci">static Void sleep(Int milliseconds)</div><div class="ttdoc">Sleeps for the specified number of milliseconds.</div><div class="ttdef"><b>Definition:</b> etbase.cpp:197</div></div>
-<div class="ttc" id="aclassEThreadBasic_html"><div class="ttname"><a href="classEThreadBasic.html">EThreadBasic</a></div><div class="ttdoc">An abstract class that represents contains the threadProc() that will be run in a separate thread.</div><div class="ttdef"><b>Definition:</b> etbase.h:79</div></div>
+<div class="ttc" id="aclassEThreadBasic_html_a94c06aeb1d4a549f367fda6d39c43a71"><div class="ttname"><a href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a></div><div class="ttdeci">static Void sleep(Int milliseconds)</div><div class="ttdoc">Sleeps for the specified number of milliseconds.</div><div class="ttdef"><b>Definition:</b> etbasic.cpp:149</div></div>
+<div class="ttc" id="aclassEThreadMessage_html"><div class="ttname"><a href="classEThreadMessage.html">EThreadMessage</a></div><div class="ttdoc">An event message that is to be sent to a thread.</div><div class="ttdef"><b>Definition:</b> etevent.h:266</div></div>
+<div class="ttc" id="aetevent_8h_html_a1fbc3aa077e4e82c9f1fa82d32653273"><div class="ttname"><a href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a></div><div class="ttdeci">#define ON_MESSAGE(id, memberFxn)</div><div class="ttdoc">Defines an invidual event handler.</div><div class="ttdef"><b>Definition:</b> etevent.h:820</div></div>
+<div class="ttc" id="aetevent_8h_html_a0c8d25bf6492235c4f7f47ee387698ae"><div class="ttname"><a href="etevent_8h.html#a0c8d25bf6492235c4f7f47ee387698ae">BEGIN_MESSAGE_MAP</a></div><div class="ttdeci">#define BEGIN_MESSAGE_MAP(theClass, baseClass)</div><div class="ttdoc">Begins the message map declaration.</div><div class="ttdef"><b>Definition:</b> etevent.h:805</div></div>
+<div class="ttc" id="aclassESharedMemory_html_affda2d92d4ba4506b196d7c266b777ad"><div class="ttname"><a href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">ESharedMemory::getDataPtr</a></div><div class="ttdeci">pVoid getDataPtr()</div><div class="ttdoc">Retrieves a pointer to the first location of the shated memory.</div><div class="ttdef"><b>Definition:</b> eshmem.h:65</div></div>
+<div class="ttc" id="aclassESharedMemory_html_ad231d66f0e4d22240690008d6131cff7"><div class="ttname"><a href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">ESharedMemory::init</a></div><div class="ttdeci">Void init(cpStr file, Int id, Int size)</div><div class="ttdoc">Initializes this shared memory object. This method is called by the parameterized constructor.</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:109</div></div>
+<div class="ttc" id="aclassESharedMemory_html"><div class="ttname"><a href="classESharedMemory.html">ESharedMemory</a></div><div class="ttdoc">The shared memory access class.</div><div class="ttdef"><b>Definition:</b> eshmem.h:43</div></div>
+<div class="ttc" id="aclassEThreadBasic_html"><div class="ttname"><a href="classEThreadBasic.html">EThreadBasic</a></div><div class="ttdoc">An abstract class that represents contains the threadProc() that will be run in a separate thread.</div><div class="ttdef"><b>Definition:</b> etbasic.h:53</div></div>
+<div class="ttc" id="aetevent_8h_html_ae52a1e808bcf6220acbef40e8351b8e7"><div class="ttname"><a href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a></div><div class="ttdeci">#define END_MESSAGE_MAP()</div><div class="ttdoc">Ends the message map declaration.</div><div class="ttdef"><b>Definition:</b> etevent.h:824</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

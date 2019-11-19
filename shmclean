@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Copyright (c) 2009-2019 Brian Waters
+# Copyright (c) 2019 Sprint
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# This is to clean up ipc shared memory
+# It is not full tested - perhaps can break a running application
+#
+#PATH=/bin:/usr/bin:/usr/sbin:/usr/ucb
+#export PATH
+# ipcs format is platform dependent:
+uname -s | grep Linux >/dev/null || exec echo "wrong platform"
+#
+echo "freeing unused shared memory segments left from applications"
+#
+ipcs -m |
+while read key shmid owner perms bytes nattch status
+do
+echo key="$key" shmid="$shmid" owner="$owner" perms="$perms" bytes="$bytes" nattch="$nattch" status="$status"
+  #if [ "$nattch" -ne "" ] && [ "$nattch" -eq 0 ]; then
+  if [ "$nattch" -eq 0 ]; then
+    echo ipcrm -m "$shmid"
+    ipcrm -m "$shmid"
+  fi
+
+  #case "$shmid" in
+  #m\ [1-9]*)
+    #ps -ef | awk '
+#$1~/^('"$owner"')$/&&($2~/^('"$cpid"'|'"$lpid"')$/||$3~/^('"$cpid"'|'"$lpid"')$/)' |
+      #grep . && continue
+    #echo ipcrm -m "$id"
+    #ipcrm -m "$id"
+  #;;
+  #esac
+done
+#

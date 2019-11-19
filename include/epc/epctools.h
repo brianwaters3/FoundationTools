@@ -29,7 +29,7 @@
 #include "eqpub.h"
 #include "eqpriv.h"
 #include "eshmem.h"
-#include "ethread.h"
+//#include "ethread.h"
 #include "egetopt.h"
 #include "elogger.h"
 #include "ecbuf.h"
