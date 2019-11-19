@@ -304,10 +304,6 @@ public:
    /// @param pBuffer a pointer to the source buffer.
    /// @param nOffset the offset in the source buffer to read from.
    Void unpack(EString &val, pVoid pBuffer, ULong &nOffset);
-
-private:
-   ETime m_timer;
-   Long m_msgType;
 };
 
 /// @brief A vector of fields.
