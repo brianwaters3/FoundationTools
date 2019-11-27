@@ -1,4 +1,4 @@
-# ***EpcTools*** - Enhanced Packet Core Application Development Tools for Linux
+# Enhanced Packet Core Application Development Tools for Linux
 ***EpcTools*** is a set of C++ classes that simplifies the development and management of EPC applications.  This library is intended for use on any Linux based system that supports g++ and pthreads.
 
 # Contents
@@ -21,15 +21,18 @@
 					<li>[Basic Thread](#feature-overview-threads-basic-thread)</li>
 					<li>[Event Thread](#feature-overview-threads-event-thread)
 						<ol>
-							<li>[Standard Event Message](#feature-overview-threads-event-thread-event-message-standard)</li>
-							<li>[Custom Event Message](#feature-overview-threads-event-thread-event-message-custom)</li>
+							<li>[Event Queues](#feature-overview-threads-event-thread-queue)</li>
+							<li>[Event Message](#feature-overview-threads-event-thread-message)</li>
+							<li>[Custom Event Message](#feature-overview-threads-event-thread-message-custom)</li>
+							<li>[Event Processing](#feature-overview-threads-event-thread-event-processing)</li>
 							<li>[Timers](#feature-overview-threads-event-thread-timers)</li>
+							<li>[Example](#feature-overview-threads-event-thread-example)</li>
 						</ol>
 					</li>
 					<li>[Public Event Threads](#feature-overview-threads-public-event-threads)</li>
 				</ol>
 			</li>
-			<li>Message Queue(#feature-overview-message-queue)
+			<li>[Message Queue](#feature-overview-message-queue)
 				<ol>
 					<li>[Pack/Unpack](#feature-overview-message-queue-pack-unpack)</li>
 				</ol>
@@ -92,25 +95,27 @@
 # Installation
 ***Update your system.***
 ```sh
-    $ sudo apt-get update
+$ sudo apt-get update
 ```
 ***Install Ubuntu 16.04 prerequisites.***
 ```sh
-    sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake libtool
+sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls-dev libgcrypt-dev libidn11-dev m4 automake libtool
 ```
+</div>
 ***Install Ubuntu 18.04 prerequisites.***
 ```sh
-    sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls28-dev libgcrypt-dev libidn11-dev m4 automake libtool
+sudo apt-get install mercurial cmake make gcc g++ bison flex libsctp-dev libgnutls28-dev libgcrypt-dev libidn11-dev m4 automake libtool
 ```
 ***Clone the project, install the dependencies (via configure), build the static library and install.***
 ```sh
-	$ git clone https://github.com/brianwaters3/FoundationTools.git epctools
-	$ cd epctools
-	$ git checkout sprint
-	$ ./configure
-	$ make
-	$ sudo make install
+$ git clone https://github.com/brianwaters3/FoundationTools.git epctools
+$ cd epctools
+$ git checkout sprint
+$ ./configure
+$ make
+$ sudo make install
 ```
+
 <a name="feature-overview"></a>
 # Feature Overview
 <a name="feature-overview-public-private"></a>
@@ -132,11 +137,9 @@ The classes that support public/private are:
 Inter process communication through shared memory is a concept where two or more processes can access the common memory and changes to the shared memory made by one process can viewed (and changed) by another process.  The [ESharedMemory](@ref ESharedMemory) class provides functionality to allocate, access and release a shared memory block.  Once created, a pointer to the shared memory can be retrieved using the [getDataPtr()](@ref ESharedMemory::getDataPtr) method.  Concurrent access to the shared memory should be controlled via an instance of [EMutexPublic](@ref EMutexPublic).
 
 ```cpp
-....
-    ESharedMemory sm;
-    sm.init( "/tmp/sm1", 1, 1048576 );
-    void *p = sm.getDataPtr();
-....
+ESharedMemory sm;
+sm.init( "/tmp/sm1", 1, 1048576 );
+void *p = sm.getDataPtr();
 ```
 
 This example either creates or attaches to the shared memory identified by the file `"/tmp/sm1"` and a shared memory ID of 1 and is 1MB in size.  The variable `p` is assigned the first address of the 1MB shared memory block.  When `sm` goes out of scope, the shared memory will be released if no other clients are attached.
@@ -148,6 +151,7 @@ This example either creates or attaches to the shared memory identified by the f
 A basic thread is a thread wrapper that will execute a user provided procedure/function in a separate thread.  The basic thread is defined by deriving a class from [EThreadBasic](@ref EThreadBasic) and overloading the `threadProc()` method. To initialize and start the thread simply call the `init(pVoid arg, Dword stackSize = 0)` method.  Call [join()](@ref EThreadBasic::join) to wait for the thread to exit.  Other useful [EThreadBasic](@ref EThreadBasic) methods include [sleep(Int milliseconds)](@ref EThreadBasic::sleep) and [yield()](@ref EThreadBasic::yield).
 
 In this example, a basic thread is defined in the class `EThreadBasicTest`.
+
 ```cpp
 class EThreadBasicTest : public EThreadBasic {
 public:
@@ -189,6 +193,324 @@ Void EThreadBasic_test() {
 
 <a name="feature-overview-threads-event-thread"></a>
 ### Event Thread
+An event thread responds to event messages sent to the thread by invoking the associated message handler method defined in the class.  The event message queue for the thread can either be allocated from the heap, a private event thread, or allocated from shared memory, a public event thread.  [EThreadEvent](@ref EThreadEvent) is a templated class that takes two parameters 1) the queue class and 2) the event message class to be used for this thread.
+
+<a name="feature-overview-threads-event-thread-queue"></a>
+#### Event Queues
+The two event queue template classes, [EThreadQueuePublic](@ref EThreadQueuePublic) and [EThreadQueuePrivate](@ref EThreadQueuePrivate), each take a template parameter of an event message class.  [EThreadQueuePublic](@ref EThreadQueuePublic) creates the event queue in shared memory allowing thread events to be posted from any process, and [EThreadQueuePrivate](@ref EThreadQueuePrivate) creates the event queue on the heap which limits thread events to only be posted from within the same process.
+
+<a name="feature-overview-threads-event-thread-message"></a>
+#### Event Message
+The event message object will be passed to the event handler method defined in the derived thread class.  The basic functionality of an event message is encapsulated in the [EThreadEventMessageBase](@ref EThreadEventMessageBase) and contains the event message ID and a timer that measures the amount of time an event message spends in the event queue.  Additionally, the event message must contain a void pointer.  This is needed to distribute timer events.
+The standard implementation of an event message is contained in [EThreadMessage](@ref EThreadMessage).  The event data for this class is a union defined as follows:
+```cpp
+typedef  union {
+	pVoid voidptr;
+	LongLong int64;
+	Long int32[sizeof(pVoid) /  sizeof(Long)];
+	Short int16[sizeof(pVoid) /  sizeof(Short)];
+	Char int8[sizeof(pVoid) /  sizeof(Char)];
+	ULongLong uint64;
+	ULong uint32[sizeof(pVoid) /  sizeof(ULong)];
+	UShort uint16[sizeof(pVoid) /  sizeof(UShort)];
+	UChar uint8[sizeof(pVoid) /  sizeof(UChar)];
+} DataUnion;
+```
+[EThreadMessage](@ref EThreadMessage) has several overloaded constructors that can populate various elements of the union.  Additionally, one constructor takes a reference to an instance of [EThreadEventMessageData](@ref EThreadEventMessageData) which provides the developer with the ability to initialize any combination of union members.
+
+<a name="feature-overview-threads-event-thread-message-custom"></a>
+#### Custom Event Message
+A custom or user-defined event message class can be used for a thread by developing the following classes:
+
+1. Define the data that will be contained in the custom event message by deriving a class from [EThreadEventMessageDataBase](@ref EThreadEventMessageDataBase).
+```cpp
+class  MyCustomEventData : public  EThreadEventMessageDataBase
+{
+public:
+	MyCustomEventData() : EThreadEventMessageDataBase(), m_voidptr(), m_print(False), m_val() {}
+	MyCustomEventData(UInt  msgid) : EThreadEventMessageDataBase(msgid), m_voidptr(), m_val() {}
+
+	pVoid  getVoidPtr() { return m_voidptr; }
+	Void  setVoidPtr(pVoid  p) { m_voidptr = p; }
+
+	Void  setValue(Int  idx, Int  val) { if (idx>=0  && idx<4) m_val[idx] = val; }
+	Int  getValue(Int  idx) { if (idx>=0  && idx<4) return  m_val[idx]; return  -1; }
+
+	Void  setPrint(Bool  print) { m_print = print; }
+	Bool  getPrint() { return m_print; }
+
+private:
+	pVoid m_voidptr;
+	Bool m_print;
+	Int m_val[4];
+};
+```
+**NOTE:** The custom event data object must provide access to a void pointer and provide definitions for [EThreadEventMessageDataBase::getVoidPtr()](@ref EThreadEventMessageDataBase::getVoidPtr) and  [EThreadEventMessageDataBase::setVoidPtr()](@ref EThreadEventMessageDataBase::setVoidPtr).
+
+2.  Define the custom event message class by deriving a class from [EThreadEventMessageBase](@ref EThreadEventMessageBase) utilizing the custom event data class previously defined.
+```cpp
+typedef EThreadEventMessageBase<MyCustomEventData> MyCustomEvent;
+```
+
+3. Define the custom event queue class utilizing the previously defined custom event message class.
+```cpp
+typedef EThreadQueuePublic<MyCustomEvent> MyCustomEventPublicQueue;
+```
+
+4. Finally, define the custom thread class that will utilize the previously defined custom event queue class.
+```cpp
+typedef EThreadEvent<MyCustomEventPublicQueue, MyCustomEvent> MyCustomThreadEventPublic;
+```
+
+5. Derive a thread class from the newly defined custom thread class and define the message handlers using the custom event message class.
+```cpp
+class  MyCustomThread : public  MyCustomThreadEventPublic
+{
+public:
+	...
+	Void  myhandler(MyCustomEvent  &msg)
+	{
+		if (msg.data().getPrint())
+		{
+			std::cout <<  "MyCustomThread::myhandler() -"
+				<<  " event="  <<  msg.data().getMessageId()
+				<<  " m_voidptr="  <<  msg.data().getVoidPtr()
+				<<  " m_print="  << (msg.data().getPrint()?"TRUE":"FALSE")
+				<<  " m_val[0]="  <<  msg.data().getValue(0)
+				<<  " m_val[1]="  <<  msg.data().getValue(1)
+				<<  " m_val[2]="  <<  msg.data().getValue(2)
+				<<  " m_val[3]="  <<  msg.data().getValue(3)
+				<<  std::endl;
+		}
+	}
+	...
+};
+```
+
+<a name="feature-overview-threads-event-thread-event-processing"></a>
+#### Event Processing
+
+**Standard Events and Callbacks**
+| Event | Callback Method | Description |
+| ------- | -------------------- | :----------- |
+| EM_INIT |[onInit()](@ref EThreadEvent::onInit) | The EM_INIT message will is posted to the thread when the thread is started.  Normally, this is the first message that will be processed.  However, for a public thread, it is possible that the process sending thread events could start before the thread is started which would result in the EM_INIT event to not be the first event processed.|
+| EM_QUIT | [onQuit()](@ref EThreadEvent::onQuit) | This event is posted to the thread when the [quit()](@ref EThreadEvent::quit) method is invoked on the thread.  This will be the last event processed by the thread before the thread exits.|
+| EM_SUSPEND | [onSuspend()](@ref EThreadEvent::onSuspend) | This event is posted to a thread when the [suspend()](@ref EThreadEvent::suspend) method has been invoked.  This will be the last event processed prior to the thread suspending event processing.|
+| EM_TIMER | [onTimer()](@ref EThreadEvent::onTimer) | The EM_TIMER event will be posted to a thread when a timer associated with the thread expires. A pointer to the timer object that has expired is included as an argument to the [onTimer()](@ref EThreadEvent::onTimer) method.|
+
+User defined events ID's start with EM_USER.  The association between the event ID and the event handler is defined in the message map.  The following macros are used for declaring the message map and creating the association between the event ID and the event handler.
+
+**Message Map Macros**
+| Macro | Arguments | Description |
+| ----- | :-------- | :----------- |
+| [DECLARE_MESSAGE_MAP()](@ref DECLARE_MESSAGE_MAP) | None | This macro must appear in the class definition. It's inclusion will create the necessary definitions within the class to support the message map definition and usage. |
+| [BEGIN_MESSAGE_MAP()](@ref BEGIN_MESSAGE_MAP) | The class<br>The base class | This macro starts the definition of the message map.  The first argument is the current class name and the second argument is base class of the current class. |
+| [ON_MESSAGE()](@ref ON_MESSAGE) | Event ID<br>Event handler method | Each user event that is to be handled by the class must have an entry in the message map that establishes the association between the event ID and the event handler method.  The event handler method name must be fully qualified. |
+| [END_MESSAGE_MAP()](@ref END_MESSAGE_MAP) | None | This macro closes the message map declaration. |
+
+The message map declaration within the class should be performed as follows:
+```cpp
+#define MYEVENT	(EM_USER + 1)
+
+class MyThread : public EThreadPrivate
+{
+public:
+	...
+	Void myhandler(EThreadMessage &msg);
+	
+	DECLARE_MESSAGE_MAP()
+	...
+};
+```
+
+The definition of the message map should happen in code as follows:
+```cpp
+BEGIN_MESSAGE_MAP(MyThread, EThreadPrivate)
+	ON_MESSAGE(MYEVENT, MyThread::myhandler)
+END_MESSAGE_MAP()
+```
+
+<a name="feature-overview-threads-event-thread-inheritance"></a>
+#### Event Dispatching and Inheritance
+When an event is posted to the thread's event queue, the thread will dequeue the event message and call the event handler associated with the event ID.  This process is referred to as event dispatching.  The association between the event ID and the event handler is defined in the message map.
+
+```cpp
+BEGIN_MESSAGE_MAP(EThreadTest, EThreadPrivate)
+	ON_MESSAGE(EM_USER1, EThreadTest::userFunc1)
+	ON_MESSAGE(EM_USER2, EThreadTest::userFunc2)
+END_MESSAGE_MAP()
+```
+In this example, `EThreadTest` is derived from [EThreadPrivate](@ref EThreadPrivate)  and there are two event handlers defined in `EThreadTest`: `userFunc1()` and `userFunc2()`.  According to the message map, when event `EM_USER1` is received, the dispatcher will call `userFunc1()` and when `EM_USER2` is received, the dispatcher will call `userFunc2()`.
+
+The event dispatcher searches the message map looking for the event ID.  If the event ID is not found, the dispatcher will then search the parent class which is the second parameter in the `BEGIN_MESSAGE_MAP` macro.  This process will continue until a handler is identified or there are no more base classes to evaluate.  In this case, the [defMessageHandler()](@ref EThreadEvent) will be called to process the message.
+```cpp
+class EThreadTestParent : EThreadPrivate {
+	....
+	Void userFunc1(EThreadMessage &msg);
+	Void userFunc2(EThreadMessage &msg);
+	....
+};
+
+BEGIN_MESSAGE_MAP(EThreadTestParent, EThreadPrivate)
+	ON_MESSAGE(EM_USER1, EThreadTestParent::userFunc1)
+	ON_MESSAGE(EM_USER2, EThreadTestParent::userFunc2)
+END_MESSAGE_MAP()
+
+class EThreadTestChild : public EThreadTestParent {
+	....
+	Void childUserFunc1(EThreadMessage &msg);
+	....
+};
+
+BEGIN_MESSAGE_MAP(EThreadTestChild, EThreadTestParent)
+	ON_MESSAGE(EM_USER1, EThreadTestChild::childUserFunc1)
+END_MESSAGE_MAP()
+```
+The above example demonstrates the inheritance behavior of the event dispatcher.  When an instance of `EThreadTestParent` is created and `EM_USER1` is sent to it, `EThreadTestParent::userFunc1()` will be called to process the event.  Similarly, when an instance of `EThreadTestChild` is created and `EM_USER1` is sent to it, `EThreadTestChild::childUserFunc1()` will be called.  Finally, when `EM_USER2` is sent to the instance of `EThreadTestChild`, the event dispatcher will call `EThreadTestParent::userFunc2()` to process the event message since there isn't an event handler defined in `EThreadTestChild` to process `EM_USER2`.
+
+<a name="feature-overview-threads-event-thread-timers"></a>
+#### Timers
+[EThreadEvent](@ref EThreadEvent) supports two types of timers: a periodic timer and a one-shot timer.  A periodic timer will emit a timer expiration event X number of milliseconds as defined by the interval of the timer.  These timer expiration events will continue until the timer is stopped or destroyed.  By contrast, a one-shot timer will generate a single timer expiration event after the duration specified by the timer's interval value.
+
+Both timer types, periodic and one-shot, are represented by the [EThreadEventTimer](@ref EThreadEventTimer) class.
+
+**Periodic Timer Setup**
+```cpp
+EThreadEventTimer mytimer;
+mytimer.setInterval(1000);
+mytimer.setOneShot(False);
+mythread.initTimer(mytimer);
+mytimer.start();
+```
+This example will create a periodic timer that will expire once every 1,000 milliseconds (1 second).  Each time the timer expires, the onTimer() method of the `mythread` object will be invoked.
+
+**One-Shot Timer Setup**
+```cpp
+EThreadEventTimer mytimer;
+mytimer.setInterval(1000);
+mytimer.setOneShot(True);
+mythread.initTimer(mytimer);
+mytimer.start();
+```
+This example will create a one-shot timer that will expire after 1,000 milliseconds (1 second).  The timer can be re-used by calling `mytimer.start()`.
+
+Both periodic and one-shot timers can be stopped by calling the timer `stop()` method.
+
+<a name="feature-overview-threads-event-thread-example"></a>
+#### Example
+In this example, the has 2 timers that are associated with it, the periodic timer and the overall timer.  When the periodic timer expires, for example every 1 second, the onTimer() method will be called which will in turn send the MYEVENT event to the thread which will in turn invoke the myhandler() thread event handler method.  When the overall timer expires, for example after 10 seconds, the onTimer() method will call quit() which will trigger the onQuit method to be invoked and the thead will exit.  Both timers are initialized and started when the thread is started and invokes the onInit() method.  The threadExample() function instantiates the thread and waits for the thread to exit.
+
+```cpp
+#define  MYEVENT (EM_USER + 1)
+
+class  MyThread : public  EThreadPrivate
+{
+public:
+	MyThread(Long  periodic_ms, Long  overall_ms)
+	{
+		m_periodic_ms = periodic_ms;
+		m_overall_ms = overall_ms;
+		m_count =  0;
+	}
+
+	Void  onInit()
+	{
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " invoked"  <<  std::endl <<  std::flush;
+
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " initializing periodic timer("  <<  m_periodic.getId() <<  ") to "  << m_periodic_ms <<  "ms"  <<  std::endl <<  std::flush;
+		m_periodic.setInterval(m_periodic_ms);
+		m_periodic.setOneShot(False);
+		initTimer(m_periodic);
+		  
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " initializing overall timer("  <<  m_overall.getId() <<  ") to "  << m_overall_ms <<  "ms"  <<  std::endl <<  std::flush;
+		m_overall.setInterval(m_overall_ms);
+		m_overall.setOneShot(False);
+		initTimer(m_overall);
+		  
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " starting periodic timer"  <<  "ms"  <<  std::endl <<  std::flush;
+		m_periodic.start();
+
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " starting overall timer"  <<  "ms"  <<  std::endl <<  std::flush;
+		m_overall.start();
+		  
+		m_count =  0;
+	}
+  
+	Void  onQuit()
+	{
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " invoked - count="  << m_count <<  std::endl <<  std::flush;
+	}
+	  
+	Void  onTimer(EThreadEventTimer  *ptimer)
+	{
+		if (ptimer->getId() ==  m_periodic.getId())
+		{
+			sendMessage(MYEVENT);
+		}
+		else  if (ptimer->getId() ==  m_overall.getId())
+		{
+			quit();
+		}
+	}
+
+	Void  myhandler(EThreadMessage  &msg)
+	{
+		std::cout <<  ETime::Now().Format("%i",True) <<  " "  << __PRETTY_FUNCTION__ <<  " invoked"  <<  std::endl;
+		m_count++;
+	}
+
+	DECLARE_MESSAGE_MAP()
+
+private:
+	MyThread();
+	Long m_periodic_ms;
+	Long m_overall_ms;
+	Int m_count;
+	EThreadEventTimer m_periodic;
+	EThreadEventTimer m_overall;
+};
+  
+BEGIN_MESSAGE_MAP(MyThread, EThreadPrivate)
+	ON_MESSAGE(MYEVENT, MyThread::myhandler)
+END_MESSAGE_MAP()
+
+Void  threadExample()
+{
+	static Long periodic_ms =  1000;
+	static Long overall_ms =  10000;
+	Char buffer[128];
+	  
+	cout <<  "Enter the periodic timer duration in milliseconds ["  << periodic_ms <<  "]: ";
+	cin.getline(buffer, sizeof(buffer));
+	periodic_ms =  *buffer ?  std::stol(buffer) : periodic_ms;
+	  
+	cout <<  "Enter the overall timer duration in milliseconds ["  << overall_ms <<  "]: ";
+	cin.getline(buffer, sizeof(buffer));
+	overall_ms =  *buffer ?  std::stol(buffer) : overall_ms;
+	  
+	MyThread t(periodic_ms, overall_ms);
+	  
+	std::cout <<  ETime::Now().Format("%i",True) <<  " Starting thread example"  <<  std::endl;
+	t.init(1,1,NULL);
+	t.join();
+	std::cout <<  ETime::Now().Format("%i",True) <<  " Thread example complete"  <<  std::endl;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 An event thread is derived from either [EThreadPrivate](@ref EThreadPrivate) or [EThreadPublic](@ref EThreadPublic).  An event based thread maintains an internal event message queue.  Event messages are added to the event queue using one of the [sendMessage()](@ref EThreadBase::sendMessage) methods.  [sendMessage()](@ref EThreadBase::sendMessage) can be called from any thread.  Internally, the event thread blocks waiting for an event message to be added to the event message queue.  When an event message appears in the event queue, the message is dequeued and the appropriate handler is identified and executed.  The association between event ID's and handlers is defined in a message map.
 ```cpp
 BEGIN_MESSAGE_MAP(EThreadTest, EThreadPrivate)
@@ -226,22 +548,11 @@ This example demonstrates the inheritance behavior of the event dispatcher.  Whe
 
 In addition to custom event message handlers, the dispatcher also identifies special events including `EM_INIT`, `EM_QUIT`, `EM_SUSPEND` and `EM_TIMER`.  When one of these events is identified, the corresponding method will be called ([onInit()](@ref EThreadBase::onInit), [onQuit()](@ref EThreadBase::onQuit), [onSuspend()](@ref EThreadBase::onSuspend) and [onTimer()](@ref EThreadBase::onTimer)).
 
-
-<a name="feature-overview-threads-event-thread-event-message-standard"></a>
-#### Standard Event Message
-
-<a name="feature-overview-threads-event-thread-event-message-custom"></a>
-#### Custom Event Message
-
-<a name="feature-overview-threads-event-thread-timers"></a>
-#### Timers
-
-
-<a name="feature-overview-threads-public-event-threads"></a>
 ### Public Event Threads
 The benefit of a public event thread over a private event thread is that thread event messages can be sent from a thread in one process to a thread in another process.  This is achieved by storing the event message queue in shared memory.  When a process creates an instance of a class derived from EThreadPublic the [init()](@ref EThreadPublic::init) is called with an application ID and thread ID.  These ID's are used to locate the public event message queue in shared memory.  If the specified application ID and thread ID do not exist in shared memory when [init()](@ref EThreadPublic::init) is called, then the thread is created in the current process and the thread's event message queue is created in shared memory.  If the application ID and thread ID are found in shared memory, then thread object attaches to the public event queue and no local thread is created.
 
 Here is sample code for the application that will host the public thread.
+<div class="mydiv">
 ```cpp
 #define EVENT1 (EM_USER + 1)
 class MyThread : public EThreadPublic {
@@ -256,8 +567,10 @@ public:
 	t.init(/*application id*/ 1, /*thread id*/ 1);
 ....
 ```
+</div>
 
 And here is sample code for the application that will send event messages.
+<div class="mydiv">
 ```cpp
 #define EVENT1 (EM_USER + 1)
 
@@ -268,6 +581,7 @@ And here is sample code for the application that will send event messages.
 	t.sendMessage(EVENT1);
 ....
 ```
+</div>
 
 You will notice that the thread in the second example is an instance of [EThreadPublic](@ref EThreadPublic) while the thread in the first example is an instance of `MyThread`.  This is because the thread object in the second example will only be used to send event messages, it will not be processing any events, therefore it doesn't need any event handlers.
 

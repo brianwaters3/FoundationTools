@@ -2577,6 +2577,103 @@ Void customThreadTest(Bool isHost)
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define MYEVENT (EM_USER + 1)
+
+class MyThread : public EThreadPrivate
+{
+public:
+   MyThread(Long periodic_ms, Long overall_ms)
+   {
+      m_periodic_ms = periodic_ms;
+      m_overall_ms = overall_ms;
+      m_count = 0;
+   }
+
+   Void onInit()
+   {
+      std::cout << ETime::Now().Format("%i",True) << " " << __PRETTY_FUNCTION__ << " invoked" << std::endl << std::flush;
+
+      std::cout << ETime::Now().Format("%i",True) << " " << __PRETTY_FUNCTION__ << " initializing periodic timer(" << m_periodic.getId() << ") to " << m_periodic_ms << "ms" << std::endl << std::flush;
+      m_periodic.setInterval(m_periodic_ms);
+      m_periodic.setOneShot(False);
+      initTimer(m_periodic);
+
+      std::cout << ETime::Now().Format("%i",True) << " " << __PRETTY_FUNCTION__ << " initializing overall timer(" << m_overall.getId() << ") to " << m_overall_ms << "ms" << std::endl << std::flush;
+      m_overall.setInterval(m_overall_ms);
+      m_overall.setOneShot(False);
+      initTimer(m_overall);
+
+      std::cout << ETime::Now().Format("%i",True) << " " << __PRETTY_FUNCTION__ << " starting periodic timer" << "ms" << std::endl << std::flush;
+      m_periodic.start();
+      std::cout << ETime::Now().Format("%i",True) << " " << __PRETTY_FUNCTION__ << " starting overall timer" << "ms" << std::endl << std::flush;
+      m_overall.start();
+
+      m_count = 0;
+   }
+
+   Void onQuit()
+   {
+      std::cout << ETime::Now().Format("%i",True) << "  " << __PRETTY_FUNCTION__ << " invoked - count=" << m_count << std::endl << std::flush;
+   }
+
+   Void onTimer(EThreadEventTimer *ptimer)
+   {
+      if (ptimer->getId() == m_periodic.getId())
+      {
+         sendMessage(MYEVENT);
+      }
+      else if (ptimer->getId() == m_overall.getId())
+      {
+         quit();
+      }
+   }  
+
+   Void myhandler(EThreadMessage &msg)
+   {
+      std::cout << ETime::Now().Format("%i",True) << "  " << __PRETTY_FUNCTION__ << " invoked" << std::endl;
+      m_count++;
+   }
+
+   DECLARE_MESSAGE_MAP()
+
+private:
+   MyThread();
+   Long m_periodic_ms;
+   Long m_overall_ms;
+   Int m_count;
+   EThreadEventTimer m_periodic;
+   EThreadEventTimer m_overall;
+};
+
+BEGIN_MESSAGE_MAP(MyThread, EThreadPrivate)
+   ON_MESSAGE(MYEVENT, MyThread::myhandler)
+END_MESSAGE_MAP()
+
+Void threadExample()
+{
+   static Long periodic_ms = 1000;
+   static Long overall_ms = 10000;
+   Char buffer[128];
+
+   cout << "Enter the periodic timer duration in milliseconds [" << periodic_ms << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   periodic_ms = *buffer ? std::stol(buffer) : periodic_ms;
+
+   cout << "Enter the overall timer duration in milliseconds [" << overall_ms << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   overall_ms = *buffer ? std::stol(buffer) : overall_ms;
+
+   MyThread t(periodic_ms, overall_ms);
+
+   std::cout << ETime::Now().Format("%i",True) << "  Starting thread example" << std::endl;
+   t.init(1,1,NULL);
+   t.join();
+   std::cout << ETime::Now().Format("%i",True) << "  Thread example complete" << std::endl;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -2608,7 +2705,7 @@ Void printMenu()
        "14. Basic thread test                          32. Object Sizes                 \n"
        "15. Thread suspend/resume                      33. Custom Public Event Host     \n"
        "16. Thread periodic timer test                 34. Custom Public Event Client   \n"
-       "17. Thread one shot timer test                                                  \n"
+       "17. Thread one shot timer test                 35. Private Thread Example       \n"
        "18. Circular buffer test                                                        \n"
        "\n",
        EpcTools::isPublicEnabled() ? "" : "NOT ");
@@ -2736,6 +2833,9 @@ Void run(EGetOpt &options)
             break;
          case 34:
             customThreadTest(False);
+            break;
+         case 35:
+            threadExample();
             break;
          default:
             cout << "Invalid Selection" << endl

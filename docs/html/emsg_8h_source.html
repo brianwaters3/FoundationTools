@@ -202,81 +202,77 @@ $(function() {
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;   Void <a class="code" href="classEMessage.html#a057f478aa4dbb04fac936e42854784e4">unpack</a>(<a class="code" href="classETimer.html">ETimer</a> &amp;val, pVoid pBuffer, ULong &amp;nOffset);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;   Void <a class="code" href="classEMessage.html#a057f478aa4dbb04fac936e42854784e4">unpack</a>(<a class="code" href="classETime.html">ETime</a> &amp;val, pVoid pBuffer, ULong &amp;nOffset);</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;   Void <a class="code" href="classEMessage.html#a057f478aa4dbb04fac936e42854784e4">unpack</a>(<a class="code" href="classEString.html">EString</a> &amp;val, pVoid pBuffer, ULong &amp;nOffset);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;   <a class="code" href="classETime.html">ETime</a> m_timer;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;   Long m_msgType;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;};</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classEMessageVector.html">  315</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMessageVector.html">EMessageVector</a> : <span class="keyword">public</span> <a class="code" href="classEMessage.html">EMessage</a></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;{</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">  319</a></span>&#160;   <a class="code" href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">EMessageVector</a>()</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;   }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">  323</a></span>&#160;   <a class="code" href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">EMessageVector</a>(<a class="code" href="classEMessageVector.html">EMessageVector</a> <span class="keyword">const</span> &amp;val)</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;   {</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      m_list = val.m_list;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">  331</a></span>&#160;   <a class="code" href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">~EMessageVector</a>()</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;   {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;   }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">  337</a></span>&#160;   vector&lt;T&gt; &amp;<a class="code" href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">getList</a>()</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;   {</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <span class="keywordflow">return</span> m_list;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;   }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">  344</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>(ULong &amp;length)</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      ULong len = 0;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a> = m_list.size();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;};</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="classEMessageVector.html">  311</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEMessageVector.html">EMessageVector</a> : <span class="keyword">public</span> <a class="code" href="classEMessage.html">EMessage</a></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;{</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">  315</a></span>&#160;   <a class="code" href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">EMessageVector</a>()</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">  319</a></span>&#160;   <a class="code" href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">EMessageVector</a>(<a class="code" href="classEMessageVector.html">EMessageVector</a> <span class="keyword">const</span> &amp;val)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      m_list = val.m_list;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;   }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno"><a class="line" href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">  327</a></span>&#160;   <a class="code" href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">~EMessageVector</a>()</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;   {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;   }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">  333</a></span>&#160;   vector&lt;T&gt; &amp;<a class="code" href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">getList</a>()</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;   {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <span class="keywordflow">return</span> m_list;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;   }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">  340</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>(ULong &amp;length)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;   {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;      ULong len = 0;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a> = m_list.size();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      <a class="code" href="classEMessage.html#abfe7ef30c3de6e48a21cef25b16e338b">elementLength</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, len);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;         m_list[i].<a class="code" href="classEMessage.html#a143e03a293498a27ade914350e5bec61">getLength</a>(len);</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      <a class="code" href="classEMessage.html#abfe7ef30c3de6e48a21cef25b16e338b">elementLength</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, len);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;         m_list[i].<a class="code" href="classEMessage.html#a143e03a293498a27ade914350e5bec61">getLength</a>(len);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      length += len;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;   }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">  359</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">packVector</a>(pVoid pBuffer, ULong &amp;nOffset)</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;   {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a> = m_list.size();</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;      <a class="code" href="classEMessage.html#a55c20f8afebd9ea86202af7a581447f4">pack</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, pBuffer, nOffset);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;         m_list[i].<a class="code" href="classEMessage.html#aeae9a0427476388ae786c36aded4921a">serialize</a>(pBuffer, nOffset);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   }</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">  371</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">unpackVector</a>(pVoid <a class="code" href="classBuffer.html">Buffer</a>, ULong &amp;nOffset)</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;   {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      <a class="code" href="classEMessage.html#a057f478aa4dbb04fac936e42854784e4">unpack</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, <a class="code" href="classBuffer.html">Buffer</a>, nOffset);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;         T val;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;         val.unserialize(<a class="code" href="classBuffer.html">Buffer</a>, nOffset);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;         m_list.push_back(val);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;   }</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;   vector&lt;T&gt; m_list;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;};</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#endif // #ifndef __emsg_h_included</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;      length += len;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">  355</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">packVector</a>(pVoid pBuffer, ULong &amp;nOffset)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;   {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a> = m_list.size();</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;      <a class="code" href="classEMessage.html#a55c20f8afebd9ea86202af7a581447f4">pack</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, pBuffer, nOffset);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;         m_list[i].<a class="code" href="classEMessage.html#aeae9a0427476388ae786c36aded4921a">serialize</a>(pBuffer, nOffset);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;   }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">  367</a></span>&#160;   Void <a class="code" href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">unpackVector</a>(pVoid <a class="code" href="classBuffer.html">Buffer</a>, ULong &amp;nOffset)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      ULong <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      <a class="code" href="classEMessage.html#a057f478aa4dbb04fac936e42854784e4">unpack</a>(<a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>, <a class="code" href="classBuffer.html">Buffer</a>, nOffset);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      <span class="keywordflow">for</span> (ULong i = 0; i &lt; <a class="code" href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">vectorLength</a>; i++)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;         T val;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;         val.unserialize(<a class="code" href="classBuffer.html">Buffer</a>, nOffset);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;         m_list.push_back(val);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;   }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;   vector&lt;T&gt; m_list;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;};</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">#endif // #ifndef __emsg_h_included</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassEMessage_html_a414eac373e0402cbde6451bf8b496952"><div class="ttname"><a href="classEMessage.html#a414eac373e0402cbde6451bf8b496952">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Char val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:66</div></div>
-<div class="ttc" id="aclassEMessageVector_html_a19a1530b1b18fd881e6461863a34ad6a"><div class="ttname"><a href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">EMessageVector::EMessageVector</a></div><div class="ttdeci">EMessageVector(EMessageVector const &amp;val)</div><div class="ttdoc">Copy constructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:323</div></div>
-<div class="ttc" id="aclassEMessageVector_html_ae5ea0b2884c8a4aeff34f4679604549e"><div class="ttname"><a href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">EMessageVector::packVector</a></div><div class="ttdeci">Void packVector(pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Packs the vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:359</div></div>
+<div class="ttc" id="aclassEMessageVector_html_a19a1530b1b18fd881e6461863a34ad6a"><div class="ttname"><a href="classEMessageVector.html#a19a1530b1b18fd881e6461863a34ad6a">EMessageVector::EMessageVector</a></div><div class="ttdeci">EMessageVector(EMessageVector const &amp;val)</div><div class="ttdoc">Copy constructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:319</div></div>
+<div class="ttc" id="aclassEMessageVector_html_ae5ea0b2884c8a4aeff34f4679604549e"><div class="ttname"><a href="classEMessageVector.html#ae5ea0b2884c8a4aeff34f4679604549e">EMessageVector::packVector</a></div><div class="ttdeci">Void packVector(pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Packs the vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:355</div></div>
 <div class="ttc" id="aclassEMessage_html_a4582e7dfaf85640bee9d27ca1a7258d2"><div class="ttname"><a href="classEMessage.html#a4582e7dfaf85640bee9d27ca1a7258d2">EMessage::~EMessage</a></div><div class="ttdeci">~EMessage()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:40</div></div>
 <div class="ttc" id="aclassETime_html"><div class="ttname"><a href="classETime.html">ETime</a></div><div class="ttdoc">Class for manipulating date and time of day values.</div><div class="ttdef"><b>Definition:</b> etime.h:199</div></div>
 <div class="ttc" id="aclassEMessage_html_a6fadc1809b6c4a96536b0dda21c71ee6"><div class="ttname"><a href="classEMessage.html#a6fadc1809b6c4a96536b0dda21c71ee6">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(UChar val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:73</div></div>
-<div class="ttc" id="aclassEMessageVector_html_a6501ea51a86f8735b626c8771d10b095"><div class="ttname"><a href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">EMessageVector::getList</a></div><div class="ttdeci">vector&lt; T &gt; &amp; getList()</div><div class="ttdoc">Retrieves the message vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:337</div></div>
+<div class="ttc" id="aclassEMessageVector_html_a6501ea51a86f8735b626c8771d10b095"><div class="ttname"><a href="classEMessageVector.html#a6501ea51a86f8735b626c8771d10b095">EMessageVector::getList</a></div><div class="ttdeci">vector&lt; T &gt; &amp; getList()</div><div class="ttdoc">Retrieves the message vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:333</div></div>
 <div class="ttc" id="aclassEMessage_html_abfe7ef30c3de6e48a21cef25b16e338b"><div class="ttname"><a href="classEMessage.html#abfe7ef30c3de6e48a21cef25b16e338b">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Bool val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:59</div></div>
 <div class="ttc" id="aclassEQueueBase_html"><div class="ttname"><a href="classEQueueBase.html">EQueueBase</a></div><div class="ttdoc">The message queue base class.</div><div class="ttdef"><b>Definition:</b> eqbase.h:120</div></div>
 <div class="ttc" id="aebase_8h_html"><div class="ttname"><a href="ebase_8h.html">ebase.h</a></div><div class="ttdoc">Macros for various standard C library functions and standard includes.</div></div>
@@ -290,18 +286,18 @@ $(function() {
 <div class="ttc" id="aclassEMessage_html_ac025d901e20be3d6d050368035579b66"><div class="ttname"><a href="classEMessage.html#ac025d901e20be3d6d050368035579b66">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(ETimer &amp;val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:143</div></div>
 <div class="ttc" id="aclassEMessage_html_af375b5cfdc1bbb654aacffa7fdb1f87a"><div class="ttname"><a href="classEMessage.html#af375b5cfdc1bbb654aacffa7fdb1f87a">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(ULong val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:101</div></div>
 <div class="ttc" id="aclassEMessage_html_afcba2138d11179750f8302cfea9560fa"><div class="ttname"><a href="classEMessage.html#afcba2138d11179750f8302cfea9560fa">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(ETime &amp;val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:150</div></div>
-<div class="ttc" id="aclassEMessageVector_html_a95b1bd2ebedb26a547bdca078bfa25bd"><div class="ttname"><a href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">EMessageVector::unpackVector</a></div><div class="ttdeci">Void unpackVector(pVoid Buffer, ULong &amp;nOffset)</div><div class="ttdoc">Unpacks a vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:371</div></div>
+<div class="ttc" id="aclassEMessageVector_html_a95b1bd2ebedb26a547bdca078bfa25bd"><div class="ttname"><a href="classEMessageVector.html#a95b1bd2ebedb26a547bdca078bfa25bd">EMessageVector::unpackVector</a></div><div class="ttdeci">Void unpackVector(pVoid Buffer, ULong &amp;nOffset)</div><div class="ttdoc">Unpacks a vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:367</div></div>
 <div class="ttc" id="aclassEMessage_html_aeae9a0427476388ae786c36aded4921a"><div class="ttname"><a href="classEMessage.html#aeae9a0427476388ae786c36aded4921a">EMessage::serialize</a></div><div class="ttdeci">virtual Void serialize(pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Serializes (packs) a message.</div><div class="ttdef"><b>Definition:</b> emsg.cpp:27</div></div>
-<div class="ttc" id="aclassEMessageVector_html"><div class="ttname"><a href="classEMessageVector.html">EMessageVector</a></div><div class="ttdoc">A vector of fields.</div><div class="ttdef"><b>Definition:</b> emsg.h:315</div></div>
-<div class="ttc" id="aclassEMessageVector_html_a7059daa51e6421aeb90bb86249bee7be"><div class="ttname"><a href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">EMessageVector::vectorLength</a></div><div class="ttdeci">Void vectorLength(ULong &amp;length)</div><div class="ttdoc">Calcuates the packed length of the vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:344</div></div>
+<div class="ttc" id="aclassEMessageVector_html"><div class="ttname"><a href="classEMessageVector.html">EMessageVector</a></div><div class="ttdoc">A vector of fields.</div><div class="ttdef"><b>Definition:</b> emsg.h:311</div></div>
+<div class="ttc" id="aclassEMessageVector_html_a7059daa51e6421aeb90bb86249bee7be"><div class="ttname"><a href="classEMessageVector.html#a7059daa51e6421aeb90bb86249bee7be">EMessageVector::vectorLength</a></div><div class="ttdeci">Void vectorLength(ULong &amp;length)</div><div class="ttdoc">Calcuates the packed length of the vector.</div><div class="ttdef"><b>Definition:</b> emsg.h:340</div></div>
 <div class="ttc" id="aclassEMessage_html_ae19d10b91bb56cba8b4e4ff9f4d8ecbe"><div class="ttname"><a href="classEMessage.html#ae19d10b91bb56cba8b4e4ff9f4d8ecbe">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Long val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:94</div></div>
 <div class="ttc" id="aclassEMessage_html_a95a457dd2a730f198155216e7039d610"><div class="ttname"><a href="classEMessage.html#a95a457dd2a730f198155216e7039d610">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Float val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:122</div></div>
-<div class="ttc" id="aclassEMessageVector_html_ae9766101fd54c31ebdd7935e3ddc852d"><div class="ttname"><a href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">EMessageVector::~EMessageVector</a></div><div class="ttdeci">~EMessageVector()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:331</div></div>
+<div class="ttc" id="aclassEMessageVector_html_ae9766101fd54c31ebdd7935e3ddc852d"><div class="ttname"><a href="classEMessageVector.html#ae9766101fd54c31ebdd7935e3ddc852d">EMessageVector::~EMessageVector</a></div><div class="ttdeci">~EMessageVector()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:327</div></div>
 <div class="ttc" id="aclassEMessage_html_a30739b02bedca0a21aff497ecf5ea182"><div class="ttname"><a href="classEMessage.html#a30739b02bedca0a21aff497ecf5ea182">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Short val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:80</div></div>
 <div class="ttc" id="aclassEMessage_html_a08853872aacdfcebb555a42f96abe596"><div class="ttname"><a href="classEMessage.html#a08853872aacdfcebb555a42f96abe596">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(cpStr val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:136</div></div>
 <div class="ttc" id="aclassEMessage_html_a0f3b338f744c2b5238f555acfe61e8c7"><div class="ttname"><a href="classEMessage.html#a0f3b338f744c2b5238f555acfe61e8c7">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(Double val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:129</div></div>
 <div class="ttc" id="aclassBuffer_html"><div class="ttname"><a href="classBuffer.html">Buffer</a></div><div class="ttdef"><b>Definition:</b> efdjson.cpp:77</div></div>
-<div class="ttc" id="aclassEMessageVector_html_a7efc39929644a709a3cb14a046628b8e"><div class="ttname"><a href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">EMessageVector::EMessageVector</a></div><div class="ttdeci">EMessageVector()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:319</div></div>
+<div class="ttc" id="aclassEMessageVector_html_a7efc39929644a709a3cb14a046628b8e"><div class="ttname"><a href="classEMessageVector.html#a7efc39929644a709a3cb14a046628b8e">EMessageVector::EMessageVector</a></div><div class="ttdeci">EMessageVector()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> emsg.h:315</div></div>
 <div class="ttc" id="aclassEMessage_html_adc36011749e2ee4c258e381e528ec603"><div class="ttname"><a href="classEMessage.html#adc36011749e2ee4c258e381e528ec603">EMessage::elementLength</a></div><div class="ttdeci">Void elementLength(UShort val, ULong &amp;length)</div><div class="ttdoc">Adds the length of a Bool value to the message length.</div><div class="ttdef"><b>Definition:</b> emsg.h:87</div></div>
 <div class="ttc" id="aclassEMessage_html_a55c20f8afebd9ea86202af7a581447f4"><div class="ttname"><a href="classEMessage.html#a55c20f8afebd9ea86202af7a581447f4">EMessage::pack</a></div><div class="ttdeci">Void pack(Bool val, pVoid pBuffer, ULong &amp;nOffset)</div><div class="ttdoc">Packs the Bool value.</div><div class="ttdef"><b>Definition:</b> emsg.cpp:35</div></div>
 <div class="ttc" id="aclassEString_html"><div class="ttname"><a href="classEString.html">EString</a></div><div class="ttdoc">String class.</div><div class="ttdef"><b>Definition:</b> estring.h:30</div></div>

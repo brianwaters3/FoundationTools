@@ -96,6 +96,8 @@ namespace EPCDNS
    {
       /// Unknown
       x_3gpp_unknown,
+      /// Any
+      x_3gpp_any,
       /// PGW
       x_3gpp_pgw,
       /// SGW
@@ -1806,7 +1808,68 @@ namespace EPCDNS
    /////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////////////////////////////////////////////
 
-   /// @brief Diameter name pointer (NAPTR) type
+    /// @brief A EPC node selector.
+   class EpcNodeSelector : public NodeSelector
+   {
+   public:
+      /// @brief Class constructor.
+      /// @param node the node name.
+      /// @param mnc the mobile network code.
+      /// @param mcc the  mcc mobile country code.
+      /// @param appsvc the desired application service.  Defaults to x_3gpp_any.
+      EpcNodeSelector( const char *node, const char *mnc, const char *mcc, AppServiceEnum appsvc = x_3gpp_any )
+      {
+         NodeSelector::setAppService( appsvc );
+         setDomainName( Utility::epc_node_fqdn( node, mnc, mcc ) );
+      }
+   
+      /// @brief Class constructor.
+      /// @param node the node name.
+      /// @param plmnid the public land mobile network ID.
+      /// @param appsvc the desired application service.  Defaults to x_3gpp_any.
+      EpcNodeSelector( const char *node, const unsigned char *plmnid, AppServiceEnum appsvc = x_3gpp_any )
+      {
+         NodeSelector::setAppService( appsvc );
+         setDomainName( Utility::epc_node_fqdn( node, plmnid ) );
+      }
+   
+      /// @brief Class constructor.
+      /// @param fqdn the node name.
+      /// @param appsvc the desired application service.  Defaults to x_3gpp_any.
+      EpcNodeSelector( const char *fqdn, AppServiceEnum appsvc = x_3gpp_any )
+      {
+         NodeSelector::setAppService( appsvc );
+         setDomainName( fqdn );
+      }
+   
+      /// @brief Adds the desired application protocol to the selector.
+      /// @param p the applciation protocol to add.
+      /// @return the added application protocol object.   
+      AppProtocol *addDesiredProtocol( PGWAppProtocolEnum p )
+      {
+         AppProtocol *ap = new AppProtocol();
+         ap->setProtocol( Utility::getAppProtocol( p ) );
+         NodeSelector::addDesiredProtocol( ap );
+         return ap;
+      }
+
+      /// @brief Assigns the required application service type.
+      /// @param s the desired application service.
+      /// @return a reference to this object.
+      EpcNodeSelector &setAppService( AppServiceEnum s )
+      {
+         NodeSelector::setAppService( s );
+         return *this;
+      }
+   
+   private:
+      EpcNodeSelector() {}
+   };
+   
+   /////////////////////////////////////////////////////////////////////////////
+   /////////////////////////////////////////////////////////////////////////////
+
+  /// @brief Diameter name pointer (NAPTR) type
    enum DiameterNaptrTypeEnum
    {
       /// unknown

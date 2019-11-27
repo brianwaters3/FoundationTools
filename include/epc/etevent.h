@@ -340,8 +340,6 @@ public:
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-/// @cond DOXYGEN_EXCLUDE
-
 /// @brief Defines how a client can access a thread queue.
 enum class EThreadQueueMode
 {
@@ -563,6 +561,7 @@ private:
 /// @details The template parameter to this class template is the class of for
 ///   the message that will be stored in this event thread message queue.  This
 ///   class is derived from template <class T> class EThreadQueueBase.
+/// @tparam T the event message class name.
 template <class T>
 class EThreadQueuePublic : public EThreadQueueBase<T>
 {
@@ -666,6 +665,7 @@ private:
 /// @details The template parameter to this class template is the class of for
 ///   the message that will be stored in this event thread message queue.  This
 ///   class is derived from template <class T> class EThreadQueueBase.
+/// @tparam T the event message class name.
 template <class T>
 class EThreadQueuePrivate : public EThreadQueueBase<T>
 {
@@ -763,8 +763,6 @@ private:
    T *m_pData;
 };
 
-/// @endcond
-
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -832,8 +830,6 @@ protected:                                                     \
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-/// @cond DOXYGEN_EXCLUDE
 
 class _EThreadEventBase
 {
@@ -1112,7 +1108,7 @@ public:
    }
    /// @brief Sends event message to this thread.
    ///
-   /// @param message the message thread message object to send.
+   /// @param msg the message thread message object to send.
    /// @param wait waits for the message to be sent
    ///
    /// @details

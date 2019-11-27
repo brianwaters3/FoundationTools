@@ -904,7 +904,7 @@ NodeSelectorResultList &NodeSelector::process()
       service.parse( naptr->getService() );
 
       // check for service match
-      if ( service.getService() == m_desiredService )
+      if ( m_desiredService == x_3gpp_any || service.getService() == m_desiredService )
       {
          NodeSelectorResult *nsr = new NodeSelectorResult();
 
@@ -941,7 +941,7 @@ NodeSelectorResultList &NodeSelector::process()
                   if ( !nsrap->getUsageTypes().empty() )
                   {
                      // at least 1 usage type matched, so consider the protocol a match
-                     nsr->addSupportedProtocol( nsrap );
+                     //nsr->addSupportedProtocol( nsrap );
                   }
                   else
                   {

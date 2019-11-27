@@ -71,7 +71,7 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">etevent.h File Reference</div>  </div>
 </div><!--header-->
@@ -105,6 +105,23 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadMessage.html">EThreadMessage</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event message that is to be sent to a thread.  <a href="classEThreadMessage.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html">EThreadQueueBase&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the functionality for the thread queue.  <a href="classEThreadQueueBase.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePublic.html">EThreadQueuePublic&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a public event thread message queue.  <a href="classEThreadQueuePublic.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a private event thread message queue.  <a href="classEThreadQueuePrivate.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class__EThreadEventBase.html">_EThreadEventBase</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEventTimer.html">EThreadEventTimer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread timer class.  <a href="classEThreadEventTimer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadEvent.html">EThreadEvent&lt; TQueue, TMessage &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">base class for EThreadPrivate and EThreadPublic  <a href="classEThreadEvent.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -153,42 +170,19 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:ae80c2a6ed70987cd6c1710ee1c04765c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classEThreadEventMessageBase.html">EThreadEventMessageBase</a>&lt; <a class="el" href="classEThreadEventMessageData.html">EThreadEventMessageData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#ae80c2a6ed70987cd6c1710ee1c04765c">_EThreadMessage</a></td></tr>
 <tr class="separator:ae80c2a6ed70987cd6c1710ee1c04765c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8954bda7259449b5e33a0c90f00f3e4a"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classEThreadEvent.html">EThreadEvent</a>&lt; <a class="el" href="classEThreadQueuePublic.html">EThreadQueuePublic</a>&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a8954bda7259449b5e33a0c90f00f3e4a">EThreadPublic</a></td></tr>
+<tr class="separator:a8954bda7259449b5e33a0c90f00f3e4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec0f12a7073f7d1375468685b80b8dd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classEThreadEvent.html">EThreadEvent</a>&lt; <a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a>&lt; <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;, <a class="el" href="classEThreadMessage.html">EThreadMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a8ec0f12a7073f7d1375468685b80b8dd">EThreadPrivate</a></td></tr>
+<tr class="separator:a8ec0f12a7073f7d1375468685b80b8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a188106202f4dbee76276fcc407efe4f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a188106202f4dbee76276fcc407efe4f2">EThreadEventTimer</a> ()</td></tr>
-<tr class="memdesc:a188106202f4dbee76276fcc407efe4f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default class constructor.  <a href="etevent_8h.html#a188106202f4dbee76276fcc407efe4f2">More...</a><br /></td></tr>
-<tr class="separator:a188106202f4dbee76276fcc407efe4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1803e49c2cb61a136c6a58822fa57660"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a1803e49c2cb61a136c6a58822fa57660">EThreadEventTimer</a> (Long milliseconds, Bool oneshot=<a class="el" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>)</td></tr>
-<tr class="memdesc:a1803e49c2cb61a136c6a58822fa57660"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor with configuration parameters.  <a href="etevent_8h.html#a1803e49c2cb61a136c6a58822fa57660">More...</a><br /></td></tr>
-<tr class="separator:a1803e49c2cb61a136c6a58822fa57660"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6df3caac37b8488dc90523ed480dd6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a8f6df3caac37b8488dc90523ed480dd6">~EThreadEventTimer</a> ()</td></tr>
-<tr class="memdesc:a8f6df3caac37b8488dc90523ed480dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="etevent_8h.html#a8f6df3caac37b8488dc90523ed480dd6">More...</a><br /></td></tr>
-<tr class="separator:a8f6df3caac37b8488dc90523ed480dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ac359ed577f631b753fbf2d5fc21266"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a5ac359ed577f631b753fbf2d5fc21266">destroy</a> ()</td></tr>
-<tr class="memdesc:a5ac359ed577f631b753fbf2d5fc21266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops and destroys the underlying timer object.  <a href="etevent_8h.html#a5ac359ed577f631b753fbf2d5fc21266">More...</a><br /></td></tr>
-<tr class="separator:a5ac359ed577f631b753fbf2d5fc21266"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5b1abe3ef14f7710851c5b57fe92c64"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#ab5b1abe3ef14f7710851c5b57fe92c64">start</a> ()</td></tr>
-<tr class="memdesc:ab5b1abe3ef14f7710851c5b57fe92c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the timer.  <a href="etevent_8h.html#ab5b1abe3ef14f7710851c5b57fe92c64">More...</a><br /></td></tr>
-<tr class="separator:ab5b1abe3ef14f7710851c5b57fe92c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7483b7a3e8c9a0e05cd11fe070dec39a"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a7483b7a3e8c9a0e05cd11fe070dec39a">stop</a> ()</td></tr>
-<tr class="memdesc:a7483b7a3e8c9a0e05cd11fe070dec39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the timer.  <a href="etevent_8h.html#a7483b7a3e8c9a0e05cd11fe070dec39a">More...</a><br /></td></tr>
-<tr class="separator:a7483b7a3e8c9a0e05cd11fe070dec39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2fd354b091f5321c9a3e4d4ba5a16a1"><td class="memItemLeft" align="right" valign="top">Long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#af2fd354b091f5321c9a3e4d4ba5a16a1">getInterval</a> ()</td></tr>
-<tr class="memdesc:af2fd354b091f5321c9a3e4d4ba5a16a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the timer interval in milliseconds.  <a href="etevent_8h.html#af2fd354b091f5321c9a3e4d4ba5a16a1">More...</a><br /></td></tr>
-<tr class="separator:af2fd354b091f5321c9a3e4d4ba5a16a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab548d585901cca08693f211028edda3b"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#ab548d585901cca08693f211028edda3b">setInterval</a> (Long interval)</td></tr>
-<tr class="memdesc:ab548d585901cca08693f211028edda3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the timer interval  <a href="etevent_8h.html#ab548d585901cca08693f211028edda3b">More...</a><br /></td></tr>
-<tr class="separator:ab548d585901cca08693f211028edda3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27e922474f53bedd6bbe7a7f5f4f0f50"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a27e922474f53bedd6bbe7a7f5f4f0f50">setOneShot</a> (Bool oneshot)</td></tr>
-<tr class="memdesc:a27e922474f53bedd6bbe7a7f5f4f0f50"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the type of timer  <a href="etevent_8h.html#a27e922474f53bedd6bbe7a7f5f4f0f50">More...</a><br /></td></tr>
-<tr class="separator:a27e922474f53bedd6bbe7a7f5f4f0f50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30e533a51833664ad05441781ee6a6a0"><td class="memItemLeft" align="right" valign="top">Long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a30e533a51833664ad05441781ee6a6a0">getId</a> ()</td></tr>
-<tr class="memdesc:a30e533a51833664ad05441781ee6a6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the unique timer id.  <a href="etevent_8h.html#a30e533a51833664ad05441781ee6a6a0">More...</a><br /></td></tr>
-<tr class="separator:a30e533a51833664ad05441781ee6a6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6dea5a29d9435c822fe3b1f7c3e169d8"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a6dea5a29d9435c822fe3b1f7c3e169d8">isInitialized</a> ()</td></tr>
-<tr class="memdesc:a6dea5a29d9435c822fe3b1f7c3e169d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if this timer object has been initialized.  <a href="etevent_8h.html#a6dea5a29d9435c822fe3b1f7c3e169d8">More...</a><br /></td></tr>
-<tr class="separator:a6dea5a29d9435c822fe3b1f7c3e169d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a1a7c05eed44a6827c9ffd40fdd92fd50"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">EThreadQueueMode</a> { <a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50a131fb182a881796e7606ed6da27f1197">EThreadQueueMode::ReadOnly</a>, 
+<a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50a53dfe5089ae9e65887cb0215cb0098f5">EThreadQueueMode::WriteOnly</a>, 
+<a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50a70a2a84088d405a2e3f1e3accaa16723">EThreadQueueMode::ReadWrite</a>
+ }</td></tr>
+<tr class="memdesc:a1a7c05eed44a6827c9ffd40fdd92fd50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines how a client can access a thread queue.  <a href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">More...</a><br /></td></tr>
+<tr class="separator:a1a7c05eed44a6827c9ffd40fdd92fd50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0c8d25bf6492235c4f7f47ee387698ae"></a>
@@ -472,255 +466,64 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a5ac359ed577f631b753fbf2d5fc21266"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ac359ed577f631b753fbf2d5fc21266">&#9670;&nbsp;</a></span>destroy()</h2>
+<a id="a8ec0f12a7073f7d1375468685b80b8dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec0f12a7073f7d1375468685b80b8dd">&#9670;&nbsp;</a></span>EThreadPrivate</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Void destroy </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">typedef <a class="el" href="classEThreadEvent.html">EThreadEvent</a>&lt;<a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a>&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="etevent_8h.html#a8ec0f12a7073f7d1375468685b80b8dd">EThreadPrivate</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Stops and destroys the underlying timer object. </p>
-<p>Calling <a class="el" href="etevent_8h.html#a5ac359ed577f631b753fbf2d5fc21266" title="Stops and destroys the underlying timer object.">destroy()</a> will stop the timer and then delete the underlying timer object. This method is called by the destructor. </p>
-
 </div>
 </div>
-<a id="a188106202f4dbee76276fcc407efe4f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a188106202f4dbee76276fcc407efe4f2">&#9670;&nbsp;</a></span>EThreadEventTimer() <span class="overload">[1/2]</span></h2>
+<a id="a8954bda7259449b5e33a0c90f00f3e4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8954bda7259449b5e33a0c90f00f3e4a">&#9670;&nbsp;</a></span>EThreadPublic</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EThreadEventTimer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">typedef <a class="el" href="classEThreadEvent.html">EThreadEvent</a>&lt;<a class="el" href="classEThreadQueuePublic.html">EThreadQueuePublic</a>&lt;<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt;,<a class="el" href="classEThreadMessage.html">EThreadMessage</a>&gt; <a class="el" href="etevent_8h.html#a8954bda7259449b5e33a0c90f00f3e4a">EThreadPublic</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Default class constructor. </p>
-
 </div>
 </div>
-<a id="a1803e49c2cb61a136c6a58822fa57660"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1803e49c2cb61a136c6a58822fa57660">&#9670;&nbsp;</a></span>EThreadEventTimer() <span class="overload">[2/2]</span></h2>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a1a7c05eed44a6827c9ffd40fdd92fd50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a7c05eed44a6827c9ffd40fdd92fd50">&#9670;&nbsp;</a></span>EThreadQueueMode</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EThreadEventTimer </td>
-          <td>(</td>
-          <td class="paramtype">Long&#160;</td>
-          <td class="paramname"><em>milliseconds</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Bool&#160;</td>
-          <td class="paramname"><em>oneshot</em> = <code><a class="el" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">enum <a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">EThreadQueueMode</a></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Class constructor with configuration parameters. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">milliseconds</td><td>the number of milliseconds before the timer expires </td></tr>
-    <tr><td class="paramname">oneshot</td><td>True - one shot timer, False - periodic (recurring) timer </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a30e533a51833664ad05441781ee6a6a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30e533a51833664ad05441781ee6a6a0">&#9670;&nbsp;</a></span>getId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Long getId </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the unique timer id. </p>
-<p>The timer ID is created internally when the timer object is instantiated. </p>
-
-</div>
-</div>
-<a id="af2fd354b091f5321c9a3e4d4ba5a16a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2fd354b091f5321c9a3e4d4ba5a16a1">&#9670;&nbsp;</a></span>getInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Long getInterval </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the timer interval in milliseconds. </p>
-
-</div>
-</div>
-<a id="a6dea5a29d9435c822fe3b1f7c3e169d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dea5a29d9435c822fe3b1f7c3e169d8">&#9670;&nbsp;</a></span>isInitialized()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Bool isInitialized </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Indicates if this timer object has been initialized. </p>
-<p>The timer ID is created internally when the timer object is instantiated. </p>
-
-</div>
-</div>
-<a id="ab548d585901cca08693f211028edda3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab548d585901cca08693f211028edda3b">&#9670;&nbsp;</a></span>setInterval()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Void setInterval </td>
-          <td>(</td>
-          <td class="paramtype">Long&#160;</td>
-          <td class="paramname"><em>interval</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>sets the timer interval </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">interval</td><td>the timer interval in milliseconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a27e922474f53bedd6bbe7a7f5f4f0f50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27e922474f53bedd6bbe7a7f5f4f0f50">&#9670;&nbsp;</a></span>setOneShot()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Void setOneShot </td>
-          <td>(</td>
-          <td class="paramtype">Bool&#160;</td>
-          <td class="paramname"><em>oneshot</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>sets the type of timer </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">oneshot</td><td>True - one shot timer, False - periodic (recurring timer) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab5b1abe3ef14f7710851c5b57fe92c64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5b1abe3ef14f7710851c5b57fe92c64">&#9670;&nbsp;</a></span>start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Void start </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Starts the timer. </p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">EThreadTimerError_NotInitialized</td><td>timer not initialized </td></tr>
-    <tr><td class="paramname">EThreadTimerError_UnableToStart</td><td>unable to start the timer </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a7483b7a3e8c9a0e05cd11fe070dec39a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7483b7a3e8c9a0e05cd11fe070dec39a">&#9670;&nbsp;</a></span>stop()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Void stop </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Stops the timer. </p>
-
-</div>
-</div>
-<a id="a8f6df3caac37b8488dc90523ed480dd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f6df3caac37b8488dc90523ed480dd6">&#9670;&nbsp;</a></span>~EThreadEventTimer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">~<a class="el" href="etevent_8h.html#a1803e49c2cb61a136c6a58822fa57660">EThreadEventTimer</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Class destructor. </p>
+<p>Defines how a client can access a thread queue. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1a7c05eed44a6827c9ffd40fdd92fd50a131fb182a881796e7606ed6da27f1197"></a>ReadOnly&#160;</td><td class="fielddoc"><p>Allows read only access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1a7c05eed44a6827c9ffd40fdd92fd50a53dfe5089ae9e65887cb0215cb0098f5"></a>WriteOnly&#160;</td><td class="fielddoc"><p>Allows read only access. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1a7c05eed44a6827c9ffd40fdd92fd50a70a2a84088d405a2e3f1e3accaa16723"></a>ReadWrite&#160;</td><td class="fielddoc"><p>Allows read or write access. </p>
+</td></tr>
+</table>
 
 </div>
 </div>

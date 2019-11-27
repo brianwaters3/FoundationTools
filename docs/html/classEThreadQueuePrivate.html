@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.16"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EpcTools: EThreadQueuePrivate Class Reference</title>
+<title>EpcTools: EThreadQueuePrivate&lt; T &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -64,243 +65,165 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classEThreadQueuePrivate-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">EThreadQueuePrivate Class Reference</div>  </div>
+<div class="title">EThreadQueuePrivate&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="etq_8h_source.html">etq.h</a>&gt;</code></p>
+<p>Definition of a private event thread message queue.  
+ <a href="classEThreadQueuePrivate.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="etevent_8h_source.html">etevent.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for EThreadQueuePrivate:</div>
+Inheritance diagram for EThreadQueuePrivate&lt; T &gt;:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classEThreadQueuePrivate.png" usemap="#EThreadQueuePrivate_map" alt=""/>
-  <map id="EThreadQueuePrivate_map" name="EThreadQueuePrivate_map">
-<area href="classEThreadQueueBase.html" alt="EThreadQueueBase" shape="rect" coords="0,0,138,24"/>
+  <img src="classEThreadQueuePrivate.png" usemap="#EThreadQueuePrivate_3C_20T_20_3E_map" alt=""/>
+  <map id="EThreadQueuePrivate_3C_20T_20_3E_map" name="EThreadQueuePrivate_3C_20T_20_3E_map">
+<area href="classEThreadQueueBase.html" title="Defines the functionality for the thread queue." alt="EThreadQueueBase&lt; T &gt;" shape="rect" coords="0,0,169,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ea37f686293261fb9fac4467609364c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a2ea37f686293261fb9fac4467609364c">EThreadQueuePrivate</a> ()</td></tr>
-<tr class="separator:a2ea37f686293261fb9fac4467609364c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8812b669704e133ff2df7a4d22f8cd09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a8812b669704e133ff2df7a4d22f8cd09">~EThreadQueuePrivate</a> ()</td></tr>
-<tr class="separator:a8812b669704e133ff2df7a4d22f8cd09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c6149935a2959b364affc4bdb0d50f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a6c6149935a2959b364affc4bdb0d50f1">init</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> nMsgCnt, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> threadId, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bMultipleWriters, <a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6">EThreadQueueBase::Mode</a> eMode)</td></tr>
-<tr class="separator:a6c6149935a2959b364affc4bdb0d50f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classEThreadQueueBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEThreadQueueBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classEThreadQueueBase.html">EThreadQueueBase</a></td></tr>
-<tr class="memitem:adffa9ad5cb11977825eb2759219d55f5 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#adffa9ad5cb11977825eb2759219d55f5">push</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> msgid, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:adffa9ad5cb11977825eb2759219d55f5 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d2aaaca58f13b499a41f479942498b8 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a4d2aaaca58f13b499a41f479942498b8">push</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> msgid, <a class="el" href="etypes_8h.html#a3b6545722630d0a7057db2a3b5cf4949">Dword</a> lowPart, <a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> highPart, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:a4d2aaaca58f13b499a41f479942498b8 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae756e31013e231fe3593ffcfd831a97f inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#ae756e31013e231fe3593ffcfd831a97f">push</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> msgid, <a class="el" href="etypes_8h.html#ab4ab448fb0f5fec64a3172f2d16340a6">pVoid</a> voidPtr, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:ae756e31013e231fe3593ffcfd831a97f inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa790c580fd1900a97e83f62b4de28140 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#aa790c580fd1900a97e83f62b4de28140">push</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> msgid, <a class="el" href="etypes_8h.html#a899043d29bdfcf131cc876d53ca5b32e">LongLong</a> quadPart, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:aa790c580fd1900a97e83f62b4de28140 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9ca1d045577e47e161f6bb8f24a0bf1 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#af9ca1d045577e47e161f6bb8f24a0bf1">pop</a> (<a class="el" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:af9ca1d045577e47e161f6bb8f24a0bf1 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd6a96480119cc93ab31dad3b68007cd inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#afd6a96480119cc93ab31dad3b68007cd">peek</a> (<a class="el" href="classEThreadMessage.html">EThreadMessage</a> &amp;msg, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:afd6a96480119cc93ab31dad3b68007cd inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a77344d5021507e27045b371d6a2e75 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a4a77344d5021507e27045b371d6a2e75">isInitialized</a> ()</td></tr>
-<tr class="separator:a4a77344d5021507e27045b371d6a2e75 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d2f0cd3259038055fa4b1b1cbdd9be7 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6">Mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a5d2f0cd3259038055fa4b1b1cbdd9be7">mode</a> ()</td></tr>
-<tr class="separator:a5d2f0cd3259038055fa4b1b1cbdd9be7 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c1736a50f31f27e2e8c5b421633f3e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#ad4c1736a50f31f27e2e8c5b421633f3e">EThreadQueuePrivate</a> ()</td></tr>
+<tr class="memdesc:ad4c1736a50f31f27e2e8c5b421633f3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classEThreadQueuePrivate.html#ad4c1736a50f31f27e2e8c5b421633f3e">More...</a><br /></td></tr>
+<tr class="separator:ad4c1736a50f31f27e2e8c5b421633f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c61d629b5464480c2d5bb5e9bbd7321"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a7c61d629b5464480c2d5bb5e9bbd7321">~EThreadQueuePrivate</a> ()</td></tr>
+<tr class="memdesc:a7c61d629b5464480c2d5bb5e9bbd7321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="classEThreadQueuePrivate.html#a7c61d629b5464480c2d5bb5e9bbd7321">More...</a><br /></td></tr>
+<tr class="separator:a7c61d629b5464480c2d5bb5e9bbd7321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb02811d13998e798cf5ff970201352c"><td class="memItemLeft" align="right" valign="top">Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#aeb02811d13998e798cf5ff970201352c">init</a> (Int nMsgCnt, Int threadId, Bool bMultipleWriters, <a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">EThreadQueueMode</a> eMode)</td></tr>
+<tr class="memdesc:aeb02811d13998e798cf5ff970201352c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes this public event thead message queue object.  <a href="classEThreadQueuePrivate.html#aeb02811d13998e798cf5ff970201352c">More...</a><br /></td></tr>
+<tr class="separator:aeb02811d13998e798cf5ff970201352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classEThreadQueueBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEThreadQueueBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classEThreadQueueBase.html">EThreadQueueBase&lt; T &gt;</a></td></tr>
+<tr class="memitem:aada3403d7740768b7234a560762db379 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#aada3403d7740768b7234a560762db379">push</a> (const T &amp;msg, Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memdesc:aada3403d7740768b7234a560762db379 inherit pub_methods_classEThreadQueueBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified message to the thread event queue.  <a href="classEThreadQueueBase.html#aada3403d7740768b7234a560762db379">More...</a><br /></td></tr>
+<tr class="separator:aada3403d7740768b7234a560762db379 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c1cd0ae04bbee23931ba741da75229 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a09c1cd0ae04bbee23931ba741da75229">pop</a> (T &amp;msg, Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memdesc:a09c1cd0ae04bbee23931ba741da75229 inherit pub_methods_classEThreadQueueBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the next message from the thread event queue.  <a href="classEThreadQueueBase.html#a09c1cd0ae04bbee23931ba741da75229">More...</a><br /></td></tr>
+<tr class="separator:a09c1cd0ae04bbee23931ba741da75229 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2682d0db5d80d5522d13109ec7b3571 inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#ac2682d0db5d80d5522d13109ec7b3571">peek</a> (T &amp;msg, Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memdesc:ac2682d0db5d80d5522d13109ec7b3571 inherit pub_methods_classEThreadQueueBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrievees the next message from the thread event queue without removing the message from the queue.  <a href="classEThreadQueueBase.html#ac2682d0db5d80d5522d13109ec7b3571">More...</a><br /></td></tr>
+<tr class="separator:ac2682d0db5d80d5522d13109ec7b3571 inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff101e8dbddee7c8aea63710f7fc349f inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#aff101e8dbddee7c8aea63710f7fc349f">isInitialized</a> ()</td></tr>
+<tr class="memdesc:aff101e8dbddee7c8aea63710f7fc349f inherit pub_methods_classEThreadQueueBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves indication if this queue object has been initialized.  <a href="classEThreadQueueBase.html#aff101e8dbddee7c8aea63710f7fc349f">More...</a><br /></td></tr>
+<tr class="separator:aff101e8dbddee7c8aea63710f7fc349f inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba42433338ea2b928066f276076d9a3d inherit pub_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">EThreadQueueMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#aba42433338ea2b928066f276076d9a3d">mode</a> ()</td></tr>
+<tr class="memdesc:aba42433338ea2b928066f276076d9a3d inherit pub_methods_classEThreadQueueBase"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the access mode associated with this queue object.  <a href="classEThreadQueueBase.html#aba42433338ea2b928066f276076d9a3d">More...</a><br /></td></tr>
+<tr class="separator:aba42433338ea2b928066f276076d9a3d inherit pub_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a15d91b8c08041dbf7c2a70b3b51f9804"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a15d91b8c08041dbf7c2a70b3b51f9804">isPublic</a> ()</td></tr>
-<tr class="separator:a15d91b8c08041dbf7c2a70b3b51f9804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a042b2bb9fee6f070da7e803003d997c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a042b2bb9fee6f070da7e803003d997c3">msgCnt</a> ()</td></tr>
-<tr class="separator:a042b2bb9fee6f070da7e803003d997c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57515f70bfdaba82122d407d3af3efc8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a57515f70bfdaba82122d407d3af3efc8">msgHead</a> ()</td></tr>
-<tr class="separator:a57515f70bfdaba82122d407d3af3efc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a638413f95ce848b2fae125a09c6bea96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a638413f95ce848b2fae125a09c6bea96">msgTail</a> ()</td></tr>
-<tr class="separator:a638413f95ce848b2fae125a09c6bea96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e8548970aabdc44952cad01f8069e4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a8e8548970aabdc44952cad01f8069e4d">multipleWriters</a> ()</td></tr>
-<tr class="separator:a8e8548970aabdc44952cad01f8069e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88b8871cb2e3e618009a82120f72b93d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a88b8871cb2e3e618009a82120f72b93d">numReaders</a> ()</td></tr>
-<tr class="separator:a88b8871cb2e3e618009a82120f72b93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a478c17b9fedce5037b01225a37c61046"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a478c17b9fedce5037b01225a37c61046">numWriters</a> ()</td></tr>
-<tr class="separator:a478c17b9fedce5037b01225a37c61046"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06429b793b9a956e6ce8e2c633976581"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a06429b793b9a956e6ce8e2c633976581">refCnt</a> ()</td></tr>
-<tr class="separator:a06429b793b9a956e6ce8e2c633976581"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dae27e7bc56442359a21cadd2c4349c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEThreadMessage.html">EThreadMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a0dae27e7bc56442359a21cadd2c4349c">data</a> ()</td></tr>
-<tr class="separator:a0dae27e7bc56442359a21cadd2c4349c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a664c0f48456b317a984f3cf7e2e1241f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a664c0f48456b317a984f3cf7e2e1241f">allocDataSpace</a> (<a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a> sFile, <a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a> cId, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> nSize)</td></tr>
-<tr class="separator:a664c0f48456b317a984f3cf7e2e1241f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d06243f2790a1be957d3c2f6d3cc495"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a2d06243f2790a1be957d3c2f6d3cc495">initMutex</a> ()</td></tr>
-<tr class="separator:a2d06243f2790a1be957d3c2f6d3cc495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b47c9073776a184acd073d4dfe90aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a9b47c9073776a184acd073d4dfe90aad">initSemFree</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> initialCount)</td></tr>
-<tr class="separator:a9b47c9073776a184acd073d4dfe90aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3c4e182f6f19307ee7b628a2f7684d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#ad3c4e182f6f19307ee7b628a2f7684d7">initSemMsgs</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> initialCount)</td></tr>
-<tr class="separator:ad3c4e182f6f19307ee7b628a2f7684d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a275b1064c24b18259ba27c1c25bad2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEMutexData.html">EMutexData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a4a275b1064c24b18259ba27c1c25bad2">mutex</a> ()</td></tr>
-<tr class="separator:a4a275b1064c24b18259ba27c1c25bad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26d0ed7fbbfbdd41b54dfcb1ad409530"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#a26d0ed7fbbfbdd41b54dfcb1ad409530">semFree</a> ()</td></tr>
-<tr class="separator:a26d0ed7fbbfbdd41b54dfcb1ad409530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab93f4b8c1a4e3a4859adfca2fdf028c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#ab93f4b8c1a4e3a4859adfca2fdf028c1">semMsgs</a> ()</td></tr>
-<tr class="separator:ab93f4b8c1a4e3a4859adfca2fdf028c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classEThreadQueueBase"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classEThreadQueueBase')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classEThreadQueueBase.html">EThreadQueueBase</a></td></tr>
-<tr class="memitem:aa2ce05c21c36b0d1d218cb0c7e3642c5 inherit pro_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#aa2ce05c21c36b0d1d218cb0c7e3642c5">push</a> (<a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a> msgid, <a class="el" href="classEThreadMessage.html#a077a18a4f7a19340253db70b185686fa">EThreadMessage::etmessage_data_t</a> &amp;d, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
-<tr class="separator:aa2ce05c21c36b0d1d218cb0c7e3642c5 inherit pro_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a1fc384c005c338e0b9a792297f765 inherit pro_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#ae8a1fc384c005c338e0b9a792297f765">EThreadQueueBase</a> ()</td></tr>
-<tr class="separator:ae8a1fc384c005c338e0b9a792297f765 inherit pro_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cfea962c3cee37d1ce4cfe1aefd0688 inherit pro_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a1cfea962c3cee37d1ce4cfe1aefd0688">~EThreadQueueBase</a> ()</td></tr>
-<tr class="separator:a1cfea962c3cee37d1ce4cfe1aefd0688 inherit pro_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bb7464be1618fea8c0d25372d7443e1 inherit pro_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a6bb7464be1618fea8c0d25372d7443e1">init</a> (<a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> nMsgCnt, <a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a> threadId, <a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> bMultipleWriters, <a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6">EThreadQueueBase::Mode</a> eMode)</td></tr>
-<tr class="separator:a6bb7464be1618fea8c0d25372d7443e1 inherit pro_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8680888a30f82741c94ac31872a2c9d inherit pro_methods_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#ab8680888a30f82741c94ac31872a2c9d">destroy</a> ()</td></tr>
-<tr class="separator:ab8680888a30f82741c94ac31872a2c9d inherit pro_methods_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_types_classEThreadQueueBase"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classEThreadQueueBase')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classEThreadQueueBase.html">EThreadQueueBase</a></td></tr>
-<tr class="memitem:a68366cbdf372f44a9bd26a0e68be38a6 inherit pub_types_classEThreadQueueBase"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6">Mode</a> { <a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6ab19b03e36d8425dcd40aa80b077df1ff">ReadOnly</a>, 
-<a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6a15f1759de3c908f19b15a64b24c2c9af">WriteOnly</a>, 
-<a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6acf57388f7158fbb760eb53a3017eed6f">ReadWrite</a>
- }</td></tr>
-<tr class="separator:a68366cbdf372f44a9bd26a0e68be38a6 inherit pub_types_classEThreadQueueBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ab3fee708b871181cbbd8e30ba8661014"><td class="memTemplParams" colspan="2">template&lt;class TQueue , class TMessage &gt; </td></tr>
+<tr class="memitem:ab3fee708b871181cbbd8e30ba8661014"><td class="memTemplItemLeft" align="right" valign="top">class&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classEThreadQueuePrivate.html#ab3fee708b871181cbbd8e30ba8661014">EThreadEvent</a></td></tr>
+<tr class="separator:ab3fee708b871181cbbd8e30ba8661014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2ea37f686293261fb9fac4467609364c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ea37f686293261fb9fac4467609364c">&#9670;&nbsp;</a></span>EThreadQueuePrivate()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T&gt;<br />
+class EThreadQueuePrivate&lt; T &gt;</h3>
+
+<p>Definition of a private event thread message queue. </p>
+<p>The template parameter to this class template is the class of for the message that will be stored in this event thread message queue. This class is derived from template &lt;class t&gt;=""&gt; class <a class="el" href="classEThreadQueueBase.html" title="Defines the functionality for the thread queue.">EThreadQueueBase</a>. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>the event message class name. </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad4c1736a50f31f27e2e8c5b421633f3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c1736a50f31f27e2e8c5b421633f3e">&#9670;&nbsp;</a></span>EThreadQueuePrivate()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EThreadQueuePrivate::EThreadQueuePrivate </td>
+          <td class="memname"><a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a>&lt; T &gt;::<a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
-<a id="a8812b669704e133ff2df7a4d22f8cd09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8812b669704e133ff2df7a4d22f8cd09">&#9670;&nbsp;</a></span>~EThreadQueuePrivate()</h2>
+<a id="a7c61d629b5464480c2d5bb5e9bbd7321"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c61d629b5464480c2d5bb5e9bbd7321">&#9670;&nbsp;</a></span>~EThreadQueuePrivate()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EThreadQueuePrivate::~EThreadQueuePrivate </td>
+          <td class="memname"><a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a>&lt; T &gt;::~<a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Class destructor. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a664c0f48456b317a984f3cf7e2e1241f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a664c0f48456b317a984f3cf7e2e1241f">&#9670;&nbsp;</a></span>allocDataSpace()</h2>
+<a id="aeb02811d13998e798cf5ff970201352c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb02811d13998e798cf5ff970201352c">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadQueuePrivate::allocDataSpace </td>
+          <td class="memname">Void <a class="el" href="classEThreadQueuePrivate.html">EThreadQueuePrivate</a>&lt; T &gt;::init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a715443708a83f21fdd93aa3f0030cd35">cpStr</a>&#160;</td>
-          <td class="paramname"><em>sFile</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a7942e32f6409fbd1fd347a8c23ef725e">Char</a>&#160;</td>
-          <td class="paramname"><em>cId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
-          <td class="paramname"><em>nSize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#ab4ffe7e5f2773a9147b07d5df00fbb72">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a0dae27e7bc56442359a21cadd2c4349c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dae27e7bc56442359a21cadd2c4349c">&#9670;&nbsp;</a></span>data()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classEThreadMessage.html">EThreadMessage</a>* EThreadQueuePrivate::data </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a7d6692dad4da18ea782590f3043e5e64">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a6c6149935a2959b364affc4bdb0d50f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c6149935a2959b364affc4bdb0d50f1">&#9670;&nbsp;</a></span>init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadQueuePrivate::init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramtype">Int&#160;</td>
           <td class="paramname"><em>nMsgCnt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&#160;</td>
+          <td class="paramtype">Int&#160;</td>
           <td class="paramname"><em>threadId</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramtype">Bool&#160;</td>
           <td class="paramname"><em>bMultipleWriters</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classEThreadQueueBase.html#a68366cbdf372f44a9bd26a0e68be38a6">EThreadQueueBase::Mode</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50">EThreadQueueMode</a>&#160;</td>
           <td class="paramname"><em>eMode</em>&#160;</td>
         </tr>
         <tr>
@@ -316,391 +239,48 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Initializes this public event thead message queue object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nMsgCnt</td><td>the maximum number of event messages that can exist in the queue at a time. </td></tr>
+    <tr><td class="paramname">threadId</td><td>the public thread identifier. </td></tr>
+    <tr><td class="paramname">bMultipleWriters</td><td>indicates if more than can be more than one instance can write to the queue at a time. If True, inserting messages into the queue will be controled by a mutex. </td></tr>
+    <tr><td class="paramname">eMode</td><td>indicates the desired access mode. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a2d06243f2790a1be957d3c2f6d3cc495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d06243f2790a1be957d3c2f6d3cc495">&#9670;&nbsp;</a></span>initMutex()</h2>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="ab3fee708b871181cbbd8e30ba8661014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3fee708b871181cbbd8e30ba8661014">&#9670;&nbsp;</a></span>EThreadEvent</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<div class="memtemplate">
+template&lt;class TQueue , class TMessage &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadQueuePrivate::initMutex </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">friend class <a class="el" href="classEThreadEvent.html">EThreadEvent</a></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a099c1598fecb783c0ef18bfca5b3e5ca">EThreadQueueBase</a>.</p>
-
 </div>
 </div>
-<a id="a9b47c9073776a184acd073d4dfe90aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b47c9073776a184acd073d4dfe90aad">&#9670;&nbsp;</a></span>initSemFree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadQueuePrivate::initSemFree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a>&#160;</td>
-          <td class="paramname"><em>initialCount</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#aeb60e02971ee1ac3b0e2f85f379ef10f">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="ad3c4e182f6f19307ee7b628a2f7684d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3c4e182f6f19307ee7b628a2f7684d7">&#9670;&nbsp;</a></span>initSemMsgs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> EThreadQueuePrivate::initSemMsgs </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a11c112f01a7ad8f767fd48bc916463a3">UInt</a>&#160;</td>
-          <td class="paramname"><em>initialCount</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#af710c38fc4ed51c91aefd92bee50a144">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a15d91b8c08041dbf7c2a70b3b51f9804"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15d91b8c08041dbf7c2a70b3b51f9804">&#9670;&nbsp;</a></span>isPublic()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> EThreadQueuePrivate::isPublic </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#aec55866f27baaeae3377aebf2a227b92">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a042b2bb9fee6f070da7e803003d997c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a042b2bb9fee6f070da7e803003d997c3">&#9670;&nbsp;</a></span>msgCnt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::msgCnt </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#ae8e825b81cbf605aa45adb53e4c01d45">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a57515f70bfdaba82122d407d3af3efc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57515f70bfdaba82122d407d3af3efc8">&#9670;&nbsp;</a></span>msgHead()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::msgHead </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a98f6cdf57b4b1e44bc928b53fb8951f5">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a638413f95ce848b2fae125a09c6bea96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a638413f95ce848b2fae125a09c6bea96">&#9670;&nbsp;</a></span>msgTail()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::msgTail </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a34182dfdd19ad0e7e6bf912f147025bc">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a8e8548970aabdc44952cad01f8069e4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e8548970aabdc44952cad01f8069e4d">&#9670;&nbsp;</a></span>multipleWriters()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&amp; EThreadQueuePrivate::multipleWriters </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a9f1942170c650012b469e69e38b72cdd">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a4a275b1064c24b18259ba27c1c25bad2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a275b1064c24b18259ba27c1c25bad2">&#9670;&nbsp;</a></span>mutex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classEMutexData.html">EMutexData</a>&amp; EThreadQueuePrivate::mutex </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a2b913831681a90d13bdd536d8ff8ffde">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a88b8871cb2e3e618009a82120f72b93d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88b8871cb2e3e618009a82120f72b93d">&#9670;&nbsp;</a></span>numReaders()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::numReaders </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#af87891465eb18050c4d5cc592b641dfd">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a478c17b9fedce5037b01225a37c61046"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a478c17b9fedce5037b01225a37c61046">&#9670;&nbsp;</a></span>numWriters()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::numWriters </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a197f52e05a53184994a5d45335f5090e">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a06429b793b9a956e6ce8e2c633976581"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06429b793b9a956e6ce8e2c633976581">&#9670;&nbsp;</a></span>refCnt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#aac54f2ce6d21874872d23e0972ba7820">Int</a>&amp; EThreadQueuePrivate::refCnt </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#aa8b9df66091b1a84bcf058a32f93ad25">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="a26d0ed7fbbfbdd41b54dfcb1ad409530"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26d0ed7fbbfbdd41b54dfcb1ad409530">&#9670;&nbsp;</a></span>semFree()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classESemaphoreData.html">ESemaphoreData</a>&amp; EThreadQueuePrivate::semFree </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a3bc31795ba1356e69cb3053b14948a1b">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<a id="ab93f4b8c1a4e3a4859adfca2fdf028c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab93f4b8c1a4e3a4859adfca2fdf028c1">&#9670;&nbsp;</a></span>semMsgs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classESemaphoreData.html">ESemaphoreData</a>&amp; EThreadQueuePrivate::semMsgs </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="classEThreadQueueBase.html#a43079d9b32dab487d13197e443e4dd39">EThreadQueueBase</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etq_8h_source.html">etq.h</a></li>
-<li>/home/vagrant/share/code/ft/FoundationTools/epctools/src/<a class="el" href="etq_8cpp.html">etq.cpp</a></li>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/vagrant/share/code/ft/FoundationTools/epctools/include/epc/<a class="el" href="etevent_8h_source.html">etevent.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
