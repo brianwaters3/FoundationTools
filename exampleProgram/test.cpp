@@ -1576,6 +1576,9 @@ public:
 
    Void onClose();
    Void onError();
+
+private:
+   Listener();
 };
 
 class Talker : public ESocket::TCP::TalkerPrivate
@@ -2674,6 +2677,101 @@ Void threadExample()
 ///////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+#define MYPUBLICAPPID      10
+#define MYPUBLICTHREADID   1
+#define MYPUBLICEVENT      (EM_USER + 1)
+
+class MyPublicThread : public EThreadPublic
+{
+public:
+   MyPublicThread()
+   {
+      m_count = 0;
+   }
+
+   Void onInit()
+   {
+      std::cout << "MyPublicThread::onInit()" << std::endl << std::flush;
+   }
+
+   Void onQuit()
+   {
+      m_timer.Stop();
+
+      std::cout << "MyPublicThread::onQuit()" << std::endl << std::flush;
+
+      double persec = ((double)m_count) / (((double)m_timer.MicroSeconds()) / 1000000);
+      std::string s = numberFormatWithCommas<double>(persec);
+      cout << "Processed " << m_count << " messages in " << ((double)m_timer.MicroSeconds()) / 1000000 << " seconds (" << s << " per second)" << std::endl;
+   }
+
+   Void myfunc1(EThreadMessage &msg)
+   {
+      if (m_count == 0)
+         m_timer.Start();
+      m_count++;
+   }
+
+   DECLARE_MESSAGE_MAP()
+private:
+   Int m_count;
+   ETimer m_timer;
+};
+
+BEGIN_MESSAGE_MAP(MyPublicThread, EThreadPublic)
+   ON_MESSAGE(MYPUBLICEVENT, MyPublicThread::myfunc1)
+END_MESSAGE_MAP()
+
+Void publicThreadExample(Bool isHost)
+{
+   static Int queueSize = 100000;
+   Char buffer[128];
+
+   cout << "Enter the public event queue size [" << queueSize << "]: ";
+   cin.getline(buffer, sizeof(buffer));
+   queueSize = *buffer ? std::stoi(buffer) : queueSize;
+
+   if (isHost)
+   {
+      MyPublicThread t;
+      std::cout << "publicThreadExample() starting public thread" << std::endl << std::flush;
+      t.init(MYPUBLICAPPID, MYPUBLICTHREADID, NULL, queueSize);
+      t.join();
+      std::cout << "publicThreadExample() public thread test complete" << std::endl << std::flush;
+   }
+   else
+   {
+      static Int msgcnt = 10000;
+      static Int maxPrintIndex = 1;
+
+      cout << "Enter the number of messages to send [" << msgcnt << "]: ";
+      cin.getline(buffer, sizeof(buffer));
+      msgcnt = *buffer ? std::stoi(buffer) : msgcnt;
+
+      cout << "Enter the number of messages to print [" << maxPrintIndex << "]: ";
+      cin.getline(buffer, sizeof(buffer));
+      maxPrintIndex = *buffer ? std::stoi(buffer) : maxPrintIndex;
+
+      EThreadQueuePublic<EThreadMessage> q;
+      Long id = MYPUBLICAPPID * 10000 + MYPUBLICTHREADID;
+      q.init(queueSize, id, True, EThreadQueueMode::WriteOnly);
+
+      EThreadMessage event;
+      event.data().setMessageId(MYPUBLICEVENT);
+      Int idx;
+      for (idx=0; idx<msgcnt; idx++)
+      {
+         event.data().data().int64 = idx;
+         q.push(event);
+      }
+      q.push(EThreadMessage(EM_QUIT));
+      cout << std::endl << "Posted " << idx << " MyCustomEvent event messages to public queue " << id << std::endl;
+   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////
+
 Void usage()
 {
    const char *msg =
@@ -2689,24 +2787,26 @@ Void printMenu()
        "                       Enhanced Packet Core Tools Test Menu                     \n"
        "                         Public features are %senabled                          \n"
        "\n"
-       "1.  Semaphore/thread cancellation              19. Directory test               \n"
-       "2.  DateTime object tests                      20. Hash test                    \n"
-       "3.  Public thread test (1 writer, 1 reader)    21. Thread test (1 reader/writer)\n"
-       "4.  Public thread test (1 writer, 4 readers)   22. Deadlock                     \n"
-       "5.  Private thread test (1 writer, 4 readers)  23. Thread Test (4 writers)      \n"
-       "6.  Public queue test (reader)                 24. Mutex performance test       \n"
-       "7.  Public queue test (writer)                 25. Socket server                \n"
-       "8.  Elapsed timer                              26. Socket client                \n"
-       "9.  Error handling                             27. Read/Write Lock test         \n"
-       "10. Private Mutex test                         28. Options test                 \n"
-       "11. Public Mutex test                          29. Logger test                  \n"
-       "12. Private Semaphore test                     30. UDP socket test              \n"
-       "13. Public Semaphore test                      31. Timer Pool test              \n"
-       "14. Basic thread test                          32. Object Sizes                 \n"
-       "15. Thread suspend/resume                      33. Custom Public Event Host     \n"
-       "16. Thread periodic timer test                 34. Custom Public Event Client   \n"
-       "17. Thread one shot timer test                 35. Private Thread Example       \n"
-       "18. Circular buffer test                                                        \n"
+       "1.  Semaphore/thread cancellation              21. Thread test (1 reader/writer)\n"
+       "2.  DateTime object tests                      22. Deadlock                     \n"
+       "3.  Public thread test (1 writer, 1 reader)    23. Thread Test (4 writers)      \n"
+       "4.  Public thread test (1 writer, 4 readers)   24. Mutex performance test       \n"
+       "5.  Private thread test (1 writer, 4 readers)  25. Socket server                \n"
+       "6.  Public queue test (reader)                 26. Socket client                \n"
+       "7.  Public queue test (writer)                 27. Read/Write Lock test         \n"
+       "8.  Elapsed timer                              28. Options test                 \n"
+       "9.  Error handling                             29. Logger test                  \n"
+       "10. Private Mutex test                         30. UDP socket test              \n"
+       "11. Public Mutex test                          31. Timer Pool test              \n"
+       "12. Private Semaphore test                     32. Object Sizes                 \n"
+       "13. Public Semaphore test                      33. Custom Public Event Host     \n"
+       "14. Basic thread test                          34. Custom Public Event Client   \n"
+       "15. Thread suspend/resume                      35. Private Thread Example       \n"
+       "16. Thread periodic timer test                 36. Public Thread Example Host   \n"
+       "17. Thread one shot timer test                 37. Public Thread Example Client \n"
+       "18. Circular buffer test                       \n"
+       "19. Directory test                             \n"
+       "20. Hash test                                  \n"
        "\n",
        EpcTools::isPublicEnabled() ? "" : "NOT ");
 }
@@ -2836,6 +2936,12 @@ Void run(EGetOpt &options)
             break;
          case 35:
             threadExample();
+            break;
+         case 36:
+            publicThreadExample(True);
+            break;
+         case 37:
+            publicThreadExample(False);
             break;
          default:
             cout << "Invalid Selection" << endl
