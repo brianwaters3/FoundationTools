@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="my_customdoxygen.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -64,12 +65,14 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classESemaphoreBase-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ESemaphoreBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains the base functionality for a semaphore.  
+ <a href="classESemaphoreBase.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="esynch_8h_source.html">esynch.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -78,42 +81,50 @@ Inheritance diagram for ESemaphoreBase:</div>
  <div class="center">
   <img src="classESemaphoreBase.png" usemap="#ESemaphoreBase_map" alt=""/>
   <map id="ESemaphoreBase_map" name="ESemaphoreBase_map">
-<area href="classESemaphorePrivate.html" alt="ESemaphorePrivate" shape="rect" coords="0,56,124,80"/>
-<area href="classESemaphorePublic.html" alt="ESemaphorePublic" shape="rect" coords="134,56,258,80"/>
+<area href="classESemaphorePrivate.html" title="Represents a private semaphore, the semaphore data is allocated from either the stack or heap." alt="ESemaphorePrivate" shape="rect" coords="0,56,124,80"/>
+<area href="classESemaphorePublic.html" title="Represents a public semaphore, the semaphore data is located in shared memory." alt="ESemaphorePublic" shape="rect" coords="134,56,258,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8ce2a8d979f15263c1a33ae92c5357d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5">ESemaphoreBase</a> ()</td></tr>
+<tr class="memdesc:a8ce2a8d979f15263c1a33ae92c5357d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5">More...</a><br /></td></tr>
 <tr class="separator:a8ce2a8d979f15263c1a33ae92c5357d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86d7648f889b24c55505d43a8b2638a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5">~ESemaphoreBase</a> ()</td></tr>
+<tr class="memdesc:a86d7648f889b24c55505d43a8b2638a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class desctructor.  <a href="classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5">More...</a><br /></td></tr>
 <tr class="separator:a86d7648f889b24c55505d43a8b2638a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2372fa1a0e48387da7f705d3859e6683"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a2372fa1a0e48387da7f705d3859e6683">init</a> (<a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> initcnt)=0</td></tr>
+<tr class="memitem:a2372fa1a0e48387da7f705d3859e6683"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a2372fa1a0e48387da7f705d3859e6683">init</a> (Long initcnt)=0</td></tr>
+<tr class="memdesc:a2372fa1a0e48387da7f705d3859e6683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the semaphore data. This method must be overloaded in a derived class.  <a href="classESemaphoreBase.html#a2372fa1a0e48387da7f705d3859e6683">More...</a><br /></td></tr>
 <tr class="separator:a2372fa1a0e48387da7f705d3859e6683"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a284f8dfd9fb9f7bdc724a1c9c66331ec"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a284f8dfd9fb9f7bdc724a1c9c66331ec">destroy</a> ()=0</td></tr>
+<tr class="memitem:a284f8dfd9fb9f7bdc724a1c9c66331ec"><td class="memItemLeft" align="right" valign="top">virtual Void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a284f8dfd9fb9f7bdc724a1c9c66331ec">destroy</a> ()=0</td></tr>
+<tr class="memdesc:a284f8dfd9fb9f7bdc724a1c9c66331ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys/releases the semaphore data. This method must be overloaded in a derived class.  <a href="classESemaphoreBase.html#a284f8dfd9fb9f7bdc724a1c9c66331ec">More...</a><br /></td></tr>
 <tr class="separator:a284f8dfd9fb9f7bdc724a1c9c66331ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4517a1a12b12ca7fe182e77b0532dc5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement</a> (<a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memitem:a4517a1a12b12ca7fe182e77b0532dc5a"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement</a> (Bool wait=<a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>)</td></tr>
+<tr class="memdesc:a4517a1a12b12ca7fe182e77b0532dc5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the semaphore value.  <a href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">More...</a><br /></td></tr>
 <tr class="separator:a4517a1a12b12ca7fe182e77b0532dc5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a292bce693b058f636c74c9b6eb3ba226"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">Increment</a> ()</td></tr>
+<tr class="memitem:a292bce693b058f636c74c9b6eb3ba226"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">Increment</a> ()</td></tr>
+<tr class="memdesc:a292bce693b058f636c74c9b6eb3ba226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the semaphore value.  <a href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">More...</a><br /></td></tr>
 <tr class="separator:a292bce693b058f636c74c9b6eb3ba226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaf3df3c017b8dc16610665500e79729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">initialized</a> ()</td></tr>
+<tr class="memitem:aaaf3df3c017b8dc16610665500e79729"><td class="memItemLeft" align="right" valign="top">Bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">initialized</a> ()</td></tr>
+<tr class="memdesc:aaaf3df3c017b8dc16610665500e79729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates the initialization status for this object.  <a href="classESemaphoreBase.html#aaaf3df3c017b8dc16610665500e79729">More...</a><br /></td></tr>
 <tr class="separator:aaaf3df3c017b8dc16610665500e79729"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e8c9d20391eab2d3a0f52557a0f2353"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">shared</a> ()</td></tr>
+<tr class="memitem:a3e8c9d20391eab2d3a0f52557a0f2353"><td class="memItemLeft" align="right" valign="top">Bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">shared</a> ()</td></tr>
+<tr class="memdesc:a3e8c9d20391eab2d3a0f52557a0f2353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if this object is to be shared between processes.  <a href="classESemaphoreBase.html#a3e8c9d20391eab2d3a0f52557a0f2353">More...</a><br /></td></tr>
 <tr class="separator:a3e8c9d20391eab2d3a0f52557a0f2353"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac90974128cda664ba0bd643e8d78ad1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">initialCount</a> ()</td></tr>
+<tr class="memitem:ac90974128cda664ba0bd643e8d78ad1b"><td class="memItemLeft" align="right" valign="top">Long &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">initialCount</a> ()</td></tr>
+<tr class="memdesc:ac90974128cda664ba0bd643e8d78ad1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the initial semaphore value.  <a href="classESemaphoreBase.html#ac90974128cda664ba0bd643e8d78ad1b">More...</a><br /></td></tr>
 <tr class="separator:ac90974128cda664ba0bd643e8d78ad1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac7ea1fe891b896b4d17e9bd969631f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">currCount</a> ()</td></tr>
+<tr class="memitem:aac7ea1fe891b896b4d17e9bd969631f1"><td class="memItemLeft" align="right" valign="top">Long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">currCount</a> ()</td></tr>
+<tr class="memdesc:aac7ea1fe891b896b4d17e9bd969631f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current semaphore value.  <a href="classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1">More...</a><br /></td></tr>
 <tr class="separator:aac7ea1fe891b896b4d17e9bd969631f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a053bff01d0e5cc807e635006fd6710af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a053bff01d0e5cc807e635006fd6710af">operator ESemaphoreData &amp;</a> ()</td></tr>
+<tr class="memdesc:a053bff01d0e5cc807e635006fd6710af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a reference to the underlying semaphore data.  <a href="classESemaphoreBase.html#a053bff01d0e5cc807e635006fd6710af">More...</a><br /></td></tr>
 <tr class="separator:a053bff01d0e5cc807e635006fd6710af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0f516ca9e53fb7d456d56e5285ea0aed"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classESemaphoreBase.html#a0f516ca9e53fb7d456d56e5285ea0aed">getData</a> ()=0</td></tr>
-<tr class="separator:a0f516ca9e53fb7d456d56e5285ea0aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains the base functionality for a semaphore. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8ce2a8d979f15263c1a33ae92c5357d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ce2a8d979f15263c1a33ae92c5357d5">&#9670;&nbsp;</a></span>ESemaphoreBase()</h2>
 
@@ -136,6 +147,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -162,6 +175,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Class desctructor. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -175,7 +190,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a> ESemaphoreBase::currCount </td>
+          <td class="memname">Long ESemaphoreBase::currCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -187,6 +202,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the current semaphore value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the current semaphore value. </dd></dl>
 
 </div>
 </div>
@@ -200,9 +218,9 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> ESemaphoreBase::Decrement </td>
+          <td class="memname">Bool ESemaphoreBase::Decrement </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&#160;</td>
+          <td class="paramtype">Bool&#160;</td>
           <td class="paramname"><em>wait</em> = <code><a class="el" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a></code></td><td>)</td>
           <td></td>
         </tr>
@@ -213,6 +231,15 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Decrements the semaphore value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wait</td><td>indicates if the this method will block until the semaphore value is greater than zero. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True indicates that the semaphore value was successfully decremented, otherwise False. </dd></dl>
 
 </div>
 </div>
@@ -226,7 +253,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESemaphoreBase::destroy </td>
+          <td class="memname">virtual Void ESemaphoreBase::destroy </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -239,34 +266,9 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Destroys/releases the semaphore data. This method must be overloaded in a derived class. </p>
+
 <p>Implemented in <a class="el" href="classESemaphorePublic.html#ab1c20a99181f230eac073fc2f5f3f7fa">ESemaphorePublic</a>, and <a class="el" href="classESemaphorePrivate.html#ad57434f6ce5121502444d43d9a4556a1">ESemaphorePrivate</a>.</p>
-
-</div>
-</div>
-<a id="a0f516ca9e53fb7d456d56e5285ea0aed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f516ca9e53fb7d456d56e5285ea0aed">&#9670;&nbsp;</a></span>getData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="classESemaphoreData.html">ESemaphoreData</a>&amp; ESemaphoreBase::getData </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classESemaphorePublic.html#a43892a587c839748cc65021e70b85846">ESemaphorePublic</a>, and <a class="el" href="classESemaphorePrivate.html#a085512550c36aa87fa8bfefd602c68fe">ESemaphorePrivate</a>.</p>
 
 </div>
 </div>
@@ -280,7 +282,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> ESemaphoreBase::Increment </td>
+          <td class="memname">Bool ESemaphoreBase::Increment </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -292,6 +294,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Increments the semaphore value. </p>
+<dl class="section return"><dt>Returns</dt><dd>True indicates that the semaphore value was successfully decremented, otherwise False. </dd></dl>
 
 </div>
 </div>
@@ -305,9 +310,9 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="etypes_8h.html#afdf0f22c576e6ee1b982f64b839c4bea">Void</a> ESemaphoreBase::init </td>
+          <td class="memname">virtual Void ESemaphoreBase::init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&#160;</td>
+          <td class="paramtype">Long&#160;</td>
           <td class="paramname"><em>initcnt</em></td><td>)</td>
           <td></td>
         </tr>
@@ -318,6 +323,14 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Initializes the semaphore data. This method must be overloaded in a derived class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">initcnt</td><td>the initial count for the semaphore. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classESemaphorePublic.html#a82aaa64ef790bb7f50e46b75cfc0cf35">ESemaphorePublic</a>, and <a class="el" href="classESemaphorePrivate.html#ae628785707d4bb2fddba875d209f93b4">ESemaphorePrivate</a>.</p>
 
@@ -333,7 +346,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a0a5eb76a16b3e8ad63bfdf7925f9f37b">Long</a>&amp; ESemaphoreBase::initialCount </td>
+          <td class="memname">Long&amp; ESemaphoreBase::initialCount </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -345,6 +358,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Retrieves the initial semaphore value. </p>
+<dl class="section return"><dt>Returns</dt><dd>the initial semaphore value. </dd></dl>
 
 </div>
 </div>
@@ -358,7 +374,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a> ESemaphoreBase::initialized </td>
+          <td class="memname">Bool ESemaphoreBase::initialized </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -370,6 +386,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates the initialization status for this object. </p>
+<dl class="section return"><dt>Returns</dt><dd>True indicates the object is initialized, otherwise False. </dd></dl>
 
 </div>
 </div>
@@ -396,6 +415,9 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Retrieves a reference to the underlying semaphore data. </p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to the underlying semaphore data. </dd></dl>
+
 </div>
 </div>
 <a id="a3e8c9d20391eab2d3a0f52557a0f2353"></a>
@@ -408,7 +430,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="etypes_8h.html#a76a8b016e5ad61faf9062cc387df5016">Bool</a>&amp; ESemaphoreBase::shared </td>
+          <td class="memname">Bool&amp; ESemaphoreBase::shared </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -420,6 +442,9 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Indicates if this object is to be shared between processes. </p>
+<dl class="section return"><dt>Returns</dt><dd>True semaphore is to be shared, otherwise False. </dd></dl>
 
 </div>
 </div>

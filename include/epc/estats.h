@@ -68,7 +68,8 @@ public:
       diameter,
       gtpv2c,
       gtpv1u,
-      pfcp
+      pfcp,
+      ikev2
    };
 
    typedef UInt InterfaceId;

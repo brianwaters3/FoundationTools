@@ -26,6 +26,6 @@ var searchData=
   ['createsinkset',['createSinkSet',['../classELogger.html#a1c628d5920ebdcc9593ac1413be45a94',1,'ELogger']]],
   ['createsocket',['createSocket',['../classESocket_1_1TCP_1_1Listener.html#ac2910b7d5739e9291784cc3af4bfab01',1,'ESocket::TCP::Listener::createSocket(Thread&lt; TQueue, TMessage &gt; &amp;thread)=0'],['../classESocket_1_1TCP_1_1Listener.html#ae5e39611743cf6dfac413e6a8d4f67bf',1,'ESocket::TCP::Listener::createSocket()']]],
   ['critical',['critical',['../classELogger.html#a956c234b45f34ea3799ed0158b28d239',1,'ELogger']]],
-  ['currcount',['currCount',['../classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1',1,'ESemaphoreData']]],
+  ['currcount',['currCount',['../classESemaphoreData.html#ae604c258c45baf41608fb1836bf99fe1',1,'ESemaphoreData::currCount()'],['../classESemaphoreBase.html#aac7ea1fe891b896b4d17e9bd969631f1',1,'ESemaphoreBase::currCount()']]],
   ['currenttime',['currentTime',['../classEUtility.html#a4edb2b40da4ccde3f06253b4294b21e2',1,'EUtility']]]
 ];

@@ -40,6 +40,7 @@ var searchData=
   ['_7eequeuepublic',['~EQueuePublic',['../classEQueuePublic.html#a70d041e62256c6836b9d29d73a59fab1',1,'EQueuePublic']]],
   ['_7eerdlock',['~ERDLock',['../classERDLock.html#a33c2e00eaad817c047f1ce6c84cb8552',1,'ERDLock']]],
   ['_7eerwlock',['~ERWLock',['../classERWLock.html#a4dd57285bc16dc4557b74f0a057dbd1e',1,'ERWLock']]],
+  ['_7eesemaphorebase',['~ESemaphoreBase',['../classESemaphoreBase.html#a86d7648f889b24c55505d43a8b2638a5',1,'ESemaphoreBase']]],
   ['_7eesemaphoredata',['~ESemaphoreData',['../classESemaphoreData.html#ac0dbf2b76a6ca83e40703c9963ea9d3c',1,'ESemaphoreData']]],
   ['_7eesemaphoreprivate',['~ESemaphorePrivate',['../classESemaphorePrivate.html#a57f139212fecbf343581c3c53ba47f35',1,'ESemaphorePrivate']]],
   ['_7eesemaphorepublic',['~ESemaphorePublic',['../classESemaphorePublic.html#a33487b077963db0700c0507bb43b11c5',1,'ESemaphorePublic']]],

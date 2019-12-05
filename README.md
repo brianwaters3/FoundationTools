@@ -596,19 +596,236 @@ You will notice that application that will send the messages creates an instance
   
 <a  name="feature-overview-synchronization"></a>
 ## Synchronization
+  ***EpcTools*** supports several synchronization mechanisms which can be used to synchronize operations in multiple threads and processes.  
+
+| Type | Private | Public |
+| ----- | :------| :----- |
+| Mutex | [EMutexPrivate](@ref EMutexPrivate) | [EMutexPublic](@ref EMutexPublic) |
+| Semaphore | [ESemaphorePrivate](@ref ESemaphorePrivate) | [ESemaphorePublic](@ref ESemaphorePublic) |
+| Event | [EEvent](@ref EEvent) | N/A |
+| Read/Write Lock | [ERWLock](@ref ERWLock) | N/A |
   
 <a  name="feature-overview-synchronization-mutex"></a>
 ### Mutex
+A mutual exclusion or mutex allows for resource sharing by limiting access to that resource to a single thread.  An example of this would be to limit adding and removing entries to a linked list to a single thread since performing maintenance on the linked list from multiple threads would most likely cause the list pointers to become corrupted.
+
+A private mutex is allocated from the stack or heap and provides a locking mechanism to threads in the same process.
+**Mutex Example**
+```cpp
+EMutexPrivate m;
+```
+
+A public mutex is allocated from shared memory and provides synchronization to a single resource across processes.  Multiple processes can gain access to the same mutex by attaching to an existing mutex using the mutex ID.  The process that creates the mutex does so by simply declaring the mutex.  The mutex ID can be retrieved by using the [mutexId()](@ref EMutexPublic::mutexId) method.
+
+```cpp
+EMutexPublic m;
+std::cout << "Mutex ID = "  <<  m.mutexId() << std::endl;
+```
+Another process can attach to an existing mutex by bypassing the mutex initialization and calling the [attach()](@ref EMutexPublic::attach) method.  The method that the "other" process finds out about the mutex ID is up to the application developer.  Locking of a public mutex is performed the same way that a private mutex is locked.
+
+**Public Mutex Attach Example**
+```cpp
+EMutexPublic m(False);
+m.attach( mutex_id );
+```
+
+**Locking a Mutex**
+
+A mutex can be locked by creating an instance of [EMutexLock](@ref EMutexLock) which takes a reference to [EMutexData](@ref EMutexData) in it's constructor.  Both the [EMutexPrivate](@ref EMutexPrivate) and [EMutexPublic](@ref EMutexPublic) are derived from [EMutexData](@ref EMutexData), so either object can be passed as the constructor argument.  By default, the [EMutexLock](@ref EMutexLock::EMutexLock) constructor will wait for the lock to be obtained when object is created.  However, an optional flag can be passed to the [EMutexLock](@ref EMutexLock::EMutexLock) constructor to not acquire the lock.  In this case, the lock can be manually acquired by calling [acquire(Bool wait=True)](@ref EMutexLock::acquire).  If `wait` is True, [acquire()](@ref EMutexLock::acquire) will block until the lock can be obtained.  If `wait` is `False` and the lock cannot immediately obtained, [acquire()](@ref EMutexLock::acquire) will return False indicating that the lock was not obtained.
+
+Regardless of how the lock was obtained, when the [EMutexLock](@ref EMutexLock) object goes out of scope, the lock on the mutex will be released.
+
+**Mutex Lock Example**
+```cpp
+...
+EMutexPrivate m;
+...
+{
+	EMutexLock l(m, False);
+	if (l.acquire(False))
+	{
+		std::cout << "The lock has been acquired." << std::endl;
+	}
+	else
+	{
+		std::cout << "The lock has NOT been acquired." << std::endl;
+	}
+}
+```
   
 <a  name="feature-overview-synchronization-semaphore"></a>
 ### Semaphore
+A counting semaphore is simply a numeric variable that can be incremented and decremented.  For example, a semaphore could represent the number of records in a queue or the number of free entries in a pre-allocated array.
+
+A semaphore value can be incremented using the [Increment()](@ref ESemaphoreBase::Increment) method, and the semaphore value can be decremented using the [Decrement(Bool wait=True)](@ref ESemaphoreBase::Decrement) method.  When [Decrement(Bool wait=True)](@ref ESemaphoreBase::Decrement) is called, if the numeric value is zero and `wait` is `True`, the function will block until the value is greater than zero before decrementing it.  [Decrement(Bool wait=True)](@ref ESemaphoreBase::Decrement) returns `True` if the value was successfully decremented and `False` if the value was not successfully decremented.
+
+```cpp
+// initialize a semaphore with an initial value of 5
+ESemaphorePrivate s1(5);
+
+cout <<  "Decrementing";
+for (Int i = 1; i <= 5; i++)
+{
+	if (!s1.Decrement())
+		std::cout <<  "Error decrementing semaphore on pass " << i << std::endl;
+	std::cout <<  ".";
+}
+
+cout <<  "Checking for decrement action at zero...";
+if (s1.Decrement(False))
+	cout <<  " failed - Decrement returned true"  << endl;
+else
+	cout <<  "success"  << endl;
+```
   
+A semaphore can be either public or private as represented by [ESemaphorePublic](@ref ESemaphorePublic) and [ESemaphorePrivate](@ref ESemaphorePrivate).
+
 <a  name="feature-overview-synchronization-event"></a>
 ### Event
-  
+An event object is an object that can be waited on for something to occur.  An example could be waiting for a process to complete.
+
+**Event Example**
+```cpp
+class  EventExampleThread  :  public EThreadBasic
+{
+public:
+	EThreadBasicTest()  :  m_timetoquit(false)
+	{
+	}
+
+	Dword threadProc(Void *arg)
+	{
+		EEvent *ev1 = (EEvent*)arg;
+		...
+		ev1->set();
+		...
+		return 0;
+	}
+};
+
+...
+	EEvent ev1;
+	EventExampleThread t;
+	t.init(&ev1);
+	std::cout << "waiting for ev1" << std::endl;
+	ev1.wait();
+	std::cout << "ev1 has been set" << std::endl;
+	t.join();
+...
+```
+
 <a  name="feature-overview-synchronization-read-write-lock"></a>
 ### Read/Write Lock
+An Read/Write lock allows concurrent access for read-only operations, while write operations require exclusive access.  An example of this is accessing a list would obtain a read lock while updating the list would require a write lock.  When a write lock is obtained, it will prevent other read and/or write locks from being granted.  Similarly, if a write lock is requested and there is one or more active read locks, the write will only be granted after the read locks have been released.
+
+**Read/Write Lock Example**
+In this example, two threads will be created that will obtain read locks and a third thread will be created that will obtain a write lock.  These threads will run in different combinations that will demonstrate that multiple read locks can be obtained concurrently and only a single exclusive (of other read and write locks) write can be obtained at a time.
+
+```cpp
+#define  EM_RWLOCKTEST (EM_USER + 1)
   
+class  ERWLockTestThread : public  EThreadPrivate
+{
+public:
+	ERWLockTestThread(ERWLock  &rwl, Bool  reader, cpStr  name)
+		: m_rwlock(rwl),
+		  m_reader(reader),
+		  m_name(name)
+	{
+	}
+	  
+	Void  handleRequest(EThreadMessage  &msg)
+	{
+		Int delay = (Int)msg.data().data().int32[0];
+		Int hold = (Int)msg.data().data().int32[1];
+		ETimer tmr;
+		  
+		EThreadBasic::sleep(delay);
+		std::cout <<  "thread ["  << m_name <<  "] starting after "
+			<< delay <<  "ms ("  <<  tmr.MilliSeconds() <<  ")"  << std::endl << std::flush;
+		  
+		if (m_reader)
+		{
+			{
+				std::cout << "thread [" << m_name << "] waiting for read lock" << std::endl << std::flush;
+				// obtain a read lock, the lock will be released when rdlck goes out of scope
+				ERDLock rdlck(m_rwlock);
+				epctime_t elapsed =  tmr.MilliSeconds();
+				std::cout << "thread [" << m_name << "] read lock obtained after "
+					<< elapsed << "ms - holding lock for " << hold << "ms" << std::endl << std::flush;
+				EThreadBasic::sleep(hold);
+			}
+			std::cout <<  "thread [" << m_name << "] read lock released" << std::endl << std::flush;
+		}
+		else
+		{
+			{
+				std::cout << "thread [" << m_name << "] waiting for write lock" << std::endl << std::flush;
+				// obtain a write lock, the lock will be released when wrlck goes out of scope
+				EWRLock wrlck(m_rwlock);
+				epctime_t elapsed =  tmr.MilliSeconds();
+				std::cout << "thread [" << m_name << "] write lock obtained after "
+					<< elapsed << "ms - holding lock for " << hold << "ms" << std::endl << std::flush;
+				EThreadBasic::sleep(hold);
+			}
+			std::cout << "thread [" << m_name << "] write lock released" << std::endl << std::flush;
+		}
+	}
+	  
+	DECLARE_MESSAGE_MAP()
+  
+private:
+	ERWLockTestThread();	  
+	ERWLock &m_rwlock;
+	Bool m_reader;
+	cpStr m_name;
+};
+  
+BEGIN_MESSAGE_MAP(ERWLockTestThread, EThreadPrivate)
+	ON_MESSAGE(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)
+END_MESSAGE_MAP()
+  
+Void  ERWLock_test()
+{
+	std::cout << "ERWLock_test() Start" << std::endl;
+	  
+	ERWLock rwl;
+	  
+	ERWLockTestThread read1(rwl, True, "READ1");
+	ERWLockTestThread read2(rwl, True, "READ2");
+	ERWLockTestThread write1(rwl, False, "WRITE1");
+	  
+	std::cout << "ERWLock_test - initializing threads" << std::endl << std::flush;
+	read1.init(1, 1, NULL, 20000);
+	read2.init(1, 2, NULL, 20000);
+	write1.init(1, 3, NULL, 20000);
+	  
+	std::cout << "ERWLock_test - starting 1st test" << std::endl << std::flush;
+	read1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 0, 4000));
+	read2.sendMessage(EThreadMessage(EM_RWLOCKTEST, 50, 4000));
+	write1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1000, 4000));
+	EThreadBasic::sleep(10000);
+	std::cout << "ERWLock_test - 1st test complete" << std::endl << std::flush;
+	  
+	std::cout << "ERWLock_test - starting 2nd test" << std::endl << std::flush;
+	read1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1000, 4000));
+	read2.sendMessage(EThreadMessage(EM_RWLOCKTEST, 1050, 4000));
+	write1.sendMessage(EThreadMessage(EM_RWLOCKTEST, 0, 4000));
+	EThreadBasic::sleep(10000);
+	std::cout << "ERWLock_test - 2nd test complete" << std::endl << std::flush;
+	  
+	read1.quit();
+	read2.quit();
+	write1.quit();
+	  
+	read1.join();
+	read2.join();
+	write1.join();
+	  
+	std::cout <<  "ERWLock_test() Complete"  << std::endl;
+}
+```
+
 <a  name="feature-overview-socket-communications"></a>
 ## Socket Communications
 Asynchronous socket communications is supported by ***EpcTools*** in the ESocket namespace. Currently, support for IPv4 and IPv6 with both TCP and UDP have been implemented. The framework can be enhanced to support additional socket types such as Unix domain socket.

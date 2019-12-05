@@ -124,6 +124,7 @@ var searchData=
   ['err_5fmap_5fentry',['ERR_MAP_ENTRY',['../eerror_8h.html#a58b17bbd438eb54d3d105144ba44fad9',1,'eerror.h']]],
   ['error',['Error',['../classEError.html#a74f6b6a08d7437d3af94162b2a933498a851a12ccab82c36ac8e7f005d0eb04f9',1,'EError']]],
   ['erwlock',['ERWLock',['../classERWLock.html',1,'ERWLock'],['../classERWLock.html#ad4e3a2d98bf805fd643fde3442736ca0',1,'ERWLock::ERWLock()']]],
+  ['esemaphorebase',['ESemaphoreBase',['../classESemaphoreBase.html',1,'ESemaphoreBase'],['../classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5',1,'ESemaphoreBase::ESemaphoreBase()']]],
   ['esemaphoredata',['ESemaphoreData',['../classESemaphoreData.html',1,'ESemaphoreData'],['../classESemaphoreData.html#a23e3b44aa3d69f85ec2331ab6b682434',1,'ESemaphoreData::ESemaphoreData()'],['../classESemaphoreData.html#a73890ad633dcecf36aa30648b8578c24',1,'ESemaphoreData::ESemaphoreData(Long initcnt, Bool shared)']]],
   ['esemaphoreprivate',['ESemaphorePrivate',['../classESemaphorePrivate.html',1,'ESemaphorePrivate'],['../classESemaphorePrivate.html#ab4a4bd5ff519b0c7f6e4209d9b128305',1,'ESemaphorePrivate::ESemaphorePrivate()']]],
   ['esemaphorepublic',['ESemaphorePublic',['../classESemaphorePublic.html',1,'ESemaphorePublic'],['../classESemaphorePublic.html#ad9250baee3f0865aa738e854d5b5a359',1,'ESemaphorePublic::ESemaphorePublic()'],['../classESemaphorePublic.html#a8fa32e16c0eb8b30f963ab40d6c613e8',1,'ESemaphorePublic::ESemaphorePublic(Long initcnt, Bool bInit=True)']]],

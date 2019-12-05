@@ -639,19 +639,207 @@ Pack/Unpack</h3>
 <p><a class="anchor" id="feature-overview-synchronization"></a> </p>
 <h2><a class="anchor" id="autotoc_md29"></a>
 Synchronization</h2>
+<p><em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> supports several synchronization mechanisms which can be used to synchronize operations in multiple threads and processes. <br  />
+ </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Type  </th><th class="markdownTableHeadLeft">Private  </th><th class="markdownTableHeadLeft">Public   </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Mutex  </td><td class="markdownTableBodyLeft"><a class="el" href="classEMutexPrivate.html">EMutexPrivate</a>  </td><td class="markdownTableBodyLeft"><a class="el" href="classEMutexPublic.html">EMutexPublic</a>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Semaphore  </td><td class="markdownTableBodyLeft"><a class="el" href="classESemaphorePrivate.html">ESemaphorePrivate</a>  </td><td class="markdownTableBodyLeft"><a class="el" href="classESemaphorePublic.html">ESemaphorePublic</a>   </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Event  </td><td class="markdownTableBodyLeft"><a class="el" href="classEEvent.html">EEvent</a>  </td><td class="markdownTableBodyLeft">N/A   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Read/Write Lock  </td><td class="markdownTableBodyLeft"><a class="el" href="classERWLock.html">ERWLock</a>  </td><td class="markdownTableBodyLeft">N/A   </td></tr>
+</table>
 <p><a class="anchor" id="feature-overview-synchronization-mutex"></a> </p>
 <h3><a class="anchor" id="autotoc_md30"></a>
 Mutex</h3>
-<p><a class="anchor" id="feature-overview-synchronization-semaphore"></a> </p>
+<p>A mutual exclusion or mutex allows for resource sharing by limiting access to that resource to a single thread. An example of this would be to limit adding and removing entries to a linked list to a single thread since performing maintenance on the linked list from multiple threads would most likely cause the list pointers to become corrupted.</p>
+<p>A private mutex is allocated from the stack or heap and provides a locking mechanism to threads in the same process. <b>Mutex Example</b> </p><div class="fragment"><div class="line"><a class="code" href="classEMutexPrivate.html">EMutexPrivate</a> m;</div>
+</div><!-- fragment --><p>A public mutex is allocated from shared memory and provides synchronization to a single resource across processes. Multiple processes can gain access to the same mutex by attaching to an existing mutex using the mutex ID. The process that creates the mutex does so by simply declaring the mutex. The mutex ID can be retrieved by using the <a class="el" href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">mutexId()</a> method.</p>
+<div class="fragment"><div class="line"><a class="code" href="classEMutexPublic.html">EMutexPublic</a> m;</div>
+<div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;Mutex ID = &quot;</span>  &lt;&lt;  m.<a class="code" href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">mutexId</a>() &lt;&lt; std::endl;</div>
+</div><!-- fragment --><p> Another process can attach to an existing mutex by bypassing the mutex initialization and calling the <a class="el" href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">attach()</a> method. The method that the "other" process finds out about the mutex ID is up to the application developer. Locking of a public mutex is performed the same way that a private mutex is locked.</p>
+<p><b>Public Mutex Attach Example</b> </p><div class="fragment"><div class="line"><a class="code" href="classEMutexPublic.html">EMutexPublic</a> m(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>);</div>
+<div class="line">m.<a class="code" href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">attach</a>( mutex_id );</div>
+</div><!-- fragment --><p><b>Locking a Mutex</b></p>
+<p>A mutex can be locked by creating an instance of <a class="el" href="classEMutexLock.html">EMutexLock</a> which takes a reference to <a class="el" href="classEMutexData.html">EMutexData</a> in it's constructor. Both the <a class="el" href="classEMutexPrivate.html">EMutexPrivate</a> and <a class="el" href="classEMutexPublic.html">EMutexPublic</a> are derived from <a class="el" href="classEMutexData.html">EMutexData</a>, so either object can be passed as the constructor argument. By default, the <a class="el" href="classEMutexLock.html#a3bce7eb1fc8361da74e9fa47e5eff35b">EMutexLock</a> constructor will wait for the lock to be obtained when object is created. However, an optional flag can be passed to the <a class="el" href="classEMutexLock.html#a3bce7eb1fc8361da74e9fa47e5eff35b">EMutexLock</a> constructor to not acquire the lock. In this case, the lock can be manually acquired by calling <a class="el" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire(Bool wait=True)</a>. If <code>wait</code> is True, <a class="el" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire()</a> will block until the lock can be obtained. If <code>wait</code> is <code>False</code> and the lock cannot immediately obtained, <a class="el" href="classEMutexLock.html#ab20eb50fd474396c8c71b3c03a472ed2">acquire()</a> will return False indicating that the lock was not obtained.</p>
+<p>Regardless of how the lock was obtained, when the <a class="el" href="classEMutexLock.html">EMutexLock</a> object goes out of scope, the lock on the mutex will be released.</p>
+<p><b>Mutex Lock Example</b> </p><div class="fragment"><div class="line">...</div>
+<div class="line">EMutexPrivate m;</div>
+<div class="line">...</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="classEMutexLock.html">EMutexLock</a> l(m, <a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>);</div>
+<div class="line">    <span class="keywordflow">if</span> (l.acquire(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>))</div>
+<div class="line">    {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;The lock has been acquired.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;The lock has NOT been acquired.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><a class="anchor" id="feature-overview-synchronization-semaphore"></a> </p>
 <h3><a class="anchor" id="autotoc_md31"></a>
 Semaphore</h3>
+<p>A counting semaphore is simply a numeric variable that can be incremented and decremented. For example, a semaphore could represent the number of records in a queue or the number of free entries in a pre-allocated array.</p>
+<p>A semaphore value can be incremented using the <a class="el" href="classESemaphoreBase.html#a292bce693b058f636c74c9b6eb3ba226">Increment()</a> method, and the semaphore value can be decremented using the <a class="el" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement(Bool wait=True)</a> method. When <a class="el" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement(Bool wait=True)</a> is called, if the numeric value is zero and <code>wait</code> is <code>True</code>, the function will block until the value is greater than zero before decrementing it. <a class="el" href="classESemaphoreBase.html#a4517a1a12b12ca7fe182e77b0532dc5a">Decrement(Bool wait=True)</a> returns <code>True</code> if the value was successfully decremented and <code>False</code> if the value was not successfully decremented.</p>
+<div class="fragment"><div class="line"><span class="comment">// initialize a semaphore with an initial value of 5</span></div>
+<div class="line"><a class="code" href="classESemaphorePrivate.html">ESemaphorePrivate</a> s1(5);</div>
+<div class="line"> </div>
+<div class="line">cout &lt;&lt;  <span class="stringliteral">&quot;Decrementing&quot;</span>;</div>
+<div class="line"><span class="keywordflow">for</span> (Int i = 1; i &lt;= 5; i++)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (!s1.Decrement())</div>
+<div class="line">        std::cout &lt;&lt;  <span class="stringliteral">&quot;Error decrementing semaphore on pass &quot;</span> &lt;&lt; i &lt;&lt; std::endl;</div>
+<div class="line">    std::cout &lt;&lt;  <span class="stringliteral">&quot;.&quot;</span>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">cout &lt;&lt;  <span class="stringliteral">&quot;Checking for decrement action at zero...&quot;</span>;</div>
+<div class="line"><span class="keywordflow">if</span> (s1.Decrement(<a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>))</div>
+<div class="line">    cout &lt;&lt;  <span class="stringliteral">&quot; failed - Decrement returned true&quot;</span>  &lt;&lt; endl;</div>
+<div class="line"><span class="keywordflow">else</span></div>
+<div class="line">    cout &lt;&lt;  <span class="stringliteral">&quot;success&quot;</span>  &lt;&lt; endl;</div>
+</div><!-- fragment --><p>A semaphore can be either public or private as represented by <a class="el" href="classESemaphorePublic.html">ESemaphorePublic</a> and <a class="el" href="classESemaphorePrivate.html">ESemaphorePrivate</a>.</p>
 <p><a class="anchor" id="feature-overview-synchronization-event"></a> </p>
 <h3><a class="anchor" id="autotoc_md32"></a>
 Event</h3>
-<p><a class="anchor" id="feature-overview-synchronization-read-write-lock"></a> </p>
+<p>An event object is an object that can be waited on for something to occur. An example could be waiting for a process to complete.</p>
+<p><b>Event Example</b> </p><div class="fragment"><div class="line"><span class="keyword">class  </span>EventExampleThread  :  <span class="keyword">public</span> <a class="code" href="classEThreadBasic.html">EThreadBasic</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    EThreadBasicTest()  :  m_timetoquit(false)</div>
+<div class="line">    {</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Dword <a class="code" href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">threadProc</a>(Void *arg)</div>
+<div class="line">    {</div>
+<div class="line">        <a class="code" href="classEEvent.html">EEvent</a> *ev1 = (<a class="code" href="classEEvent.html">EEvent</a>*)arg;</div>
+<div class="line">        ...</div>
+<div class="line">        ev1-&gt;<a class="code" href="classEEvent.html#affcbd4245ade48e1973cfd785e2e9f93">set</a>();</div>
+<div class="line">        ...</div>
+<div class="line">        <span class="keywordflow">return</span> 0;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line">...</div>
+<div class="line">    <a class="code" href="classEEvent.html">EEvent</a> ev1;</div>
+<div class="line">    EventExampleThread t;</div>
+<div class="line">    t.init(&amp;ev1);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;waiting for ev1&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    ev1.<a class="code" href="classEEvent.html#a2b3c1661daa5cd157f49b8cc2ea02bea">wait</a>();</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ev1 has been set&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    t.join();</div>
+<div class="line">...</div>
+</div><!-- fragment --><p><a class="anchor" id="feature-overview-synchronization-read-write-lock"></a> </p>
 <h3><a class="anchor" id="autotoc_md33"></a>
 Read/Write Lock</h3>
-<p><a class="anchor" id="feature-overview-socket-communications"></a> </p>
+<p>An Read/Write lock allows concurrent access for read-only operations, while write operations require exclusive access. An example of this is accessing a list would obtain a read lock while updating the list would require a write lock. When a write lock is obtained, it will prevent other read and/or write locks from being granted. Similarly, if a write lock is requested and there is one or more active read locks, the write will only be granted after the read locks have been released.</p>
+<p><b>Read/Write Lock Example</b> In this example, two threads will be created that will obtain read locks and a third thread will be created that will obtain a write lock. These threads will run in different combinations that will demonstrate that multiple read locks can be obtained concurrently and only a single exclusive (of other read and write locks) write can be obtained at a time.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#define  EM_RWLOCKTEST (EM_USER + 1)</span></div>
+<div class="line">  </div>
+<div class="line"><span class="keyword">class  </span>ERWLockTestThread : <span class="keyword">public</span>  <a class="code" href="classEThreadEvent.html">EThreadPrivate</a></div>
+<div class="line">{</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    ERWLockTestThread(<a class="code" href="classERWLock.html">ERWLock</a>  &amp;rwl, Bool  reader, cpStr  name)</div>
+<div class="line">        : m_rwlock(rwl),</div>
+<div class="line">          m_reader(reader),</div>
+<div class="line">          m_name(name)</div>
+<div class="line">    {</div>
+<div class="line">    }</div>
+<div class="line">      </div>
+<div class="line">    Void  handleRequest(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>  &amp;msg)</div>
+<div class="line">    {</div>
+<div class="line">        Int delay = (Int)msg.<a class="code" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a>().data().int32[0];</div>
+<div class="line">        Int hold = (Int)msg.<a class="code" href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">data</a>().data().int32[1];</div>
+<div class="line">        <a class="code" href="classETimer.html">ETimer</a> tmr;</div>
+<div class="line">          </div>
+<div class="line">        <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a>(delay);</div>
+<div class="line">        std::cout &lt;&lt;  <span class="stringliteral">&quot;thread [&quot;</span>  &lt;&lt; m_name &lt;&lt;  <span class="stringliteral">&quot;] starting after &quot;</span></div>
+<div class="line">            &lt;&lt; delay &lt;&lt;  <span class="stringliteral">&quot;ms (&quot;</span>  &lt;&lt;  tmr.<a class="code" href="classETimer.html#a83ddc450e6e02c4528c967ac07f0c155">MilliSeconds</a>() &lt;&lt;  <span class="stringliteral">&quot;)&quot;</span>  &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">          </div>
+<div class="line">        <span class="keywordflow">if</span> (m_reader)</div>
+<div class="line">        {</div>
+<div class="line">            {</div>
+<div class="line">                std::cout &lt;&lt; <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] waiting for read lock&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">                <span class="comment">// obtain a read lock, the lock will be released when rdlck goes out of scope</span></div>
+<div class="line">                <a class="code" href="classERDLock.html">ERDLock</a> rdlck(m_rwlock);</div>
+<div class="line">                <a class="code" href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a> elapsed =  tmr.<a class="code" href="classETimer.html#a83ddc450e6e02c4528c967ac07f0c155">MilliSeconds</a>();</div>
+<div class="line">                std::cout &lt;&lt; <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] read lock obtained after &quot;</span></div>
+<div class="line">                    &lt;&lt; elapsed &lt;&lt; <span class="stringliteral">&quot;ms - holding lock for &quot;</span> &lt;&lt; hold &lt;&lt; <span class="stringliteral">&quot;ms&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">                <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a>(hold);</div>
+<div class="line">            }</div>
+<div class="line">            std::cout &lt;&lt;  <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] read lock released&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            {</div>
+<div class="line">                std::cout &lt;&lt; <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] waiting for write lock&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">                <span class="comment">// obtain a write lock, the lock will be released when wrlck goes out of scope</span></div>
+<div class="line">                <a class="code" href="classEWRLock.html">EWRLock</a> wrlck(m_rwlock);</div>
+<div class="line">                <a class="code" href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a> elapsed =  tmr.<a class="code" href="classETimer.html#a83ddc450e6e02c4528c967ac07f0c155">MilliSeconds</a>();</div>
+<div class="line">                std::cout &lt;&lt; <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] write lock obtained after &quot;</span></div>
+<div class="line">                    &lt;&lt; elapsed &lt;&lt; <span class="stringliteral">&quot;ms - holding lock for &quot;</span> &lt;&lt; hold &lt;&lt; <span class="stringliteral">&quot;ms&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">                <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a>(hold);</div>
+<div class="line">            }</div>
+<div class="line">            std::cout &lt;&lt; <span class="stringliteral">&quot;thread [&quot;</span> &lt;&lt; m_name &lt;&lt; <span class="stringliteral">&quot;] write lock released&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">      </div>
+<div class="line">    <a class="code" href="etevent_8h.html#a3e0395c0f948348673c39d06c8bd12bf">DECLARE_MESSAGE_MAP</a>()</div>
+<div class="line">  </div>
+<div class="line">private:</div>
+<div class="line">    ERWLockTestThread();      </div>
+<div class="line">    <a class="code" href="classERWLock.html">ERWLock</a> &amp;m_rwlock;</div>
+<div class="line">    Bool m_reader;</div>
+<div class="line">    cpStr m_name;</div>
+<div class="line">};</div>
+<div class="line">  </div>
+<div class="line"><a class="code" href="etevent_8h.html#a0c8d25bf6492235c4f7f47ee387698ae">BEGIN_MESSAGE_MAP</a>(ERWLockTestThread, <a class="code" href="classEThreadEvent.html">EThreadPrivate</a>)</div>
+<div class="line">    <a class="code" href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a>(EM_RWLOCKTEST, ERWLockTestThread::handleRequest)</div>
+<div class="line"><a class="code" href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a>()</div>
+<div class="line">  </div>
+<div class="line">Void  ERWLock_test()</div>
+<div class="line">{</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test() Start&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">      </div>
+<div class="line">    <a class="code" href="classERWLock.html">ERWLock</a> rwl;</div>
+<div class="line">      </div>
+<div class="line">    ERWLockTestThread read1(rwl, <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>, <span class="stringliteral">&quot;READ1&quot;</span>);</div>
+<div class="line">    ERWLockTestThread read2(rwl, <a class="code" href="ebase_8h.html#add3ca9eefe3b5b754426f51d3043e579">True</a>, <span class="stringliteral">&quot;READ2&quot;</span>);</div>
+<div class="line">    ERWLockTestThread write1(rwl, <a class="code" href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a>, <span class="stringliteral">&quot;WRITE1&quot;</span>);</div>
+<div class="line">      </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test - initializing threads&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">    read1.init(1, 1, NULL, 20000);</div>
+<div class="line">    read2.init(1, 2, NULL, 20000);</div>
+<div class="line">    write1.init(1, 3, NULL, 20000);</div>
+<div class="line">      </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test - starting 1st test&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">    read1.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 0, 4000));</div>
+<div class="line">    read2.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 50, 4000));</div>
+<div class="line">    write1.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 1000, 4000));</div>
+<div class="line">    <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a>(10000);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test - 1st test complete&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">      </div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test - starting 2nd test&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">    read1.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 1000, 4000));</div>
+<div class="line">    read2.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 1050, 4000));</div>
+<div class="line">    write1.sendMessage(<a class="code" href="classEThreadMessage.html">EThreadMessage</a>(EM_RWLOCKTEST, 0, 4000));</div>
+<div class="line">    <a class="code" href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a>(10000);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;ERWLock_test - 2nd test complete&quot;</span> &lt;&lt; std::endl &lt;&lt; std::flush;</div>
+<div class="line">      </div>
+<div class="line">    read1.quit();</div>
+<div class="line">    read2.quit();</div>
+<div class="line">    write1.quit();</div>
+<div class="line">      </div>
+<div class="line">    read1.join();</div>
+<div class="line">    read2.join();</div>
+<div class="line">    write1.join();</div>
+<div class="line">      </div>
+<div class="line">    std::cout &lt;&lt;  <span class="stringliteral">&quot;ERWLock_test() Complete&quot;</span>  &lt;&lt; std::endl;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><a class="anchor" id="feature-overview-socket-communications"></a> </p>
 <h2><a class="anchor" id="autotoc_md34"></a>
 Socket Communications</h2>
 <p>Asynchronous socket communications is supported by <em><b><a class="el" href="classEpcTools.html" title="The primary class used to initialize/uninitialize EpcTools.">EpcTools</a></b></em> in the <a class="el" href="namespaceESocket.html" title="The namespace for all socket related classes.">ESocket</a> namespace. Currently, support for IPv4 and IPv6 with both TCP and UDP have been implemented. The framework can be enhanced to support additional socket types such as Unix domain socket.</p>
@@ -1113,9 +1301,11 @@ Circular Buffer</h3>
 <div class="ttc" id="aclassEThreadEventMessageBase_html_a230c9b28843f770b7cbe41c573516603"><div class="ttname"><a href="classEThreadEventMessageBase.html#a230c9b28843f770b7cbe41c573516603">EThreadEventMessageBase::data</a></div><div class="ttdeci">T &amp; data()</div><div class="ttdoc">Retrieves the data portion of the message.</div><div class="ttdef"><b>Definition:</b> etevent.h:233</div></div>
 <div class="ttc" id="aclassEThreadQueuePublic_html"><div class="ttname"><a href="classEThreadQueuePublic.html">EThreadQueuePublic</a></div><div class="ttdoc">Definition of a public event thread message queue.</div><div class="ttdef"><b>Definition:</b> etevent.h:566</div></div>
 <div class="ttc" id="aclassESocket_1_1Thread_html"><div class="ttname"><a href="classESocket_1_1Thread.html">ESocket::Thread</a></div><div class="ttdoc">The socket thread base class. An event based thread class capable of surfacing socket events.</div><div class="ttdef"><b>Definition:</b> esocket.h:1440</div></div>
+<div class="ttc" id="aclassETimer_html_a83ddc450e6e02c4528c967ac07f0c155"><div class="ttname"><a href="classETimer.html#a83ddc450e6e02c4528c967ac07f0c155">ETimer::MilliSeconds</a></div><div class="ttdeci">epctime_t MilliSeconds(Bool bRestart=False)</div><div class="ttdoc">Retrieves the current value of the timer in milliseconds.</div><div class="ttdef"><b>Definition:</b> etimer.cpp:81</div></div>
 <div class="ttc" id="aclassEThreadBasic_html_a2af11d0367222ca518151c21f543a6ec"><div class="ttname"><a href="classEThreadBasic.html#a2af11d0367222ca518151c21f543a6ec">EThreadBasic::threadProc</a></div><div class="ttdeci">virtual Dword threadProc(pVoid arg)=0</div><div class="ttdoc">Function that will be called in a separate thread.</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_a2a2e9f2861837116aff0c3c96656afdb"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#a2a2e9f2861837116aff0c3c96656afdb">ESocket::TCP::Talker::getRemotePort</a></div><div class="ttdeci">UShort getRemotePort() const</div><div class="ttdoc">Retrieves the port associated with the remote socket.</div><div class="ttdef"><b>Definition:</b> esocket.h:609</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Listener_html_abb5e0d65fddbc44cfcfdbc6d8404ca97"><div class="ttname"><a href="classESocket_1_1TCP_1_1Listener.html#abb5e0d65fddbc44cfcfdbc6d8404ca97">ESocket::TCP::Listener::~Listener</a></div><div class="ttdeci">virtual ~Listener()</div><div class="ttdoc">Class destructor.</div><div class="ttdef"><b>Definition:</b> esocket.h:965</div></div>
+<div class="ttc" id="aclassEEvent_html"><div class="ttname"><a href="classEEvent.html">EEvent</a></div><div class="ttdoc">An object that can be waited on to be set in another thread.</div><div class="ttdef"><b>Definition:</b> esynch.h:616</div></div>
 <div class="ttc" id="aclassETime_html_a18dad5deae22bfe316cad3171daca59c"><div class="ttname"><a href="classETime.html#a18dad5deae22bfe316cad3171daca59c">ETime::Now</a></div><div class="ttdeci">static ETime Now()</div><div class="ttdoc">Retrieves the current time.</div><div class="ttdef"><b>Definition:</b> etime.cpp:1148</div></div>
 <div class="ttc" id="aclassEThreadEvent_html_ad9dbc8444a26b5865c399f5a075daf2c"><div class="ttname"><a href="classEThreadEvent.html#ad9dbc8444a26b5865c399f5a075daf2c">EThreadEvent::initTimer</a></div><div class="ttdeci">Void initTimer(EThreadEventTimer &amp;t)</div><div class="ttdoc">Intializes an EThreadEvent::Timer object and associates with this thread.</div><div class="ttdef"><b>Definition:</b> etevent.h:1203</div></div>
 <div class="ttc" id="aclassEThreadBasic_html_a94c06aeb1d4a549f367fda6d39c43a71"><div class="ttname"><a href="classEThreadBasic.html#a94c06aeb1d4a549f367fda6d39c43a71">EThreadBasic::sleep</a></div><div class="ttdeci">static Void sleep(Int milliseconds)</div><div class="ttdoc">Sleeps for the specified number of milliseconds.</div><div class="ttdef"><b>Definition:</b> etbasic.cpp:149</div></div>
@@ -1127,7 +1317,9 @@ Circular Buffer</h3>
 <div class="ttc" id="aclassEThreadEventMessageDataBase_html_aab7b01e9913284bd9af3d8d510ef892d"><div class="ttname"><a href="classEThreadEventMessageDataBase.html#aab7b01e9913284bd9af3d8d510ef892d">EThreadEventMessageDataBase::setVoidPtr</a></div><div class="ttdeci">virtual Void setVoidPtr(pVoid p)=0</div><div class="ttdoc">Sets the void pointer.</div></div>
 <div class="ttc" id="aetevent_8h_html_a1fbc3aa077e4e82c9f1fa82d32653273"><div class="ttname"><a href="etevent_8h.html#a1fbc3aa077e4e82c9f1fa82d32653273">ON_MESSAGE</a></div><div class="ttdeci">#define ON_MESSAGE(id, memberFxn)</div><div class="ttdoc">Defines an invidual event handler.</div><div class="ttdef"><b>Definition:</b> etevent.h:818</div></div>
 <div class="ttc" id="aclassEThreadEvent_html_adbdfea9c7c873363a05241dd166fa65b"><div class="ttname"><a href="classEThreadEvent.html#adbdfea9c7c873363a05241dd166fa65b">EThreadEvent::sendMessage</a></div><div class="ttdeci">Bool sendMessage(UInt message, Bool wait=True)</div><div class="ttdoc">Sends event message to this thread.</div><div class="ttdef"><b>Definition:</b> etevent.h:1082</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_ab7ba904a8f25286d03118efaee635e84"><div class="ttname"><a href="classEMutexPublic.html#ab7ba904a8f25286d03118efaee635e84">EMutexPublic::attach</a></div><div class="ttdeci">Void attach(Int mutexid)</div><div class="ttdoc">Associates this public mutex object with the mutex ID located in shared memory.</div><div class="ttdef"><b>Definition:</b> esynch.cpp:425</div></div>
 <div class="ttc" id="aclassEThreadEvent_html_acc26ee3ebe6b5a0e18477c39c01b3c3a"><div class="ttname"><a href="classEThreadEvent.html#acc26ee3ebe6b5a0e18477c39c01b3c3a">EThreadEvent::onTimer</a></div><div class="ttdeci">virtual Void onTimer(EThreadEventTimer *ptimer)</div><div class="ttdoc">Called in the context of the thread when th EM_TIMER event is processed.</div><div class="ttdef"><b>Definition:</b> etevent.h:1197</div></div>
+<div class="ttc" id="aclassEMutexPrivate_html"><div class="ttname"><a href="classEMutexPrivate.html">EMutexPrivate</a></div><div class="ttdoc">A private mutex (the mutex data is allocated from either the heap or stack).</div><div class="ttdef"><b>Definition:</b> esynch.h:175</div></div>
 <div class="ttc" id="aclassEThreadEvent_html"><div class="ttname"><a href="classEThreadEvent.html">EThreadEvent</a></div><div class="ttdoc">base class for EThreadPrivate and EThreadPublic</div><div class="ttdef"><b>Definition:</b> etevent.h:1040</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_ab3fbfcfbd4fc5378966ad4362779006c"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#ab3fbfcfbd4fc5378966ad4362779006c">ESocket::TCP::Talker::onClose</a></div><div class="ttdeci">virtual Void onClose()</div><div class="ttdoc">Called when the socket has been closed.</div><div class="ttdef"><b>Definition:</b> esocket.h:750</div></div>
 <div class="ttc" id="aclassEThreadEventMessageBase_html"><div class="ttname"><a href="classEThreadEventMessageBase.html">EThreadEventMessageBase</a></div><div class="ttdoc">A template class that all event message classes should derive from.</div><div class="ttdef"><b>Definition:</b> etevent.h:206</div></div>
@@ -1136,18 +1328,25 @@ Circular Buffer</h3>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_a23c48944af233184985d92c0b155d5ae"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#a23c48944af233184985d92c0b155d5ae">ESocket::TCP::Talker::Talker</a></div><div class="ttdeci">Talker(Thread&lt; TQueue, TMessage &gt; &amp;thread, Int bufsize=2097152)</div><div class="ttdoc">Class constructor.</div><div class="ttdef"><b>Definition:</b> esocket.h:548</div></div>
 <div class="ttc" id="aclassESocket_1_1UDP_html_a7853433bb2daa353e88263ac62d9e04f"><div class="ttname"><a href="classESocket_1_1UDP.html#a7853433bb2daa353e88263ac62d9e04f">ESocket::UDP::onError</a></div><div class="ttdeci">virtual Void onError()</div><div class="ttdoc">Called when an error is detected on this socket.</div><div class="ttdef"><b>Definition:</b> esocket.h:1261</div></div>
 <div class="ttc" id="aclassEThreadEventTimer_html_ab95bdb5c96b1ebe5662785282584dbab"><div class="ttname"><a href="classEThreadEventTimer.html#ab95bdb5c96b1ebe5662785282584dbab">EThreadEventTimer::setInterval</a></div><div class="ttdeci">Void setInterval(Long interval)</div><div class="ttdoc">sets the timer interval</div><div class="ttdef"><b>Definition:</b> etevent.h:964</div></div>
+<div class="ttc" id="aclassERWLock_html"><div class="ttname"><a href="classERWLock.html">ERWLock</a></div><div class="ttdoc">Encapsulates a read-write lock object.</div><div class="ttdef"><b>Definition:</b> esynch.h:507</div></div>
 <div class="ttc" id="anamespaceESocket_html_a24cc0ce3fc2469d0913def48e8a7f4dd"><div class="ttname"><a href="namespaceESocket.html#a24cc0ce3fc2469d0913def48e8a7f4dd">ESocket::UdpPrivate</a></div><div class="ttdeci">UDP&lt; EThreadQueuePrivate&lt; EThreadMessage &gt;, EThreadMessage &gt; UdpPrivate</div><div class="ttdef"><b>Definition:</b> esocket.h:1875</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html">ESocket::TCP::Talker</a></div><div class="ttdoc">A TCP socket class capabile of sending and receiving data.</div><div class="ttdef"><b>Definition:</b> esocket.h:540</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_af4e3b0929084c49301d32a115dcde8bf"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#af4e3b0929084c49301d32a115dcde8bf">ESocket::TCP::Talker::getLocalPort</a></div><div class="ttdeci">UShort getLocalPort() const</div><div class="ttdoc">Retrieves the port associated with the local socket.</div><div class="ttdef"><b>Definition:</b> esocket.h:574</div></div>
+<div class="ttc" id="aclassEMutexPublic_html"><div class="ttname"><a href="classEMutexPublic.html">EMutexPublic</a></div><div class="ttdoc">A public mutex (the mutex data is located in shared memory).</div><div class="ttdef"><b>Definition:</b> esynch.h:223</div></div>
+<div class="ttc" id="aclassETimer_html"><div class="ttname"><a href="classETimer.html">ETimer</a></div><div class="ttdoc">Implements a stopwatch style timer.</div><div class="ttdef"><b>Definition:</b> etimer.h:26</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Listener_html_a2f9b721b8075770566ca000626d2f03f"><div class="ttname"><a href="classESocket_1_1TCP_1_1Listener.html#a2f9b721b8075770566ca000626d2f03f">ESocket::TCP::Listener::onClose</a></div><div class="ttdeci">virtual Void onClose()</div><div class="ttdoc">Called when this socket is closed.</div><div class="ttdef"><b>Definition:</b> esocket.h:1033</div></div>
 <div class="ttc" id="aclassESharedMemory_html_affda2d92d4ba4506b196d7c266b777ad"><div class="ttname"><a href="classESharedMemory.html#affda2d92d4ba4506b196d7c266b777ad">ESharedMemory::getDataPtr</a></div><div class="ttdeci">pVoid getDataPtr()</div><div class="ttdoc">Retrieves a pointer to the first location of the shated memory.</div><div class="ttdef"><b>Definition:</b> eshmem.h:65</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_aaf7cb01536df66dcf51bb34db1a4dd69"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#aaf7cb01536df66dcf51bb34db1a4dd69">ESocket::TCP::Talker::write</a></div><div class="ttdeci">Void write(pUChar src, Int len)</div><div class="ttdoc">Writes data to the socket. This is a thread safe method.</div><div class="ttdef"><b>Definition:</b> esocket.h:706</div></div>
 <div class="ttc" id="aclassESharedMemory_html_ad231d66f0e4d22240690008d6131cff7"><div class="ttname"><a href="classESharedMemory.html#ad231d66f0e4d22240690008d6131cff7">ESharedMemory::init</a></div><div class="ttdeci">Void init(cpStr file, Int id, Int size)</div><div class="ttdoc">Initializes this shared memory object. This method is called by the parameterized constructor.</div><div class="ttdef"><b>Definition:</b> eshmem.cpp:109</div></div>
+<div class="ttc" id="aclassEMutexPublic_html_ab18eafe10a216cffb94fe4dd68bac0da"><div class="ttname"><a href="classEMutexPublic.html#ab18eafe10a216cffb94fe4dd68bac0da">EMutexPublic::mutexId</a></div><div class="ttdeci">Int mutexId()</div><div class="ttdoc">Retrieves the mutex ID associated with this public mutex.</div><div class="ttdef"><b>Definition:</b> esynch.h:253</div></div>
+<div class="ttc" id="aclassEEvent_html_a2b3c1661daa5cd157f49b8cc2ea02bea"><div class="ttname"><a href="classEEvent.html#a2b3c1661daa5cd157f49b8cc2ea02bea">EEvent::wait</a></div><div class="ttdeci">Bool wait(int ms=-1)</div><div class="ttdoc">Waits for the event to be set.</div><div class="ttdef"><b>Definition:</b> esynch.cpp:684</div></div>
 <div class="ttc" id="aebase_8h_html_a306ebd41c0cd1303b1372c6153f0caf8"><div class="ttname"><a href="ebase_8h.html#a306ebd41c0cd1303b1372c6153f0caf8">False</a></div><div class="ttdeci">#define False</div><div class="ttdoc">False.</div><div class="ttdef"><b>Definition:</b> ebase.h:27</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_ad4b68e850d7e48377060cf52759496af"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#ad4b68e850d7e48377060cf52759496af">ESocket::TCP::Talker::read</a></div><div class="ttdeci">Int read(pUChar dest, Int len)</div><div class="ttdoc">Rtrieves the specified number of bytes from the receive buffer.</div><div class="ttdef"><b>Definition:</b> esocket.h:699</div></div>
 <div class="ttc" id="aclassESocket_1_1Base_html_a9b99ddcf9c8db8c26b7cb5eab79cfb7c"><div class="ttname"><a href="classESocket_1_1Base.html#a9b99ddcf9c8db8c26b7cb5eab79cfb7c">ESocket::Base::getError</a></div><div class="ttdeci">Int getError()</div><div class="ttdoc">Retrieves the last error value.</div><div class="ttdef"><b>Definition:</b> esocket.h:368</div></div>
 <div class="ttc" id="aclassEThreadEventTimer_html_a6c65cb3297ebc6b37d0aaf8b38445ece"><div class="ttname"><a href="classEThreadEventTimer.html#a6c65cb3297ebc6b37d0aaf8b38445ece">EThreadEventTimer::setOneShot</a></div><div class="ttdeci">Void setOneShot(Bool oneshot)</div><div class="ttdoc">sets the type of timer</div><div class="ttdef"><b>Definition:</b> etevent.h:969</div></div>
 <div class="ttc" id="aclassESocket_1_1UDP_html_abb7c08416e17e054fdb1c2af9f18e54c"><div class="ttname"><a href="classESocket_1_1UDP.html#abb7c08416e17e054fdb1c2af9f18e54c">ESocket::UDP::write</a></div><div class="ttdeci">Void write(const Address &amp;to, pVoid src, Int len)</div><div class="ttdoc">Sends data to the specified recipient address.</div><div class="ttdef"><b>Definition:</b> esocket.h:1195</div></div>
+<div class="ttc" id="aclassERDLock_html"><div class="ttname"><a href="classERDLock.html">ERDLock</a></div><div class="ttdoc">Request a read lock for the specified read-write lock object.</div><div class="ttdef"><b>Definition:</b> esynch.h:535</div></div>
+<div class="ttc" id="aclassESemaphorePrivate_html"><div class="ttname"><a href="classESemaphorePrivate.html">ESemaphorePrivate</a></div><div class="ttdoc">Represents a private semaphore, the semaphore data is allocated from either the stack or heap.</div><div class="ttdef"><b>Definition:</b> esynch.h:382</div></div>
 <div class="ttc" id="aclassETime_html_a7c794038cc4ca2f0c9cffbf9e5a2bbee"><div class="ttname"><a href="classETime.html#a7c794038cc4ca2f0c9cffbf9e5a2bbee">ETime::Format</a></div><div class="ttdeci">Void Format(EString &amp;dest, cpStr fmt, Bool local)</div><div class="ttdoc">Formats the date/time value as specified by the format string.</div><div class="ttdef"><b>Definition:</b> etime.cpp:1158</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_ac5052fac32b4e46a1d0fec4afeb5fcb6"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#ac5052fac32b4e46a1d0fec4afeb5fcb6">ESocket::TCP::Talker::~Talker</a></div><div class="ttdeci">virtual ~Talker()</div><div class="ttdoc">Class destrucor.</div><div class="ttdef"><b>Definition:</b> esocket.h:557</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_af8b8e2fc6259ff340b5b274105ac9060"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#af8b8e2fc6259ff340b5b274105ac9060">ESocket::TCP::Talker::bytesPending</a></div><div class="ttdeci">Int bytesPending()</div><div class="ttdoc">Retrieves the number of bytes in the receive buffer.</div><div class="ttdef"><b>Definition:</b> esocket.h:682</div></div>
@@ -1158,6 +1357,7 @@ Circular Buffer</h3>
 <div class="ttc" id="aclassEThreadEventMessageDataBase_html_a54bf958a39d811cd2d2dac47eb842d22"><div class="ttname"><a href="classEThreadEventMessageDataBase.html#a54bf958a39d811cd2d2dac47eb842d22">EThreadEventMessageDataBase::getVoidPtr</a></div><div class="ttdeci">virtual pVoid getVoidPtr()=0</div><div class="ttdoc">Retrieves the void pointer.</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_aee324d8b118f582de5ce69cf4e2ec6a8"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#aee324d8b118f582de5ce69cf4e2ec6a8">ESocket::TCP::Talker::getLocalAddress</a></div><div class="ttdeci">EString getLocalAddress() const</div><div class="ttdoc">Retrieves the IP address associated with the local socket.</div><div class="ttdef"><b>Definition:</b> esocket.h:568</div></div>
 <div class="ttc" id="aclassEThreadEventTimer_html_afe96e27e5031ae396f1f66160fb9e0ad"><div class="ttname"><a href="classEThreadEventTimer.html#afe96e27e5031ae396f1f66160fb9e0ad">EThreadEventTimer::start</a></div><div class="ttdeci">Void start()</div><div class="ttdoc">Starts the timer.</div><div class="ttdef"><b>Definition:</b> etevent.h:932</div></div>
+<div class="ttc" id="aclassEWRLock_html"><div class="ttname"><a href="classEWRLock.html">EWRLock</a></div><div class="ttdoc">Request a write lock for the specified read-write lock object.</div><div class="ttdef"><b>Definition:</b> esynch.h:574</div></div>
 <div class="ttc" id="aclassEThreadBasic_html"><div class="ttname"><a href="classEThreadBasic.html">EThreadBasic</a></div><div class="ttdoc">An abstract class that represents contains the threadProc() that will be run in a separate thread.</div><div class="ttdef"><b>Definition:</b> etbasic.h:53</div></div>
 <div class="ttc" id="aetevent_8h_html_ae52a1e808bcf6220acbef40e8351b8e7"><div class="ttname"><a href="etevent_8h.html#ae52a1e808bcf6220acbef40e8351b8e7">END_MESSAGE_MAP</a></div><div class="ttdeci">#define END_MESSAGE_MAP()</div><div class="ttdoc">Ends the message map declaration.</div><div class="ttdef"><b>Definition:</b> etevent.h:822</div></div>
 <div class="ttc" id="aetevent_8h_html_a3e0395c0f948348673c39d06c8bd12bf"><div class="ttname"><a href="etevent_8h.html#a3e0395c0f948348673c39d06c8bd12bf">DECLARE_MESSAGE_MAP</a></div><div class="ttdeci">#define DECLARE_MESSAGE_MAP()</div><div class="ttdoc">Inserts message map declarations into the thread class.</div><div class="ttdef"><b>Definition:</b> etevent.h:793</div></div>
@@ -1167,11 +1367,14 @@ Circular Buffer</h3>
 <div class="ttc" id="aclassEThreadEvent_html_ad9c48af1f8f68bc7631c547ff2f31757"><div class="ttname"><a href="classEThreadEvent.html#ad9c48af1f8f68bc7631c547ff2f31757">EThreadEvent::quit</a></div><div class="ttdeci">Void quit()</div><div class="ttdoc">Posts the quit message to this thread.</div><div class="ttdef"><b>Definition:</b> etevent.h:1149</div></div>
 <div class="ttc" id="anamespaceESocket_1_1TCP_html_af194efe40cc3fd2948342f083b8b42e2"><div class="ttname"><a href="namespaceESocket_1_1TCP.html#af194efe40cc3fd2948342f083b8b42e2">ESocket::TCP::ListenerPrivate</a></div><div class="ttdeci">Listener&lt; EThreadQueuePrivate&lt; EThreadMessage &gt;, EThreadMessage &gt; ListenerPrivate</div><div class="ttdef"><b>Definition:</b> esocket.h:1872</div></div>
 <div class="ttc" id="aclassEError_html"><div class="ttname"><a href="classEError.html">EError</a></div><div class="ttdoc">The base class for exceptions derived from std::exception.</div><div class="ttdef"><b>Definition:</b> eerror.h:92</div></div>
+<div class="ttc" id="aclassEEvent_html_affcbd4245ade48e1973cfd785e2e9f93"><div class="ttname"><a href="classEEvent.html#affcbd4245ade48e1973cfd785e2e9f93">EEvent::set</a></div><div class="ttdeci">Void set()</div><div class="ttdoc">Sets the event.</div><div class="ttdef"><b>Definition:</b> esynch.cpp:671</div></div>
 <div class="ttc" id="aclassESocket_1_1Base_html"><div class="ttname"><a href="classESocket_1_1Base.html">ESocket::Base</a></div><div class="ttdoc">The base socket class.</div><div class="ttdef"><b>Definition:</b> esocket.h:317</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_a1f2208e942a66964cc5be4ca1e172aa6"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#a1f2208e942a66964cc5be4ca1e172aa6">ESocket::TCP::Talker::onConnect</a></div><div class="ttdeci">virtual Void onConnect()</div><div class="ttdoc">Called when a connection has been established.</div><div class="ttdef"><b>Definition:</b> esocket.h:746</div></div>
+<div class="ttc" id="aebase_8h_html_a2017da1a7bf300a2d47bae722cec5e70"><div class="ttname"><a href="ebase_8h.html#a2017da1a7bf300a2d47bae722cec5e70">epctime_t</a></div><div class="ttdeci">long long int epctime_t</div><div class="ttdoc">time typedef</div><div class="ttdef"><b>Definition:</b> ebase.h:34</div></div>
 <div class="ttc" id="anamespaceESocket_1_1TCP_html_a6ba05fd575a2c8260b8a447ca63cb2d5"><div class="ttname"><a href="namespaceESocket_1_1TCP.html#a6ba05fd575a2c8260b8a447ca63cb2d5">ESocket::TCP::TalkerPrivate</a></div><div class="ttdeci">Talker&lt; EThreadQueuePrivate&lt; EThreadMessage &gt;, EThreadMessage &gt; TalkerPrivate</div><div class="ttdef"><b>Definition:</b> esocket.h:1870</div></div>
 <div class="ttc" id="aclassESocket_1_1Address_html"><div class="ttname"><a href="classESocket_1_1Address.html">ESocket::Address</a></div><div class="ttdoc">Encapsulates a sockaddr_storage structure that represents a socket address.</div><div class="ttdef"><b>Definition:</b> esocket.h:143</div></div>
 <div class="ttc" id="aclassESocket_1_1UDP_html"><div class="ttname"><a href="classESocket_1_1UDP.html">ESocket::UDP</a></div><div class="ttdoc">A UDP socket class capabile of sending and receiving data.</div><div class="ttdef"><b>Definition:</b> esocket.h:1074</div></div>
+<div class="ttc" id="aclassEMutexLock_html"><div class="ttname"><a href="classEMutexLock.html">EMutexLock</a></div><div class="ttdoc">Acquires and holds a lock on the specified mutex.</div><div class="ttdef"><b>Definition:</b> esynch.h:133</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Listener_html_ae5e39611743cf6dfac413e6a8d4f67bf"><div class="ttname"><a href="classESocket_1_1TCP_1_1Listener.html#ae5e39611743cf6dfac413e6a8d4f67bf">ESocket::TCP::Listener::createSocket</a></div><div class="ttdeci">Talker&lt; TQueue, TMessage &gt; * createSocket()</div><div class="ttdoc">Called to create a talking socket when a incoming connection is received.</div><div class="ttdef"><b>Definition:</b> esocket.h:1028</div></div>
 <div class="ttc" id="aclassESocket_1_1TCP_1_1Talker_html_a798d06b0be2a1fd8992797534e51b665"><div class="ttname"><a href="classESocket_1_1TCP_1_1Talker.html#a798d06b0be2a1fd8992797534e51b665">ESocket::TCP::Talker::getRemoteAddress</a></div><div class="ttdeci">EString getRemoteAddress() const</div><div class="ttdoc">Retrieves the IP address associated with the remote socket.</div><div class="ttdef"><b>Definition:</b> esocket.h:603</div></div>
 <div class="ttc" id="aetevent_8h_html_a1a7c05eed44a6827c9ffd40fdd92fd50a53dfe5089ae9e65887cb0215cb0098f5"><div class="ttname"><a href="etevent_8h.html#a1a7c05eed44a6827c9ffd40fdd92fd50a53dfe5089ae9e65887cb0215cb0098f5">EThreadQueueMode::WriteOnly</a></div><div class="ttdoc">Allows read only access.</div></div>

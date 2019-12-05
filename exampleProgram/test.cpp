@@ -2147,6 +2147,9 @@ Void ERWLock_test()
    cout << "ERWLock_test() Complete" << endl;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 Void EGetOpt_test(EGetOpt &opt)
 {
    opt.print();
@@ -2765,7 +2768,7 @@ Void publicThreadExample(Bool isHost)
          q.push(event);
       }
       q.push(EThreadMessage(EM_QUIT));
-      cout << std::endl << "Posted " << idx << " MyCustomEvent event messages to public queue " << id << std::endl;
+      cout << std::endl << "Posted " << idx << " event messages to public queue " << id << std::endl;
    }
 }
 

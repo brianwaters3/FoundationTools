@@ -327,30 +327,51 @@ private:
    sem_t m_sem;
 };
 
-/// @cond DOXYGEN_EXCLUDE
+/// @brief Contains the base functionality for a semaphore.
 class ESemaphoreBase
 {
 public:
+   /// @brief Default constructor.
    ESemaphoreBase() {}
+   /// @brief Class desctructor.
    ~ESemaphoreBase() {}
 
+   /// @brief Initializes the semaphore data.  This method must be overloaded in a derived class.
+   /// @param initcnt the initial count for the semaphore.
    virtual Void init(Long initcnt) = 0;
+   /// @brief Destroys/releases the semaphore data.  This method must be overloaded in a derived class.
    virtual Void destroy() = 0;
 
+   /// @brief Decrements the semaphore value.
+   /// @param wait indicates if the this method will block until the semaphore value is greater than zero.
+   /// @return True indicates that the semaphore value was successfully decremented, otherwise False.
    Bool Decrement(Bool wait = True) { return getData().Decrement(wait); }
+   /// @brief Increments the semaphore value.
+   /// @return True indicates that the semaphore value was successfully decremented, otherwise False.
    Bool Increment() { return getData().Increment(); }
 
+   /// @brief Indicates the initialization status for this object.
+   /// @return True indicates the object is initialized, otherwise False.
    Bool initialized() { return getData().initialized(); }
+   /// @brief Indicates if this object is to be shared between processes.
+   /// @return True semaphore is to be shared, otherwise False.
    Bool &shared() { return getData().shared(); }
+   /// @brief Retrieves the initial semaphore value.
+   /// @return the initial semaphore value.
    Long &initialCount() { return getData().initialCount(); }
+   /// @brief Retrieves the current semaphore value.
+   /// @return the current semaphore value.
    Long currCount() { return getData().currCount(); }
 
+   /// @brief Retrieves a reference to the underlying semaphore data.
+   /// @return a reference to the underlying semaphore data.
    operator ESemaphoreData&() { return getData(); }
 
 protected:
+   /// @cond DOXYGEN_EXCLUDE
    virtual ESemaphoreData &getData() = 0;
+   /// @endcond
 };
-/// @endcond
 
 ////////////////////////////////////////////////////////////////////////////////
 // Private Semaphore Classes

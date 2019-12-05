@@ -36,6 +36,7 @@ var searchData=
   ['equeuepublic',['EQueuePublic',['../classEQueuePublic.html',1,'']]],
   ['erdlock',['ERDLock',['../classERDLock.html',1,'']]],
   ['erwlock',['ERWLock',['../classERWLock.html',1,'']]],
+  ['esemaphorebase',['ESemaphoreBase',['../classESemaphoreBase.html',1,'']]],
   ['esemaphoredata',['ESemaphoreData',['../classESemaphoreData.html',1,'']]],
   ['esemaphoreprivate',['ESemaphorePrivate',['../classESemaphorePrivate.html',1,'']]],
   ['esemaphorepublic',['ESemaphorePublic',['../classESemaphorePublic.html',1,'']]],

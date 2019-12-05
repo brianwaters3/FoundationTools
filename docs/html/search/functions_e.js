@@ -13,6 +13,7 @@ var searchData=
   ['operator_20cpstr',['operator cpStr',['../classEError.html#a55e1e4394607897fb2a750c13f93ea59',1,'EError']]],
   ['operator_20emutexdatapublic_20_26',['operator EMutexDataPublic &amp;',['../classEMutexPublic.html#a200669dfa6c29959d58893fae39cbe95',1,'EMutexPublic']]],
   ['operator_20epctime_5ft',['operator epctime_t',['../classETimer.html#a8cbb278ccafa688812be8e6964a2e32e',1,'ETimer']]],
+  ['operator_20esemaphoredata_20_26',['operator ESemaphoreData &amp;',['../classESemaphoreBase.html#a053bff01d0e5cc807e635006fd6710af',1,'ESemaphoreBase']]],
   ['operator_20estring',['operator EString',['../classESocket_1_1Address.html#aa12052dc0a654548d625c4a2955a5b98',1,'ESocket::Address']]],
   ['operator_20new',['operator new',['../classEMutexPrivate.html#a04633bdeeb7b28b2eb515bd7af20e77f',1,'EMutexPrivate']]],
   ['operator_20ushort',['operator UShort',['../classESocket_1_1Address.html#a37c0a6f8cf291e621d52cef2c5408184',1,'ESocket::Address']]],

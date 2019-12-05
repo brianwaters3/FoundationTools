@@ -38,6 +38,7 @@ var searchData=
   ['equeuepublic',['EQueuePublic',['../classEQueuePublic.html#a5a477926d117e4a42090b8d2f3805261',1,'EQueuePublic']]],
   ['erdlock',['ERDLock',['../classERDLock.html#af50b2670da68eb4375b69b62077fbe7b',1,'ERDLock']]],
   ['erwlock',['ERWLock',['../classERWLock.html#ad4e3a2d98bf805fd643fde3442736ca0',1,'ERWLock']]],
+  ['esemaphorebase',['ESemaphoreBase',['../classESemaphoreBase.html#a8ce2a8d979f15263c1a33ae92c5357d5',1,'ESemaphoreBase']]],
   ['esemaphoredata',['ESemaphoreData',['../classESemaphoreData.html#a23e3b44aa3d69f85ec2331ab6b682434',1,'ESemaphoreData::ESemaphoreData()'],['../classESemaphoreData.html#a73890ad633dcecf36aa30648b8578c24',1,'ESemaphoreData::ESemaphoreData(Long initcnt, Bool shared)']]],
   ['esemaphoreprivate',['ESemaphorePrivate',['../classESemaphorePrivate.html#ab4a4bd5ff519b0c7f6e4209d9b128305',1,'ESemaphorePrivate']]],
   ['esemaphorepublic',['ESemaphorePublic',['../classESemaphorePublic.html#ad9250baee3f0865aa738e854d5b5a359',1,'ESemaphorePublic::ESemaphorePublic()'],['../classESemaphorePublic.html#a8fa32e16c0eb8b30f963ab40d6c613e8',1,'ESemaphorePublic::ESemaphorePublic(Long initcnt, Bool bInit=True)']]],
