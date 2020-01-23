@@ -56,6 +56,17 @@
 				</ol>
 			</li>
 			<li>[Logging](#feature-overview-logging)</li>
+				<ol>
+					<li>[Configuration](#feature-overview-logging-configuration)</li>
+						<ol>
+							<li>[JSON](#feature-overview-logging-configuration-json)</li>
+							<li>[Code](#feature-overview-logging-configuration-code)</li>
+							<li>[Sink Sets](#feature-overview-logging-configuration-sinksets)</li>
+							<li>[Logs](#feature-overview-logging-configuration-logs)</li>
+							<li>[Log Levels](#feature-overview-logging-configuration-loglevels)</li>
+						</ol>
+					<li>[Log Messages](#feature-overview-logging-logmessages)</li>
+				</ol>
 			<li>[DNS](#feature-overview-dns)
 				<ol>
 					<li>[Cache](#feature-overview-dns-cache)</li>
@@ -1237,6 +1248,247 @@ private:
 
 <a  name="feature-overview-logging"></a>
 ## Logging
+Logging in ***EpcTools*** is performed by the [ELogger](@ref ELogger)  class and configured in the JSON configuration file or in code.  Multiple logs can be defined with each log identified by a unique integer identifier (e.g. 1, 2, 99).  Each log can have it's messages written to one or more destinations (sinks).  The log messages are written by a background thread.  The number of threads writing the log messages and the queue size for each thread are defined in the **Logger** configuration. 
+
+<a  name="feature-overview-logging-configuration"></a>
+### Configuration
+
+<a  name="feature-overview-logging-configuration-json"></a>
+#### JSON
+The JSON logger configuration is defined in the **Logger** configuration section of the **EpcTools** configuration file.
+**Example JSON Logger Configuration**
+```json
+"EpcTools": {
+	"EnablePublicObjects": false,
+	"Debug": false,
+	"SynchronizationObjects": {
+		"NumberSemaphores": 100,
+		"NumberMutexes": 100
+	},
+	"Logger": {
+		"ApplicationName": "epc_app",
+		"QueueSize": 8192,
+		"NumberThreads": 1,
+		"SinkSets": [
+			{
+				"SinkID": 1,
+				"Sinks": [
+					{
+						"SinkType": "syslog",
+						"LogLevel": "startup",
+						"Pattern": "[__APPNAME__] [%n] [%l] %v"
+					},
+					{
+						"SinkType": "stdout",
+						"LogLevel": "debug",
+						"Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [stdout] [%^__APPNAME__%$] [%n] [%^%l%$] %v"
+					},
+					{
+						"SinkType": "stderr",
+						"LogLevel": "minor",
+						"Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [stderr] [%^__APPNAME__%$] [%n] [%^%l%$] %v"
+					},
+					{
+						"SinkType": "basic_file",
+						"LogLevel": "debug",
+						"Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+						"FileName": "./logs/epctest.basic.log",
+						"Truncate": false
+					},
+					{
+						"SinkType": "rotating_file",
+						"LogLevel": "debug",
+						"Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+						"FileName": "./logs/epctest.rotating.log",
+						"MaxSizeMB": 1,
+						"MaxNumberFiles": 2,
+						"RotateOnOpen": false
+					},
+					{
+						"SinkType": "daily_file",
+						"LogLevel": "debug",
+						"Pattern": "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+						"FileName": "./logs/epctest.daily.log",
+						"Truncate": false,
+						"RolloverHour": 14,
+						"RolloverMinute": 55
+					}
+				]
+			},
+			{
+				"SinkID": 2,
+				"Sinks": [
+					{
+						"SinkType": "rotating_file",
+						"LogLevel": "debug",
+						"Pattern": "%v",
+						"FileName": "./logs/epctest.stats.rotating.log",
+						"MaxSizeMB": 1,
+						"MaxNumberFiles": 2
+					}
+				]
+			}
+		],
+		"Logs": [
+			{
+				"LogID": 1,
+				"Category": "system",
+				"SinkID": 1,
+				"LogLevel": "debug"
+			},
+			{
+				"LogID": 2,
+				"Category": "test1",
+				"SinkID": 1,
+				"LogLevel": "debug"
+			},
+			{
+				"LogID": 3,
+				"Category": "stats",
+				"SinkID": 2,
+				"LogLevel": "debug"
+			}
+		]
+	}
+}
+```
+
+**JSON Configuration Elements**
+| Event | Callback Method | Description |
+| ------- | -------------------- | :----------- |
+| Read | [UDP::onReceive](@ref ESocket::UDP::onReceive) | When a UDP socket indicates that it can be read, the framework calls `recvfrom()` to read any pending data. If more than zero bytes are read, the data is inserted it into an internal receive buffer and the dispatcher will call the [UDP::onReceive()](@ref ESocket::UDP::onReceive) method allowing the application to process the data that has been read. |
+| Write | None | The framework processes the write event by sending any unsent messages to the destination. No application interaction is required to process this event. |
+| Error | [UDP::onError](@ref ESocket::UDP::onError) | Indicates that an error has occurred on the socket. |
+
+<a  name="feature-overview-logging-configuration-code"></a>
+#### Code
+
+The following code configures [ELogger](@ref ELogger) the same as the [JSON](#feature-overview-logging-configuration-json) configuration example.
+
+```cpp
+#define LOG_SINKSET_GENERAL 1
+#define LOG_SINKSET_STATS 2
+
+#define LOG_SYSTEM 1
+#define LOG_TEST1 2
+#define LOG_STATS 3
+  
+...
+
+std::shared_ptr<ELoggerSink> sp1 = std::make_shared<ELoggerSinkSyslog>(
+	ELogger::eStartup, "[__APPNAME__] [%n] [%l] %v" );
+std::shared_ptr<ELoggerSink> sp2 = std::make_shared<ELoggerSinkStdout>(
+	ELogger::eDebug, "[%Y-%m-%dT%H:%M:%S.%e] [stdout] [%^__APPNAME__%$] [%n] [%^%l%$] %v" );
+std::shared_ptr<ELoggerSink> sp3 = std::make_shared<ELoggerSinkStderr>(
+	ELogger::eMinor, "[%Y-%m-%dT%H:%M:%S.%e] [stderr] [%^__APPNAME__%$] [%n] [%^%l%$] %v" );
+std::shared_ptr<ELoggerSink> sp4 = std::make_shared<ELoggerSinkBasicFile>(
+	ELogger::eDebug, "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+	"./logs/epctest.basic.log", False );
+std::shared_ptr<ELoggerSink> sp5 = std::make_shared<ELoggerSinkRotatingFile>(
+	ELogger::eDebug, "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+	"./logs/epctest.rotating.log", 10, 2, false );
+std::shared_ptr<ELoggerSink> sp6 = std::make_shared<ELoggerSinkDailyFile>(
+	ELogger::eDebug, "[%Y-%m-%dT%H:%M:%S.%e] [%^__APPNAME__%$] [%n] [%^%l%$] %v",
+	"./logs/epctest.daily.log", false, 14, 55 );
+std::shared_ptr<ELoggerSink> sp7 = std::make_shared<ELoggerSinkRotatingFile>(
+	ELogger::eDebug, "%v",
+	"./logs/epctest.stats.rotating.log", 10, 2, false );
+
+ELogger::createSinkSet( LOG_SINKSET_GENERAL );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp1 );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp2 );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp3 );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp4 );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp5 );
+ELogger::sinkSet(LOG_SINKSET_GENERAL).addSink( sp6 );
+
+ELogger::createSinkSet( LOG_SINKSET_STATS );
+ELogger::sinkSet(LOG_SINKSET_STATS).addSink( sp7 );
+
+ELogger::createLog( LOG_SYSTEM, "system", LOG_SINKSET_GENERAL );
+ELogger::createLog( LOG_TEST1, "test1", LOG_SINKSET_GENERAL );
+ELogger::createLog( LOG_STATS, "stats", LOG_SINKSET_STATS );
+
+ELogger::log(LOG_SYSTEM).setLogLevel( ELogger::eDebug );
+ELogger::log(LOG_TEST1).setLogLevel( ELogger::eDebug );
+ELogger::log(LOG_STATS).setLogLevel( ELogger::eDebug );
+```
+
+<a  name="feature-overview-logging-configuration-sinksets"></a>
+#### Sink Sets
+A sink set defines a set of outputs or sinks.  Once defined, a sink set is then associated with a log.  If the same sink set is associated with more than one log, then each of the associated logs will have their log messages written to the same sinks.
+
+**Sink Types**
+| Class | Parameters | Description |
+| ------- | ----- | -------------------- | :----------- |
+| [ELoggerSinkSyslog](@ref ELoggerSinkSyslog) | loglevel<br>pattern | Message will be written to syslog. |
+| [ELoggerSinkStdout](@ref ELoggerSinkStdout) | loglevel<br>pattern | Message will be written to the standard output (stdout) file handle. |
+| [ELoggerSinkStderr](@ref ELoggerSinkStderr) | loglevel<br>pattern | Message will be written to the standard error (stderr) file handle. |
+| [ELoggerSinkBasicFile](@ref ELoggerSinkBasicFile) | loglevel<br>pattern<br>filename<br>truncate | Message will be written to a file. If the **truncate** flag is true, then the file will be truncated at startup. |
+| [ELoggerSinkRotatingFile](@ref ELoggerSinkRotatingFile) | loglevel<br>pattern<br>filename<br>max_size_mb<br>max_files<br>rotate_on_open | Message will be written to a series of files.  When a file reaches the maximum file size defined by **max_size_mb**, the next file in the series will be opened and written to. ELogger will keep a maximum of **max_files** previous log files (including the current file).|
+| [ELoggerSinkDailyFile](@ref ELoggerSinkDailyFile) | loglevel<br>pattern<br>filename<br>truncate<br>rollover_hour<br>rollover_minute | Message will be written to a file.  When the hour and minute specified by **rollover_hour** and **rollover_minute** are reached, the current log file will be closed and a new log file will be opened.  The system date and time will be appended to the log file name. |
+
+<a  name="feature-overview-logging-configuration-logs"></a>
+#### Logs
+A log definition includes a log **category**, a string that can be output with each log message, a **sink set** which defines the sinks that the log messages will be written to, a **log identifier** used to identify the log when writing a log message and the minimum **log level** at which log messages will be written to associated sink set sinks.
+
+<a  name="feature-overview-logging-configuration-loglevels"></a>
+#### Log Levels
+When a log message is written a **log level** is included that represents the severity or importance of the log message.  Each **sink** and **log** also has a log level associated with it.  These log levels represent the minimum log level that will be output to the **sink** or **log**.
+
+**Log Levels in Ascending Order of Importance**
+| Log Level | Enumeration |
+| --------- | ----------- |
+| Debug | [ELogger::eDebug](@ref ELogger::eDebug) |
+| Informational | [ELogger::eInfo](@ref ELogger::eInfo) |
+| Startup | [ELogger::eStartup](@ref ELogger::eStartup) |
+| Minor | [ELogger::eMinor](@ref ELogger::eMinor) |
+| Major | [ELogger::eMajor](@ref ELogger::eMajor) |
+| Critical | [ELogger::eCritical](@ref ELogger::eCritical) |
+| Off (suppresses all messages) | [ELogger::eOff](@ref ELogger::eOff) |
+
+<a  name="feature-overview-logging-logmessages"></a>
+### Log Messages
+
+**Examples**
+```cpp
+
+#define LOG_SYSTEM 1
+#define LOG_TEST1 2
+#define LOG_STATS 3
+
+ELogger::log(LOG_SYSTEM).minor("Hello Wonderful World from the system log!!");
+// ELoggerSinkSyslog
+// Jan 23 18:12:54 dev epctest: [epctest] [system] [minor] Hello World from the system log!!
+// ELoggerSinkStdout
+// [2020-01-23T18:12:54.944] [stdout] [epctest] [system] [minor] Hello World from the system log!!
+// ELoggerSinkStderr
+// [2020-01-23T18:12:54.944] [stderr] [epctest] [system] [minor] Hello World from the system log!!
+// ELoggerSinkBasicFile
+// [2020-01-23T18:12:54.944] [epctest] [system] [minor] Hello World from the system log!!
+// ELoggerSinkRotatingFile
+// [2020-01-23T18:12:54.944] [epctest] [system] [minor] Hello World from the system log!!
+// ELoggerSinkDailyFile
+// [2020-01-23T18:12:54.944] [epctest] [system] [minor] Hello World from the system log!!
+
+ELogger::log(LOG_TEST1).startup("Hello {} from the test1 log!!", "World");
+// ELoggerSinkSyslog
+// Jan 23 18:12:54 dev epctest: [epctest] [test1] [startup] Hello World from the test1 log!!
+// ELoggerSinkStdout
+// [2020-01-23T18:12:54.944] [stdout] [epctest] [test1] [startup] Hello World from the test1 log!!
+// ELoggerSinkStderr
+// [2020-01-23T18:12:54.944] [stderr] [epctest] [test1] [startup] Hello World from the test1 log!!
+// ELoggerSinkBasicFile (epctest.basic.log)
+// [2020-01-23T18:12:54.944] [epctest] [test1] [startup] Hello World from the test1 log!!
+// ELoggerSinkRotatingFile (epctest.rotating.log)
+// [2020-01-23T18:12:54.944] [epctest] [test1] [startup] Hello World from the test1 log!!
+// ELoggerSinkDailyFile (epctest.daily_2020-01-23.log)
+// [2020-01-23T18:12:54.944] [epctest] [test1] [startup] Hello World from the test1 log!!
+
+ELogger::log(LOG_STATS).minor("Hello {} from the test2 log!!", "World");
+// ELoggerSinkRotatingFile (epctest.stats.rotating.log)
+// Hello World from the test2 log!!
+```
 
 <a  name="feature-overview-dns"></a>
 ## DNS
